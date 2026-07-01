@@ -1,1 +1,12 @@
 @import 'tailwindcss';
+
+@import './tokens/colors.css';
+@import './tokens/spacing.css';
+@import './tokens/radius.css';
+@import './tokens/elevation.css';
+@import './tokens/border.css';
+@import './tokens/motion.css';
+@import './tokens/typography.css';
+@import './tokens/breakpoints.css';
+@import './tokens/layout.css';
+@import './global.css';

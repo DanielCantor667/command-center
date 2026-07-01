@@ -1,0 +1,27 @@
+/**
+ * Motion tokens: durations (raw vars, consumed via duration-[var(--motion-fast)])
+ * and easing curves (wired into Tailwind's --ease-* namespace).
+ */
+
+:root {
+  --motion-instant: 0ms;
+  --motion-fast: 100ms;
+  --motion-normal: 150ms;
+  --motion-medium: 250ms;
+  --motion-slow: 400ms;
+  --motion-cinematic: 800ms;
+
+  --easing-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --easing-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --easing-linear: linear;
+  --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@theme inline {
+  --ease-*: initial;
+
+  --ease-out: var(--easing-out);
+  --ease-in-out: var(--easing-in-out);
+  --ease-linear: var(--easing-linear);
+  --ease-spring: var(--easing-spring);
+}

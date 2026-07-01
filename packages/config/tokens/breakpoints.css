@@ -1,0 +1,13 @@
+/**
+ * Semantic breakpoints. Names avoid Tailwind's default sm/md/lg/xl scale.
+ */
+
+@theme {
+  --breakpoint-*: initial;
+
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-ultrawide: 1920px;
+}

@@ -1,0 +1,10 @@
+/**
+ * Border width tokens. Consumed via arbitrary values:
+ * border-[length:var(--border-thin)]
+ */
+
+:root {
+  --border-thin: 1px;
+  --border-default: 1px;
+  --border-strong: 2px;
+}
