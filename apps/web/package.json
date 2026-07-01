@@ -1,0 +1,33 @@
+{
+  "name": "@command-center/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@command-center/config": "workspace:*",
+    "@command-center/ui": "workspace:*",
+    "@prisma/client": "^6.19.3",
+    "@supabase/supabase-js": "^2.110.0",
+    "@tailwindcss/postcss": "^4.3.2",
+    "next": "^15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@command-center/eslint-config": "workspace:*",
+    "@command-center/tsconfig": "workspace:*",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "prisma": "^6.19.3",
+    "typescript": "^5.7.2"
+  }
+}

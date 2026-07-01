@@ -1,0 +1,18 @@
+{
+  "name": "@command-center/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "base.js",
+  "exports": {
+    ".": "./base.js",
+    "./nextjs": "./nextjs.js"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "eslint-config-next": "^15.1.3",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript-eslint": "^8.19.0"
+  }
+}
