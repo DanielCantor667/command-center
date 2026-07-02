@@ -1,7 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { extendTailwindMerge } from 'tailwind-merge';
 
-const twMerge = extendTailwindMerge({
+const twMerge = extendTailwindMerge<'text-size' | 'text-color'>({
   extend: {
     classGroups: {
       'text-size': [

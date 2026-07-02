@@ -1,6 +1,8 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { SurfaceElevation, SurfaceRadius, SurfaceVariant } from '../surface/types';
 
+export type { SurfaceElevation, SurfaceRadius, SurfaceVariant } from '../surface/types';
+
 export type PanelPadding = 'none' | 'sm' | 'md' | 'lg';
 
 export interface PanelOwnProps {
