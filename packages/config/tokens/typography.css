@@ -1,0 +1,138 @@
+/**
+ * Typography tokens. Font family raw values are populated at runtime by
+ * the Geist/Geist Mono CSS variables set via next/font in apps/web.
+ * Size/line-height/weight/letter-spacing feed Tailwind's --text-* namespace.
+ */
+
+:root {
+  --font-family-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --font-size-display-xl: 4rem;
+  --line-height-display-xl: 1.05;
+  --letter-spacing-display-xl: -0.02em;
+  --font-weight-display-xl: 700;
+
+  --font-size-display-l: 3rem;
+  --line-height-display-l: 1.08;
+  --letter-spacing-display-l: -0.02em;
+  --font-weight-display-l: 700;
+
+  --font-size-heading-xl: 2.25rem;
+  --line-height-heading-xl: 1.15;
+  --letter-spacing-heading-xl: -0.01em;
+  --font-weight-heading-xl: 600;
+
+  --font-size-heading-l: 1.75rem;
+  --line-height-heading-l: 1.2;
+  --letter-spacing-heading-l: -0.01em;
+  --font-weight-heading-l: 600;
+
+  --font-size-heading-m: 1.375rem;
+  --line-height-heading-m: 1.25;
+  --letter-spacing-heading-m: 0em;
+  --font-weight-heading-m: 600;
+
+  --font-size-title: 1.125rem;
+  --line-height-title: 1.3;
+  --letter-spacing-title: 0em;
+  --font-weight-title: 600;
+
+  --font-size-body-l: 1rem;
+  --line-height-body-l: 1.5;
+  --letter-spacing-body-l: 0em;
+  --font-weight-body-l: 400;
+
+  --font-size-body: 0.875rem;
+  --line-height-body: 1.5;
+  --letter-spacing-body: 0em;
+  --font-weight-body: 400;
+
+  --font-size-body-small: 0.8125rem;
+  --line-height-body-small: 1.45;
+  --letter-spacing-body-small: 0em;
+  --font-weight-body-small: 400;
+
+  --font-size-caption: 0.75rem;
+  --line-height-caption: 1.4;
+  --letter-spacing-caption: 0.01em;
+  --font-weight-caption: 500;
+
+  --font-size-mono: 0.875rem;
+  --line-height-mono: 1.5;
+  --letter-spacing-mono: 0em;
+  --font-weight-mono: 400;
+
+  --font-size-mono-small: 0.75rem;
+  --line-height-mono-small: 1.5;
+  --letter-spacing-mono-small: 0em;
+  --font-weight-mono-small: 400;
+}
+
+@theme inline {
+  --font-*: initial;
+  --text-*: initial;
+
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+
+  --text-display-xl: var(--font-size-display-xl);
+  --text-display-xl--line-height: var(--line-height-display-xl);
+  --text-display-xl--letter-spacing: var(--letter-spacing-display-xl);
+  --text-display-xl--font-weight: var(--font-weight-display-xl);
+
+  --text-display-l: var(--font-size-display-l);
+  --text-display-l--line-height: var(--line-height-display-l);
+  --text-display-l--letter-spacing: var(--letter-spacing-display-l);
+  --text-display-l--font-weight: var(--font-weight-display-l);
+
+  --text-heading-xl: var(--font-size-heading-xl);
+  --text-heading-xl--line-height: var(--line-height-heading-xl);
+  --text-heading-xl--letter-spacing: var(--letter-spacing-heading-xl);
+  --text-heading-xl--font-weight: var(--font-weight-heading-xl);
+
+  --text-heading-l: var(--font-size-heading-l);
+  --text-heading-l--line-height: var(--line-height-heading-l);
+  --text-heading-l--letter-spacing: var(--letter-spacing-heading-l);
+  --text-heading-l--font-weight: var(--font-weight-heading-l);
+
+  --text-heading-m: var(--font-size-heading-m);
+  --text-heading-m--line-height: var(--line-height-heading-m);
+  --text-heading-m--letter-spacing: var(--letter-spacing-heading-m);
+  --text-heading-m--font-weight: var(--font-weight-heading-m);
+
+  --text-title: var(--font-size-title);
+  --text-title--line-height: var(--line-height-title);
+  --text-title--letter-spacing: var(--letter-spacing-title);
+  --text-title--font-weight: var(--font-weight-title);
+
+  --text-body-l: var(--font-size-body-l);
+  --text-body-l--line-height: var(--line-height-body-l);
+  --text-body-l--letter-spacing: var(--letter-spacing-body-l);
+  --text-body-l--font-weight: var(--font-weight-body-l);
+
+  --text-body: var(--font-size-body);
+  --text-body--line-height: var(--line-height-body);
+  --text-body--letter-spacing: var(--letter-spacing-body);
+  --text-body--font-weight: var(--font-weight-body);
+
+  --text-body-small: var(--font-size-body-small);
+  --text-body-small--line-height: var(--line-height-body-small);
+  --text-body-small--letter-spacing: var(--letter-spacing-body-small);
+  --text-body-small--font-weight: var(--font-weight-body-small);
+
+  --text-caption: var(--font-size-caption);
+  --text-caption--line-height: var(--line-height-caption);
+  --text-caption--letter-spacing: var(--letter-spacing-caption);
+  --text-caption--font-weight: var(--font-weight-caption);
+
+  --text-mono: var(--font-size-mono);
+  --text-mono--line-height: var(--line-height-mono);
+  --text-mono--letter-spacing: var(--letter-spacing-mono);
+  --text-mono--font-weight: var(--font-weight-mono);
+
+  --text-mono-small: var(--font-size-mono-small);
+  --text-mono-small--line-height: var(--line-height-mono-small);
+  --text-mono-small--letter-spacing: var(--letter-spacing-mono-small);
+  --text-mono-small--font-weight: var(--font-weight-mono-small);
+}

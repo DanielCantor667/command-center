@@ -1,0 +1,26 @@
+/**
+ * Spacing scale. Base unit is 1px so Tailwind's numeric spacing utilities
+ * (p-4, gap-16, mt-24...) map 1:1 to pixel values. --space-* aliases exist
+ * for raw CSS usage outside Tailwind utilities.
+ */
+
+@theme {
+  --spacing: 1px;
+}
+
+:root {
+  --space-2: calc(var(--spacing) * 2);
+  --space-4: calc(var(--spacing) * 4);
+  --space-8: calc(var(--spacing) * 8);
+  --space-12: calc(var(--spacing) * 12);
+  --space-16: calc(var(--spacing) * 16);
+  --space-20: calc(var(--spacing) * 20);
+  --space-24: calc(var(--spacing) * 24);
+  --space-32: calc(var(--spacing) * 32);
+  --space-40: calc(var(--spacing) * 40);
+  --space-48: calc(var(--spacing) * 48);
+  --space-64: calc(var(--spacing) * 64);
+  --space-80: calc(var(--spacing) * 80);
+  --space-96: calc(var(--spacing) * 96);
+  --space-128: calc(var(--spacing) * 128);
+}

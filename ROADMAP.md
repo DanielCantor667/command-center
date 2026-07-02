@@ -8,7 +8,7 @@ Este documento describe la trayectoria funcional prevista para Command Center, o
 
 ### Estado
 
-En progreso.
+Completado.
 
 ### Objetivos
 

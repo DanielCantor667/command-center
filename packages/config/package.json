@@ -1,0 +1,11 @@
+{
+  "name": "@command-center/config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./tailwind.css": "./tailwind.css"
+  }
+}

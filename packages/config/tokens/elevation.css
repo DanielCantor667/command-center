@@ -1,0 +1,13 @@
+/**
+ * Elevation (stacking) tokens. Consumed via arbitrary values:
+ * z-[var(--elevation-modal)]
+ */
+
+:root {
+  --elevation-background: 0;
+  --elevation-surface: 1;
+  --elevation-panel: 10;
+  --elevation-window: 100;
+  --elevation-overlay: 1000;
+  --elevation-modal: 1100;
+}

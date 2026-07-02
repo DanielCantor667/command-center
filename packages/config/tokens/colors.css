@@ -1,0 +1,90 @@
+/**
+ * Semantic color + shadow tokens.
+ * Dark is the default (:root). Light overrides via [data-theme="light"].
+ * Raw hex values live only here — never in components.
+ * Aliased into Tailwind's --color-* and --shadow-* namespaces below using
+ * "inline" so utilities reference the live variable, not a baked value.
+ */
+
+:root {
+  --background-primary: #0a0a0a;
+  --background-secondary: #111111;
+  --background-tertiary: #161616;
+
+  --surface-primary: #141414;
+  --surface-secondary: #1b1b1b;
+  --surface-hover: #202020;
+
+  --panel-background: #121212;
+  --panel-border: #232323;
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #6b6b6b;
+
+  --accent: #22c55e;
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  --divider: #232323;
+  --focus-ring: #22c55e;
+  --selection: rgba(34, 197, 94, 0.25);
+
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='light'] {
+  --background-primary: #ffffff;
+  --background-secondary: #f7f7f7;
+  --background-tertiary: #f0f0f0;
+
+  --surface-primary: #ffffff;
+  --surface-secondary: #f5f5f5;
+  --surface-hover: #ececec;
+
+  --panel-background: #ffffff;
+  --panel-border: #e5e5e5;
+
+  --text-primary: #111111;
+  --text-secondary: #525252;
+  --text-muted: #8a8a8a;
+
+  --divider: #e5e5e5;
+  --selection: rgba(34, 197, 94, 0.18);
+
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+@theme inline {
+  --color-*: initial;
+  --shadow-*: initial;
+
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-hover: var(--surface-hover);
+  --color-panel-background: var(--panel-background);
+  --color-panel-border: var(--panel-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-divider: var(--divider);
+  --color-focus-ring: var(--focus-ring);
+  --color-selection: var(--selection);
+
+  --shadow-low: var(--shadow-subtle);
+  --shadow-medium: var(--shadow-elevated);
+  --shadow-high: var(--shadow-strong);
+}

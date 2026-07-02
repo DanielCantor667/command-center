@@ -33,3 +33,6 @@ coverage/
 
 # Vercel
 .vercel
+
+# Worktrees
+.worktrees/
