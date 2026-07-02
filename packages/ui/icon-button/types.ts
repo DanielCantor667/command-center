@@ -12,4 +12,5 @@ export interface IconButtonOwnProps {
   children?: ReactNode;
 }
 
-export type IconButtonProps = IconButtonOwnProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof IconButtonOwnProps>;
+export type IconButtonProps = IconButtonOwnProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof IconButtonOwnProps | 'aria-label'>;

@@ -8,6 +8,13 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(functio
   { variant = 'ghost', size = 24, label, loading = false, className, children, ...rest },
   ref,
 ) {
+  // `aria-label` is omitted from IconButtonProps (see types.ts) so typed callers can't pass
+  // it, but it's stripped again here at runtime in case it slips through (e.g. untyped JS
+  // callers or a cast) so `label` always remains the single source of truth for the
+  // accessible name.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { 'aria-label': _ariaLabel, ...safeRest } = rest as typeof rest & { 'aria-label'?: string };
+
   return (
     <Button
       ref={ref}
@@ -15,7 +22,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(functio
       loading={loading}
       aria-label={label}
       className={cn(ICON_BUTTON_BASE_STYLE, iconButtonSizeStyles[size], className)}
-      {...rest}
+      {...safeRest}
     >
       {children}
     </Button>
