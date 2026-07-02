@@ -5,8 +5,10 @@
 
 :root {
   --layout-sidebar-width: 280px;
-  --layout-topbar-height: 56px;
-  --layout-statusbar-height: 28px;
+  --layout-sidebar-collapsed-width: 72px;
+  --layout-topbar-height: 72px;
+  --layout-statusbar-height: 32px;
+  --layout-workspace-padding: 32px;
   --layout-container-width: 1440px;
   --layout-content-max-width: 1200px;
   --layout-panel-padding: var(--space-24);

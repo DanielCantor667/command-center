@@ -95,6 +95,13 @@ Priorizar siempre la solución más simple posible para el problema de estado en
 - Antes de crear algo nuevo, buscar si ya existe una solución reutilizable.
 - Las decisiones que cambian la arquitectura se documentan como un nuevo ADR en `decisions/`, sin modificar los existentes.
 
+## Layout Tokens
+
+Todos los tamaños globales del layout (Sidebar, TopBar, StatusBar, Workspace, padding y gaps
+principales del shell) provienen exclusivamente de `packages/config/tokens/layout.css`. Ningún
+componente puede usar valores hardcodeados para estas dimensiones — siempre variables CSS
+(`var(--layout-*)`), nunca px/rem sueltos en el componente.
+
 ## Convenciones
 
 - **Nombres de archivos**: kebab-case para archivos generales, PascalCase para archivos de componentes.
