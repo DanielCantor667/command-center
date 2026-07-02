@@ -1,12 +1,13 @@
 import { forwardRef } from 'react';
 import { cn } from '../lib/cn';
 import {
-  STACK_RESPONSIVE_BREAKPOINTS,
   STACK_WRAP_STYLE,
   stackAlignStyles,
   stackDirectionStyles,
   stackGapStyles,
   stackJustifyStyles,
+  stackLaptopGapStyles,
+  stackTabletGapStyles,
 } from './styles';
 import type { StackProps } from './types';
 
@@ -14,13 +15,13 @@ function resolveGapClassName(gap: StackProps['gap']): string {
   if (!gap) return '';
   if (typeof gap === 'string') return stackGapStyles[gap];
 
-  const base = gap.base ? stackGapStyles[gap.base] : '';
-  const responsive = STACK_RESPONSIVE_BREAKPOINTS.map((breakpoint) => {
-    const value = gap[breakpoint];
-    return value ? `${breakpoint}:${stackGapStyles[value]}` : '';
-  }).join(' ');
-
-  return cn(base, responsive);
+  return [
+    gap.base ? stackGapStyles[gap.base] : '',
+    gap.tablet ? stackTabletGapStyles[gap.tablet] : '',
+    gap.laptop ? stackLaptopGapStyles[gap.laptop] : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 }
 
 export const Stack = forwardRef<HTMLDivElement, StackProps>(function Stack(

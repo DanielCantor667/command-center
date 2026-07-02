@@ -43,6 +43,16 @@ describe('Stack', () => {
     expect(el).toHaveClass('tablet:gap-24');
   });
 
+  it('applies a responsive gap object with a single breakpoint key', () => {
+    render(
+      <Stack data-testid="stack" gap={{ tablet: 'lg' }}>
+        content
+      </Stack>,
+    );
+    const el = screen.getByTestId('stack');
+    expect(el.className).toContain('tablet:gap-24');
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(<Stack>content</Stack>);
     const results = await axe(container);

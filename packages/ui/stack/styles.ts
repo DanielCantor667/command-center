@@ -31,5 +31,22 @@ export const stackJustifyStyles: Record<StackJustify, string> = {
   evenly: 'justify-evenly',
 };
 
+export const stackTabletGapStyles: Record<StackGap, string> = {
+  none: 'tablet:gap-0',
+  xs: 'tablet:gap-4',
+  sm: 'tablet:gap-8',
+  md: 'tablet:gap-16',
+  lg: 'tablet:gap-24',
+  xl: 'tablet:gap-32',
+};
+
+export const stackLaptopGapStyles: Record<StackGap, string> = {
+  none: 'laptop:gap-0',
+  xs: 'laptop:gap-4',
+  sm: 'laptop:gap-8',
+  md: 'laptop:gap-16',
+  lg: 'laptop:gap-24',
+  xl: 'laptop:gap-32',
+};
+
 export const STACK_WRAP_STYLE = 'flex-wrap';
-export const STACK_RESPONSIVE_BREAKPOINTS = ['tablet', 'laptop'] as const;
