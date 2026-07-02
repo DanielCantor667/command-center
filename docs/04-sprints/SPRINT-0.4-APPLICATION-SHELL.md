@@ -173,16 +173,17 @@ Cada componente incluye `README.md` y `stories.md`: Usage, Accessibility Notes, 
 
 - [ ] Resolver bloqueo: merge de PR #1 (Sprint 0.3 / Design System Core).
 - [x] Resolver bloqueo: layout tokens actualizados en `packages/config/tokens/layout.css`.
-- [ ] Resolver bloqueo: instalar Zustand (requiere autorización).
-- [ ] `WorkspaceStore` (Zustand) + `WorkspaceProvider` + tests.
-- [ ] `AppShell` + tests.
-- [ ] `Sidebar` + `SidebarItem` + tests.
-- [ ] `TopBar` + tests.
-- [ ] `StatusBar` + tests.
-- [ ] `Workspace` + tests.
-- [ ] `Logo`, `Brand`, `AppContainer`.
-- [ ] Tests de navegación por teclado.
-- [ ] Verificar: build, TypeScript, ESLint, tests, cero warnings.
+- [x] Resolver bloqueo: Zustand instalado y autorizado (`apps/web`, `^5.0.14`).
+- [x] Resolver bloqueo: PR #1 (Sprint 0.3) mergeado a `main`.
+- [x] `WorkspaceStore` (Zustand) + `WorkspaceProvider` + tests.
+- [x] `AppShell` + tests.
+- [x] `Sidebar` + `SidebarItem` + tests.
+- [x] `TopBar` + tests.
+- [x] `StatusBar` + tests.
+- [x] `Workspace` + tests.
+- [x] `Logo`, `Brand`, `AppContainer`.
+- [x] Tests de navegación por teclado (cubiertos por `SidebarItem`/`Sidebar`: `Button` nativo, foco/activación estándar).
+- [x] Verificar: build, TypeScript, ESLint, tests, cero warnings.
 
 ## Deliverables
 
@@ -204,8 +205,10 @@ Cada componente incluye `README.md` y `stories.md`: Usage, Accessibility Notes, 
 
 ## Review
 
-Pendiente.
+Implementado en la rama `sprint-0.4-application-shell`. Ver reporte final entregado al usuario en
+la sesión de implementación para el árbol de archivos completo, resultados de test/lint/typecheck/
+build y mejoras detectadas no implementadas. Pendiente de aprobación/merge.
 
 ## Retrospectiva
 
-Pendiente.
+Pendiente (post-merge).

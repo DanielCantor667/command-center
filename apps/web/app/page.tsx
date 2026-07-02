@@ -1,7 +1,10 @@
+import { AppShell } from '@/shell/app-shell';
+import { WorkspaceProvider } from '@/shell/workspace-provider';
+
 export default function HomePage() {
   return (
-    <main>
-      <h1>Command Center</h1>
-    </main>
+    <WorkspaceProvider>
+      <AppShell />
+    </WorkspaceProvider>
   );
 }
