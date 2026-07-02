@@ -18,4 +18,20 @@ export const gridGapStyles: Record<GridGap, string> = {
   xl: 'gap-32',
 };
 
-export const GRID_RESPONSIVE_BREAKPOINTS = ['tablet', 'laptop'] as const;
+export const gridTabletColumnsStyles: Record<GridColumns, string> = {
+  1: 'tablet:grid-cols-1',
+  2: 'tablet:grid-cols-2',
+  3: 'tablet:grid-cols-3',
+  4: 'tablet:grid-cols-4',
+  6: 'tablet:grid-cols-6',
+  12: 'tablet:grid-cols-12',
+};
+
+export const gridLaptopColumnsStyles: Record<GridColumns, string> = {
+  1: 'laptop:grid-cols-1',
+  2: 'laptop:grid-cols-2',
+  3: 'laptop:grid-cols-3',
+  4: 'laptop:grid-cols-4',
+  6: 'laptop:grid-cols-6',
+  12: 'laptop:grid-cols-12',
+};
