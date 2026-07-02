@@ -84,3 +84,4 @@ function ExampleWindow() {
 - Extend `Stack`/`Grid` responsive props to cover all five semantic breakpoints, not just `tablet`/`laptop`.
 - Add a `Skeleton` primitive once loading states appear in real screens.
 - Consider a `VisuallyHidden` primitive for screen-reader-only text, reusable beyond `Button`'s loading label.
+- Add dedicated opacity/hover-alpha tokens — `opacity-50`/`opacity-80` (disabled/inactive states) and `/90` hover alpha modifiers (Button) are currently raw Tailwind values, not tokens.
