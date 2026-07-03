@@ -1,12 +1,13 @@
 'use client';
 
 import { Stack, Typography } from '@command-center/ui';
-import { useWorkspaceStore, WORKSPACE_MODULES } from '../workspace-store';
+import { MODULE_REGISTRY } from '../../modules';
+import { useWorkspaceStore } from '../workspace-store';
 import type { WorkspaceProps } from './types';
 
 export function Workspace({ className, ...rest }: WorkspaceProps) {
   const currentModule = useWorkspaceStore((state) => state.currentModule);
-  const currentModuleLabel = WORKSPACE_MODULES.find((module) => module.id === currentModule)?.label;
+  const ActiveModule = currentModule ? MODULE_REGISTRY[currentModule] : null;
 
   return (
     <main
@@ -19,17 +20,21 @@ export function Workspace({ className, ...rest }: WorkspaceProps) {
         .join(' ')}
       {...rest}
     >
-      <Stack direction="vertical" gap="sm" align="start" justify="center" className="h-full">
-        <Typography variant="display-l" color="primary">
-          {currentModuleLabel ? currentModuleLabel.toUpperCase() : 'COMMAND CENTER'}
-        </Typography>
-        <Typography variant="body" color="secondary">
-          System Ready
-        </Typography>
-        <Typography variant="body-small" color="muted">
-          {currentModuleLabel ? `${currentModuleLabel} has no module yet.` : 'Waiting for Modules...'}
-        </Typography>
-      </Stack>
+      {ActiveModule ? (
+        <ActiveModule />
+      ) : (
+        <Stack direction="vertical" gap="sm" align="start" justify="center" className="h-full">
+          <Typography variant="display-l" color="primary">
+            COMMAND CENTER
+          </Typography>
+          <Typography variant="body" color="secondary">
+            System Ready
+          </Typography>
+          <Typography variant="body-small" color="muted">
+            Waiting for Modules...
+          </Typography>
+        </Stack>
+      )}
     </main>
   );
 }

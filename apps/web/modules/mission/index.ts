@@ -1,0 +1,1 @@
+export { MissionModule } from './component';

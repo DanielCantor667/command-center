@@ -21,11 +21,18 @@ describe('Workspace', () => {
     expect(screen.getByText('Waiting for Modules...')).toBeInTheDocument();
   });
 
-  it('updates the title when a module is selected', () => {
+  it('renders the module matching the selected id', () => {
     useWorkspaceStore.setState({ currentModule: 'lab' });
     render(<Workspace />);
 
     expect(screen.getByText('LAB')).toBeInTheDocument();
+  });
+
+  it('switches to a different module when currentModule changes', () => {
+    useWorkspaceStore.setState({ currentModule: 'profile' });
+    render(<Workspace />);
+
+    expect(screen.getByText('PROFILE')).toBeInTheDocument();
   });
 
   it('exposes a labelled main landmark', () => {
@@ -34,6 +41,13 @@ describe('Workspace', () => {
   });
 
   it('has no accessibility violations', async () => {
+    const { container } = render(<Workspace />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no accessibility violations with a module active', async () => {
+    useWorkspaceStore.setState({ currentModule: 'lab' });
     const { container } = render(<Workspace />);
     const results = await axe(container);
     expect(results).toHaveNoViolations();

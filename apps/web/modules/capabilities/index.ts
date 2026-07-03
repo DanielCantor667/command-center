@@ -1,0 +1,1 @@
+export { CapabilitiesModule } from './component';
