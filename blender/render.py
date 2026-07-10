@@ -6,6 +6,11 @@ camera, lights and HDRI configured):
     blender scene.blend --background --python render.py -- \
         <scene.json> <assets_dir> <output_dir>
 
+<assets_dir> must point at apps/web/public/models -- the same folder the
+R3F viewer serves .glb files from (see MODELS_BASE_PATH in
+@command-center/ai-renderer). Both the web viewer and Blender must render
+from identical files, so there is only ever one copy of each asset.
+
 Produces <output_dir>/<scene-id>.glb and <output_dir>/<scene-id>.png.
 """
 

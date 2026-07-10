@@ -1,6 +1,8 @@
 export { ASSET_IDS } from './constants/asset-catalog';
 export type { AssetId } from './constants/asset-catalog';
 
+export { MODELS_BASE_PATH, THUMBNAILS_BASE_PATH } from './constants/models-path';
+
 export { vector3Schema } from './schemas/vector3.schema';
 export type { Vector3 } from './schemas/vector3.schema';
 

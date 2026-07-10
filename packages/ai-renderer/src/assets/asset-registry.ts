@@ -1,12 +1,13 @@
 import type { AssetId } from '../constants/asset-catalog';
+import { MODELS_BASE_PATH, THUMBNAILS_BASE_PATH } from '../constants/models-path';
 import type { AssetMetadata } from '../schemas/asset-metadata.schema';
 
 const buildEntry = (id: AssetId, label: string, category: AssetMetadata['category'], tags: string[]): AssetMetadata => ({
   id,
   label,
   category,
-  modelPath: `/models/${id}.glb`,
-  thumbnailPath: `/models/thumbnails/${id}.webp`,
+  modelPath: `${MODELS_BASE_PATH}/${id}.glb`,
+  thumbnailPath: `${THUMBNAILS_BASE_PATH}/${id}.webp`,
   tags,
 });
 
