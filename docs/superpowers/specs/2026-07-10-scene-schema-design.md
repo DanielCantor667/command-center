@@ -7,108 +7,146 @@ instrucciones en lenguaje natural. La arquitectura completa involucra IA (Claude
 Blender headless para render, y React Three Fiber para visualización interactiva.
 
 Ese sistema completo se descompone en subproyectos independientes:
-1. **Schema JSON de escena** (este spec) — el contrato de datos entre la IA y el renderer.
-2. Visor R3F — componente de visualización 3D.
-3. API route que invoca la IA y genera el JSON.
-4. Pipeline Blender — script Python headless que consume el JSON y renderiza.
+1. **Scene Schema** (este spec) — el contrato de datos entre todos los componentes.
+2. Asset Catalog (ampliación futura del catálogo, con metadata de cada asset).
+3. Scene Builder (Three.js).
+4. React Three Fiber Viewer.
+5. Blender Render Pipeline.
+6. AI Prompt → Scene Generator.
 
-Este spec cubre únicamente el subproyecto 1. Es la pieza fundacional: sin un contrato de
-datos validado, ningún otro subproyecto puede consumir o producir escenas de forma consistente.
+Este spec cubre únicamente el subproyecto 1. Es la pieza fundacional: ningún otro
+componente podrá depender de Blender, React Three Fiber o la IA — el único contrato
+entre ellos es este schema.
 
 ## Objetivo
 
-Definir un paquete compartido en el monorepo con el schema de una "escena" mínima:
-una lista de objetos (assets) posicionados en el espacio, validado en runtime con Zod
-e inferido a tipos TypeScript.
+Definir un paquete workspace `@command-center/ai-renderer`, completamente desacoplado
+del resto del proyecto, que exponga el modelo de datos oficial de una escena 3D.
+Solo depende de TypeScript, Zod y Vitest.
 
 ## Alcance (versión mínima)
 
 Incluye:
-- Catálogo fijo de asset IDs válidos (enum).
-- Objeto de escena: asset + posición (obligatorio), rotación y escala (opcionales, con defaults).
-- Escena: id + lista de objetos.
+- Catálogo fijo de asset IDs válidos (`ASSET_IDS`).
+- `Vector3`: objeto `{x, y, z}` (no tupla — el sistema crecerá hacia Blender/Three.js/edición
+  interactiva, donde acceso por clave es más natural que por índice).
+- `Transform`: `position`, `rotation`, `scale`, los tres con default.
+- `SceneObject`: `id`, `asset`, `transform`, `properties` (vacío por ahora, existe para
+  no romper compatibilidad cuando lleguen materiales/colores/texturas/visibilidad).
+- `Scene`: `version` (literal `1`), `id`, `metadata` (`name?`, `createdAt?`, opcional),
+  `objects`.
 
-Explícitamente fuera de alcance en esta versión (se añadirán en iteraciones futuras):
-- Materiales/colores por objeto.
-- Cámara y configuración de iluminación.
+Explícitamente fuera de alcance en esta versión:
+- Materiales, colores, texturas.
+- Cámara e iluminación.
 - Entorno/HDRI.
-- Validación de que un `asset` + `position` no colisionen entre sí (validación espacial).
+- Colisiones/física.
+- Exportadores (Blender, glTF, etc.).
 
 ## Ubicación y estructura
-
-Nuevo paquete workspace `@command-center/ai-renderer`, siguiendo la convención de
-`packages/config` y `packages/ui` ya existentes en el repo.
 
 ```
 packages/ai-renderer/
   package.json
-  tsconfig.json          (extiende packages/tsconfig)
+  tsconfig.json          (extiende @command-center/tsconfig/base.json)
+  eslint.config.js        (@command-center/eslint-config)
+  vitest.config.ts         (environment: node)
   src/
+    constants/
+      asset-catalog.ts    ← ASSET_IDS, AssetId
     schemas/
-      asset-catalog.ts   ← enum AssetId
-      scene.schema.ts    ← Zod schemas + tipos inferidos
-    index.ts             ← exports públicos
+      vector3.schema.ts
+      transform.schema.ts
+      scene-object.schema.ts
+      scene.schema.ts
+    index.ts              ← exports públicos únicamente
   tests/
     scene.schema.test.ts
 ```
 
-Runtime de validación: **Zod** (ya usado en `apps/web`, versión `^4.4.3`).
-Test runner: **Vitest** (`vitest run`, consistente con el resto del monorepo).
+Sigue la misma convención que `packages/config` y `packages/ui` (mismo `tsconfig` base,
+mismo `eslint-config`, mismo runner Vitest).
 
 ## Contenido del schema
 
 ```ts
-// asset-catalog.ts
+// constants/asset-catalog.ts
 export const ASSET_IDS = [
   'office', 'meeting_room', 'warehouse', 'truck', 'rack',
   'computer', 'employee', 'desk', 'chair', 'tree', 'reception', 'factory',
 ] as const;
-
-export type AssetId = typeof ASSET_IDS[number];
+export type AssetId = (typeof ASSET_IDS)[number];
 ```
 
 ```ts
-// scene.schema.ts
-const vector3 = z.tuple([z.number(), z.number(), z.number()]);
+// schemas/vector3.schema.ts
+export const vector3Schema = z.object({ x: z.number(), y: z.number(), z: z.number() });
+export type Vector3 = z.infer<typeof vector3Schema>;
+```
 
-export const sceneObjectSchema = z.object({
-  asset: z.enum(ASSET_IDS),
-  position: vector3,
-  rotation: vector3.default([0, 0, 0]),
+```ts
+// schemas/transform.schema.ts
+export const transformSchema = z.object({
+  position: vector3Schema.default({ x: 0, y: 0, z: 0 }),
+  rotation: vector3Schema.default({ x: 0, y: 0, z: 0 }),
   scale: z.number().default(1),
 });
+export type Transform = z.infer<typeof transformSchema>;
+```
 
-export const sceneSchema = z.object({
+```ts
+// schemas/scene-object.schema.ts
+export const sceneObjectSchema = z.object({
   id: z.string(),
+  asset: z.enum(ASSET_IDS),
+  transform: transformSchema.default({ position: {x:0,y:0,z:0}, rotation: {x:0,y:0,z:0}, scale: 1 }),
+  properties: z.object({}).default({}),
+});
+export type SceneObject = z.infer<typeof sceneObjectSchema>;
+```
+
+```ts
+// schemas/scene.schema.ts
+const sceneMetadataSchema = z.object({ name: z.string().optional(), createdAt: z.string().optional() });
+export const sceneSchema = z.object({
+  version: z.literal(1),
+  id: z.string(),
+  metadata: sceneMetadataSchema.default({}),
   objects: z.array(sceneObjectSchema),
 });
-
-export type SceneObject = z.infer<typeof sceneObjectSchema>;
 export type Scene = z.infer<typeof sceneSchema>;
 ```
 
-`index.ts` re-exporta `Scene`, `SceneObject`, `AssetId`, `sceneSchema`, `sceneObjectSchema`,
-`ASSET_IDS`.
+`index.ts` re-exporta únicamente la API pública: `sceneSchema`, `sceneObjectSchema`,
+`transformSchema`, `vector3Schema`, `ASSET_IDS`, y los tipos `Scene`, `SceneObject`,
+`Transform`, `Vector3`, `AssetId`. Nada más se importa desde fuera del paquete.
 
 ## Testing
 
-`tests/scene.schema.test.ts` cubre con Vitest:
-- Parseo exitoso de una escena válida con 2+ objetos.
-- Rechazo cuando `asset` no está en `ASSET_IDS`.
-- Rechazo cuando `position` no tiene 3 componentes numéricos.
-- Defaults aplicados: `rotation` → `[0,0,0]`, `scale` → `1` cuando se omiten.
+`tests/scene.schema.test.ts`, con Vitest, cubre:
+- Escena válida con dos objetos.
+- Asset inválido → rechazo.
+- Posición inválida (falta un componente) → rechazo.
+- Default de `rotation`.
+- Default de `scale`.
+- `version` requerido (ausente → rechazo).
+- `metadata` opcional (se omite y no falla).
+- `properties` presente tras el parseo.
 
-## Verificación
+Sin snapshots, sin `any`.
 
-- `pnpm --filter @command-center/ai-renderer test` pasa sin errores.
-- `pnpm --filter @command-center/ai-renderer build` (o `tsc --noEmit`) compila sin errores de tipos.
-- El paquete queda listado en el workspace (`pnpm -r list` lo muestra) y es importable desde
-  `apps/web` vía `@command-center/ai-renderer` sin cambios adicionales de configuración
-  (gracias a los `workspace:*` del monorepo).
+## Verificación (ejecutada)
+
+- `pnpm --filter @command-center/ai-renderer test` → 8/8 tests pasan.
+- `pnpm --filter @command-center/ai-renderer build` (`tsc --noEmit`) → sin errores.
+- `pnpm --filter @command-center/ai-renderer lint` → sin errores.
+- `pnpm test` y `pnpm lint` a nivel monorepo → sin regresiones en `ai-renderer`
+  (errores de lint preexistentes en `apps/web` quedan fuera de este alcance, no se tocan).
 
 ## Fuera de alcance / próximos pasos
 
-- Subproyectos 2, 3 y 4 (visor R3F, API route, pipeline Blender) tienen su propio spec futuro
-  y consumirán este paquete como dependencia.
-- Versión "intermedia" del schema (materiales + cámara) y "completa" (luces + entorno) quedan
-  documentadas como evolución futura, no se implementan ahora.
+- Subproyectos 2–6 (asset catalog extendido, scene builder, visor R3F, pipeline Blender,
+  generador IA) tienen su propio spec futuro y consumirán `@command-center/ai-renderer`
+  como dependencia workspace.
+- Evolución del schema (materiales, cámara, luces, entorno) se hace vía el campo `version`
+  y la estructura extensible (`properties`, `metadata`), sin romper compatibilidad.
