@@ -1,0 +1,24 @@
+{
+  "name": "@command-center/scene-generator",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest run",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@command-center/ai-renderer": "workspace:*"
+  },
+  "devDependencies": {
+    "@command-center/eslint-config": "workspace:*",
+    "@command-center/tsconfig": "workspace:*",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

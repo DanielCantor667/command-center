@@ -12,3 +12,9 @@ export type { SceneObject } from './schemas/scene-object.schema';
 
 export { sceneSchema } from './schemas/scene.schema';
 export type { Scene } from './schemas/scene.schema';
+
+export { assetMetadataSchema, assetCategorySchema } from './schemas/asset-metadata.schema';
+export type { AssetMetadata, AssetCategory } from './schemas/asset-metadata.schema';
+
+export { ASSET_REGISTRY, getAssetMetadata, listAssets, listAssetsByCategory } from './assets/asset-registry';
+export { resolveModelUrl, resolveThumbnailUrl } from './assets/asset-loader';

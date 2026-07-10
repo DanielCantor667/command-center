@@ -1,0 +1,25 @@
+{
+  "name": "@command-center/scene-builder",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest run",
+    "build": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@command-center/ai-renderer": "workspace:*",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "@command-center/eslint-config": "workspace:*",
+    "@command-center/tsconfig": "workspace:*",
+    "@types/three": "^0.171.0",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
