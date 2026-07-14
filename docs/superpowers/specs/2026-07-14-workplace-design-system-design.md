@@ -13,7 +13,7 @@ This is the architectural guardrail for the package. It exists so that future wo
 ## Scope
 
 **This sprint delivers:**
-- `docs/vision/OFFICE_DESIGN_SYSTEM.md` — human-readable knowledge document (modules, rules, materials, styles), same tone/format as `docs/vision/PRODUCT_VISION.md`.
+- `docs/vision/WORKPLACE_DESIGN_SYSTEM.md` — human-readable knowledge document (modules, rules, materials, styles), same tone/format as `docs/vision/PRODUCT_VISION.md`.
 - `packages/workplace-design-system/` — the same knowledge as typed, zod-validated TypeScript constants and read-only lookup functions.
 
 **Explicitly out of scope (future sprints):**
@@ -208,7 +208,7 @@ export function getCompatibleStyles(materialId: MaterialId): StyleId[] {
 }
 ```
 
-`getCompatibleStyles` is derived, not stored — `styles.ts`'s `materialPalette` is the single source of truth, so there is no hand-maintained duplicate that can drift out of sync.
+`getCompatibleStyles` is derived, not stored — **`styles.ts` is the source of truth for palettes**; `materials.ts` only reads it. That's why the compatibility lookup lives on the materials side instead of being a field stored on each material: there is no hand-maintained duplicate that can drift out of sync.
 
 | id | family | baseColorHex | finish |
 |---|---|---|---|
@@ -312,6 +312,8 @@ Values (approximate, plausible office-design practice — not a compliance/build
 - **Safety**: min emergency exit width 1.1m, max distance to exit 30m, min fire-extinguisher spacing 25m.
 - **Planning** — the group the Planner will read constantly, so it never hardcodes ratios: max 60 people per open workspace before splitting, 1 meeting room per 12 people, 1 executive office per 25 people, 1 phone booth per 15 people, 1 break room per 30 people.
 
+> Estos valores son heurísticos de diseño corporativo y no sustituyen normativa técnica ni regulaciones locales (código de construcción, accesibilidad, seguridad contra incendios). Sirven para que el Planner genere escenas con sentido espacial, no para certificar un espacio real.
+
 ## `planning-presets.ts`
 
 ```ts
@@ -321,17 +323,20 @@ export const planningPresetSchema = z.object({
   minOccupants: z.number(),
   maxOccupants: z.number().nullable(),
   recommendedModules: z.array(z.enum(MODULE_IDS)),
+  targetStyle: z.enum(STYLE_IDS).optional(),
 });
 ```
 
+`targetStyle` is a non-binding suggestion — the Planner (or whoever calls it) is free to override it with an explicit user choice; it just gives a sensible default when none is provided.
+
 Four size tiers, each with a baseline module set so the Planner looks up a starting point instead of computing one from scratch:
 
-| id | label | occupants | recommendedModules |
-|---|---|---|---|
-| small_office | Small Office | 1–10 | reception, waiting_area, open_workspace, meeting_room, break_room |
-| medium_office | Medium Office | 11–40 | + phone_booth, print_area, private_office |
-| large_office | Large Office | 41–120 | + collaboration_area, cafeteria, server_room, storage |
-| enterprise | Enterprise | 121+ (no max) | + executive_office, training_room |
+| id | label | occupants | recommendedModules | targetStyle |
+|---|---|---|---|---|
+| small_office | Small Office | 1–10 | reception, waiting_area, open_workspace, meeting_room, break_room | tech_startup |
+| medium_office | Medium Office | 11–40 | + phone_booth, print_area, private_office | corporate_standard |
+| large_office | Large Office | 41–120 | + collaboration_area, cafeteria, server_room, storage | corporate_standard |
+| enterprise | Enterprise | 121+ (no max) | + executive_office, training_room | executive_premium |
 
 Each tier's `recommendedModules` list is written out in full in the code (cumulative in this table for readability only — the data itself is not "inherited," each preset is a complete standalone array).
 
@@ -346,6 +351,6 @@ Every registry gets a test file that:
 
 No rendering, no snapshot images, no integration test with `ai-renderer`/`scene-generator` — this package has no runtime dependents yet.
 
-## `docs/vision/OFFICE_DESIGN_SYSTEM.md`
+## `docs/vision/WORKPLACE_DESIGN_SYSTEM.md`
 
 Human-readable companion document, same voice/format as `PRODUCT_VISION.md`. Contains the same content as this spec's tables (modules, relations, materials, styles, spatial rules, presets) in prose/table form for humans, plus the architectural guardrail statement from the Purpose section verbatim. This is the document the user described as "el conocimiento del Scene Planner" — written for a human or an LLM prompt to read directly, whereas the package is the same knowledge in a form code can import and validate.
