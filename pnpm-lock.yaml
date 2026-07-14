@@ -270,6 +270,28 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(vitest@2.1.9(@types/node@22.20.0)(jsdom@25.0.1)(lightningcss@1.32.0))
 
+  packages/workplace-design-system:
+    dependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@command-center/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@command-center/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      eslint:
+        specifier: ^9.17.0
+        version: 9.39.4(jiti@2.7.0)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.20.0)(jsdom@25.0.1)(lightningcss@1.32.0)
+
 packages:
 
   '@adobe/css-tools@4.5.0':
