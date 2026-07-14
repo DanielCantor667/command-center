@@ -12,6 +12,20 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ### Fixed
 
+#### TECH-001
+
+Resolved Tailwind CSS v4 monorepo content detection.
+
+Added explicit `@source` directive to `packages/config/tailwind.css`.
+
+Result:
+
+- Design System utilities generated correctly.
+- Dashboard visual language restored.
+- No architectural changes.
+
+Ver [ADR-005](decisions/ADR-005-tailwind-v4-monorepo.md).
+
 ### Removed
 
 ---
