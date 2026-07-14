@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Button, Stack, Typography } from '@command-center/ui';
 import type { Project } from '../../../../data/projects';
 
@@ -12,12 +13,14 @@ export function FeaturedProject({ project, onSelect }: FeaturedProjectProps) {
   return (
     <Stack direction="vertical" gap="md">
       {featuredMedia && (
-        <img
-          src={featuredMedia.url}
-          alt={featuredMedia.alt}
-          className="w-full rounded-lg object-cover"
-          style={{ maxHeight: '320px' }}
-        />
+        <div className="relative w-full rounded-lg overflow-hidden" style={{ height: '320px' }}>
+          <Image
+            src={featuredMedia.url}
+            alt={featuredMedia.alt}
+            fill
+            className="object-cover"
+          />
+        </div>
       )}
       <Stack direction="vertical" gap="xs">
         <Typography as="h1" variant="display-l" color="primary">
