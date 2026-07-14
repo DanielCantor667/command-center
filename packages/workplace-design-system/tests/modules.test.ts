@@ -32,7 +32,8 @@ describe('modules', () => {
   });
 
   it('rejects a module with neither minAreaSqm nor areaPerOccupantSqm set', () => {
-    const { minAreaSqm: _minAreaSqm, ...rest } = MODULE_REGISTRY.reception;
+    const rest: Record<string, unknown> = { ...MODULE_REGISTRY.reception };
+    delete rest.minAreaSqm;
     expect(() => moduleSchema.parse(rest)).toThrow();
   });
 });

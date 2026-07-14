@@ -8,6 +8,8 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ### Added
 
+- `@command-center/workplace-design-system`: paquete de conocimiento de dominio para oficinas corporativas (14 módulos arquitectónicos, grafo de adyacencia, 16 materiales, 6 estilos, reglas espaciales agrupadas, presets de planificación por headcount). No implementa lógica de generación ni renderizado — ver `docs/vision/WORKPLACE_DESIGN_SYSTEM.md` y el spec en `docs/superpowers/specs/2026-07-14-workplace-design-system-design.md`.
+
 ### Changed
 
 ### Fixed

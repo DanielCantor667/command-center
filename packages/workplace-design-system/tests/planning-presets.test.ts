@@ -16,11 +16,11 @@ describe('planning presets', () => {
 
   it('covers headcount 1 to infinity with no gaps or overlaps', () => {
     const sorted = [...PLANNING_PRESETS].sort((a, b) => a.minOccupants - b.minOccupants);
-    expect(sorted[0].minOccupants).toBe(1);
+    expect(sorted[0]!.minOccupants).toBe(1);
     for (let i = 1; i < sorted.length; i += 1) {
-      expect(sorted[i].minOccupants).toBe((sorted[i - 1].maxOccupants ?? Infinity) + 1);
+      expect(sorted[i]!.minOccupants).toBe((sorted[i - 1]!.maxOccupants ?? Infinity) + 1);
     }
-    expect(sorted[sorted.length - 1].maxOccupants).toBeNull();
+    expect(sorted[sorted.length - 1]!.maxOccupants).toBeNull();
   });
 
   it('finds a preset by id', () => {

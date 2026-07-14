@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { MODULE_IDS } from '../src/constants';
-import { moduleRelationSchema, MODULE_RELATIONS, getModuleRelations, listModuleRelations } from '../src/module-relations';
+import { moduleRelationSchema, getModuleRelations, listModuleRelations } from '../src/module-relations';
 
 describe('module relations', () => {
   it('has a valid, schema-conformant entry for every module id', () => {
