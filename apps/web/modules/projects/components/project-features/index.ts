@@ -1,0 +1,1 @@
+export { ProjectFeatures } from './component';

@@ -1,0 +1,1 @@
+export { ProjectReference } from './component';

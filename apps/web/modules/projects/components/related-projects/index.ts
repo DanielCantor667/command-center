@@ -1,0 +1,1 @@
+export { RelatedProjects } from './component';

@@ -1,0 +1,1 @@
+export { LessonsLearned } from './component';

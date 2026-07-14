@@ -1,0 +1,1 @@
+export { CapabilityCard } from './component';

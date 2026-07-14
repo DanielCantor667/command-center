@@ -1,0 +1,1 @@
+export { ProjectArchitecture } from './component';

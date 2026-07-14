@@ -1,0 +1,1 @@
+export { TechnologyProfile } from './component';

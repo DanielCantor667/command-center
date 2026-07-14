@@ -1,0 +1,1 @@
+export { CapabilityGroup } from './component';

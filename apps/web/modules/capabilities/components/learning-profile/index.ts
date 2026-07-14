@@ -1,0 +1,1 @@
+export { LearningProfile } from './component';

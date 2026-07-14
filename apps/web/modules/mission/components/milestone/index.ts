@@ -1,0 +1,1 @@
+export { MilestoneDetail } from './component';

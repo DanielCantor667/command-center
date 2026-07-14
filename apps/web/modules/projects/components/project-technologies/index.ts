@@ -1,0 +1,1 @@
+export { ProjectTechnologies } from './component';
