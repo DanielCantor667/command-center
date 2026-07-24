@@ -54,7 +54,7 @@ export function SceneEditorToolbar({ useStore }: SceneEditorToolbarProps) {
         Redo
       </Button>
       <Button variant="primary" size="sm" onClick={save}>
-        Save
+        Save draft
       </Button>
       <Button variant="secondary" size="sm" onClick={exportScene}>
         Export JSON

@@ -23,7 +23,15 @@ def import_scene_objects(scene, assets_dir):
         if not new_objects:
             raise RuntimeError(f"import produced no objects for asset: {obj['asset']}")
 
-        root = new_objects[0]
+        root = bpy.data.objects.new(obj["id"], None)
+        bpy.context.scene.collection.objects.link(root)
+        imported_set = set(new_objects)
+        top_level_objects = [candidate for candidate in new_objects if candidate.parent not in imported_set]
+        for candidate in top_level_objects:
+            world_matrix = candidate.matrix_world.copy()
+            candidate.parent = root
+            candidate.matrix_world = world_matrix
+
         root.name = obj["id"]
         root.location = to_blender_position(obj["transform"]["position"])
         root.rotation_euler = to_blender_rotation(obj["transform"]["rotation"])

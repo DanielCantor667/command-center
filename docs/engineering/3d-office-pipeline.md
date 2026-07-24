@@ -12,11 +12,9 @@ El canvas incluye un plano de zonas (reception, open workspace, meeting y suppor
 
 La biblioteca expone todo el catálogo de assets permitido por el schema, los inserta en posiciones libres de la cuadrícula y selecciona el nuevo objeto. **Export JSON** descarga el `Scene` validado para reutilizarlo en la API o en el pipeline de Blender.
 
-**Import JSON** valida el archivo antes de cargarlo. **Save** conserva escenas en `localStorage`;
-la galería permite reabrirlas o eliminarlas. Guardar de nuevo el mismo `scene.id` reemplaza su
-contenido: todavía no existe un historial de versiones. Es persistencia local deliberada; el
-siguiente paso de infraestructura es migrar estas operaciones a Supabase cuando se defina el
-modelo de autorización.
+**Import JSON** valida el archivo antes de cargarlo. **Save draft** conserva una recuperación en
+`localStorage`. La galería autenticada crea proyectos en Supabase y cada **Nueva revisión**
+mantiene un estado durable recuperable.
 
 El panel **Estado del plano** aplica verificaciones de preparación antes de persistir o renderizar: perímetro de oficina, recepción, relación escritorio/silla, cantidad de salas y activos fuera de los límites.
 
@@ -63,6 +61,12 @@ Antes de renderizar, valida el JSON y sus GLB requeridos sin Blender:
 pnpm blender:validate
 ```
 
+Para procesar el siguiente render job pendiente:
+
+```bash
+pnpm --filter @command-center/web render:worker
+```
+
 ## Verificación completa
 
 ```bash
@@ -74,8 +78,13 @@ pnpm blender:render
 git diff --check
 ```
 
-## Advertencia conocida
+## Persistencia
 
-El importador Blender actual debe parentar todas las mallas de cada GLB bajo un root antes de
-aplicar la transformación de instancia. Esa corrección está clasificada como P0 de Sprint 0.7;
-consultar la documentación completa antes de ampliar el catálogo o usar el render en producción.
+La migración Prisma crea proyectos, revisiones y render jobs con políticas RLS. Las claves reales
+permanecen exclusivamente en `apps/web/.env`, ignorado por Git. Para una instalación nueva:
+
+```bash
+cd apps/web
+pnpm exec prisma migrate deploy
+pnpm exec prisma generate
+```

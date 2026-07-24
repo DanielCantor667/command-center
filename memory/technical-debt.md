@@ -36,7 +36,8 @@ Solución futura: crear un root vacío por `SceneObject`, parentar todas las mal
 preservando sus matrices locales y transformar el root. Cubrir con una prueba headless de
 traslación, rotación y escala.
 
-Estado: Abierto — P0 de Sprint 0.7.
+Estado: Resuelto — el importador crea un root por instancia y `pnpm blender:test` valida un asset
+compuesto.
 
 ## Ruido de canvas y Three.js en tests
 

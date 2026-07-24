@@ -9,6 +9,7 @@ dist/
 build/
 .turbo/
 *.tsbuildinfo
+apps/web/public/renders/
 
 # Env
 .env

@@ -17,9 +17,9 @@ El flujo completo ya existe dentro del repositorio:
 2. La API selecciona el planner determinista o el generador con IA.
 3. La escena se valida contra un contrato compartido.
 4. El editor carga assets GLB, permite modificar la escena y calcula advertencias.
-5. La escena puede guardarse localmente o intercambiarse como JSON.
-6. Blender puede importar el mismo JSON y los mismos GLB, exportar una escena ensamblada y
-   producir un PNG.
+5. La escena puede guardarse como un proyecto versionado en Supabase o intercambiarse como JSON.
+6. Un render job procesa una revisión exacta con Blender, exporta una escena ensamblada y
+   produce un PNG.
 
 Este estado es apto para desarrollo, demostración y validación del concepto. Todavía no es una
 herramienta multiusuario ni un sistema de diseño arquitectónico de producción.
@@ -196,17 +196,14 @@ copia anterior para `undo` y limpia el historial futuro.
 
 ### Persistencia actual
 
-La galería utiliza `localStorage`:
+La galería usa Supabase Auth y las tablas `scene_projects`, `scene_revisions` y `render_jobs`.
+Cada guardado posterior crea una revisión inmutable. Las consultas de servidor filtran por
+`ownerId` y las tablas tienen RLS para acceso autenticado directo.
+
+`localStorage` permanece únicamente como borrador de recuperación:
 
 - Índice: `command-center:scene-index`.
 - Escena: `command-center:scene:<scene-id>`.
-
-Consecuencias:
-
-- Los datos pertenecen a un único navegador.
-- No hay usuario, organización, permisos ni sincronización.
-- Guardar el mismo `scene.id` reemplaza esa escena.
-- No existe historial durable de versiones.
 
 ### Readiness
 
@@ -241,12 +238,23 @@ pnpm blender:render
 
 Blender se resuelve desde `BLENDER_BIN`, el `PATH` o la ubicación estándar de macOS.
 
-### Limitación crítica conocida
+### Instancias compuestas
 
-Un GLB puede contener varias mallas hermanas. El importador actual aplica la transformación de la
-escena sólo al primer objeto que Blender devuelve. Antes de usar el pipeline para escenas
-complejas se debe crear un root por instancia y parentar todas las mallas importadas preservando
-su transformación. Esta corrección es P0 para la siguiente fase.
+Cada `SceneObject` crea un root vacío. Todas las mallas superiores importadas desde su GLB quedan
+parentadas bajo ese root preservando sus matrices locales; posición, rotación y escala se aplican
+a la instancia completa. `pnpm blender:test` cubre esta regresión con un escritorio de cinco
+mallas.
+
+### Render jobs
+
+El endpoint de proyectos crea jobs en estado `queued`. El worker local reclama un job de forma
+atómica, lo cambia a `processing` y finaliza en `completed` o `failed`:
+
+```bash
+pnpm --filter @command-center/web render:worker
+```
+
+Los GLB y PNG generados quedan en `apps/web/public/renders/<job-id>/`.
 
 ## Verificación
 
@@ -269,6 +277,9 @@ git diff --check
 - Doce GLB importables por Blender.
 - Escena JSON de prueba válida.
 - Exportación GLB y render PNG producidos.
+- Migración Prisma aplicada a Supabase.
+- Flujo Auth → proyecto → revisión → render job → lectura → eliminación verificado.
+- Worker Blender verificado con artefactos reales y limpieza del usuario temporal.
 
 JSDOM imprime avisos conocidos por `HTMLCanvasElement.getContext` en pruebas de accesibilidad y
 Three.js informa múltiples instancias durante algunos tests. Las suites terminan correctamente,
@@ -278,15 +289,14 @@ pero ambos avisos deben limpiarse para mejorar la señal del CI.
 
 No implementado todavía:
 
-- Proyectos persistentes en servidor.
-- Autenticación, organizaciones y permisos.
-- Autosave, control de concurrencia e historial de versiones.
+- Organizaciones, equipos y roles más allá de propietario.
+- Autosave y edición concurrente.
 - Colisiones, circulación y optimización espacial real.
 - Puertas, ventanas, muros editables y dimensiones de recinto.
 - Validación reglamentaria por país o ciudad.
 - Thumbnails y biblioteca visual de calidad final.
 - Materiales aplicados desde los estilos de workplace.
-- Cola de renders, progreso, cancelación y almacenamiento de resultados.
+- Worker persistente, cancelación y almacenamiento de resultados fuera del filesystem local.
 - Costos, inventario de mobiliario o cantidades comerciales.
 - Colaboración, comentarios o enlaces compartidos.
 

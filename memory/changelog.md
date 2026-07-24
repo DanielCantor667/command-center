@@ -39,3 +39,7 @@ El catálogo de doce activos se genera de forma reproducible con Blender y se ca
 ## 2026-07-24 — Sistema 3D documentado y siguiente fase definida
 
 Se consolidaron arquitectura, contratos, operación, límites y deuda conocida del sistema de oficinas 3D. Sprint 0.7 propone proyectos persistentes, revisiones y render jobs, comenzando por corregir la transformación de assets compuestos en Blender.
+
+## 2026-07-24 — Sprint 0.7: proyectos persistentes y render jobs
+
+Supabase Auth, Prisma y RLS ahora respaldan proyectos con revisiones inmutables. El editor permite guardar, recuperar historial y solicitar renders; un worker local procesa la revisión exacta con Blender y publica GLB/PNG.

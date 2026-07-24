@@ -13,5 +13,5 @@ else
 fi
 
 mkdir -p blender/output
-"$blender_bin" --background blender/templates/base.blend --python blender/render.py -- \
+"$blender_bin" --background --python-exit-code 1 blender/templates/base.blend --python blender/render.py -- \
   blender/scenes/starter-office.json apps/web/public/models blender/output

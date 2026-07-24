@@ -3,6 +3,64 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum RenderJobStatus {
+  queued
+  processing
+  completed
+  failed
+}
+
+model SceneProject {
+  id                String          @id @default(uuid()) @db.Uuid
+  name              String
+  ownerId           String          @db.Uuid
+  currentRevisionId String?         @unique @db.Uuid
+  createdAt         DateTime        @default(now()) @db.Timestamptz(6)
+  updatedAt         DateTime        @updatedAt @db.Timestamptz(6)
+  currentRevision   SceneRevision?  @relation("CurrentRevision", fields: [currentRevisionId], references: [id], onDelete: SetNull)
+  revisions         SceneRevision[] @relation("ProjectRevisions")
+
+  @@index([ownerId, updatedAt(sort: Desc)])
+  @@map("scene_projects")
+}
+
+model SceneRevision {
+  id             String        @id @default(uuid()) @db.Uuid
+  projectId      String        @db.Uuid
+  revisionNumber Int
+  sceneVersion   Int
+  sceneJson      Json
+  source         String        @default("editor")
+  createdBy      String        @db.Uuid
+  createdAt      DateTime      @default(now()) @db.Timestamptz(6)
+  project        SceneProject  @relation("ProjectRevisions", fields: [projectId], references: [id], onDelete: Cascade)
+  currentFor     SceneProject? @relation("CurrentRevision")
+  renderJobs     RenderJob[]
+
+  @@unique([projectId, revisionNumber])
+  @@index([projectId, createdAt(sort: Desc)])
+  @@map("scene_revisions")
+}
+
+model RenderJob {
+  id          String          @id @default(uuid()) @db.Uuid
+  revisionId  String          @db.Uuid
+  requestedBy String          @db.Uuid
+  status      RenderJobStatus @default(queued)
+  glbPath     String?
+  pngPath     String?
+  error       String?
+  createdAt   DateTime        @default(now()) @db.Timestamptz(6)
+  startedAt   DateTime?       @db.Timestamptz(6)
+  completedAt DateTime?       @db.Timestamptz(6)
+  revision    SceneRevision   @relation(fields: [revisionId], references: [id], onDelete: Cascade)
+
+  @@index([revisionId, createdAt(sort: Desc)])
+  @@index([status, createdAt])
+  @@map("render_jobs")
 }

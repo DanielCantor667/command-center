@@ -2,7 +2,8 @@
 
 ## Estado
 
-Propuesto.
+Implementado el 2026-07-24. La migración se aplicó al proyecto Supabase y el flujo completo se
+verificó con usuarios temporales eliminados al terminar la prueba.
 
 ## Objetivo
 
@@ -24,6 +25,10 @@ Al terminar el sprint:
 - El ensamblado Blender transforma correctamente todos los nodos de cada GLB.
 - El usuario puede descargar el JSON, GLB y PNG asociados a la misma revisión.
 
+La estrategia de guardado elegida es explícita: **Guardar proyecto** crea el proyecto y
+**Nueva revisión** conserva cada estado posterior. `Save draft` mantiene una copia de recuperación
+en `localStorage`.
+
 ## Alcance
 
 ### 1. Corregir instancias Blender
@@ -35,6 +40,8 @@ Al terminar el sprint:
 - Añadir una prueba headless con un asset compuesto.
 
 Esta tarea es P0: evita que escritorios, sillas y otros modelos compuestos se separen al moverlos.
+
+Estado: completado y cubierto por `pnpm blender:test`.
 
 ### 2. Modelo de datos
 
@@ -71,6 +78,9 @@ RenderJob
 
 `sceneJson` se valida con `sceneSchema` al escribir y al leer. `SceneRevision` es inmutable.
 
+Estado: completado mediante Prisma y RLS en
+`prisma/migrations/20260724162000_scene_projects`.
+
 ### 3. API
 
 Endpoints propuestos:
@@ -87,6 +97,8 @@ Endpoints propuestos:
 
 No se actualizan revisiones existentes mediante `PUT`; una modificación produce otra revisión.
 
+Estado: completado. Todas las rutas requieren un bearer token validado por Supabase.
+
 ### 4. Editor
 
 - Reemplazar la galería de `localStorage` por proyectos del servidor.
@@ -95,6 +107,8 @@ No se actualizan revisiones existentes mediante `PUT`; una modificación produce
 - Implementar autosave con debounce o guardado explícito; elegir uno y documentarlo.
 - Abrir una revisión histórica en modo lectura.
 - Crear una nueva revisión desde una versión anterior.
+
+Estado: completado mediante guardado explícito, historial recuperable y borrador local.
 
 ### 5. Brief estructurado para IA
 
@@ -107,12 +121,22 @@ occupants + style + userPrompt + planningPreset + spatialRules
 La respuesta continúa validándose con `sceneSchema`. El fallback determinista debe ser visible en
 la UI y registrarse en la revisión.
 
+Estado: completado. La API construye el brief con capacidad, estilo, preset, área y reglas.
+
 ### 6. Render reproducible
 
 - Un job referencia un `revisionId`, nunca el estado mutable del editor.
 - Registrar versión de Blender y hash del catálogo de assets.
 - Guardar GLB y PNG bajo un path estable por proyecto/revisión/job.
 - Reportar errores de validación o assets ausentes sin producir artefactos parciales como éxito.
+
+Estado: completado para desarrollo local. El worker procesa un job por ejecución:
+
+```bash
+pnpm --filter @command-center/web render:worker
+```
+
+Los artefactos se publican bajo `/renders/<job-id>/` y no se versionan en Git.
 
 ## Fuera de alcance
 

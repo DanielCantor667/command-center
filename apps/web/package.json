@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "render:worker": "node --env-file=.env scripts/process-render-jobs.mjs",
     "lint": "eslint .",
     "test": "vitest run"
   },

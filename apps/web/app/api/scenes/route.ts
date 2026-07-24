@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { AnthropicSceneClient, generateScene } from '@command-center/scene-generator';
 import { planOfficeScene } from '@command-center/scene-planner';
-import type { StyleId } from '@command-center/workplace-design-system';
+import { SPATIAL_RULES, type StyleId } from '@command-center/workplace-design-system';
 
 interface GenerateSceneBody {
   occupants?: number;
@@ -18,8 +18,24 @@ export async function POST(request: Request) {
   }
 
   if (body.prompt && process.env.ANTHROPIC_API_KEY) {
-    const scene = await generateScene(body.prompt, new AnthropicSceneClient());
-    return NextResponse.json({ source: 'ai', scene });
+    const baseline = planOfficeScene({ occupants, style: body.style });
+    const brief = [
+      body.prompt,
+      `Occupants: ${occupants}`,
+      `Style: ${baseline.style}`,
+      `Planning preset: ${baseline.presetId}`,
+      `Estimated area: ${baseline.estimatedAreaSqm} sqm`,
+      `Spatial rules: ${JSON.stringify(SPATIAL_RULES)}`,
+      'Return a valid Scene v1 using only assets from the registered catalog.',
+    ].join('\n');
+    const scene = await generateScene(brief, new AnthropicSceneClient());
+    return NextResponse.json({
+      source: 'ai',
+      scene,
+      presetId: baseline.presetId,
+      style: baseline.style,
+      estimatedAreaSqm: baseline.estimatedAreaSqm,
+    });
   }
 
   const plan = planOfficeScene({ occupants, style: body.style });
