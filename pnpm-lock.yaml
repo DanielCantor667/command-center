@@ -35,9 +35,18 @@ importers:
       '@command-center/scene-builder':
         specifier: workspace:*
         version: link:../../packages/scene-builder
+      '@command-center/scene-generator':
+        specifier: workspace:*
+        version: link:../../packages/scene-generator
+      '@command-center/scene-planner':
+        specifier: workspace:*
+        version: link:../../packages/scene-planner
       '@command-center/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@command-center/workplace-design-system':
+        specifier: workspace:*
+        version: link:../../packages/workplace-design-system
       '@prisma/client':
         specifier: ^6.19.3
         version: 6.19.3(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
@@ -199,6 +208,34 @@ importers:
       '@command-center/ai-renderer':
         specifier: workspace:*
         version: link:../ai-renderer
+    devDependencies:
+      '@command-center/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@command-center/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      eslint:
+        specifier: ^9.17.0
+        version: 9.39.4(jiti@2.7.0)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@22.20.0)(jsdom@25.0.1)(lightningcss@1.32.0)
+
+  packages/scene-planner:
+    dependencies:
+      '@command-center/ai-renderer':
+        specifier: workspace:*
+        version: link:../ai-renderer
+      '@command-center/workplace-design-system':
+        specifier: workspace:*
+        version: link:../workplace-design-system
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@command-center/eslint-config':
         specifier: workspace:*

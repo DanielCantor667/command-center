@@ -78,4 +78,30 @@ describe('scene editor store', () => {
     useStore.getState().clearSelection();
     expect(useStore.getState().selectedId).toBeNull();
   });
+
+  it('supports spatial editing operations', () => {
+    const useStore = createSceneEditorStore(makeScene());
+
+    useStore.getState().rotateObject('desk-1', Math.PI / 2);
+    useStore.getState().scaleObject('desk-1', 1.5);
+    useStore.getState().duplicateObject('desk-1');
+
+    expect(useStore.getState().scene.objects).toHaveLength(2);
+    expect(useStore.getState().scene.objects[0]?.transform.rotation.y).toBe(Math.PI / 2);
+    expect(useStore.getState().scene.objects[0]?.transform.scale).toBe(1.5);
+    expect(useStore.getState().scene.objects[1]?.id).toBe('desk-1-copy-1');
+
+    useStore.getState().deleteObject('desk-1-copy-1');
+    expect(useStore.getState().scene.objects).toHaveLength(1);
+  });
+
+  it('adds a catalog asset on the editing grid and selects it', () => {
+    const useStore = createSceneEditorStore(makeScene());
+
+    useStore.getState().addObject('tree');
+
+    const added = useStore.getState().scene.objects[1];
+    expect(added).toMatchObject({ id: 'tree-1', asset: 'tree', transform: { position: { x: -2, y: 0, z: 5 } } });
+    expect(useStore.getState().selectedId).toBe('tree-1');
+  });
 });

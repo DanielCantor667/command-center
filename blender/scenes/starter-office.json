@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "id": "starter-office",
+  "metadata": { "name": "Starter Office" },
+  "objects": [
+    {
+      "id": "desk-1",
+      "asset": "desk",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 0 },
+        "rotation": { "x": 0, "y": 0, "z": 0 },
+        "scale": 1
+      },
+      "properties": {}
+    },
+    {
+      "id": "chair-1",
+      "asset": "chair",
+      "transform": {
+        "position": { "x": 0, "y": 0, "z": 1.2 },
+        "rotation": { "x": 0, "y": 3.14159, "z": 0 },
+        "scale": 1
+      },
+      "properties": {}
+    }
+  ]
+}

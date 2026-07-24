@@ -3,10 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { LabModule } from '../component';
 
 describe('LabModule', () => {
-  it('renders its title and description', () => {
+  it('renders the office scene controls', () => {
     render(<LabModule />);
 
-    expect(screen.getByText('LAB')).toBeInTheDocument();
-    expect(screen.getByText('Lab has no module yet.')).toBeInTheDocument();
+    expect(screen.getByText('3D OFFICE LAB')).toBeInTheDocument();
+    expect(screen.getByLabelText('Personas')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Generar escena' })).toBeInTheDocument();
   });
 });

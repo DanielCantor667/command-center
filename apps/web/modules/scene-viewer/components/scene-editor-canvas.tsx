@@ -8,6 +8,7 @@ import type { UseBoundStore, StoreApi } from 'zustand';
 import { buildSceneGraph, type ResolvedSceneObject } from '@command-center/scene-builder';
 import type { SceneEditorState } from '../store/types';
 import { SceneObjectMesh } from './scene-object-mesh';
+import { OfficeFloorPlan } from './office-floor-plan';
 
 export interface SceneEditorCanvasProps {
   useStore: UseBoundStore<StoreApi<SceneEditorState>>;
@@ -50,10 +51,13 @@ export function SceneEditorCanvas({ useStore }: SceneEditorCanvasProps) {
 
   return (
     <Canvas onPointerMissed={clearSelection}>
-      <PerspectiveCamera makeDefault position={[8, 8, 8]} fov={50} />
+      <color attach="background" args={['#020617']} />
+      <PerspectiveCamera makeDefault position={[18, 20, 22]} fov={50} />
       <OrbitControls makeDefault enabled={orbitEnabled} />
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[10, 10, 5]} intensity={0.8} />
+      <ambientLight intensity={0.75} />
+      <directionalLight position={[10, 12, 5]} intensity={1.2} />
+      <gridHelper args={[80, 80, '#334155', '#172033']} />
+      <OfficeFloorPlan scene={scene} />
       {sceneGraph.objects.map((object) =>
         object.id === selectedId ? (
           <DraggableObject

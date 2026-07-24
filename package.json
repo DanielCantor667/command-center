@@ -9,7 +9,10 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "blender:validate": "python3 blender/validate_scene.py blender/scenes/starter-office.json apps/web/public/models",
+    "blender:assets": "bash scripts/generate-blender-assets.sh",
+    "blender:render": "bash scripts/render-blender.sh"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.2",

@@ -23,3 +23,19 @@ Se estableció la estructura inicial del monorepo (apps, packages, docs, specs, 
 ## 2026-07-01 — Sprint 0.1: bootstrap técnico (Foundation)
 
 Se implementó `specs/foundation.md`: `apps/web` (Next.js + TypeScript + Tailwind CSS) consumiendo `packages/tsconfig`, `packages/eslint-config`, `packages/config` y `packages/ui` vía workspace. Se agregó configuración inicial de Prisma (`prisma/schema.prisma`, sin modelos) y del cliente de Supabase, sin conexión real todavía. Build, lint y tests verificados en verde.
+
+## 2026-07-24 — Vertical slice de oficina 3D
+
+Se conectó el conocimiento de workplace con un Scene Planner determinista, un Lab interactivo de React Three Fiber y una ruta de generación validada. El flujo permite crear, editar y persistir escenas de oficina desde la aplicación.
+
+## 2026-07-24 — Editor espacial y flujo interoperable
+
+El Lab incorporó plano arquitectónico, biblioteca de activos, inspector espacial, galería local e importación/exportación JSON validada. Se añadió una validación de escena y GLB previa a Blender que funciona sin la instalación de Blender.
+
+## 2026-07-24 — Catálogo GLB compartido con Blender
+
+El catálogo de doce activos se genera de forma reproducible con Blender y se carga directamente en el visor web. El mismo directorio de modelos sirve al render headless, eliminando la divergencia entre la escena del Lab y su exportación.
+
+## 2026-07-24 — Sistema 3D documentado y siguiente fase definida
+
+Se consolidaron arquitectura, contratos, operación, límites y deuda conocida del sistema de oficinas 3D. Sprint 0.7 propone proyectos persistentes, revisiones y render jobs, comenzando por corregir la transformación de assets compuestos en Blender.

@@ -15,10 +15,12 @@ export function SceneCanvas({ sceneGraph }: SceneCanvasProps) {
 
   return (
     <Canvas onPointerMissed={clear}>
+      <color attach="background" args={['#020617']} />
       <PerspectiveCamera makeDefault position={[8, 8, 8]} fov={50} />
       <OrbitControls makeDefault />
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[10, 10, 5]} intensity={0.8} />
+      <ambientLight intensity={0.75} />
+      <directionalLight position={[10, 12, 5]} intensity={1.2} />
+      <gridHelper args={[80, 80, '#334155', '#172033']} />
       {sceneGraph.objects.map((object) => (
         <SceneObjectMesh
           key={object.id}

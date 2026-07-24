@@ -3,8 +3,8 @@
 Usage (run headless, against a base .blend template that already has a
 camera, lights and HDRI configured):
 
-    blender scene.blend --background --python render.py -- \
-        <scene.json> <assets_dir> <output_dir>
+    blender blender/templates/base.blend --background --python blender/render.py -- \
+        blender/scenes/starter-office.json apps/web/public/models output
 
 <assets_dir> must point at apps/web/public/models -- the same folder the
 R3F viewer serves .glb files from (see MODELS_BASE_PATH in

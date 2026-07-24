@@ -2,6 +2,13 @@
 
 Este documento describe la trayectoria funcional prevista para Command Center, organizada en fases. No incluye fechas: el orden de las fases refleja dependencias y prioridad, no un calendario.
 
+> Nota de estado (2026-07-24): este roadmap inicial describe la línea CRM original, pero el
+> repositorio también contiene una línea de producto 3D activa que ya superó el estado de
+> prototipo. Su estado está documentado en `docs/engineering/3d-office-system.md` y su siguiente
+> fase propuesta en `docs/04-sprints/SPRINT-0.7-SCENE-PROJECTS.md`. Antes de priorizar Phase 1
+> Authentication o retomar CRM, producto debe decidir si ambas líneas conviven o si el sistema de
+> oficinas 3D reemplaza el roadmap original.
+
 ---
 
 ## Phase 0 — Foundation
