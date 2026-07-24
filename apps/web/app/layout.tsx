@@ -15,6 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'Command Center',
+  description:
+    'Engineering Knowledge Platform: proyectos, decisiones, tecnologías y evidencia conectados en una ciudad digital explorable.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

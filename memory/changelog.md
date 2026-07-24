@@ -47,3 +47,7 @@ Supabase Auth, Prisma y RLS ahora respaldan proyectos con revisiones inmutables.
 ## 2026-07-24 — Sprint 0.8: experiencia 3D Office Studio
 
 El Lab se convirtió en una experiencia de producto con jerarquía visual, editor y rail de herramientas coherentes, tokens semánticos y mejor lectura de la escena. El recorrido navegador → Supabase → revisión → worker Blender → PNG/GLB quedó verificado de extremo a extremo.
+
+## 2026-07-24 — Command Center se convierte en una ciudad de conocimiento
+
+La entrada principal pasó de un shell directo a una experiencia narrativa continua: ciudad central, distritos de proyectos, grafo, misión, analytics, evidencia y perfil. Los módulos existentes siguen disponibles mediante `ExperienceGate` y las métricas visuales se derivan de los dominios reales.
