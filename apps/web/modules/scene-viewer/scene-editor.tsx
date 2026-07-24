@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Stack } from '@command-center/ui';
 import type { Scene } from '@command-center/ai-renderer';
 import { createSceneEditorStore } from './store/scene-editor-store';
 import { SceneEditorCanvas } from './components/scene-editor-canvas';
@@ -25,19 +24,19 @@ export function SceneEditor({ scene }: SceneEditorProps) {
   }
 
   return (
-    <Stack direction="vertical" gap="sm">
-      <SceneEditorToolbar useStore={useStore} />
-      <Stack direction="horizontal" gap="sm" wrap={false} className="min-h-0">
-        <div style={{ width: '100%', height: '100%', minHeight: 480 }}>
+    <section aria-label="Editor de escena" className="grid shrink-0 grid-cols-1 gap-16 laptop:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="min-w-0 overflow-hidden rounded-2xl border border-panel-border bg-panel-background shadow-high">
+        <SceneEditorToolbar useStore={useStore} />
+        <div className="h-[620px] min-h-[520px] w-full border-t border-divider">
           <SceneEditorCanvas useStore={useStore} />
         </div>
-        <Stack direction="vertical" gap="sm" className="shrink-0">
-          <SceneEditorInspector useStore={useStore} />
-          <SceneAssetLibrary useStore={useStore} />
-          <SceneGallery useStore={useStore} />
-          <SceneReadinessPanel useStore={useStore} />
-        </Stack>
-      </Stack>
-    </Stack>
+      </div>
+      <div className="flex min-w-0 flex-col gap-12">
+        <SceneReadinessPanel useStore={useStore} />
+        <SceneEditorInspector useStore={useStore} />
+        <SceneAssetLibrary useStore={useStore} />
+        <SceneGallery useStore={useStore} />
+      </div>
+    </section>
   );
 }

@@ -43,3 +43,7 @@ Se consolidaron arquitectura, contratos, operación, límites y deuda conocida d
 ## 2026-07-24 — Sprint 0.7: proyectos persistentes y render jobs
 
 Supabase Auth, Prisma y RLS ahora respaldan proyectos con revisiones inmutables. El editor permite guardar, recuperar historial y solicitar renders; un worker local procesa la revisión exacta con Blender y publica GLB/PNG.
+
+## 2026-07-24 — Sprint 0.8: experiencia 3D Office Studio
+
+El Lab se convirtió en una experiencia de producto con jerarquía visual, editor y rail de herramientas coherentes, tokens semánticos y mejor lectura de la escena. El recorrido navegador → Supabase → revisión → worker Blender → PNG/GLB quedó verificado de extremo a extremo.

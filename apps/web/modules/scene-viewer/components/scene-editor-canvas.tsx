@@ -52,13 +52,13 @@ export function SceneEditorCanvas({ useStore }: SceneEditorCanvasProps) {
   return (
     <Canvas onPointerMissed={clearSelection}>
       <color attach="background" args={['#020617']} />
-      <PerspectiveCamera makeDefault position={[18, 20, 22]} fov={50} />
+      <PerspectiveCamera makeDefault position={[17, 18, 20]} fov={48} />
       <OrbitControls makeDefault enabled={orbitEnabled} />
       <ambientLight intensity={0.75} />
       <directionalLight position={[10, 12, 5]} intensity={1.2} />
       <gridHelper args={[80, 80, '#334155', '#172033']} />
       <OfficeFloorPlan scene={scene} />
-      {sceneGraph.objects.map((object) =>
+      {sceneGraph.objects.filter((object) => object.asset !== 'office').map((object) =>
         object.id === selectedId ? (
           <DraggableObject
             key={object.id}

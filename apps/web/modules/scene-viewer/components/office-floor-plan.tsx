@@ -17,7 +17,7 @@ function Wall({ position, size }: { position: [number, number, number]; size: [n
   return (
     <mesh position={position}>
       <boxGeometry args={size} />
-      <meshStandardMaterial color="#475569" transparent opacity={0.62} roughness={0.8} />
+      <meshStandardMaterial color="#334155" transparent opacity={0.34} roughness={0.85} depthWrite={false} />
     </mesh>
   );
 }

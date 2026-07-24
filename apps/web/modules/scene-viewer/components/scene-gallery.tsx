@@ -94,12 +94,19 @@ export function SceneGallery({ useStore }: SceneGalleryProps) {
   };
 
   return (
-    <aside aria-label="Proyectos de escenas" className="w-full rounded-lg border border-slate-700 bg-slate-950 p-4 lg:w-72">
-      <Typography variant="title">Scene Projects</Typography>
+    <aside aria-label="Proyectos de escenas" className="w-full rounded-2xl border border-panel-border bg-panel-background p-16 shadow-medium">
+      <div className="flex items-start justify-between gap-12">
+        <div>
+          <Typography variant="caption" color="accent" className="uppercase tracking-widest">Supabase cloud</Typography>
+          <Typography variant="title" className="mt-4">Proyectos</Typography>
+        </div>
+        <span className={`rounded-full px-8 py-4 text-[10px] font-semibold uppercase tracking-wider ${session ? 'bg-accent/10 text-accent' : 'bg-surface-secondary text-text-muted'}`}>{session ? 'online' : 'offline'}</span>
+      </div>
       {!session ? (
         <Stack direction="vertical" gap="xs" className="mt-3">
-          <input aria-label="Correo" type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="correo@ejemplo.com" className="rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-white" />
-          <input aria-label="Contraseña" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Contraseña" className="rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-white" />
+          <Typography variant="body-small" color="muted">Inicia sesión para guardar revisiones y renders.</Typography>
+          <input aria-label="Correo" type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="correo@ejemplo.com" className="h-36 rounded-lg border border-panel-border bg-surface-secondary px-12 text-sm text-text-primary outline-none focus:border-accent" />
+          <input aria-label="Contraseña" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Contraseña" className="h-36 rounded-lg border border-panel-border bg-surface-secondary px-12 text-sm text-text-primary outline-none focus:border-accent" />
           <Stack direction="horizontal" gap="xs">
             <Button size="sm" loading={busy} onClick={() => void authenticate('sign-in')}>Entrar</Button>
             <Button size="sm" variant="secondary" disabled={busy} onClick={() => void authenticate('sign-up')}>Crear cuenta</Button>
@@ -112,7 +119,7 @@ export function SceneGallery({ useStore }: SceneGalleryProps) {
           <Button size="sm" variant="secondary" onClick={() => void getSupabaseBrowserClient().auth.signOut()}>Cerrar sesión</Button>
         </Stack>
       )}
-      <Typography variant="caption" color="muted">{status}</Typography>
+      <Typography variant="caption" color="muted" className="mt-8 block">{status}</Typography>
       {renderJob?.status === 'completed' && (
         <Stack direction="horizontal" gap="xs">
           {renderJob.pngPath && <a className="text-xs text-blue-400 underline" href={renderJob.pngPath} target="_blank" rel="noreferrer">PNG</a>}
@@ -122,7 +129,7 @@ export function SceneGallery({ useStore }: SceneGalleryProps) {
       {session && projects.length === 0 ? <Typography variant="body-small" color="muted">Guarda esta escena para crear tu primer proyecto.</Typography> : (
         <Stack direction="vertical" gap="xs" className="mt-3 max-h-48 overflow-y-auto pr-1">
           {projects.map((project) => (
-            <div key={project.id} className="rounded border border-slate-800 p-2">
+            <div key={project.id} className="rounded-lg border border-panel-border bg-surface-secondary p-8">
               <Typography variant="body-small">{project.name}</Typography>
               <Typography variant="caption" color="muted">{project.revisionCount} revisión(es)</Typography>
               <Stack direction="horizontal" gap="xs" className="mt-2">
@@ -134,7 +141,7 @@ export function SceneGallery({ useStore }: SceneGalleryProps) {
         </Stack>
       )}
       {activeProjectId && revisions.length > 0 && (
-        <Stack direction="vertical" gap="xs" className="mt-3 border-t border-slate-800 pt-3">
+        <Stack direction="vertical" gap="xs" className="mt-12 border-t border-divider pt-12">
           <Typography variant="caption" color="muted">Historial</Typography>
           <Stack direction="horizontal" gap="xs" wrap>
             {revisions.map((revision) => (

@@ -45,29 +45,48 @@ export function LabModule() {
   }
 
   return (
-    <Stack direction="vertical" gap="md" className="min-h-0">
-      <div>
-        <Typography variant="heading-xl" color="primary">3D OFFICE LAB</Typography>
-        <Typography variant="body" color="secondary">Planifica una oficina y ajusta sus activos directamente en la escena.</Typography>
-      </div>
-      <Stack direction="horizontal" gap="sm" wrap align="end" className="rounded-lg border border-slate-700 bg-slate-950 p-4">
-        <label className="flex flex-col gap-1 text-sm text-slate-300">
-          Personas
-          <input aria-label="Personas" type="number" min="1" max="120" value={occupants} onChange={(event) => setOccupants(Math.max(1, Number(event.target.value) || 1))} className="w-28 rounded border border-slate-600 bg-slate-900 px-3 py-2 text-white" />
-        </label>
-        <label className="flex flex-col gap-1 text-sm text-slate-300">
-          Estilo
-          <select aria-label="Estilo" value={style} onChange={(event) => setStyle(event.target.value as StyleId)} className="rounded border border-slate-600 bg-slate-900 px-3 py-2 text-white">
-            {STYLE_IDS.map((id) => <option key={id} value={id}>{getStyle(id).label}</option>)}
-          </select>
-        </label>
-        <label className="flex min-w-56 flex-1 flex-col gap-1 text-sm text-slate-300">
-          Instrucción opcional para IA
-          <input aria-label="Instrucción opcional para IA" value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder="Ej.: ambiente cálido para recibir clientes" className="rounded border border-slate-600 bg-slate-900 px-3 py-2 text-white" />
-        </label>
-        <Button loading={isGenerating} onClick={generate}>Generar escena</Button>
-        <Typography variant="body-small" color="muted">{source} · {plan.presetId} · {plan.estimatedAreaSqm || '—'} m² · {plan.scene.objects.length} activos</Typography>
-      </Stack>
+    <Stack direction="vertical" gap="lg" className="pb-32">
+      <header className="relative shrink-0 overflow-hidden rounded-2xl border border-panel-border bg-gradient-to-br from-background-primary via-panel-background to-surface-primary px-24 py-20 shadow-high">
+        <div className="absolute -right-64 -top-80 h-192 w-192 rounded-full bg-accent/10 blur-3xl" />
+        <div className="relative flex flex-wrap items-end justify-between gap-16">
+          <div>
+            <div className="mb-8 flex items-center gap-8 text-xs font-medium uppercase tracking-[0.22em] text-accent">
+              <span className="h-8 w-8 rounded-full bg-accent shadow-[0_0_14px_var(--accent)]" />
+              Spatial intelligence workspace
+            </div>
+            <Typography variant="heading-xl" color="primary" className="tracking-tight">3D Office Studio</Typography>
+            <Typography variant="body" color="secondary" className="mt-4 max-w-2xl">Diseña, valida y renderiza espacios de trabajo desde un brief hasta un proyecto versionado.</Typography>
+          </div>
+          <div className="flex flex-wrap gap-8 text-xs">
+            <span className="rounded-full border border-panel-border bg-surface-secondary px-12 py-6 text-text-secondary">{plan.presetId.replaceAll('_', ' ')}</span>
+            <span className="rounded-full border border-panel-border bg-surface-secondary px-12 py-6 text-text-secondary">{plan.estimatedAreaSqm || '—'} m²</span>
+            <span className="rounded-full border border-accent/30 bg-accent/10 px-12 py-6 text-accent">{plan.scene.objects.length} activos</span>
+          </div>
+        </div>
+      </header>
+      <section aria-label="Configuración de escena" className="shrink-0 rounded-2xl border border-panel-border bg-panel-background p-16 shadow-medium">
+        <div className="grid gap-12 laptop:grid-cols-[140px_210px_minmax(240px,1fr)_auto] laptop:items-end">
+          <label className="flex flex-col gap-6 text-xs font-medium uppercase tracking-wider text-text-secondary">
+            Personas
+            <input aria-label="Personas" type="number" min="1" max="120" value={occupants} onChange={(event) => setOccupants(Math.max(1, Number(event.target.value) || 1))} className="h-44 rounded-xl border border-panel-border bg-surface-secondary px-12 text-base text-text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-focus-ring/20" />
+          </label>
+          <label className="flex flex-col gap-6 text-xs font-medium uppercase tracking-wider text-text-secondary">
+            Estilo espacial
+            <select aria-label="Estilo" value={style} onChange={(event) => setStyle(event.target.value as StyleId)} className="h-44 rounded-xl border border-panel-border bg-surface-secondary px-12 text-sm text-text-primary outline-none transition focus:border-accent focus:ring-2 focus:ring-focus-ring/20">
+              {STYLE_IDS.map((id) => <option key={id} value={id}>{getStyle(id).label}</option>)}
+            </select>
+          </label>
+          <label className="flex min-w-0 flex-col gap-6 text-xs font-medium uppercase tracking-wider text-text-secondary">
+            Brief opcional para IA
+            <input aria-label="Instrucción opcional para IA" value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder="Ej.: recepción cálida, zona silenciosa y mucha vegetación" className="h-44 rounded-xl border border-panel-border bg-surface-secondary px-12 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-accent focus:ring-2 focus:ring-focus-ring/20" />
+          </label>
+          <Button loading={isGenerating} onClick={generate} className="h-44 rounded-xl px-20 shadow-medium">Generar layout</Button>
+        </div>
+        <div className="mt-12 flex items-center justify-between border-t border-divider pt-12">
+          <Typography variant="caption" color="muted">Fuente: <span className="text-accent">{source}</span> · escena validada con schema v1</Typography>
+          <Typography variant="caption" color="muted">Grid 0.5 m · GLB sincronizados</Typography>
+        </div>
+      </section>
       <SceneEditor key={plan.scene.id} scene={plan.scene} />
     </Stack>
   );

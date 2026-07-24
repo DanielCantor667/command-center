@@ -46,24 +46,22 @@ export function SceneEditorToolbar({ useStore }: SceneEditorToolbarProps) {
   };
 
   return (
-    <Stack direction="horizontal" gap="sm">
-      <Button variant="secondary" size="sm" disabled={past.length === 0} onClick={undo}>
-        Undo
-      </Button>
-      <Button variant="secondary" size="sm" disabled={future.length === 0} onClick={redo}>
-        Redo
-      </Button>
-      <Button variant="primary" size="sm" onClick={save}>
-        Save draft
-      </Button>
-      <Button variant="secondary" size="sm" onClick={exportScene}>
-        Export JSON
-      </Button>
-      <Button variant="secondary" size="sm" onClick={() => fileInputRef.current?.click()}>
-        Import JSON
-      </Button>
+    <Stack direction="horizontal" gap="xs" wrap align="center" className="min-h-64 justify-between bg-panel-background px-16 py-12">
+      <Stack direction="horizontal" gap="xs" align="center">
+        <div className="mr-8 hidden tablet:block">
+          <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">Scene editor</span>
+          <span className="text-xs text-text-muted">{scene.objects.length} objetos</span>
+        </div>
+        <Button variant="secondary" size="sm" disabled={past.length === 0} onClick={undo}>↶ Undo</Button>
+        <Button variant="secondary" size="sm" disabled={future.length === 0} onClick={redo}>↷ Redo</Button>
+        <Button variant="primary" size="sm" onClick={save}>Guardar borrador</Button>
+      </Stack>
+      <Stack direction="horizontal" gap="xs">
+        <Button variant="secondary" size="sm" onClick={exportScene}>Exportar JSON</Button>
+        <Button variant="secondary" size="sm" onClick={() => fileInputRef.current?.click()}>Importar</Button>
+      </Stack>
       <input ref={fileInputRef} aria-label="Importar escena JSON" type="file" accept="application/json,.json" className="sr-only" onChange={importScene} />
-      {message && <span role="status" className="text-sm text-slate-300">{message}</span>}
+      {message && <span role="status" className="text-sm text-text-secondary">{message}</span>}
     </Stack>
   );
 }

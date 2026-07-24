@@ -25,7 +25,7 @@ describe('Workspace', () => {
     useWorkspaceStore.setState({ currentModule: 'lab' });
     render(<Workspace />);
 
-    expect(screen.getByText('3D OFFICE LAB')).toBeInTheDocument();
+    expect(screen.getByText('3D Office Studio')).toBeInTheDocument();
   });
 
   it('switches to a different module when currentModule changes', () => {

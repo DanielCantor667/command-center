@@ -6,8 +6,8 @@ describe('LabModule', () => {
   it('renders the office scene controls', () => {
     render(<LabModule />);
 
-    expect(screen.getByText('3D OFFICE LAB')).toBeInTheDocument();
+    expect(screen.getByText('3D Office Studio')).toBeInTheDocument();
     expect(screen.getByLabelText('Personas')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Generar escena' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Generar layout' })).toBeInTheDocument();
   });
 });

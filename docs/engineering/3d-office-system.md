@@ -304,6 +304,7 @@ No implementado todavía:
 
 - Visión de dominio: `docs/vision/WORKPLACE_DESIGN_SYSTEM.md`
 - Guía operativa: `docs/engineering/3d-office-pipeline.md`
-- Próxima fase: `docs/04-sprints/SPRINT-0.7-SCENE-PROJECTS.md`
+- Persistencia y renders: `docs/04-sprints/SPRINT-0.7-SCENE-PROJECTS.md`
+- Experiencia de Studio y próxima fase: `docs/04-sprints/SPRINT-0.8-3D-STUDIO-EXPERIENCE.md`
 - Contrato original: `docs/superpowers/specs/2026-07-10-scene-schema-design.md`
 - Registro de cambios: `memory/changelog.md`

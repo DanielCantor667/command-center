@@ -19,9 +19,12 @@ export function SceneEditorInspector({ useStore }: SceneEditorInspectorProps) {
 
   if (!selectedId || !selectedObject) {
     return (
-      <aside aria-label="Inspector de objeto" className="w-full rounded-lg border border-slate-700 bg-slate-950 p-4 lg:w-72">
-        <Typography variant="title">Inspector</Typography>
-        <Typography variant="body-small" color="muted">Selecciona un activo de la escena para editarlo.</Typography>
+      <aside aria-label="Inspector de objeto" className="w-full rounded-2xl border border-panel-border bg-panel-background p-16 shadow-medium">
+        <Typography variant="caption" color="accent" className="uppercase tracking-widest">Transform</Typography>
+        <Typography variant="title" className="mt-4">Inspector</Typography>
+        <div className="mt-12 rounded-xl border border-dashed border-panel-border bg-surface-secondary px-12 py-16 text-center">
+          <Typography variant="body-small" color="muted">Selecciona un activo en el canvas para editar posición, giro y escala.</Typography>
+        </div>
       </aside>
     );
   }
@@ -29,15 +32,15 @@ export function SceneEditorInspector({ useStore }: SceneEditorInspectorProps) {
   const { position, rotation, scale } = selectedObject.transform;
 
   return (
-    <aside aria-label="Inspector de objeto" className="w-full rounded-lg border border-slate-700 bg-slate-950 p-4 lg:w-72">
+    <aside aria-label="Inspector de objeto" className="w-full rounded-2xl border border-accent/30 bg-gradient-to-br from-panel-background to-surface-primary p-16 shadow-medium">
       <Stack direction="vertical" gap="sm">
         <div>
           <Typography variant="caption" color="accent">Activo seleccionado</Typography>
           <Typography variant="title">{selectedObject.asset}</Typography>
           <Typography variant="mono-small" color="muted">{selectedObject.id}</Typography>
         </div>
-        <div className="grid grid-cols-3 gap-2 text-center text-xs text-slate-300">
-          <span>X {position.x.toFixed(1)}</span><span>Y {position.y.toFixed(1)}</span><span>Z {position.z.toFixed(1)}</span>
+        <div className="grid grid-cols-3 gap-8 text-center text-xs text-text-secondary">
+          <span className="rounded-lg bg-surface-secondary p-8">X {position.x.toFixed(1)}</span><span className="rounded-lg bg-surface-secondary p-8">Y {position.y.toFixed(1)}</span><span className="rounded-lg bg-surface-secondary p-8">Z {position.z.toFixed(1)}</span>
         </div>
         <Stack direction="horizontal" gap="xs" wrap>
           <Button variant="secondary" size="sm" onClick={() => rotateObject(selectedId, rotation.y - Math.PI / 4)}>↶ 45°</Button>
