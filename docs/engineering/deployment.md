@@ -69,3 +69,7 @@ Set server-only Supabase variables in the deployment provider's secret store. Ne
 ## Hosting
 
 Vercel is the lowest-friction host for the current Next.js app. Configure the monorepo root, install with pnpm, build with `pnpm --filter @command-center/web build`, and start/render worker separately if render jobs are enabled. A production deployment is intentionally not created automatically: it requires the owner to select the hosting account, domain and production secrets.
+
+## Custom domain handoff
+
+The current public alias is `https://command-center-web-woad.vercel.app`. To move to a custom domain, add the domain to the Vercel project, apply the exact DNS record Vercel returns at the registrar, and set `NEXT_PUBLIC_SITE_URL` in Production and Preview to the canonical `https://` URL. A new deployment updates the canonical URL, sitemap, robots file and Open Graph metadata automatically.
