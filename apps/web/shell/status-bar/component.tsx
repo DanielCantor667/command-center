@@ -20,7 +20,7 @@ export function StatusBar({ className, ...rest }: StatusBarProps) {
       border
       padding="sm"
       className={[
-        'flex h-[var(--layout-statusbar-height)] w-full shrink-0 items-center justify-between',
+        'command-statusbar flex h-[var(--layout-statusbar-height)] w-full shrink-0 items-center justify-between',
         className,
       ]
         .filter(Boolean)

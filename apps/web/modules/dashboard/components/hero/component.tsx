@@ -1,8 +1,9 @@
-import { Button, Stack, Typography } from '@command-center/ui';
+import { Button, Panel, Stack, Typography } from '@command-center/ui';
 import type { HeroProps } from './types';
 
 export function Hero({ name, role, missionStatement, status, availability, onCtaClick }: HeroProps) {
   return (
+    <Panel variant="subtle" border padding="lg" elevation="medium" className="command-dashboard-hero">
     <Stack direction="vertical" gap="sm" align="start">
       <Typography as="h1" variant="display-l" color="primary">
         {name}
@@ -25,5 +26,6 @@ export function Hero({ name, role, missionStatement, status, availability, onCta
         View Projects
       </Button>
     </Stack>
+    </Panel>
   );
 }

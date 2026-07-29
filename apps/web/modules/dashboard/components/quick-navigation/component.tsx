@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from '@command-center/ui';
+import { Button, Grid, Panel, Typography } from '@command-center/ui';
 import type { NavigationTarget, QuickNavigationProps } from './types';
 
 const NAVIGATION_TARGETS: readonly { id: NavigationTarget; label: string }[] = [
@@ -11,7 +11,7 @@ const NAVIGATION_TARGETS: readonly { id: NavigationTarget; label: string }[] = [
 
 export function QuickNavigation({ onNavigate }: QuickNavigationProps) {
   return (
-    <div>
+    <Panel variant="subtle" border padding="md" className="command-dashboard-card">
       <Typography as="h2" variant="heading-m" color="primary">
         Quick Navigation
       </Typography>
@@ -22,6 +22,6 @@ export function QuickNavigation({ onNavigate }: QuickNavigationProps) {
           </Button>
         ))}
       </Grid>
-    </div>
+    </Panel>
   );
 }

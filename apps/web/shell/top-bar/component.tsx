@@ -16,7 +16,7 @@ export function TopBar({ className, ...rest }: TopBarProps) {
       border
       padding="md"
       className={[
-        'flex h-[var(--layout-topbar-height)] w-full shrink-0 items-center justify-between',
+        'command-topbar flex h-[var(--layout-topbar-height)] w-full shrink-0 items-center justify-between',
         className,
       ]
         .filter(Boolean)

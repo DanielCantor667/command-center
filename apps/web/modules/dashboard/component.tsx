@@ -14,7 +14,7 @@ export function DashboardModule() {
   const setCurrentModule = useWorkspaceStore((state) => state.setCurrentModule);
 
   return (
-    <Stack direction="vertical" gap="lg">
+    <Stack direction="vertical" gap="lg" className="command-dashboard">
       <Hero
         name={HERO_DATA.name}
         role={HERO_DATA.role}

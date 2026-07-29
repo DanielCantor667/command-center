@@ -1,9 +1,9 @@
-import { Stack, Typography } from '@command-center/ui';
+import { Panel, Stack, Typography } from '@command-center/ui';
 import type { SystemStatusProps } from './types';
 
 export function SystemStatus({ items }: SystemStatusProps) {
   return (
-    <div>
+    <Panel variant="outlined" padding="md" className="command-dashboard-status">
       <Typography as="h2" variant="heading-m" color="primary">
         System Status
       </Typography>
@@ -14,6 +14,6 @@ export function SystemStatus({ items }: SystemStatusProps) {
           </Typography>
         ))}
       </Stack>
-    </div>
+    </Panel>
   );
 }

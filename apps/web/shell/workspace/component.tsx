@@ -13,7 +13,7 @@ export function Workspace({ className, ...rest }: WorkspaceProps) {
     <main
       aria-label="Workspace"
       className={[
-        'flex flex-1 flex-col overflow-y-auto p-[var(--layout-workspace-padding)]',
+        'command-workspace flex flex-1 flex-col overflow-y-auto p-[var(--layout-workspace-padding)]',
         className,
       ]
         .filter(Boolean)

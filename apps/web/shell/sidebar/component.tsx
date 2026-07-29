@@ -17,7 +17,7 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
       border
       padding="md"
       className={[
-        'hidden w-[var(--layout-sidebar-collapsed-width)] shrink-0 flex-col gap-24 overflow-y-auto',
+        'command-sidebar hidden w-[var(--layout-sidebar-collapsed-width)] shrink-0 flex-col gap-24 overflow-y-auto',
         'tablet:flex laptop:w-[var(--layout-sidebar-width)]',
         className,
       ]

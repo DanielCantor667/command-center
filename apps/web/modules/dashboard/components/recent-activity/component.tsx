@@ -1,9 +1,9 @@
-import { Typography } from '@command-center/ui';
+import { Panel, Typography } from '@command-center/ui';
 import type { RecentActivityProps } from './types';
 
 export function RecentActivity({ items }: RecentActivityProps) {
   return (
-    <div>
+    <Panel variant="subtle" border padding="md" className="command-dashboard-card">
       <Typography as="h2" variant="heading-m" color="primary">
         Recent Activity
       </Typography>
@@ -14,6 +14,6 @@ export function RecentActivity({ items }: RecentActivityProps) {
           </Typography>
         ))}
       </ul>
-    </div>
+    </Panel>
   );
 }

@@ -9,7 +9,7 @@ export function SidebarItem({ label, active = false, onSelect, className }: Side
       size="md"
       onClick={onSelect}
       aria-current={active ? 'page' : undefined}
-      className={['w-full justify-start overflow-hidden', className].filter(Boolean).join(' ')}
+      className={['command-nav-item w-full justify-start overflow-hidden', className].filter(Boolean).join(' ')}
     >
       <span className="truncate">{label}</span>
     </Button>
