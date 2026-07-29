@@ -16,14 +16,14 @@ export function Hero({ name, role, missionStatement, status, availability, onCta
       </Typography>
       <Stack direction="horizontal" gap="md" align="center">
         <Typography as="span" variant="body-small" color="muted">
-          Status: {status}
+          Estado: {status}
         </Typography>
         <Typography as="span" variant="body-small" color="muted">
-          Availability: {availability}
+          Disponibilidad: {availability}
         </Typography>
       </Stack>
       <Button variant="primary" onClick={onCtaClick}>
-        View Projects
+        Ver proyectos
       </Button>
     </Stack>
     </Panel>

@@ -1,8 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { axe } from 'vitest-axe';
+import { ThemeProvider } from '@command-center/ui';
 import { AppShell } from '../component';
 import { useWorkspaceStore } from '../../workspace-store';
+
+function renderAppShell() {
+  return render(<ThemeProvider><AppShell /></ThemeProvider>);
+}
 
 beforeEach(() => {
   useWorkspaceStore.setState({ currentModule: null });
@@ -14,7 +19,7 @@ afterEach(() => {
 
 describe('AppShell', () => {
   it('mounts TopBar, Sidebar, Workspace and StatusBar together', () => {
-    render(<AppShell />);
+    renderAppShell();
 
     expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('complementary', { name: 'Primary navigation' })).toBeInTheDocument();
@@ -23,9 +28,9 @@ describe('AppShell', () => {
   });
 
   it('selecting a Sidebar item updates TopBar and Workspace without remounting the shell landmarks', () => {
-    render(<AppShell />);
+    renderAppShell();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Capabilities' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Capacidades' }));
 
     expect(screen.getByRole('banner')).toBeInTheDocument();
     expect(screen.getByRole('complementary', { name: 'Primary navigation' })).toBeInTheDocument();
@@ -35,7 +40,7 @@ describe('AppShell', () => {
   });
 
   it('has no accessibility violations', async () => {
-    const { container } = render(<AppShell />);
+    const { container } = renderAppShell();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });

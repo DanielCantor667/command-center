@@ -4,20 +4,11 @@ import { axe } from 'vitest-axe';
 import { StatusBar } from '../component';
 
 describe('StatusBar', () => {
-  it('renders version, theme and branch information', () => {
+  it('renders public portfolio information', () => {
     render(<StatusBar />);
 
-    expect(screen.getByText('Version: v0.1.0-dev')).toBeInTheDocument();
-    expect(screen.getByText('Theme: System')).toBeInTheDocument();
-    expect(screen.getByText('Branch: main')).toBeInTheDocument();
-  });
-
-  it('renders connection, build and FPS information', () => {
-    render(<StatusBar />);
-
-    expect(screen.getByText('Connection: Online')).toBeInTheDocument();
-    expect(screen.getByText('Build: Passing')).toBeInTheDocument();
-    expect(screen.getByText('FPS: 60')).toBeInTheDocument();
+    expect(screen.getByText('Portfolio: Público')).toBeInTheDocument();
+    expect(screen.getByText('Contacto: LinkedIn + GitHub')).toBeInTheDocument();
   });
 
   it('exposes a footer landmark', () => {

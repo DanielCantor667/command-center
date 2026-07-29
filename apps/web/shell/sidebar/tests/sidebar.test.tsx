@@ -16,9 +16,9 @@ describe('Sidebar', () => {
   it('renders every workspace module as a navigation item', () => {
     render(<Sidebar />);
 
-    expect(screen.getByRole('button', { name: 'Dashboard' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Panel de control' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Mission Log' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Communication' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Contacto' })).toBeInTheDocument();
   });
 
   it('renders the brand', () => {
@@ -34,10 +34,10 @@ describe('Sidebar', () => {
   it('selecting an item updates the store and the active item', () => {
     render(<Sidebar />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Projects' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Proyectos' }));
 
     expect(useWorkspaceStore.getState().currentModule).toBe('projects');
-    expect(screen.getByRole('button', { name: 'Projects' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('button', { name: 'Proyectos' })).toHaveAttribute('aria-current', 'page');
   });
 
   it('exposes a labelled aside landmark', () => {

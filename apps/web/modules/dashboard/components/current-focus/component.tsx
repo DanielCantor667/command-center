@@ -6,13 +6,13 @@ export function CurrentFocus({ title, status }: CurrentFocusProps) {
     <Panel variant="subtle" border padding="md">
       <Stack direction="vertical" gap="xs">
         <Typography as="h2" variant="heading-m" color="primary">
-          Current Focus
+          Foco actual
         </Typography>
         <Typography as="p" variant="body" color="secondary">
-          Currently building: {title}
+          Construyendo: {title}
         </Typography>
         <Typography as="p" variant="body-small" color="muted">
-          Status: {status}
+          Estado: {status}
         </Typography>
       </Stack>
     </Panel>

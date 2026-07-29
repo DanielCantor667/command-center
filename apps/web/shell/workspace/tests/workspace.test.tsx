@@ -17,8 +17,8 @@ describe('Workspace', () => {
     render(<Workspace />);
 
     expect(screen.getByText('COMMAND CENTER')).toBeInTheDocument();
-    expect(screen.getByText('System Ready')).toBeInTheDocument();
-    expect(screen.getByText('Waiting for Modules...')).toBeInTheDocument();
+    expect(screen.getByText('Explora el sistema de ingeniería')).toBeInTheDocument();
+    expect(screen.getByText('Selecciona un módulo para continuar.')).toBeInTheDocument();
   });
 
   it('renders the module matching the selected id', () => {

@@ -249,8 +249,6 @@ export const academy: Project = {
   },
   media: [],
   links: {
-    // TODO: repository URL
-    // TODO: live URL
   },
   role: {
     title: 'Software Engineer & Product Owner',

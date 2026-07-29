@@ -5,7 +5,7 @@ export function QuickStats({ stats }: QuickStatsProps) {
   return (
     <Panel variant="subtle" border padding="md" className="command-dashboard-card">
       <Typography as="h2" variant="heading-m" color="primary">
-        Quick Stats
+        Métricas verificables
       </Typography>
       <Grid columns={2} gap="sm">
         {stats.map((stat) => (

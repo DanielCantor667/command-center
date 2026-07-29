@@ -28,38 +28,27 @@ export interface SystemStatusItem {
 
 export const HERO_DATA: HeroData = {
   name: 'Daniel Cantor',
-  role: 'Software Engineer',
-  missionStatement: 'Building software with engineering discipline.',
-  status: 'In Development',
-  availability: 'Open to opportunities',
+  role: 'Software Engineer · Product Owner',
+  missionStatement: 'Diseño productos y sistemas de ingeniería donde las decisiones, la evidencia y la experiencia de usuario forman parte del mismo sistema.',
+  status: 'Portfolio público',
+  availability: 'Disponible para proyectos freelance',
 };
 
-export const QUICK_STATS: readonly QuickStat[] = [
-  { label: 'Projects', value: '12' },
-  { label: 'Years of experience', value: '5' },
-  { label: 'Technologies', value: '18' },
-  { label: 'Repositories', value: '24' },
-  { label: 'Articles', value: '4' },
-];
-
 export const CURRENT_FOCUS: CurrentFocusData = {
-  title: 'Command Center OS',
-  status: 'In Development',
+  title: 'Command Center',
+  status: 'Evolución continua',
 };
 
 export const RECENT_ACTIVITY: readonly ActivityItem[] = [
-  { id: 'sprint-0.6', label: 'Sprint 0.6 started' },
-  { id: 'rfc-0006', label: 'RFC-0006 approved' },
-  { id: 'sprint-0.5', label: 'Module System shipped' },
-  { id: 'design-system', label: 'Design System accepted' },
-  { id: 'application-shell', label: 'Application Shell shipped' },
+  { id: 'command-city', label: 'Command City publicada como experiencia de navegación' },
+  { id: 'analytics-engine', label: 'Analytics derivado del Knowledge Graph' },
+  { id: 'evidence-engine', label: 'Evidence Engine conectado a proyectos y decisiones' },
+  { id: 'launch-hardening', label: 'Preparación de lanzamiento público en curso' },
 ];
 
 export const SYSTEM_STATUS: readonly SystemStatusItem[] = [
-  { label: 'Theme', value: 'System' },
-  { label: 'Version', value: 'v0.1.0-dev' },
-  { label: 'Architecture', value: 'Modular' },
-  { label: 'Tests', value: 'Passing' },
-  { label: 'Build', value: 'Passing' },
-  { label: 'Accessibility', value: 'AA' },
+  { label: 'Estado', value: 'Público' },
+  { label: 'Arquitectura', value: 'Modular' },
+  { label: 'Contenido', value: 'Documentado' },
+  { label: 'Evidencia', value: 'Trazable' },
 ];

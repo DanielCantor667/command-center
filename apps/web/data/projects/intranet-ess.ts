@@ -92,12 +92,12 @@ export const intranetEss: Project = {
     {
       title: 'Document Management',
       description:
-        'TODO: diseño de dominio aprobado (v1.0), implementación pendiente. 5 aggregate roots definidos: Document, DocumentType, DocumentRetentionPolicy, DocumentTemplate, DocumentRequest. Ciclo de vida: draft → published → archived → deleted. Políticas de retención, control de acceso, versionado, firma electrónica (integración externa), metadatos extraíbles, sellado de tiempo.',
+        'Diseño de dominio aprobado (v1.0), con implementación planificada. Define 5 aggregate roots: Document, DocumentType, DocumentRetentionPolicy, DocumentTemplate y DocumentRequest; ciclo de vida draft → published → archived → deleted, políticas de retención, control de acceso, versionado y firma electrónica mediante integración externa.',
     },
     {
       title: 'Workflow Engine',
       description:
-        'TODO: diseño de dominio aprobado (v1.0), implementación pendiente. 2 aggregate roots definidos: WorkflowDefinition, WorkflowInstance. Plantillas de flujo, asignación de tareas a usuarios/roles, reglas de aprobación (uno de N, todos, secuencial, paralelo), condiciones y ramificaciones, timeouts, escalamiento, SLAs, historial de ejecución.',
+        'Diseño de dominio aprobado (v1.0), con implementación planificada. Define WorkflowDefinition y WorkflowInstance para plantillas de flujo, asignación a usuarios o roles, aprobaciones secuenciales/paralelas, condiciones, escalamiento, SLAs e historial de ejecución.',
     },
     {
       title: 'Dashboard & KPIs',
@@ -107,7 +107,7 @@ export const intranetEss: Project = {
     {
       title: 'Global Search',
       description:
-        'TODO: página placeholder (<ComingSoon />). Búsqueda no implementada. API hooks existentes para búsqueda de empleados (useEmployees) y usuarios (useUsers) con filtro por query string.',
+        'Experiencia de búsqueda global planificada. La base técnica ya incluye hooks para consultar empleados y usuarios mediante query string, preparada para consolidarse en una interfaz única.',
     },
     {
       title: 'Notifications',
@@ -279,7 +279,9 @@ export const intranetEss: Project = {
     coverage: null,
   },
   media: [],
-  links: {},
+  links: {
+    repository: 'https://github.com/DanielCantor667/intranet',
+  },
   role: {
     title: 'Software Engineer & Full-Stack Architect',
     responsibilities: [

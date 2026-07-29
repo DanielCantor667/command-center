@@ -20,7 +20,7 @@ export function RelatedProjects({ project, onSelect }: RelatedProjectsProps) {
   return (
     <Stack direction="vertical" gap="sm">
       <Typography as="h3" variant="heading-m" color="primary">
-        Related Projects
+        Proyectos relacionados
       </Typography>
       <Stack direction="vertical" gap="md">
         {related.map((relatedProject) => (

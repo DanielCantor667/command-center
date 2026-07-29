@@ -16,23 +16,35 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       </Typography>
       <Stack direction="horizontal" gap="md" wrap>
         <Typography as="span" variant="body-small" color="muted">
-          Status: {project.status}
+          Estado: {project.status}
         </Typography>
         <Typography as="span" variant="body-small" color="muted">
-          Role: {project.role.title}
+          Rol: {project.role.title}
         </Typography>
         <Typography as="span" variant="body-small" color="muted">
-          Started: {project.startedAt}
+          Inicio: {project.startedAt}
         </Typography>
         {project.completedAt && (
           <Typography as="span" variant="body-small" color="muted">
-            Completed: {project.completedAt}
+            Completado: {project.completedAt}
           </Typography>
         )}
         <Typography as="span" variant="body-small" color="muted">
-          Ownership: {project.ownership.type}
+          Propiedad: {project.ownership.type}
         </Typography>
       </Stack>
+      {(project.links.repository || project.links.live || project.links.documentation) && (
+        <Stack direction="horizontal" gap="sm" wrap>
+          {project.links.repository && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.repository} target="_blank" rel="noreferrer">Repositorio ↗</a>}
+          {project.links.live && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.live} target="_blank" rel="noreferrer">Ver proyecto ↗</a>}
+          {project.links.documentation && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.documentation} target="_blank" rel="noreferrer">Documentación ↗</a>}
+        </Stack>
+      )}
+      {!project.links.repository && !project.links.live && !project.links.documentation && (
+        <Typography as="p" variant="body-small" color="muted">
+          Caso de estudio documentado. Los enlaces públicos se comparten cuando el proyecto y sus permisos lo permiten.
+        </Typography>
+      )}
     </Stack>
   );
 }

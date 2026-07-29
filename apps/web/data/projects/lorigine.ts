@@ -232,14 +232,11 @@ export const lorigine: Project = {
     contributors: 1,
     durationWeeks: null,
     modules: 9, // routes: home, productos, productos/[slug], ciencia, academia, nosotros, distribuidores, blog, protocolos
-    tests: null, // TODO: no test files found in repository
-    coverage: null, // TODO: coverage not measured
+    tests: null,
+    coverage: null,
   },
   media: [],
   links: {
-    // TODO: repository URL — not yet linked to central monorepo
-    // TODO: live URL — when deployed
-    // TODO: documentation URL — when published
   },
   role: {
     title: 'Software Engineer & Product Owner',

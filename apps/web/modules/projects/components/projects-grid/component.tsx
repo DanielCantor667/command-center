@@ -26,7 +26,7 @@ export function ProjectsGrid({ onSelect }: ProjectsGridProps) {
     <>
       <Divider />
       <Typography as="h2" variant="heading-l" color="primary">
-        Projects
+        Proyectos
       </Typography>
       <Grid columns={{ base: 1, tablet: 2, laptop: 3 }} gap="md">
         {sortedProjects.map((project) => (

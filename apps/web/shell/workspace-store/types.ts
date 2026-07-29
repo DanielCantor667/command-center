@@ -14,14 +14,14 @@ export interface WorkspaceModuleDefinition {
 }
 
 export const WORKSPACE_MODULES: readonly WorkspaceModuleDefinition[] = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'profile', label: 'Profile' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'dashboard', label: 'Panel de control' },
+  { id: 'profile', label: 'Perfil' },
+  { id: 'projects', label: 'Proyectos' },
   { id: 'mission', label: 'Mission Log' },
   { id: 'analytics', label: 'Analytics' },
-  { id: 'capabilities', label: 'Capabilities' },
-  { id: 'lab', label: 'Lab' },
-  { id: 'communication', label: 'Communication' },
+  { id: 'capabilities', label: 'Capacidades' },
+  { id: 'lab', label: 'Lab 3D' },
+  { id: 'communication', label: 'Contacto' },
 ];
 
 export interface WorkspaceState {

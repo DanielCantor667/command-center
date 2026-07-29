@@ -17,24 +17,24 @@ describe('DashboardModule', () => {
     render(<DashboardModule />);
 
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
-    expect(screen.getByText('Quick Stats')).toBeInTheDocument();
-    expect(screen.getByText('Current Focus')).toBeInTheDocument();
-    expect(screen.getByText('Recent Activity')).toBeInTheDocument();
-    expect(screen.getByText('Quick Navigation')).toBeInTheDocument();
-    expect(screen.getByText('System Status')).toBeInTheDocument();
+    expect(screen.getByText('Métricas verificables')).toBeInTheDocument();
+    expect(screen.getByText('Foco actual')).toBeInTheDocument();
+    expect(screen.getByText('Actividad reciente')).toBeInTheDocument();
+    expect(screen.getByText('Navegación rápida')).toBeInTheDocument();
+    expect(screen.getByText('Estado del sistema')).toBeInTheDocument();
   });
 
   it('navigates via the Hero CTA using the workspace store', () => {
     render(<DashboardModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'View Projects' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Ver proyectos' }));
     expect(useWorkspaceStore.getState().currentModule).toBe('projects');
   });
 
   it('navigates via a Quick Navigation shortcut using the workspace store', () => {
     render(<DashboardModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Lab' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Lab 3D' }));
     expect(useWorkspaceStore.getState().currentModule).toBe('lab');
   });
 

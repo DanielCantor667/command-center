@@ -19,15 +19,15 @@ describe('Hero', () => {
     expect(screen.getByText('Jane Doe')).toBeInTheDocument();
     expect(screen.getByText('Software Engineer')).toBeInTheDocument();
     expect(screen.getByText('Building things.')).toBeInTheDocument();
-    expect(screen.getByText('Status: In Development')).toBeInTheDocument();
-    expect(screen.getByText('Availability: Available')).toBeInTheDocument();
+    expect(screen.getByText('Estado: In Development')).toBeInTheDocument();
+    expect(screen.getByText('Disponibilidad: Available')).toBeInTheDocument();
   });
 
   it('calls onCtaClick when the CTA is clicked', () => {
     const onCtaClick = vi.fn();
     render(<Hero {...props} onCtaClick={onCtaClick} />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'View Projects' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Ver proyectos' }));
     expect(onCtaClick).toHaveBeenCalledTimes(1);
   });
 

@@ -5,7 +5,7 @@ export function SystemStatus({ items }: SystemStatusProps) {
   return (
     <Panel variant="outlined" padding="md" className="command-dashboard-status">
       <Typography as="h2" variant="heading-m" color="primary">
-        System Status
+        Estado del sistema
       </Typography>
       <Stack direction="horizontal" gap="md" align="center" wrap>
         {items.map((item) => (

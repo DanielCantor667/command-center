@@ -28,10 +28,10 @@ export function Workspace({ className, ...rest }: WorkspaceProps) {
             COMMAND CENTER
           </Typography>
           <Typography variant="body" color="secondary">
-            System Ready
+            Explora el sistema de ingeniería
           </Typography>
           <Typography variant="body-small" color="muted">
-            Waiting for Modules...
+            Selecciona un módulo para continuar.
           </Typography>
         </Stack>
       )}

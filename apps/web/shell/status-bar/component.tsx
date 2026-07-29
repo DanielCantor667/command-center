@@ -2,12 +2,11 @@ import { Stack, Surface, Typography } from '@command-center/ui';
 import type { StatusBarProps } from './types';
 
 const STATUS_ITEMS = [
-  { label: 'Version', value: 'v0.1.0-dev' },
-  { label: 'Theme', value: 'System' },
-  { label: 'Connection', value: 'Online' },
-  { label: 'Branch', value: 'main' },
-  { label: 'Build', value: 'Passing' },
-  { label: 'FPS', value: '60' },
+  { label: 'Portfolio', value: 'Público' },
+  { label: 'Sistema', value: 'Documentado' },
+  { label: 'Evidencia', value: 'Trazable' },
+  { label: 'Base', value: 'Bogotá, Colombia' },
+  { label: 'Contacto', value: 'LinkedIn + GitHub' },
 ] as const;
 
 export function StatusBar({ className, ...rest }: StatusBarProps) {

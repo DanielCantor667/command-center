@@ -30,11 +30,11 @@ export function FeaturedProject({ project, onSelect }: FeaturedProjectProps) {
           {project.tagline}
         </Typography>
         <Typography as="span" variant="body-small" color="muted">
-          Status: {project.status}
+          Estado: {project.status}
         </Typography>
       </Stack>
       <Button variant="primary" onClick={onSelect}>
-        Open Project
+        Abrir proyecto
       </Button>
     </Stack>
   );

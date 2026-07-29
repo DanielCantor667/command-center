@@ -29,14 +29,14 @@ describe('ProjectsModule', () => {
     render(<ProjectsModule />);
 
     if (featuredProject) {
-      expect(screen.getByText(`Status: ${featuredProject.status}`)).toBeInTheDocument();
+      expect(screen.getByText(`Estado: ${featuredProject.status}`)).toBeInTheDocument();
     }
   });
 
-  it('renders Open Project button for featured project', () => {
+  it('renders the featured project action', () => {
     render(<ProjectsModule />);
 
-    expect(screen.getByRole('button', { name: 'Open Project' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Abrir proyecto' })).toBeInTheDocument();
   });
 
   it('renders all public projects in grid', () => {
@@ -59,15 +59,15 @@ describe('ProjectsModule', () => {
     ).toBeInTheDocument();
   });
 
-  it('opens project detail on Open Project click', () => {
+  it('opens project detail from the featured action', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject) {
       const taglines = screen.getAllByText(featuredProject.tagline);
       expect(taglines.length).toBeGreaterThanOrEqual(1);
-      expect(screen.getByText(`Role: ${featuredProject.role.title}`)).toBeInTheDocument();
+      expect(screen.getByText(`Rol: ${featuredProject.role.title}`)).toBeInTheDocument();
 
       if (featuredProject.engineeringDecisions.length > 0) {
         expect(screen.getByText('Engineering Decisions')).toBeInTheDocument();
@@ -84,16 +84,16 @@ describe('ProjectsModule', () => {
 
     const featured = featuredProject;
     if (featured) {
-      const card = screen.getByRole('button', { name: 'Open Project' });
+      const card = screen.getByRole('button', { name: 'Abrir proyecto' });
       fireEvent.click(card);
-      expect(screen.getByText(`Role: ${featured.role.title}`)).toBeInTheDocument();
+      expect(screen.getByText(`Rol: ${featured.role.title}`)).toBeInTheDocument();
     }
   });
 
   it('renders engineering decisions section', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject && featuredProject.engineeringDecisions.length > 0) {
       expect(screen.getByText('Engineering Decisions')).toBeInTheDocument();
@@ -108,7 +108,7 @@ describe('ProjectsModule', () => {
   it('renders lessons learned section', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject && featuredProject.lessonsLearned.length > 0) {
       expect(screen.getByText('Lessons Learned')).toBeInTheDocument();
@@ -122,7 +122,7 @@ describe('ProjectsModule', () => {
   it('renders tech stack section', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject && featuredProject.technologies.length > 0) {
       expect(screen.getByText('Tech Stack')).toBeInTheDocument();
@@ -132,7 +132,7 @@ describe('ProjectsModule', () => {
   it('renders architecture section', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject && featuredProject.architecture.length > 0) {
       expect(screen.getByText('Architecture')).toBeInTheDocument();
@@ -142,7 +142,7 @@ describe('ProjectsModule', () => {
   it('renders features section', () => {
     render(<ProjectsModule />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Open Project' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir proyecto' }));
 
     if (featuredProject && featuredProject.features.length > 0) {
       expect(screen.getByText('Features')).toBeInTheDocument();
@@ -153,7 +153,7 @@ describe('ProjectsModule', () => {
     render(<ProjectsModule />);
 
     const publicProjects = PROJECTS.filter((p) => p.public);
-    const projectSection = screen.getByRole('heading', { level: 2, name: 'Projects' });
+    const projectSection = screen.getByRole('heading', { level: 2, name: 'Proyectos' });
     expect(projectSection).toBeInTheDocument();
 
     for (const project of publicProjects) {
