@@ -32,7 +32,7 @@ describe('Workspace', () => {
     useWorkspaceStore.setState({ currentModule: 'profile' });
     render(<Workspace />);
 
-    expect(screen.getByText('PROFILE')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Daniel Cantor' })).toBeInTheDocument();
   });
 
   it('exposes a labelled main landmark', () => {

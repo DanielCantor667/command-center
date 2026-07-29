@@ -44,6 +44,7 @@ export function buildKnowledgeGraph(): KnowledgeGraph {
       label: project.name,
       metadata: {
         status: project.status,
+        public: project.public,
         featured: project.featured,
         tagline: project.tagline,
         summary: project.summary,

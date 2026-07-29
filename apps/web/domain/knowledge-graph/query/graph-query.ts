@@ -249,3 +249,13 @@ export function findMilestonesByProject(
   );
   return targetNodes(graph, edges);
 }
+
+/** Returns every relationship touching a node without exposing graph traversal to consumers. */
+export function findNodeConnections(
+  graph: KnowledgeGraph,
+  nodeId: string,
+): Edge[] {
+  return graph.edges.filter(
+    (edge) => edge.source === nodeId || edge.target === nodeId,
+  );
+}

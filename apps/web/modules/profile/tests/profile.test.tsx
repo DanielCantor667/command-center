@@ -3,10 +3,10 @@ import { describe, expect, it } from 'vitest';
 import { ProfileModule } from '../component';
 
 describe('ProfileModule', () => {
-  it('renders its title and description', () => {
+  it('renders the engineer profile and derived evidence', () => {
     render(<ProfileModule />);
 
-    expect(screen.getByText('PROFILE')).toBeInTheDocument();
-    expect(screen.getByText('Profile has no module yet.')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Daniel Cantor' })).toBeInTheDocument();
+    expect(screen.getByText('Huella verificable')).toBeInTheDocument();
   });
 });

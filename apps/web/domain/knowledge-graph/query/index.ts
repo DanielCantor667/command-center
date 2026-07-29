@@ -22,6 +22,7 @@ export {
   findCapabilitiesByProject,
   findMilestones,
   findMilestonesByProject,
+  findNodeConnections,
 } from './graph-query';
 
 export type { TechnologyUsage, NodeQuery } from './graph-query.types';

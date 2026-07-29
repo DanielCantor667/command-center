@@ -20,6 +20,6 @@ describe('ExperienceModule', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /01 Command Center/i }));
 
-    expect(onEnter).toHaveBeenCalledWith('projects');
+    expect(onEnter).toHaveBeenCalledWith('projects', 'command-center');
   });
 });

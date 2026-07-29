@@ -3,6 +3,8 @@ import type { WorkspaceState } from './types';
 
 export const useWorkspaceStore = create<WorkspaceState>((set) => ({
   currentModule: null,
+  selectedProjectId: null,
   setCurrentModule: (module) => set({ currentModule: module }),
-  resetWorkspace: () => set({ currentModule: null }),
+  setSelectedProjectId: (selectedProjectId) => set({ selectedProjectId }),
+  resetWorkspace: () => set({ currentModule: null, selectedProjectId: null }),
 }));

@@ -48,3 +48,24 @@ Este documento describe cómo se despliega Command Center a través de sus disti
 
 - Todo despliegue a producción se observa activamente durante la ventana posterior inmediata al cambio.
 - Se monitorean errores, rendimiento y disponibilidad; cualquier anomalía detiene la promoción de cambios adicionales hasta resolverse.
+## Release readiness
+
+## Current release contract
+
+The public entry point is the Next.js application in `apps/web`. The city experience is progressively enhanced: semantic content and the workspace remain available when WebGL is unavailable or disabled.
+
+## Environment
+
+Set server-only Supabase variables in the deployment provider's secret store. Never expose a database URL or service-role key through `NEXT_PUBLIC_*`; browser code may only use the public Supabase URL and anon key where required.
+
+## Verification before release
+
+1. `pnpm lint`
+2. `pnpm test`
+3. `pnpm build`
+4. Run `pnpm --filter @command-center/web render:worker` only with production-safe database credentials and a bounded job queue.
+5. Check the city at desktop and mobile widths, with reduced motion enabled and with WebGL disabled.
+
+## Hosting
+
+Vercel is the lowest-friction host for the current Next.js app. Configure the monorepo root, install with pnpm, build with `pnpm --filter @command-center/web build`, and start/render worker separately if render jobs are enabled. A production deployment is intentionally not created automatically: it requires the owner to select the hosting account, domain and production secrets.

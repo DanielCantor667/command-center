@@ -1,15 +1,23 @@
 'use client';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import { getEvidence } from '../../domain/evidence';
+import { getAnalytics } from '../../domain/analytics';
 import { KNOWLEDGE_GRAPH } from '../../domain/knowledge-graph';
+import { MILESTONES } from '../../data/mission-log';
 import { PROJECTS } from '../../data/projects';
 import type { WorkspaceModule } from '../../shell/workspace-store';
 import styles from './experience.module.css';
 
+const CityNavigator = dynamic(
+  () => import('./components/city-navigator').then((module) => module.CityNavigator),
+  { ssr: false },
+);
+
 interface ExperienceModuleProps {
-  onEnter: (module?: WorkspaceModule) => void;
+  onEnter: (module?: WorkspaceModule, projectId?: string) => void;
 }
 
 const navigation = [
@@ -30,16 +38,10 @@ const projectDistricts = [
   'academy',
 ] as const;
 
-const missionPhases = [
-  ['Foundation Engine', 'Arquitectura y sistema de diseño', 'Q1 2026'],
-  ['Knowledge Graph', 'Relaciones derivadas y queries', 'Q2 2026'],
-  ['3D Office Studio', 'Espacios versionados y Blender', 'Q3 2026'],
-  ['Analytics Engine', 'Inteligencia explicable', 'Ahora'],
-] as const;
-
 export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const evidence = useMemo(() => getEvidence(), []);
+  const analytics = useMemo(() => getAnalytics(), []);
   const topTechnologies = useMemo(
     () =>
       [...evidence.technologyExperiences]
@@ -52,9 +54,9 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
     edges: KNOWLEDGE_GRAPH.edges.length,
   };
 
-  const enter = (module?: WorkspaceModule) => {
+  const enter = (module?: WorkspaceModule, projectId?: string) => {
     setMenuOpen(false);
-    onEnter(module);
+    onEnter(module, projectId);
   };
 
   return (
@@ -99,6 +101,9 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
         />
         <div className={styles.heroVeil} />
         <div className={styles.cityGrid} aria-hidden="true" />
+        <div className={styles.cityNavigator}>
+          <CityNavigator onProjectSelect={(projectId) => enter('projects', projectId)} />
+        </div>
         <div className={styles.heroContent}>
           <p className={styles.sectionIndex}>01 · Engineering intelligence system</p>
           <h1>
@@ -119,6 +124,7 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
           <button className={styles.primaryAction} type="button" onClick={() => enter('dashboard')}>
             Entrar al Command Center <span aria-hidden="true">↗</span>
           </button>
+          <p className={styles.mapHint}>Mapa 3D: arrastra para orbitar · selecciona un distrito para abrir su proyecto</p>
         </div>
         <a className={styles.scrollCue} href="#projects">
           <span aria-hidden="true">↓</span> Desciende a la ciudad
@@ -131,7 +137,7 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
           src="/experience/project-archipelago.png"
           alt="Seis distritos tecnológicos flotantes conectados por rutas de energía"
           fill
-          sizes="100vw"
+          sizes="(max-width: 720px) 100vw, 96vw"
         />
         <div className={styles.worldOverlay} />
         <SectionHeading
@@ -146,7 +152,7 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
               key={project.id}
               className={`${styles.projectMarker} ${styles[projectDistricts[index] ?? 'command']}`}
               type="button"
-              onClick={() => enter('projects')}
+              onClick={() => enter('projects', project.id)}
             >
               <span className={styles.markerPulse} aria-hidden="true" />
               <span className={styles.projectNumber}>0{index + 1}</span>
@@ -222,13 +228,13 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
           </div>
           <div className={styles.orbitLine} aria-hidden="true" />
           <ol className={styles.missionList}>
-            {missionPhases.map(([title, description, date], index) => (
-              <li key={title}>
+            {MILESTONES.slice().reverse().map((milestone, index) => (
+              <li key={milestone.id}>
                 <span className={styles.missionPoint}>{String(index + 1).padStart(2, '0')}</span>
                 <div>
-                  <small>{date}</small>
-                  <strong>{title}</strong>
-                  <p>{description}</p>
+                  <small>{milestone.date}</small>
+                  <strong>{milestone.title}</strong>
+                  <p>{milestone.summary}</p>
                 </div>
               </li>
             ))}
@@ -263,8 +269,8 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
           </div>
           <div className={`${styles.floatPanel} ${styles.analyticsRight}`}>
             <small>Señales del conocimiento</small>
-            <p><strong>{evidence.statistics.architecturePatterns}</strong> patrones arquitectónicos</p>
-            <p><strong>{evidence.capabilities.length}</strong> capacidades derivadas</p>
+            <p><strong>{analytics.architecture.totalPatterns}</strong> patrones arquitectónicos</p>
+            <p><strong>{analytics.capabilities.totalCapabilities}</strong> capacidades derivadas</p>
             <p><strong>{graphStats.edges}</strong> conexiones navegables</p>
           </div>
           <div className={styles.analyticsMetrics}>
@@ -274,9 +280,9 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
             <Metric value={evidence.capabilities.length} label="Capacidades" />
           </div>
         </div>
-        <a className={styles.sectionAction} href="#evidence">
-          Seguir hacia la evidencia <span aria-hidden="true">↓</span>
-        </a>
+        <button className={styles.sectionAction} type="button" onClick={() => enter('analytics')}>
+          Abrir Analytics Command <span aria-hidden="true">↗</span>
+        </button>
       </section>
 
       <section id="evidence" className={`${styles.worldSection} ${styles.evidenceSection}`}>
