@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import { getEvidence } from '../../domain/evidence';
 import { getAnalytics } from '../../domain/analytics';
@@ -10,11 +9,7 @@ import { MILESTONES } from '../../data/mission-log';
 import { PROJECTS } from '../../data/projects';
 import type { WorkspaceModule } from '../../shell/workspace-store';
 import styles from './experience.module.css';
-
-const CityNavigator = dynamic(
-  () => import('./components/city-navigator').then((module) => module.CityNavigator),
-  { ssr: false },
-);
+import { CityNavigatorLoader } from './components/city-navigator-loader';
 
 interface ExperienceModuleProps {
   onEnter: (module?: WorkspaceModule, projectId?: string) => void;
@@ -102,7 +97,7 @@ export function ExperienceModule({ onEnter }: ExperienceModuleProps) {
         <div className={styles.heroVeil} />
         <div className={styles.cityGrid} aria-hidden="true" />
         <div className={styles.cityNavigator}>
-          <CityNavigator onProjectSelect={(projectId) => enter('projects', projectId)} />
+          <CityNavigatorLoader onProjectSelect={(projectId) => enter('projects', projectId)} />
         </div>
         <div className={styles.heroContent}>
           <p className={styles.sectionIndex}>01 · Engineering intelligence system</p>
