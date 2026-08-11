@@ -1,8 +1,8 @@
-# Sprint 1 — Claridad de producto y fuente de verdad
+# Sprint 1 — Product Clarity y fuente de verdad
 
 ## Estado
 
-Propuesto y aprobado para iniciar. Este documento define el producto antes de modificar su interfaz, datos o experiencia 3D.
+Propuesto y aprobado para iniciar. Esta es una fase de reinicio de producto: define el producto antes de modificar su interfaz, datos o experiencia 3D.
 
 ## Problema
 
@@ -60,18 +60,19 @@ Mission + Profile
 
 Este sprint elimina ambigüedad, no añade una nueva interfaz de ciudad ni cambia el pipeline 3D existente.
 
-1. Sustituir el roadmap heredado CRM por un roadmap de producto coherente con la visión aprobada.
-2. Alinear `PROJECT_CONTEXT.md`, `README.md` y los documentos de visión con la misma definición de Command Center.
-3. Documentar el contrato entre Experience, Projects, Knowledge/Evidence, Mission y Profile.
-4. Auditar los seis registros de `PROJECTS` contra un checklist de evidencia real:
+1. Crear y mantener un registro de referencias documentales que clasifique el legado como vigente, histórico, contradictorio o necesitado de actualización.
+2. Sustituir el roadmap heredado CRM por un roadmap de producto coherente con la visión aprobada.
+3. Alinear `PROJECT_CONTEXT.md`, `README.md` y los documentos de visión con la misma definición de Command Center.
+4. Documentar el contrato entre Experience, Projects, Knowledge/Evidence, Mission y Profile.
+5. Auditar los seis registros de `PROJECTS` contra un checklist de campos de evidencia real:
    - estado y visibilidad;
    - resumen y alcance;
    - tecnologías;
    - media permitida;
    - decisiones, retos y lecciones;
    - URL pública solo si existe y se puede verificar.
-5. Registrar huecos explícitamente. No se fabrican métricas, resultados, enlaces ni eventos de misión para llenar la interfaz.
-6. Definir los criterios de entrada para Sprint 2: evidencia de proyectos y recorrido de descubrimiento.
+6. Registrar huecos explícitamente. No se fabrican métricas, resultados, enlaces ni eventos de misión para llenar la interfaz.
+7. Definir los criterios de entrada para Sprint 2: evidencia de proyectos y recorrido de descubrimiento.
 
 ## Fuera de alcance
 
@@ -101,11 +102,12 @@ Este sprint elimina ambigüedad, no añade una nueva interfaz de ciudad ni cambi
 
 ## Criterios de aceptación del Sprint 1
 
-1. Ningún documento raíz presenta Command Center como CRM, plataforma de campañas, ventas o inventario.
-2. Existe un roadmap activo de cuatro sprints con objetivos y entregables verificables.
-3. Cada una de las seis entradas de `PROJECTS` tiene una evaluación escrita de completitud y huecos.
-4. La relación ciudad → Projects → Knowledge/Evidence está documentada sin duplicación de responsabilidades.
-5. Los cambios documentales no modifican el WIP de ciudad/Blender ni datos externos.
+1. Existe un registro de referencias que conserva el legado y señala las fuentes contradictorias o necesitadas de actualización.
+2. Ningún documento raíz presenta Command Center como CRM, plataforma de campañas, ventas o inventario.
+3. Existe un roadmap activo de cuatro sprints con objetivos y entregables verificables.
+4. Cada una de las seis entradas de `PROJECTS` tiene una evaluación escrita de completitud y huecos.
+5. La relación ciudad → Projects → Knowledge/Evidence está documentada sin duplicación de responsabilidades.
+6. Los cambios documentales no modifican el WIP de ciudad/Blender ni datos externos.
 
 ## Verificación
 
