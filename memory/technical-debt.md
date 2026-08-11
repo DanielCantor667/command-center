@@ -55,16 +55,18 @@ dependencias para garantizar una sola instancia de Three.js.
 
 Estado: Abierto.
 
-## Roadmap original y línea de producto 3D
+## Historial resuelto: roadmap original y línea de producto 3D
 
-Problema: `ROADMAP.md` conserva la secuencia CRM original, mientras el desarrollo activo produjo
-un sistema de oficinas 3D que no figura en esas fases.
+Problema histórico: `ROADMAP.md` conservaba una secuencia CRM original, mientras el desarrollo
+activo produjo un sistema de oficinas 3D que no figuraba en esas fases.
 
-Impacto: no existe una única fuente de verdad para priorización de producto.
+Impacto histórico: no existía una única fuente de verdad para priorización de producto.
 
 Prioridad: Alta
 
-Solución futura: decidir formalmente si la línea 3D reemplaza, precede o convive con CRM y publicar
-un roadmap unificado.
+Resolución: Product Clarity eliminó la ambigüedad. Command Center es un sistema de evidencia
+explorable de la ingeniería de Daniel; la ciudad 3D es una puerta de descubrimiento y el workspace
+aporta profundidad sobre la misma evidencia. CRM dejó de ser un roadmap activo. El contexto previo
+se conserva como historial en el registro de referencias documentales.
 
-Estado: Abierto — requiere decisión de producto.
+Estado: Resuelto — la dirección activa y el roadmap unificado están documentados en Product Clarity.
