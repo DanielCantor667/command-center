@@ -16,6 +16,10 @@ Qué cambió y por qué. Dos o tres líneas como máximo.
 
 ---
 
+## 2026-08-11 — Product Clarity documental
+
+Product Clarity alineó la documentación raíz y el roadmap con la definición activa de Command Center como sistema de evidencia explorable de la ingeniería de Daniel. No cambió UI, datos ni funcionalidad.
+
 ## 2026-07-01 — Fundación del repositorio
 
 Se estableció la estructura inicial del monorepo (apps, packages, docs, specs, decisions, memory, prompts, benchmarks, scripts, tools) y la documentación base del proyecto (CLAUDE.md, CONSTITUTION.md, ROADMAP.md).

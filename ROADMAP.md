@@ -1,173 +1,120 @@
 # Roadmap
 
-Este documento describe la trayectoria funcional prevista para Command Center, organizada en fases. No incluye fechas: el orden de las fases refleja dependencias y prioridad, no un calendario.
+Este roadmap define la dirección activa de Command Center como sistema de evidencia explorable de la ingeniería de Daniel. No incluye fechas: el orden expresa dependencias y prioridad. El contexto documental anterior se conserva en el [registro histórico de referencias](docs/product/documentation-reference-register.md).
 
-> Nota de estado (2026-07-24): este roadmap inicial describe la línea CRM original, pero el
-> repositorio también contiene una línea de producto 3D activa que ya superó el estado de
-> prototipo. Su estado está documentado en `docs/engineering/3d-office-system.md` y su siguiente
-> fase propuesta en `docs/04-sprints/SPRINT-0.7-SCENE-PROJECTS.md`. Antes de priorizar Phase 1
-> Authentication o retomar CRM, producto debe decidir si ambas líneas conviven o si el sistema de
-> oficinas 3D reemplaza el roadmap original.
+## Sprint 1 — Product Clarity
 
----
+### Objetivo
 
-## Phase 0 — Foundation
+Establecer una definición única de producto y una fuente de verdad antes de modificar interfaz, datos o experiencia 3D.
 
-### Estado
+### Alcance
 
-Completado.
+- Alinear la documentación raíz con la definición activa.
+- Mantener el registro de referencias del legado y clasificar sus contradicciones.
+- Documentar el contrato entre Experience, Projects, Knowledge/Evidence, Mission y Profile.
+- Auditar los seis registros de `PROJECTS` y señalar huecos sin fabricar información.
 
-### Objetivos
+### Entregable verificable
 
-Establecer la base técnica y organizativa del repositorio antes de construir funcionalidades de producto.
+Documentación raíz alineada, registro de referencias y auditoría escrita de los seis proyectos.
 
-### Entregables
+### Criterios de aceptación
 
-- Estructura del monorepo (apps, packages, docs, specs, decisions, memory, prompts).
-- Documentación base de ingeniería y arquitectura.
-- Convenciones de código y de proyecto definidas.
-- Herramientas de desarrollo configuradas (Turborepo, linting, formato).
+- Ningún documento raíz presenta una dirección de producto operativa descartada.
+- `PROJECTS` conserva la fuente de verdad de cada dossier.
+- La relación ciudad → Projects → Knowledge/Evidence está documentada sin duplicar responsabilidades.
+- No se modifica el WIP de ciudad, Blender, datos externos ni funcionalidad.
 
----
+## Sprint 2 — Evidencia
 
-## Phase 1 — Authentication
+### Objetivo
 
-### Estado
+Volver confiable el dossier de cada proyecto mediante evidencia real y trazable.
 
-Pendiente.
+### Alcance
 
-### Objetivos
+- Completar y corregir los datos permitidos por proyecto: propósito, estado, stack, media, retos, decisiones y lecciones.
+- Validar enlaces públicos antes de mostrarlos.
+- Registrar como ausentes las métricas, resultados o recursos que no tengan fuente verificable.
 
-Permitir que los usuarios se registren, inicien sesión y mantengan sesiones seguras.
+### Entregable verificable
 
-### Entregables
+Los seis dossiers reflejan datos reales y cada enlace o recurso público tiene una verificación documentada.
 
-- Registro e inicio de sesión.
-- Recuperación de contraseña.
-- Gestión de sesiones.
-- Roles y permisos básicos.
+### Criterios de aceptación
 
----
+- Cada dato de dossier se puede rastrear a un proyecto o fuente existente.
+- `links.live` solo aparece cuando existe una URL verificable.
+- Las métricas inexistentes se representan como ausencia, no como valores estimados.
+- Los detalles confidenciales de proyectos privados se omiten sin sustituirlos por texto ficticio.
 
-## Phase 2 — CRM
+## Sprint 3 — Recorrido
 
-### Estado
+### Objetivo
 
-Pendiente.
+Convertir la evidencia en un recorrido entendible desde el descubrimiento hasta la profundidad técnica.
 
-### Objetivos
+### Alcance
 
-Gestionar contactos, clientes y las relaciones entre ellos.
+- Usar la ciudad como puerta de descubrimiento de proyectos y módulos.
+- Hacer que Projects conduzca a dossiers con evidencia relacionada.
+- Conectar Knowledge/Evidence, Mission y Profile sin repetir el contenido de los dossiers.
+- Mantener una alternativa accesible cuando WebGL no esté disponible.
 
-### Entregables
+### Entregable verificable
 
-- Gestión de contactos y clientes.
-- Historial de interacciones.
-- Segmentación básica.
+Un recorrido que permite descubrir un proyecto, abrir su dossier y seguir conexiones verificables hacia decisiones, tecnologías y aprendizajes.
 
----
+### Criterios de aceptación
 
-## Phase 3 — Campaigns
+- La ciudad 3D mejora el descubrimiento, pero no bloquea el acceso al contenido.
+- Cada superficie responde a su responsabilidad documentada.
+- Las conexiones presentadas remiten a evidencia existente.
+- No se duplica la fuente de datos entre superficies.
 
-### Estado
+## Sprint 4 — Calidad pública
 
-Pendiente.
+### Objetivo
 
-### Objetivos
+Preparar la experiencia pública para ser útil, accesible, rápida y medible.
 
-Permitir la creación y seguimiento de campañas dirigidas a los contactos del CRM.
+### Alcance
 
-### Entregables
+- Evaluar rendimiento, accesibilidad y SEO de las rutas públicas.
+- Añadir analítica y mecanismos de feedback cuando tengan una finalidad definida.
+- Corregir hallazgos priorizados sin degradar la integridad de la evidencia.
 
-- Creación de campañas.
-- Envío y programación.
-- Métricas de desempeño de campañas.
+### Entregable verificable
 
----
+Un informe de calidad pública con resultados medidos, hallazgos priorizados y cambios verificables en la experiencia.
 
-## Phase 4 — Sales
+### Criterios de aceptación
 
-### Estado
+- Las mediciones proceden de herramientas y recorridos reales.
+- Los flujos públicos clave cumplen los criterios de accesibilidad definidos.
+- La experiencia mantiene una ruta de descubrimiento y consulta sin depender de WebGL.
+- El feedback y la analítica no inventan ni sustituyen evidencia de proyecto.
 
-Pendiente.
+## Evolución continua
 
-### Objetivos
+### Objetivo
 
-Dar soporte al proceso comercial, desde oportunidad hasta cierre.
+Incorporar trabajo nuevo sin romper el modelo de evidencia ni la coherencia entre superficies.
 
-### Entregables
+### Alcance
 
-- Gestión de oportunidades.
-- Pipeline de ventas.
-- Reportes de ventas.
+- Registrar cada proyecto nuevo en la fuente de verdad antes de presentarlo.
+- Actualizar dossiers, conexiones y perfil a partir de evidencia comprobable.
+- Revisar el contrato de datos cuando cambien las necesidades reales de presentación.
 
----
+### Entregable verificable
 
-## Phase 5 — Inventory
+Cada proyecto nuevo cuenta con un dossier trazable, conexiones de evidencia y representación consistente en las superficies aplicables.
 
-### Estado
+### Criterios de aceptación
 
-Pendiente.
-
-### Objetivos
-
-Controlar el inventario de productos o recursos asociados a las ventas.
-
-### Entregables
-
-- Gestión de productos e inventario.
-- Control de existencias.
-- Alertas de stock.
-
----
-
-## Phase 6 — Analytics
-
-### Estado
-
-Pendiente.
-
-### Objetivos
-
-Consolidar métricas de las distintas áreas del producto en una vista analítica unificada.
-
-### Entregables
-
-- Dashboards de métricas clave.
-- Reportes exportables.
-- Indicadores por área (CRM, ventas, campañas, inventario).
-
----
-
-## Phase 7 — AI
-
-### Estado
-
-Pendiente.
-
-### Objetivos
-
-Incorporar capacidades de inteligencia artificial que asistan al usuario dentro del producto.
-
-### Entregables
-
-- Asistencia inteligente en tareas repetitivas.
-- Recomendaciones basadas en datos del producto.
-- Automatizaciones asistidas por IA.
-
----
-
-## Phase 8 — Mobile
-
-### Estado
-
-Pendiente.
-
-### Objetivos
-
-Extender el producto a una experiencia móvil.
-
-### Entregables
-
-- Aplicación móvil con las funcionalidades core del producto.
-- Paridad de experiencia con la versión web en los flujos principales.
+- No se publica información sin fuente verificable.
+- Las nuevas vistas consumen la fuente de verdad, sin duplicar datos.
+- Los cambios de dirección se documentan antes de convertirse en trabajo de producto.
+- La experiencia sigue siendo accesible cuando una mejora visual no está disponible.

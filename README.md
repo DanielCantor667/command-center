@@ -1,10 +1,19 @@
 # Command Center
 
-The Operating System of a Software Engineer.
+Un sistema de evidencia explorable de la ingeniería de Daniel.
+
+Command Center permite descubrir productos construidos por Daniel, las decisiones que los
+sustentan y las tecnologías, patrones y aprendizajes que se conectan entre ellos. La ciudad 3D
+es una puerta de descubrimiento visual; el workspace aporta profundidad y consulta sobre la
+misma evidencia.
+
+No es un CRM, una plataforma de campañas, ventas, inventario, ERP ni una plataforma operativa
+para proyectos de clientes. La definición activa y las responsabilidades de cada superficie se
+mantienen en la [especificación de Product Clarity](docs/superpowers/specs/2026-08-11-command-center-product-clarity-design.md).
 
 ## Status
 
-Sprint 0.0 — Repository Foundation.
+Sprint 1 — Product Clarity.
 
 ## Repository Philosophy
 
@@ -45,7 +54,8 @@ command-center/
 
 ## Roadmap
 
-See `ROADMAP.md`.
+Consulta [ROADMAP.md](ROADMAP.md). El contexto documental anterior se conserva en el
+[registro histórico de referencias](docs/product/documentation-reference-register.md).
 
 ## License
 

@@ -6,14 +6,19 @@ Este documento es el punto de entrada para cualquier IA o desarrollador nuevo en
 
 ## 1. ¿Qué es este proyecto?
 
-Command Center es "The Operating System of a Software Engineer": una plataforma que centraliza las operaciones de un negocio o equipo en un solo producto. Resuelve la fragmentación de herramientas dispersas (CRM, campañas, ventas, inventario, analítica) unificándolas bajo una misma arquitectura y experiencia.
+Command Center es un **sistema de evidencia explorable de la ingeniería de Daniel**. Permite que reclutadores, clientes técnicos y colegas descubran los productos que ha construido, entiendan sus decisiones de ingeniería y producto, y conecten tecnologías, patrones y aprendizajes entre proyectos.
+
+La ciudad 3D abre el descubrimiento visual y el workspace aporta profundidad y consulta. Ambas superficies comparten la misma evidencia: no duplican datos ni existen como decoración sin una pregunta de usuario que resolver.
+
+No es un CRM, una plataforma de campañas, ventas, inventario, ERP ni una plataforma operativa de proyectos de clientes. No administra la operación de L'Origine, 4U Studio, Kliniu ni otros proyectos.
 
 ---
 
 ## 2. Objetivos
 
-- Centralizar operaciones que hoy viven en herramientas separadas.
-- Automatizar procesos manuales y repetitivos.
+- Hacer comprensible el propósito, alcance y estado de los productos construidos por Daniel.
+- Mostrar decisiones, tecnologías, retos y lecciones con trazabilidad a proyectos reales.
+- Mantener una representación honesta: los datos son reales o se señala explícitamente su ausencia.
 - Construir sobre una arquitectura escalable, no sobre atajos temporales.
 - Ofrecer una experiencia moderna y consistente en todo el producto.
 - Mantener el código mantenible a largo plazo, no solo funcional hoy.
@@ -90,32 +95,11 @@ Changelog
 
 ## 8. Estado actual
 
-**Foundation**
-Estado: Completado
+**Sprint 1 — Product Clarity**
+Estado: En curso. Alinea la documentación y la fuente de verdad antes de cambiar interfaz, datos o experiencia 3D.
 
-**Authentication**
-Estado: Pendiente
-
-**CRM**
-Estado: Pendiente
-
-**Campaigns**
-Estado: Pendiente
-
-**Sales**
-Estado: Pendiente
-
-**Inventory**
-Estado: Pendiente
-
-**Analytics**
-Estado: Pendiente
-
-**AI**
-Estado: Pendiente
-
-**Mobile**
-Estado: Pendiente
+Los siguientes pasos activos se describen en `ROADMAP.md`. El contexto anterior se conserva en el
+[registro histórico de referencias](docs/product/documentation-reference-register.md), sin definir la dirección actual.
 
 ---
 
