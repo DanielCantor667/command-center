@@ -1,8 +1,8 @@
-# Sprint 1 — Claridad de producto y fuente de verdad
+# Sprint 1 — Product Clarity y fuente de verdad
 
 ## Estado
 
-Propuesto y aprobado para iniciar. Este documento define el producto antes de modificar su interfaz, datos o experiencia 3D.
+Aprobado para iniciar como una nueva fase de producto. No renombra ni borra los sprints históricos de contenido o dominios; establece el norte que los organiza antes de modificar interfaz, datos o experiencia 3D.
 
 ## Problema
 
@@ -22,6 +22,8 @@ Su objetivo es que un reclutador, cliente técnico o colega pueda responder tres
 1. ¿Qué productos ha construido Daniel y qué propósito cumplen?
 2. ¿Cómo toma decisiones de ingeniería y producto?
 3. ¿Qué tecnologías, patrones y aprendizajes se repiten o se conectan entre proyectos?
+
+El portfolio no intenta demostrar que Daniel es bueno mediante claims. Expone decisiones, contexto y evidencia para que el visitante llegue a esa conclusión.
 
 La ciudad 3D es una puerta de descubrimiento visual. El workspace aporta profundidad y consulta. Ninguna superficie debe duplicar datos ni convertirse en decoración sin una pregunta de usuario que resolver.
 
@@ -56,22 +58,25 @@ Mission + Profile
 - **Knowledge y Evidence:** probar conexiones entre proyectos sin repetir el dossier editorial.
 - **Mission y Profile:** dar contexto profesional; nunca reemplazar evidencia concreta por claims.
 
+Cada superficie consume la fuente de verdad; ninguna genera su propia versión de proyectos, métricas, hitos o credenciales.
+
 ## Alcance del Sprint 1
 
 Este sprint elimina ambigüedad, no añade una nueva interfaz de ciudad ni cambia el pipeline 3D existente.
 
-1. Sustituir el roadmap heredado CRM por un roadmap de producto coherente con la visión aprobada.
-2. Alinear `PROJECT_CONTEXT.md`, `README.md` y los documentos de visión con la misma definición de Command Center.
-3. Documentar el contrato entre Experience, Projects, Knowledge/Evidence, Mission y Profile.
-4. Auditar los seis registros de `PROJECTS` contra un checklist de evidencia real:
+1. Clasificar cada referencia documental a CRM, campañas, ventas, inventario, operaciones, ERP o plataforma de negocio como vigente, histórica, contradictoria o necesita actualización. No se borra historia sin justificación.
+2. Sustituir el roadmap heredado CRM por un roadmap de producto coherente con la visión aprobada.
+3. Alinear `PROJECT_CONTEXT.md`, `README.md` y los documentos de visión con la misma definición de Command Center.
+4. Documentar el contrato entre Experience, Projects, Knowledge/Evidence, Mission y Profile, incluidos los datos que cada superficie no puede generar.
+5. Auditar los seis registros de `PROJECTS` contra un checklist de evidencia real usando exclusivamente repositorios, README, RFC, ADR, specs, changelog, `package.json`, código, historial Git y documentación existente:
    - estado y visibilidad;
    - resumen y alcance;
    - tecnologías;
    - media permitida;
    - decisiones, retos y lecciones;
    - URL pública solo si existe y se puede verificar.
-5. Registrar huecos explícitamente. No se fabrican métricas, resultados, enlaces ni eventos de misión para llenar la interfaz.
-6. Definir los criterios de entrada para Sprint 2: evidencia de proyectos y recorrido de descubrimiento.
+6. Registrar huecos explícitamente como `MISSING` o `PARTIAL`. No se fabrican métricas, resultados, enlaces ni eventos de misión para llenar la interfaz.
+7. Definir los criterios de entrada para Sprint 2: evidencia de proyectos y recorrido de descubrimiento.
 
 ## Fuera de alcance
 
@@ -85,7 +90,7 @@ Este sprint elimina ambigüedad, no añade una nueva interfaz de ciudad ni cambi
 
 | Fase | Objetivo | Entregable verificable |
 | --- | --- | --- |
-| Sprint 1 — Claridad | Un solo norte y una sola fuente de verdad | Documentación alineada + auditoría de datos de seis proyectos |
+| Sprint 1 — Product Clarity | Un solo norte y una sola fuente de verdad | Documentación alineada + auditoría de datos de seis proyectos |
 | Sprint 2 — Evidencia | Volver cada dossier confiable | Datos reales, media y enlaces validados por proyecto |
 | Sprint 3 — Recorrido | Convertir la evidencia en una experiencia entendible | Ciudad como discovery y workspace como profundidad, con fallback accesible |
 | Sprint 4 — Calidad pública | Publicar y aprender | Rendimiento, accesibilidad, SEO, analítica y feedback de usuarios |
@@ -103,9 +108,10 @@ Este sprint elimina ambigüedad, no añade una nueva interfaz de ciudad ni cambi
 
 1. Ningún documento raíz presenta Command Center como CRM, plataforma de campañas, ventas o inventario.
 2. Existe un roadmap activo de cuatro sprints con objetivos y entregables verificables.
-3. Cada una de las seis entradas de `PROJECTS` tiene una evaluación escrita de completitud y huecos.
-4. La relación ciudad → Projects → Knowledge/Evidence está documentada sin duplicación de responsabilidades.
-5. Los cambios documentales no modifican el WIP de ciudad/Blender ni datos externos.
+3. Existe un registro de clasificación de referencias históricas y contradictorias; conserva trazabilidad de por qué no se borraron.
+4. Cada una de las seis entradas de `PROJECTS` tiene una evaluación escrita de completitud y huecos basada únicamente en evidencia del repositorio.
+5. La relación ciudad → Projects → Knowledge/Evidence está documentada sin duplicación de responsabilidades y especifica datos prohibidos para cada superficie.
+6. Los cambios documentales no modifican el WIP de ciudad/Blender ni datos externos.
 
 ## Verificación
 

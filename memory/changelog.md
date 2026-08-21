@@ -51,3 +51,19 @@ El Lab se convirtió en una experiencia de producto con jerarquía visual, edito
 ## 2026-07-24 — Command Center se convierte en una ciudad de conocimiento
 
 La entrada principal pasó de un shell directo a una experiencia narrativa continua: ciudad central, distritos de proyectos, grafo, misión, analytics, evidencia y perfil. Los módulos existentes siguen disponibles mediante `ExperienceGate` y las métricas visuales se derivan de los dominios reales.
+
+## 2026-07-30 — Primer landmark reproducible de Engineering City
+
+Command Center obtuvo una escena maestra de Blender, renders con presets, GLB LOD0/LOD1 propios y un manifiesto web validado por presupuesto, procedencia y licencia. El mapa deja de depender exclusivamente de geometría genérica y mantiene placeholders explícitos para los cinco distritos pendientes.
+
+## 2026-07-30 — Trío inicial de Engineering City
+
+Kliniu Logistics Hub y Vevi Media Hub se sumaron como landmarks Blender propios, con concepto documentado, LOD0/LOD1 y contrato público validado. El navegador ahora carga tres distritos reales, incorpora señales de movimiento de baja intensidad y conserva fallback/reduced motion para el resto de la experiencia.
+
+## 2026-07-30 — Engineering City v1 completa sus seis familias arquitectónicas
+
+Intranet ESS, L'Origine y Academy completan los seis landmarks propios con GLB LOD0/LOD1, conceptos y fuentes Blender editables. El mapa abre con LOD1 y eleva a LOD0 solo al acercarse, mientras un validador mantiene la carga total, licencia y presupuestos dentro de contrato.
+
+## 2026-07-30 — Overview aéreo reproducible de la ciudad
+
+Se añadió una escena Blender independiente que compone los seis landmarks, vialidad procedural, atmósfera y cámara hero. El render permanece separado del fondo web hasta aprobar composición y generar derivados de publicación.

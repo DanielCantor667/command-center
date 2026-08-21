@@ -13,7 +13,9 @@
     "blender:validate": "python3 blender/validate_scene.py blender/scenes/starter-office.json apps/web/public/models",
     "blender:assets": "bash scripts/generate-blender-assets.sh",
     "blender:test": "bash scripts/test-blender-importer.sh",
-    "blender:render": "bash scripts/render-blender.sh"
+    "blender:render": "bash scripts/render-blender.sh",
+    "city:assets": "bash scripts/generate-engineering-city-assets.sh",
+    "city:assets:validate": "pnpm --filter @command-center/web city:assets:validate"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.2",

@@ -8,6 +8,7 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "render:worker": "node --env-file=.env scripts/process-render-jobs.mjs",
+    "city:assets:validate": "node scripts/validate-engineering-city-assets.mjs",
     "lint": "eslint .",
     "test": "vitest run"
   },

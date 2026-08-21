@@ -10,6 +10,10 @@ build/
 .turbo/
 *.tsbuildinfo
 apps/web/public/renders/
+blender/source/
+blender/output/
+*.blend1
+__pycache__/
 
 # Env
 .env
