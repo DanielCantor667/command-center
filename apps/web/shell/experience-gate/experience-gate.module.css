@@ -1,0 +1,15 @@
+.transition {
+  --accent: #28664f;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: #f4f5f1;
+  color: #242b29;
+  animation: curtain-in 420ms cubic-bezier(.2, 0, 0, 1) both;
+}
+.transition div { display: grid; gap: 12px; text-align: center; animation: label-in 420ms 70ms cubic-bezier(.2, 0, 0, 1) both; }
+.transition span { color: var(--accent); font-size: 12px; }
+.transition strong { font-size: clamp(42px, 8vw, 86px); font-weight: 500; letter-spacing: -.06em; }
+@keyframes curtain-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes label-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .transition, .transition div { animation: none; } }

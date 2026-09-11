@@ -270,14 +270,7 @@ export const intranetEss: Project = {
       category: LESSON_CATEGORY.Process,
     },
   ],
-  metrics: {
-    commits: 51,
-    contributors: 1,
-    durationWeeks: 1,
-    modules: 7,
-    tests: 58,
-    coverage: null,
-  },
+  metrics: { commits: null, contributors: null, durationWeeks: null, modules: null, tests: null, coverage: null },
   media: [],
   links: {
     repository: 'https://github.com/DanielCantor667/intranet',

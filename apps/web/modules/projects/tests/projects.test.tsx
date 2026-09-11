@@ -6,7 +6,7 @@ import { useWorkspaceStore } from '../../../shell/workspace-store';
 import { ProjectsModule } from '../component';
 
 beforeEach(() => {
-  useWorkspaceStore.setState({ currentModule: 'projects' });
+  useWorkspaceStore.setState({ currentModule: 'projects', selectedProjectId: null });
 });
 
 afterEach(() => {
@@ -16,6 +16,18 @@ afterEach(() => {
 const featuredProject = PROJECTS.find((p) => p.featured);
 
 describe('ProjectsModule', () => {
+  it('reviews published cases in order and opens the contact module', () => {
+    const cases = PROJECTS.filter((project) => project.public && project.links.live);
+    useWorkspaceStore.setState({ selectedProjectId: cases[0]!.id });
+    render(<ProjectsModule />);
+    expect(screen.getByRole('heading', { name: cases[0]!.name })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Siguiente' }));
+    expect(screen.getByRole('heading', { name: cases[1]!.name })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Anterior' }));
+    expect(screen.getByRole('link', { name: 'Visitar sitio ↗' })).toHaveAttribute('href', cases[0]!.links.live);
+    fireEvent.click(screen.getByRole('button', { name: 'Contactar a Daniel' }));
+    expect(useWorkspaceStore.getState().currentModule).toBe('communication');
+  });
   it('renders featured project name as h1', () => {
     render(<ProjectsModule />);
 

@@ -1,361 +1,204 @@
 'use client';
 
-import { Clone, OrbitControls, Sparkles, useGLTF } from '@react-three/drei';
-import { Canvas, useFrame } from '@react-three/fiber';
-import type { ThreeEvent } from '@react-three/fiber';
-import { Component, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Vector3, type Group, type MeshBasicMaterial } from 'three';
+import { Html, OrbitControls, useGLTF } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Component, Suspense, useEffect, useMemo, useRef, useState, type ComponentRef, type ReactNode } from 'react';
+import { Group, Mesh, MeshStandardMaterial, Vector3, type Material } from 'three';
+import { PROJECTS } from '../../../data/projects';
 import { CITY_ASSETS, type CityDistrictAsset } from '../data/city-assets';
+import { LorigineDistrict } from './lorigine-district';
+import { AcademyDistrict } from './academy-district';
+import { DrokexDistrict } from './drokex-district';
+import { KliniuDistrict } from './kliniu-district';
+import styles from '../experience.module.css';
 
-interface LandmarkLoadBoundaryProps {
-  readonly assetPath: string;
-  readonly children: ReactNode;
-  readonly fallback: ReactNode;
+export interface CityNavigatorProps {
+  selectedProjectId: string;
+  onProjectSelect: (id: string) => void;
+  viewRevision: number;
+  reducedMotion?: boolean;
+  detail?: boolean;
 }
 
-interface LandmarkLoadBoundaryState {
-  readonly hasError: boolean;
+const sceneColor = '#e5e7e2';
+const stoneColor = '#c6cec1';
+
+class LandmarkBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? this.props.fallback : this.props.children; }
 }
 
-class LandmarkLoadBoundary extends Component<LandmarkLoadBoundaryProps, LandmarkLoadBoundaryState> {
-  state: LandmarkLoadBoundaryState = { hasError: false };
-
-  static getDerivedStateFromError(): LandmarkLoadBoundaryState {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error) {
-    console.error(
-      `Unable to load city landmark at ${this.props.assetPath}; using procedural fallback.`,
-      error,
-    );
-  }
-
-  componentDidUpdate(previousProps: LandmarkLoadBoundaryProps) {
-    if (previousProps.assetPath !== this.props.assetPath && this.state.hasError) {
-      this.setState({ hasError: false });
-    }
-  }
-
-  render() {
-    return this.state.hasError ? this.props.fallback : this.props.children;
-  }
+/** View-only materials. The cached GLTF, its materials and its geometry stay untouched. */
+function Model({ asset }: { asset: CityDistrictAsset }) {
+  const { scene } = useGLTF(asset.lod1Path ?? asset.lod0Path!);
+  const model = useMemo(() => {
+    const object = scene.clone(true);
+    const materials = new Map<Material, MeshStandardMaterial>();
+    const materialFor = (source: Material) => {
+      const cached = materials.get(source);
+      if (cached) return cached;
+      const name = source.name;
+      const color = /Glass/i.test(name) ? '#6e827b'
+        : /Energy|Halo/i.test(name) ? '#879f85'
+        : /Steel/i.test(name) ? '#859187'
+        : /Asphalt/i.test(name) ? '#bac2b7'
+        : /Panel/i.test(name) ? '#dce0d4' : '#c7cdbc';
+      const material = new MeshStandardMaterial({ color, roughness: /Glass/i.test(name) ? 0.32 : 0.85, metalness: /Glass/i.test(name) ? 0.2 : 0.04 });
+      materials.set(source, material);
+      return material;
+    };
+    object.traverse((node) => {
+      if (!(node instanceof Mesh)) return;
+      node.material = Array.isArray(node.material) ? node.material.map(materialFor) : materialFor(node.material);
+      node.castShadow = true;
+      node.receiveShadow = true;
+    });
+    return { object, materials };
+  }, [scene]);
+  useEffect(() => () => { model.materials.forEach((material) => material.dispose()); }, [model]);
+  return <primitive object={model.object} scale={asset.transform?.scale} rotation={asset.transform?.rotation} dispose={null} />;
 }
 
-function DistrictCrown({
-  emissive,
-  scale,
-}: Pick<CityDistrictAsset, 'scale'> & { emissive: string }) {
-  return (
-    <mesh
-      position={[0, 0.5, 0]}
-      scale={[scale[0] * 0.52, 0.75, scale[2] * 0.52]}
-      castShadow
-      receiveShadow
-    >
-      <octahedronGeometry args={[0.55, 0]} />
-      <meshStandardMaterial
-        color="#0a2c20"
-        emissive={emissive}
-        emissiveIntensity={1.4}
-        metalness={0.55}
-        roughness={0.12}
-      />
-    </mesh>
-  );
-}
-
-function CommandCenterFallback({ emissive }: { emissive: string }) {
+function Pavilion({ tall = false }: { tall?: boolean }) {
   return (
     <group>
-      <mesh position={[0, 0.66, 0]} castShadow receiveShadow>
-        <cylinderGeometry args={[0.34, 0.5, 0.96, 6]} />
-        <meshStandardMaterial
-          color="#0a2c20"
-          emissive={emissive}
-          emissiveIntensity={0.82}
-          metalness={0.72}
-          roughness={0.22}
-        />
-      </mesh>
-      {[0.38, 0.69, 0.98].map((y) => (
-        <mesh key={y} position={[0, y, 0]} castShadow receiveShadow>
-          <torusGeometry args={[0.5, 0.026, 8, 6]} />
-          <meshStandardMaterial
-            color="#123d2c"
-            emissive={emissive}
-            emissiveIntensity={1.15}
-            metalness={0.7}
-            roughness={0.18}
-          />
-        </mesh>
-      ))}
-      <mesh position={[0, 1.23, 0]} castShadow receiveShadow>
-        <coneGeometry args={[0.34, 0.22, 6]} />
-        <meshStandardMaterial
-          color="#0b251b"
-          emissive={emissive}
-          emissiveIntensity={1.05}
-          metalness={0.68}
-          roughness={0.2}
-        />
-      </mesh>
+      <mesh position={[0, 0.04, 0]} receiveShadow><boxGeometry args={[1.5, .08, 1.35]} /><meshStandardMaterial color={stoneColor} roughness={.9} /></mesh>
+      {[-.43, .43].map((x) => <mesh key={x} position={[x, .62, 0]} castShadow receiveShadow><boxGeometry args={[.45, tall ? 1.8 : 1.12, .85]} /><meshStandardMaterial color="#b6c1b0" roughness={.8} /></mesh>)}
+      <mesh position={[0, tall ? 1.5 : 1.1, 0]} castShadow><boxGeometry args={[1.36, .16, .95]} /><meshStandardMaterial color="#7d9081" roughness={.7} /></mesh>
+      {[.32, .61, .9].map((y) => <mesh key={y} position={[0, y, .44]}><boxGeometry args={[1.24, .045, .018]} /><meshStandardMaterial color="#6e827b" roughness={.4} /></mesh>)}
     </group>
   );
 }
 
-function LoadedLandmarkModel({
-  modelPath,
-  transform,
-}: {
-  modelPath: string;
-  transform: NonNullable<CityDistrictAsset['transform']>;
-}) {
-  const gltf = useGLTF(modelPath);
-
+function District({ asset, selected, onSelect, reducedMotion }: { reducedMotion?: boolean; asset: CityDistrictAsset; selected: boolean; onSelect: (id: string) => void }) {
+  const [hovered, setHovered] = useState(false);
+  const name = PROJECTS.find((project) => project.id === asset.projectId)?.name ?? asset.label;
+  const fallback = <Pavilion tall={asset.id === 'command-center'} />;
   return (
-    <Clone
-      object={gltf.scene}
-      position={transform.position}
-      rotation={transform.rotation}
-      scale={transform.scale}
-      castShadow
-      receiveShadow
-    />
+    <group position={[asset.position[0], 0, asset.position[2]]}>
+      <group
+        onClick={(event) => { if (event.delta > 5) return; event.stopPropagation(); onSelect(asset.projectId); }}
+        onPointerOver={(event) => { event.stopPropagation(); setHovered(true); }}
+        onPointerOut={() => setHovered(false)}
+      >
+        <mesh position={[0, -.055, 0]} receiveShadow>
+          <cylinderGeometry args={[1.18, 1.18, .06, 6]} />
+          <meshStandardMaterial color={selected ? '#a8bfa6' : hovered ? '#c7d5c1' : '#d6dccf'} roughness={.95} />
+        </mesh>
+        {asset.projectId === 'kliniu' ? <KliniuDistrict active={selected || hovered} reducedMotion={reducedMotion} /> : asset.projectId === '4ustudio-academy' ? <AcademyDistrict active={selected || hovered} reducedMotion={reducedMotion} /> : asset.projectId === 'lorigine' ? <LorigineDistrict active={selected || hovered} reducedMotion={reducedMotion} /> : asset.projectId === 'drokex' ? <DrokexDistrict active={selected || hovered} reducedMotion={reducedMotion} /> : asset.lod0Path ? <LandmarkBoundary fallback={fallback}><Suspense fallback={fallback}><Model asset={asset} /></Suspense></LandmarkBoundary> : fallback}
+      </group>
+      <Html position={[0, .06, 1.02]} center zIndexRange={[15, 0]}>
+        <button className={styles.mapLabel} type="button" aria-label={`Seleccionar edificio ${name}`} aria-pressed={selected} onClick={(event) => { event.stopPropagation(); onSelect(asset.projectId); }}>{name}</button>
+      </Html>
+    </group>
   );
 }
 
-// Keep the wide hero light: all districts start at LOD1 and only request the
-// detail mesh when the visitor deliberately moves close. The hysteresis keeps
-// the model from thrashing while OrbitControls settles around the threshold.
-const LOD0_ENTER_DISTANCE = 8.25;
-const LOD1_EXIT_DISTANCE = 9.25;
-
-function useDistrictModelPath(asset: CityDistrictAsset) {
-  const [activeLod, setActiveLod] = useState<0 | 1>(() => (asset.lod1Path ? 1 : 0));
-  const activeLodRef = useRef(activeLod);
-  const landmarkPosition = useMemo(
-    () => new Vector3(
-      asset.position[0] + (asset.transform?.position[0] ?? 0),
-      asset.position[1] + (asset.transform?.position[1] ?? 0),
-      asset.position[2] + (asset.transform?.position[2] ?? 0),
-    ),
-    [asset.position, asset.transform?.position],
+function SiteModel() {
+  const trees = [[-3.6, -2.5], [-3.5, -2.1], [-3.4, -1.7], [3.45, .1], [3.5, .5], [3.55, .9], [-1.3, 3.45], [-.95, 3.5]];
+  return (
+    <group>
+      <mesh position={[0, -.23, 0]} receiveShadow castShadow><boxGeometry args={[9, .3, 8.8]} /><meshStandardMaterial color="#d2d8ca" roughness={1} /></mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -.39, 0]} receiveShadow><planeGeometry args={[200, 200]} /><meshStandardMaterial color={sceneColor} roughness={1} /></mesh>
+      <mesh position={[0, -.072, 0]}><boxGeometry args={[.18, .008, 8.2]} /><meshStandardMaterial color="#e9ece2" /></mesh>
+      <mesh position={[0, -.071, 0]}><boxGeometry args={[8.2, .008, .18]} /><meshStandardMaterial color="#e9ece2" /></mesh>
+      {trees.map(([x, z], index) => <group key={index} position={[x!, 0, z!]}>
+        <mesh position={[0, .13, 0]} castShadow><cylinderGeometry args={[.018, .025, .27, 5]} /><meshStandardMaterial color="#8d9884" /></mesh>
+        <mesh position={[0, .34, 0]} castShadow><icosahedronGeometry args={[.15, 1]} /><meshStandardMaterial color="#8fa284" roughness={1} /></mesh>
+      </group>)}
+    </group>
   );
+}
+
+function CameraRig({ selectedProjectId, viewRevision, reducedMotion, detail }: Pick<CityNavigatorProps, 'selectedProjectId' | 'viewRevision' | 'reducedMotion' | 'detail'>) {
+  const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
+  const { camera, size, invalidate } = useThree();
+  const viewport = useRef(size);
+  viewport.current = size;
+  const moving = useRef(false);
+  const zoomFactor = useRef(1);
+  const targetZoom = useRef(1);
+  const initialized = useRef(false);
+  const previousRevision = useRef(viewRevision);
+  const destination = useMemo(() => ({ target: new Vector3(), position: new Vector3() }), []);
 
   useEffect(() => {
-    const nextLod = asset.lod1Path ? 1 : 0;
-    activeLodRef.current = nextLod;
-    setActiveLod(nextLod);
-  }, [asset.lod0Path, asset.lod1Path]);
+    camera.zoom = Math.min(size.width / 12.5, size.height / 9.5) * zoomFactor.current;
+    camera.updateProjectionMatrix();
+    invalidate();
+  }, [size.width, size.height, camera, invalidate]);
 
-  useFrame(({ camera }) => {
-    if (!asset.lod0Path || !asset.lod1Path) return;
+  useEffect(() => {
+    const overview = !detail && (!initialized.current || previousRevision.current !== viewRevision);
+    targetZoom.current = detail ? 2.4 : 1;
+    const district = CITY_ASSETS.find((asset) => asset.projectId === selectedProjectId);
+    destination.target.set(overview ? 0 : (district?.position[0] ?? 0) * (detail ? 1 : .48), detail ? .75 : .5, overview ? 0 : (district?.position[2] ?? 0) * (detail ? 1 : .48));
+    destination.position.copy(destination.target).add(detail ? (selectedProjectId === 'drokex' ? new Vector3(-4, 6, 12) : selectedProjectId === 'lorigine' ? new Vector3(6, 5, 11) : selectedProjectId === '4ustudio-academy' ? new Vector3(3, 5, 12) : new Vector3(-6, 7, 11)) : new Vector3(10, 10, 12));
+    if (!initialized.current || reducedMotion) {
+      zoomFactor.current = targetZoom.current;
+      camera.zoom = Math.min(viewport.current.width / 12.5, viewport.current.height / 9.5) * zoomFactor.current;
+      camera.updateProjectionMatrix();
+      camera.position.copy(destination.position);
+      controls.current?.target.copy(destination.target);
+      controls.current?.update();
+      moving.current = false;
+    } else moving.current = true;
+    initialized.current = true;
+    previousRevision.current = viewRevision;
+    invalidate();
+  }, [selectedProjectId, viewRevision, reducedMotion, detail, camera, destination, invalidate]);
 
-    const threshold = activeLodRef.current === 1 ? LOD0_ENTER_DISTANCE : LOD1_EXIT_DISTANCE;
-    const nextLod: 0 | 1 = camera.position.distanceToSquared(landmarkPosition) < threshold ** 2 ? 0 : 1;
-    if (nextLod === activeLodRef.current) return;
-
-    activeLodRef.current = nextLod;
-    setActiveLod(nextLod);
+  useFrame((_, delta) => {
+    if (!moving.current || !controls.current) return;
+    const step = 1 - Math.exp(-7 * Math.min(delta, .05));
+    zoomFactor.current += (targetZoom.current - zoomFactor.current) * step;
+    camera.zoom = Math.min(size.width / 12.5, size.height / 9.5) * zoomFactor.current;
+    camera.updateProjectionMatrix();
+    camera.position.lerp(destination.position, step);
+    controls.current.target.lerp(destination.target, step);
+    controls.current.update();
+    if (Math.abs(zoomFactor.current - targetZoom.current) < .0001 && camera.position.distanceToSquared(destination.position) < .00002 && controls.current.target.distanceToSquared(destination.target) < .00002) moving.current = false;
+    else invalidate();
   });
 
-  return activeLod === 1 && asset.lod1Path ? asset.lod1Path : asset.lod0Path;
+  return <OrbitControls ref={controls} makeDefault enablePan={false} enableZoom={false} enableDamping={!reducedMotion} dampingFactor={.12} minPolarAngle={.4} maxPolarAngle={1.22} onStart={() => { moving.current = false; }} />;
 }
 
-function LandmarkVisual({ asset, fallback }: { asset: CityDistrictAsset; fallback: ReactNode }) {
-  const modelPath = useDistrictModelPath(asset);
-  if (!modelPath || !asset.transform) return fallback;
-
-  return (
-    <LandmarkLoadBoundary assetPath={modelPath} fallback={fallback}>
-      <Suspense fallback={fallback}>
-        <LoadedLandmarkModel key={modelPath} modelPath={modelPath} transform={asset.transform} />
-      </Suspense>
-    </LandmarkLoadBoundary>
-  );
-}
-
-function DistrictBeacon({
-  pulsePeriodSeconds,
-  active,
-}: {
-  pulsePeriodSeconds: number;
-  active: boolean;
-}) {
-  const beacon = useRef<Group>(null);
-  const material = useRef<MeshBasicMaterial>(null);
-
-  useFrame(({ clock }, delta) => {
-    const wave = (Math.sin((clock.getElapsedTime() / pulsePeriodSeconds) * Math.PI * 2) + 1) / 2;
-    if (beacon.current) {
-      beacon.current.rotation.y += delta * 0.15;
-      beacon.current.scale.setScalar(1 + wave * 0.055 + (active ? 0.035 : 0));
-    }
-    if (material.current) material.current.opacity = 0.20 + wave * 0.22 + (active ? 0.24 : 0);
+function SceneReveal({ children, reducedMotion }: { children: ReactNode; reducedMotion?: boolean }) {
+  const group = useRef<Group>(null);
+  const progress = useRef(reducedMotion ? 1 : 0);
+  const { invalidate } = useThree();
+  useEffect(() => {
+    progress.current = reducedMotion ? 1 : 0;
+    if (group.current && reducedMotion) { group.current.position.y = 0; group.current.scale.setScalar(1); }
+    invalidate();
+  }, [reducedMotion, invalidate]);
+  useFrame((_, delta) => {
+    if (!group.current || progress.current >= 1) return;
+    progress.current = Math.min(1, progress.current + delta / .72);
+    const eased = 1 - Math.pow(1 - progress.current, 3);
+    group.current.position.y = -.28 * (1 - eased);
+    group.current.scale.setScalar(.94 + eased * .06);
+    if (progress.current < 1) invalidate();
   });
-
-  return (
-    <group ref={beacon} position={[0, 0.39, 0]}>
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.57, 0.605, 6]} />
-        <meshBasicMaterial
-          ref={material}
-          color="#5CFF9D"
-          transparent
-          opacity={0.32}
-          toneMapped={false}
-        />
-      </mesh>
-    </group>
-  );
+  return <group ref={group}>{children}</group>;
 }
 
-const CITY_DRONE_ROUTES = [
-  { radius: 3.95, altitude: 1.55, phase: 0, speed: 0.23 },
-  { radius: 3.15, altitude: 1.15, phase: Math.PI, speed: 0.29 },
-] as const;
-
-function CityTrafficDrone({
-  radius,
-  altitude,
-  phase,
-  speed,
-}: (typeof CITY_DRONE_ROUTES)[number]) {
-  const drone = useRef<Group>(null);
-
-  useFrame(({ clock }) => {
-    if (!drone.current) return;
-    const angle = clock.getElapsedTime() * speed + phase;
-    drone.current.position.set(
-      Math.cos(angle) * radius,
-      altitude + Math.sin(angle * 2) * 0.08,
-      Math.sin(angle) * radius * 0.65,
-    );
-    drone.current.rotation.y = -angle + Math.PI / 2;
-  });
-
+export function CityNavigator({ selectedProjectId, onProjectSelect, viewRevision, reducedMotion, detail }: CityNavigatorProps) {
   return (
-    <group ref={drone}>
-      <mesh>
-        <octahedronGeometry args={[0.085, 0]} />
-        <meshStandardMaterial
-          color="#17372a"
-          emissive="#00D26A"
-          emissiveIntensity={1.6}
-          metalness={0.72}
-          roughness={0.25}
-        />
-      </mesh>
-      <pointLight color="#5CFF9D" intensity={1.4} distance={1.4} />
-    </group>
-  );
-}
-
-function CityTraffic() {
-  return (
-    <>
-      {CITY_DRONE_ROUTES.map((route) => (
-        <CityTrafficDrone key={route.phase} {...route} />
-      ))}
-    </>
-  );
-}
-
-function District({ onSelect, ...asset }: CityDistrictAsset & { onSelect: (id: string) => void }) {
-  const { id, position, scale, motion } = asset;
-  const [hovered, setHovered] = useState(false);
-  const emissive = id === 'command-center' ? '#53ffad' : '#16885d';
-  const baseEmissiveIntensity = (id === 'command-center' ? 0.18 : 0.65) + (hovered ? 0.32 : 0);
-
-  useEffect(() => () => {
-    document.body.style.cursor = '';
-  }, []);
-
-  const handleClick = (event: ThreeEvent<MouseEvent>) => {
-    event.stopPropagation();
-    onSelect(id);
-  };
-  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
-    event.stopPropagation();
-    setHovered(true);
-    document.body.style.cursor = 'pointer';
-  };
-  const handlePointerOut = () => {
-    setHovered(false);
-    document.body.style.cursor = 'auto';
-  };
-  const fallback =
-    id === 'command-center' ? (
-      <CommandCenterFallback emissive={emissive} />
-    ) : (
-      <DistrictCrown emissive={emissive} scale={scale} />
-    );
-
-  return (
-    <group
-      position={position}
-      onClick={handleClick}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      <mesh scale={scale} castShadow receiveShadow>
-        <cylinderGeometry args={[1, 1.14, 0.34, 6]} />
-        <meshStandardMaterial
-          color="#061710"
-          emissive={emissive}
-          emissiveIntensity={baseEmissiveIntensity}
-          metalness={0.82}
-          roughness={0.28}
-        />
-      </mesh>
-      <LandmarkVisual asset={asset} fallback={fallback} />
-      <DistrictBeacon pulsePeriodSeconds={motion.pulsePeriodSeconds} active={hovered} />
-    </group>
-  );
-}
-
-export function CityNavigator({ onProjectSelect }: { onProjectSelect: (id: string) => void }) {
-  const stars = useMemo(() => [0.8, 1.2, 1.8] as const, []);
-  return (
-    <div
-      aria-label="Mapa 3D interactivo de distritos de proyectos"
-      role="application"
-      className="h-full w-full"
-    >
-      <Canvas
-        dpr={[1, 1.5]}
-        camera={{ position: [6.5, 6.5, 8], fov: 42 }}
-        gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
-      >
-        <color attach="background" args={['#020807']} />
-        <fogExp2 attach="fog" args={['#020807', 0.032]} />
-        <ambientLight intensity={0.55} />
-        <directionalLight position={[-4, 7, 5]} intensity={1.6} color="#d5e1dc" />
-        <pointLight position={[0, 5, 0]} intensity={14} color="#42f59a" distance={12} />
-        <pointLight position={[4, 2, -2]} intensity={8} color="#5c8977" distance={8} />
-        <gridHelper args={[12, 18, '#1a6b49', '#0a271d']} position={[0, -0.25, 0]} />
-        {CITY_ASSETS.map((district) => (
-          <District key={district.id} {...district} onSelect={onProjectSelect} />
-        ))}
-        {stars.map((size) => (
-          <Sparkles
-            key={size}
-            count={18}
-            scale={[11, 5, 11]}
-            size={size}
-            speed={0.18}
-            color="#77ffc0"
-          />
-        ))}
-        <CityTraffic />
-        <OrbitControls
-          enablePan={false}
-          minDistance={7}
-          maxDistance={14}
-          minPolarAngle={0.65}
-          maxPolarAngle={1.25}
-        />
+    <div role="group" aria-label="Maqueta 3D interactiva de proyectos" style={{ height: '100%', width: '100%', cursor: 'grab' }}>
+      <Canvas orthographic shadows frameloop="demand" dpr={[1, 1.5]} camera={{ position: [10, 10, 12], zoom: 55, near: .1, far: 150 }} gl={{ antialias: true, powerPreference: 'low-power' }}>
+        <color attach="background" args={[sceneColor]} />
+        <ambientLight intensity={1.3} />
+        <hemisphereLight args={['#fcfff5', '#a8b0a1', 1.2]} />
+        <directionalLight position={[-6, 10, 5]} intensity={2.5} color="#fffbef" castShadow shadow-mapSize={[1024, 1024]} shadow-camera-left={-8} shadow-camera-right={8} shadow-camera-top={8} shadow-camera-bottom={-8} shadow-normalBias={.04} shadow-bias={-.0001} />
+        <directionalLight position={[5, 4, -6]} intensity={.65} color="#edf3ff" />
+        <SceneReveal reducedMotion={reducedMotion}>
+          <SiteModel />
+          {CITY_ASSETS.map((asset) => <District key={asset.id} asset={asset} selected={asset.projectId === selectedProjectId} onSelect={onProjectSelect} reducedMotion={reducedMotion} />)}
+        </SceneReveal>
+        <CameraRig detail={detail} selectedProjectId={selectedProjectId} viewRevision={viewRevision} reducedMotion={reducedMotion} />
       </Canvas>
     </div>
   );

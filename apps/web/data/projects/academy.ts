@@ -14,16 +14,15 @@ export const academy: Project = {
   slug: '4ustudio-academy',
   name: '4U Studio Academy',
   tagline: 'Academia de música presencial en Bogotá',
-  summary:
-    'Full-stack platform for 4U Studio Academy — a presencial music academy in Bogotá, Colombia. Next.js 16 App Router with Supabase (auth, DB, storage, realtime), admin panel with 15+ routes (students, enrollments, agenda, instructors, payments, CRM, retention, automations), student portal, enrollment with digital signed contract, booking/agenda system, WhatsApp Cloud API integration, Bold payments, Music 4U AI (profile quiz, dream builder, career simulator), attendance confirmation, retention/reactivation engine, and Colombian holiday calendar.',
+  summary: 'Plataforma de una academia de música en Bogotá: oferta de clases, agenda, inscripciones y portal para estudiantes.',
   description:
     '4U Studio Academy is a full-stack platform for a presencial music academy based in Bogotá, Colombia (Calle 93 #46-44). Built with Next.js 16 App Router, React 19, TypeScript 6, and Supabase (Postgres 17, Auth, Storage, Realtime). The platform serves three user roles: public visitors, students, and administrators. Public-facing pages include a homepage, plans for adults and kids/teens, courses/lessons (6 instruments: guitar, piano, voice, drums, bass, production), about page (nosotros), contact, booking (agendar), enrollment (inscripcion) with digital contract signed via canvas (signature_pad) and generated as PDF (react-pdf, SHA-256 hash, stored in Supabase Storage), AI music tools (profile quiz, dream builder, career simulator with 5-dimension scoring), terms v2.0, corporate info, and token-based attendance confirmation flow. The student portal (/mi-cuenta) includes dashboard, class calendar, monthly schedule, Music 4U AI journey history, login, registration, and password recovery. The admin panel has 15+ routes: executive dashboard with live stats, student management (full lifecycle: lead, matriculado, activo, riesgo, inactivo, exalumno), enrollment pipeline (CRM Comercial V1 with funnel metrics, conversion tracking, source attribution), agenda/scheduling with real-time availability (10am-10pm Mon-Fri, Colombian holiday blocking), instructor management (profiles, schedules, availability), payments (Bold payment link generation, webhook verification, overdue tracking), sales dashboard, lead management, retention dashboard (risk scoring, alerts, activity timeline), reactivation center (tasks, campaigns), academic indicators, system activity log, and automation engine (cron jobs for attendance reminders, risk updates, automated follow-ups). WhatsApp Cloud API (Meta Graph v21.0) handles enrollment confirmations, payment notifications, class reminders, rescheduling alerts, and internal team alerts with idempotent messaging and activity logging. Bold payment gateway integration supports sandbox testing, HMAC signature verification, payment link generation, and webhook processing. Retention system uses student lifecycle status tracking, risk scoring, activity event logging (30+ event types), and automated reactivation campaigns. Calendar system computes Colombian holidays algorithmically (Ley Emiliani, Easter calculation) for schedule blocking. Infrastructure: standalone Next.js, Supabase, Vercel deployment, no monorepo.',
   status: PROJECT_STATUS.Production,
-  featured: false,
+  featured: true,
   public: true,
   startedAt: '2026-02-01',
   completedAt: null,
-  lastUpdated: '2026-07-08',
+  lastUpdated: '2026-09-10',
   technologies: [
     { name: 'TypeScript', kind: TECHNOLOGY_KIND.Language, level: TECHNOLOGY_LEVEL.Expert },
     { name: 'Next.js', kind: TECHNOLOGY_KIND.Framework, level: TECHNOLOGY_LEVEL.Expert },
@@ -239,16 +238,13 @@ export const academy: Project = {
       category: LESSON_CATEGORY.Architecture,
     },
   ],
-  metrics: {
-    commits: 253,
-    contributors: 1,
-    durationWeeks: null,
-    modules: 20, // homepage, plans-adult, plans-kids, lecciones, nosotros, contacto, agendar, inscripcion, ia (3), terminos, corporativo, confirmar, mi-cuenta (5+), admin (15+)
-    tests: null,
-    coverage: null,
-  },
-  media: [],
+  metrics: { commits: null, contributors: null, durationWeeks: null, modules: null, tests: null, coverage: null },
+  media: [
+    { type: 'image', url: '/projects/academy-desktop.png', alt: '4U Studio Academy · vista de escritorio', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: true },
+    { type: 'image', url: '/projects/academy-mobile.png', alt: '4U Studio Academy · vista de móvil', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: false }
+  ],
   links: {
+    live: 'https://4ustudioacademy.com/',
   },
   role: {
     title: 'Software Engineer & Product Owner',

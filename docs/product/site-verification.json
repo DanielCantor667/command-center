@@ -1,0 +1,57 @@
+{
+  "capturedAt": "2026-09-10T20:41:49.368Z",
+  "results": [
+    {
+      "id": "kliniu",
+      "url": "https://kliniucolombia.com/",
+      "finalUrl": "https://kliniucolombia.com/",
+      "status": 200,
+      "title": "Kliniu — Dispensadores e insumos para tu negocio",
+      "headings": [
+        "Productos destacados",
+        "Soluciones para cada necesidad",
+        "Combos recomendados"
+      ]
+    },
+    {
+      "id": "academy",
+      "url": "https://4ustudioacademy.com/",
+      "finalUrl": "https://4ustudioacademy.com/",
+      "status": 200,
+      "title": "4ustudioacademy",
+      "headings": [
+        "Programa tu primera sesión gratis con nosotros",
+        "Cumple tus sueños musicales",
+        "Encuentra tu lección ideal",
+        "¿Listo para transformar tu pasión en tu camino?"
+      ]
+    },
+    {
+      "id": "drokex",
+      "url": "https://drokex.com/",
+      "finalUrl": "https://drokex.com/",
+      "status": 200,
+      "title": "Drokex",
+      "headings": [
+        "Tu empresa, visible para el mundo.",
+        "Un catálogo diseñado paraconectarte con el mundo",
+        "Drokex World",
+        "Conoce a Drokex",
+        "Asi crecen con Drokex",
+        "Usamos cookies para que la experiencia funcione mejor."
+      ]
+    },
+    {
+      "id": "lorigine",
+      "url": "https://www.lorigine.com.co/",
+      "finalUrl": "https://www.lorigine.com.co/",
+      "status": 200,
+      "title": "L'ORIGINE — Bioingeniería capilar profesional",
+      "headings": [
+        "La excelenciaen bellezatiene un origen.",
+        "Productos",
+        "Asesor L'ORIGINE"
+      ]
+    }
+  ]
+}

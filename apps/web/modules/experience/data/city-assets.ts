@@ -1,5 +1,5 @@
 export type CityDistrictId =
-  'command-center' | 'kliniu' | 'vevi' | 'intranet-ess' | 'lorigine' | 'academy';
+  'command-center' | 'kliniu' | 'vevi' | 'intranet-ess' | 'lorigine' | 'academy' | 'drokex';
 
 export type CityVector3 = readonly [number, number, number];
 
@@ -43,7 +43,7 @@ export interface CityAssetLicense {
 
 export interface CityDistrictAsset {
   readonly id: CityDistrictId;
-  readonly projectId: CityDistrictId;
+  readonly projectId: CityDistrictId | '4ustudio-academy';
   readonly label: string;
   readonly lod0Path: string | null;
   readonly lod1Path: string | null;
@@ -65,6 +65,9 @@ export interface CityDistrictAsset {
  * optimized GLBs that are safe to serve from `apps/web/public/models/city`.
  */
 export const CITY_ASSETS: readonly CityDistrictAsset[] = [
+  { id: 'drokex', projectId: 'drokex', label: 'Drokex', lod0Path: null, lod1Path: null,
+    source: null, license: null, dimensions: null, triangleBudget: null, version: 'procedural-v1',
+    position: [0, 0.1, -3.1], scale: [0.85, 0.65, 0.85], motion: { pulsePeriodSeconds: 8 } },
   {
     id: 'command-center',
     projectId: 'command-center',
@@ -213,7 +216,7 @@ export const CITY_ASSETS: readonly CityDistrictAsset[] = [
   },
   {
     id: 'academy',
-    projectId: 'academy',
+    projectId: '4ustudio-academy',
     label: 'Academy',
     lod0Path: '/models/city/academy.glb',
     lod1Path: '/models/city/academy-lod1.glb',

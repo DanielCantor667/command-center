@@ -67,4 +67,4 @@ Prioridad: Alta
 Solución futura: decidir formalmente si la línea 3D reemplaza, precede o convive con CRM y publicar
 un roadmap unificado.
 
-Estado: Abierto — requiere decisión de producto.
+Estado: Resuelto documentalmente el 10 de septiembre de 2026 — definición aprobada en Product Clarity y roadmap activo alineado al portafolio.

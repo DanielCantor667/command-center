@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Panel, Stack, Typography } from '@command-center/ui';
 import type { Project } from '../../../../data/projects';
 
@@ -20,6 +21,7 @@ export function ProjectCard({ project, onSelect }: ProjectCardProps) {
         className="w-full text-left cursor-pointer"
       >
         <Stack direction="vertical" gap="sm">
+          {project.media.find((media) => media.featured && media.type === 'image') && <Image src={project.media.find((media) => media.featured && media.type === 'image')!.url} alt={`Vista de ${project.name}`} width={1440} height={1000} sizes="(max-width: 768px) 100vw, 33vw" className="aspect-video w-full rounded-md object-cover object-top" />}
           <Stack direction="horizontal" gap="sm" align="center" wrap>
             <Typography as="h3" variant="heading-m" color="primary">
               {project.name}

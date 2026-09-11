@@ -152,11 +152,11 @@ describe('KnowledgeGraph data quality', () => {
     expect(monoNodes).toHaveLength(1);
   });
 
-  it('has all 6 project nodes', () => {
+  it('has all 7 project nodes', () => {
     const projectNodes = KNOWLEDGE_GRAPH.nodes.filter(
       (n) => n.type === 'Project',
     );
-    expect(projectNodes).toHaveLength(6);
+    expect(projectNodes).toHaveLength(7);
   });
 
   it('has correct project ids', () => {
@@ -167,6 +167,7 @@ describe('KnowledgeGraph data quality', () => {
     expect(projectIds).toEqual([
       'project:4ustudio-academy',
       'project:command-center',
+      'project:drokex',
       'project:intranet-ess',
       'project:kliniu',
       'project:lorigine',

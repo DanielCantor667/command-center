@@ -72,6 +72,7 @@ export const MEDIA_TYPE = {
 export type MediaType = (typeof MEDIA_TYPE)[keyof typeof MEDIA_TYPE];
 
 export const OWNERSHIP_TYPE = {
+  Unconfirmed: 'unconfirmed',
   Personal: 'personal',
   Client: 'client',
   Company: 'company',

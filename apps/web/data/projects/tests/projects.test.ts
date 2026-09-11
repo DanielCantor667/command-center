@@ -134,9 +134,9 @@ describe('technologySchema', () => {
 });
 
 describe('PROJECTS repository', () => {
-  it('contains between 3 and 6 projects', () => {
+  it('contains the original projects and Drokex', () => {
     expect(PROJECTS.length).toBeGreaterThanOrEqual(3);
-    expect(PROJECTS.length).toBeLessThanOrEqual(6);
+    expect(PROJECTS.map((project) => project.id)).toContain('drokex');
   });
 
   it('every project satisfies the domain contract', () => {

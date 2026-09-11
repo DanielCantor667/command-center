@@ -13,17 +13,16 @@ export const kliniu: Project = {
   id: 'kliniu',
   slug: 'kliniu',
   name: 'Kliniu',
-  tagline: 'E-commerce platform for institutional hygiene and cleaning dispensing solutions.',
-  summary:
-    'Full-featured B2B e-commerce platform for hygiene products (dispensers, paper, soap) with an admin panel, AI chatbot, ERP/CRM integrations, production tracking, and volume pricing.',
+  tagline: 'Comercio electrónico e higiene institucional',
+  summary: 'Comercio electrónico de dispensadores e insumos de higiene para empresas, con catálogo, cotizaciones y herramientas de administración.',
   description:
     'Kliniu is a production-grade e-commerce platform built with Next.js 16, React 19, Prisma + PostgreSQL (Supabase), and Tailwind CSS v4. It serves as a B2B storefront for institutional hygiene products — liquid dispensers, paper dispensers, soap dispensers, and related accessories. The platform includes a full product catalog with rich categories (custom banners, buying guides, color variants, gallery, video), shopping cart, checkout, order management with Odoo ERP sync, a 15-module admin panel, AI chatbot (OpenAI) for product discovery, image search, volume pricing tiers, commercial quotations with tax configuration, production management (machines, runs, quality tracking), production order planning, marketing campaign tracking, seller cost configuration, customer loyalty points, granular user permissions, Kommo CRM integration, WhatsApp sharing, and responsive mobile-first design.',
   status: PROJECT_STATUS.Production,
-  featured: false,
+  featured: true,
   public: true,
   startedAt: '2026-05-13',
   completedAt: null,
-  lastUpdated: '2026-07-09',
+  lastUpdated: '2026-09-10',
   technologies: [
     { name: 'TypeScript', kind: TECHNOLOGY_KIND.Language, level: TECHNOLOGY_LEVEL.Expert },
     { name: 'Next.js', kind: TECHNOLOGY_KIND.Framework, level: TECHNOLOGY_LEVEL.Proficient },
@@ -314,7 +313,7 @@ export const kliniu: Project = {
     {
       title: 'Supabase storage requires client-side optimization',
       description:
-        'Raw image uploads from mobile devices reached 15MB+. Implementing client-side WebP compression (compressImage) before upload reduced storage costs by ~80% and improved page load times significantly.',
+        'La compresión a WebP antes de subir imágenes reduce el tamaño de los archivos. No hay una medición fechada de ahorro de almacenamiento o tiempos de carga en esta revisión.',
       category: LESSON_CATEGORY.Tooling,
     },
     {
@@ -330,16 +329,12 @@ export const kliniu: Project = {
       category: LESSON_CATEGORY.Architecture,
     },
   ],
-  metrics: {
-    commits: 194,
-    contributors: 1,
-    durationWeeks: 8,
-    modules: 15,
-    tests: null,
-    coverage: null,
-  },
-  media: [],
-  links: {},
+  metrics: { commits: null, contributors: null, durationWeeks: null, modules: null, tests: null, coverage: null },
+  media: [
+    { type: 'image', url: '/projects/kliniu-desktop.png', alt: 'Kliniu · vista de escritorio', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: true },
+    { type: 'image', url: '/projects/kliniu-mobile.png', alt: 'Kliniu · vista de móvil', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: false }
+  ],
+  links: { live: 'https://kliniucolombia.com/' },
   role: {
     title: 'Software Engineer & Full-Stack Developer',
     responsibilities: [

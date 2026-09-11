@@ -198,3 +198,27 @@
     min-height: 13rem;
   }
 }
+
+/* Respect the selected theme: city chrome must not put light-theme text over dark paint. */
+[data-theme='light'] .command-shell,
+[data-theme='light'] .command-workspace { background: var(--background-primary); }
+[data-theme='light'] .command-topbar,
+[data-theme='light'] .command-sidebar,
+[data-theme='light'] .command-statusbar { background: var(--surface-secondary) !important; border-color: var(--panel-border) !important; }
+[data-theme='light'] .command-dashboard-hero,
+[data-theme='light'] .command-dashboard-status { background: var(--surface-secondary) !important; }
+[data-theme='light'] .command-shell::before,
+[data-theme='light'] .command-workspace::before { opacity: .15; }
+[data-theme='light'] .command-shell { --accent: #087a45; --focus-ring: #087a45; }
+.command-workspace { min-width: 0; }
+
+.city-district-label { white-space: nowrap; padding: 7px 10px; border: 1px solid rgba(119, 255, 188, .45); border-radius: 6px; background: #04100cf2; color: #effff6; font: 500 10px var(--font-geist-mono), monospace; cursor: pointer; }
+.city-district-label:hover, .city-district-label:focus-visible { border-color: #43f59a; color: #43f59a; }
+
+.command-return-button { white-space: nowrap; }
+@media (max-width: 639px) {
+  .command-module-label, .command-public-label { display: none; }
+  .command-topbar { gap: 8px; padding: 12px; }
+  .command-workspace { padding: 20px; }
+  .command-topbar > div { gap: 8px; }
+}

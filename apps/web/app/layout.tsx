@@ -4,8 +4,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider, ThemeScript } from '@command-center/ui';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import './command-city.css';
 import './globals.css';
+import './command-city.css';
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -22,22 +22,22 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://command-center-web-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Command Center — Engineering Knowledge Platform',
+    default: 'Daniel Cantor — Portafolio de ingeniería',
     template: '%s · Command Center',
   },
   description:
-    'Engineering Knowledge Platform: proyectos, decisiones, tecnologías y evidencia conectados en una ciudad digital explorable.',
+    'Portafolio de Daniel Cantor: cuatro sitios publicados, capturas reales y decisiones de ingeniería explorables desde una ciudad 3D.',
   keywords: ['software engineering', 'knowledge graph', 'architecture', 'TypeScript', 'Next.js', 'portfolio'],
   authors: [{ name: 'Daniel Cantor' }],
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website', locale: 'es_CO', url: '/', siteName: 'Command Center',
-    title: 'Command Center — Engineering Knowledge Platform',
+    title: 'Daniel Cantor — Portafolio de ingeniería',
     description: 'Proyectos, decisiones, tecnologías y evidencia conectados en una ciudad digital explorable.',
     images: [{ url: '/experience/command-city-hero.png', width: 1536, height: 1024, alt: 'Command Center, ciudad de conocimiento de ingeniería' }],
   },
   twitter: {
-    card: 'summary_large_image', title: 'Command Center — Engineering Knowledge Platform',
+    card: 'summary_large_image', title: 'Daniel Cantor — Portafolio de ingeniería',
     description: 'Una ciudad digital explorable para proyectos, decisiones y evidencia de ingeniería.',
     images: ['/experience/command-city-hero.png'],
   },

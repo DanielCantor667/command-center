@@ -14,6 +14,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       <Typography as="p" variant="heading-m" color="secondary">
         {project.tagline}
       </Typography>
+      <Typography as="p" variant="body" color="secondary">{project.summary}</Typography>
       <Stack direction="horizontal" gap="md" wrap>
         <Typography as="span" variant="body-small" color="muted">
           Estado: {project.status}
@@ -30,13 +31,13 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           </Typography>
         )}
         <Typography as="span" variant="body-small" color="muted">
-          Propiedad: {project.ownership.type}
+          Propiedad: {project.ownership.type === 'unconfirmed' ? 'Por confirmar' : project.ownership.type}
         </Typography>
       </Stack>
       {(project.links.repository || project.links.live || project.links.documentation) && (
         <Stack direction="horizontal" gap="sm" wrap>
           {project.links.repository && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.repository} target="_blank" rel="noreferrer">Repositorio ↗</a>}
-          {project.links.live && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.live} target="_blank" rel="noreferrer">Ver proyecto ↗</a>}
+          {project.links.live && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.live} target="_blank" rel="noreferrer">Visitar sitio ↗</a>}
           {project.links.documentation && <a className="text-sm font-medium text-accent underline underline-offset-4" href={project.links.documentation} target="_blank" rel="noreferrer">Documentación ↗</a>}
         </Stack>
       )}

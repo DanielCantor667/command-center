@@ -14,17 +14,17 @@ export const lorigine: Project = {
   slug: 'lorigine',
   name: "L'ORIGINE",
   tagline: 'Bioingeniería capilar profesional',
-  summary:
-    "Brand platform for L'ORIGINE — premium Colombian professional hair care cosmetics. Built with Next.js 16 App Router, React 19, Tailwind CSS v4, and Framer Motion. Editorial-first design philosophy with cinematic motion system, product catalog, science education, academy, distributor network, and journal.",
-  description:
-    "L'ORIGINE is a brand platform for a Colombian professional hair cosmetics company (est. 2021 by Juan Andrés Gatjens, chemical engineer, and Natali). Built as a standalone Next.js 16 App Router application with editorial-first design philosophy prioritizing inspiration and education over transactional selling. The platform features a cinematic hero with parallax scroll effects, video background, and ambient glows; a centralized motion system with 5 duration tokens, 3 easing curves, 3 distance tokens, and 7 reusable motion components (Reveal, Stagger, StaggerItem, ImageReveal, PageTransition, ScrollProgress, AmbientGlow); a product catalog with category filtering and sorting; an alternating-block science section documenting 2 proprietary active ingredients (MagNut Sense, PGA); 3 documented case studies with protocols, objectives, and observable results; an academy section with courses, instructors, methodology, and testimonials; a distributor network page with partner showcase and contact form; a blog/journal with CSS columns masonry layout and category filtering; a brand story page with editorial masonry timeline; a protocols page; and a design system with 28+ color tokens, 3 font families (Playfair Display for logo, Red Hat Display for headings/body), and a spacing scale. The project eschews databases and APIs entirely — it is a content-driven brand presence with static data files. Animations respect prefers-reduced-motion. Infrastructure: standalone Next.js, no monorepo, no database, no API layer.",
-  status: PROJECT_STATUS.Development,
-  featured: false,
+  summary: 'Tienda y experiencia de marca de bioingeniería capilar: catálogo, contenido editorial, cuenta de cliente y asesor de productos.',
+  description: 'Experiencia de marca y comercio electrónico para productos capilares profesionales. El repositorio actual incluye Next.js 16, React 19, PostgreSQL mediante postgres, autenticación de clientes y administración, rutas de pedidos y pagos, y un asesor basado en AI SDK. La portada y el catálogo públicos se verificaron en navegador; las operaciones privadas no forman parte de esta revisión.',
+  status: PROJECT_STATUS.Production,
+  featured: true,
   public: true,
   startedAt: '2026-06-25',
   completedAt: null,
-  lastUpdated: '2026-06-26',
+  lastUpdated: '2026-09-10',
   technologies: [
+    { name: 'PostgreSQL', kind: TECHNOLOGY_KIND.Database, level: TECHNOLOGY_LEVEL.Working },
+    { name: 'AI SDK', kind: TECHNOLOGY_KIND.Library, level: TECHNOLOGY_LEVEL.Working },
     { name: 'TypeScript', kind: TECHNOLOGY_KIND.Language, level: TECHNOLOGY_LEVEL.Expert },
     { name: 'Next.js', kind: TECHNOLOGY_KIND.Framework, level: TECHNOLOGY_LEVEL.Proficient },
     { name: 'React', kind: TECHNOLOGY_KIND.Library, level: TECHNOLOGY_LEVEL.Proficient },
@@ -62,7 +62,7 @@ export const lorigine: Project = {
     {
       title: 'Science Education Section',
       description:
-        'Dedicated science page (/ciencia) with 5 alternating editorial blocks documenting: the structural problem (hair fiber damage), proprietary active ingredient PGA (Ácido Poliglutámico — 5,000× water retention), proprietary active ingredient MagNut Sense (exclusive to L\'ORIGINE), the 4-step protocol system, and product showcase. Science-specific color palette (Botanical Green, Forest, Sage, Gold científico). RitualSteps component, Before/After showcase, CTA section.',
+        'Dedicated science page (/ciencia) with 5 alternating editorial blocks documenting: the structural problem (hair fiber damage), proprietary active ingredient PGA (Ácido Poliglutámico), proprietary active ingredient MagNut Sense (exclusive to L\'ORIGINE), the 4-step protocol system, and product showcase. Science-specific color palette (Botanical Green, Forest, Sage, Gold científico). RitualSteps component, Before/After showcase, CTA section.',
     },
     {
       title: 'Brand Story (Nosotros)',
@@ -72,7 +72,7 @@ export const lorigine: Project = {
     {
       title: 'Academy Section',
       description:
-        'Dedicated academy page (/academia) with dark hero, 4 benefit pillars, 4 featured courses, 3-step methodology, instructor grid (4 experts), testimonial with stats (2,500+ professionals, 18+ countries, 98% satisfaction), and closing CTA. Course data in src/data/courses.ts with 4 courses (levels: iniciación, intermedio, avanzado, experto; modes: presencial, online, hibrido).',
+        'Dedicated academy page (/academia) with dark hero, 4 benefit pillars, 4 featured courses, 3-step methodology, instructor grid (4 experts), testimonial content (business results have not been independently verified), and closing CTA. Course data in src/data/courses.ts with 4 courses (levels: iniciación, intermedio, avanzado, experto; modes: presencial, online, hibrido).',
     },
     {
       title: 'Distributor Network',
@@ -177,7 +177,7 @@ export const lorigine: Project = {
     {
       title: 'Standalone Next.js over monorepo',
       context:
-        'Other projects in the portfolio use Turborepo monorepos. L\'ORIGINE is a single brand site with no shared packages, no backend, and no mobile app.',
+        'Other projects in the portfolio use Turborepo monorepos. L\'ORIGINE is a standalone brand and commerce application with no shared workspace packages.',
       decision:
         'Standalone Next.js 16 application. No Turborepo, no pnpm workspaces, no shared packages.',
       reasoning:
@@ -227,16 +227,13 @@ export const lorigine: Project = {
       category: LESSON_CATEGORY.Architecture,
     },
   ],
-  metrics: {
-    commits: 13,
-    contributors: 1,
-    durationWeeks: null,
-    modules: 9, // routes: home, productos, productos/[slug], ciencia, academia, nosotros, distribuidores, blog, protocolos
-    tests: null,
-    coverage: null,
-  },
-  media: [],
+  metrics: { commits: null, contributors: null, durationWeeks: null, modules: null, tests: null, coverage: null },
+  media: [
+    { type: 'image', url: '/projects/lorigine-desktop.png', alt: 'L’ORIGINE · vista de escritorio', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: true },
+    { type: 'image', url: '/projects/lorigine-mobile.png', alt: 'L’ORIGINE · vista de móvil', caption: 'Captura del sitio público · 10 de septiembre de 2026', featured: false }
+  ],
   links: {
+    live: 'https://www.lorigine.com.co/',
   },
   role: {
     title: 'Software Engineer & Product Owner',

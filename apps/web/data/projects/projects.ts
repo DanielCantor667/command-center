@@ -1,3 +1,4 @@
+import { drokex } from './drokex';
 import { academy } from './academy';
 import { commandCenter } from './command-center';
 import { kliniu } from './kliniu';
@@ -13,4 +14,5 @@ export const PROJECTS: readonly Project[] = [
   intranetEss,
   lorigine,
   academy,
+  drokex,
 ];

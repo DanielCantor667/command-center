@@ -1,9 +1,14 @@
+import { PROJECTS } from '../../../data/projects';
 import { describe, expect, it } from 'vitest';
 import { CITY_ASSETS } from '../data/city-assets';
 
 describe('Engineering City asset manifest', () => {
-  it('keeps the six district slots stable', () => {
+  it('every district opens an existing project dossier', () => {
+    for (const asset of CITY_ASSETS) expect(PROJECTS.some((project) => project.id === asset.projectId)).toBe(true);
+  });
+  it('keeps the original slots and adds a procedural Drokex district', () => {
     expect(CITY_ASSETS.map((asset) => asset.id)).toEqual([
+      'drokex',
       'command-center',
       'kliniu',
       'vevi',

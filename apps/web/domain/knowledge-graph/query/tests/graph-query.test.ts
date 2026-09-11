@@ -46,7 +46,7 @@ describe('findNode', () => {
 describe('findNodesByType', () => {
   it('finds all project nodes', () => {
     const nodes = findNodesByType(KNOWLEDGE_GRAPH, NODE_TYPE.Project);
-    expect(nodes).toHaveLength(6);
+    expect(nodes).toHaveLength(7);
   });
 
   it('finds all milestone nodes', () => {
@@ -68,7 +68,7 @@ describe('findNodes', () => {
         n.type === NODE_TYPE.Project &&
         (n.metadata as Record<string, unknown>).featured === true,
     );
-    expect(featured).toHaveLength(1);
+    expect(featured).toHaveLength(5);
     expect(featured[0]!.label).toBe('Command Center');
   });
 
@@ -109,12 +109,12 @@ describe('findRelatedProjects', () => {
     ]);
   });
 
-  it('each non-command-center project is related to command-center', () => {
+  it('preserves the original documented relationships', () => {
     const projectIds = KNOWLEDGE_GRAPH.nodes
       .filter((n) => n.type === NODE_TYPE.Project)
       .map((n) => n.id.replace('project:', ''));
     for (const id of projectIds) {
-      if (id !== 'command-center') {
+      if (id !== 'command-center' && id !== 'drokex') {
         const related = findRelatedProjects(KNOWLEDGE_GRAPH, id);
         expect(related).toHaveLength(1);
         expect(related[0]!.label).toBe('Command Center');
@@ -137,6 +137,7 @@ describe('findProjectsUsingTechnology', () => {
     const labels = projects.map((n) => n.label).sort();
     expect(labels).toEqual([
       'Command Center',
+      'Drokex',
       'Intranet ESS',
       'Kliniu',
       'Vevi',

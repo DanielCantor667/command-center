@@ -76,7 +76,7 @@ export const projectMetricsSchema = z
 export const projectMediaSchema = z
   .object({
     type: z.enum(MEDIA_TYPE),
-    url: z.url(),
+    url: z.union([z.url(), z.string().regex(/^\/projects\/[a-z0-9-]+\.(png|webp|avif)$/)]),
     alt: nonEmptyString,
     caption: nonEmptyString.optional(),
     featured: z.boolean(),

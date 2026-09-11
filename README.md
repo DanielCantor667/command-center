@@ -1,10 +1,12 @@
 # Command Center
 
-The Operating System of a Software Engineer.
+Command Center es un sistema de evidencia explorable de la ingeniería de Daniel.
 
 ## Status
 
-Sprint 0.0 — Repository Foundation.
+Portafolio en revisión local: cuatro sitios publicados con evidencia visual, fichas de proyectos y ciudad 3D.
+
+Estado y límites: [roadmap activo](ROADMAP.md) y [auditoría de evidencia](docs/product/project-evidence-audit.md).
 
 ## Repository Philosophy
 

@@ -6,17 +6,16 @@ Este documento es el punto de entrada para cualquier IA o desarrollador nuevo en
 
 ## 1. ¿Qué es este proyecto?
 
-Command Center es "The Operating System of a Software Engineer": una plataforma que centraliza las operaciones de un negocio o equipo en un solo producto. Resuelve la fragmentación de herramientas dispersas (CRM, campañas, ventas, inventario, analítica) unificándolas bajo una misma arquitectura y experiencia.
+Command Center es un sistema de evidencia explorable de la ingeniería de Daniel. La ciudad permite descubrir proyectos; las fichas muestran propósito, evidencia, decisiones y enlaces públicos. El workspace permite profundizar en las conexiones entre proyectos.
 
 ---
 
 ## 2. Objetivos
 
-- Centralizar operaciones que hoy viven en herramientas separadas.
-- Automatizar procesos manuales y repetitivos.
-- Construir sobre una arquitectura escalable, no sobre atajos temporales.
-- Ofrecer una experiencia moderna y consistente en todo el producto.
-- Mantener el código mantenible a largo plazo, no solo funcional hoy.
+- Explicar qué productos ha construido Daniel y cómo toma decisiones.
+- Mostrar sitios reales, capturas y fuentes verificables.
+- Permitir un recorrido accesible desde la ciudad hasta el contacto.
+- Mantener PROJECTS como fuente única y representar ausencia de datos.
 
 ---
 

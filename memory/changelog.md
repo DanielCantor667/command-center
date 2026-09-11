@@ -67,3 +67,8 @@ Intranet ESS, L'Origine y Academy completan los seis landmarks propios con GLB L
 ## 2026-07-30 — Overview aéreo reproducible de la ciudad
 
 Se añadió una escena Blender independiente que compone los seis landmarks, vialidad procedural, atmósfera y cámara hero. El render permanece separado del fondo web hasta aprobar composición y generar derivados de publicación.
+
+
+## 2026-09-10 — Portafolio revisable
+
+Alineación del roadmap y contexto al sistema de evidencia de Daniel. Cuatro dominios comprobados con capturas públicas de escritorio/móvil. Drokex se incorpora como séptimo registro con huecos de autoría explícitos. Recorrido local ciudad → caso → sitio/contacto, con retorno. La publicación no forma parte de esta entrega. Ver docs/product/portfolio-review-scope.md y project-evidence-audit.md.

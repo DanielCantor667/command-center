@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
-import { Stack } from '@command-center/ui';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Button, Stack } from '@command-center/ui';
 import { PROJECTS } from '../../data/projects';
 import { useWorkspaceStore } from '../../shell/workspace-store';
 import { EmptyState } from './components/empty-state';
@@ -13,6 +13,13 @@ export function ProjectsModule() {
   const pendingProjectId = useWorkspaceStore((state) => state.selectedProjectId);
   const setPendingProjectId = useWorkspaceStore((state) => state.setSelectedProjectId);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(pendingProjectId);
+
+  const detailRef = useRef<HTMLDivElement>(null);
+  const publicCases = PROJECTS.filter((project) => project.public && project.links.live);
+  const activeIndex = publicCases.findIndex((project) => project.id === selectedProjectId);
+  useEffect(() => {
+    if (selectedProjectId) detailRef.current?.focus();
+  }, [selectedProjectId]);
 
   const featuredProject = useMemo(
     () => PROJECTS.find((p) => p.featured) ?? null,
@@ -31,20 +38,28 @@ export function ProjectsModule() {
 
   return (
     <Stack direction="vertical" gap="lg">
-      {featuredProject && (
+      {!selectedProject && featuredProject && (
         <FeaturedProject
           project={featuredProject}
           onSelect={() => handleSelectProject(featuredProject.id)}
         />
       )}
-      <ProjectsGrid onSelect={handleSelectProject} />
+
       {selectedProject ? (
-        <ProjectDetail
-          project={selectedProject}
-          onRelatedSelect={handleSelectProject}
-        />
+        <div ref={detailRef} tabIndex={-1} className="min-w-0 outline-none">
+          <nav aria-label="Recorrido de proyectos" className="flex flex-wrap items-center gap-12">
+            <Button onClick={() => setSelectedProjectId(null)}>Todos los proyectos</Button>
+            {activeIndex >= 0 && <>
+              <span className="text-sm text-text-secondary">Caso {activeIndex + 1} de {publicCases.length}</span>
+              {activeIndex > 0 && <Button onClick={() => handleSelectProject(publicCases[activeIndex - 1]!.id)}>Anterior</Button>}
+              {activeIndex < publicCases.length - 1 && <Button onClick={() => handleSelectProject(publicCases[activeIndex + 1]!.id)}>Siguiente</Button>}
+            </>}
+            <Button onClick={() => useWorkspaceStore.getState().setCurrentModule('communication')}>Contactar a Daniel</Button>
+          </nav>
+          <ProjectDetail project={selectedProject} onRelatedSelect={handleSelectProject} />
+        </div>
       ) : (
-        <EmptyState />
+        <><ProjectsGrid onSelect={handleSelectProject} /><EmptyState /></>
       )}
     </Stack>
   );

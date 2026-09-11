@@ -5,10 +5,10 @@ import { StatusBar } from '../status-bar';
 import { TopBar } from '../top-bar';
 import { Workspace } from '../workspace';
 
-export function AppShell() {
+export function AppShell({ onReturnToCity }: { onReturnToCity?: () => void }) {
   return (
     <AppContainer>
-      <TopBar />
+      <TopBar onReturnToCity={onReturnToCity} />
       <Stack direction="horizontal" gap="none" align="stretch" className="flex-1 overflow-hidden">
         <Sidebar />
         <Workspace />

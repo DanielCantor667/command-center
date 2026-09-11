@@ -17,7 +17,7 @@ export const vevi: Project = {
   summary:
     'A full-stack social video platform with a NestJS backend, React Native mobile app, async video processing pipeline (ffmpeg + BullMQ + Redis), and JWT auth. Built with Turborepo monorepo, Prisma + Supabase PostgreSQL, and S3-compatible storage (MinIO + Supabase Storage).',
   description:
-    'Vevi is a social video platform inspired by TikTok/Reels architecture, designed to scale to millions of users. It is organized as a Turborepo monorepo with three packages: backend (NestJS 10 with 13 feature modules: auth, posts, feed, explore, users, comments, likes, followers, media, search, notifications, saved-posts, shares, admin), mobile (React Native 0.85.3 with React Navigation, React Query, Zustand, Reanimated 4.4), and shared (types, validators, enums). The video pipeline uses ffmpeg for server-side compression (libx264, CRF 23, 1080p max, 30fps cap) with thumbnail generation, BullMQ + Redis for async job processing, Supabase Storage for video hosting, and MinIO for S3-compatible image storage. Auth uses custom JWT with refresh token rotation and Passport strategies (local, Google OAuth, Apple Sign In). The API includes Swagger documentation, rate limiting, cursor-based pagination, and global JwtAuthGuard with @Public() decorator pattern. Infrastructure runs on Docker (PostgreSQL, Redis, MinIO) with Supabase Cloud for production database.',
+    'Vevi is a social video platform inspired by TikTok/Reels architecture. No production-scale load measurement is documented here. It is organized as a Turborepo monorepo with three packages: backend (NestJS 10 with 13 feature modules: auth, posts, feed, explore, users, comments, likes, followers, media, search, notifications, saved-posts, shares, admin), mobile (React Native 0.85.3 with React Navigation, React Query, Zustand, Reanimated 4.4), and shared (types, validators, enums). The video pipeline uses ffmpeg for server-side compression (libx264, CRF 23, 1080p max, 30fps cap) with thumbnail generation, BullMQ + Redis for async job processing, Supabase Storage for video hosting, and MinIO for S3-compatible image storage. Auth uses custom JWT with refresh token rotation and Passport strategies (local, Google OAuth, Apple Sign In). The API includes Swagger documentation, rate limiting, cursor-based pagination, and global JwtAuthGuard with @Public() decorator pattern. Infrastructure runs on Docker (PostgreSQL, Redis, MinIO) with Supabase Cloud for production database.',
   status: PROJECT_STATUS.Development,
   featured: false,
   public: true,
@@ -291,14 +291,7 @@ export const vevi: Project = {
       category: LESSON_CATEGORY.Tooling,
     },
   ],
-  metrics: {
-    commits: 2,
-    contributors: 1,
-    durationWeeks: null,
-    modules: 13,
-    tests: null,
-    coverage: null,
-  },
+  metrics: { commits: null, contributors: null, durationWeeks: null, modules: null, tests: null, coverage: null },
   media: [],
   links: {},
   role: {
