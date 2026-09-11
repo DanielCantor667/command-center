@@ -1,7 +1,6 @@
 'use client';
 
 import { Stack, Surface } from '@command-center/ui';
-import { Brand } from '../brand';
 import { SidebarItem } from '../sidebar-item';
 import { useWorkspaceStore, WORKSPACE_MODULES } from '../workspace-store';
 import type { SidebarProps } from './types';
@@ -25,7 +24,7 @@ export function Sidebar({ className, ...rest }: SidebarProps) {
         .join(' ')}
     >
       <aside aria-label="Primary navigation" {...rest}>
-        <Brand />
+        <p className="command-sidebar-caption">Explorar el taller</p>
         <nav aria-label="Application modules">
           <Stack direction="vertical" gap="xs">
             {WORKSPACE_MODULES.map((module) => (

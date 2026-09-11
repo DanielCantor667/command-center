@@ -36,7 +36,7 @@ describe('AppShell', () => {
     expect(screen.getByRole('complementary', { name: 'Primary navigation' })).toBeInTheDocument();
     expect(screen.getByRole('main', { name: 'Workspace' })).toBeInTheDocument();
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 1, name: 'Capabilities' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Capacidades' })).toBeInTheDocument();
   });
 
   it('has no accessibility violations', async () => {

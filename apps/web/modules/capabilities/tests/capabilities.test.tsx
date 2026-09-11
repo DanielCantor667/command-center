@@ -7,26 +7,26 @@ describe('CapabilitiesModule', () => {
   it('renders the module title as a heading', () => {
     render(<CapabilitiesModule />);
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Capabilities' }),
+      screen.getByRole('heading', { level: 1, name: 'Capacidades' }),
     ).toBeInTheDocument();
   });
 
   it('renders all section headings', () => {
     render(<CapabilitiesModule />);
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Capability Groups' }),
+      screen.getByRole('heading', { level: 2, name: 'Áreas de experiencia' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Technology Profile' }),
+      screen.getByRole('heading', { level: 2, name: 'Tecnologías' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Architecture Experience' }),
+      screen.getByRole('heading', { level: 2, name: 'Arquitectura' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Learning Profile' }),
+      screen.getByRole('heading', { level: 2, name: 'Aprendizajes' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Statistics' }),
+      screen.getByRole('heading', { level: 2, name: 'Datos del portafolio' }),
     ).toBeInTheDocument();
   });
 

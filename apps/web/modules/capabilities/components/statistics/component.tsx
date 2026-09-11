@@ -21,7 +21,7 @@ function StatBox({ label, value }: { label: string; value: number }) {
 
 export function Statistics({ stats }: StatisticsProps) {
   return (
-    <Grid columns={3} gap="sm">
+    <Grid columns={{ base: 1, tablet: 3 }} gap="sm">
       <StatBox label="Projects" value={stats.projects} />
       <StatBox label="Featured" value={stats.featuredProjects} />
       <StatBox label="Technologies" value={stats.technologies} />

@@ -41,7 +41,7 @@ export function MissionModule() {
     <Stack direction="vertical" gap="lg">
       <Stack direction="vertical" gap="sm">
         <Typography as="h1" variant="display-l" color="primary">
-          Mission Log
+          Bitácora
         </Typography>
         <Typography as="p" variant="body" color="secondary">
           Engineering milestones that shaped how I build software.

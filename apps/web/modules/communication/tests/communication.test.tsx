@@ -7,6 +7,6 @@ describe('CommunicationModule', () => {
     render(<CommunicationModule />);
 
     expect(screen.getByRole('heading', { name: 'Hablemos' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Escribir por LinkedIn/ })).toHaveAttribute('href', 'https://www.linkedin.com/in/daniel-cantor-84435a345/');
+    expect(screen.getByRole('link', { name: /Escribir por LinkedIn/ })).toHaveAttribute('href', 'https://www.linkedin.com/in/danielcantorayala');
   });
 });

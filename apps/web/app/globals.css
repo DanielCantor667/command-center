@@ -1,1 +1,17 @@
 @import '@command-center/config/tailwind.css';
+
+/* Portfolio identity shared by the city and project stories. */
+:root {
+  --portfolio-paper: #f4f5f1;
+  --portfolio-stone: #e5e7e2;
+  --portfolio-ink: #242b29;
+  --portfolio-muted: #626b64;
+  --portfolio-line: #d2d7cf;
+  --portfolio-accent: #28664f;
+  --portfolio-width: 1640px;
+  --portfolio-gutter: clamp(22px, 3vw, 56px);
+}
+[data-project='kliniu'] { --project-accent: #155c65; --project-wash: #dceaea; }
+[data-project='4ustudio-academy'] { --project-accent: #9b450c; --project-wash: #f0e4d6; }
+[data-project='lorigine'] { --project-accent: #764121; --project-wash: #e8dfd2; }
+[data-project='drokex'] { --project-accent: #416b13; --project-wash: #e4e9df; }

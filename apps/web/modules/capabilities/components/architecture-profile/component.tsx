@@ -21,7 +21,7 @@ export function ArchitectureProfile({ profiles }: ArchitectureProfileProps) {
   if (profiles.length === 0) return null;
 
   return (
-    <Grid columns={2} gap="sm">
+    <Grid columns={{ base: 1, tablet: 2 }} gap="sm">
       {profiles.map((p) => (
         <Panel key={p.pattern} variant="default" border padding="md">
           <Stack direction="vertical" gap="sm">

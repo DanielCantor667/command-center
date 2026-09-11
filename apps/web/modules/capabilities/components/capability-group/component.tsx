@@ -9,7 +9,7 @@ interface CapabilityGroupProps {
 
 export function CapabilityGroup({ capabilities }: CapabilityGroupProps) {
   return (
-    <Grid columns={2} gap="sm">
+    <Grid columns={{ base: 1, tablet: 2 }} gap="sm">
       {capabilities.map((cap) => (
         <CapabilityCard key={cap.name} capability={cap} />
       ))}

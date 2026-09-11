@@ -11,7 +11,7 @@ vi.mock('../components/city-navigator-loader', () => ({
 describe('City portfolio experience', () => {
   it('shows the author, one selected project and real evidence', () => {
     render(<ExperienceModule onEnter={vi.fn()} />);
-    expect(screen.getByRole('heading', { name: 'Diseño y desarrollo de productos web.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Productos reales. De la idea al despliegue.' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'Vista real de Kliniu' })).toBeInTheDocument();
     expect(screen.queryByText('La ciudad se observa a sí misma.')).not.toBeInTheDocument();
   });

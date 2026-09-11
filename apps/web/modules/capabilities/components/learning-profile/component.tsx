@@ -12,7 +12,7 @@ export function LearningProfile({ profile }: LearningProfileProps) {
   if (categories.length === 0) return null;
 
   return (
-    <Grid columns={2} gap="sm">
+    <Grid columns={{ base: 1, tablet: 2 }} gap="sm">
       {categories.map(([category, count]) => (
         <Panel key={category} variant="subtle" border padding="md">
           <Stack direction="horizontal" gap="sm" justify="between" align="center">

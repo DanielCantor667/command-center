@@ -32,8 +32,8 @@ export function AnalyticsModule() {
   return (
     <Stack direction="vertical" gap="xl">
       <Stack direction="vertical" gap="sm">
-        <Typography as="h1" variant="display-l">Analytics Command</Typography>
-        <Typography as="p" variant="body" color="secondary">Lectura regenerable del Knowledge Graph. No guarda ni inventa datos.</Typography>
+        <Typography as="h1" variant="display-l">Análisis del portafolio</Typography>
+        <Typography as="p" variant="body" color="secondary">Proyectos, tecnologías y decisiones a partir de la documentación disponible.</Typography>
         <Stack direction="horizontal" gap="sm">
           <Button variant="secondary" size="sm" onClick={exportSnapshot}>Exportar JSON</Button>
         </Stack>
@@ -50,13 +50,13 @@ export function AnalyticsModule() {
         <Panel><Stack direction="vertical" gap="md"><Typography variant="heading-m">Proyectos más conectados</Typography>{analytics.global.mostConnectedProjects.slice(0, 6).map((item) => <Stack key={item.id} direction="horizontal" justify="between"><Typography variant="body">{item.label}</Typography><Typography variant="body" color="accent">{item.value} conexiones</Typography></Stack>)}</Stack></Panel>
       </Grid>
       <Grid columns={{ base: 1, laptop: 2 }} gap="lg">
-        <Panel><Stack direction="vertical" gap="md"><Typography variant="heading-m">Insights derivados</Typography>{analytics.insights.map((item) => <Stack key={item.id} direction="vertical" gap="xs"><Typography variant="body" color="accent">{item.title}</Typography><Typography variant="body" color="muted">{item.description}</Typography></Stack>)}</Stack></Panel>
+        <Panel><Stack direction="vertical" gap="md"><Typography variant="heading-m">Lecturas de los datos</Typography>{analytics.insights.map((item) => <Stack key={item.id} direction="vertical" gap="xs"><Typography variant="body" color="accent">{item.title}</Typography><Typography variant="body" color="muted">{item.description}</Typography></Stack>)}</Stack></Panel>
         <Panel><Stack direction="vertical" gap="md"><Typography variant="heading-m">Siguientes mejoras de evidencia</Typography>{analytics.recommendations.length ? analytics.recommendations.map((item) => <Stack key={item.id} direction="vertical" gap="xs"><Typography variant="body" color="accent">{item.title}</Typography><Typography variant="body" color="muted">{item.description}</Typography></Stack>) : <Typography variant="body" color="muted">No hay vacíos críticos detectados.</Typography>}</Stack></Panel>
       </Grid>
       <Divider />
       <Panel>
         <Stack direction="vertical" gap="md">
-          <Typography variant="heading-m">Buscar en el Knowledge Graph</Typography>
+          <Typography variant="heading-m">Buscar en la documentación</Typography>
           <label className="sr-only" htmlFor="knowledge-search">Buscar tecnologías, proyectos o decisiones</label>
           <input id="knowledge-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Ej.: Next.js, arquitectura, Kliniu" className="w-full rounded-md border border-panel-border bg-background-primary px-4 py-3 text-text-primary outline-none focus:border-accent" />
           {query.trim() && <Stack direction="vertical" gap="xs">{searchResults.length ? searchResults.map((node) => <Stack key={node.id} direction="horizontal" justify="between"><Typography variant="body">{node.label}</Typography><Typography variant="body" color="muted">{node.type}</Typography></Stack>) : <Typography variant="body" color="muted">No hay nodos que coincidan con la búsqueda.</Typography>}</Stack>}

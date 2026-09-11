@@ -24,9 +24,9 @@ describe('Portfolio case', () => {
     expect(back).toHaveBeenCalledOnce();
   });
 
-  it('keeps unconfirmed authorship and missing evidence explicit', () => {
+  it('attributes Drokex participation to the supplied CV without inventing evidence', () => {
     render(<PortfolioCase project={PROJECTS.find(project => project.id === 'drokex')!} onSelect={vi.fn()} onReturn={vi.fn()} />);
-    expect(screen.getByText('Autoría y alcance por confirmar.')).toBeInTheDocument();
+    expect(screen.getByText('Participación descrita en el CV de Daniel.')).toBeInTheDocument();
     expect(screen.getByText('Sin evidencia documentada por ahora.')).toBeInTheDocument();
   });
 });

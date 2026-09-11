@@ -22,28 +22,28 @@ export function CapabilitiesModule() {
 
   return (
     <Stack direction="vertical" gap="xl">
-      <Typography variant="display-l">Capabilities</Typography>
+      <Typography variant="display-l">Capacidades</Typography>
 
       <CapabilityOverview evidence={evidence} />
       <Divider />
 
-      <Typography variant="heading-l">Capability Groups</Typography>
+      <Typography variant="heading-l">Áreas de experiencia</Typography>
       <CapabilityGroup capabilities={evidence.capabilities} />
       <Divider />
 
-      <Typography variant="heading-l">Technology Profile</Typography>
+      <Typography variant="heading-l">Tecnologías</Typography>
       <TechnologyProfile experiences={evidence.technologyExperiences} />
       <Divider />
 
-      <Typography variant="heading-l">Architecture Experience</Typography>
+      <Typography variant="heading-l">Arquitectura</Typography>
       <ArchitectureProfile profiles={evidence.architectureProfiles} />
       <Divider />
 
-      <Typography variant="heading-l">Learning Profile</Typography>
+      <Typography variant="heading-l">Aprendizajes</Typography>
       <LearningProfile profile={evidence.learningProfile} />
       <Divider />
 
-      <Typography variant="heading-l">Statistics</Typography>
+      <Typography variant="heading-l">Datos del portafolio</Typography>
       <Statistics stats={evidence.statistics} />
     </Stack>
   );

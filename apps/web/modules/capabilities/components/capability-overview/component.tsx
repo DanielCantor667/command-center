@@ -31,7 +31,7 @@ export function CapabilityOverview({ evidence }: CapabilityOverviewProps) {
   ).length;
 
   return (
-    <Grid columns={3} gap="sm">
+    <Grid columns={{ base: 1, tablet: 3 }} gap="sm">
       <StatBox label="Capabilities" value={evidence.capabilities.length} />
       <StatBox label="Technologies" value={evidence.statistics.technologies} />
       <StatBox

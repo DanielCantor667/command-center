@@ -16,14 +16,14 @@ describe('Sidebar', () => {
   it('renders every workspace module as a navigation item', () => {
     render(<Sidebar />);
 
-    expect(screen.getByRole('button', { name: 'Panel de control' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Mission Log' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'El taller' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Bitácora' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Contacto' })).toBeInTheDocument();
   });
 
-  it('renders the brand', () => {
+  it('labels the workshop navigation', () => {
     render(<Sidebar />);
-    expect(screen.getByText('Command Center')).toBeInTheDocument();
+    expect(screen.getByText('Explorar el taller')).toBeInTheDocument();
   });
 
   it('marks no item active when no module is selected', () => {

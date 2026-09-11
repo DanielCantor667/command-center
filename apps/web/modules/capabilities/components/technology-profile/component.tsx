@@ -21,11 +21,11 @@ export function TechnologyProfile({ experiences }: TechnologyProfileProps) {
   if (experiences.length === 0) return null;
 
   return (
-    <Grid columns={2} gap="sm">
+    <Grid columns={{ base: 1, tablet: 2 }} gap="sm">
       {experiences.map((exp) => (
         <Panel key={exp.technology} variant="default" border padding="md">
           <Stack direction="vertical" gap="sm">
-            <Stack direction="horizontal" gap="sm" align="center">
+            <Stack direction="horizontal" gap="sm" align="center" wrap>
               <Typography variant="heading-m">{exp.technology}</Typography>
               <Typography variant="body-small" color="muted">
                 {exp.kind}

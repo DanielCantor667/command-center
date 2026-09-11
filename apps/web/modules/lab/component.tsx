@@ -46,15 +46,13 @@ export function LabModule() {
 
   return (
     <Stack direction="vertical" gap="lg" className="pb-32">
-      <header className="relative shrink-0 overflow-hidden rounded-2xl border border-panel-border bg-gradient-to-br from-background-primary via-panel-background to-surface-primary px-24 py-20 shadow-high">
-        <div className="absolute -right-64 -top-80 h-192 w-192 rounded-full bg-accent/10 blur-3xl" />
+      <header className="command-lab-intro shrink-0">
         <div className="relative flex flex-wrap items-end justify-between gap-16">
           <div>
-            <div className="mb-8 flex items-center gap-8 text-xs font-medium uppercase tracking-[0.22em] text-accent">
-              <span className="h-8 w-8 rounded-full bg-accent shadow-[0_0_14px_var(--accent)]" />
-              Spatial intelligence workspace
+            <div className="mb-8 text-xs text-text-secondary">
+              Diseño de espacios
             </div>
-            <Typography variant="heading-xl" color="primary" className="tracking-tight">3D Office Studio</Typography>
+            <Typography as="h1" variant="display-l" color="primary">Laboratorio 3D</Typography>
             <Typography variant="body" color="secondary" className="mt-4 max-w-2xl">Diseña, valida y renderiza espacios de trabajo desde un brief hasta un proyecto versionado.</Typography>
           </div>
           <div className="flex flex-wrap gap-8 text-xs">

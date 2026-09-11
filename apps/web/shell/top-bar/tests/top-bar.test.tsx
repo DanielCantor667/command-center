@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { axe } from 'vitest-axe';
 import { ThemeProvider } from '@command-center/ui';
 import { TopBar } from '../component';
@@ -20,12 +20,12 @@ afterEach(() => {
 describe('TopBar', () => {
   it('renders the brand', () => {
     renderTopBar();
-    expect(screen.getByText('Command Center')).toBeInTheDocument();
+    expect(screen.getByText('Command Center / Taller digital')).toBeInTheDocument();
   });
 
   it('shows the portfolio label when no module is selected', () => {
     renderTopBar();
-    expect(screen.getByText('Portfolio de ingeniería')).toBeInTheDocument();
+    expect(screen.getByText('Laboratorio')).toBeInTheDocument();
   });
 
   it('reflects the current module label', () => {
@@ -39,9 +39,11 @@ describe('TopBar', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument();
   });
 
-  it('exposes an accessible theme control', () => {
-    renderTopBar();
-    expect(screen.getByRole('button', { name: 'Activar tema claro' })).toBeInTheDocument();
+  it('returns to the city from the shared header', () => {
+    const back = vi.fn();
+    render(<TopBar onReturnToCity={back} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Volver a la ciudad' }));
+    expect(back).toHaveBeenCalledOnce();
   });
 
   it('has no accessibility violations', async () => {

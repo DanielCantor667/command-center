@@ -17,7 +17,7 @@ describe('MissionModule', () => {
   it('renders the page title', () => {
     render(<MissionModule />);
 
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Mission Log');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Bitácora');
   });
 
   it('renders the subtitle', () => {

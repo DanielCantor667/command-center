@@ -1,18 +1,24 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PROJECTS, type Project } from '../../../../data/projects';
+import { PORTFOLIO_TECHNOLOGIES } from '../../../../data/portfolio-technologies';
+import type { PortfolioSection } from '../../../experience/component';
 import { PUBLIC_PROFILE } from '../../../../data/public-profile';
+import { CityNavigatorLoader } from '../../../experience/components/city-navigator-loader';
 import styles from './portfolio-case.module.css';
 
 interface PortfolioCaseProps {
   project: Project;
   onSelect: (id: string) => void;
   onReturn: () => void;
+  onNavigate?: (section: PortfolioSection) => void;
+  onTechnologySelect?: (id: string) => void;
 }
 
-export function PortfolioCase({ project, onSelect, onReturn }: PortfolioCaseProps) {
+export function PortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
+  const [districtId, setDistrictId] = useState<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter(item => item.public && item.links.live);
   const index = cases.findIndex(item => item.id === project.id);
@@ -24,10 +30,16 @@ export function PortfolioCase({ project, onSelect, onReturn }: PortfolioCaseProp
 
   return <main className={styles.case} data-project={project.id}>
     <header className={styles.navigation}>
-      <button type="button" onClick={onReturn}>Volver a la ciudad</button>
-      <span>Daniel Cantor / Taller digital</span>
-      <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">Hablemos</a>
+      <button className={styles.identity} type="button" onClick={onReturn}>{PUBLIC_PROFILE.name}<span>Full-Stack Developer</span></button>
+      <div className={styles.headerLinks}>
+        <button type="button" onClick={onReturn}>Volver a la ciudad</button>
+        {onNavigate && <button type="button" onClick={() => onNavigate('technologies')}>Tecnologías</button>}
+        <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">Hablemos</a>
+      </div>
     </header>
+    <nav className={styles.projectTabs} aria-label="Proyectos publicados">
+      {cases.map(item => <button key={item.id} type="button" aria-current={item.id === project.id ? 'page' : undefined} onClick={() => onSelect(item.id)}>{item.name}</button>)}
+    </nav>
     <article key={project.id} className={styles.article}>
       <div className={styles.intro}>
         <div><p className={styles.tagline}>{project.tagline}</p><h1 ref={heading} tabIndex={-1}>{project.name}</h1></div>
@@ -43,14 +55,21 @@ export function PortfolioCase({ project, onSelect, onReturn }: PortfolioCaseProp
           <figcaption>{media.caption}</figcaption>
         </figure>)}
       </section> : <p className={styles.noMedia}>Sin capturas publicadas para este proyecto.</p>}
+      {index >= 0 && <section className={styles.district} aria-label="El proyecto en la ciudad">
+        <div className={styles.districtHeading}>
+          <div><h2>Su lugar en el taller</h2><p>Explora el distrito de {project.name} en la maqueta de proyectos.</p></div>
+          <button type="button" aria-expanded={districtId === project.id} aria-controls="case-district" onClick={() => setDistrictId(districtId === project.id ? null : project.id)}>{districtId === project.id ? 'Cerrar maqueta' : 'Explorar distrito en 3D'}</button>
+        </div>
+        {districtId === project.id && <div id="case-district" className={styles.districtScene}><CityNavigatorLoader key={project.id} detail selectedProjectId={project.id} onProjectSelect={onSelect} viewRevision={0} /></div>}
+      </section>}
       <section className={styles.story} aria-label="Alcance del proyecto">
         <aside>
           <h2>Participación</h2>
           <p>{project.role.title}</p>
-          {project.ownership.type === 'unconfirmed' && <p>Autoría y alcance por confirmar.</p>}
+          {project.ownership.type === 'unconfirmed' && <p>{project.id === 'drokex' ? 'Participación descrita en el CV de Daniel.' : 'Autoría y alcance por confirmar.'}</p>}
           {project.role.responsibilities.length > 0 && <details className={styles.responsibilities}><summary>Responsabilidades documentadas</summary><ul>{project.role.responsibilities.map(item => <li key={item}>{item}</li>)}</ul></details>}
           <h2>Tecnologías</h2>
-          <p>{project.technologies.map(item => item.name).join(', ') || 'Sin tecnologías documentadas.'}</p>
+          {onTechnologySelect ? <div className={styles.technologyLinks}>{PORTFOLIO_TECHNOLOGIES.filter(item => item.projectIds.includes(project.id)).map(item => <button key={item.id} type="button" onClick={() => onTechnologySelect(item.id)}>{item.name}</button>)}</div> : <p>{project.technologies.map(item => item.name).join(', ') || 'Sin tecnologías documentadas.'}</p>}
           {(project.links.repository || project.links.documentation) && <div className={styles.sources}>
             {project.links.repository && <a href={project.links.repository} target="_blank" rel="noreferrer">Repositorio</a>}
             {project.links.documentation && <a href={project.links.documentation} target="_blank" rel="noreferrer">Documentación</a>}

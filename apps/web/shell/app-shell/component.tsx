@@ -9,7 +9,7 @@ export function AppShell({ onReturnToCity }: { onReturnToCity?: () => void }) {
   return (
     <AppContainer>
       <TopBar onReturnToCity={onReturnToCity} />
-      <Stack direction="horizontal" gap="none" align="stretch" className="flex-1 overflow-hidden">
+      <Stack direction="horizontal" gap="none" align="stretch" className="command-shell-body flex-1 overflow-hidden">
         <Sidebar />
         <Workspace />
       </Stack>
