@@ -19,17 +19,18 @@ export interface PortfolioCaseProps {
   onReturn: () => void;
   onNavigate?: (section: PortfolioSection) => void;
   onTechnologySelect?: (id: string) => void;
+  returnLabel?: string;
 }
 
-export function PortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
-  if (project.id === 'drokex') return <DrokexCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
-  if (project.id === 'kliniu') return <KliniuCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
-  if (project.id === 'lorigine') return <LorigineCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
-  if (project.id === '4ustudio-academy') return <AcademyCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
-  return <StandardPortfolioCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+export function PortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect, returnLabel }: PortfolioCaseProps) {
+  if (project.id === 'drokex') return <DrokexCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} returnLabel={returnLabel} />;
+  if (project.id === 'kliniu') return <KliniuCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} returnLabel={returnLabel} />;
+  if (project.id === 'lorigine') return <LorigineCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} returnLabel={returnLabel} />;
+  if (project.id === '4ustudio-academy') return <AcademyCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} returnLabel={returnLabel} />;
+  return <StandardPortfolioCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} returnLabel={returnLabel} />;
 }
 
-function StandardPortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
+function StandardPortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect, returnLabel = 'Volver a la ciudad' }: PortfolioCaseProps) {
   const [districtId, setDistrictId] = useState<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter(item => item.public && item.links.live);
@@ -44,7 +45,7 @@ function StandardPortfolioCase({ project, onSelect, onReturn, onNavigate, onTech
     <header className={styles.navigation}>
       <button className={styles.identity} type="button" onClick={onReturn}>{PUBLIC_PROFILE.name}<span>Full-Stack Developer</span></button>
       <div className={styles.headerLinks}>
-        <button type="button" onClick={onReturn}>Volver a la ciudad</button>
+        <button type="button" onClick={onReturn}>{returnLabel}</button>
         {onNavigate && <button type="button" onClick={() => onNavigate('technologies')}>Tecnologías</button>}
         <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">Hablemos</a>
       </div>

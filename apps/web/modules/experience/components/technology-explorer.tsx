@@ -23,6 +23,7 @@ export interface TechnologyFilters {
   projectId: string | null;
 }
 export interface TechnologyExplorerProps {
+  presentation?: 'scene' | 'html';
   initialFilters?: TechnologyFilters;
   onFiltersChange?: (filters: TechnologyFilters) => void;
   selectedId: string;
@@ -47,6 +48,7 @@ export function TechnologyExplorer({
   onProjectSelect,
   initialFilters,
   onFiltersChange,
+  presentation = 'scene',
 }: TechnologyExplorerProps) {
   const detailRef = useRef<HTMLElement>(null);
   const [filters, setFilters] = useState<TechnologyFilters>(
@@ -70,7 +72,7 @@ export function TechnologyExplorer({
     updateFilters({ category: id, projectId: null });
   };
   return (
-    <div className={styles.explorer}>
+    <div className={`${styles.explorer} ${presentation === 'html' ? styles.html : ''}`} data-technology-presentation={presentation}>
       <div className={styles.tools}>
         <label className={styles.search}>
           <span>Buscar tecnología</span>
@@ -169,7 +171,7 @@ export function TechnologyExplorer({
           style={{ '--tech-color': selected.color } as CSSProperties}
         >
           <div className={styles.inspector}>
-            <Icon3D
+            {presentation === 'html' ? <div className={styles.htmlMark} role="img" aria-label={`Marca de ${selected.name}`}><Mark technology={selected} /></div> : <Icon3D
               id={selected.id}
               name={selected.name}
               fallback={
@@ -181,7 +183,7 @@ export function TechnologyExplorer({
                   </span>
                 </div>
               }
-            />
+            />}
           </div>
           <div className={styles.detailCopy}>
             <p className={styles.category}>

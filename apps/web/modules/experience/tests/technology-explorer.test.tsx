@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useState } from 'react';
 import { TechnologyExplorer } from '../components/technology-explorer';
 
-vi.mock('next/dynamic', () => ({ default: () => () => null }));
+vi.mock('next/dynamic', () => ({ default: () => () => <canvas aria-label="Technology renderer" /> }));
 beforeEach(() => {
   window.matchMedia = vi.fn().mockReturnValue({ matches: false });
 });
@@ -13,6 +13,17 @@ function Explorer({ onProjectSelect = vi.fn() }: { onProjectSelect?: (id: string
 }
 
 describe('Technology explorer', () => {
+  it('provides the same technology detail in HTML without activating the scene renderer', () => {
+    const selected = vi.fn();
+    render(<TechnologyExplorer selectedId="python" presentation="html" onSelect={selected} onProjectSelect={vi.fn()} />);
+    expect(document.querySelector('canvas')).not.toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Marca de Python' })).toBeInTheDocument();
+    expect(screen.getByText('Incluida en mi CV. Aún sin un proyecto asociado en este portafolio.')).toBeInTheDocument();
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'postgres' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Explorar PostgreSQL' }));
+    expect(selected).toHaveBeenCalledWith('postgresql');
+  });
+
   it('searches by alias and changes the selected detail without leaving the catalogue', () => {
     render(<Explorer />);
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'testing' } });

@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ExperienceGate } from '../component';
 import type { ComponentProps } from 'react';
 import { useEffect } from 'react';
@@ -7,6 +7,7 @@ import type { ExperienceModule } from '../../../modules/experience';
 import type { PortfolioCase } from '../../../modules/projects/components/portfolio-case/component';
 
 let workshopProps: ComponentProps<typeof ExperienceModule>;
+beforeEach(() => window.history.replaceState(null, '', '/?view=portfolio'));
 const snapshot = { projectId: 'kliniu', detail: false, exploded: true, night: true, sceneEnabled: false, tourStop: 'purchase' as const, camera: null, scrollY: 654 };
 vi.mock('../../../modules/experience', () => ({ ExperienceModule: (props: ComponentProps<typeof ExperienceModule>) => {
   workshopProps = props;
@@ -27,6 +28,20 @@ afterEach(() => {
 });
 
 describe('Portfolio case transitions', () => {
+  it('keeps opening, changing and returning cases when a resized viewport aborts readiness', async () => {
+    window.matchMedia = vi.fn().mockReturnValue({ matches: false });
+    Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
+      update();
+      return { ready: Promise.reject(new DOMException('Viewport size changed', 'AbortError')), updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
+    } });
+    render(<ExperienceGate />);
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' })); });
+    expect(screen.getByRole('heading', { name: 'Caso Kliniu' })).toBeInTheDocument();
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Siguiente' })); });
+    expect(screen.getByRole('heading', { name: 'Caso Drokex' })).toBeInTheDocument();
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Volver' })); });
+    expect(screen.getByRole('button', { name: 'Abrir Kliniu' })).toBeInTheDocument();
+  });
   it('opens directly when startViewTransition throws', () => {
     window.matchMedia = vi.fn().mockReturnValue({ matches: false });
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: () => { throw new Error('unsupported transition'); } });
@@ -39,7 +54,7 @@ describe('Portfolio case transitions', () => {
     let oldUpdate: (() => void) | undefined;
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
       oldUpdate = update;
-      return { updateCallbackDone: Promise.reject(new Error('update rejected')), finished: Promise.reject(new Error('transition rejected')) };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.reject(new Error('update rejected')), finished: Promise.reject(new Error('transition rejected')) };
     } });
     render(<ExperienceGate />);
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' })); });
@@ -54,7 +69,7 @@ describe('Portfolio case transitions', () => {
     const finish: (() => void)[] = [];
     const start = vi.fn((update: () => void) => {
       updates.push(update);
-      return { updateCallbackDone: Promise.resolve(), finished: new Promise<void>(resolve => finish.push(resolve)) };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.resolve(), finished: new Promise<void>(resolve => finish.push(resolve)) };
     });
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: start });
     render(<ExperienceGate />);
@@ -118,7 +133,7 @@ describe('Portfolio case transitions', () => {
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
       starts.push(document.documentElement.dataset.portfolioTransition ?? '');
       update();
-      return { updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
     } });
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' }));
@@ -136,7 +151,7 @@ describe('Portfolio case transitions', () => {
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
       modes.push(document.documentElement.dataset.portfolioTransition ?? '');
       update();
-      return { updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
     } });
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' }));
@@ -152,7 +167,7 @@ describe('Portfolio case transitions', () => {
     const skip = vi.fn();
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
       update();
-      return { updateCallbackDone: Promise.resolve(), finished: new Promise(() => {}), skipTransition: skip };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.resolve(), finished: new Promise(() => {}), skipTransition: skip };
     } });
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' }));
@@ -184,6 +199,7 @@ describe('Portfolio case transitions', () => {
       count += 1;
       if (count === 1) update();
       return {
+        ready: Promise.resolve(),
         updateCallbackDone: count === 1 ? Promise.resolve() : Promise.reject(new Error('visual update failed')),
         finished: count === 1 ? Promise.resolve() : Promise.reject(new Error('visual finish failed')),
         skipTransition: vi.fn(),
@@ -202,7 +218,7 @@ describe('Portfolio case transitions', () => {
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: (update: () => void) => {
       updates.push(update);
       if (updates.length === 1) update();
-      return { updateCallbackDone: Promise.resolve(), finished: new Promise(() => {}), skipTransition: skip };
+      return { ready: Promise.resolve(), updateCallbackDone: Promise.resolve(), finished: new Promise(() => {}), skipTransition: skip };
     } });
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' }));

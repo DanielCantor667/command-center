@@ -16,6 +16,7 @@ export function AcademyCase({
   onReturn,
   onNavigate,
   onTechnologySelect,
+  returnLabel = 'Volver a la ciudad',
 }: PortfolioCaseProps) {
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter((item) => item.public && item.links.live);
@@ -40,7 +41,7 @@ export function AcademyCase({
         </button>
         <button type="button" onClick={onReturn}>
           <ArrowLeft size={16} aria-hidden />
-          Volver a la ciudad
+          {returnLabel}
         </button>
         {onNavigate && (
           <button

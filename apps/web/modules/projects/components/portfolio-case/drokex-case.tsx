@@ -10,7 +10,7 @@ import type { PortfolioCaseProps } from './component';
 import { DrokexNetwork } from './drokex-network';
 import styles from './drokex-case.module.css';
 
-export function DrokexCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
+export function DrokexCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect, returnLabel = 'Volver a la ciudad' }: PortfolioCaseProps) {
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter((item) => item.public && item.links.live);
   const previous = cases[cases.findIndex((item) => item.id === project.id) - 1];
@@ -23,7 +23,7 @@ export function DrokexCase({ project, onSelect, onReturn, onNavigate, onTechnolo
     <main className={styles.case} data-project="drokex">
       <header className={styles.header}>
         <button type="button" className={styles.identity} aria-label="Daniel Cantor, inicio" onClick={onReturn}>dc.</button>
-        <button type="button" onClick={onReturn}><ArrowLeft size={16} aria-hidden />Volver a la ciudad</button>
+        <button type="button" onClick={onReturn}><ArrowLeft size={16} aria-hidden />{returnLabel}</button>
         {onNavigate && <button type="button" className={styles.techNav} onClick={() => onNavigate('technologies')}>Tecnologías<ArrowUpRight size={16} aria-hidden /></button>}
       </header>
       <article>
