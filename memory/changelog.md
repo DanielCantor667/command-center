@@ -72,3 +72,7 @@ Se añadió una escena Blender independiente que compone los seis landmarks, via
 ## 2026-09-10 — Portafolio revisable
 
 Alineación del roadmap y contexto al sistema de evidencia de Daniel. Cuatro dominios comprobados con capturas públicas de escritorio/móvil. Drokex se incorpora como séptimo registro con huecos de autoría explícitos. Recorrido local ciudad → caso → sitio/contacto, con retorno. La publicación no forma parte de esta entrega. Ver docs/product/portfolio-review-scope.md y project-evidence-audit.md.
+
+## 2026-10-09 — Sprint 8: props y láminas generados en el taller
+
+El workshop-game suma una capa aditiva de siete props 3D (foca y dispensador en Kliniu, frasco en L'ORIGINE, audífonos y micrófono en Academy, globo en Drokex, lámpara en la mesa) y dos láminas en el hub, generados con Magnific y normalizados en Blender. Shell, salas y estaciones conservan sus hashes. Procedencia por asset en docs/product/workshop-game-props/manifest.json y decisión en ADR-006.

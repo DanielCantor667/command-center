@@ -4,7 +4,9 @@ import { Html, useGLTF } from '@react-three/drei';
 import { addAfterEffect, useThree } from '@react-three/fiber';
 import { Component, Suspense, useEffect, useMemo, type ReactNode } from 'react';
 import { cloneWorkshopModel } from './model-instance';
+import { ROOM_PROPS } from './props';
 import { WORKSHOP_ROOMS, type RoomId } from './rooms';
+import { WorkshopProps } from './workshop-props';
 import styles from './workshop-game.module.css';
 
 interface RoomProps { room: RoomId; token: number; onReady: (room: RoomId, token: number) => void; onError: (room: RoomId, token: number) => void }
@@ -40,6 +42,7 @@ function RoomModel({ room, token, onReady }: RoomProps) {
   const screen = screens[room];
   return <group>
     <primitive object={model} dispose={null} />
+    <WorkshopProps props={ROOM_PROPS[room]} />
     <Html transform occlude pointerEvents="none" distanceFactor={1} position={screen.position} rotation={screen.rotation} style={{ pointerEvents: 'none' }}>
       <div className={styles.evidenceScreen} aria-hidden="true" style={{ width: screen.size[0] * 400, height: screen.size[1] * 400 }}>
         <Image src={WORKSHOP_ROOMS[room].evidence} alt="" fill sizes="768px" />

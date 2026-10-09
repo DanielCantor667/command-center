@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "phase": "8",
+  "units": "metres",
+  "up": "Y",
+  "normalizer": "blender/normalize_generated_asset.py",
+  "blender": "5.1.2",
+  "contract": "Capa aditiva: cada prop es un GLB propio en coordenadas locales (pivote en el apoyo, frente +X). La web lo coloca desde apps/web/modules/workshop-game/props.ts. No modifica shell, puerta, estaciones ni salas.",
+  "budgets": {
+    "propBytes": 300000,
+    "propTriangles": 9000,
+    "propPrimitives": 2,
+    "totalPropBytes": 1800000,
+    "artBytes": 150000
+  },
+  "license": {
+    "summary": "Generado con la cuenta de pago Premium+ de Magnific. La documentación pública de Magnific indica licencia comercial para imágenes y vídeo generados en planes de pago, y que el usuario responde por no infringir derechos de terceros. No menciona explícitamente los modelos 3D: pendiente de confirmar antes de un uso comercial.",
+    "source": "https://www.magnific.com/ai/docs/ai-content-and-copyright",
+    "checked": "2026-10-09"
+  },
+  "props": {
+    "seal": {
+      "url": "/models/workshop-game/props/seal-v1.glb",
+      "room": "kliniu",
+      "engine": "Magnific image-to-3D · tripo-p2 (P2-20260801), faceLimit 10000",
+      "reference": "Mascota de Kliniu, arte propio de la marca (PSD 'Foca OK')",
+      "credits": 2290,
+      "height": 0.42,
+      "note": "Se retiró en Blender la losa creada a partir de la sombra de la referencia.",
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 234744,
+      "triangles": 8000,
+      "sha256": "becd8db0894d49301a1004938a007efc2293a6d75ad905d177e453d788c40631"
+    },
+    "dispenser": {
+      "url": "/models/workshop-game/props/dispenser-v1.glb",
+      "room": "kliniu",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A single countertop liquid soap pump dispenser, matte white plastic body with a teal accent band and a chrome pump head, unbranded, no text, clean product design, standing upright, isolated object",
+      "credits": 580,
+      "height": 0.26,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 189792,
+      "triangles": 5758,
+      "sha256": "fb3d907c0badd4e3f2ecf9e0a6f6f69bbbf0a6c40d06299e557f2344cd5a48fd"
+    },
+    "bottle": {
+      "url": "/models/workshop-game/props/bottle-v1.glb",
+      "room": "lorigine",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A single amber glass cosmetic pump bottle with a matte black pump cap, cylindrical, completely unlabeled, no text, no logo, premium hair care packaging, standing upright, isolated object",
+      "credits": 580,
+      "height": 0.24,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 192544,
+      "triangles": 5724,
+      "sha256": "6b6b217ba582c1034dd3f86684448d3bcce9ebe18709adb6b5f66c4b25d0d223"
+    },
+    "headphones": {
+      "url": "/models/workshop-game/props/headphones-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A pair of professional over-ear studio headphones, matte black with dark brown leather ear cushions and a padded headband, unbranded, no text, resting upright, isolated object",
+      "credits": 580,
+      "height": 0.22,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 213532,
+      "triangles": 5611,
+      "sha256": "aa1a8e5cdf24addd77d181fbeca15f12c0bb257333f1557c4ec55f55e5cd5b86"
+    },
+    "microphone": {
+      "url": "/models/workshop-game/props/microphone-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A studio condenser microphone in a shock mount on a short heavy round desk stand, brushed steel and black, unbranded, no text, isolated object",
+      "credits": 580,
+      "height": 0.36,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 268312,
+      "triangles": 5184,
+      "sha256": "5577fd1794ab5d3c2514ea25b3f770ecb8fc705bebec51c966ddf172900738fa"
+    },
+    "globe": {
+      "url": "/models/workshop-game/props/globe-v1.glb",
+      "room": "drokex",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A classic desk world globe on a brass meridian arc and a dark wooden round base, muted teal oceans and beige continents, no text, no labels, isolated object",
+      "credits": 580,
+      "height": 0.42,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 208072,
+      "triangles": 5590,
+      "sha256": "c7488ceef3579676415c900e08bd79a0e082513dda963d7202bb5d1c6c0766c8"
+    },
+    "lamp": {
+      "url": "/models/workshop-game/props/lamp-v1.glb",
+      "room": "hub",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A vintage banker desk lamp with a dark green enamel shade, brass stem and heavy brass base, unbranded, no text, isolated object",
+      "credits": 580,
+      "height": 0.42,
+      "origin": "magnific",
+      "generated": "2026-10-09",
+      "bytes": 213312,
+      "triangles": 5838,
+      "sha256": "6496dd853a0bc349732cc6d15fc69dc3cd9c1a7ed271995c6b07c6d081df7970"
+    }
+  },
+  "art": {
+    "blueprint": {
+      "url": "/experience/workshop-art-blueprint-v1.webp",
+      "origin": "magnific",
+      "engine": "Magnific text-to-image · modo auto",
+      "prompt": "Minimal architectural line drawing of a modular industrial workshop building in elevation view, fine dark forest green ink lines on warm cream paper, flat print, generous margins, no text, no letters, no numbers",
+      "credits": 75,
+      "generated": "2026-10-09",
+      "bytes": 77922,
+      "sha256": "be69e84088a859020b5380bbb1488ef795f1ea480fa2dcda8e2e9356b3120b82",
+      "note": "Recortada y convertida a WebP en local."
+    },
+    "geometric": {
+      "url": "/experience/workshop-art-geometric-v1.webp",
+      "origin": "magnific",
+      "engine": "Magnific text-to-image · modo auto",
+      "prompt": "Abstract mid-century geometric print, overlapping circles, arcs and a fine grid, deep forest green, warm oak brown, brass ochre and cream, flat screen-print texture, generous margins, no text, no letters",
+      "credits": 75,
+      "generated": "2026-10-09",
+      "bytes": 81614,
+      "sha256": "39705ad68b6fef903194206a825385911577d6ae08da2bcca91d37633fa2a806",
+      "note": "Recortada y convertida a WebP en local."
+    }
+  },
+  "discarded": [
+    {
+      "what": "Textura PBR de concreto (text-to-image + Patina)",
+      "credits": 155,
+      "reason": "Casi plana y con normal sesgada; no mejoraba la textura propia del shell."
+    }
+  ]
+}

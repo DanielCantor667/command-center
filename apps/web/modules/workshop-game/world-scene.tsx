@@ -10,6 +10,8 @@ import { WORKSHOP_RESOURCE_URLS } from './workshop-assets';
 import { RoomContent } from './room-content';
 import { WORKSHOP_ROOMS, type RoomId } from './rooms';
 import { WorkshopLighting } from './workshop-lighting';
+import { HUB_ART, HUB_PROPS } from './props';
+import { WorkshopProps } from './workshop-props';
 
 export function resetWorkshopResource() { useGLTF.clear(WORKSHOP_RESOURCE_URLS); }
 
@@ -89,6 +91,7 @@ export function WorldScene(props: WorldSceneProps) {
     <Suspense fallback={null}>
       <WorkshopLighting />
       <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
+      <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
       {[...new Set([props.activeRoom, props.pendingRoom].filter((id): id is RoomId => !!id))].map(room => <RoomContent key={room} room={room} token={props.token} onReady={props.onRoomReady} onError={props.onRoomError} />)}
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />
