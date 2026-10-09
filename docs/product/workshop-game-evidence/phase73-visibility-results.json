@@ -1,0 +1,3031 @@
+{
+  "passed": true,
+  "section": "visibility",
+  "recordedAt": "2026-10-08T19:45:42.925Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "Hidden world / resize / main renderer stays paused",
+      "passed": true,
+      "visibilityFixture": "QA property override plus native visibilitychange event; not physical background-tab timing",
+      "hiddenResize": {
+        "sampledMs": 546,
+        "renderedFrames": 0,
+        "renderer": {
+          "dpr": 1,
+          "browserDpr": 2,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "gpu": {
+            "renderer": "WebKit WebGL",
+            "vendor": "WebKit",
+            "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+            "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+          },
+          "shadows": [
+            {
+              "type": "DirectionalLight",
+              "requested": [
+                1024,
+                1024
+              ],
+              "actual": null
+            }
+          ],
+          "shadowAutoUpdate": false,
+          "info": {
+            "render": {
+              "frame": 232,
+              "calls": 1,
+              "triangles": 2,
+              "points": 0,
+              "lines": 0
+            },
+            "memory": {
+              "geometries": 42,
+              "textures": 12
+            },
+            "programs": 9
+          },
+          "frameloop": "never",
+          "camera": {
+            "position": [
+              4.8,
+              1.65,
+              -4.1
+            ],
+            "quaternion": [
+              -0.022709687246860427,
+              0,
+              0,
+              0.9997421017968333
+            ],
+            "direction": [
+              0,
+              -0.04540766091864997,
+              -0.9989685402102996
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "nodes": [
+            {
+              "name": "shell__concrete",
+              "visible": true,
+              "vertices": 2112,
+              "materials": [
+                {
+                  "name": "WG_concrete",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffffff",
+                  "roughness": 0.8799999952316284,
+                  "metalness": 0,
+                  "map": {
+                    "width": 512,
+                    "height": 512
+                  }
+                }
+              ]
+            },
+            {
+              "name": "shell__soil",
+              "visible": true,
+              "vertices": 680,
+              "materials": [
+                {
+                  "name": "WG_soil",
+                  "type": "MeshStandardMaterial",
+                  "color": "514d3d",
+                  "roughness": 1,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__plaster",
+              "visible": true,
+              "vertices": 1728,
+              "materials": [
+                {
+                  "name": "WG_plaster",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffffff",
+                  "roughness": 0.9100000262260437,
+                  "metalness": 0,
+                  "map": {
+                    "width": 256,
+                    "height": 256
+                  }
+                }
+              ]
+            },
+            {
+              "name": "shell__glass",
+              "visible": true,
+              "vertices": 288,
+              "materials": [
+                {
+                  "name": "WG_glass",
+                  "type": "MeshStandardMaterial",
+                  "color": "d5e5df",
+                  "roughness": 0.3499999940395355,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__greensteel",
+              "visible": true,
+              "vertices": 26667,
+              "materials": [
+                {
+                  "name": "WG_greensteel",
+                  "type": "MeshStandardMaterial",
+                  "color": "315749",
+                  "roughness": 0.47999998927116394,
+                  "metalness": 0.41999998688697815,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__brass",
+              "visible": true,
+              "vertices": 7293,
+              "materials": [
+                {
+                  "name": "WG_brass",
+                  "type": "MeshStandardMaterial",
+                  "color": "bc9b63",
+                  "roughness": 0.3799999952316284,
+                  "metalness": 0.6200000047683716,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__graphite",
+              "visible": true,
+              "vertices": 4393,
+              "materials": [
+                {
+                  "name": "WG_graphite",
+                  "type": "MeshStandardMaterial",
+                  "color": "252d29",
+                  "roughness": 0.550000011920929,
+                  "metalness": 0.20000000298023224,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__oak",
+              "visible": true,
+              "vertices": 7680,
+              "materials": [
+                {
+                  "name": "WG_oak",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffffff",
+                  "roughness": 0.6800000071525574,
+                  "metalness": 0,
+                  "map": {
+                    "width": 512,
+                    "height": 512
+                  }
+                }
+              ]
+            },
+            {
+              "name": "shell__paper",
+              "visible": true,
+              "vertices": 20930,
+              "materials": [
+                {
+                  "name": "WG_paper",
+                  "type": "MeshStandardMaterial",
+                  "color": "e7e3d8",
+                  "roughness": 0.8399999737739563,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__ceramic",
+              "visible": true,
+              "vertices": 496,
+              "materials": [
+                {
+                  "name": "WG_ceramic",
+                  "type": "MeshStandardMaterial",
+                  "color": "a99e86",
+                  "roughness": 0.8999999761581421,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__leaf",
+              "visible": true,
+              "vertices": 3672,
+              "materials": [
+                {
+                  "name": "WG_leaf",
+                  "type": "MeshStandardMaterial",
+                  "color": "45624a",
+                  "roughness": 0.8500000238418579,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__leaflight",
+              "visible": true,
+              "vertices": 1848,
+              "materials": [
+                {
+                  "name": "WG_leaflight",
+                  "type": "MeshStandardMaterial",
+                  "color": "71805d",
+                  "roughness": 0.8500000238418579,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__warm",
+              "visible": true,
+              "vertices": 736,
+              "materials": [
+                {
+                  "name": "WG_warm",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffe4bc",
+                  "roughness": 0.5,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__steel_light",
+              "visible": true,
+              "vertices": 4570,
+              "materials": [
+                {
+                  "name": "WG_steel_light",
+                  "type": "MeshStandardMaterial",
+                  "color": "a8b5ad",
+                  "roughness": 0.4300000071525574,
+                  "metalness": 0.5,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "shell__teal",
+              "visible": true,
+              "vertices": 4349,
+              "materials": [
+                {
+                  "name": "WG_teal",
+                  "type": "MeshStandardMaterial",
+                  "color": "23676a",
+                  "roughness": 0.6800000071525574,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "roomgate__kliniu",
+              "visible": true,
+              "vertices": 96,
+              "materials": [
+                {
+                  "name": "WG_gate",
+                  "type": "MeshStandardMaterial",
+                  "color": "c6ccba",
+                  "roughness": 0.7200000286102295,
+                  "metalness": 0.10000000149011612,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "roomgate__lorigine",
+              "visible": false,
+              "vertices": 96,
+              "materials": [
+                {
+                  "name": "WG_gate",
+                  "type": "MeshStandardMaterial",
+                  "color": "c6ccba",
+                  "roughness": 0.7200000286102295,
+                  "metalness": 0.10000000149011612,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "roomgate__academy",
+              "visible": true,
+              "vertices": 96,
+              "materials": [
+                {
+                  "name": "WG_gate",
+                  "type": "MeshStandardMaterial",
+                  "color": "c6ccba",
+                  "roughness": 0.7200000286102295,
+                  "metalness": 0.10000000149011612,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "roomgate__drokex",
+              "visible": true,
+              "vertices": 96,
+              "materials": [
+                {
+                  "name": "WG_gate",
+                  "type": "MeshStandardMaterial",
+                  "color": "c6ccba",
+                  "roughness": 0.7200000286102295,
+                  "metalness": 0.10000000149011612,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "door__greensteel",
+              "visible": true,
+              "vertices": 960,
+              "materials": [
+                {
+                  "name": "WG_greensteel",
+                  "type": "MeshStandardMaterial",
+                  "color": "315749",
+                  "roughness": 0.47999998927116394,
+                  "metalness": 0.41999998688697815,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "door__brass",
+              "visible": true,
+              "vertices": 352,
+              "materials": [
+                {
+                  "name": "WG_brass",
+                  "type": "MeshStandardMaterial",
+                  "color": "bc9b63",
+                  "roughness": 0.3799999952316284,
+                  "metalness": 0.6200000047683716,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "door__graphite",
+              "visible": true,
+              "vertices": 208,
+              "materials": [
+                {
+                  "name": "WG_graphite",
+                  "type": "MeshStandardMaterial",
+                  "color": "252d29",
+                  "roughness": 0.550000011920929,
+                  "metalness": 0.20000000298023224,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__ivory",
+              "visible": true,
+              "vertices": 1944,
+              "materials": [
+                {
+                  "name": "WG_ivory",
+                  "type": "MeshStandardMaterial",
+                  "color": "f8f5ef",
+                  "roughness": 0.800000011920929,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__espresso",
+              "visible": true,
+              "vertices": 1800,
+              "materials": [
+                {
+                  "name": "WG_espresso",
+                  "type": "MeshStandardMaterial",
+                  "color": "231b16",
+                  "roughness": 0.6399999856948853,
+                  "metalness": 0.05000000074505806,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__champagne",
+              "visible": true,
+              "vertices": 2000,
+              "materials": [
+                {
+                  "name": "WG_champagne",
+                  "type": "MeshStandardMaterial",
+                  "color": "b8945a",
+                  "roughness": 0.4000000059604645,
+                  "metalness": 0.6200000047683716,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__oak",
+              "visible": true,
+              "vertices": 1112,
+              "materials": [
+                {
+                  "name": "WG_oak",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffffff",
+                  "roughness": 0.6800000071525574,
+                  "metalness": 0,
+                  "map": {
+                    "width": 512,
+                    "height": 512
+                  }
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__concrete",
+              "visible": true,
+              "vertices": 124,
+              "materials": [
+                {
+                  "name": "WG_concrete",
+                  "type": "MeshStandardMaterial",
+                  "color": "ffffff",
+                  "roughness": 0.8799999952316284,
+                  "metalness": 0,
+                  "map": {
+                    "width": 512,
+                    "height": 512
+                  }
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__graphite",
+              "visible": true,
+              "vertices": 116,
+              "materials": [
+                {
+                  "name": "WG_graphite",
+                  "type": "MeshStandardMaterial",
+                  "color": "252d29",
+                  "roughness": 0.550000011920929,
+                  "metalness": 0.20000000298023224,
+                  "map": null
+                }
+              ]
+            },
+            {
+              "name": "room__lorigine__leaf",
+              "visible": true,
+              "vertices": 2760,
+              "materials": [
+                {
+                  "name": "WG_leaf",
+                  "type": "MeshStandardMaterial",
+                  "color": "45624a",
+                  "roughness": 0.8500000238418579,
+                  "metalness": 0,
+                  "map": null
+                }
+              ]
+            }
+          ],
+          "firstUsableFrame": {
+            "at": 1289.8999999985099,
+            "rendererFrame": 28
+          },
+          "roomMountedFrames": {
+            "lorigine": {
+              "at": 2366.099999997765,
+              "rendererFrame": 160
+            }
+          },
+          "roomRenderedAtPose": {
+            "lorigine": {
+              "at": 2399.599999997765,
+              "rendererFrame": 188,
+              "meshesDrawn": [
+                "room__lorigine__ivory",
+                "room__lorigine__espresso",
+                "room__lorigine__champagne",
+                "room__lorigine__oak"
+              ]
+            }
+          },
+          "activationAt": 461,
+          "states": [
+            {
+              "at": 72.59999999776483,
+              "status": "landing",
+              "point": "entrance",
+              "destination": "entrance"
+            },
+            {
+              "at": 504.79999999701977,
+              "status": "loading",
+              "point": "entrance",
+              "destination": "entrance"
+            },
+            {
+              "at": 1307,
+              "status": "moving",
+              "point": "entrance",
+              "destination": "hub"
+            },
+            {
+              "at": 1316.8999999985099,
+              "status": "exploring",
+              "point": "hub",
+              "destination": "hub"
+            },
+            {
+              "at": 2035.5999999977648,
+              "status": "room-loading",
+              "point": "hub",
+              "destination": "lorigine"
+            },
+            {
+              "at": 2381.2999999970198,
+              "status": "moving",
+              "point": "hub",
+              "destination": "lorigine"
+            },
+            {
+              "at": 2404.099999997765,
+              "status": "exploring",
+              "point": "lorigine",
+              "destination": "lorigine"
+            }
+          ],
+          "stores": 1,
+          "focusCalls": [
+            {
+              "at": 1319.5,
+              "target": {
+                "tag": "BUTTON",
+                "text": "El taller",
+                "id": "",
+                "class": ""
+              },
+              "connected": true,
+              "activeBefore": {
+                "tag": "BODY",
+                "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+                "id": "",
+                "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+              },
+              "beforeInert": false,
+              "beforeKeeperInlineVisibility": "",
+              "beforeKeeperInlineDisplay": "",
+              "documentHidden": false,
+              "computedVisibilityAfter": "visible",
+              "computedDisplayAfter": "block",
+              "activeAfter": {
+                "tag": "BUTTON",
+                "text": "El taller",
+                "id": "",
+                "class": ""
+              },
+              "succeeded": true
+            },
+            {
+              "at": 2407.39999999851,
+              "target": {
+                "tag": "BUTTON",
+                "text": "Abrir caso de L'ORIGINE",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "connected": true,
+              "activeBefore": {
+                "tag": "BUTTON",
+                "text": "L'ORIGINE",
+                "id": "",
+                "class": ""
+              },
+              "beforeInert": false,
+              "beforeKeeperInlineVisibility": "",
+              "beforeKeeperInlineDisplay": "",
+              "documentHidden": false,
+              "computedVisibilityAfter": "visible",
+              "computedDisplayAfter": "inline-flex",
+              "activeAfter": {
+                "tag": "BUTTON",
+                "text": "Abrir caso de L'ORIGINE",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "succeeded": true
+            }
+          ],
+          "focusEvents": [
+            {
+              "at": 498.29999999701977,
+              "type": "focusin",
+              "target": {
+                "tag": "BUTTON",
+                "text": "Entrar al taller",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "related": null,
+              "targetInert": false
+            },
+            {
+              "at": 504.29999999701977,
+              "type": "focusout",
+              "target": {
+                "tag": "BUTTON",
+                "text": "Entrar al taller",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "related": null,
+              "targetInert": false
+            },
+            {
+              "at": 1319.8999999985099,
+              "type": "focusin",
+              "target": {
+                "tag": "BUTTON",
+                "text": "El taller",
+                "id": "",
+                "class": ""
+              },
+              "related": null,
+              "targetInert": false
+            },
+            {
+              "at": 2031.199999999255,
+              "type": "focusout",
+              "target": {
+                "tag": "BUTTON",
+                "text": "El taller",
+                "id": "",
+                "class": ""
+              },
+              "related": {
+                "tag": "BUTTON",
+                "text": "L'ORIGINE",
+                "id": "",
+                "class": ""
+              },
+              "targetInert": false
+            },
+            {
+              "at": 2031.3999999985099,
+              "type": "focusin",
+              "target": {
+                "tag": "BUTTON",
+                "text": "L'ORIGINE",
+                "id": "",
+                "class": ""
+              },
+              "related": {
+                "tag": "BUTTON",
+                "text": "El taller",
+                "id": "",
+                "class": ""
+              },
+              "targetInert": false
+            },
+            {
+              "at": 2407.699999999255,
+              "type": "focusout",
+              "target": {
+                "tag": "BUTTON",
+                "text": "L'ORIGINE",
+                "id": "",
+                "class": ""
+              },
+              "related": {
+                "tag": "BUTTON",
+                "text": "Abrir caso de L'ORIGINE",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "targetInert": false
+            },
+            {
+              "at": 2408.7999999970198,
+              "type": "focusin",
+              "target": {
+                "tag": "BUTTON",
+                "text": "Abrir caso de L'ORIGINE",
+                "id": "",
+                "class": "workshop-game_primary__yiOX6"
+              },
+              "related": {
+                "tag": "BUTTON",
+                "text": "L'ORIGINE",
+                "id": "",
+                "class": ""
+              },
+              "targetInert": false
+            }
+          ],
+          "hookError": null
+        }
+      }
+    },
+    {
+      "name": "Persistent hidden case / two resizes / visibility events / return pose",
+      "passed": true,
+      "caseResize": {
+        "sampledMs": 968.4000000022352,
+        "renderedFrames": 0,
+        "profiles": [
+          {
+            "dpr": 1,
+            "browserDpr": 2,
+            "canvas": {
+              "width": 390,
+              "height": 844
+            },
+            "gpu": {
+              "renderer": "WebKit WebGL",
+              "vendor": "WebKit",
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+            },
+            "shadows": [
+              {
+                "type": "DirectionalLight",
+                "requested": [
+                  1024,
+                  1024
+                ],
+                "actual": null
+              }
+            ],
+            "shadowAutoUpdate": false,
+            "info": {
+              "render": {
+                "frame": 348,
+                "calls": 1,
+                "triangles": 2,
+                "points": 0,
+                "lines": 0
+              },
+              "memory": {
+                "geometries": 42,
+                "textures": 12
+              },
+              "programs": 9
+            },
+            "frameloop": "never",
+            "camera": {
+              "position": [
+                4.8,
+                1.65,
+                -4.1
+              ],
+              "quaternion": [
+                -0.022709687246860427,
+                0,
+                0,
+                0.9997421017968333
+              ],
+              "direction": [
+                0,
+                -0.04540766091864997,
+                -0.9989685402102996
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "nodes": [
+              {
+                "name": "shell__concrete",
+                "visible": true,
+                "vertices": 2112,
+                "materials": [
+                  {
+                    "name": "WG_concrete",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.8799999952316284,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__soil",
+                "visible": true,
+                "vertices": 680,
+                "materials": [
+                  {
+                    "name": "WG_soil",
+                    "type": "MeshStandardMaterial",
+                    "color": "514d3d",
+                    "roughness": 1,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__plaster",
+                "visible": true,
+                "vertices": 1728,
+                "materials": [
+                  {
+                    "name": "WG_plaster",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.9100000262260437,
+                    "metalness": 0,
+                    "map": {
+                      "width": 256,
+                      "height": 256
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__glass",
+                "visible": true,
+                "vertices": 288,
+                "materials": [
+                  {
+                    "name": "WG_glass",
+                    "type": "MeshStandardMaterial",
+                    "color": "d5e5df",
+                    "roughness": 0.3499999940395355,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__greensteel",
+                "visible": true,
+                "vertices": 26667,
+                "materials": [
+                  {
+                    "name": "WG_greensteel",
+                    "type": "MeshStandardMaterial",
+                    "color": "315749",
+                    "roughness": 0.47999998927116394,
+                    "metalness": 0.41999998688697815,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__brass",
+                "visible": true,
+                "vertices": 7293,
+                "materials": [
+                  {
+                    "name": "WG_brass",
+                    "type": "MeshStandardMaterial",
+                    "color": "bc9b63",
+                    "roughness": 0.3799999952316284,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__graphite",
+                "visible": true,
+                "vertices": 4393,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__oak",
+                "visible": true,
+                "vertices": 7680,
+                "materials": [
+                  {
+                    "name": "WG_oak",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__paper",
+                "visible": true,
+                "vertices": 20930,
+                "materials": [
+                  {
+                    "name": "WG_paper",
+                    "type": "MeshStandardMaterial",
+                    "color": "e7e3d8",
+                    "roughness": 0.8399999737739563,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__ceramic",
+                "visible": true,
+                "vertices": 496,
+                "materials": [
+                  {
+                    "name": "WG_ceramic",
+                    "type": "MeshStandardMaterial",
+                    "color": "a99e86",
+                    "roughness": 0.8999999761581421,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__leaf",
+                "visible": true,
+                "vertices": 3672,
+                "materials": [
+                  {
+                    "name": "WG_leaf",
+                    "type": "MeshStandardMaterial",
+                    "color": "45624a",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__leaflight",
+                "visible": true,
+                "vertices": 1848,
+                "materials": [
+                  {
+                    "name": "WG_leaflight",
+                    "type": "MeshStandardMaterial",
+                    "color": "71805d",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__warm",
+                "visible": true,
+                "vertices": 736,
+                "materials": [
+                  {
+                    "name": "WG_warm",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffe4bc",
+                    "roughness": 0.5,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__steel_light",
+                "visible": true,
+                "vertices": 4570,
+                "materials": [
+                  {
+                    "name": "WG_steel_light",
+                    "type": "MeshStandardMaterial",
+                    "color": "a8b5ad",
+                    "roughness": 0.4300000071525574,
+                    "metalness": 0.5,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__teal",
+                "visible": true,
+                "vertices": 4349,
+                "materials": [
+                  {
+                    "name": "WG_teal",
+                    "type": "MeshStandardMaterial",
+                    "color": "23676a",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__kliniu",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__lorigine",
+                "visible": false,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__academy",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__drokex",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__greensteel",
+                "visible": true,
+                "vertices": 960,
+                "materials": [
+                  {
+                    "name": "WG_greensteel",
+                    "type": "MeshStandardMaterial",
+                    "color": "315749",
+                    "roughness": 0.47999998927116394,
+                    "metalness": 0.41999998688697815,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__brass",
+                "visible": true,
+                "vertices": 352,
+                "materials": [
+                  {
+                    "name": "WG_brass",
+                    "type": "MeshStandardMaterial",
+                    "color": "bc9b63",
+                    "roughness": 0.3799999952316284,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__graphite",
+                "visible": true,
+                "vertices": 208,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__ivory",
+                "visible": true,
+                "vertices": 1944,
+                "materials": [
+                  {
+                    "name": "WG_ivory",
+                    "type": "MeshStandardMaterial",
+                    "color": "f8f5ef",
+                    "roughness": 0.800000011920929,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__espresso",
+                "visible": true,
+                "vertices": 1800,
+                "materials": [
+                  {
+                    "name": "WG_espresso",
+                    "type": "MeshStandardMaterial",
+                    "color": "231b16",
+                    "roughness": 0.6399999856948853,
+                    "metalness": 0.05000000074505806,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__champagne",
+                "visible": true,
+                "vertices": 2000,
+                "materials": [
+                  {
+                    "name": "WG_champagne",
+                    "type": "MeshStandardMaterial",
+                    "color": "b8945a",
+                    "roughness": 0.4000000059604645,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__oak",
+                "visible": true,
+                "vertices": 1112,
+                "materials": [
+                  {
+                    "name": "WG_oak",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__concrete",
+                "visible": true,
+                "vertices": 124,
+                "materials": [
+                  {
+                    "name": "WG_concrete",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.8799999952316284,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__graphite",
+                "visible": true,
+                "vertices": 116,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__leaf",
+                "visible": true,
+                "vertices": 2760,
+                "materials": [
+                  {
+                    "name": "WG_leaf",
+                    "type": "MeshStandardMaterial",
+                    "color": "45624a",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              }
+            ],
+            "firstUsableFrame": {
+              "at": 1289.8999999985099,
+              "rendererFrame": 28
+            },
+            "roomMountedFrames": {
+              "lorigine": {
+                "at": 2366.099999997765,
+                "rendererFrame": 160
+              }
+            },
+            "roomRenderedAtPose": {
+              "lorigine": {
+                "at": 2399.599999997765,
+                "rendererFrame": 188,
+                "meshesDrawn": [
+                  "room__lorigine__ivory",
+                  "room__lorigine__espresso",
+                  "room__lorigine__champagne",
+                  "room__lorigine__oak"
+                ]
+              }
+            },
+            "activationAt": 461,
+            "states": [
+              {
+                "at": 72.59999999776483,
+                "status": "landing",
+                "point": "entrance",
+                "destination": "entrance"
+              },
+              {
+                "at": 504.79999999701977,
+                "status": "loading",
+                "point": "entrance",
+                "destination": "entrance"
+              },
+              {
+                "at": 1307,
+                "status": "moving",
+                "point": "entrance",
+                "destination": "hub"
+              },
+              {
+                "at": 1316.8999999985099,
+                "status": "exploring",
+                "point": "hub",
+                "destination": "hub"
+              },
+              {
+                "at": 2035.5999999977648,
+                "status": "room-loading",
+                "point": "hub",
+                "destination": "lorigine"
+              },
+              {
+                "at": 2381.2999999970198,
+                "status": "moving",
+                "point": "hub",
+                "destination": "lorigine"
+              },
+              {
+                "at": 2404.099999997765,
+                "status": "exploring",
+                "point": "lorigine",
+                "destination": "lorigine"
+              }
+            ],
+            "stores": 1,
+            "focusCalls": [
+              {
+                "at": 1319.5,
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BODY",
+                  "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+                  "id": "",
+                  "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": "",
+                "beforeKeeperInlineDisplay": "",
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "succeeded": true
+              },
+              {
+                "at": 2407.39999999851,
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": "",
+                "beforeKeeperInlineDisplay": "",
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "inline-flex",
+                "activeAfter": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "succeeded": true
+              },
+              {
+                "at": 4736,
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": null,
+                "beforeKeeperInlineDisplay": null,
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "succeeded": true
+              },
+              {
+                "at": 4742.599999997765,
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": null,
+                "beforeKeeperInlineDisplay": null,
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "succeeded": true
+              }
+            ],
+            "focusEvents": [
+              {
+                "at": 498.29999999701977,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Entrar al taller",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 504.29999999701977,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Entrar al taller",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 1319.8999999985099,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 2031.199999999255,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2031.3999999985099,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2407.699999999255,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2408.7999999970198,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 4739.39999999851,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "targetInert": true
+              },
+              {
+                "at": 4742.099999997765,
+                "type": "focusin",
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "targetInert": false
+              }
+            ],
+            "hookError": null
+          },
+          {
+            "dpr": 1.5,
+            "browserDpr": 2,
+            "canvas": {
+              "width": 2160,
+              "height": 1500
+            },
+            "gpu": {
+              "renderer": "WebKit WebGL",
+              "vendor": "WebKit",
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+            },
+            "shadows": [
+              {
+                "type": "DirectionalLight",
+                "requested": [
+                  2048,
+                  2048
+                ],
+                "actual": null
+              }
+            ],
+            "shadowAutoUpdate": false,
+            "info": {
+              "render": {
+                "frame": 378,
+                "calls": 1,
+                "triangles": 2,
+                "points": 0,
+                "lines": 0
+              },
+              "memory": {
+                "geometries": 42,
+                "textures": 12
+              },
+              "programs": 9
+            },
+            "frameloop": "never",
+            "camera": {
+              "position": [
+                4.8,
+                1.65,
+                -4.1
+              ],
+              "quaternion": [
+                -0.022709687246860427,
+                0,
+                0,
+                0.9997421017968333
+              ],
+              "direction": [
+                0,
+                -0.04540766091864997,
+                -0.9989685402102996
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "nodes": [
+              {
+                "name": "shell__concrete",
+                "visible": true,
+                "vertices": 2112,
+                "materials": [
+                  {
+                    "name": "WG_concrete",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.8799999952316284,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__soil",
+                "visible": true,
+                "vertices": 680,
+                "materials": [
+                  {
+                    "name": "WG_soil",
+                    "type": "MeshStandardMaterial",
+                    "color": "514d3d",
+                    "roughness": 1,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__plaster",
+                "visible": true,
+                "vertices": 1728,
+                "materials": [
+                  {
+                    "name": "WG_plaster",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.9100000262260437,
+                    "metalness": 0,
+                    "map": {
+                      "width": 256,
+                      "height": 256
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__glass",
+                "visible": true,
+                "vertices": 288,
+                "materials": [
+                  {
+                    "name": "WG_glass",
+                    "type": "MeshStandardMaterial",
+                    "color": "d5e5df",
+                    "roughness": 0.3499999940395355,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__greensteel",
+                "visible": true,
+                "vertices": 26667,
+                "materials": [
+                  {
+                    "name": "WG_greensteel",
+                    "type": "MeshStandardMaterial",
+                    "color": "315749",
+                    "roughness": 0.47999998927116394,
+                    "metalness": 0.41999998688697815,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__brass",
+                "visible": true,
+                "vertices": 7293,
+                "materials": [
+                  {
+                    "name": "WG_brass",
+                    "type": "MeshStandardMaterial",
+                    "color": "bc9b63",
+                    "roughness": 0.3799999952316284,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__graphite",
+                "visible": true,
+                "vertices": 4393,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__oak",
+                "visible": true,
+                "vertices": 7680,
+                "materials": [
+                  {
+                    "name": "WG_oak",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "shell__paper",
+                "visible": true,
+                "vertices": 20930,
+                "materials": [
+                  {
+                    "name": "WG_paper",
+                    "type": "MeshStandardMaterial",
+                    "color": "e7e3d8",
+                    "roughness": 0.8399999737739563,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__ceramic",
+                "visible": true,
+                "vertices": 496,
+                "materials": [
+                  {
+                    "name": "WG_ceramic",
+                    "type": "MeshStandardMaterial",
+                    "color": "a99e86",
+                    "roughness": 0.8999999761581421,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__leaf",
+                "visible": true,
+                "vertices": 3672,
+                "materials": [
+                  {
+                    "name": "WG_leaf",
+                    "type": "MeshStandardMaterial",
+                    "color": "45624a",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__leaflight",
+                "visible": true,
+                "vertices": 1848,
+                "materials": [
+                  {
+                    "name": "WG_leaflight",
+                    "type": "MeshStandardMaterial",
+                    "color": "71805d",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__warm",
+                "visible": true,
+                "vertices": 736,
+                "materials": [
+                  {
+                    "name": "WG_warm",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffe4bc",
+                    "roughness": 0.5,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__steel_light",
+                "visible": true,
+                "vertices": 4570,
+                "materials": [
+                  {
+                    "name": "WG_steel_light",
+                    "type": "MeshStandardMaterial",
+                    "color": "a8b5ad",
+                    "roughness": 0.4300000071525574,
+                    "metalness": 0.5,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "shell__teal",
+                "visible": true,
+                "vertices": 4349,
+                "materials": [
+                  {
+                    "name": "WG_teal",
+                    "type": "MeshStandardMaterial",
+                    "color": "23676a",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__kliniu",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__lorigine",
+                "visible": false,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__academy",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "roomgate__drokex",
+                "visible": true,
+                "vertices": 96,
+                "materials": [
+                  {
+                    "name": "WG_gate",
+                    "type": "MeshStandardMaterial",
+                    "color": "c6ccba",
+                    "roughness": 0.7200000286102295,
+                    "metalness": 0.10000000149011612,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__greensteel",
+                "visible": true,
+                "vertices": 960,
+                "materials": [
+                  {
+                    "name": "WG_greensteel",
+                    "type": "MeshStandardMaterial",
+                    "color": "315749",
+                    "roughness": 0.47999998927116394,
+                    "metalness": 0.41999998688697815,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__brass",
+                "visible": true,
+                "vertices": 352,
+                "materials": [
+                  {
+                    "name": "WG_brass",
+                    "type": "MeshStandardMaterial",
+                    "color": "bc9b63",
+                    "roughness": 0.3799999952316284,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "door__graphite",
+                "visible": true,
+                "vertices": 208,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__ivory",
+                "visible": true,
+                "vertices": 1944,
+                "materials": [
+                  {
+                    "name": "WG_ivory",
+                    "type": "MeshStandardMaterial",
+                    "color": "f8f5ef",
+                    "roughness": 0.800000011920929,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__espresso",
+                "visible": true,
+                "vertices": 1800,
+                "materials": [
+                  {
+                    "name": "WG_espresso",
+                    "type": "MeshStandardMaterial",
+                    "color": "231b16",
+                    "roughness": 0.6399999856948853,
+                    "metalness": 0.05000000074505806,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__champagne",
+                "visible": true,
+                "vertices": 2000,
+                "materials": [
+                  {
+                    "name": "WG_champagne",
+                    "type": "MeshStandardMaterial",
+                    "color": "b8945a",
+                    "roughness": 0.4000000059604645,
+                    "metalness": 0.6200000047683716,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__oak",
+                "visible": true,
+                "vertices": 1112,
+                "materials": [
+                  {
+                    "name": "WG_oak",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.6800000071525574,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__concrete",
+                "visible": true,
+                "vertices": 124,
+                "materials": [
+                  {
+                    "name": "WG_concrete",
+                    "type": "MeshStandardMaterial",
+                    "color": "ffffff",
+                    "roughness": 0.8799999952316284,
+                    "metalness": 0,
+                    "map": {
+                      "width": 512,
+                      "height": 512
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__graphite",
+                "visible": true,
+                "vertices": 116,
+                "materials": [
+                  {
+                    "name": "WG_graphite",
+                    "type": "MeshStandardMaterial",
+                    "color": "252d29",
+                    "roughness": 0.550000011920929,
+                    "metalness": 0.20000000298023224,
+                    "map": null
+                  }
+                ]
+              },
+              {
+                "name": "room__lorigine__leaf",
+                "visible": true,
+                "vertices": 2760,
+                "materials": [
+                  {
+                    "name": "WG_leaf",
+                    "type": "MeshStandardMaterial",
+                    "color": "45624a",
+                    "roughness": 0.8500000238418579,
+                    "metalness": 0,
+                    "map": null
+                  }
+                ]
+              }
+            ],
+            "firstUsableFrame": {
+              "at": 1289.8999999985099,
+              "rendererFrame": 28
+            },
+            "roomMountedFrames": {
+              "lorigine": {
+                "at": 2366.099999997765,
+                "rendererFrame": 160
+              }
+            },
+            "roomRenderedAtPose": {
+              "lorigine": {
+                "at": 2399.599999997765,
+                "rendererFrame": 188,
+                "meshesDrawn": [
+                  "room__lorigine__ivory",
+                  "room__lorigine__espresso",
+                  "room__lorigine__champagne",
+                  "room__lorigine__oak"
+                ]
+              }
+            },
+            "activationAt": 461,
+            "states": [
+              {
+                "at": 72.59999999776483,
+                "status": "landing",
+                "point": "entrance",
+                "destination": "entrance"
+              },
+              {
+                "at": 504.79999999701977,
+                "status": "loading",
+                "point": "entrance",
+                "destination": "entrance"
+              },
+              {
+                "at": 1307,
+                "status": "moving",
+                "point": "entrance",
+                "destination": "hub"
+              },
+              {
+                "at": 1316.8999999985099,
+                "status": "exploring",
+                "point": "hub",
+                "destination": "hub"
+              },
+              {
+                "at": 2035.5999999977648,
+                "status": "room-loading",
+                "point": "hub",
+                "destination": "lorigine"
+              },
+              {
+                "at": 2381.2999999970198,
+                "status": "moving",
+                "point": "hub",
+                "destination": "lorigine"
+              },
+              {
+                "at": 2404.099999997765,
+                "status": "exploring",
+                "point": "lorigine",
+                "destination": "lorigine"
+              }
+            ],
+            "stores": 1,
+            "focusCalls": [
+              {
+                "at": 1319.5,
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BODY",
+                  "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+                  "id": "",
+                  "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": "",
+                "beforeKeeperInlineDisplay": "",
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "succeeded": true
+              },
+              {
+                "at": 2407.39999999851,
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": "",
+                "beforeKeeperInlineDisplay": "",
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "inline-flex",
+                "activeAfter": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "succeeded": true
+              },
+              {
+                "at": 4736,
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": null,
+                "beforeKeeperInlineDisplay": null,
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "succeeded": true
+              },
+              {
+                "at": 4742.599999997765,
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "connected": true,
+                "activeBefore": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "beforeInert": false,
+                "beforeKeeperInlineVisibility": null,
+                "beforeKeeperInlineDisplay": null,
+                "documentHidden": false,
+                "computedVisibilityAfter": "visible",
+                "computedDisplayAfter": "block",
+                "activeAfter": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "succeeded": true
+              }
+            ],
+            "focusEvents": [
+              {
+                "at": 498.29999999701977,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Entrar al taller",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 504.29999999701977,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Entrar al taller",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 1319.8999999985099,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "related": null,
+                "targetInert": false
+              },
+              {
+                "at": 2031.199999999255,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2031.3999999985099,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "El taller",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2407.699999999255,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "targetInert": false
+              },
+              {
+                "at": 2408.7999999970198,
+                "type": "focusin",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "L'ORIGINE",
+                  "id": "",
+                  "class": ""
+                },
+                "targetInert": false
+              },
+              {
+                "at": 4739.39999999851,
+                "type": "focusout",
+                "target": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "related": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "targetInert": true
+              },
+              {
+                "at": 4742.099999997765,
+                "type": "focusin",
+                "target": {
+                  "tag": "H1",
+                  "text": "L'ORIGINE",
+                  "id": "lorigine-title",
+                  "class": ""
+                },
+                "related": {
+                  "tag": "BUTTON",
+                  "text": "Abrir caso de L'ORIGINE",
+                  "id": "",
+                  "class": "workshop-game_primary__yiOX6"
+                },
+                "targetInert": false
+              }
+            ],
+            "hookError": null
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ]
+  },
+  "lastClosedContext": {
+    "url": "http://localhost:3000/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "lorigine",
+      "worldDestination": "lorigine",
+      "roomActive": "lorigine",
+      "roomPending": ""
+    },
+    "active": "<button class=\"workshop-game_primary__yiOX6\" type=\"button\">Abrir caso de L'ORIGINE<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Daniel Cantor\nFull-Stack Developer\nVer portafolio\nL'ORIGINE\nProyecto\nL'ORIGINE\n\nTienda y experiencia de marca de bioingeniería capilar: catálogo, contenido editorial, cuenta de cliente y asesor de productos.\n\nCaptura del sitio publicado\nAbrir caso de L'ORIGINE\nVolver al taller\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property: none;",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 72.59999999776483,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 504.79999999701977,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1307,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 1316.8999999985099,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 2035.5999999977648,
+        "status": "room-loading",
+        "point": "hub",
+        "destination": "lorigine"
+      },
+      {
+        "at": 2381.2999999970198,
+        "status": "moving",
+        "point": "hub",
+        "destination": "lorigine"
+      },
+      {
+        "at": 2404.099999997765,
+        "status": "exploring",
+        "point": "lorigine",
+        "destination": "lorigine"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 1319.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2407.39999999851,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4736,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4742.599999997765,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 6425.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack DeveloperVer portafolioL'",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 498.29999999701977,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 504.29999999701977,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 1319.8999999985099,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2031.199999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2031.3999999985099,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2407.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2408.7999999970198,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 4739.39999999851,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 4742.099999997765,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 6415.89999999851,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 6416.099999997765,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 6424.099999997765,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 6426.29999999702,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  }
+}

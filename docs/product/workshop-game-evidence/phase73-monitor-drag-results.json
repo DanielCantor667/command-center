@@ -1,0 +1,1537 @@
+{
+  "passed": true,
+  "section": "monitor-drag",
+  "recordedAt": "2026-10-08T19:53:14.062Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "Four real monitor images pass pointer through to production canvas drag",
+      "passed": true,
+      "samples": [
+        {
+          "room": "kliniu",
+          "point": {
+            "x": 507.8732421875,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "style": "display: block; width: 1440px; height: 1000px;"
+          },
+          "before": {
+            "position": [
+              -5.1,
+              1.65,
+              -4
+            ],
+            "quaternion": [
+              -0.015951355705936525,
+              0,
+              0,
+              0.9998727690317116
+            ],
+            "direction": [
+              0,
+              -0.031898652399009096,
+              -0.9994911085022854
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "after": {
+            "position": [
+              -5.1,
+              1.65,
+              -4
+            ],
+            "quaternion": [
+              -0.007940906290705575,
+              -0.06295634082549315,
+              -0.0005009400153830838,
+              0.997984564117225
+            ],
+            "direction": [
+              0.12565095687885164,
+              -0.01591287850713424,
+              -0.9919468823142932
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "changed": true
+        },
+        {
+          "room": "lorigine",
+          "point": {
+            "x": 471.13178100585935,
+            "y": 315.66229248046875,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "style": "display: block; width: 1440px; height: 1000px;"
+          },
+          "before": {
+            "position": [
+              4.8,
+              1.65,
+              -4.1
+            ],
+            "quaternion": [
+              -0.022709687246860427,
+              0,
+              0,
+              0.9997421017968333
+            ],
+            "direction": [
+              0,
+              -0.04540766091864997,
+              -0.9989685402102996
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "after": {
+            "position": [
+              4.8,
+              1.65,
+              -4.1
+            ],
+            "quaternion": [
+              -0.014693276948830254,
+              -0.06295151024195134,
+              -0.0009269030651312376,
+              0.9979079896570978
+            ],
+            "direction": [
+              0.12561239157596635,
+              -0.02944177681856016,
+              -0.991642429941525
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "changed": true
+        },
+        {
+          "room": "academy",
+          "point": {
+            "x": 476.1634460449219,
+            "y": 157.5329574584961,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "style": "display: block; width: 1440px; height: 1000px;"
+          },
+          "before": {
+            "position": [
+              -6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.0399835754100394,
+              0.7059754342025151,
+              0.0399835754100394,
+              0.7059754342025151
+            ],
+            "direction": [
+              -0.993605254789719,
+              -0.1129096880442863,
+              0
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "after": {
+            "position": [
+              -6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03649436080899034,
+              0.6604029785813306,
+              0.03216320267078403,
+              0.7493341016556019
+            ],
+            "direction": [
+              -0.9873773943257695,
+              -0.09717428783360194,
+              -0.12507213502009973
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "changed": true
+        },
+        {
+          "room": "drokex",
+          "point": {
+            "x": 475.19614868164064,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          "hit": {
+            "tag": "CANVAS",
+            "class": "",
+            "style": "display: block; width: 1440px; height: 1000px;"
+          },
+          "before": {
+            "position": [
+              6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.0399835754100394,
+              -0.7059754342025151,
+              -0.0399835754100394,
+              0.7059754342025151
+            ],
+            "direction": [
+              0.993605254789719,
+              -0.1129096880442863,
+              0
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "after": {
+            "position": [
+              6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03216320100020478,
+              -0.7493341318864504,
+              -0.03649436228130495,
+              0.6604029442795369
+            ],
+            "direction": [
+              0.9873773828750696,
+              -0.09717428783360209,
+              0.12507222541719965
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "changed": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ]
+  },
+  "currentEvidence": {
+    "room": "drokex",
+    "images": [
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=828&q=75",
+        "logicalUrl": "/projects/drokex-products-v4.webp",
+        "alt": "",
+        "complete": true,
+        "width": 768,
+        "height": 533,
+        "cssVisible": true,
+        "location": "physical world monitor",
+        "rect": {
+          "x": 413.99517822265625,
+          "y": 184.89602661132812,
+          "width": 612.0097045898438,
+          "height": 340.2376403808594
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 475.19614868164064,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 475.19614868164064,
+            "y": 286.9673187255859,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 475.19614868164064,
+            "y": 355.0148468017578,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 475.19614868164064,
+            "y": 423.06237487792964,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 475.19614868164064,
+            "y": 491.1099029541016,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 597.5980895996094,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 597.5980895996094,
+            "y": 286.9673187255859,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 597.5980895996094,
+            "y": 355.0148468017578,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 597.5980895996094,
+            "y": 423.06237487792964,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 597.5980895996094,
+            "y": 491.1099029541016,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720.0000305175781,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720.0000305175781,
+            "y": 286.9673187255859,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720.0000305175781,
+            "y": 355.0148468017578,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720.0000305175781,
+            "y": 423.06237487792964,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720.0000305175781,
+            "y": 491.1099029541016,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 842.4019714355468,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 842.4019714355468,
+            "y": 286.9673187255859,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 842.4019714355468,
+            "y": 355.0148468017578,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 842.4019714355468,
+            "y": 423.06237487792964,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 842.4019714355468,
+            "y": 491.1099029541016,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 964.8039123535157,
+            "y": 218.91979064941407,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 964.8039123535157,
+            "y": 286.9673187255859,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 964.8039123535157,
+            "y": 355.0148468017578,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 964.8039123535157,
+            "y": 423.06237487792964,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 964.8039123535157,
+            "y": 491.1099029541016,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          }
+        ]
+      },
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=384&q=75",
+        "logicalUrl": "/projects/drokex-products-v4.webp",
+        "alt": "Captura real del sitio de Drokex",
+        "complete": true,
+        "width": 280,
+        "height": 194,
+        "cssVisible": true,
+        "location": "inspection card",
+        "rect": {
+          "x": 1111,
+          "y": 453.390625,
+          "width": 252,
+          "height": 116
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 1136.2,
+            "y": 464.990625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 488.190625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 511.390625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 534.590625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 557.790625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 464.990625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 488.190625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 511.390625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 534.590625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 557.790625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 464.990625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 488.190625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 511.390625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 534.590625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 557.790625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 464.990625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 488.190625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 511.390625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 534.590625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 557.790625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 464.990625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 488.190625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 511.390625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 534.590625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 557.790625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          }
+        ]
+      }
+    ]
+  },
+  "currentMonitorDrag": [
+    {
+      "room": "kliniu",
+      "point": {
+        "x": 507.8732421875,
+        "y": 377.0214416503906,
+        "underlying": "CANVAS",
+        "imageAncestor": false
+      },
+      "hit": {
+        "tag": "CANVAS",
+        "class": "",
+        "style": "display: block; width: 1440px; height: 1000px;"
+      },
+      "before": {
+        "position": [
+          -5.1,
+          1.65,
+          -4
+        ],
+        "quaternion": [
+          -0.015951355705936525,
+          0,
+          0,
+          0.9998727690317116
+        ],
+        "direction": [
+          0,
+          -0.031898652399009096,
+          -0.9994911085022854
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "after": {
+        "position": [
+          -5.1,
+          1.65,
+          -4
+        ],
+        "quaternion": [
+          -0.007940906290705575,
+          -0.06295634082549315,
+          -0.0005009400153830838,
+          0.997984564117225
+        ],
+        "direction": [
+          0.12565095687885164,
+          -0.01591287850713424,
+          -0.9919468823142932
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "changed": true
+    },
+    {
+      "room": "lorigine",
+      "point": {
+        "x": 471.13178100585935,
+        "y": 315.66229248046875,
+        "underlying": "CANVAS",
+        "imageAncestor": false
+      },
+      "hit": {
+        "tag": "CANVAS",
+        "class": "",
+        "style": "display: block; width: 1440px; height: 1000px;"
+      },
+      "before": {
+        "position": [
+          4.8,
+          1.65,
+          -4.1
+        ],
+        "quaternion": [
+          -0.022709687246860427,
+          0,
+          0,
+          0.9997421017968333
+        ],
+        "direction": [
+          0,
+          -0.04540766091864997,
+          -0.9989685402102996
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "after": {
+        "position": [
+          4.8,
+          1.65,
+          -4.1
+        ],
+        "quaternion": [
+          -0.014693276948830254,
+          -0.06295151024195134,
+          -0.0009269030651312376,
+          0.9979079896570978
+        ],
+        "direction": [
+          0.12561239157596635,
+          -0.02944177681856016,
+          -0.991642429941525
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "changed": true
+    },
+    {
+      "room": "academy",
+      "point": {
+        "x": 476.1634460449219,
+        "y": 157.5329574584961,
+        "underlying": "CANVAS",
+        "imageAncestor": false
+      },
+      "hit": {
+        "tag": "CANVAS",
+        "class": "",
+        "style": "display: block; width: 1440px; height: 1000px;"
+      },
+      "before": {
+        "position": [
+          -6.4,
+          1.65,
+          5.7
+        ],
+        "quaternion": [
+          -0.0399835754100394,
+          0.7059754342025151,
+          0.0399835754100394,
+          0.7059754342025151
+        ],
+        "direction": [
+          -0.993605254789719,
+          -0.1129096880442863,
+          0
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "after": {
+        "position": [
+          -6.4,
+          1.65,
+          5.7
+        ],
+        "quaternion": [
+          -0.03649436080899034,
+          0.6604029785813306,
+          0.03216320267078403,
+          0.7493341016556019
+        ],
+        "direction": [
+          -0.9873773943257695,
+          -0.09717428783360194,
+          -0.12507213502009973
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "changed": true
+    },
+    {
+      "room": "drokex",
+      "point": {
+        "x": 475.19614868164064,
+        "y": 218.91979064941407,
+        "underlying": "CANVAS",
+        "imageAncestor": false
+      },
+      "hit": {
+        "tag": "CANVAS",
+        "class": "",
+        "style": "display: block; width: 1440px; height: 1000px;"
+      },
+      "before": {
+        "position": [
+          6.4,
+          1.65,
+          5.7
+        ],
+        "quaternion": [
+          -0.0399835754100394,
+          -0.7059754342025151,
+          -0.0399835754100394,
+          0.7059754342025151
+        ],
+        "direction": [
+          0.993605254789719,
+          -0.1129096880442863,
+          0
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "after": {
+        "position": [
+          6.4,
+          1.65,
+          5.7
+        ],
+        "quaternion": [
+          -0.03216320100020478,
+          -0.7493341318864504,
+          -0.03649436228130495,
+          0.6604029442795369
+        ],
+        "direction": [
+          0.9873773828750696,
+          -0.09717428783360209,
+          0.12507222541719965
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "changed": true
+    }
+  ],
+  "lastClosedContext": {
+    "url": "http://localhost:3000/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "drokex",
+      "worldDestination": "drokex",
+      "roomActive": "drokex",
+      "roomPending": ""
+    },
+    "active": "<body class=\"__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased\"><div hidden=\"\"><!--$--><!--/$--></div><div data-workshop-keeper=\"true\" style=\"transition-property:none\"><main class=\"workshop-game_game__rG_9_\" data-workshop-state=\"exploring\" data-world-point=\"drokex\" data-world-destination=\"drokex\" data-room-active=\"drokex\" data-room-pending=\"\"><div class=\"workshop-game_poster__4klTS\" aria-hidden=\"true\"><img alt=\"\" decoding=\"async\" data-nimg=\"fill\" style=\"position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=640&amp;q=75 640w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=750&amp;q=75 750w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=828&amp;q=75 828w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2Fexperience%2Fworkshop-entrance-v3.webp&amp;w=2048",
+    "activeTag": "BODY",
+    "text": "Daniel Cantor\nFull-Stack Developer\nVer portafolio\nDrokex\nProyecto\nDrokex\n\nUna plataforma para presentar empresas y productos, descubrir proveedores y conectar negocios con otros mercados.\n\nCaptura del sitio publicado\n\nParticipación descrita en el CV de Daniel. Propiedad no confirmada.\n\nAbrir caso de Drokex\nVolver al taller\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property:none",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 811,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1303.199999999255,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 2161.5,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 2177.60000000149,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 2884.199999999255,
+        "status": "room-loading",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 3212.60000000149,
+        "status": "moving",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 3230.60000000149,
+        "status": "exploring",
+        "point": "kliniu",
+        "destination": "kliniu"
+      },
+      {
+        "at": 4314.800000000745,
+        "status": "room-loading",
+        "point": "kliniu",
+        "destination": "lorigine"
+      },
+      {
+        "at": 4646.699999999255,
+        "status": "moving",
+        "point": "kliniu",
+        "destination": "lorigine"
+      },
+      {
+        "at": 4665.400000002235,
+        "status": "exploring",
+        "point": "lorigine",
+        "destination": "lorigine"
+      },
+      {
+        "at": 5658.900000002235,
+        "status": "room-loading",
+        "point": "lorigine",
+        "destination": "academy"
+      },
+      {
+        "at": 5997.10000000149,
+        "status": "moving",
+        "point": "lorigine",
+        "destination": "academy"
+      },
+      {
+        "at": 6017.400000002235,
+        "status": "exploring",
+        "point": "academy",
+        "destination": "academy"
+      },
+      {
+        "at": 7026.300000000745,
+        "status": "room-loading",
+        "point": "academy",
+        "destination": "drokex"
+      },
+      {
+        "at": 7363.60000000149,
+        "status": "moving",
+        "point": "academy",
+        "destination": "drokex"
+      },
+      {
+        "at": 7382.400000002235,
+        "status": "exploring",
+        "point": "drokex",
+        "destination": "drokex"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 2180.400000002235,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3233.60000000149,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4667.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 6019.300000000745,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7384.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 1285.300000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 1302.6000000014901,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2180.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2877.400000002235,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2877.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3234,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3234.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3901.300000000745,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 4311.800000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 4667.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 4668,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 5315.800000000745,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 5656.199999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 6019.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 6019.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 6653.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 7023.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 7384.900000002235,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 7385.300000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 8033.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  }
+}

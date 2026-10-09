@@ -1,0 +1,2249 @@
+{
+  "passed": true,
+  "section": "paths",
+  "recordedAt": "2026-10-09T14:07:50.344Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "13 actual station/front-room/rear-room/workbench travel segments / eye height / continuous obstacle clearance",
+      "passed": true,
+      "pathProofs": [
+        {
+          "origin": "hub",
+          "destination": "academy",
+          "motion": {
+            "actualRenderedFrames": 96,
+            "sampledMs": 1588.1000000000931,
+            "fps": 59.81991058497225,
+            "medianIntervalMs": 16.59999999962747,
+            "p95IntervalMs": 17.700000000186265,
+            "medianCpuSubmitMs": 0.20000000018626451,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 26,
+            "maxDrawCalls": 33,
+            "maxTriangles": 63032
+          },
+          "spatial": {
+            "actualCameraSamples": 96,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "academy",
+          "destination": "technologies",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1628.5,
+            "fps": 59.564015965612526,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 17.899999999906868,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 29,
+            "maxDrawCalls": 32,
+            "maxTriangles": 61688
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "technologies",
+          "destination": "contact",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1629.8999999999069,
+            "fps": 59.51285354930091,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 18.5,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 22,
+            "maxDrawCalls": 24,
+            "maxTriangles": 59197
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "contact",
+          "destination": "drokex",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1621.8999999999069,
+            "fps": 59.8063999013537,
+            "medianIntervalMs": 16.699999999720603,
+            "p95IntervalMs": 18.199999999720603,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 25,
+            "maxDrawCalls": 27,
+            "maxTriangles": 55448
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "drokex",
+          "destination": "trajectory",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1622.6000000000931,
+            "fps": 59.780599038576625,
+            "medianIntervalMs": 16.699999999720603,
+            "p95IntervalMs": 18.600000000093132,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.2999999998137355,
+            "medianDrawCalls": 23,
+            "maxDrawCalls": 30,
+            "maxTriangles": 59197
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "trajectory",
+          "destination": "academy",
+          "motion": {
+            "actualRenderedFrames": 97,
+            "sampledMs": 1600.6999999997206,
+            "fps": 59.973761479363255,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 17.899999999906868,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 27,
+            "maxDrawCalls": 34,
+            "maxTriangles": 63248
+          },
+          "spatial": {
+            "actualCameraSamples": 97,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "academy",
+          "destination": "contact",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1629.2000000001863,
+            "fps": 59.538423766258845,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 18.5,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.2999999998137355,
+            "medianDrawCalls": 26,
+            "maxDrawCalls": 34,
+            "maxTriangles": 63248
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "contact",
+          "destination": "kliniu",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1622.6000000000931,
+            "fps": 59.780599038576625,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 18.199999999720603,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.2999999998137355,
+            "medianDrawCalls": 27,
+            "maxDrawCalls": 30,
+            "maxTriangles": 65265
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "kliniu",
+          "destination": "technologies",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1624.3999999999069,
+            "fps": 59.71435606993694,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 18,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.20000000018626451,
+            "medianDrawCalls": 29,
+            "maxDrawCalls": 32,
+            "maxTriangles": 61816
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "technologies",
+          "destination": "lorigine",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1625.1999999997206,
+            "fps": 59.68496185085939,
+            "medianIntervalMs": 16.600000000093132,
+            "p95IntervalMs": 17.899999999906868,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.3000000002793968,
+            "medianDrawCalls": 24,
+            "maxDrawCalls": 28,
+            "maxTriangles": 66269
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "lorigine",
+          "destination": "contact",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1618.0999999996275,
+            "fps": 59.94685124530148,
+            "medianIntervalMs": 16.699999999720603,
+            "p95IntervalMs": 18.300000000279397,
+            "medianCpuSubmitMs": 0.19999999972060323,
+            "p95CpuSubmitMs": 0.2999999998137355,
+            "medianDrawCalls": 26,
+            "maxDrawCalls": 27,
+            "maxTriangles": 61680
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "contact",
+          "destination": "workbench",
+          "motion": {
+            "actualRenderedFrames": 97,
+            "sampledMs": 1615.2000000001863,
+            "fps": 59.4353640415979,
+            "medianIntervalMs": 16.700000000186265,
+            "p95IntervalMs": 18.40000000037253,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.20000000018626451,
+            "medianDrawCalls": 23,
+            "maxDrawCalls": 23,
+            "maxTriangles": 59153
+          },
+          "spatial": {
+            "actualCameraSamples": 97,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        },
+        {
+          "origin": "workbench",
+          "destination": "trajectory",
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1623,
+            "fps": 59.765865680837955,
+            "medianIntervalMs": 16.699999999720603,
+            "p95IntervalMs": 18.5,
+            "medianCpuSubmitMs": 0.10000000009313226,
+            "p95CpuSubmitMs": 0.20000000018626451,
+            "medianDrawCalls": 23,
+            "maxDrawCalls": 24,
+            "maxTriangles": 59165
+          },
+          "spatial": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true,
+            "newStationFootprintsClear": true,
+            "obstacleBounds": [
+              {
+                "name": "technologies",
+                "minX": -9.162500381469727,
+                "maxX": -8.789999961853027,
+                "minZ": 0.4325000047683716,
+                "maxZ": 2.6675000190734863
+              },
+              {
+                "name": "trajectory",
+                "minX": -8.981500625610352,
+                "maxX": -7.218500137329102,
+                "minZ": -2.8999998569488525,
+                "maxZ": -2.388000011444092
+              },
+              {
+                "name": "contact",
+                "minX": 5.609999656677246,
+                "maxX": 7.789999961853027,
+                "minZ": 1.0099999904632568,
+                "maxZ": 1.8900001049041748
+              }
+            ],
+            "obstacleSource": "actual Blender source bounds in stations manifest"
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://127.0.0.1:3001/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "trajectory",
+      "worldDestination": "trajectory",
+      "roomActive": "",
+      "roomPending": ""
+    },
+    "active": "<button type=\"button\" class=\"workshop-game_primary__yiOX6\">Ver trayectoria<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Entrar a Kliniu\nDaniel Cantor\nFull-Stack Developer\nVer portafolio\nTrayectoria\nDentro del taller\nTrayectoria\n\nExperiencia, formación e idiomas documentados en mi perfil.\n\nVer trayectoria\nVolver al taller\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\nTecnologías\nTrayectoria\nContacto\nMapa\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property:none",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": false,
+    "states": [
+      {
+        "at": 46.8000000002794,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 445.10000000009313,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1261.2000000001863,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 2887.8000000002794,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 3578.3000000002794,
+        "status": "room-loading",
+        "point": "hub",
+        "destination": "academy"
+      },
+      {
+        "at": 3918.3000000002794,
+        "status": "moving",
+        "point": "hub",
+        "destination": "academy"
+      },
+      {
+        "at": 5522.399999999907,
+        "status": "exploring",
+        "point": "academy",
+        "destination": "academy"
+      },
+      {
+        "at": 6223.700000000186,
+        "status": "moving",
+        "point": "academy",
+        "destination": "technologies"
+      },
+      {
+        "at": 7870.5,
+        "status": "exploring",
+        "point": "technologies",
+        "destination": "technologies"
+      },
+      {
+        "at": 8342.100000000093,
+        "status": "moving",
+        "point": "technologies",
+        "destination": "contact"
+      },
+      {
+        "at": 9985.600000000093,
+        "status": "exploring",
+        "point": "contact",
+        "destination": "contact"
+      },
+      {
+        "at": 10460.5,
+        "status": "room-loading",
+        "point": "contact",
+        "destination": "drokex"
+      },
+      {
+        "at": 10803.30000000028,
+        "status": "moving",
+        "point": "contact",
+        "destination": "drokex"
+      },
+      {
+        "at": 12433.899999999907,
+        "status": "exploring",
+        "point": "drokex",
+        "destination": "drokex"
+      },
+      {
+        "at": 13025.200000000186,
+        "status": "moving",
+        "point": "drokex",
+        "destination": "trajectory"
+      },
+      {
+        "at": 14664.100000000093,
+        "status": "exploring",
+        "point": "trajectory",
+        "destination": "trajectory"
+      },
+      {
+        "at": 15090.399999999907,
+        "status": "room-loading",
+        "point": "trajectory",
+        "destination": "academy"
+      },
+      {
+        "at": 15125.200000000186,
+        "status": "moving",
+        "point": "trajectory",
+        "destination": "academy"
+      },
+      {
+        "at": 16749.5,
+        "status": "exploring",
+        "point": "academy",
+        "destination": "academy"
+      },
+      {
+        "at": 17189.80000000028,
+        "status": "moving",
+        "point": "academy",
+        "destination": "contact"
+      },
+      {
+        "at": 18836.899999999907,
+        "status": "exploring",
+        "point": "contact",
+        "destination": "contact"
+      },
+      {
+        "at": 19293,
+        "status": "room-loading",
+        "point": "contact",
+        "destination": "kliniu"
+      },
+      {
+        "at": 19637,
+        "status": "moving",
+        "point": "contact",
+        "destination": "kliniu"
+      },
+      {
+        "at": 21268.399999999907,
+        "status": "exploring",
+        "point": "kliniu",
+        "destination": "kliniu"
+      },
+      {
+        "at": 21872.80000000028,
+        "status": "moving",
+        "point": "kliniu",
+        "destination": "technologies"
+      },
+      {
+        "at": 23516.200000000186,
+        "status": "exploring",
+        "point": "technologies",
+        "destination": "technologies"
+      },
+      {
+        "at": 24023.80000000028,
+        "status": "room-loading",
+        "point": "technologies",
+        "destination": "lorigine"
+      },
+      {
+        "at": 24369.600000000093,
+        "status": "moving",
+        "point": "technologies",
+        "destination": "lorigine"
+      },
+      {
+        "at": 26003.899999999907,
+        "status": "exploring",
+        "point": "lorigine",
+        "destination": "lorigine"
+      },
+      {
+        "at": 26622.899999999907,
+        "status": "moving",
+        "point": "lorigine",
+        "destination": "contact"
+      },
+      {
+        "at": 28260.100000000093,
+        "status": "exploring",
+        "point": "contact",
+        "destination": "contact"
+      },
+      {
+        "at": 28740.899999999907,
+        "status": "moving",
+        "point": "contact",
+        "destination": "workbench"
+      },
+      {
+        "at": 30368.399999999907,
+        "status": "exploring",
+        "point": "workbench",
+        "destination": "workbench"
+      },
+      {
+        "at": 30840.600000000093,
+        "status": "moving",
+        "point": "workbench",
+        "destination": "trajectory"
+      },
+      {
+        "at": 32476.30000000028,
+        "status": "exploring",
+        "point": "trajectory",
+        "destination": "trajectory"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 2907,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 5542.800000000279,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7879.399999999907,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 9988,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12436.399999999907,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 14665.700000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 16752,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 18845.30000000028,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 21276.80000000028,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 23517.80000000028,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 26011.200000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 28261.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 30370.80000000028,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 32478.200000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 9988,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 9988.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 10454.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 10455,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12436.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12437,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 13021.200000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 13021.200000000186,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14665.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14666,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 15087.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 15087.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 16752.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 16752.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17187.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17187.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 18845.30000000028,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 18845.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19288.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19288.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 21276.80000000028,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 21276.80000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 21869.30000000028,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 21869.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 23517.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 23518,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 24019.200000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 24019.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26011.200000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26011.30000000028,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26619.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26619.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 28261.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 28261.899999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 28736.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 28736.899999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 30835.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 30836,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Mesa de trabajo",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 32478.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 32478.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      }
+    ]
+  }
+}

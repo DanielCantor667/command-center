@@ -1,0 +1,308 @@
+{
+  "passed": true,
+  "recordedAt": "2026-10-09T14:13:50.080Z",
+  "base": "http://127.0.0.1:3001",
+  "browser": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "sections": [
+    {
+      "section": "probe",
+      "filename": "phase74-probe-results.json",
+      "passed": true,
+      "scenarios": 0,
+      "viewports": 0
+    },
+    {
+      "section": "viewports",
+      "filename": "phase74-viewports-results.json",
+      "passed": true,
+      "scenarios": 0,
+      "viewports": 4
+    },
+    {
+      "section": "readers",
+      "filename": "phase74-readers-results.json",
+      "passed": true,
+      "scenarios": 1,
+      "viewports": 0
+    },
+    {
+      "section": "navigation",
+      "filename": "phase74-navigation-results.json",
+      "passed": true,
+      "scenarios": 12,
+      "viewports": 0
+    },
+    {
+      "section": "resilience",
+      "filename": "phase74-resilience-results.json",
+      "passed": true,
+      "scenarios": 13,
+      "viewports": 0
+    },
+    {
+      "section": "rays",
+      "filename": "phase74-rays-results.json",
+      "passed": true,
+      "scenarios": 1,
+      "viewports": 0
+    },
+    {
+      "section": "paths",
+      "filename": "phase74-paths-results.json",
+      "passed": true,
+      "scenarios": 1,
+      "viewports": 0
+    },
+    {
+      "section": "memory",
+      "filename": "phase74-memory-results.json",
+      "passed": true,
+      "scenarios": 1,
+      "viewports": 0
+    },
+    {
+      "section": "visibility",
+      "filename": "phase74-visibility-results.json",
+      "passed": true,
+      "scenarios": 1,
+      "viewports": 0
+    }
+  ],
+  "additionalScenarioCount": 30,
+  "viewportCount": 4,
+  "coreDecodedBytes": [
+    4465492
+  ],
+  "coreTransferBytes": [
+    1654823
+  ],
+  "memory": {
+    "baseline": {
+      "geometries": 79,
+      "textures": 23
+    },
+    "baselinePrograms": 9,
+    "snapshots": [
+      {
+        "loop": 1,
+        "station": "technologies",
+        "paused": {
+          "sampledMs": 302.29999999981374,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 1,
+        "station": "trajectory",
+        "paused": {
+          "sampledMs": 303,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 1,
+        "station": "contact",
+        "paused": {
+          "sampledMs": 303.5,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 1,
+        "point": "hub",
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        },
+        "programs": 9
+      },
+      {
+        "loop": 2,
+        "station": "technologies",
+        "paused": {
+          "sampledMs": 303,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 2,
+        "station": "trajectory",
+        "paused": {
+          "sampledMs": 302.70000000018626,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 2,
+        "station": "contact",
+        "paused": {
+          "sampledMs": 303,
+          "renderedFrames": 0
+        },
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        }
+      },
+      {
+        "loop": 2,
+        "point": "hub",
+        "memory": {
+          "geometries": 79,
+          "textures": 23
+        },
+        "programs": 9
+      }
+    ],
+    "hubIdle": {
+      "sampledMs": 853.2000000001863,
+      "renderedFrames": 0
+    }
+  },
+  "visibility": {
+    "hiddenResize": {
+      "sampledMs": 538.1000000000931,
+      "renderedFrames": 0
+    },
+    "readingIdle": {
+      "sampledMs": 853.8999999999069,
+      "renderedFrames": 0
+    },
+    "readingVisibility": {
+      "sampledMs": 304,
+      "renderedFrames": 0
+    },
+    "readingResizeFrames": 0,
+    "actualFreeLook": {
+      "point": {
+        "x": 936,
+        "y": 160
+      },
+      "canonicalCamera": {
+        "position": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "quaternion": [
+          -0.01436788014510243,
+          0.057675322719639495,
+          0.0008301401003436892,
+          0.9982316524919129
+        ],
+        "direction": [
+          -0.11512281070592943,
+          -0.028780702676482358,
+          -0.9929342423386428
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "cameraAfterActualDrag": {
+        "position": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "quaternion": [
+          -0.008393448277312724,
+          0.021710858865216738,
+          0.00018227836090461277,
+          0.9997290409945835
+        ],
+        "direction": [
+          -0.04340689233699511,
+          -0.016790262833366546,
+          -0.9989163772667015
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      }
+    },
+    "beforeCamera": {
+      "position": [
+        -7.7,
+        1.65,
+        0.8
+      ],
+      "quaternion": [
+        -0.008393448277312724,
+        0.021710858865216738,
+        0.00018227836090461277,
+        0.9997290409945835
+      ],
+      "direction": [
+        -0.04340689233699511,
+        -0.016790262833366546,
+        -0.9989163772667015
+      ],
+      "fov": 58,
+      "near": 0.1,
+      "far": 80
+    },
+    "afterCamera": {
+      "position": [
+        -7.7,
+        1.65,
+        0.8
+      ],
+      "quaternion": [
+        -0.008393448277312724,
+        0.021710858865216738,
+        0.00018227836090461277,
+        0.9997290409945835
+      ],
+      "direction": [
+        -0.04340689233699511,
+        -0.016790262833366546,
+        -0.9989163772667015
+      ],
+      "fov": 58,
+      "near": 0.1,
+      "far": 80
+    }
+  },
+  "limits": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "excludedEnvironmentalRuns": [
+    "phase74-port3000-takeover-results.json",
+    "phase74-chrome-disconnect-results.json"
+  ]
+}

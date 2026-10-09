@@ -1,0 +1,4885 @@
+{
+  "passed": true,
+  "section": "navigation",
+  "recordedAt": "2026-10-09T14:02:51.125Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "technologies: direct link / reload / Escape / Tab / no GPU",
+      "passed": true,
+      "tab": {
+        "focusableControls": 43,
+        "tabCycle": true,
+        "shiftTabCycle": true
+      }
+    },
+    {
+      "name": "trajectory: direct link / reload / Escape / Tab / no GPU",
+      "passed": true,
+      "tab": {
+        "focusableControls": 1,
+        "tabCycle": true,
+        "shiftTabCycle": true
+      }
+    },
+    {
+      "name": "contact: direct link / reload / Escape / Tab / no GPU",
+      "passed": true,
+      "tab": {
+        "focusableControls": 3,
+        "tabCycle": true,
+        "shiftTabCycle": true
+      }
+    },
+    {
+      "name": "map: direct link / reload / Escape / Tab / no GPU",
+      "passed": true,
+      "tab": {
+        "focusableControls": 8,
+        "tabCycle": true,
+        "shiftTabCycle": true
+      }
+    },
+    {
+      "name": "Unknown reader/technology validation / classic view precedence",
+      "passed": true
+    },
+    {
+      "name": "Academy case→Next.js reader preserves canvas/camera / map back-forward / related case back-forward returns reader and station",
+      "passed": true,
+      "origin": {
+        "position": [
+          -6.4,
+          1.65,
+          5.7
+        ],
+        "quaternion": [
+          -0.0399835754100394,
+          0.7059754342025151,
+          0.0399835754100394,
+          0.7059754342025151
+        ],
+        "direction": [
+          -0.993605254789719,
+          -0.1129096880442863,
+          0
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "paused": {
+        "idle": {
+          "sampledMs": 853.1999999997206,
+          "renderedFrames": 0
+        },
+        "visibility": {
+          "sampledMs": 302.89999999990687,
+          "renderedFrames": 0
+        },
+        "resize": {
+          "sampledMs": 1296.5,
+          "renderedFrames": 0,
+          "profiles": [
+            {
+              "dpr": 1,
+              "browserDpr": 1,
+              "canvas": {
+                "width": 390,
+                "height": 844
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    1024,
+                    1024
+                  ],
+                  "actual": [
+                    1024,
+                    1024
+                  ]
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 269,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 52,
+                  "textures": 13
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -6.4,
+                  1.65,
+                  5.7
+                ],
+                "quaternion": [
+                  -0.0399835754100394,
+                  0.7059754342025151,
+                  0.0399835754100394,
+                  0.7059754342025151
+                ],
+                "direction": [
+                  -0.993605254789719,
+                  -0.1129096880442863,
+                  0
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": false,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__acoustic",
+                  "visible": true,
+                  "vertices": 672,
+                  "materials": [
+                    {
+                      "name": "WG_acoustic",
+                      "type": "MeshStandardMaterial",
+                      "color": "555e57",
+                      "roughness": 0.949999988079071,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__paper",
+                  "visible": true,
+                  "vertices": 2821,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__oak",
+                  "visible": true,
+                  "vertices": 3172,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__espresso",
+                  "visible": true,
+                  "vertices": 576,
+                  "materials": [
+                    {
+                      "name": "WG_espresso",
+                      "type": "MeshStandardMaterial",
+                      "color": "231b16",
+                      "roughness": 0.6399999856948853,
+                      "metalness": 0.05000000074505806,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__ivory",
+                  "visible": true,
+                  "vertices": 3112,
+                  "materials": [
+                    {
+                      "name": "WG_ivory",
+                      "type": "MeshStandardMaterial",
+                      "color": "f8f5ef",
+                      "roughness": 0.800000011920929,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__graphite",
+                  "visible": true,
+                  "vertices": 2008,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__greensteel",
+                  "visible": true,
+                  "vertices": 844,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__steel_light",
+                  "visible": true,
+                  "vertices": 404,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__brass",
+                  "visible": true,
+                  "vertices": 148,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1245.4000000003725,
+                "rendererFrame": 26
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "trajectory": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "contact": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "academy": {
+                  "at": 2393.9000000003725,
+                  "rendererFrame": 184
+                }
+              },
+              "roomRenderedAtPose": {
+                "academy": {
+                  "at": 2409.600000000093,
+                  "rendererFrame": 208,
+                  "meshesDrawn": [
+                    "room__academy__acoustic",
+                    "room__academy__paper",
+                    "room__academy__espresso",
+                    "room__academy__ivory",
+                    "room__academy__graphite",
+                    "room__academy__greensteel",
+                    "room__academy__steel_light",
+                    "room__academy__oak"
+                  ]
+                }
+              },
+              "activationAt": 370.70000000018626,
+              "states": [
+                {
+                  "at": 35.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 421,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1278.5,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1293,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2062,
+                  "status": "room-loading",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2397,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2414.600000000093,
+                  "status": "exploring",
+                  "point": "academy",
+                  "destination": "academy"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1295.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2000.7000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2417.5,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3052.100000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3055.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3101.600000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.600000000093,
+                  "target": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": false,
+                  "ancestorsAfter": [
+                    {
+                      "tag": "BODY",
+                      "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                      "id": "",
+                      "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    },
+                    {
+                      "tag": "HTML",
+                      "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+                      "id": "",
+                      "class": "",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    }
+                  ],
+                  "keeperAnimations": []
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 414.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 420,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1295.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1991.9000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 1992,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2001.6000000000931,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 2002.9000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.7000000001863,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2061.4000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2418.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3053.7000000001863,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 3055.3000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3101,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3105.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            },
+            {
+              "dpr": 1,
+              "browserDpr": 1,
+              "canvas": {
+                "width": 1440,
+                "height": 1000
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    2048,
+                    2048
+                  ],
+                  "actual": null
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 275,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 52,
+                  "textures": 12
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -6.4,
+                  1.65,
+                  5.7
+                ],
+                "quaternion": [
+                  -0.0399835754100394,
+                  0.7059754342025151,
+                  0.0399835754100394,
+                  0.7059754342025151
+                ],
+                "direction": [
+                  -0.993605254789719,
+                  -0.1129096880442863,
+                  0
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": false,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__acoustic",
+                  "visible": true,
+                  "vertices": 672,
+                  "materials": [
+                    {
+                      "name": "WG_acoustic",
+                      "type": "MeshStandardMaterial",
+                      "color": "555e57",
+                      "roughness": 0.949999988079071,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__paper",
+                  "visible": true,
+                  "vertices": 2821,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__oak",
+                  "visible": true,
+                  "vertices": 3172,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__espresso",
+                  "visible": true,
+                  "vertices": 576,
+                  "materials": [
+                    {
+                      "name": "WG_espresso",
+                      "type": "MeshStandardMaterial",
+                      "color": "231b16",
+                      "roughness": 0.6399999856948853,
+                      "metalness": 0.05000000074505806,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__ivory",
+                  "visible": true,
+                  "vertices": 3112,
+                  "materials": [
+                    {
+                      "name": "WG_ivory",
+                      "type": "MeshStandardMaterial",
+                      "color": "f8f5ef",
+                      "roughness": 0.800000011920929,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__graphite",
+                  "visible": true,
+                  "vertices": 2008,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__greensteel",
+                  "visible": true,
+                  "vertices": 844,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__steel_light",
+                  "visible": true,
+                  "vertices": 404,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__brass",
+                  "visible": true,
+                  "vertices": 148,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1245.4000000003725,
+                "rendererFrame": 26
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "trajectory": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "contact": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "academy": {
+                  "at": 2393.9000000003725,
+                  "rendererFrame": 184
+                }
+              },
+              "roomRenderedAtPose": {
+                "academy": {
+                  "at": 2409.600000000093,
+                  "rendererFrame": 208,
+                  "meshesDrawn": [
+                    "room__academy__acoustic",
+                    "room__academy__paper",
+                    "room__academy__espresso",
+                    "room__academy__ivory",
+                    "room__academy__graphite",
+                    "room__academy__greensteel",
+                    "room__academy__steel_light",
+                    "room__academy__oak"
+                  ]
+                }
+              },
+              "activationAt": 370.70000000018626,
+              "states": [
+                {
+                  "at": 35.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 421,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1278.5,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1293,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2062,
+                  "status": "room-loading",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2397,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2414.600000000093,
+                  "status": "exploring",
+                  "point": "academy",
+                  "destination": "academy"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1295.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2000.7000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2417.5,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3052.100000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3055.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3101.600000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.600000000093,
+                  "target": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": false,
+                  "ancestorsAfter": [
+                    {
+                      "tag": "BODY",
+                      "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                      "id": "",
+                      "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    },
+                    {
+                      "tag": "HTML",
+                      "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+                      "id": "",
+                      "class": "",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    }
+                  ],
+                  "keeperAnimations": []
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 414.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 420,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1295.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1991.9000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 1992,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2001.6000000000931,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 2002.9000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.7000000001863,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2061.4000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2418.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3053.7000000001863,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 3055.3000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3101,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3105.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            },
+            {
+              "dpr": 1,
+              "browserDpr": 1,
+              "canvas": {
+                "width": 390,
+                "height": 844
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    1024,
+                    1024
+                  ],
+                  "actual": null
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 281,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 52,
+                  "textures": 12
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -6.4,
+                  1.65,
+                  5.7
+                ],
+                "quaternion": [
+                  -0.0399835754100394,
+                  0.7059754342025151,
+                  0.0399835754100394,
+                  0.7059754342025151
+                ],
+                "direction": [
+                  -0.993605254789719,
+                  -0.1129096880442863,
+                  0
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": false,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__acoustic",
+                  "visible": true,
+                  "vertices": 672,
+                  "materials": [
+                    {
+                      "name": "WG_acoustic",
+                      "type": "MeshStandardMaterial",
+                      "color": "555e57",
+                      "roughness": 0.949999988079071,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__paper",
+                  "visible": true,
+                  "vertices": 2821,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__oak",
+                  "visible": true,
+                  "vertices": 3172,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__espresso",
+                  "visible": true,
+                  "vertices": 576,
+                  "materials": [
+                    {
+                      "name": "WG_espresso",
+                      "type": "MeshStandardMaterial",
+                      "color": "231b16",
+                      "roughness": 0.6399999856948853,
+                      "metalness": 0.05000000074505806,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__ivory",
+                  "visible": true,
+                  "vertices": 3112,
+                  "materials": [
+                    {
+                      "name": "WG_ivory",
+                      "type": "MeshStandardMaterial",
+                      "color": "f8f5ef",
+                      "roughness": 0.800000011920929,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__graphite",
+                  "visible": true,
+                  "vertices": 2008,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__greensteel",
+                  "visible": true,
+                  "vertices": 844,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__steel_light",
+                  "visible": true,
+                  "vertices": 404,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "room__academy__brass",
+                  "visible": true,
+                  "vertices": 148,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1245.4000000003725,
+                "rendererFrame": 26
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "trajectory": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "contact": {
+                  "at": 1245.4000000003725,
+                  "rendererFrame": 26
+                },
+                "academy": {
+                  "at": 2393.9000000003725,
+                  "rendererFrame": 184
+                }
+              },
+              "roomRenderedAtPose": {
+                "academy": {
+                  "at": 2409.600000000093,
+                  "rendererFrame": 208,
+                  "meshesDrawn": [
+                    "room__academy__acoustic",
+                    "room__academy__paper",
+                    "room__academy__espresso",
+                    "room__academy__ivory",
+                    "room__academy__graphite",
+                    "room__academy__greensteel",
+                    "room__academy__steel_light",
+                    "room__academy__oak"
+                  ]
+                }
+              },
+              "activationAt": 370.70000000018626,
+              "states": [
+                {
+                  "at": 35.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 421,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1278.5,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1293,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2062,
+                  "status": "room-loading",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2397,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "academy"
+                },
+                {
+                  "at": 2414.600000000093,
+                  "status": "exploring",
+                  "point": "academy",
+                  "destination": "academy"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1295.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2000.7000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2003.2000000001863,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2417.5,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3052.100000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3055.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3101.600000000093,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.600000000093,
+                  "target": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": false,
+                  "ancestorsAfter": [
+                    {
+                      "tag": "BODY",
+                      "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a DrokexDaniel Canto",
+                      "id": "",
+                      "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    },
+                    {
+                      "tag": "HTML",
+                      "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+                      "id": "",
+                      "class": "",
+                      "inlineVisibility": "",
+                      "inlineDisplay": "",
+                      "computedVisibility": "visible",
+                      "computedDisplay": "block",
+                      "inert": false,
+                      "transitionProperty": "all",
+                      "transitionDuration": "1e-05s",
+                      "animationName": "none"
+                    }
+                  ],
+                  "keeperAnimations": []
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 3105.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 414.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 420,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1295.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1991.9000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 1992,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2001.6000000000931,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 2002.9000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Mapa",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2057.7000000001863,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Mapa del taller",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2061.4000000003725,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "4U Studio AcademyIr al destino",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2418.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3053.7000000001863,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 3055.3000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Abrir caso de 4U Studio Academy",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3091.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "4U Studio Academy",
+                    "id": "academy-title",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 3101,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Next.js",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 3105.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Tecnologías",
+                    "id": "_r_5_",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            }
+          ]
+        },
+        "beforeCamera": {
+          "position": [
+            -6.4,
+            1.65,
+            5.7
+          ],
+          "quaternion": [
+            -0.0399835754100394,
+            0.7059754342025151,
+            0.0399835754100394,
+            0.7059754342025151
+          ],
+          "direction": [
+            -0.993605254789719,
+            -0.1129096880442863,
+            0
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        },
+        "afterCamera": {
+          "position": [
+            -6.4,
+            1.65,
+            5.7
+          ],
+          "quaternion": [
+            -0.0399835754100394,
+            0.7059754342025151,
+            0.0399835754100394,
+            0.7059754342025151
+          ],
+          "direction": [
+            -0.993605254789719,
+            -0.1129096880442863,
+            0
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        }
+      },
+      "map": {
+        "targets": [
+          {
+            "id": "hub",
+            "name": "El taller\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "workbench",
+            "name": "Mesa de trabajo\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "kliniu",
+            "name": "Kliniu\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "lorigine",
+            "name": "L'ORIGINE\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "academy",
+            "name": "4U Studio Academy\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "drokex",
+            "name": "Drokex\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "technologies",
+            "name": "Tecnologías\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "trajectory",
+            "name": "Trayectoria\nIr al destino",
+            "disabled": false
+          },
+          {
+            "id": "contact",
+            "name": "Contacto\nIr al destino",
+            "disabled": false
+          }
+        ],
+        "tab": {
+          "focusableControls": 10,
+          "tabCycle": true,
+          "shiftTabCycle": true
+        },
+        "layout": {
+          "dialog": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 844
+          },
+          "close": {
+            "x": 326,
+            "y": 20,
+            "width": 44,
+            "height": 44
+          }
+        }
+      },
+      "historyBack": {
+        "url": "http://127.0.0.1:3001/",
+        "visibleReader": null,
+        "caseId": null
+      },
+      "stationOrigin": {
+        "position": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "quaternion": [
+          -0.007553266562097524,
+          0.707066438295753,
+          0.007553266562097524,
+          0.707066438295753
+        ],
+        "direction": [
+          -0.9997717926569676,
+          -0.021362645142242814,
+          0
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      }
+    },
+    {
+      "name": "320px actual Tab/Enter map and three stations / reduced motion / reader Escape restores CTA / next Escape returns hub",
+      "passed": true,
+      "samples": [
+        {
+          "station": "technologies",
+          "tab": {
+            "focusableControls": 55,
+            "tabCycle": true,
+            "shiftTabCycle": true
+          }
+        },
+        {
+          "station": "trajectory",
+          "tab": {
+            "focusableControls": 1,
+            "tabCycle": true,
+            "shiftTabCycle": true
+          }
+        },
+        {
+          "station": "contact",
+          "tab": {
+            "focusableControls": 3,
+            "tabCycle": true,
+            "shiftTabCycle": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "kliniu: Phase7.3 direct HTML case/return no GPU regression",
+      "passed": true
+    },
+    {
+      "name": "lorigine: Phase7.3 direct HTML case/return no GPU regression",
+      "passed": true
+    },
+    {
+      "name": "4ustudio-academy: Phase7.3 direct HTML case/return no GPU regression",
+      "passed": true
+    },
+    {
+      "name": "drokex: Phase7.3 direct HTML case/return no GPU regression",
+      "passed": true
+    },
+    {
+      "name": "Four classic direct cases preserve Volver a la ciudad / reload behavior",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://127.0.0.1:3001/?view=portfolio",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "active": "<body class=\"__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased\"><div hidden=\"\"><!--$--><!--/$--></div><!--$--><!--/$--><main class=\"experience_experience__9TefV cinematic_experience__Yk8kx\" data-project=\"kliniu\" data-night=\"false\" data-reveal=\"false\"><a class=\"experience_skipLink__DKhGN\" href=\"#proyectos\">Ir a los proyectos</a><header class=\"cinematic_header__pP3jM\"><a class=\"cinematic_identity__FYNHK\" href=\"#inicio\"><span class=\"cinematic_monogram__ETcsZ\" aria-hidden=\"true\">dc.</span><span>Daniel Cantor<br><small>Desarrollo &amp; diseño</small></span></a><nav class=\"experience_navigation__d9EAY\" aria-label=\"Navegación principal\"><a href=\"#proyectos\" aria-current=\"location\">Proyectos</a><a href=\"#tecnologias\">Tecnologías</a><a href=\"#trayectoria\">Trayectoria</a><a href=\"#contacto\">Contacto</a></nav></header><section id=\"inicio\" class=\"cinematic_hero__2p4tF\" aria-label=\"Portafolio de proyectos\" data-detail=\"false\" data-entering=\"false\"><div class=\"experience_cityStage__yeeic cinematic_stage__E_KcQ\" data-detail=\"false\" data-night=\"false\"><div class=\"experience_immersiveLoader__vRFz9\" data-entering=\"false\" style=\"height: 100%; width: ",
+    "activeTag": "BODY",
+    "text": "Ir a los proyectos\ndc.\nDaniel Cantor\nDesarrollo & diseño\nProyectos\nTecnologías\nTrayectoria\nContacto\nCerrar vista 3D\n\nPortafolio independiente / Bogotá, CO\n\nDaniel\nCantor\n\nCódigo con intención.\nProductos con carácter.\n\nEntrar a Kliniu\nVer proyectos\nEl taller de Daniel\nProyectos seleccionados\n04 / En producción\n01\nKliniu\n02\nL'ORIGINE\n03\n4U Studio Academy\n04\nDrokex\n\nIdeas que llegan a producción.\n\nEl taller\nEl proyecto\nLas tecnologías\n\nUna mirada al producto\n\nDel taller a la web.\n\nCuatro sitios publicados. Capturas reales y decisiones detrás de cada proyecto.\n\nComercio electrónico e higiene institucional\n\nKliniu\n\nComercio electrónico de dispensadores e insumos de higiene para empresas, con catálogo, cotizaciones y herramientas de administración.\n\nTypeScript\nReact\nNext.js\nTailwind CSS\nPostgreSQL\nVer el proyecto\nVisitar sitio\nAcercar distrito Kliniu\n\nDetrás de los proyectos\n\nAprender.\nConstruir.\nVolver a intentar.\n\nSoy Daniel, desarrollador Full-Stack en Bogotá. Trabajo desde el modelado de datos hasta la interfaz que usa cada persona.\n\nEspañol\nNativo\n\nInglés\nB2 · Intermedio-alto\n\nExperiencia\n\n2025 — Presente\n\nFull-Stack Developer\n\nProductos y plataformas web\n\nDiseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue.\n\nEne — Dic 2025\n\nPráctica en desarrollo de software\n\nAgrocinco · Bogotá\n\nAplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos.\n\nFormación\n\n2026 — Presente\n\nIngeniería de Software\n\nCorporación Universitaria Minuto de Dios\n\n2023 — 2025\n\nTecnología en Desarrollo de Software\n\nUniversitaria Agustiniana\n\nSigamos construyendo\n\n¿Qué tienes en mente?\n\nDisponible para colaborar en productos web, e-commerce e integraciones.\n\nHablemos en LinkedIn\nExplorar mi GitHub\nDaniel Cantor · Taller digital\nVer todos los proyectos\nLaboratorio 3D\nBogotá, Colombia",
+    "keeper": null,
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 28.799999999813735,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      }
+    ],
+    "focusCalls": [],
+    "focusEvents": []
+  }
+}

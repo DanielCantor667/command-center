@@ -1,0 +1,5706 @@
+{
+  "passed": true,
+  "section": "viewports",
+  "recordedAt": "2026-10-08T20:04:56.436Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "mobileEmulation": true,
+      "deviceScaleFactor": 2,
+      "coreTimings": [
+        {
+          "url": "/models/workshop-game/workshop-shell-v2.glb",
+          "count": 1,
+          "transferSize": 1239944,
+          "encodedBodySize": 1239644,
+          "decodedBodySize": 3620768,
+          "responseEnd": 1399.1000000014901
+        },
+        {
+          "url": "/models/workshop-game/workshop-door-v1.glb",
+          "count": 1,
+          "transferSize": 12355,
+          "encodedBodySize": 12055,
+          "decodedBodySize": 58072,
+          "responseEnd": 1354.6000000014901
+        }
+      ],
+      "coreDecodedBytes": 3678840,
+      "entered": {
+        "dpr": 1,
+        "browserDpr": 2,
+        "canvas": {
+          "width": 320,
+          "height": 568
+        },
+        "gpu": {
+          "renderer": "WebKit WebGL",
+          "vendor": "WebKit",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+        },
+        "shadows": [
+          {
+            "type": "DirectionalLight",
+            "requested": [
+              1024,
+              1024
+            ],
+            "actual": [
+              1024,
+              1024
+            ]
+          }
+        ],
+        "shadowAutoUpdate": false,
+        "info": {
+          "render": {
+            "frame": 177,
+            "calls": 17,
+            "triangles": 51533,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 34,
+            "textures": 9
+          },
+          "programs": 9
+        },
+        "frameloop": "demand",
+        "camera": {
+          "position": [
+            0,
+            1.65,
+            5.1
+          ],
+          "quaternion": [
+            -0.007074940445239834,
+            0,
+            0,
+            0.9999749722956551
+          ],
+          "direction": [
+            0,
+            -0.014149526751444225,
+            -0.9998998904353926
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        },
+        "nodes": [
+          {
+            "name": "shell__concrete",
+            "visible": true,
+            "vertices": 2112,
+            "materials": [
+              {
+                "name": "WG_concrete",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.8799999952316284,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__soil",
+            "visible": true,
+            "vertices": 680,
+            "materials": [
+              {
+                "name": "WG_soil",
+                "type": "MeshStandardMaterial",
+                "color": "514d3d",
+                "roughness": 1,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__plaster",
+            "visible": true,
+            "vertices": 1728,
+            "materials": [
+              {
+                "name": "WG_plaster",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.9100000262260437,
+                "metalness": 0,
+                "map": {
+                  "width": 256,
+                  "height": 256
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__glass",
+            "visible": true,
+            "vertices": 288,
+            "materials": [
+              {
+                "name": "WG_glass",
+                "type": "MeshStandardMaterial",
+                "color": "d5e5df",
+                "roughness": 0.3499999940395355,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__greensteel",
+            "visible": true,
+            "vertices": 26667,
+            "materials": [
+              {
+                "name": "WG_greensteel",
+                "type": "MeshStandardMaterial",
+                "color": "315749",
+                "roughness": 0.47999998927116394,
+                "metalness": 0.41999998688697815,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__brass",
+            "visible": true,
+            "vertices": 7293,
+            "materials": [
+              {
+                "name": "WG_brass",
+                "type": "MeshStandardMaterial",
+                "color": "bc9b63",
+                "roughness": 0.3799999952316284,
+                "metalness": 0.6200000047683716,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__graphite",
+            "visible": true,
+            "vertices": 4393,
+            "materials": [
+              {
+                "name": "WG_graphite",
+                "type": "MeshStandardMaterial",
+                "color": "252d29",
+                "roughness": 0.550000011920929,
+                "metalness": 0.20000000298023224,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__oak",
+            "visible": true,
+            "vertices": 7680,
+            "materials": [
+              {
+                "name": "WG_oak",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__paper",
+            "visible": true,
+            "vertices": 20930,
+            "materials": [
+              {
+                "name": "WG_paper",
+                "type": "MeshStandardMaterial",
+                "color": "e7e3d8",
+                "roughness": 0.8399999737739563,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__ceramic",
+            "visible": true,
+            "vertices": 496,
+            "materials": [
+              {
+                "name": "WG_ceramic",
+                "type": "MeshStandardMaterial",
+                "color": "a99e86",
+                "roughness": 0.8999999761581421,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__leaf",
+            "visible": true,
+            "vertices": 3672,
+            "materials": [
+              {
+                "name": "WG_leaf",
+                "type": "MeshStandardMaterial",
+                "color": "45624a",
+                "roughness": 0.8500000238418579,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__leaflight",
+            "visible": true,
+            "vertices": 1848,
+            "materials": [
+              {
+                "name": "WG_leaflight",
+                "type": "MeshStandardMaterial",
+                "color": "71805d",
+                "roughness": 0.8500000238418579,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__warm",
+            "visible": true,
+            "vertices": 736,
+            "materials": [
+              {
+                "name": "WG_warm",
+                "type": "MeshStandardMaterial",
+                "color": "ffe4bc",
+                "roughness": 0.5,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__steel_light",
+            "visible": true,
+            "vertices": 4570,
+            "materials": [
+              {
+                "name": "WG_steel_light",
+                "type": "MeshStandardMaterial",
+                "color": "a8b5ad",
+                "roughness": 0.4300000071525574,
+                "metalness": 0.5,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__teal",
+            "visible": true,
+            "vertices": 4349,
+            "materials": [
+              {
+                "name": "WG_teal",
+                "type": "MeshStandardMaterial",
+                "color": "23676a",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__kliniu",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__lorigine",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__academy",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__drokex",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__greensteel",
+            "visible": true,
+            "vertices": 960,
+            "materials": [
+              {
+                "name": "WG_greensteel",
+                "type": "MeshStandardMaterial",
+                "color": "315749",
+                "roughness": 0.47999998927116394,
+                "metalness": 0.41999998688697815,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__brass",
+            "visible": true,
+            "vertices": 352,
+            "materials": [
+              {
+                "name": "WG_brass",
+                "type": "MeshStandardMaterial",
+                "color": "bc9b63",
+                "roughness": 0.3799999952316284,
+                "metalness": 0.6200000047683716,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__graphite",
+            "visible": true,
+            "vertices": 208,
+            "materials": [
+              {
+                "name": "WG_graphite",
+                "type": "MeshStandardMaterial",
+                "color": "252d29",
+                "roughness": 0.550000011920929,
+                "metalness": 0.20000000298023224,
+                "map": null
+              }
+            ]
+          }
+        ],
+        "firstUsableFrame": {
+          "at": 1732.5,
+          "rendererFrame": 31
+        },
+        "roomMountedFrames": {},
+        "roomRenderedAtPose": {},
+        "activationAt": 907.6999999992549,
+        "states": [
+          {
+            "at": 487.19999999925494,
+            "status": "landing",
+            "point": "entrance",
+            "destination": "entrance"
+          },
+          {
+            "at": 950.8000000007451,
+            "status": "loading",
+            "point": "entrance",
+            "destination": "entrance"
+          },
+          {
+            "at": 1736,
+            "status": "moving",
+            "point": "entrance",
+            "destination": "hub"
+          },
+          {
+            "at": 3361.800000000745,
+            "status": "exploring",
+            "point": "hub",
+            "destination": "hub"
+          }
+        ],
+        "stores": 1,
+        "focusCalls": [
+          {
+            "at": 3368.900000002235,
+            "target": {
+              "tag": "BUTTON",
+              "text": "El taller",
+              "id": "",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "El taller",
+              "id": "",
+              "class": ""
+            },
+            "succeeded": true
+          }
+        ],
+        "focusEvents": [
+          {
+            "at": 940.5,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Entrar al taller",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 950.3000000007451,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Entrar al taller",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 3369.400000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "El taller",
+              "id": "",
+              "class": ""
+            },
+            "related": null,
+            "targetInert": false
+          }
+        ],
+        "hookError": null
+      },
+      "destinations": [
+        {
+          "room": "kliniu",
+          "projectId": "kliniu",
+          "timing": {
+            "url": "/models/workshop-game/room-kliniu-v1.glb",
+            "count": 1,
+            "transferSize": 570348,
+            "encodedBodySize": 570048,
+            "decodedBodySize": 1001592,
+            "responseEnd": 4122.400000002235
+          },
+          "mountedAtMainFrame": {
+            "at": 4430,
+            "rendererFrame": 203
+          },
+          "renderedAtPose": {
+            "at": 6021.699999999255,
+            "rendererFrame": 322,
+            "meshesDrawn": [
+              "room__kliniu__teal",
+              "room__kliniu__paper",
+              "room__kliniu__warm",
+              "room__kliniu__steel_light",
+              "room__kliniu__greensteel",
+              "room__kliniu__graphite",
+              "room__kliniu__ivory",
+              "room__kliniu__oak"
+            ]
+          },
+          "evidence": {
+            "text": "Kliniu\nCaptura del sitio publicado\nAbrir caso de Kliniu",
+            "images": [
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fkliniu-desktop.png&w=1920&q=75",
+                "logicalUrl": "/projects/kliniu-desktop.png",
+                "alt": "",
+                "complete": true,
+                "width": 576,
+                "height": 400,
+                "cssVisible": true,
+                "location": "physical world monitor",
+                "rect": {
+                  "x": 9.39000129699707,
+                  "y": 197.2188262939453,
+                  "width": 301.219970703125,
+                  "height": 169.2935028076172
+                },
+                "uncoveredViewportSamples": []
+              },
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fkliniu-desktop.png&w=1920&q=75",
+                "logicalUrl": "/projects/kliniu-desktop.png",
+                "alt": "Captura real del sitio de Kliniu",
+                "complete": true,
+                "width": 210,
+                "height": 145,
+                "cssVisible": true,
+                "location": "inspection card",
+                "rect": {
+                  "x": 37,
+                  "y": 217.5,
+                  "width": 246,
+                  "height": 70
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 61.6,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  }
+                ]
+              }
+            ]
+          },
+          "layout": [
+            {
+              "name": "El taller",
+              "x": 28,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Mesa de trabajo",
+              "x": 116.65625,
+              "y": 399,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Kliniu",
+              "x": 205.328125,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "L'ORIGINE",
+              "x": 28,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Academy",
+              "x": 116.65625,
+              "y": 445,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Drokex",
+              "x": 205.328125,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            }
+          ],
+          "freeLook": {
+            "point": {
+              "x": 208,
+              "y": 90.88
+            },
+            "canonicalCamera": {
+              "position": [
+                -5.1,
+                1.65,
+                -4
+              ],
+              "quaternion": [
+                -0.015951355705936525,
+                0,
+                0,
+                0.9998727690317116
+              ],
+              "direction": [
+                0,
+                -0.031898652399009096,
+                -0.9994911085022854
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "cameraAfterActualDrag": {
+              "position": [
+                -5.1,
+                1.65,
+                -4
+              ],
+              "quaternion": [
+                -0.009949515485884151,
+                -0.035990440662269106,
+                -0.00035833737261332005,
+                0.9993025402333665
+              ],
+              "direction": [
+                0.07192354698937156,
+                -0.019910945638162727,
+                -0.9972113906450637
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            }
+          },
+          "beforeCamera": {
+            "position": [
+              -5.1,
+              1.65,
+              -4
+            ],
+            "quaternion": [
+              -0.009949515485884151,
+              -0.035990440662269106,
+              -0.00035833737261332005,
+              0.9993025402333665
+            ],
+            "direction": [
+              0.07192354698937156,
+              -0.019910945638162727,
+              -0.9972113906450637
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "afterCamera": {
+            "position": [
+              -5.1,
+              1.65,
+              -4
+            ],
+            "quaternion": [
+              -0.009949515485884151,
+              -0.035990440662269106,
+              -0.00035833737261332005,
+              0.9993025402333665
+            ],
+            "direction": [
+              0.07192354698937156,
+              -0.019910945638162727,
+              -0.9972113906450637
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "cameraPixelDifference": 0,
+          "paused": {
+            "sampledMs": 852.3000000007451,
+            "renderedFrames": 0
+          },
+          "visibilityPause": {
+            "sampledMs": 353.6000000014901,
+            "renderedFrames": 0
+          },
+          "motion": {
+            "actualRenderedFrames": 97,
+            "sampledMs": 1594,
+            "fps": 60.2258469259724,
+            "medianIntervalMs": 16.600000001490116,
+            "p95IntervalMs": 17.699999999254942,
+            "medianCpuSubmitMs": 0.29999999701976776,
+            "p95CpuSubmitMs": 0.3999999985098839,
+            "medianDrawCalls": 22,
+            "maxDrawCalls": 24,
+            "maxTriangles": 57677
+          },
+          "path": {
+            "actualCameraSamples": 97,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true
+          }
+        },
+        {
+          "room": "lorigine",
+          "projectId": "lorigine",
+          "timing": {
+            "url": "/models/workshop-game/room-lorigine-v1.glb",
+            "count": 1,
+            "transferSize": 573234,
+            "encodedBodySize": 572934,
+            "decodedBodySize": 823904,
+            "responseEnd": 10019.60000000149
+          },
+          "mountedAtMainFrame": {
+            "at": 10332.800000000745,
+            "rendererFrame": 457
+          },
+          "renderedAtPose": {
+            "at": 11957,
+            "rendererFrame": 578,
+            "meshesDrawn": [
+              "room__lorigine__ivory",
+              "room__lorigine__espresso",
+              "room__lorigine__champagne",
+              "room__lorigine__oak"
+            ]
+          },
+          "evidence": {
+            "text": "L'ORIGINE\nCaptura del sitio publicado\nAbrir caso de L'ORIGINE",
+            "images": [
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Florigine-catalog-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/lorigine-catalog-v4.webp",
+                "alt": "",
+                "complete": true,
+                "width": 576,
+                "height": 400,
+                "cssVisible": true,
+                "location": "physical world monitor",
+                "rect": {
+                  "x": -16.696422576904297,
+                  "y": 159.63784790039062,
+                  "width": 353.392822265625,
+                  "height": 196.58334350585938
+                },
+                "uncoveredViewportSamples": []
+              },
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Florigine-catalog-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/lorigine-catalog-v4.webp",
+                "alt": "Captura real del sitio de L'ORIGINE",
+                "complete": true,
+                "width": 210,
+                "height": 145,
+                "cssVisible": true,
+                "location": "inspection card",
+                "rect": {
+                  "x": 37,
+                  "y": 217.5,
+                  "width": 246,
+                  "height": 70
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 61.6,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 224.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 238.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 252.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 266.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 280.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  }
+                ]
+              }
+            ]
+          },
+          "layout": [
+            {
+              "name": "El taller",
+              "x": 28,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Mesa de trabajo",
+              "x": 116.65625,
+              "y": 399,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Kliniu",
+              "x": 205.328125,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "L'ORIGINE",
+              "x": 28,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Academy",
+              "x": 116.65625,
+              "y": 445,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Drokex",
+              "x": 205.328125,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            }
+          ],
+          "freeLook": {
+            "point": {
+              "x": 208,
+              "y": 90.88
+            },
+            "canonicalCamera": {
+              "position": [
+                4.8,
+                1.65,
+                -4.1
+              ],
+              "quaternion": [
+                -0.022709687246860427,
+                0,
+                0,
+                0.9997421017968333
+              ],
+              "direction": [
+                0,
+                -0.04540766091864997,
+                -0.9989685402102996
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "cameraAfterActualDrag": {
+              "position": [
+                4.8,
+                1.65,
+                -4.1
+              ],
+              "quaternion": [
+                -0.016709423763063027,
+                -0.03598719303298534,
+                -0.0006017992552133303,
+                0.9992123672837367
+              ],
+              "direction": [
+                0.07189758524722087,
+                -0.033435839880403606,
+                -0.9968514341902263
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            }
+          },
+          "beforeCamera": {
+            "position": [
+              4.8,
+              1.65,
+              -4.1
+            ],
+            "quaternion": [
+              -0.016709423763063027,
+              -0.03598719303298534,
+              -0.0006017992552133303,
+              0.9992123672837367
+            ],
+            "direction": [
+              0.07189758524722087,
+              -0.033435839880403606,
+              -0.9968514341902263
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "afterCamera": {
+            "position": [
+              4.8,
+              1.65,
+              -4.1
+            ],
+            "quaternion": [
+              -0.016709423763063027,
+              -0.03598719303298534,
+              -0.0006017992552133303,
+              0.9992123672837367
+            ],
+            "direction": [
+              0.07189758524722087,
+              -0.033435839880403606,
+              -0.9968514341902263
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "cameraPixelDifference": 0,
+          "paused": {
+            "sampledMs": 853.1999999992549,
+            "renderedFrames": 0
+          },
+          "visibilityPause": {
+            "sampledMs": 353.8999999985099,
+            "renderedFrames": 0
+          },
+          "motion": {
+            "actualRenderedFrames": 98,
+            "sampledMs": 1608.5999999977648,
+            "fps": 60.300882755274635,
+            "medianIntervalMs": 16.699999999254942,
+            "p95IntervalMs": 17.399999998509884,
+            "medianCpuSubmitMs": 0.19999999925494194,
+            "p95CpuSubmitMs": 0.3999999985098839,
+            "medianDrawCalls": 22,
+            "maxDrawCalls": 28,
+            "maxTriangles": 63873
+          },
+          "path": {
+            "actualCameraSamples": 98,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true
+          }
+        },
+        {
+          "room": "academy",
+          "projectId": "4ustudio-academy",
+          "timing": {
+            "url": "/models/workshop-game/room-academy-v1.glb",
+            "count": 1,
+            "transferSize": 396210,
+            "encodedBodySize": 395910,
+            "decodedBodySize": 794768,
+            "responseEnd": 15852.400000002235
+          },
+          "mountedAtMainFrame": {
+            "at": 16161.900000002235,
+            "rendererFrame": 712
+          },
+          "renderedAtPose": {
+            "at": 17756.60000000149,
+            "rendererFrame": 831,
+            "meshesDrawn": [
+              "room__academy__acoustic",
+              "room__academy__paper",
+              "room__academy__espresso",
+              "room__academy__ivory",
+              "room__academy__graphite",
+              "room__academy__greensteel",
+              "room__academy__steel_light",
+              "room__academy__oak"
+            ]
+          },
+          "evidence": {
+            "text": "4U Studio Academy\nCaptura del sitio publicado\nAbrir caso de 4U Studio Academy",
+            "images": [
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Facademy-lessons-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/academy-lessons-v4.webp",
+                "alt": "",
+                "complete": true,
+                "width": 576,
+                "height": 400,
+                "cssVisible": true,
+                "location": "physical world monitor",
+                "rect": {
+                  "x": -13.123940467834473,
+                  "y": 70.12590026855469,
+                  "width": 346.24786376953125,
+                  "height": 193.5282440185547
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 32,
+                    "y": 89.47872467041016,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 32,
+                    "y": 128.1843734741211,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 96,
+                    "y": 89.47872467041016,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 96,
+                    "y": 128.1843734741211,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 89.47872467041016,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 128.1843734741211,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 224,
+                    "y": 89.47872467041016,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 224,
+                    "y": 128.1843734741211,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 288,
+                    "y": 89.47872467041016,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 288,
+                    "y": 128.1843734741211,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  }
+                ]
+              },
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Facademy-lessons-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/academy-lessons-v4.webp",
+                "alt": "Captura real del sitio de 4U Studio Academy",
+                "complete": true,
+                "width": 210,
+                "height": 145,
+                "cssVisible": true,
+                "location": "inspection card",
+                "rect": {
+                  "x": 37,
+                  "y": 198,
+                  "width": 246,
+                  "height": 70
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 61.6,
+                    "y": 205,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 219,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 233,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 247,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 261,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 205,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 219,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 233,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 247,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 261,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 205,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 219,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 233,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 247,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 261,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 205,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 219,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 233,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 247,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 261,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 205,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 219,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 233,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 247,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 261,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  }
+                ]
+              }
+            ]
+          },
+          "layout": [
+            {
+              "name": "El taller",
+              "x": 28,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Mesa de trabajo",
+              "x": 116.65625,
+              "y": 399,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Kliniu",
+              "x": 205.328125,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "L'ORIGINE",
+              "x": 28,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Academy",
+              "x": 116.65625,
+              "y": 445,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Drokex",
+              "x": 205.328125,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            }
+          ],
+          "freeLook": {
+            "point": {
+              "x": 208,
+              "y": 90.88
+            },
+            "canonicalCamera": {
+              "position": [
+                -6.4,
+                1.65,
+                5.7
+              ],
+              "quaternion": [
+                -0.0399835754100394,
+                0.7059754342025151,
+                0.0399835754100394,
+                0.7059754342025151
+              ],
+              "direction": [
+                -0.993605254789719,
+                -0.1129096880442863,
+                0
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "cameraAfterActualDrag": {
+              "position": [
+                -6.4,
+                1.65,
+                5.7
+              ],
+              "quaternion": [
+                -0.03706077462303108,
+                0.6803248829698366,
+                0.034484047774532546,
+                0.7311603128216839
+              ],
+              "direction": [
+                -0.9922970974598792,
+                -0.1011154466666489,
+                -0.07156910519283811
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            }
+          },
+          "beforeCamera": {
+            "position": [
+              -6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03706077462303108,
+              0.6803248829698366,
+              0.034484047774532546,
+              0.7311603128216839
+            ],
+            "direction": [
+              -0.9922970974598792,
+              -0.1011154466666489,
+              -0.07156910519283811
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "afterCamera": {
+            "position": [
+              -6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03706077462303108,
+              0.6803248829698366,
+              0.034484047774532546,
+              0.7311603128216839
+            ],
+            "direction": [
+              -0.9922970974598792,
+              -0.1011154466666489,
+              -0.07156910519283811
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "cameraPixelDifference": 0,
+          "paused": {
+            "sampledMs": 851.9000000022352,
+            "renderedFrames": 0
+          },
+          "visibilityPause": {
+            "sampledMs": 352.1000000014901,
+            "renderedFrames": 0
+          },
+          "motion": {
+            "actualRenderedFrames": 97,
+            "sampledMs": 1596.3999999985099,
+            "fps": 60.13530443503483,
+            "medianIntervalMs": 16.700000002980232,
+            "p95IntervalMs": 17.199999999254942,
+            "medianCpuSubmitMs": 0.19999999925494194,
+            "p95CpuSubmitMs": 0.30000000074505806,
+            "medianDrawCalls": 18,
+            "maxDrawCalls": 21,
+            "maxTriangles": 57761
+          },
+          "path": {
+            "actualCameraSamples": 97,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true
+          }
+        },
+        {
+          "room": "drokex",
+          "projectId": "drokex",
+          "timing": {
+            "url": "/models/workshop-game/room-drokex-v1.glb",
+            "count": 1,
+            "transferSize": 496809,
+            "encodedBodySize": 496509,
+            "decodedBodySize": 665616,
+            "responseEnd": 21616.300000000745
+          },
+          "mountedAtMainFrame": {
+            "at": 21926.800000000745,
+            "rendererFrame": 966
+          },
+          "renderedAtPose": {
+            "at": 23522.900000002235,
+            "rendererFrame": 1085,
+            "meshesDrawn": [
+              "room__drokex__graphite",
+              "room__drokex__paper",
+              "room__drokex__teal",
+              "room__drokex__ivory",
+              "room__drokex__brass",
+              "room__drokex__cyan",
+              "room__drokex__greensteel",
+              "room__drokex__concrete",
+              "room__drokex__oak"
+            ]
+          },
+          "evidence": {
+            "text": "Drokex\nCaptura del sitio publicado\n\nParticipación descrita en el CV de Daniel. Propiedad no confirmada.\n\nAbrir caso de Drokex",
+            "images": [
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/drokex-products-v4.webp",
+                "alt": "",
+                "complete": true,
+                "width": 576,
+                "height": 400,
+                "cssVisible": true,
+                "location": "physical world monitor",
+                "rect": {
+                  "x": -13.81074333190918,
+                  "y": 105.02094268798828,
+                  "width": 347.6214599609375,
+                  "height": 193.2550048828125
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 32,
+                    "y": 124.34644317626953,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 96,
+                    "y": 124.34644317626953,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 124.34644317626953,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 224,
+                    "y": 124.34644317626953,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 288,
+                    "y": 124.34644317626953,
+                    "underlying": "CANVAS",
+                    "imageAncestor": false
+                  }
+                ]
+              },
+              {
+                "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=1920&q=75",
+                "logicalUrl": "/projects/drokex-products-v4.webp",
+                "alt": "Captura real del sitio de Drokex",
+                "complete": true,
+                "width": 210,
+                "height": 145,
+                "cssVisible": true,
+                "location": "inspection card",
+                "rect": {
+                  "x": 37,
+                  "y": 182.5,
+                  "width": 246,
+                  "height": 70
+                },
+                "uncoveredViewportSamples": [
+                  {
+                    "x": 61.6,
+                    "y": 189.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 203.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 217.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 231.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 61.6,
+                    "y": 245.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 189.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 203.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 217.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 231.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 110.8,
+                    "y": 245.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 189.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 203.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 217.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 231.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 160,
+                    "y": 245.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 189.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 203.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 217.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 231.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 209.2,
+                    "y": 245.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 189.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 203.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 217.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 231.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  },
+                  {
+                    "x": 258.4,
+                    "y": 245.5,
+                    "underlying": "IMG",
+                    "imageAncestor": false
+                  }
+                ]
+              }
+            ]
+          },
+          "layout": [
+            {
+              "name": "El taller",
+              "x": 28,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Mesa de trabajo",
+              "x": 116.65625,
+              "y": 399,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Kliniu",
+              "x": 205.328125,
+              "y": 399,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "L'ORIGINE",
+              "x": 28,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Academy",
+              "x": 116.65625,
+              "y": 445,
+              "width": 86.671875,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            },
+            {
+              "name": "Drokex",
+              "x": 205.328125,
+              "y": 445,
+              "width": 86.65625,
+              "height": 44,
+              "inside": true,
+              "unobstructed": true
+            }
+          ],
+          "freeLook": {
+            "point": {
+              "x": 208,
+              "y": 90.88
+            },
+            "canonicalCamera": {
+              "position": [
+                6.4,
+                1.65,
+                5.7
+              ],
+              "quaternion": [
+                -0.0399835754100394,
+                -0.7059754342025151,
+                -0.0399835754100394,
+                0.7059754342025151
+              ],
+              "direction": [
+                0.993605254789719,
+                -0.1129096880442863,
+                0
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            },
+            "cameraAfterActualDrag": {
+              "position": [
+                6.4,
+                1.65,
+                5.7
+              ],
+              "quaternion": [
+                -0.03448404777453255,
+                -0.731160312821684,
+                -0.03706077462303108,
+                0.6803248829698366
+              ],
+              "direction": [
+                0.9922970974598789,
+                -0.10111544666664887,
+                0.0715691051928382
+              ],
+              "fov": 58,
+              "near": 0.1,
+              "far": 80
+            }
+          },
+          "beforeCamera": {
+            "position": [
+              6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03448404777453255,
+              -0.731160312821684,
+              -0.03706077462303108,
+              0.6803248829698366
+            ],
+            "direction": [
+              0.9922970974598789,
+              -0.10111544666664887,
+              0.0715691051928382
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "afterCamera": {
+            "position": [
+              6.4,
+              1.65,
+              5.7
+            ],
+            "quaternion": [
+              -0.03448404777453255,
+              -0.731160312821684,
+              -0.03706077462303108,
+              0.6803248829698366
+            ],
+            "direction": [
+              0.9922970974598789,
+              -0.10111544666664887,
+              0.0715691051928382
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "cameraPixelDifference": 0,
+          "paused": {
+            "sampledMs": 852.4000000022352,
+            "renderedFrames": 0
+          },
+          "visibilityPause": {
+            "sampledMs": 353.1000000014901,
+            "renderedFrames": 0
+          },
+          "motion": {
+            "actualRenderedFrames": 97,
+            "sampledMs": 1598.5,
+            "fps": 60.05630278385987,
+            "medianIntervalMs": 16.699999999254942,
+            "p95IntervalMs": 17.200000002980232,
+            "medianCpuSubmitMs": 0.19999999925494194,
+            "p95CpuSubmitMs": 0.30000000074505806,
+            "medianDrawCalls": 20,
+            "maxDrawCalls": 22,
+            "maxTriangles": 52724
+          },
+          "path": {
+            "actualCameraSamples": 97,
+            "eyeHeight": 1.65,
+            "benchClear": true,
+            "partitionCrossingsClear": true
+          }
+        }
+      ],
+      "idle": {
+        "sampledMs": 853,
+        "renderedFrames": 0
+      },
+      "finalRenderer": {
+        "dpr": 1,
+        "browserDpr": 2,
+        "canvas": {
+          "width": 320,
+          "height": 568
+        },
+        "gpu": {
+          "renderer": "WebKit WebGL",
+          "vendor": "WebKit",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+        },
+        "shadows": [
+          {
+            "type": "DirectionalLight",
+            "requested": [
+              1024,
+              1024
+            ],
+            "actual": [
+              1024,
+              1024
+            ]
+          }
+        ],
+        "shadowAutoUpdate": false,
+        "info": {
+          "render": {
+            "frame": 1224,
+            "calls": 21,
+            "triangles": 47048,
+            "points": 0,
+            "lines": 0
+          },
+          "memory": {
+            "geometries": 69,
+            "textures": 19
+          },
+          "programs": 9
+        },
+        "frameloop": "demand",
+        "camera": {
+          "position": [
+            6.4,
+            1.65,
+            5.7
+          ],
+          "quaternion": [
+            -0.03448404777453255,
+            -0.731160312821684,
+            -0.03706077462303108,
+            0.6803248829698366
+          ],
+          "direction": [
+            0.9922970974598789,
+            -0.10111544666664887,
+            0.0715691051928382
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        },
+        "nodes": [
+          {
+            "name": "shell__concrete",
+            "visible": true,
+            "vertices": 2112,
+            "materials": [
+              {
+                "name": "WG_concrete",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.8799999952316284,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__soil",
+            "visible": true,
+            "vertices": 680,
+            "materials": [
+              {
+                "name": "WG_soil",
+                "type": "MeshStandardMaterial",
+                "color": "514d3d",
+                "roughness": 1,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__plaster",
+            "visible": true,
+            "vertices": 1728,
+            "materials": [
+              {
+                "name": "WG_plaster",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.9100000262260437,
+                "metalness": 0,
+                "map": {
+                  "width": 256,
+                  "height": 256
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__glass",
+            "visible": true,
+            "vertices": 288,
+            "materials": [
+              {
+                "name": "WG_glass",
+                "type": "MeshStandardMaterial",
+                "color": "d5e5df",
+                "roughness": 0.3499999940395355,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__greensteel",
+            "visible": true,
+            "vertices": 26667,
+            "materials": [
+              {
+                "name": "WG_greensteel",
+                "type": "MeshStandardMaterial",
+                "color": "315749",
+                "roughness": 0.47999998927116394,
+                "metalness": 0.41999998688697815,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__brass",
+            "visible": true,
+            "vertices": 7293,
+            "materials": [
+              {
+                "name": "WG_brass",
+                "type": "MeshStandardMaterial",
+                "color": "bc9b63",
+                "roughness": 0.3799999952316284,
+                "metalness": 0.6200000047683716,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__graphite",
+            "visible": true,
+            "vertices": 4393,
+            "materials": [
+              {
+                "name": "WG_graphite",
+                "type": "MeshStandardMaterial",
+                "color": "252d29",
+                "roughness": 0.550000011920929,
+                "metalness": 0.20000000298023224,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__oak",
+            "visible": true,
+            "vertices": 7680,
+            "materials": [
+              {
+                "name": "WG_oak",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "shell__paper",
+            "visible": true,
+            "vertices": 20930,
+            "materials": [
+              {
+                "name": "WG_paper",
+                "type": "MeshStandardMaterial",
+                "color": "e7e3d8",
+                "roughness": 0.8399999737739563,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__ceramic",
+            "visible": true,
+            "vertices": 496,
+            "materials": [
+              {
+                "name": "WG_ceramic",
+                "type": "MeshStandardMaterial",
+                "color": "a99e86",
+                "roughness": 0.8999999761581421,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__leaf",
+            "visible": true,
+            "vertices": 3672,
+            "materials": [
+              {
+                "name": "WG_leaf",
+                "type": "MeshStandardMaterial",
+                "color": "45624a",
+                "roughness": 0.8500000238418579,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__leaflight",
+            "visible": true,
+            "vertices": 1848,
+            "materials": [
+              {
+                "name": "WG_leaflight",
+                "type": "MeshStandardMaterial",
+                "color": "71805d",
+                "roughness": 0.8500000238418579,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__warm",
+            "visible": true,
+            "vertices": 736,
+            "materials": [
+              {
+                "name": "WG_warm",
+                "type": "MeshStandardMaterial",
+                "color": "ffe4bc",
+                "roughness": 0.5,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__steel_light",
+            "visible": true,
+            "vertices": 4570,
+            "materials": [
+              {
+                "name": "WG_steel_light",
+                "type": "MeshStandardMaterial",
+                "color": "a8b5ad",
+                "roughness": 0.4300000071525574,
+                "metalness": 0.5,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "shell__teal",
+            "visible": true,
+            "vertices": 4349,
+            "materials": [
+              {
+                "name": "WG_teal",
+                "type": "MeshStandardMaterial",
+                "color": "23676a",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__kliniu",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__lorigine",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__academy",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "roomgate__drokex",
+            "visible": false,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_gate",
+                "type": "MeshStandardMaterial",
+                "color": "c6ccba",
+                "roughness": 0.7200000286102295,
+                "metalness": 0.10000000149011612,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__greensteel",
+            "visible": true,
+            "vertices": 960,
+            "materials": [
+              {
+                "name": "WG_greensteel",
+                "type": "MeshStandardMaterial",
+                "color": "315749",
+                "roughness": 0.47999998927116394,
+                "metalness": 0.41999998688697815,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__brass",
+            "visible": true,
+            "vertices": 352,
+            "materials": [
+              {
+                "name": "WG_brass",
+                "type": "MeshStandardMaterial",
+                "color": "bc9b63",
+                "roughness": 0.3799999952316284,
+                "metalness": 0.6200000047683716,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "door__graphite",
+            "visible": true,
+            "vertices": 208,
+            "materials": [
+              {
+                "name": "WG_graphite",
+                "type": "MeshStandardMaterial",
+                "color": "252d29",
+                "roughness": 0.550000011920929,
+                "metalness": 0.20000000298023224,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__graphite",
+            "visible": true,
+            "vertices": 672,
+            "materials": [
+              {
+                "name": "WG_graphite",
+                "type": "MeshStandardMaterial",
+                "color": "252d29",
+                "roughness": 0.550000011920929,
+                "metalness": 0.20000000298023224,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__paper",
+            "visible": true,
+            "vertices": 1789,
+            "materials": [
+              {
+                "name": "WG_paper",
+                "type": "MeshStandardMaterial",
+                "color": "e7e3d8",
+                "roughness": 0.8399999737739563,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__teal",
+            "visible": true,
+            "vertices": 1152,
+            "materials": [
+              {
+                "name": "WG_teal",
+                "type": "MeshStandardMaterial",
+                "color": "23676a",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__ivory",
+            "visible": true,
+            "vertices": 96,
+            "materials": [
+              {
+                "name": "WG_ivory",
+                "type": "MeshStandardMaterial",
+                "color": "f8f5ef",
+                "roughness": 0.800000011920929,
+                "metalness": 0,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__brass",
+            "visible": true,
+            "vertices": 576,
+            "materials": [
+              {
+                "name": "WG_brass",
+                "type": "MeshStandardMaterial",
+                "color": "bc9b63",
+                "roughness": 0.3799999952316284,
+                "metalness": 0.6200000047683716,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__concrete",
+            "visible": true,
+            "vertices": 384,
+            "materials": [
+              {
+                "name": "WG_concrete",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.8799999952316284,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__cyan",
+            "visible": true,
+            "vertices": 520,
+            "materials": [
+              {
+                "name": "WG_cyan",
+                "type": "MeshStandardMaterial",
+                "color": "64b6b2",
+                "roughness": 0.44999998807907104,
+                "metalness": 0.15000000596046448,
+                "map": null
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__oak",
+            "visible": true,
+            "vertices": 288,
+            "materials": [
+              {
+                "name": "WG_oak",
+                "type": "MeshStandardMaterial",
+                "color": "ffffff",
+                "roughness": 0.6800000071525574,
+                "metalness": 0,
+                "map": {
+                  "width": 512,
+                  "height": 512
+                }
+              }
+            ]
+          },
+          {
+            "name": "room__drokex__greensteel",
+            "visible": true,
+            "vertices": 192,
+            "materials": [
+              {
+                "name": "WG_greensteel",
+                "type": "MeshStandardMaterial",
+                "color": "315749",
+                "roughness": 0.47999998927116394,
+                "metalness": 0.41999998688697815,
+                "map": null
+              }
+            ]
+          }
+        ],
+        "firstUsableFrame": {
+          "at": 1732.5,
+          "rendererFrame": 31
+        },
+        "roomMountedFrames": {
+          "kliniu": {
+            "at": 4430,
+            "rendererFrame": 203
+          },
+          "lorigine": {
+            "at": 10332.800000000745,
+            "rendererFrame": 457
+          },
+          "academy": {
+            "at": 16161.900000002235,
+            "rendererFrame": 712
+          },
+          "drokex": {
+            "at": 21926.800000000745,
+            "rendererFrame": 966
+          }
+        },
+        "roomRenderedAtPose": {
+          "kliniu": {
+            "at": 6021.699999999255,
+            "rendererFrame": 322,
+            "meshesDrawn": [
+              "room__kliniu__teal",
+              "room__kliniu__paper",
+              "room__kliniu__warm",
+              "room__kliniu__steel_light",
+              "room__kliniu__greensteel",
+              "room__kliniu__graphite",
+              "room__kliniu__ivory",
+              "room__kliniu__oak"
+            ]
+          },
+          "lorigine": {
+            "at": 11957,
+            "rendererFrame": 578,
+            "meshesDrawn": [
+              "room__lorigine__ivory",
+              "room__lorigine__espresso",
+              "room__lorigine__champagne",
+              "room__lorigine__oak"
+            ]
+          },
+          "academy": {
+            "at": 17756.60000000149,
+            "rendererFrame": 831,
+            "meshesDrawn": [
+              "room__academy__acoustic",
+              "room__academy__paper",
+              "room__academy__espresso",
+              "room__academy__ivory",
+              "room__academy__graphite",
+              "room__academy__greensteel",
+              "room__academy__steel_light",
+              "room__academy__oak"
+            ]
+          },
+          "drokex": {
+            "at": 23522.900000002235,
+            "rendererFrame": 1085,
+            "meshesDrawn": [
+              "room__drokex__graphite",
+              "room__drokex__paper",
+              "room__drokex__teal",
+              "room__drokex__ivory",
+              "room__drokex__brass",
+              "room__drokex__cyan",
+              "room__drokex__greensteel",
+              "room__drokex__concrete",
+              "room__drokex__oak"
+            ]
+          }
+        },
+        "activationAt": 907.6999999992549,
+        "states": [
+          {
+            "at": 487.19999999925494,
+            "status": "landing",
+            "point": "entrance",
+            "destination": "entrance"
+          },
+          {
+            "at": 950.8000000007451,
+            "status": "loading",
+            "point": "entrance",
+            "destination": "entrance"
+          },
+          {
+            "at": 1736,
+            "status": "moving",
+            "point": "entrance",
+            "destination": "hub"
+          },
+          {
+            "at": 3361.800000000745,
+            "status": "exploring",
+            "point": "hub",
+            "destination": "hub"
+          },
+          {
+            "at": 4090.800000000745,
+            "status": "room-loading",
+            "point": "hub",
+            "destination": "kliniu"
+          },
+          {
+            "at": 4434.699999999255,
+            "status": "moving",
+            "point": "hub",
+            "destination": "kliniu"
+          },
+          {
+            "at": 6042.699999999255,
+            "status": "exploring",
+            "point": "kliniu",
+            "destination": "kliniu"
+          },
+          {
+            "at": 9989.60000000149,
+            "status": "room-loading",
+            "point": "kliniu",
+            "destination": "lorigine"
+          },
+          {
+            "at": 10339.60000000149,
+            "status": "moving",
+            "point": "kliniu",
+            "destination": "lorigine"
+          },
+          {
+            "at": 11960.60000000149,
+            "status": "exploring",
+            "point": "lorigine",
+            "destination": "lorigine"
+          },
+          {
+            "at": 15822.199999999255,
+            "status": "room-loading",
+            "point": "lorigine",
+            "destination": "academy"
+          },
+          {
+            "at": 16166.60000000149,
+            "status": "moving",
+            "point": "lorigine",
+            "destination": "academy"
+          },
+          {
+            "at": 17777.10000000149,
+            "status": "exploring",
+            "point": "academy",
+            "destination": "academy"
+          },
+          {
+            "at": 21588.699999999255,
+            "status": "room-loading",
+            "point": "academy",
+            "destination": "drokex"
+          },
+          {
+            "at": 21930.60000000149,
+            "status": "moving",
+            "point": "academy",
+            "destination": "drokex"
+          },
+          {
+            "at": 23543.199999999255,
+            "status": "exploring",
+            "point": "drokex",
+            "destination": "drokex"
+          }
+        ],
+        "stores": 1,
+        "focusCalls": [
+          {
+            "at": 3368.900000002235,
+            "target": {
+              "tag": "BUTTON",
+              "text": "El taller",
+              "id": "",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "El taller",
+              "id": "",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 6046.199999999255,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Kliniu",
+              "id": "",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 7047.400000002235,
+            "target": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 7050.900000002235,
+            "target": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 8959.800000000745,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack DeveloperVer portafoli",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 11962.400000002235,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "L'ORIGINE",
+              "id": "",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 12894.60000000149,
+            "target": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 12899.300000000745,
+            "target": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 14809.60000000149,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a 4U Studio AcademyEntrar a DrokexEntrar a KliniuDaniel CantorFull-Stack DeveloperVer portafolioL'",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 17779,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Academy",
+              "id": "",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 18710.699999999255,
+            "target": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 18713.400000002235,
+            "target": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 20609.199999999255,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a DrokexEntrar a KliniuEntrar a L'ORIGINEDaniel CantorFull-Stack DeveloperVer portafolio4U Studio ",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 23545.300000000745,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Drokex",
+              "id": "",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          },
+          {
+            "at": 24530.699999999255,
+            "target": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 24534.60000000149,
+            "target": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": null,
+            "beforeKeeperInlineDisplay": null,
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "block",
+            "activeAfter": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "succeeded": true
+          },
+          {
+            "at": 26442.300000000745,
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "connected": true,
+            "activeBefore": {
+              "tag": "BODY",
+              "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyDaniel CantorFull-Stack DeveloperVer portafoli",
+              "id": "",
+              "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+            },
+            "beforeInert": false,
+            "beforeKeeperInlineVisibility": "",
+            "beforeKeeperInlineDisplay": "",
+            "documentHidden": false,
+            "computedVisibilityAfter": "visible",
+            "computedDisplayAfter": "inline-flex",
+            "activeAfter": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "succeeded": true
+          }
+        ],
+        "focusEvents": [
+          {
+            "at": 8938.699999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 8938.699999999255,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "H1",
+              "text": "Kliniu",
+              "id": "kliniu-title",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 8959,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 8960.400000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 9986.800000000745,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "L'ORIGINE",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 9986.900000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "L'ORIGINE",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Kliniu",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 11962.60000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "L'ORIGINE",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 11962.900000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "L'ORIGINE",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 12556.199999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 12869.400000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 12897.699999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "targetInert": true
+          },
+          {
+            "at": 12899,
+            "type": "focusin",
+            "target": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 14788.699999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 14788.800000000745,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "H1",
+              "text": "L'ORIGINE",
+              "id": "lorigine-title",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 14808.900000002235,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 14810.300000000745,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 15819.60000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Academy",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 15819.60000000149,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Academy",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de L'ORIGINE",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 17779.10000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Academy",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 17779.400000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Academy",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 18389.199999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 18686.10000000149,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 18712.10000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "targetInert": true
+          },
+          {
+            "at": 18713.199999999255,
+            "type": "focusin",
+            "target": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 20586.699999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 20586.699999999255,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "H1",
+              "text": "4U Studio Academy",
+              "id": "academy-title",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 20608.60000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 20609.699999999255,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 21586.5,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Drokex",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 21586.5,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Drokex",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de 4U Studio Academy",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 23545.60000000149,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Drokex",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 23545.800000000745,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Drokex",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 24155.199999999255,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 24503.199999999255,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 24532.5,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "targetInert": true
+          },
+          {
+            "at": 24534.300000000745,
+            "type": "focusin",
+            "target": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "targetInert": false
+          },
+          {
+            "at": 26419.900000002235,
+            "type": "focusout",
+            "target": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "related": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 26420.10000000149,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": {
+              "tag": "H1",
+              "text": "Drokex",
+              "id": "drokex-title",
+              "class": ""
+            },
+            "targetInert": false
+          },
+          {
+            "at": 26441.5,
+            "type": "focusout",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Volver al taller",
+              "id": "",
+              "class": ""
+            },
+            "related": null,
+            "targetInert": false
+          },
+          {
+            "at": 26442.900000002235,
+            "type": "focusin",
+            "target": {
+              "tag": "BUTTON",
+              "text": "Abrir caso de Drokex",
+              "id": "",
+              "class": "workshop-game_primary__yiOX6"
+            },
+            "related": null,
+            "targetInert": false
+          }
+        ],
+        "hookError": null
+      },
+      "finalTimings": [
+        {
+          "url": "/models/workshop-game/workshop-shell-v2.glb",
+          "count": 1,
+          "transferSize": 1239944,
+          "encodedBodySize": 1239644,
+          "decodedBodySize": 3620768,
+          "responseEnd": 1399.1000000014901
+        },
+        {
+          "url": "/models/workshop-game/workshop-door-v1.glb",
+          "count": 1,
+          "transferSize": 12355,
+          "encodedBodySize": 12055,
+          "decodedBodySize": 58072,
+          "responseEnd": 1354.6000000014901
+        },
+        {
+          "url": "/models/workshop-game/room-kliniu-v1.glb",
+          "count": 1,
+          "transferSize": 570348,
+          "encodedBodySize": 570048,
+          "decodedBodySize": 1001592,
+          "responseEnd": 4122.400000002235
+        },
+        {
+          "url": "/models/workshop-game/room-lorigine-v1.glb",
+          "count": 1,
+          "transferSize": 573234,
+          "encodedBodySize": 572934,
+          "decodedBodySize": 823904,
+          "responseEnd": 10019.60000000149
+        },
+        {
+          "url": "/models/workshop-game/room-academy-v1.glb",
+          "count": 1,
+          "transferSize": 396210,
+          "encodedBodySize": 395910,
+          "decodedBodySize": 794768,
+          "responseEnd": 15852.400000002235
+        },
+        {
+          "url": "/models/workshop-game/room-drokex-v1.glb",
+          "count": 1,
+          "transferSize": 496809,
+          "encodedBodySize": 496509,
+          "decodedBodySize": 665616,
+          "responseEnd": 21616.300000000745
+        }
+      ]
+    }
+  ],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ]
+  },
+  "currentEvidence": {
+    "room": "drokex",
+    "images": [
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=1920&q=75",
+        "logicalUrl": "/projects/drokex-products-v4.webp",
+        "alt": "",
+        "complete": true,
+        "width": 576,
+        "height": 400,
+        "cssVisible": true,
+        "location": "physical world monitor",
+        "rect": {
+          "x": -13.81074333190918,
+          "y": 105.02094268798828,
+          "width": 347.6214599609375,
+          "height": 193.2550048828125
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 32,
+            "y": 124.34644317626953,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 96,
+            "y": 124.34644317626953,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 124.34644317626953,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 224,
+            "y": 124.34644317626953,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 288,
+            "y": 124.34644317626953,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          }
+        ]
+      },
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Fprojects%2Fdrokex-products-v4.webp&w=1920&q=75",
+        "logicalUrl": "/projects/drokex-products-v4.webp",
+        "alt": "Captura real del sitio de Drokex",
+        "complete": true,
+        "width": 210,
+        "height": 145,
+        "cssVisible": true,
+        "location": "inspection card",
+        "rect": {
+          "x": 37,
+          "y": 182.5,
+          "width": 246,
+          "height": 70
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 61.6,
+            "y": 189.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 61.6,
+            "y": 203.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 61.6,
+            "y": 217.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 61.6,
+            "y": 231.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 61.6,
+            "y": 245.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 110.8,
+            "y": 189.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 110.8,
+            "y": 203.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 110.8,
+            "y": 217.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 110.8,
+            "y": 231.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 110.8,
+            "y": 245.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 189.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 203.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 217.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 231.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 160,
+            "y": 245.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 209.2,
+            "y": 189.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 209.2,
+            "y": 203.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 209.2,
+            "y": 217.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 209.2,
+            "y": 231.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 209.2,
+            "y": 245.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 258.4,
+            "y": 189.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 258.4,
+            "y": 203.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 258.4,
+            "y": 217.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 258.4,
+            "y": 231.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 258.4,
+            "y": 245.5,
+            "underlying": "IMG",
+            "imageAncestor": false
+          }
+        ]
+      }
+    ]
+  },
+  "lastClosedContext": {
+    "url": "http://localhost:3000/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "drokex",
+      "worldDestination": "drokex",
+      "roomActive": "drokex",
+      "roomPending": ""
+    },
+    "active": "<button class=\"workshop-game_primary__yiOX6\" type=\"button\">Abrir caso de Drokex<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Daniel Cantor\nFull-Stack Developer\nVer portafolio\nDrokex\nDrokex\nCaptura del sitio publicado\n\nParticipación descrita en el CV de Daniel. Propiedad no confirmada.\n\nAbrir caso de Drokex\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property: none;",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": false,
+    "states": [
+      {
+        "at": 487.19999999925494,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 950.8000000007451,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1736,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 3361.800000000745,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 4090.800000000745,
+        "status": "room-loading",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 4434.699999999255,
+        "status": "moving",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 6042.699999999255,
+        "status": "exploring",
+        "point": "kliniu",
+        "destination": "kliniu"
+      },
+      {
+        "at": 9989.60000000149,
+        "status": "room-loading",
+        "point": "kliniu",
+        "destination": "lorigine"
+      },
+      {
+        "at": 10339.60000000149,
+        "status": "moving",
+        "point": "kliniu",
+        "destination": "lorigine"
+      },
+      {
+        "at": 11960.60000000149,
+        "status": "exploring",
+        "point": "lorigine",
+        "destination": "lorigine"
+      },
+      {
+        "at": 15822.199999999255,
+        "status": "room-loading",
+        "point": "lorigine",
+        "destination": "academy"
+      },
+      {
+        "at": 16166.60000000149,
+        "status": "moving",
+        "point": "lorigine",
+        "destination": "academy"
+      },
+      {
+        "at": 17777.10000000149,
+        "status": "exploring",
+        "point": "academy",
+        "destination": "academy"
+      },
+      {
+        "at": 21588.699999999255,
+        "status": "room-loading",
+        "point": "academy",
+        "destination": "drokex"
+      },
+      {
+        "at": 21930.60000000149,
+        "status": "moving",
+        "point": "academy",
+        "destination": "drokex"
+      },
+      {
+        "at": 23543.199999999255,
+        "status": "exploring",
+        "point": "drokex",
+        "destination": "drokex"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 3368.900000002235,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack Develop",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 6046.199999999255,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7047.400000002235,
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7050.900000002235,
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 8959.800000000745,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDaniel CantorFull-Stack DeveloperVer portafoli",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 11962.400000002235,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12894.60000000149,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12899.300000000745,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 14809.60000000149,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a 4U Studio AcademyEntrar a DrokexEntrar a KliniuDaniel CantorFull-Stack DeveloperVer portafolioL'",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17779,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 18710.699999999255,
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 18713.400000002235,
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 20609.199999999255,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a DrokexEntrar a KliniuEntrar a L'ORIGINEDaniel CantorFull-Stack DeveloperVer portafolio4U Studio ",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 23545.300000000745,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 24530.699999999255,
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 24534.60000000149,
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 26442.300000000745,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyDaniel CantorFull-Stack DeveloperVer portafoli",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 8938.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 8938.699999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 8959,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 8960.400000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 9986.800000000745,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 9986.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Kliniu",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 11962.60000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 11962.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "L'ORIGINE",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12556.199999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 12869.400000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 12897.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 12899,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14788.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14788.800000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14808.900000002235,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 14810.300000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 15819.60000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 15819.60000000149,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de L'ORIGINE",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17779.10000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17779.400000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Academy",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 18389.199999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 18686.10000000149,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 18712.10000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 18713.199999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 20586.699999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 20586.699999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 20608.60000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 20609.699999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 21586.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 21586.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de 4U Studio Academy",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 23545.60000000149,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 23545.800000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Drokex",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 24155.199999999255,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 24503.199999999255,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 24532.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 24534.300000000745,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26419.900000002235,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26420.10000000149,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 26441.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver al taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 26442.900000002235,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Abrir caso de Drokex",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  },
+  "focusedViewportSubset": [
+    320
+  ]
+}

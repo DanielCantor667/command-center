@@ -1,0 +1,3723 @@
+{
+  "passed": true,
+  "section": "visibility",
+  "recordedAt": "2026-10-09T14:12:13.755Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "Hidden station world resize / reader resize and visibility /0mainframes / exact return camera/focus",
+      "passed": true,
+      "visibilityFixture": "QA property override and native visibilitychange; physical background-tab scheduling is not measured",
+      "hiddenResize": {
+        "sampledMs": 538.1000000000931,
+        "renderedFrames": 0
+      },
+      "actualFreeLook": {
+        "point": {
+          "x": 936,
+          "y": 160
+        },
+        "canonicalCamera": {
+          "position": [
+            -7.7,
+            1.65,
+            0.8
+          ],
+          "quaternion": [
+            -0.01436788014510243,
+            0.057675322719639495,
+            0.0008301401003436892,
+            0.9982316524919129
+          ],
+          "direction": [
+            -0.11512281070592943,
+            -0.028780702676482358,
+            -0.9929342423386428
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        },
+        "cameraAfterActualDrag": {
+          "position": [
+            -7.7,
+            1.65,
+            0.8
+          ],
+          "quaternion": [
+            -0.008393448277312724,
+            0.021710858865216738,
+            0.00018227836090461277,
+            0.9997290409945835
+          ],
+          "direction": [
+            -0.04340689233699511,
+            -0.016790262833366546,
+            -0.9989163772667015
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        }
+      },
+      "paused": {
+        "idle": {
+          "sampledMs": 853.8999999999069,
+          "renderedFrames": 0
+        },
+        "visibility": {
+          "sampledMs": 304,
+          "renderedFrames": 0
+        },
+        "resize": {
+          "sampledMs": 1311.5,
+          "renderedFrames": 0,
+          "profiles": [
+            {
+              "dpr": 1,
+              "browserDpr": 2,
+              "canvas": {
+                "width": 390,
+                "height": 844
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    1024,
+                    1024
+                  ],
+                  "actual": [
+                    1024,
+                    1024
+                  ]
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 312,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 44,
+                  "textures": 11
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -7.7,
+                  1.65,
+                  0.8
+                ],
+                "quaternion": [
+                  -0.008393448277312724,
+                  0.021710858865216738,
+                  0.00018227836090461277,
+                  0.9997290409945835
+                ],
+                "direction": [
+                  -0.04340689233699511,
+                  -0.016790262833366546,
+                  -0.9989163772667015
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1318.1000000000931,
+                "rendererFrame": 27
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "trajectory": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "contact": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                }
+              },
+              "roomRenderedAtPose": {
+                "trajectory": {
+                  "at": 2100.2000000001863,
+                  "rendererFrame": 159,
+                  "meshesDrawn": [
+                    "stationhit__trajectory"
+                  ]
+                }
+              },
+              "activationAt": 444.5,
+              "states": [
+                {
+                  "at": 68.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 501.60000000009313,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1351.9000000003725,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1369.9000000003725,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2070.5,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "trajectory"
+                },
+                {
+                  "at": 2104.3000000002794,
+                  "status": "exploring",
+                  "point": "trajectory",
+                  "destination": "trajectory"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1372.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2107.3000000002794,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4062.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 486.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 500.90000000037253,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1372.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2107.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2108.4000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2346,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4051.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4063.3000000002794,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            },
+            {
+              "dpr": 1.5,
+              "browserDpr": 2,
+              "canvas": {
+                "width": 2160,
+                "height": 1500
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    2048,
+                    2048
+                  ],
+                  "actual": null
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 318,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 44,
+                  "textures": 10
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -7.7,
+                  1.65,
+                  0.8
+                ],
+                "quaternion": [
+                  -0.008393448277312724,
+                  0.021710858865216738,
+                  0.00018227836090461277,
+                  0.9997290409945835
+                ],
+                "direction": [
+                  -0.04340689233699511,
+                  -0.016790262833366546,
+                  -0.9989163772667015
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1318.1000000000931,
+                "rendererFrame": 27
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "trajectory": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "contact": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                }
+              },
+              "roomRenderedAtPose": {
+                "trajectory": {
+                  "at": 2100.2000000001863,
+                  "rendererFrame": 159,
+                  "meshesDrawn": [
+                    "stationhit__trajectory"
+                  ]
+                }
+              },
+              "activationAt": 444.5,
+              "states": [
+                {
+                  "at": 68.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 501.60000000009313,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1351.9000000003725,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1369.9000000003725,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2070.5,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "trajectory"
+                },
+                {
+                  "at": 2104.3000000002794,
+                  "status": "exploring",
+                  "point": "trajectory",
+                  "destination": "trajectory"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1372.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2107.3000000002794,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4062.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 486.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 500.90000000037253,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1372.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2107.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2108.4000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2346,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4051.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4063.3000000002794,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            },
+            {
+              "dpr": 1,
+              "browserDpr": 2,
+              "canvas": {
+                "width": 390,
+                "height": 844
+              },
+              "gpu": {
+                "renderer": "WebKit WebGL",
+                "vendor": "WebKit",
+                "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+              },
+              "shadows": [
+                {
+                  "type": "DirectionalLight",
+                  "requested": [
+                    1024,
+                    1024
+                  ],
+                  "actual": null
+                }
+              ],
+              "shadowAutoUpdate": false,
+              "info": {
+                "render": {
+                  "frame": 324,
+                  "calls": 1,
+                  "triangles": 2,
+                  "points": 0,
+                  "lines": 0
+                },
+                "memory": {
+                  "geometries": 44,
+                  "textures": 10
+                },
+                "programs": 9
+              },
+              "frameloop": "never",
+              "camera": {
+                "position": [
+                  -7.7,
+                  1.65,
+                  0.8
+                ],
+                "quaternion": [
+                  -0.008393448277312724,
+                  0.021710858865216738,
+                  0.00018227836090461277,
+                  0.9997290409945835
+                ],
+                "direction": [
+                  -0.04340689233699511,
+                  -0.016790262833366546,
+                  -0.9989163772667015
+                ],
+                "fov": 58,
+                "near": 0.1,
+                "far": 80
+              },
+              "nodes": [
+                {
+                  "name": "shell__concrete",
+                  "visible": true,
+                  "vertices": 2112,
+                  "materials": [
+                    {
+                      "name": "WG_concrete",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.8799999952316284,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__soil",
+                  "visible": true,
+                  "vertices": 680,
+                  "materials": [
+                    {
+                      "name": "WG_soil",
+                      "type": "MeshStandardMaterial",
+                      "color": "514d3d",
+                      "roughness": 1,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__plaster",
+                  "visible": true,
+                  "vertices": 1728,
+                  "materials": [
+                    {
+                      "name": "WG_plaster",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.9100000262260437,
+                      "metalness": 0,
+                      "map": {
+                        "width": 256,
+                        "height": 256
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__glass",
+                  "visible": true,
+                  "vertices": 288,
+                  "materials": [
+                    {
+                      "name": "WG_glass",
+                      "type": "MeshStandardMaterial",
+                      "color": "d5e5df",
+                      "roughness": 0.3499999940395355,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__greensteel",
+                  "visible": true,
+                  "vertices": 26667,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__brass",
+                  "visible": true,
+                  "vertices": 7293,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__graphite",
+                  "visible": true,
+                  "vertices": 4393,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__oak",
+                  "visible": true,
+                  "vertices": 7680,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__paper",
+                  "visible": true,
+                  "vertices": 20930,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__ceramic",
+                  "visible": true,
+                  "vertices": 496,
+                  "materials": [
+                    {
+                      "name": "WG_ceramic",
+                      "type": "MeshStandardMaterial",
+                      "color": "a99e86",
+                      "roughness": 0.8999999761581421,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaf",
+                  "visible": true,
+                  "vertices": 3672,
+                  "materials": [
+                    {
+                      "name": "WG_leaf",
+                      "type": "MeshStandardMaterial",
+                      "color": "45624a",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__leaflight",
+                  "visible": true,
+                  "vertices": 1848,
+                  "materials": [
+                    {
+                      "name": "WG_leaflight",
+                      "type": "MeshStandardMaterial",
+                      "color": "71805d",
+                      "roughness": 0.8500000238418579,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__warm",
+                  "visible": true,
+                  "vertices": 736,
+                  "materials": [
+                    {
+                      "name": "WG_warm",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffe4bc",
+                      "roughness": 0.5,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__steel_light",
+                  "visible": true,
+                  "vertices": 4570,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "shell__teal",
+                  "visible": true,
+                  "vertices": 4349,
+                  "materials": [
+                    {
+                      "name": "WG_teal",
+                      "type": "MeshStandardMaterial",
+                      "color": "23676a",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__kliniu",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__lorigine",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__academy",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "roomgate__drokex",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_gate",
+                      "type": "MeshStandardMaterial",
+                      "color": "c6ccba",
+                      "roughness": 0.7200000286102295,
+                      "metalness": 0.10000000149011612,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__greensteel",
+                  "visible": true,
+                  "vertices": 960,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__brass",
+                  "visible": true,
+                  "vertices": 352,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "door__graphite",
+                  "visible": true,
+                  "vertices": 208,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__greensteel",
+                  "visible": true,
+                  "vertices": 944,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__oak",
+                  "visible": true,
+                  "vertices": 1344,
+                  "materials": [
+                    {
+                      "name": "WG_oak",
+                      "type": "MeshStandardMaterial",
+                      "color": "ffffff",
+                      "roughness": 0.6800000071525574,
+                      "metalness": 0,
+                      "map": {
+                        "width": 512,
+                        "height": 512
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "station__paper",
+                  "visible": true,
+                  "vertices": 8126,
+                  "materials": [
+                    {
+                      "name": "WG_paper",
+                      "type": "MeshStandardMaterial",
+                      "color": "e7e3d8",
+                      "roughness": 0.8399999737739563,
+                      "metalness": 0,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__graphite",
+                  "visible": true,
+                  "vertices": 832,
+                  "materials": [
+                    {
+                      "name": "WG_graphite",
+                      "type": "MeshStandardMaterial",
+                      "color": "252d29",
+                      "roughness": 0.550000011920929,
+                      "metalness": 0.20000000298023224,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__brass",
+                  "visible": true,
+                  "vertices": 1824,
+                  "materials": [
+                    {
+                      "name": "WG_brass",
+                      "type": "MeshStandardMaterial",
+                      "color": "bc9b63",
+                      "roughness": 0.3799999952316284,
+                      "metalness": 0.6200000047683716,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "station__steel_light",
+                  "visible": true,
+                  "vertices": 216,
+                  "materials": [
+                    {
+                      "name": "WG_steel_light",
+                      "type": "MeshStandardMaterial",
+                      "color": "a8b5ad",
+                      "roughness": 0.4300000071525574,
+                      "metalness": 0.5,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__technologies",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__trajectory",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                },
+                {
+                  "name": "stationhit__contact",
+                  "visible": true,
+                  "vertices": 96,
+                  "materials": [
+                    {
+                      "name": "WG_greensteel",
+                      "type": "MeshStandardMaterial",
+                      "color": "315749",
+                      "roughness": 0.47999998927116394,
+                      "metalness": 0.41999998688697815,
+                      "map": null
+                    }
+                  ]
+                }
+              ],
+              "firstUsableFrame": {
+                "at": 1318.1000000000931,
+                "rendererFrame": 27
+              },
+              "roomMountedFrames": {
+                "technologies": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "trajectory": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                },
+                "contact": {
+                  "at": 1318.1000000000931,
+                  "rendererFrame": 27
+                }
+              },
+              "roomRenderedAtPose": {
+                "trajectory": {
+                  "at": 2100.2000000001863,
+                  "rendererFrame": 159,
+                  "meshesDrawn": [
+                    "stationhit__trajectory"
+                  ]
+                }
+              },
+              "activationAt": 444.5,
+              "states": [
+                {
+                  "at": 68.90000000037253,
+                  "status": "landing",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 501.60000000009313,
+                  "status": "loading",
+                  "point": "entrance",
+                  "destination": "entrance"
+                },
+                {
+                  "at": 1351.9000000003725,
+                  "status": "moving",
+                  "point": "entrance",
+                  "destination": "hub"
+                },
+                {
+                  "at": 1369.9000000003725,
+                  "status": "exploring",
+                  "point": "hub",
+                  "destination": "hub"
+                },
+                {
+                  "at": 2070.5,
+                  "status": "moving",
+                  "point": "hub",
+                  "destination": "trajectory"
+                },
+                {
+                  "at": 2104.3000000002794,
+                  "status": "exploring",
+                  "point": "trajectory",
+                  "destination": "trajectory"
+                }
+              ],
+              "stores": 1,
+              "focusCalls": [
+                {
+                  "at": 1372.6000000000931,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BODY",
+                    "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+                    "id": "",
+                    "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 2107.3000000002794,
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": "",
+                  "beforeKeeperInlineDisplay": "",
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "inline-flex",
+                  "activeAfter": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4062.5,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                },
+                {
+                  "at": 4065,
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "connected": true,
+                  "activeBefore": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "beforeInert": false,
+                  "beforeKeeperInlineVisibility": null,
+                  "beforeKeeperInlineDisplay": null,
+                  "documentHidden": false,
+                  "computedVisibilityAfter": "visible",
+                  "computedDisplayAfter": "block",
+                  "activeAfter": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "succeeded": true
+                }
+              ],
+              "focusEvents": [
+                {
+                  "at": 486.10000000009313,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 500.90000000037253,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Entrar al taller",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 1372.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2067.5,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "El taller",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2107.5,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2108.4000000003725,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Trayectoria",
+                    "id": "",
+                    "class": ""
+                  },
+                  "targetInert": false
+                },
+                {
+                  "at": 2346,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4051.600000000093,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": null,
+                  "targetInert": false
+                },
+                {
+                  "at": 4063.3000000002794,
+                  "type": "focusout",
+                  "target": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "related": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "targetInert": true
+                },
+                {
+                  "at": 4064.8000000002794,
+                  "type": "focusin",
+                  "target": {
+                    "tag": "H1",
+                    "text": "Trayectoria",
+                    "id": "_r_4_",
+                    "class": ""
+                  },
+                  "related": {
+                    "tag": "BUTTON",
+                    "text": "Ver trayectoria",
+                    "id": "",
+                    "class": "workshop-game_primary__yiOX6"
+                  },
+                  "targetInert": false
+                }
+              ],
+              "hookError": null
+            }
+          ]
+        },
+        "beforeCamera": {
+          "position": [
+            -7.7,
+            1.65,
+            0.8
+          ],
+          "quaternion": [
+            -0.008393448277312724,
+            0.021710858865216738,
+            0.00018227836090461277,
+            0.9997290409945835
+          ],
+          "direction": [
+            -0.04340689233699511,
+            -0.016790262833366546,
+            -0.9989163772667015
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        },
+        "afterCamera": {
+          "position": [
+            -7.7,
+            1.65,
+            0.8
+          ],
+          "quaternion": [
+            -0.008393448277312724,
+            0.021710858865216738,
+            0.00018227836090461277,
+            0.9997290409945835
+          ],
+          "direction": [
+            -0.04340689233699511,
+            -0.016790262833366546,
+            -0.9989163772667015
+          ],
+          "fov": 58,
+          "near": 0.1,
+          "far": 80
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://127.0.0.1:3001/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "trajectory",
+      "worldDestination": "trajectory",
+      "roomActive": "",
+      "roomPending": ""
+    },
+    "active": "<button type=\"button\" class=\"workshop-game_primary__yiOX6\">Ver trayectoria<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Entrar a Kliniu\nEntrar a 4U Studio Academy\nEntrar a Drokex\nDaniel Cantor\nFull-Stack Developer\nVer portafolio\nTrayectoria\nDentro del taller\nTrayectoria\n\nExperiencia, formación e idiomas documentados en mi perfil.\n\nVer trayectoria\nVolver al taller\nEl taller\nMesa de trabajo\nMapa\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property:none",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 68.90000000037253,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 501.60000000009313,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1351.9000000003725,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 1369.9000000003725,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 2070.5,
+        "status": "moving",
+        "point": "hub",
+        "destination": "trajectory"
+      },
+      {
+        "at": 2104.3000000002794,
+        "status": "exploring",
+        "point": "trajectory",
+        "destination": "trajectory"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 1372.6000000000931,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2107.3000000002794,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4062.5,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4064.8000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4065,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 4065,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7191.4000000003725,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TecnologíasIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 486.10000000009313,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 500.90000000037253,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 1372.8000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2067.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2067.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2107.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2108.4000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2346,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 4051.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 4063.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 4064.8000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 7186.4000000003725,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 7192.800000000279,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  }
+}

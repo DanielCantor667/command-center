@@ -1,0 +1,1306 @@
+{
+  "passed": true,
+  "section": "probe",
+  "recordedAt": "2026-10-08T16:57:32.034Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ]
+  },
+  "probe": {
+    "core": {
+      "dpr": 1,
+      "browserDpr": 1,
+      "canvas": {
+        "width": 1440,
+        "height": 1000
+      },
+      "gpu": {
+        "renderer": "WebKit WebGL",
+        "vendor": "WebKit",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+      },
+      "shadows": [
+        {
+          "type": "DirectionalLight",
+          "requested": [
+            2048,
+            2048
+          ],
+          "actual": [
+            2048,
+            2048
+          ]
+        }
+      ],
+      "shadowAutoUpdate": false,
+      "info": {
+        "render": {
+          "frame": 132,
+          "calls": 19,
+          "triangles": 51621,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 35,
+          "textures": 9
+        },
+        "programs": 9
+      },
+      "frameloop": "demand",
+      "camera": {
+        "position": [
+          0,
+          1.65,
+          5.1
+        ],
+        "quaternion": [
+          -0.007074940445239834,
+          0,
+          0,
+          0.9999749722956551
+        ],
+        "direction": [
+          0,
+          -0.014149526751444225,
+          -0.9998998904353926
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "nodes": [
+        {
+          "name": "shell__concrete",
+          "visible": true,
+          "vertices": 2112,
+          "materials": [
+            {
+              "name": "WG_concrete",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.8799999952316284,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__soil",
+          "visible": true,
+          "vertices": 680,
+          "materials": [
+            {
+              "name": "WG_soil",
+              "type": "MeshStandardMaterial",
+              "color": "514d3d",
+              "roughness": 1,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__plaster",
+          "visible": true,
+          "vertices": 1728,
+          "materials": [
+            {
+              "name": "WG_plaster",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.9100000262260437,
+              "metalness": 0,
+              "map": {
+                "width": 256,
+                "height": 256
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__glass",
+          "visible": true,
+          "vertices": 288,
+          "materials": [
+            {
+              "name": "WG_glass",
+              "type": "MeshStandardMaterial",
+              "color": "d5e5df",
+              "roughness": 0.3499999940395355,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__greensteel",
+          "visible": true,
+          "vertices": 26667,
+          "materials": [
+            {
+              "name": "WG_greensteel",
+              "type": "MeshStandardMaterial",
+              "color": "315749",
+              "roughness": 0.47999998927116394,
+              "metalness": 0.41999998688697815,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__brass",
+          "visible": true,
+          "vertices": 7293,
+          "materials": [
+            {
+              "name": "WG_brass",
+              "type": "MeshStandardMaterial",
+              "color": "bc9b63",
+              "roughness": 0.3799999952316284,
+              "metalness": 0.6200000047683716,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__graphite",
+          "visible": true,
+          "vertices": 4393,
+          "materials": [
+            {
+              "name": "WG_graphite",
+              "type": "MeshStandardMaterial",
+              "color": "252d29",
+              "roughness": 0.550000011920929,
+              "metalness": 0.20000000298023224,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__oak",
+          "visible": true,
+          "vertices": 7680,
+          "materials": [
+            {
+              "name": "WG_oak",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__paper",
+          "visible": true,
+          "vertices": 20930,
+          "materials": [
+            {
+              "name": "WG_paper",
+              "type": "MeshStandardMaterial",
+              "color": "e7e3d8",
+              "roughness": 0.8399999737739563,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__ceramic",
+          "visible": true,
+          "vertices": 496,
+          "materials": [
+            {
+              "name": "WG_ceramic",
+              "type": "MeshStandardMaterial",
+              "color": "a99e86",
+              "roughness": 0.8999999761581421,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__leaf",
+          "visible": true,
+          "vertices": 3672,
+          "materials": [
+            {
+              "name": "WG_leaf",
+              "type": "MeshStandardMaterial",
+              "color": "45624a",
+              "roughness": 0.8500000238418579,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__leaflight",
+          "visible": true,
+          "vertices": 1848,
+          "materials": [
+            {
+              "name": "WG_leaflight",
+              "type": "MeshStandardMaterial",
+              "color": "71805d",
+              "roughness": 0.8500000238418579,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__warm",
+          "visible": true,
+          "vertices": 736,
+          "materials": [
+            {
+              "name": "WG_warm",
+              "type": "MeshStandardMaterial",
+              "color": "ffe4bc",
+              "roughness": 0.5,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__steel_light",
+          "visible": true,
+          "vertices": 4570,
+          "materials": [
+            {
+              "name": "WG_steel_light",
+              "type": "MeshStandardMaterial",
+              "color": "a8b5ad",
+              "roughness": 0.4300000071525574,
+              "metalness": 0.5,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__teal",
+          "visible": true,
+          "vertices": 4349,
+          "materials": [
+            {
+              "name": "WG_teal",
+              "type": "MeshStandardMaterial",
+              "color": "23676a",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__kliniu",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__lorigine",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__academy",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__drokex",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__greensteel",
+          "visible": true,
+          "vertices": 960,
+          "materials": [
+            {
+              "name": "WG_greensteel",
+              "type": "MeshStandardMaterial",
+              "color": "315749",
+              "roughness": 0.47999998927116394,
+              "metalness": 0.41999998688697815,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__brass",
+          "visible": true,
+          "vertices": 352,
+          "materials": [
+            {
+              "name": "WG_brass",
+              "type": "MeshStandardMaterial",
+              "color": "bc9b63",
+              "roughness": 0.3799999952316284,
+              "metalness": 0.6200000047683716,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__graphite",
+          "visible": true,
+          "vertices": 208,
+          "materials": [
+            {
+              "name": "WG_graphite",
+              "type": "MeshStandardMaterial",
+              "color": "252d29",
+              "roughness": 0.550000011920929,
+              "metalness": 0.20000000298023224,
+              "map": null
+            }
+          ]
+        }
+      ],
+      "firstUsableFrame": {
+        "at": 4009.7000000011176,
+        "rendererFrame": 28
+      },
+      "roomMountedFrames": {},
+      "roomRenderedAtPose": {},
+      "activationAt": 3145.5,
+      "states": [
+        {
+          "at": 2673.300000000745,
+          "status": "landing",
+          "point": "entrance",
+          "destination": "entrance"
+        },
+        {
+          "at": 3217.0999999996275,
+          "status": "loading",
+          "point": "entrance",
+          "destination": "entrance"
+        },
+        {
+          "at": 4024.2000000011176,
+          "status": "moving",
+          "point": "entrance",
+          "destination": "hub"
+        },
+        {
+          "at": 4039,
+          "status": "exploring",
+          "point": "hub",
+          "destination": "hub"
+        }
+      ],
+      "stores": 1,
+      "hookError": null
+    },
+    "room": {
+      "dpr": 1,
+      "browserDpr": 1,
+      "canvas": {
+        "width": 1440,
+        "height": 1000
+      },
+      "gpu": {
+        "renderer": "WebKit WebGL",
+        "vendor": "WebKit",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+      },
+      "shadows": [
+        {
+          "type": "DirectionalLight",
+          "requested": [
+            2048,
+            2048
+          ],
+          "actual": [
+            2048,
+            2048
+          ]
+        }
+      ],
+      "shadowAutoUpdate": false,
+      "info": {
+        "render": {
+          "frame": 214,
+          "calls": 23,
+          "triangles": 52864,
+          "points": 0,
+          "lines": 0
+        },
+        "memory": {
+          "geometries": 45,
+          "textures": 13
+        },
+        "programs": 9
+      },
+      "frameloop": "demand",
+      "camera": {
+        "position": [
+          -5.1,
+          1.65,
+          -4
+        ],
+        "quaternion": [
+          -0.015951355705936525,
+          0,
+          0,
+          0.9998727690317116
+        ],
+        "direction": [
+          0,
+          -0.031898652399009096,
+          -0.9994911085022854
+        ],
+        "fov": 58,
+        "near": 0.1,
+        "far": 80
+      },
+      "nodes": [
+        {
+          "name": "shell__concrete",
+          "visible": true,
+          "vertices": 2112,
+          "materials": [
+            {
+              "name": "WG_concrete",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.8799999952316284,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__soil",
+          "visible": true,
+          "vertices": 680,
+          "materials": [
+            {
+              "name": "WG_soil",
+              "type": "MeshStandardMaterial",
+              "color": "514d3d",
+              "roughness": 1,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__plaster",
+          "visible": true,
+          "vertices": 1728,
+          "materials": [
+            {
+              "name": "WG_plaster",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.9100000262260437,
+              "metalness": 0,
+              "map": {
+                "width": 256,
+                "height": 256
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__glass",
+          "visible": true,
+          "vertices": 288,
+          "materials": [
+            {
+              "name": "WG_glass",
+              "type": "MeshStandardMaterial",
+              "color": "d5e5df",
+              "roughness": 0.3499999940395355,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__greensteel",
+          "visible": true,
+          "vertices": 26667,
+          "materials": [
+            {
+              "name": "WG_greensteel",
+              "type": "MeshStandardMaterial",
+              "color": "315749",
+              "roughness": 0.47999998927116394,
+              "metalness": 0.41999998688697815,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__brass",
+          "visible": true,
+          "vertices": 7293,
+          "materials": [
+            {
+              "name": "WG_brass",
+              "type": "MeshStandardMaterial",
+              "color": "bc9b63",
+              "roughness": 0.3799999952316284,
+              "metalness": 0.6200000047683716,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__graphite",
+          "visible": true,
+          "vertices": 4393,
+          "materials": [
+            {
+              "name": "WG_graphite",
+              "type": "MeshStandardMaterial",
+              "color": "252d29",
+              "roughness": 0.550000011920929,
+              "metalness": 0.20000000298023224,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__oak",
+          "visible": true,
+          "vertices": 7680,
+          "materials": [
+            {
+              "name": "WG_oak",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "shell__paper",
+          "visible": true,
+          "vertices": 20930,
+          "materials": [
+            {
+              "name": "WG_paper",
+              "type": "MeshStandardMaterial",
+              "color": "e7e3d8",
+              "roughness": 0.8399999737739563,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__ceramic",
+          "visible": true,
+          "vertices": 496,
+          "materials": [
+            {
+              "name": "WG_ceramic",
+              "type": "MeshStandardMaterial",
+              "color": "a99e86",
+              "roughness": 0.8999999761581421,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__leaf",
+          "visible": true,
+          "vertices": 3672,
+          "materials": [
+            {
+              "name": "WG_leaf",
+              "type": "MeshStandardMaterial",
+              "color": "45624a",
+              "roughness": 0.8500000238418579,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__leaflight",
+          "visible": true,
+          "vertices": 1848,
+          "materials": [
+            {
+              "name": "WG_leaflight",
+              "type": "MeshStandardMaterial",
+              "color": "71805d",
+              "roughness": 0.8500000238418579,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__warm",
+          "visible": true,
+          "vertices": 736,
+          "materials": [
+            {
+              "name": "WG_warm",
+              "type": "MeshStandardMaterial",
+              "color": "ffe4bc",
+              "roughness": 0.5,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__steel_light",
+          "visible": true,
+          "vertices": 4570,
+          "materials": [
+            {
+              "name": "WG_steel_light",
+              "type": "MeshStandardMaterial",
+              "color": "a8b5ad",
+              "roughness": 0.4300000071525574,
+              "metalness": 0.5,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "shell__teal",
+          "visible": true,
+          "vertices": 4349,
+          "materials": [
+            {
+              "name": "WG_teal",
+              "type": "MeshStandardMaterial",
+              "color": "23676a",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__kliniu",
+          "visible": false,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__lorigine",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__academy",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "roomgate__drokex",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_gate",
+              "type": "MeshStandardMaterial",
+              "color": "c6ccba",
+              "roughness": 0.7200000286102295,
+              "metalness": 0.10000000149011612,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__greensteel",
+          "visible": true,
+          "vertices": 960,
+          "materials": [
+            {
+              "name": "WG_greensteel",
+              "type": "MeshStandardMaterial",
+              "color": "315749",
+              "roughness": 0.47999998927116394,
+              "metalness": 0.41999998688697815,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__brass",
+          "visible": true,
+          "vertices": 352,
+          "materials": [
+            {
+              "name": "WG_brass",
+              "type": "MeshStandardMaterial",
+              "color": "bc9b63",
+              "roughness": 0.3799999952316284,
+              "metalness": 0.6200000047683716,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "door__graphite",
+          "visible": true,
+          "vertices": 208,
+          "materials": [
+            {
+              "name": "WG_graphite",
+              "type": "MeshStandardMaterial",
+              "color": "252d29",
+              "roughness": 0.550000011920929,
+              "metalness": 0.20000000298023224,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__teal",
+          "visible": true,
+          "vertices": 288,
+          "materials": [
+            {
+              "name": "WG_teal",
+              "type": "MeshStandardMaterial",
+              "color": "23676a",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__paper",
+          "visible": true,
+          "vertices": 2960,
+          "materials": [
+            {
+              "name": "WG_paper",
+              "type": "MeshStandardMaterial",
+              "color": "e7e3d8",
+              "roughness": 0.8399999737739563,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__oak",
+          "visible": true,
+          "vertices": 920,
+          "materials": [
+            {
+              "name": "WG_oak",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.6800000071525574,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__warm",
+          "visible": true,
+          "vertices": 288,
+          "materials": [
+            {
+              "name": "WG_warm",
+              "type": "MeshStandardMaterial",
+              "color": "ffe4bc",
+              "roughness": 0.5,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__steel_light",
+          "visible": true,
+          "vertices": 6912,
+          "materials": [
+            {
+              "name": "WG_steel_light",
+              "type": "MeshStandardMaterial",
+              "color": "a8b5ad",
+              "roughness": 0.4300000071525574,
+              "metalness": 0.5,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__greensteel",
+          "visible": true,
+          "vertices": 600,
+          "materials": [
+            {
+              "name": "WG_greensteel",
+              "type": "MeshStandardMaterial",
+              "color": "315749",
+              "roughness": 0.47999998927116394,
+              "metalness": 0.41999998688697815,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__graphite",
+          "visible": true,
+          "vertices": 212,
+          "materials": [
+            {
+              "name": "WG_graphite",
+              "type": "MeshStandardMaterial",
+              "color": "252d29",
+              "roughness": 0.550000011920929,
+              "metalness": 0.20000000298023224,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__ivory",
+          "visible": true,
+          "vertices": 96,
+          "materials": [
+            {
+              "name": "WG_ivory",
+              "type": "MeshStandardMaterial",
+              "color": "f8f5ef",
+              "roughness": 0.800000011920929,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__concrete",
+          "visible": true,
+          "vertices": 316,
+          "materials": [
+            {
+              "name": "WG_concrete",
+              "type": "MeshStandardMaterial",
+              "color": "ffffff",
+              "roughness": 0.8799999952316284,
+              "metalness": 0,
+              "map": {
+                "width": 512,
+                "height": 512
+              }
+            }
+          ]
+        },
+        {
+          "name": "room__kliniu__leaf",
+          "visible": true,
+          "vertices": 2760,
+          "materials": [
+            {
+              "name": "WG_leaf",
+              "type": "MeshStandardMaterial",
+              "color": "45624a",
+              "roughness": 0.8500000238418579,
+              "metalness": 0,
+              "map": null
+            }
+          ]
+        }
+      ],
+      "firstUsableFrame": {
+        "at": 4009.7000000011176,
+        "rendererFrame": 28
+      },
+      "roomMountedFrames": {
+        "kliniu": {
+          "at": 4594.0999999996275,
+          "rendererFrame": 160
+        }
+      },
+      "roomRenderedAtPose": {
+        "kliniu": {
+          "at": 4623.9000000003725,
+          "rendererFrame": 188,
+          "meshesDrawn": [
+            "room__kliniu__teal",
+            "room__kliniu__paper",
+            "room__kliniu__warm",
+            "room__kliniu__steel_light",
+            "room__kliniu__greensteel",
+            "room__kliniu__graphite",
+            "room__kliniu__ivory",
+            "room__kliniu__oak"
+          ]
+        }
+      },
+      "activationAt": 3145.5,
+      "states": [
+        {
+          "at": 2673.300000000745,
+          "status": "landing",
+          "point": "entrance",
+          "destination": "entrance"
+        },
+        {
+          "at": 3217.0999999996275,
+          "status": "loading",
+          "point": "entrance",
+          "destination": "entrance"
+        },
+        {
+          "at": 4024.2000000011176,
+          "status": "moving",
+          "point": "entrance",
+          "destination": "hub"
+        },
+        {
+          "at": 4039,
+          "status": "exploring",
+          "point": "hub",
+          "destination": "hub"
+        },
+        {
+          "at": 4258.700000001118,
+          "status": "room-loading",
+          "point": "hub",
+          "destination": "kliniu"
+        },
+        {
+          "at": 4608.700000001118,
+          "status": "moving",
+          "point": "hub",
+          "destination": "kliniu"
+        },
+        {
+          "at": 4628.9000000003725,
+          "status": "exploring",
+          "point": "kliniu",
+          "destination": "kliniu"
+        }
+      ],
+      "stores": 1,
+      "hookError": null
+    }
+  },
+  "lastClosedContext": {
+    "url": "http://localhost:3000/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "kliniu",
+      "worldDestination": "kliniu",
+      "roomActive": "kliniu",
+      "roomPending": ""
+    },
+    "active": "<button class=\"workshop-game_primary__yiOX6\" type=\"button\">Abrir caso de Kliniu<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "text": "Daniel Cantor\nFull-Stack Developer\nVer portafolio\nKliniu\nProyecto\nKliniu\n\nComercio electrónico de dispensadores e insumos de higiene para empresas, con catálogo, cotizaciones y herramientas de administración.\n\nCaptura del sitio publicado\nAbrir caso de Kliniu\nVolver a la sala\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "states": [
+      {
+        "at": 2673.300000000745,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 3217.0999999996275,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 4024.2000000011176,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 4039,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 4258.700000001118,
+        "status": "room-loading",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 4608.700000001118,
+        "status": "moving",
+        "point": "hub",
+        "destination": "kliniu"
+      },
+      {
+        "at": 4628.9000000003725,
+        "status": "exploring",
+        "point": "kliniu",
+        "destination": "kliniu"
+      }
+    ]
+  }
+}

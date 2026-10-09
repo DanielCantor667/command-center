@@ -1,0 +1,2276 @@
+{
+  "passed": true,
+  "section": "rays",
+  "recordedAt": "2026-10-09T14:07:05.771Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "Three actual station GLB raycasts / correct pose / matching concrete HTML reading",
+      "passed": true,
+      "rays": [
+        {
+          "station": "technologies",
+          "beforeCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "direction": [
+              0,
+              -0.014149526751444225,
+              -0.9998998904353926
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "qaReviewCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              0.03428640738236045,
+              0.561311618235816,
+              -0.023283507300467653,
+              0.8265661424169815
+            ],
+            "direction": [
+              -0.9263257423248356,
+              0.08281857329681144,
+              -0.3675074190046008
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "candidates": [
+            {
+              "worldPoint": [
+                -8.948,
+                2.45,
+                1.55
+              ],
+              "x": 719.9999999999998,
+              "y": 500,
+              "ndc": [
+                -3.455769495815907e-16,
+                4.1469233949790877e-17,
+                0.9817725723912861
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__technologies",
+                "point": [
+                  -8.952500343322754,
+                  2.4504023552367244,
+                  1.5482145486370316
+                ],
+                "distance": 9.664527211404403
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.45,
+                1.1
+              ],
+              "x": 758.4020278341754,
+              "y": 501.2617818626626,
+              "ndc": [
+                0.053336149769688146,
+                -0.002523563725325065,
+                0.9821215157498129
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__technologies",
+                "point": [
+                  -8.952500343322756,
+                  2.450402355236723,
+                  1.097988223816384
+                ],
+                "distance": 9.838902610767875
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.45,
+                2
+              ],
+              "x": 680.2601442378838,
+              "y": 498.694260900961,
+              "ndc": [
+                -0.05519424411405032,
+                0.002611478198077912,
+                0.9814114727431924
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__technologies",
+                "point": [
+                  -8.952500343322754,
+                  2.450402355236726,
+                  1.9984408734577008
+                ],
+                "distance": 9.508289822197279
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.33,
+                1.55
+              ],
+              "x": 719.9999999999998,
+              "y": 511.1786551845773,
+              "ndc": [
+                -3.4593285824834813e-16,
+                -0.022357310369154497,
+                0.981751222053131
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "station__paper",
+                "point": [
+                  -8.94699954986572,
+                  2.3299239711565387,
+                  1.5503969152857224
+                ],
+                "distance": 9.649392706842425
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.33,
+                1.1
+              ],
+              "x": 758.4409115732107,
+              "y": 512.2533614339362,
+              "ndc": [
+                0.05339015496279261,
+                -0.024506722867872397,
+                0.9821008784717321
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__technologies",
+                "point": [
+                  -8.952500343322756,
+                  2.330342001951216,
+                  1.0979882238163858
+                ],
+                "distance": 9.829863981435622
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.33,
+                2
+              ],
+              "x": 680.2185026198358,
+              "y": 510.0664697005807,
+              "ndc": [
+                -0.055252079694672496,
+                -0.02013293940116143,
+                0.9813893717397213
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__technologies",
+                "point": [
+                  -8.952500343322754,
+                  2.330342001951214,
+                  1.998440873457695
+                ],
+                "distance": 9.498936606391839
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.48,
+                1.55
+              ],
+              "x": 719.9999999999998,
+              "y": 497.2089293480012,
+              "ndc": [
+                -3.454880868142741e-16,
+                0.00558214130399755,
+                0.9817779031132066
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "station__oak",
+                "point": [
+                  -9.024999618530273,
+                  2.487142342800642,
+                  1.5194514253707636
+                ],
+                "distance": 9.745345222815905
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.48,
+                1.1
+              ],
+              "x": 758.3923191874554,
+              "y": 498.51736052869546,
+              "ndc": [
+                0.05332266553813254,
+                0.0029652789426091505,
+                0.9821266685475407
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "station__oak",
+                "point": [
+                  -9.024999618530273,
+                  2.4871423428006394,
+                  1.0655790708402995
+                ],
+                "distance": 9.921087523564296
+              }
+            },
+            {
+              "worldPoint": [
+                -8.948,
+                2.48,
+                2
+              ],
+              "x": 680.270541024486,
+              "y": 495.854927713928,
+              "ndc": [
+                -0.055179804132658376,
+                0.00829014457214391,
+                0.981416990766448
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "station__oak",
+                "point": [
+                  -9.024999618530275,
+                  2.487142342800639,
+                  1.973323779901233
+                ],
+                "distance": 9.587884521723884
+              }
+            }
+          ],
+          "selected": {
+            "worldPoint": [
+              -8.948,
+              2.45,
+              1.55
+            ],
+            "x": 719.9999999999998,
+            "y": 500,
+            "ndc": [
+              -3.455769495815907e-16,
+              4.1469233949790877e-17,
+              0.9817725723912861
+            ],
+            "inside": true,
+            "receivesCanvas": true,
+            "hit": {
+              "name": "stationhit__technologies",
+              "point": [
+                -8.952500343322754,
+                2.4504023552367244,
+                1.5482145486370316
+              ],
+              "distance": 9.664527211404403
+            }
+          }
+        },
+        {
+          "station": "trajectory",
+          "beforeCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "direction": [
+              0,
+              -0.014149526751444225,
+              -0.9998998904353926
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "qaReviewCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              0.0329496194181736,
+              0.4004458049876018,
+              -0.014410581789856188,
+              0.9156144466862168
+            ],
+            "direction": [
+              -0.7323582819519391,
+              0.07187960915454218,
+              -0.6771149596960583
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "candidates": [
+            {
+              "worldPoint": [
+                -8.1,
+                2.445,
+                -2.389
+              ],
+              "x": 720,
+              "y": 500,
+              "ndc": [
+                1.0060610435041549e-16,
+                -3.621819756614957e-17,
+                0.9843975764285123
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -8.104866977558695,
+                  2.4454776848344624,
+                  -2.3934998512268075
+                ],
+                "distance": 11.066805929956809
+              }
+            },
+            {
+              "worldPoint": [
+                -8.549999999999999,
+                2.445,
+                -2.389
+              ],
+              "x": 695.806166432222,
+              "y": 501.8809254555342,
+              "ndc": [
+                -0.03360254662191394,
+                -0.0037618509110684335,
+                0.9849214600082933
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -8.555137365200853,
+                  2.4454776848344664,
+                  -2.3934998512268066
+                ],
+                "distance": 11.400688580294682
+              }
+            },
+            {
+              "worldPoint": [
+                -7.6499999999999995,
+                2.445,
+                -2.389
+              ],
+              "x": 745.6799294352147,
+              "y": 498.0035395037458,
+              "ndc": [
+                0.035666568660020374,
+                0.003992920992508353,
+                0.9838415135241629
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -7.654596589916561,
+                  2.445477684834468,
+                  -2.3934998512268058
+                ],
+                "distance": 10.741423263318879
+              }
+            },
+            {
+              "worldPoint": [
+                -8.1,
+                2.3249999999999997,
+                -2.389
+              ],
+              "x": 720,
+              "y": 509.769039104315,
+              "ndc": [
+                1.006846258693262e-16,
+                -0.019538078208630093,
+                0.9843834453229414
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -8.104866977558709,
+                  2.3254055814632255,
+                  -2.3934998512268066
+                ],
+                "distance": 11.058823691683012
+              }
+            },
+            {
+              "worldPoint": [
+                -8.549999999999999,
+                2.3249999999999997,
+                -2.389
+              ],
+              "x": 695.7878303074355,
+              "y": 511.3685090220109,
+              "ndc": [
+                -0.0336280134618951,
+                -0.022737018044021808,
+                0.9849081351387949
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -8.555137365200853,
+                  2.3254055814632233,
+                  -2.3934998512268058
+                ],
+                "distance": 11.392940272697984
+              }
+            },
+            {
+              "worldPoint": [
+                -7.6499999999999995,
+                2.3249999999999997,
+                -2.389
+              ],
+              "x": 745.7005882807497,
+              "y": 508.0712433947976,
+              "ndc": [
+                0.03569526150104129,
+                -0.016142486789595085,
+                0.9838265007325319
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__trajectory",
+                "point": [
+                  -7.65459658991656,
+                  2.325405581463227,
+                  -2.3934998512268058
+                ],
+                "distance": 10.7331990419525
+              }
+            },
+            {
+              "worldPoint": [
+                -8.1,
+                2.4749999999999996,
+                -2.389
+              ],
+              "x": 720,
+              "y": 497.56012058442354,
+              "ndc": [
+                1.0058649310353396e-16,
+                0.004879758831152865,
+                0.9844011057616671
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "shell__plaster",
+                "point": [
+                  -8.695954127852277,
+                  2.5356990315405064,
+                  -2.940000057220457
+                ],
+                "distance": 11.876265485761413
+              }
+            },
+            {
+              "worldPoint": [
+                -8.549999999999999,
+                2.4749999999999996,
+                -2.389
+              ],
+              "x": 695.8107461248226,
+              "y": 499.5112744652933,
+              "ndc": [
+                -0.03359618593774639,
+                0.0009774510694133735,
+                0.9849247880728084
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "shell__plaster",
+                "point": [
+                  -9.179062690510746,
+                  2.53569903154051,
+                  -2.940000057220457
+                ],
+                "distance": 12.234429106864901
+              }
+            },
+            {
+              "worldPoint": [
+                -7.6499999999999995,
+                2.4749999999999996,
+                -2.389
+              ],
+              "x": 745.6747699122111,
+              "y": 495.48914199148504,
+              "ndc": [
+                0.035659402655848674,
+                0.00902171601702996,
+                0.9838452629516726
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "shell__plaster",
+                "point": [
+                  -8.212845565193824,
+                  2.5356990315405135,
+                  -2.940000057220459
+                ],
+                "distance": 11.527224122584789
+              }
+            }
+          ],
+          "selected": {
+            "worldPoint": [
+              -8.1,
+              2.445,
+              -2.389
+            ],
+            "x": 720,
+            "y": 500,
+            "ndc": [
+              1.0060610435041549e-16,
+              -3.621819756614957e-17,
+              0.9843975764285123
+            ],
+            "inside": true,
+            "receivesCanvas": true,
+            "hit": {
+              "name": "stationhit__trajectory",
+              "point": [
+                -8.104866977558695,
+                2.4454776848344624,
+                -2.3934998512268075
+              ],
+              "distance": 11.066805929956809
+            }
+          }
+        },
+        {
+          "station": "contact",
+          "beforeCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "direction": [
+              0,
+              -0.014149526751444225,
+              -0.9998998904353926
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "qaReviewCamera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              0.005079420747802225,
+              -0.5137565241610984,
+              0.0030417742032000025,
+              0.8579156024787463
+            ],
+            "direction": [
+              0.8814885750041149,
+              0.011840891306025437,
+              -0.4720568667335471
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          },
+          "candidates": [
+            {
+              "worldPoint": [
+                6.7,
+                1.74,
+                1.512
+              ],
+              "x": 720.0000000000001,
+              "y": 500,
+              "ndc": [
+                1.4639547037616327e-16,
+                5.270236933541877e-17,
+                0.9761571045895693
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.7009336660006475,
+                  1.7400125417820975,
+                  1.5115000009536734
+                ],
+                "distance": 7.601838362986577
+              }
+            },
+            {
+              "worldPoint": [
+                6.25,
+                1.74,
+                1.512
+              ],
+              "x": 693.4004052053186,
+              "y": 499.4118585557378,
+              "ndc": [
+                -0.03694388165927969,
+                0.0011762828885242848,
+                0.9747064500681083
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.250870957090178,
+                  1.740012541782099,
+                  1.5115000009536739
+                ],
+                "distance": 7.208246820345917
+              }
+            },
+            {
+              "worldPoint": [
+                7.15,
+                1.74,
+                1.512
+              ],
+              "x": 743.9609390254838,
+              "y": 500.5297983444147,
+              "ndc": [
+                0.03327908197983854,
+                -0.001059596688829422,
+                0.9774638554932603
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  7.150996374911158,
+                  1.7400125417821004,
+                  1.5115000009536739
+                ],
+                "distance": 8.001386358302296
+              }
+            },
+            {
+              "worldPoint": [
+                6.7,
+                1.62,
+                1.512
+              ],
+              "x": 720.0000000000001,
+              "y": 514.2426864358364,
+              "ndc": [
+                1.4642284299567585e-16,
+                -0.028485372871672805,
+                0.9761521784829242
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.700933666000663,
+                  1.619995819405967,
+                  1.5115000009536743
+                ],
+                "distance": 7.601364646571672
+              }
+            },
+            {
+              "worldPoint": [
+                6.25,
+                1.62,
+                1.512
+              ],
+              "x": 693.3951577828055,
+              "y": 514.4388089226165,
+              "ndc": [
+                -0.036951169746103296,
+                -0.028877617845232965,
+                0.9747009664914046
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.250870957090165,
+                  1.619995819405969,
+                  1.5115000009536739
+                ],
+                "distance": 7.2077472358707135
+              }
+            },
+            {
+              "worldPoint": [
+                7.15,
+                1.62,
+                1.512
+              ],
+              "x": 743.9651969225835,
+              "y": 514.0660225797511,
+              "ndc": [
+                0.03328499572581027,
+                -0.028132045159502204,
+                0.9774594059744185
+              ],
+              "inside": true,
+              "receivesCanvas": false,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  7.150996374911158,
+                  1.6199958194059678,
+                  1.5115000009536748
+                ],
+                "distance": 8.000936298209174
+              }
+            },
+            {
+              "worldPoint": [
+                6.7,
+                1.77,
+                1.512
+              ],
+              "x": 720.0000000000001,
+              "y": 496.4401604022242,
+              "ndc": [
+                1.4638862882030407e-16,
+                0.007119679195551567,
+                0.9761583358284636
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.7009336660006635,
+                  1.770016722376133,
+                  1.5115000009536739
+                ],
+                "distance": 7.602252840635233
+              }
+            },
+            {
+              "worldPoint": [
+                6.25,
+                1.77,
+                1.512
+              ],
+              "x": 693.401716737532,
+              "y": 495.65604712142897,
+              "ndc": [
+                -0.03694206008676113,
+                0.00868790575714203,
+                0.9747078206243145
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  6.250870957090166,
+                  1.7700167223761298,
+                  1.5115000009536743
+                ],
+                "distance": 7.208683928360205
+              }
+            },
+            {
+              "worldPoint": [
+                7.15,
+                1.77,
+                1.512
+              ],
+              "x": 743.9598747876048,
+              "y": 497.1464938088491,
+              "ndc": [
+                0.03327760387167335,
+                0.005707012382301881,
+                0.9774649676259364
+              ],
+              "inside": true,
+              "receivesCanvas": true,
+              "hit": {
+                "name": "stationhit__contact",
+                "point": [
+                  7.150996374911141,
+                  1.7700167223761327,
+                  1.5115000009536743
+                ],
+                "distance": 8.001780140118678
+              }
+            }
+          ],
+          "selected": {
+            "worldPoint": [
+              6.7,
+              1.74,
+              1.512
+            ],
+            "x": 720.0000000000001,
+            "y": 500,
+            "ndc": [
+              1.4639547037616327e-16,
+              5.270236933541877e-17,
+              0.9761571045895693
+            ],
+            "inside": true,
+            "receivesCanvas": true,
+            "hit": {
+              "name": "stationhit__contact",
+              "point": [
+                6.7009336660006475,
+                1.7400125417820975,
+                1.5115000009536734
+              ],
+              "distance": 7.601838362986577
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://127.0.0.1:3001/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "exploring",
+      "worldPoint": "contact",
+      "worldDestination": "contact",
+      "roomActive": "",
+      "roomPending": ""
+    },
+    "active": "<button type=\"button\" class=\"workshop-game_primary__yiOX6\">Ver contacto<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-up-right\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"></path><path d=\"M7 17 17 7\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Mesa de trabajo\nIr a Tecnologías\nIr a Trayectoria\nDaniel Cantor\nFull-Stack Developer\nVer portafolio\nContacto\nDentro del taller\nContacto\n\nConversemos sobre tu próximo producto o proyecto.\n\nVer contacto\nVolver al taller\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\nTecnologías\nTrayectoria\nContacto\nMapa\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property:none",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 45.3000000002794,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 470.40000000037253,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1297.7000000001863,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 1309,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 2310.9000000003725,
+        "status": "moving",
+        "point": "hub",
+        "destination": "technologies"
+      },
+      {
+        "at": 2323.3000000002794,
+        "status": "exploring",
+        "point": "technologies",
+        "destination": "technologies"
+      },
+      {
+        "at": 2642.2000000001863,
+        "status": "moving",
+        "point": "technologies",
+        "destination": "hub"
+      },
+      {
+        "at": 2675.2000000001863,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 3025.3000000002794,
+        "status": "moving",
+        "point": "hub",
+        "destination": "trajectory"
+      },
+      {
+        "at": 3041.4000000003725,
+        "status": "exploring",
+        "point": "trajectory",
+        "destination": "trajectory"
+      },
+      {
+        "at": 3342.9000000003725,
+        "status": "moving",
+        "point": "trajectory",
+        "destination": "hub"
+      },
+      {
+        "at": 3377.8000000002794,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 3689.5,
+        "status": "moving",
+        "point": "hub",
+        "destination": "contact"
+      },
+      {
+        "at": 3710.2000000001863,
+        "status": "exploring",
+        "point": "contact",
+        "destination": "contact"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 1312.2000000001863,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TecnologíasIr a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyE",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2326.3000000002794,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2565.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2570,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2570.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2570.2000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2602.2000000001863,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2677.9000000003725,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3044.100000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3281.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3284.3000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3284.3000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3284.3000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3308.2000000001863,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3380.3000000002794,
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3712.5,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasIr a Trayectori",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3945.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3947.2000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3947.3000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3947.4000000003725,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3970.600000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasIr a Trayectori",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 455.70000000018626,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 469.8000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 1312.4000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2303.8000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2327.3000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2567.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 2569.9000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2599.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2602.9000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2639.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2639.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3018.4000000003725,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3044.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3282.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 3284.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3305.4000000003725,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3308.8000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3339.7000000001863,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3339.7000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3683.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "El taller",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3712.9000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3946.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 3947.2000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3968,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3971.4000000003725,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  }
+}

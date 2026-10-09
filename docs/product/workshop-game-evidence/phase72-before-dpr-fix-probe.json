@@ -1,0 +1,406 @@
+{
+  "passed": true,
+  "recordedAt": "2026-10-07T20:01:01.879Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server; these observations are not production benchmarks.",
+    "Mobile viewports use desktop Chrome. Physical mobile GPU, touch ergonomics, heat and battery are not measured.",
+    "Core byte budgets below cover the two essential GLB files, including embedded images; JS, CSS and poster are reported separately.",
+    "Frame rate covers actual moving camera renders. CPU submit time is not GPU execution time. Idle is measured separately.",
+    "Concept comparison is a visual review artifact; no numerical similarity score declares design approval."
+  ],
+  "assets": [],
+  "probe": {
+    "renderer": "WebKit WebGL",
+    "vendor": "WebKit",
+    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "unmaskedRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "unmaskedVendor": "Google Inc. (Apple)",
+    "dpr": 1.5,
+    "browserDpr": 2,
+    "canvas": {
+      "width": 585,
+      "height": 1266
+    },
+    "viewport": {
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "visualWidth": 390,
+      "storeWidth": 390,
+      "storeHeight": 844,
+      "meta": "width=device-width, initial-scale=1",
+      "canvasRect": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "shadowMaps": [
+      {
+        "type": "DirectionalLight",
+        "requestedWidth": 1024,
+        "requestedHeight": 1024,
+        "actualWidth": 1024,
+        "actualHeight": 1024
+      }
+    ],
+    "shadowAutoUpdate": false,
+    "info": {
+      "render": {
+        "frame": 200,
+        "calls": 17,
+        "triangles": 62745,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 30,
+        "textures": 9
+      },
+      "programs": 9
+    },
+    "camera": {
+      "position": [
+        0,
+        1.65,
+        5.1
+      ],
+      "quaternion": [
+        -0.007074940445239834,
+        0,
+        0,
+        0.9999749722956551
+      ],
+      "fov": 58,
+      "near": 0.1,
+      "far": 80
+    },
+    "meshNodes": [
+      {
+        "name": "shell__concrete",
+        "visible": true,
+        "vertices": 2112,
+        "materials": [
+          {
+            "name": "WG_concrete",
+            "type": "MeshStandardMaterial",
+            "color": "ffffff",
+            "roughness": 0.8799999952316284,
+            "metalness": 0,
+            "map": {
+              "width": 512,
+              "height": 512
+            }
+          }
+        ]
+      },
+      {
+        "name": "shell__soil",
+        "visible": true,
+        "vertices": 1144,
+        "materials": [
+          {
+            "name": "WG_soil",
+            "type": "MeshStandardMaterial",
+            "color": "514d3d",
+            "roughness": 1,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__plaster",
+        "visible": true,
+        "vertices": 288,
+        "materials": [
+          {
+            "name": "WG_plaster",
+            "type": "MeshStandardMaterial",
+            "color": "ffffff",
+            "roughness": 0.9100000262260437,
+            "metalness": 0,
+            "map": {
+              "width": 256,
+              "height": 256
+            }
+          }
+        ]
+      },
+      {
+        "name": "shell__glass",
+        "visible": true,
+        "vertices": 288,
+        "materials": [
+          {
+            "name": "WG_glass",
+            "type": "MeshStandardMaterial",
+            "color": "d5e5df",
+            "roughness": 0.3499999940395355,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__greensteel",
+        "visible": true,
+        "vertices": 27185,
+        "materials": [
+          {
+            "name": "WG_greensteel",
+            "type": "MeshStandardMaterial",
+            "color": "315749",
+            "roughness": 0.47999998927116394,
+            "metalness": 0.41999998688697815,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__brass",
+        "visible": true,
+        "vertices": 7223,
+        "materials": [
+          {
+            "name": "WG_brass",
+            "type": "MeshStandardMaterial",
+            "color": "bc9b63",
+            "roughness": 0.3799999952316284,
+            "metalness": 0.6200000047683716,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__graphite",
+        "visible": true,
+        "vertices": 4534,
+        "materials": [
+          {
+            "name": "WG_graphite",
+            "type": "MeshStandardMaterial",
+            "color": "252d29",
+            "roughness": 0.550000011920929,
+            "metalness": 0.20000000298023224,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__oak",
+        "visible": true,
+        "vertices": 10644,
+        "materials": [
+          {
+            "name": "WG_oak",
+            "type": "MeshStandardMaterial",
+            "color": "ffffff",
+            "roughness": 0.6800000071525574,
+            "metalness": 0,
+            "map": {
+              "width": 512,
+              "height": 512
+            }
+          }
+        ]
+      },
+      {
+        "name": "shell__paper",
+        "visible": true,
+        "vertices": 21156,
+        "materials": [
+          {
+            "name": "WG_paper",
+            "type": "MeshStandardMaterial",
+            "color": "e7e3d8",
+            "roughness": 0.8399999737739563,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__ceramic",
+        "visible": true,
+        "vertices": 992,
+        "materials": [
+          {
+            "name": "WG_ceramic",
+            "type": "MeshStandardMaterial",
+            "color": "a99e86",
+            "roughness": 0.8999999761581421,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__leaf",
+        "visible": true,
+        "vertices": 14688,
+        "materials": [
+          {
+            "name": "WG_leaf",
+            "type": "MeshStandardMaterial",
+            "color": "45624a",
+            "roughness": 0.8500000238418579,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__leaflight",
+        "visible": true,
+        "vertices": 7392,
+        "materials": [
+          {
+            "name": "WG_leaflight",
+            "type": "MeshStandardMaterial",
+            "color": "71805d",
+            "roughness": 0.8500000238418579,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__teal",
+        "visible": true,
+        "vertices": 4419,
+        "materials": [
+          {
+            "name": "WG_teal",
+            "type": "MeshStandardMaterial",
+            "color": "23676a",
+            "roughness": 0.6800000071525574,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__warm",
+        "visible": true,
+        "vertices": 1024,
+        "materials": [
+          {
+            "name": "WG_warm",
+            "type": "MeshStandardMaterial",
+            "color": "ffe4bc",
+            "roughness": 0.5,
+            "metalness": 0,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "shell__steel_light",
+        "visible": true,
+        "vertices": 11423,
+        "materials": [
+          {
+            "name": "WG_steel_light",
+            "type": "MeshStandardMaterial",
+            "color": "a8b5ad",
+            "roughness": 0.4300000071525574,
+            "metalness": 0.5,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "door__greensteel",
+        "visible": true,
+        "vertices": 960,
+        "materials": [
+          {
+            "name": "WG_greensteel",
+            "type": "MeshStandardMaterial",
+            "color": "315749",
+            "roughness": 0.47999998927116394,
+            "metalness": 0.41999998688697815,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "door__brass",
+        "visible": true,
+        "vertices": 352,
+        "materials": [
+          {
+            "name": "WG_brass",
+            "type": "MeshStandardMaterial",
+            "color": "bc9b63",
+            "roughness": 0.3799999952316284,
+            "metalness": 0.6200000047683716,
+            "map": null
+          }
+        ]
+      },
+      {
+        "name": "door__graphite",
+        "visible": true,
+        "vertices": 208,
+        "materials": [
+          {
+            "name": "WG_graphite",
+            "type": "MeshStandardMaterial",
+            "color": "252d29",
+            "roughness": 0.550000011920929,
+            "metalness": 0.20000000298023224,
+            "map": null
+          }
+        ]
+      }
+    ],
+    "firstUsableFrame": null,
+    "activationAt": 367.79999999701977,
+    "entryMs": 2451.400000002235,
+    "states": [
+      {
+        "at": 37.399999998509884,
+        "status": "landing",
+        "point": "entrance"
+      },
+      {
+        "at": 427.5,
+        "status": "loading",
+        "point": "entrance"
+      },
+      {
+        "at": 1210.199999999255,
+        "status": "moving",
+        "point": "entrance"
+      },
+      {
+        "at": 2819.199999999255,
+        "status": "exploring",
+        "point": "hub"
+      }
+    ],
+    "hookError": null
+  },
+  "probeNetworkIssues": [
+    {
+      "url": "http://localhost:3000/favicon.ico",
+      "status": 404,
+      "mimeType": "text/plain",
+      "fromDiskCache": false,
+      "encodedDataLength": 215
+    }
+  ]
+}

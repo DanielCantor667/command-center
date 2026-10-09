@@ -1,0 +1,280 @@
+{
+  "version": 3,
+  "phase": "7.4",
+  "units": "metres",
+  "up": "Y",
+  "generator": "blender/generate_workshop_stations.py",
+  "source": "blender/scenes/workshop-game-v3.blend",
+  "parentSource": "blender/scenes/workshop-game-v2.blend",
+  "blender": "5.1.2",
+  "coordinateMap": "Blender (Three.x,-Three.z,Three.y); GLTF Y-up export",
+  "model": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "essential": true
+  },
+  "stations": {
+    "technologies": {
+      "name": "Tecnologías",
+      "position": [
+        -6.8,
+        1.65,
+        1.55
+      ],
+      "target": [
+        -9.14,
+        1.6,
+        1.55
+      ],
+      "facing": "+X",
+      "hotspot": [
+        -8.64,
+        1.65,
+        1.55
+      ],
+      "hitNode": "stationhit__technologies",
+      "hitAnchor": [
+        -8.948,
+        2.45,
+        1.55
+      ],
+      "bounds": {
+        "min": [
+          -9.4,
+          0,
+          0.4
+        ],
+        "max": [
+          -8.6,
+          2.7,
+          2.8
+        ]
+      },
+      "sourceBounds": {
+        "min": [
+          -9.162500381469727,
+          0.3774999976158142,
+          0.4325000047683716
+        ],
+        "max": [
+          -8.789999961853027,
+          2.5425000190734863,
+          2.6675000190734863
+        ]
+      },
+      "sourceMeshObjects": 35
+    },
+    "trajectory": {
+      "name": "Trayectoria",
+      "position": [
+        -7.7,
+        1.65,
+        0.8
+      ],
+      "target": [
+        -8.1,
+        1.55,
+        -2.65
+      ],
+      "facing": "+Z",
+      "hotspot": [
+        -8.1,
+        1.65,
+        -2.3
+      ],
+      "hitNode": "stationhit__trajectory",
+      "hitAnchor": [
+        -8.1,
+        2.445,
+        -2.389
+      ],
+      "bounds": {
+        "min": [
+          -9,
+          0,
+          -2.92
+        ],
+        "max": [
+          -7.2,
+          2.7,
+          -2.38
+        ]
+      },
+      "sourceBounds": {
+        "min": [
+          -8.981500625610352,
+          0.08999999612569809,
+          -2.8999998569488525
+        ],
+        "max": [
+          -7.218500137329102,
+          2.4674999713897705,
+          -2.388000011444092
+        ]
+      },
+      "sourceMeshObjects": 41
+    },
+    "contact": {
+      "name": "Contacto",
+      "position": [
+        6.7,
+        1.65,
+        2.7
+      ],
+      "target": [
+        6.7,
+        1.3,
+        1.45
+      ],
+      "facing": "+Z",
+      "hotspot": [
+        6.7,
+        1.62,
+        1.9
+      ],
+      "hitNode": "stationhit__contact",
+      "hitAnchor": [
+        6.7,
+        1.74,
+        1.512
+      ],
+      "bounds": {
+        "min": [
+          5.6,
+          0,
+          1.0
+        ],
+        "max": [
+          7.8,
+          1.95,
+          1.9
+        ]
+      },
+      "sourceBounds": {
+        "min": [
+          5.609999656677246,
+          0.022000014781951904,
+          1.0099999904632568
+        ],
+        "max": [
+          7.789999961853027,
+          1.840000033378601,
+          1.8900001049041748
+        ]
+      },
+      "sourceMeshObjects": 13
+    }
+  },
+  "stats": {
+    "bytes": 786652,
+    "triangles": 7860,
+    "meshes": 9,
+    "materials": 6,
+    "images": 2,
+    "primitives": 9,
+    "nodes": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "bounds": {
+      "min": [
+        -9.162500381469727,
+        0.022000014781951904,
+        -2.8999998569488525
+      ],
+      "max": [
+        7.789999961853027,
+        2.5425000190734863,
+        2.6675000190734863
+      ]
+    },
+    "uvPrimitives": 9,
+    "normalPrimitives": 9,
+    "normalMappedMaterials": 1,
+    "opaqueMaterials": 6,
+    "externalResources": [],
+    "sha256": "a576a5026a2fffad289bab11a8b7e643324632798c80c75a1b0111f1ee6812b5",
+    "hitBounds": {
+      "stationhit__technologies": {
+        "min": [
+          -8.987500190734863,
+          2.184999942779541,
+          0.5549999475479126
+        ],
+        "max": [
+          -8.952500343322754,
+          2.4749999046325684,
+          2.5450000762939453
+        ]
+      },
+      "stationhit__trajectory": {
+        "min": [
+          -8.940000534057617,
+          2.182500123977661,
+          -2.438499927520752
+        ],
+        "max": [
+          -7.260000228881836,
+          2.4674999713897705,
+          -2.3934998512268066
+        ]
+      },
+      "stationhit__contact": {
+        "min": [
+          6.170000076293945,
+          1.212499976158142,
+          1.4964998960494995
+        ],
+        "max": [
+          7.229999542236328,
+          1.787500023841858,
+          1.5115000009536743
+        ]
+      }
+    }
+  },
+  "previousEssentialBytes": 3678840,
+  "totalEssentialBytes": 4465492,
+  "budget": {
+    "kitBytes": 1200000,
+    "kitTrianglesExclusive": 12000,
+    "kitPrimitives": 13,
+    "totalEssentialBytes": 5000000
+  },
+  "sha256": {
+    "generator": "5c86a535358633b7801cdac1c88358e06f4b71db87dc4f713737a479f8b45642",
+    "blend": "ddaf62bf0425855dcb9dc752c0ce8a814042dbf6e3e05ab7124b9bb909671a42",
+    "model": "a576a5026a2fffad289bab11a8b7e643324632798c80c75a1b0111f1ee6812b5"
+  },
+  "preservedPhase72And73Sha256": {
+    "blender/generate_workshop_game.py": "c347dc9b0f1c816d68b9bc83e8b965676448b047465e5b1883350bc217ed1857",
+    "blender/scenes/workshop-game-v1.blend": "71214aacbfb3d88c7820a843ead73be1aa02b151b2bd8f45e7eae66962d5059b",
+    "apps/web/public/models/workshop-game/workshop-shell-v1.glb": "46df54dc87667afc097d0b5dff3c10b373d854d009a1f590ea448018ee1c9a2f",
+    "apps/web/public/models/workshop-game/workshop-door-v1.glb": "0154a0a8f4746ef6dbf8410728e67fa7eacaf49be67f6948a04a514fbd7cd8c7",
+    "blender/generate_workshop_rooms.py": "330ce236442b2ee65fdf8eb11a10caf24b6adf26d01ca2a66083a17a7861ee03",
+    "blender/scenes/workshop-game-v2.blend": "10c244b00acfedfe4345765d8e6fb809f076a729bb7c2617ee54a126e80a0557",
+    "apps/web/public/models/workshop-game/workshop-shell-v2.glb": "3db50554ec6bbeff101e0aa4c3eb8ab4bde93acea7b6fc26c99c6df2927eaf79",
+    "apps/web/public/models/workshop-game/room-kliniu-v1.glb": "640afd799e02954bd68141e1ecd534f9a445f980f4b7fb65f5d8b16c2b669ad4",
+    "apps/web/public/models/workshop-game/room-lorigine-v1.glb": "292835b97704e0e14ff1bf7b6b53c90afce7d01cb1b7fce19527a215b41626c9",
+    "apps/web/public/models/workshop-game/room-academy-v1.glb": "4c0b86b4d0193600d211b3ca485264d070068a4a3b66bd627ad2f5d80f3211b0",
+    "apps/web/public/models/workshop-game/room-drokex-v1.glb": "ec8dbdb82b6cc1147e153d903ab64900de6904d5c7fdf2618e272692522b5b2f"
+  },
+  "preview": {
+    "renderer": "Blender Cycles reference; actual web renderer is the acceptance gate",
+    "poses": "Three exact web station views plus hub",
+    "gates": "Closed",
+    "previewLightsExported": false
+  },
+  "licence": "First-party original station geometry authored for Daniel's portfolio, reusing existing first-party WG_* PBR materials and packed textures. No downloaded assets, generative images, fabricated technology metrics, career dates or contact channels."
+}

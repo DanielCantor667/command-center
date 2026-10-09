@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "section": "selfcheck",
+  "recordedAt": "2026-10-09T13:47:36.363Z",
+  "base": "http://localhost:3000",
+  "environment": {},
+  "viewports": [],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "selfcheck": {
+    "syntaxAndCanonicalData": true,
+    "assetBudgets": true,
+    "canonicalCounts": true,
+    "noBrowserStarted": true
+  }
+}

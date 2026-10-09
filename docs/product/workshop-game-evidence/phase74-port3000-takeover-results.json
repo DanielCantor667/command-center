@@ -1,0 +1,1931 @@
+{
+  "passed": false,
+  "section": "viewports",
+  "recordedAt": "2026-10-09T13:51:19.610Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://localhost:3000/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "room-error",
+      "worldPoint": "contact",
+      "worldDestination": "kliniu",
+      "roomActive": "",
+      "roomPending": "kliniu"
+    },
+    "active": "<button class=\"workshop-game_primary__yiOX6\" type=\"button\">Reintentar sala<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-rotate-ccw\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"></path><path d=\"M3 3v5h5\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Mesa de trabajo\nIr a Tecnologías\nIr a Trayectoria\nDaniel Cantor\nFull-Stack Developer\nVer portafolio\nContacto\nSala de proyecto\nNo se pudo cargar Kliniu\n\nEl caso sigue disponible para leer.\n\nReintentar sala\nAbrir caso sin 3D\nVolver al taller\nEl taller\nMesa de trabajo\nKliniu\nL'ORIGINE\nAcademy\nDrokex\nTecnologías\nTrayectoria\nContacto\nMapa\n\nArrastra para mirar. Elige un lugar para acercarte.\n\nEl taller de Daniel",
+    "keeper": {
+      "style": "transition-property:none",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": false,
+    "states": [
+      {
+        "at": 67.10000000009313,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 940,
+        "status": "loading",
+        "point": "entrance",
+        "destination": "entrance"
+      },
+      {
+        "at": 1790.3999999999069,
+        "status": "moving",
+        "point": "entrance",
+        "destination": "hub"
+      },
+      {
+        "at": 3420.7000000001863,
+        "status": "exploring",
+        "point": "hub",
+        "destination": "hub"
+      },
+      {
+        "at": 4203.299999999814,
+        "status": "moving",
+        "point": "hub",
+        "destination": "technologies"
+      },
+      {
+        "at": 5849.700000000186,
+        "status": "exploring",
+        "point": "technologies",
+        "destination": "technologies"
+      },
+      {
+        "at": 10653.399999999907,
+        "status": "moving",
+        "point": "technologies",
+        "destination": "trajectory"
+      },
+      {
+        "at": 12279.600000000093,
+        "status": "exploring",
+        "point": "trajectory",
+        "destination": "trajectory"
+      },
+      {
+        "at": 14950.799999999814,
+        "status": "moving",
+        "point": "trajectory",
+        "destination": "contact"
+      },
+      {
+        "at": 16597,
+        "status": "exploring",
+        "point": "contact",
+        "destination": "contact"
+      },
+      {
+        "at": 19418.299999999814,
+        "status": "room-loading",
+        "point": "contact",
+        "destination": "kliniu"
+      },
+      {
+        "at": 24524.399999999907,
+        "status": "room-error",
+        "point": "contact",
+        "destination": "kliniu"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 6483.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 6483.399999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 6483.399999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_3_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7042.700000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "grid",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 7054.399999999907,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 10298.700000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a TrayectoriaIr a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12293.700000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12801.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12802.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12802.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12802.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12825.100000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "grid",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 12828.399999999907,
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "grid",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 14664.100000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Ir a ContactoMesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasDa",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 16610.299999999814,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17068.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17069.799999999814,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17069.799999999814,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17069.799999999814,
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17093.100000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "grid",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 17096,
+        "target": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 18930.700000000186,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasIr a Trayectori",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19220.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Mapa",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19222.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19222.200000000186,
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19222.200000000186,
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19309.799999999814,
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "grid",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19312.299999999814,
+        "target": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 19381.100000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Mesa de trabajoEntrar a KliniuEntrar a L'ORIGINEEntrar a 4U Studio AcademyEntrar a DrokexIr a TecnologíasIr a Trayectori",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      },
+      {
+        "at": 24553.600000000093,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Reintentar sala",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Reintentar sala",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 10650.700000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 10650.799999999814,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Explorar tecnologías",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12293.799999999814,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12293.799999999814,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Trayectoria",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12801.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 12802.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12824.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 12824.799999999814,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Trayectoria",
+          "id": "_r_4_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14661.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 14664.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 14948.299999999814,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 14948.299999999814,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver trayectoria",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 16610.299999999814,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 16610.5,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Contacto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17069.200000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 17069.799999999814,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17092.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "related": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17092.700000000186,
+        "type": "focusin",
+        "target": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Contacto",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17093.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17093.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17096,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 17096,
+        "type": "focusin",
+        "target": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 18927.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "A",
+          "text": "Explorar mi GitHub",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 18930.700000000186,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 19214.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Mapa",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19214.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Mapa",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19221.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Mapa",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "targetInert": true
+      },
+      {
+        "at": 19222,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Mapa",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19309.5,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19309.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Mapa del taller",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19309.899999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19309.899999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19312.299999999814,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19312.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "",
+          "id": "",
+          "class": "workshop-reader_close__ZfuZM"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19377.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "ContactoIr al destino",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 19381.200000000186,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 19415.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 19415.200000000186,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver contacto",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 24553.700000000186,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Reintentar sala",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 24555,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Reintentar sala",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Kliniu",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      }
+    ]
+  },
+  "error": {
+    "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main[data-workshop-state=\"exploring\"][data-world-point=\"kliniu\"]') to be visible\u001b[22m\n",
+    "stack": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('main[data-workshop-state=\"exploring\"][data-world-point=\"kliniu\"]') to be visible\u001b[22m\n\n    at stable (/Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:222:92)\n    at selectRoom (/Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:294:42)\n    at async viewport74 (/Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:558:7)\n    at async /Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:824:229"
+  }
+}

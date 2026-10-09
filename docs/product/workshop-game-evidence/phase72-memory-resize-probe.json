@@ -1,0 +1,486 @@
+{
+  "passed": true,
+  "recordedAt": "2026-10-07T20:29:30.730Z",
+  "base": "http://localhost:3000",
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "ten profile resizes with 500ms idle / actual renderer memory stability",
+      "passed": true,
+      "textureDifference": 0,
+      "snapshots": [
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 1024,
+              "requestedHeight": 1024,
+              "actualWidth": 1024,
+              "actualHeight": 1024
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 1024,
+              "requestedHeight": 1024,
+              "actualWidth": 1024,
+              "actualHeight": 1024
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 1024,
+              "requestedHeight": 1024,
+              "actualWidth": 1024,
+              "actualHeight": 1024
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 1024,
+              "requestedHeight": 1024,
+              "actualWidth": 1024,
+              "actualHeight": 1024
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1,
+          "canvas": {
+            "width": 390,
+            "height": 844
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 1024,
+              "requestedHeight": 1024,
+              "actualWidth": 1024,
+              "actualHeight": 1024
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1.5,
+          "canvas": {
+            "width": 2160,
+            "height": 1500
+          },
+          "shadowMaps": [
+            {
+              "type": "DirectionalLight",
+              "requestedWidth": 2048,
+              "requestedHeight": 2048,
+              "actualWidth": 2048,
+              "actualHeight": 2048
+            }
+          ],
+          "memory": {
+            "geometries": 31,
+            "textures": 9
+          },
+          "camera": {
+            "position": [
+              0,
+              1.65,
+              5.1
+            ],
+            "quaternion": [
+              -0.007074940445239834,
+              0,
+              0,
+              0.9999749722956551
+            ],
+            "fov": 58,
+            "near": 0.1,
+            "far": 80
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Local Next dev server; these observations are not production benchmarks.",
+    "Mobile viewports use desktop Chrome. Physical mobile GPU, touch ergonomics, heat and battery are not measured.",
+    "Core byte budgets below cover the two essential GLB files, including embedded images; JS, CSS and poster are reported separately.",
+    "Frame rate covers actual moving camera renders. CPU submit time is not GPU execution time. Idle is measured separately.",
+    "Concept comparison is a visual review artifact; no numerical similarity score declares design approval."
+  ],
+  "assets": [
+    {
+      "url": "/models/workshop-game/workshop-shell-v1.glb",
+      "fileBytes": 4542140,
+      "meshNames": [
+        "shell__concrete",
+        "shell__soil",
+        "shell__plaster",
+        "shell__glass",
+        "shell__greensteel",
+        "shell__brass",
+        "shell__graphite",
+        "shell__oak",
+        "shell__paper",
+        "shell__ceramic",
+        "shell__leaf",
+        "shell__leaflight",
+        "shell__teal",
+        "shell__warm",
+        "shell__steel_light"
+      ],
+      "materials": 15,
+      "images": 5
+    },
+    {
+      "url": "/models/workshop-game/workshop-door-v1.glb",
+      "fileBytes": 58072,
+      "meshNames": [
+        "door__greensteel",
+        "door__brass",
+        "door__graphite"
+      ],
+      "materials": 3,
+      "images": 0
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "preservedPhase72": true,
+  "coreBytes": 3678840,
+  "assets": [
+    {
+      "id": "shell",
+      "bytes": 3620768,
+      "triangles": 51553,
+      "primitives": 19,
+      "embeddedImages": 5
+    },
+    {
+      "id": "kliniu",
+      "bytes": 1001592,
+      "triangles": 7304,
+      "primitives": 10,
+      "embeddedImages": 4
+    },
+    {
+      "id": "lorigine",
+      "bytes": 823904,
+      "triangles": 7396,
+      "primitives": 7,
+      "embeddedImages": 4
+    },
+    {
+      "id": "academy",
+      "bytes": 794768,
+      "triangles": 8036,
+      "primitives": 9,
+      "embeddedImages": 2
+    },
+    {
+      "id": "drokex",
+      "bytes": 665616,
+      "triangles": 3004,
+      "primitives": 9,
+      "embeddedImages": 4
+    }
+  ]
+}

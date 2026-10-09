@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "entryMs": 3039,
+      "glbBytes": 2107548,
+      "cameraDiff": 0.2960425925925926
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "entryMs": 3047,
+      "glbBytes": 2107548,
+      "cameraDiff": 0.23956179269547326
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "entryMs": 3039,
+      "glbBytes": 2107548,
+      "cameraDiff": 0.9290436262000243
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "entryMs": 3062,
+      "glbBytes": 2107548,
+      "cameraDiff": 0.555362382629108
+    }
+  ],
+  "scenarios": [
+    "four viewports",
+    "case return and camera",
+    "reduced motion",
+    "browser history",
+    "direct case",
+    "GLB 404/retry",
+    "real context loss",
+    "context loss while GLB pending",
+    "cancel slow load",
+    "no WebGL",
+    "four classic cases",
+    "classic direct link/return/reload",
+    "keyboard focus"
+  ]
+}

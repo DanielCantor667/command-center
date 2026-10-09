@@ -1,0 +1,653 @@
+{
+  "passed": false,
+  "section": "viewports",
+  "recordedAt": "2026-10-09T13:56:22.812Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "currentEvidence": {
+    "room": "kliniu",
+    "images": [
+      {
+        "src": "http://127.0.0.1:3001/_next/image?url=%2Fprojects%2Fkliniu-desktop.png&w=1920&q=75",
+        "logicalUrl": "/projects/kliniu-desktop.png",
+        "alt": "",
+        "complete": true,
+        "width": 576,
+        "height": 400,
+        "cssVisible": true,
+        "location": "physical world monitor",
+        "rect": {
+          "x": 454.841552734375,
+          "y": 347.21624755859375,
+          "width": 530.31689453125,
+          "height": 298.05194091796875
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 507.8732421875,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 507.8732421875,
+            "y": 436.6318298339844,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 507.8732421875,
+            "y": 496.2422180175781,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 507.8732421875,
+            "y": 555.8526062011719,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 507.8732421875,
+            "y": 615.4629943847656,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 613.93662109375,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 613.93662109375,
+            "y": 436.6318298339844,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 613.93662109375,
+            "y": 496.2422180175781,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 613.93662109375,
+            "y": 555.8526062011719,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 613.93662109375,
+            "y": 615.4629943847656,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720,
+            "y": 436.6318298339844,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720,
+            "y": 496.2422180175781,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720,
+            "y": 555.8526062011719,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 720,
+            "y": 615.4629943847656,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 826.0633789062499,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 826.0633789062499,
+            "y": 436.6318298339844,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 826.0633789062499,
+            "y": 496.2422180175781,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 826.0633789062499,
+            "y": 555.8526062011719,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 826.0633789062499,
+            "y": 615.4629943847656,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 932.1267578125,
+            "y": 377.0214416503906,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 932.1267578125,
+            "y": 436.6318298339844,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 932.1267578125,
+            "y": 496.2422180175781,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 932.1267578125,
+            "y": 555.8526062011719,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          },
+          {
+            "x": 932.1267578125,
+            "y": 615.4629943847656,
+            "underlying": "CANVAS",
+            "imageAncestor": false
+          }
+        ]
+      },
+      {
+        "src": "http://127.0.0.1:3001/_next/image?url=%2Fprojects%2Fkliniu-desktop.png&w=1920&q=75",
+        "logicalUrl": "/projects/kliniu-desktop.png",
+        "alt": "Captura real del sitio de Kliniu",
+        "complete": true,
+        "width": 210,
+        "height": 145,
+        "cssVisible": true,
+        "location": "inspection card",
+        "rect": {
+          "x": 1111,
+          "y": 491.4765625,
+          "width": 252,
+          "height": 116
+        },
+        "uncoveredViewportSamples": [
+          {
+            "x": 1136.2,
+            "y": 503.0765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 526.2765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 549.4765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 572.6765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1136.2,
+            "y": 595.8765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 503.0765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 526.2765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 549.4765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 572.6765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1186.6,
+            "y": 595.8765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 503.0765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 526.2765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 549.4765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 572.6765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1237,
+            "y": 595.8765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 503.0765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 526.2765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 549.4765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 572.6765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1287.4,
+            "y": 595.8765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 503.0765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 526.2765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 549.4765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 572.6765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          },
+          {
+            "x": 1337.8,
+            "y": 595.8765625,
+            "underlying": "IMG",
+            "imageAncestor": false
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "message": "page.waitForTimeout: Target page, context or browser has been closed",
+    "stack": "page.waitForTimeout: Target page, context or browser has been closed\n    at noFrameSample (/Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:280:14)\n    at async viewport74 (/Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:561:269)\n    at async /Users/creativo/Documents/command-center/docs/product/workshop-game-evidence/verify-phase-7-4.cjs:824:229"
+  }
+}

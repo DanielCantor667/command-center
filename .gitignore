@@ -50,3 +50,4 @@ coverage/
 # Heavy verification captures, kept locally
 docs/product/portfolio-3d-evidence/**/*.png
 docs/product/workshop-game-evidence/**/*.png
+docs/product/workshop-game-evidence/**/*.jpg

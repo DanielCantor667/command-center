@@ -1,0 +1,493 @@
+{
+  "passed": true,
+  "recordedAt": "2026-10-08T20:06:58.042Z",
+  "cases": 16,
+  "scenarios": 39,
+  "environment": {
+    "browser": "154.0.8037.98",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "glbBytes": {
+    "core": 3678840,
+    "rooms": [
+      {
+        "id": "kliniu",
+        "bytes": 1001592,
+        "triangles": 7304
+      },
+      {
+        "id": "lorigine",
+        "bytes": 823904,
+        "triangles": 7396
+      },
+      {
+        "id": "academy",
+        "bytes": 794768,
+        "triangles": 8036
+      },
+      {
+        "id": "drokex",
+        "bytes": 665616,
+        "triangles": 3004
+      }
+    ]
+  },
+  "viewports": [
+    {
+      "size": "1440x1000",
+      "coreFirstUsableMs": 838.3000000007451,
+      "dpr": 1.5,
+      "shadowMap": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "idle": {
+        "sampledMs": 852.3999999985099,
+        "renderedFrames": 0
+      },
+      "rooms": [
+        {
+          "room": "kliniu",
+          "bytes": 1001592,
+          "fps": 60.20696142991533,
+          "p95IntervalMs": 17.300000000745058,
+          "p95CpuSubmitMs": 0.4000000022351742,
+          "maxDrawCalls": 28,
+          "maxTriangles": 58881,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 340.6000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1932.6000000014901
+        },
+        {
+          "room": "lorigine",
+          "bytes": 823904,
+          "fps": 60.18808777429467,
+          "p95IntervalMs": 17.5,
+          "p95CpuSubmitMs": 0.4000000022351742,
+          "maxDrawCalls": 31,
+          "maxTriangles": 65941,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 339.69999999925494,
+          "roomLoadingStateToActualDrawAtPoseMs": 1951.300000000745
+        },
+        {
+          "room": "academy",
+          "bytes": 794768,
+          "fps": 60.30088275513499,
+          "p95IntervalMs": 17.100000001490116,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 26,
+          "maxTriangles": 59601,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 344.5,
+          "roomLoadingStateToActualDrawAtPoseMs": 1967.1000000014901
+        },
+        {
+          "room": "drokex",
+          "bytes": 665616,
+          "fps": 60.28589185829708,
+          "p95IntervalMs": 17.800000000745058,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 23,
+          "maxTriangles": 53656,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 343.69999999925494,
+          "roomLoadingStateToActualDrawAtPoseMs": 1968.300000000745
+        }
+      ]
+    },
+    {
+      "size": "1920x1080",
+      "coreFirstUsableMs": 820.1999999992549,
+      "dpr": 1.5,
+      "shadowMap": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "idle": {
+        "sampledMs": 853.1999999992549,
+        "renderedFrames": 0
+      },
+      "rooms": [
+        {
+          "room": "kliniu",
+          "bytes": 1001592,
+          "fps": 60.04704717103471,
+          "p95IntervalMs": 17.199999999254942,
+          "p95CpuSubmitMs": 0.3999999985098839,
+          "maxDrawCalls": 28,
+          "maxTriangles": 58913,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 341.6000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1966.6000000014901
+        },
+        {
+          "room": "lorigine",
+          "bytes": 823904,
+          "fps": 60.06935843459191,
+          "p95IntervalMs": 17.399999998509884,
+          "p95CpuSubmitMs": 0.3999999985098839,
+          "maxDrawCalls": 33,
+          "maxTriangles": 66221,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 341.8999999985099,
+          "roomLoadingStateToActualDrawAtPoseMs": 1969.0999999977648
+        },
+        {
+          "room": "academy",
+          "bytes": 794768,
+          "fps": 60.3459002114378,
+          "p95IntervalMs": 17.5,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 27,
+          "maxTriangles": 60041,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 344.80000000074506,
+          "roomLoadingStateToActualDrawAtPoseMs": 1967.7000000029802
+        },
+        {
+          "room": "drokex",
+          "bytes": 665616,
+          "fps": 60.117756430120856,
+          "p95IntervalMs": 17.599999997764826,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 24,
+          "maxTriangles": 53872,
+          "pixelDiff": 1.2056327160493827e-7,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 342,
+          "roomLoadingStateToActualDrawAtPoseMs": 1968.300000000745
+        }
+      ]
+    },
+    {
+      "size": "390x844",
+      "coreFirstUsableMs": 805.6000000014901,
+      "dpr": 1,
+      "shadowMap": [
+        [
+          1024,
+          1024
+        ]
+      ],
+      "idle": {
+        "sampledMs": 852.6999999992549,
+        "renderedFrames": 0
+      },
+      "rooms": [
+        {
+          "room": "kliniu",
+          "bytes": 1001592,
+          "fps": 60.039613765728234,
+          "p95IntervalMs": 17.100000001490116,
+          "p95CpuSubmitMs": 0.5999999977648258,
+          "maxDrawCalls": 24,
+          "maxTriangles": 57677,
+          "pixelDiff": 0.000005886195163446348,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 339.5999999977648,
+          "roomLoadingStateToActualDrawAtPoseMs": 1965.199999999255
+        },
+        {
+          "room": "lorigine",
+          "bytes": 823904,
+          "fps": 60.203574975201626,
+          "p95IntervalMs": 17.5,
+          "p95CpuSubmitMs": 0.5,
+          "maxDrawCalls": 28,
+          "maxTriangles": 63873,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 341.30000000074506,
+          "roomLoadingStateToActualDrawAtPoseMs": 1967.199999999255
+        },
+        {
+          "room": "academy",
+          "bytes": 794768,
+          "fps": 60.07885349512843,
+          "p95IntervalMs": 17.800000000745058,
+          "p95CpuSubmitMs": 0.5,
+          "maxDrawCalls": 21,
+          "maxTriangles": 56705,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 338.1000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1934.8999999985099
+        },
+        {
+          "room": "drokex",
+          "bytes": 665616,
+          "fps": 60.36092097075296,
+          "p95IntervalMs": 17.700000002980232,
+          "p95CpuSubmitMs": 0.4000000022351742,
+          "maxDrawCalls": 22,
+          "maxTriangles": 52724,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 345.1000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1967.699999999255
+        }
+      ]
+    },
+    {
+      "size": "320x568",
+      "coreFirstUsableMs": 789.0999999977648,
+      "dpr": 1,
+      "shadowMap": [
+        [
+          1024,
+          1024
+        ]
+      ],
+      "idle": {
+        "sampledMs": 852.1999999992549,
+        "renderedFrames": 0
+      },
+      "rooms": [
+        {
+          "room": "kliniu",
+          "bytes": 1001592,
+          "fps": 60.226002731984735,
+          "p95IntervalMs": 17.299999997019768,
+          "p95CpuSubmitMs": 0.3999999985098839,
+          "maxDrawCalls": 24,
+          "maxTriangles": 57677,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 343.1000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1964.5
+        },
+        {
+          "room": "lorigine",
+          "bytes": 823904,
+          "fps": 60.25593241407602,
+          "p95IntervalMs": 17.300000000745058,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 28,
+          "maxTriangles": 63873,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 344.19999999925494,
+          "roomLoadingStateToActualDrawAtPoseMs": 1968.199999999255
+        },
+        {
+          "room": "academy",
+          "bytes": 794768,
+          "fps": 60.244744273611545,
+          "p95IntervalMs": 17.300000000745058,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 21,
+          "maxTriangles": 57761,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 341.6000000014901,
+          "roomLoadingStateToActualDrawAtPoseMs": 1951.3999999985099
+        },
+        {
+          "room": "drokex",
+          "bytes": 665616,
+          "fps": 60.28214529869787,
+          "p95IntervalMs": 17.300000000745058,
+          "p95CpuSubmitMs": 0.30000000074505806,
+          "maxDrawCalls": 22,
+          "maxTriangles": 52724,
+          "pixelDiff": 0,
+          "pausedFrames": 0,
+          "visibilityFrames": 0,
+          "roomLoadingStateToMountedMs": 343.5999999977648,
+          "roomLoadingStateToActualDrawAtPoseMs": 1966.2999999970198
+        }
+      ]
+    }
+  ],
+  "memory": {
+    "baseline": {
+      "geometries": 70,
+      "textures": 21
+    },
+    "programs": 9,
+    "snapshots": [
+      {
+        "loop": 1,
+        "room": "kliniu",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "kliniu"
+        ]
+      },
+      {
+        "loop": 1,
+        "room": "lorigine",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "lorigine"
+        ]
+      },
+      {
+        "loop": 1,
+        "room": "academy",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "academy"
+        ]
+      },
+      {
+        "loop": 1,
+        "room": "drokex",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "drokex"
+        ]
+      },
+      {
+        "loop": 1,
+        "room": "hub",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": []
+      },
+      {
+        "loop": 2,
+        "room": "kliniu",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "kliniu"
+        ]
+      },
+      {
+        "loop": 2,
+        "room": "lorigine",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "lorigine"
+        ]
+      },
+      {
+        "loop": 2,
+        "room": "academy",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "academy"
+        ]
+      },
+      {
+        "loop": 2,
+        "room": "drokex",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": [
+          "drokex"
+        ]
+      },
+      {
+        "loop": 2,
+        "room": "hub",
+        "memory": {
+          "geometries": 70,
+          "textures": 21
+        },
+        "programs": 9,
+        "visibleRooms": []
+      }
+    ],
+    "idle": {
+      "sampledMs": 853.5,
+      "renderedFrames": 0
+    }
+  },
+  "visibility": [
+    {
+      "name": "Hidden world / resize / main renderer stays paused",
+      "sampledMs": 548.6999999992549,
+      "frames": 0
+    },
+    {
+      "name": "Persistent hidden case / two resizes / visibility events / return pose",
+      "sampledMs": 921.1000000014901,
+      "frames": 0
+    }
+  ],
+  "retryFirstCore": {
+    "at": 3411.900000002235,
+    "rendererFrame": 27,
+    "camera": [
+      -1.8,
+      1.65,
+      14
+    ]
+  },
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ]
+}

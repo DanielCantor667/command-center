@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "totalBytes": 4600212,
+  "assets": [
+    {
+      "filename": "workshop-shell-v1.glb",
+      "bytes": 4542140,
+      "triangles": 62633,
+      "primitives": 15,
+      "materials": 15,
+      "embeddedImages": 5,
+      "normalMappedMaterials": 2
+    },
+    {
+      "filename": "workshop-door-v1.glb",
+      "bytes": 58072,
+      "triangles": 980,
+      "primitives": 3,
+      "materials": 3,
+      "embeddedImages": 0,
+      "normalMappedMaterials": 0
+    }
+  ]
+}

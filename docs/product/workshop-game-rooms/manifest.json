@@ -1,0 +1,466 @@
+{
+  "version": 2,
+  "phase": "7.3",
+  "units": "metres",
+  "up": "Y",
+  "generator": "blender/generate_workshop_rooms.py",
+  "source": "blender/scenes/workshop-game-v2.blend",
+  "blender": "5.1.2",
+  "coordinateMap": "Blender (Three.x,-Three.z,Three.y); GLTF Y-up export",
+  "shell": {
+    "url": "/models/workshop-game/workshop-shell-v2.glb",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "door": {
+    "url": "/models/workshop-game/workshop-door-v1.glb",
+    "preserved": true
+  },
+  "rooms": {
+    "kliniu": {
+      "name": "Kliniu",
+      "projectId": "kliniu",
+      "portal": [
+        -5.1,
+        0,
+        -3
+      ],
+      "facing": "+Z",
+      "position": [
+        -5.1,
+        1.65,
+        -4
+      ],
+      "target": [
+        -5.1,
+        1.5,
+        -8.7
+      ],
+      "bounds": {
+        "min": [
+          -9.35,
+          0,
+          -9.72
+        ],
+        "max": [
+          -1.05,
+          2.75,
+          -3
+        ]
+      },
+      "evidence": {
+        "center": [
+          -5.1,
+          1.56,
+          -7.165
+        ],
+        "facing": "+Z",
+        "size": [
+          1.84,
+          1.04
+        ]
+      },
+      "url": "/models/workshop-game/room-kliniu-v1.glb",
+      "modelPosition": [
+        0,
+        0,
+        0
+      ],
+      "gateNode": "roomgate__kliniu"
+    },
+    "lorigine": {
+      "name": "L'ORIGINE",
+      "projectId": "lorigine",
+      "portal": [
+        4.8,
+        0,
+        -3
+      ],
+      "facing": "+Z",
+      "position": [
+        4.8,
+        1.65,
+        -4.1
+      ],
+      "target": [
+        4.8,
+        1.45,
+        -8.5
+      ],
+      "bounds": {
+        "min": [
+          1.05,
+          0,
+          -9.72
+        ],
+        "max": [
+          7.35,
+          2.75,
+          -3
+        ]
+      },
+      "evidence": {
+        "center": [
+          4.8,
+          1.66,
+          -6.785
+        ],
+        "facing": "+Z",
+        "size": [
+          1.82,
+          1.02
+        ]
+      },
+      "url": "/models/workshop-game/room-lorigine-v1.glb",
+      "modelPosition": [
+        0,
+        0,
+        0
+      ],
+      "gateNode": "roomgate__lorigine"
+    },
+    "academy": {
+      "name": "4U Studio Academy",
+      "projectId": "4ustudio-academy",
+      "portal": [
+        -4,
+        0,
+        5.7
+      ],
+      "facing": "+X",
+      "position": [
+        -6.4,
+        1.65,
+        5.7
+      ],
+      "target": [
+        -8.6,
+        1.4,
+        5.7
+      ],
+      "bounds": {
+        "min": [
+          -9.35,
+          0,
+          4.2
+        ],
+        "max": [
+          -4,
+          2.75,
+          7.65
+        ]
+      },
+      "evidence": {
+        "center": [
+          -8.73,
+          1.9,
+          5.7
+        ],
+        "facing": "+X",
+        "size": [
+          1.5,
+          0.84
+        ]
+      },
+      "url": "/models/workshop-game/room-academy-v1.glb",
+      "modelPosition": [
+        0,
+        0,
+        0
+      ],
+      "gateNode": "roomgate__academy"
+    },
+    "drokex": {
+      "name": "Drokex",
+      "projectId": "drokex",
+      "portal": [
+        4,
+        0,
+        5.7
+      ],
+      "facing": "-X",
+      "position": [
+        6.4,
+        1.65,
+        5.7
+      ],
+      "target": [
+        8.6,
+        1.4,
+        5.7
+      ],
+      "bounds": {
+        "min": [
+          4,
+          0,
+          4.2
+        ],
+        "max": [
+          9.35,
+          2.75,
+          7.65
+        ]
+      },
+      "evidence": {
+        "center": [
+          8.78,
+          1.75,
+          5.7
+        ],
+        "facing": "-X",
+        "size": [
+          1.55,
+          0.87
+        ]
+      },
+      "url": "/models/workshop-game/room-drokex-v1.glb",
+      "modelPosition": [
+        0,
+        0,
+        0
+      ],
+      "gateNode": "roomgate__drokex"
+    }
+  },
+  "stats": {
+    "shell": {
+      "bytes": 3620768,
+      "triangles": 51553,
+      "meshes": 19,
+      "materials": 16,
+      "images": 5,
+      "primitives": 19,
+      "nodes": [
+        "shell__concrete",
+        "shell__soil",
+        "shell__plaster",
+        "shell__glass",
+        "shell__greensteel",
+        "shell__brass",
+        "shell__graphite",
+        "shell__oak",
+        "shell__paper",
+        "shell__ceramic",
+        "shell__leaf",
+        "shell__leaflight",
+        "shell__warm",
+        "shell__steel_light",
+        "shell__teal",
+        "roomgate__kliniu",
+        "roomgate__lorigine",
+        "roomgate__academy",
+        "roomgate__drokex"
+      ],
+      "bounds": {
+        "min": [
+          -13.5,
+          -0.22999998927116394,
+          -10.15999984741211
+        ],
+        "max": [
+          13.5,
+          5.90269136428833,
+          18.299999237060547
+        ]
+      },
+      "uvPrimitives": 19,
+      "normalMappedMaterials": 2,
+      "externalResources": [],
+      "sha256": "3db50554ec6bbeff101e0aa4c3eb8ab4bde93acea7b6fc26c99c6df2927eaf79"
+    },
+    "kliniu": {
+      "bytes": 1001592,
+      "triangles": 7304,
+      "meshes": 10,
+      "materials": 10,
+      "images": 4,
+      "primitives": 10,
+      "nodes": [
+        "room__kliniu__teal",
+        "room__kliniu__paper",
+        "room__kliniu__oak",
+        "room__kliniu__warm",
+        "room__kliniu__steel_light",
+        "room__kliniu__greensteel",
+        "room__kliniu__graphite",
+        "room__kliniu__ivory",
+        "room__kliniu__concrete",
+        "room__kliniu__leaf"
+      ],
+      "bounds": {
+        "min": [
+          -9.080476760864258,
+          0,
+          -9.59000015258789
+        ],
+        "max": [
+          -1.3499999046325684,
+          2.75,
+          -4.231343746185303
+        ]
+      },
+      "uvPrimitives": 10,
+      "normalMappedMaterials": 2,
+      "externalResources": [],
+      "sha256": "640afd799e02954bd68141e1ecd534f9a445f980f4b7fb65f5d8b16c2b669ad4"
+    },
+    "lorigine": {
+      "bytes": 823904,
+      "triangles": 7396,
+      "meshes": 7,
+      "materials": 7,
+      "images": 4,
+      "primitives": 7,
+      "nodes": [
+        "room__lorigine__ivory",
+        "room__lorigine__espresso",
+        "room__lorigine__champagne",
+        "room__lorigine__oak",
+        "room__lorigine__concrete",
+        "room__lorigine__graphite",
+        "room__lorigine__leaf"
+      ],
+      "bounds": {
+        "min": [
+          1.130000114440918,
+          0,
+          -9.579999923706055
+        ],
+        "max": [
+          7.25,
+          2.75,
+          -4.202542304992676
+        ]
+      },
+      "uvPrimitives": 7,
+      "normalMappedMaterials": 2,
+      "externalResources": [],
+      "sha256": "292835b97704e0e14ff1bf7b6b53c90afce7d01cb1b7fce19527a215b41626c9"
+    },
+    "academy": {
+      "bytes": 794768,
+      "triangles": 8036,
+      "meshes": 9,
+      "materials": 9,
+      "images": 2,
+      "primitives": 9,
+      "nodes": [
+        "room__academy__acoustic",
+        "room__academy__paper",
+        "room__academy__oak",
+        "room__academy__espresso",
+        "room__academy__ivory",
+        "room__academy__graphite",
+        "room__academy__greensteel",
+        "room__academy__steel_light",
+        "room__academy__brass"
+      ],
+      "bounds": {
+        "min": [
+          -8.980000495910645,
+          0.004999995231628418,
+          4.184999942779541
+        ],
+        "max": [
+          -4.484999656677246,
+          2.744999885559082,
+          7.539999961853027
+        ]
+      },
+      "uvPrimitives": 9,
+      "normalMappedMaterials": 1,
+      "externalResources": [],
+      "sha256": "4c0b86b4d0193600d211b3ca485264d070068a4a3b66bd627ad2f5d80f3211b0"
+    },
+    "drokex": {
+      "bytes": 665616,
+      "triangles": 3004,
+      "meshes": 9,
+      "materials": 9,
+      "images": 4,
+      "primitives": 9,
+      "nodes": [
+        "room__drokex__graphite",
+        "room__drokex__paper",
+        "room__drokex__teal",
+        "room__drokex__ivory",
+        "room__drokex__brass",
+        "room__drokex__concrete",
+        "room__drokex__cyan",
+        "room__drokex__oak",
+        "room__drokex__greensteel"
+      ],
+      "bounds": {
+        "min": [
+          5.28000020980835,
+          0,
+          4.189999580383301
+        ],
+        "max": [
+          9.020000457763672,
+          2.744999885559082,
+          7.559999942779541
+        ]
+      },
+      "uvPrimitives": 9,
+      "normalMappedMaterials": 2,
+      "externalResources": [],
+      "sha256": "ec8dbdb82b6cc1147e153d903ab64900de6904d5c7fdf2618e272692522b5b2f"
+    }
+  },
+  "totalEssentialBytes": 3678840,
+  "doorStats": {
+    "bytes": 58072,
+    "triangles": 980,
+    "meshes": 3,
+    "materials": 3,
+    "images": 0,
+    "primitives": 3,
+    "nodes": [
+      "door__greensteel",
+      "door__brass",
+      "door__graphite"
+    ],
+    "bounds": {
+      "min": [
+        -1.7999999523162842,
+        0,
+        -0.21599936485290527
+      ],
+      "max": [
+        1.7999999523162842,
+        4.317500114440918,
+        0.1254996955394745
+      ]
+    },
+    "uvPrimitives": 3,
+    "normalMappedMaterials": 0,
+    "externalResources": [],
+    "sha256": "0154a0a8f4746ef6dbf8410728e67fa7eacaf49be67f6948a04a514fbd7cd8c7"
+  },
+  "portalDimensions": [
+    2.2,
+    2.5
+  ],
+  "separatorHeight": 2.75,
+  "preview": {
+    "renderer": "Blender Cycles reference only; acceptance uses actual web renderer",
+    "poses": "Exact room web poses; reference hub retained from7.2",
+    "lights": "Preview lighting not exported",
+    "gates": "Hidden only in reference renders; exported opaque by default"
+  },
+  "licence": "First-party original geometry for Daniel's portfolio. Existing first-party v1 kit/textures and Kliniu tabletop LOD reused. No third-party downloads, AI textures or screenshots invented.",
+  "sha256": {
+    "generator": "330ce236442b2ee65fdf8eb11a10caf24b6adf26d01ca2a66083a17a7861ee03",
+    "blend": "10c244b00acfedfe4345765d8e6fb809f076a729bb7c2617ee54a126e80a0557"
+  },
+  "preservedPhase72Sha256": {
+    "generator": "c347dc9b0f1c816d68b9bc83e8b965676448b047465e5b1883350bc217ed1857",
+    "blend": "71214aacbfb3d88c7820a843ead73be1aa02b151b2bd8f45e7eae66962d5059b",
+    "shell": "46df54dc87667afc097d0b5dff3c10b373d854d009a1f590ea448018ee1c9a2f",
+    "door": "0154a0a8f4746ef6dbf8410728e67fa7eacaf49be67f6948a04a514fbd7cd8c7"
+  }
+}

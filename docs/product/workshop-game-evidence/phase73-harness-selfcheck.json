@@ -1,0 +1,36 @@
+{
+  "kind": "Synthetic guard regression only; not browser/render evidence",
+  "passed": true,
+  "cases": [
+    {
+      "name": "valid rear route",
+      "expectedRejection": false,
+      "passed": true
+    },
+    {
+      "name": "continuous bench crossing rejected",
+      "expectedRejection": true,
+      "passed": true
+    },
+    {
+      "name": "exact rear wall sample outside portal rejected",
+      "expectedRejection": true,
+      "passed": true
+    },
+    {
+      "name": "exact rear portal sample accepted",
+      "expectedRejection": false,
+      "passed": true
+    },
+    {
+      "name": "exact front wall sample outside portal rejected",
+      "expectedRejection": true,
+      "passed": true
+    },
+    {
+      "name": "front portal segment accepted",
+      "expectedRejection": false,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,2202 @@
+{
+  "passed": true,
+  "section": "readers",
+  "recordedAt": "2026-10-09T14:00:36.086Z",
+  "base": "http://127.0.0.1:3001",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "channel": "chrome",
+    "headless": true,
+    "platform": "darwin",
+    "architecture": "arm64",
+    "release": "27.0.0",
+    "mode": "local Next dev",
+    "cacheDisabled": true
+  },
+  "viewports": [],
+  "scenarios": [
+    {
+      "name": "34 canonical technologies / search/category/empty / seven real related projects / direct reader no GPU / selection and filters survive case",
+      "passed": true,
+      "catalog": {
+        "catalogCount": 34,
+        "emptySearch": true,
+        "categoryFiltering": true,
+        "htmlOnly": true,
+        "associations": [
+          {
+            "technologyId": "typescript",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "vevi",
+              "intranet-ess",
+              "lorigine",
+              "4ustudio-academy"
+            ]
+          },
+          {
+            "technologyId": "javascript",
+            "projectIds": [
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "php",
+            "projectIds": []
+          },
+          {
+            "technologyId": "python",
+            "projectIds": []
+          },
+          {
+            "technologyId": "sql",
+            "projectIds": []
+          },
+          {
+            "technologyId": "react",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "vevi",
+              "intranet-ess",
+              "lorigine",
+              "4ustudio-academy",
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "nextjs",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "intranet-ess",
+              "lorigine",
+              "4ustudio-academy",
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "react-router",
+            "projectIds": []
+          },
+          {
+            "technologyId": "tailwind",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "intranet-ess",
+              "lorigine",
+              "4ustudio-academy"
+            ]
+          },
+          {
+            "technologyId": "motion",
+            "projectIds": [
+              "lorigine"
+            ]
+          },
+          {
+            "technologyId": "gsap",
+            "projectIds": [
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "threejs",
+            "projectIds": [
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "spline",
+            "projectIds": [
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "nodejs",
+            "projectIds": []
+          },
+          {
+            "technologyId": "server-actions",
+            "projectIds": []
+          },
+          {
+            "technologyId": "rest",
+            "projectIds": []
+          },
+          {
+            "technologyId": "sse",
+            "projectIds": [
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "mvc",
+            "projectIds": []
+          },
+          {
+            "technologyId": "postgresql",
+            "projectIds": [
+              "kliniu",
+              "vevi",
+              "intranet-ess",
+              "lorigine",
+              "4ustudio-academy",
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "prisma",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "vevi",
+              "intranet-ess",
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "mysql",
+            "projectIds": []
+          },
+          {
+            "technologyId": "sql-server",
+            "projectIds": []
+          },
+          {
+            "technologyId": "supabase",
+            "projectIds": [
+              "command-center",
+              "kliniu",
+              "vevi",
+              "4ustudio-academy"
+            ]
+          },
+          {
+            "technologyId": "openai",
+            "projectIds": [
+              "kliniu",
+              "drokex"
+            ]
+          },
+          {
+            "technologyId": "ai-sdk",
+            "projectIds": [
+              "lorigine"
+            ]
+          },
+          {
+            "technologyId": "wompi",
+            "projectIds": [
+              "kliniu"
+            ]
+          },
+          {
+            "technologyId": "bold",
+            "projectIds": [
+              "lorigine",
+              "4ustudio-academy"
+            ]
+          },
+          {
+            "technologyId": "kommo",
+            "projectIds": [
+              "kliniu"
+            ]
+          },
+          {
+            "technologyId": "odoo",
+            "projectIds": [
+              "kliniu"
+            ]
+          },
+          {
+            "technologyId": "whatsapp",
+            "projectIds": [
+              "kliniu",
+              "lorigine",
+              "4ustudio-academy"
+            ]
+          },
+          {
+            "technologyId": "git",
+            "projectIds": []
+          },
+          {
+            "technologyId": "github",
+            "projectIds": []
+          },
+          {
+            "technologyId": "vercel",
+            "projectIds": []
+          },
+          {
+            "technologyId": "playwright",
+            "projectIds": [
+              "kliniu",
+              "lorigine",
+              "4ustudio-academy"
+            ]
+          }
+        ]
+      },
+      "caseProofs": [
+        {
+          "projectId": "command-center",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "kliniu",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "vevi",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "intranet-ess",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "lorigine",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "4ustudio-academy",
+          "technologyId": "typescript",
+          "canvasCount": 0
+        },
+        {
+          "projectId": "drokex",
+          "technologyId": "javascript",
+          "canvasCount": 0
+        }
+      ],
+      "filteredCount": 1
+    }
+  ],
+  "limitations": [
+    "Local Next dev server. Transfer and render observations are not production benchmarks.",
+    "Mobile sizes use desktop Chrome emulation. Physical mobile GPU, heat, battery and touch ergonomics are not measured.",
+    "GLB byte budgets include embedded images; they exclude JavaScript, CSS, poster and evidence screenshots.",
+    "Frame timings are actual main camera renders under the QA hook. CPU submit time is not GPU execution time. Idle and case pause are separate.",
+    "QA raycast review cameras are explicitly recorded; production drag and navigation are exercised separately.",
+    "Memory counts are renderer.info live resources after warm-cache loops, not operating-system RAM or VRAM bytes."
+  ],
+  "assets": {
+    "core": [
+      {
+        "url": "/models/workshop-game/workshop-shell-v2.glb",
+        "fileBytes": 3620768,
+        "meshNames": [
+          "shell__concrete",
+          "shell__soil",
+          "shell__plaster",
+          "shell__glass",
+          "shell__greensteel",
+          "shell__brass",
+          "shell__graphite",
+          "shell__oak",
+          "shell__paper",
+          "shell__ceramic",
+          "shell__leaf",
+          "shell__leaflight",
+          "shell__warm",
+          "shell__steel_light",
+          "shell__teal",
+          "roomgate__kliniu",
+          "roomgate__lorigine",
+          "roomgate__academy",
+          "roomgate__drokex"
+        ],
+        "triangles": 51553,
+        "primitives": 19,
+        "materials": 16,
+        "images": 5
+      },
+      {
+        "url": "/models/workshop-game/workshop-door-v1.glb",
+        "fileBytes": 58072,
+        "meshNames": [
+          "door__greensteel",
+          "door__brass",
+          "door__graphite"
+        ],
+        "triangles": 980,
+        "primitives": 3,
+        "materials": 3,
+        "images": 0
+      },
+      {
+        "url": "/models/workshop-game/workshop-stations-v1.glb",
+        "fileBytes": 786652,
+        "meshNames": [
+          "station__greensteel",
+          "station__oak",
+          "station__paper",
+          "station__graphite",
+          "station__brass",
+          "station__steel_light",
+          "stationhit__technologies",
+          "stationhit__trajectory",
+          "stationhit__contact"
+        ],
+        "triangles": 7860,
+        "primitives": 9,
+        "materials": 6,
+        "images": 2
+      }
+    ],
+    "rooms": [
+      {
+        "url": "/models/workshop-game/room-kliniu-v1.glb",
+        "id": "kliniu",
+        "fileBytes": 1001592,
+        "meshNames": [
+          "room__kliniu__teal",
+          "room__kliniu__paper",
+          "room__kliniu__oak",
+          "room__kliniu__warm",
+          "room__kliniu__steel_light",
+          "room__kliniu__greensteel",
+          "room__kliniu__graphite",
+          "room__kliniu__ivory",
+          "room__kliniu__concrete",
+          "room__kliniu__leaf"
+        ],
+        "triangles": 7304,
+        "primitives": 10,
+        "materials": 10,
+        "images": 4,
+        "camera": [
+          -5.1,
+          1.65,
+          -4
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-lorigine-v1.glb",
+        "id": "lorigine",
+        "fileBytes": 823904,
+        "meshNames": [
+          "room__lorigine__ivory",
+          "room__lorigine__espresso",
+          "room__lorigine__champagne",
+          "room__lorigine__oak",
+          "room__lorigine__concrete",
+          "room__lorigine__graphite",
+          "room__lorigine__leaf"
+        ],
+        "triangles": 7396,
+        "primitives": 7,
+        "materials": 7,
+        "images": 4,
+        "camera": [
+          4.8,
+          1.65,
+          -4.1
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-academy-v1.glb",
+        "id": "academy",
+        "fileBytes": 794768,
+        "meshNames": [
+          "room__academy__acoustic",
+          "room__academy__paper",
+          "room__academy__oak",
+          "room__academy__espresso",
+          "room__academy__ivory",
+          "room__academy__graphite",
+          "room__academy__greensteel",
+          "room__academy__steel_light",
+          "room__academy__brass"
+        ],
+        "triangles": 8036,
+        "primitives": 9,
+        "materials": 9,
+        "images": 2,
+        "camera": [
+          -6.4,
+          1.65,
+          5.7
+        ]
+      },
+      {
+        "url": "/models/workshop-game/room-drokex-v1.glb",
+        "id": "drokex",
+        "fileBytes": 665616,
+        "meshNames": [
+          "room__drokex__graphite",
+          "room__drokex__paper",
+          "room__drokex__teal",
+          "room__drokex__ivory",
+          "room__drokex__brass",
+          "room__drokex__concrete",
+          "room__drokex__cyan",
+          "room__drokex__oak",
+          "room__drokex__greensteel"
+        ],
+        "triangles": 3004,
+        "primitives": 9,
+        "materials": 9,
+        "images": 4,
+        "camera": [
+          6.4,
+          1.65,
+          5.7
+        ]
+      }
+    ],
+    "stations": [
+      {
+        "id": "technologies",
+        "camera": [
+          -6.8,
+          1.65,
+          1.55
+        ],
+        "meshNames": [
+          "stationhit__technologies"
+        ]
+      },
+      {
+        "id": "trajectory",
+        "camera": [
+          -7.7,
+          1.65,
+          0.8
+        ],
+        "meshNames": [
+          "stationhit__trajectory"
+        ]
+      },
+      {
+        "id": "contact",
+        "camera": [
+          6.7,
+          1.65,
+          2.7
+        ],
+        "meshNames": [
+          "stationhit__contact"
+        ]
+      }
+    ]
+  },
+  "canonical": {
+    "technologyCount": 34,
+    "publicProjectIds": [
+      "command-center",
+      "kliniu",
+      "vevi",
+      "intranet-ess",
+      "lorigine",
+      "4ustudio-academy",
+      "drokex"
+    ],
+    "career": {
+      "experience": [
+        {
+          "id": "products",
+          "title": "Full-Stack Developer",
+          "organization": "Productos y plataformas web",
+          "period": "2025 — Presente",
+          "description": "Diseño, desarrollo y mantenimiento de productos en producción: arquitectura, interfaces, backend, integraciones, pruebas y despliegue."
+        },
+        {
+          "id": "agrocinco",
+          "title": "Práctica en desarrollo de software",
+          "organization": "Agrocinco · Bogotá",
+          "period": "Ene — Dic 2025",
+          "description": "Aplicación para gestionar pedidos e inventario, automatización de cargas desde PDF y Excel, y validaciones para mejorar la calidad de los datos."
+        }
+      ],
+      "education": [
+        {
+          "id": "uniminuto",
+          "title": "Ingeniería de Software",
+          "organization": "Corporación Universitaria Minuto de Dios",
+          "period": "2026 — Presente"
+        },
+        {
+          "id": "uniagustiniana",
+          "title": "Tecnología en Desarrollo de Software",
+          "organization": "Universitaria Agustiniana",
+          "period": "2023 — 2025"
+        }
+      ],
+      "languages": [
+        {
+          "name": "Español",
+          "level": "Nativo"
+        },
+        {
+          "name": "Inglés",
+          "level": "B2 · Intermedio-alto"
+        }
+      ]
+    },
+    "profile": {
+      "name": "Daniel Cantor",
+      "location": "Bogotá, Colombia",
+      "role": "Full-Stack Developer",
+      "availability": "Disponible para colaborar en proyectos freelance donde la arquitectura, la experiencia de producto y la calidad de ejecución importan desde el primer día.",
+      "github": "https://github.com/DanielCantor667",
+      "linkedin": "https://www.linkedin.com/in/danielcantorayala"
+    }
+  },
+  "stationKit": {
+    "url": "/models/workshop-game/workshop-stations-v1.glb",
+    "fileBytes": 786652,
+    "meshNames": [
+      "station__greensteel",
+      "station__oak",
+      "station__paper",
+      "station__graphite",
+      "station__brass",
+      "station__steel_light",
+      "stationhit__technologies",
+      "stationhit__trajectory",
+      "stationhit__contact"
+    ],
+    "triangles": 7860,
+    "primitives": 9,
+    "materials": 6,
+    "images": 2
+  },
+  "lastClosedContext": {
+    "url": "http://127.0.0.1:3001/",
+    "title": "Daniel Cantor — Portafolio de ingeniería",
+    "state": {
+      "workshopState": "landing",
+      "worldPoint": "entrance",
+      "worldDestination": "entrance",
+      "roomActive": "",
+      "roomPending": ""
+    },
+    "active": "<button class=\"workshop-game_primary__yiOX6\" type=\"button\">Entrar al taller<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-door-open\" aria-hidden=\"true\"><path d=\"M10 21H2\"></path><path d=\"M10 3H7a2 2 0 00-2 2v16\"></path><path d=\"M14 12h.01\"></path><path d=\"M19 21V5a2 2 0 00-1.675-1.974l-6.163-1.013A1 1 0 0010 3v18a1 1 0 001.124.992z\"></path><path d=\"M22 21h-3\"></path></svg></button>",
+    "activeTag": "BUTTON",
+    "text": "Daniel Cantor\nFull-Stack Developer\nMapa\nVer portafolio\n\nBogotá, Colombia\n\nEl taller de Daniel\n\nUn lugar para explorar\nlo que construyo.\n\nEntrar al taller\nRecorre el espacio con clic o toque.\nEl taller de Daniel\n3D al entrar",
+    "keeper": {
+      "style": "transition-property: none;",
+      "computedVisibility": "visible",
+      "inert": false,
+      "ariaHidden": null
+    },
+    "reducedMotion": true,
+    "states": [
+      {
+        "at": 51.8000000002794,
+        "status": "landing",
+        "point": "entrance",
+        "destination": "entrance"
+      }
+    ],
+    "focusCalls": [
+      {
+        "at": 2555.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_5_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2633.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2636.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2712,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2713.5,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2713.600000000093,
+        "target": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": false,
+        "ancestorsAfter": [
+          {
+            "tag": "BODY",
+            "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+            "id": "",
+            "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          },
+          {
+            "tag": "HTML",
+            "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+            "id": "",
+            "class": "",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          }
+        ],
+        "keeperAnimations": []
+      },
+      {
+        "at": 2713.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2713.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2779.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2782.399999999907,
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2844.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2846.2000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2846.3000000002794,
+        "target": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "succeeded": false,
+        "ancestorsAfter": [
+          {
+            "tag": "BODY",
+            "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+            "id": "",
+            "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          },
+          {
+            "tag": "HTML",
+            "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+            "id": "",
+            "class": "",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          }
+        ],
+        "keeperAnimations": []
+      },
+      {
+        "at": 2846.399999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2846.5,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2913.100000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2915.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2978.3000000002794,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2979.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2979.8000000002794,
+        "target": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "succeeded": false,
+        "ancestorsAfter": [
+          {
+            "tag": "BODY",
+            "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+            "id": "",
+            "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          },
+          {
+            "tag": "HTML",
+            "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+            "id": "",
+            "class": "",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          }
+        ],
+        "keeperAnimations": []
+      },
+      {
+        "at": 2979.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 2979.899999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3099.2000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3100.7000000001863,
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3131.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3132.399999999907,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3132.5,
+        "target": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "succeeded": false,
+        "ancestorsAfter": [
+          {
+            "tag": "BODY",
+            "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+            "id": "",
+            "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          },
+          {
+            "tag": "HTML",
+            "text": "(function () {\n  try {\n    var key = undefined;\n    var stored = localStorage.getItem(key);\n    var theme = stored === '",
+            "id": "",
+            "class": "",
+            "inlineVisibility": "",
+            "inlineDisplay": "",
+            "computedVisibility": "visible",
+            "computedDisplay": "block",
+            "inert": false,
+            "transitionProperty": "all",
+            "transitionDuration": "1e-05s",
+            "animationName": "none"
+          }
+        ],
+        "keeperAnimations": []
+      },
+      {
+        "at": 3132.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3132.600000000093,
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": null,
+        "beforeKeeperInlineDisplay": null,
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "block",
+        "activeAfter": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "succeeded": true
+      },
+      {
+        "at": 3207,
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "connected": true,
+        "activeBefore": {
+          "tag": "BODY",
+          "text": "Daniel CantorFull-Stack DeveloperMapaVer portafolioBogotá, ColombiaEl taller de DanielUn lugar para explorarlo que const",
+          "id": "",
+          "class": "__variable_246ccd __variable_c29908 min-h-screen bg-background-primary text-text-primary antialiased"
+        },
+        "beforeInert": false,
+        "beforeKeeperInlineVisibility": "",
+        "beforeKeeperInlineDisplay": "",
+        "documentHidden": false,
+        "computedVisibilityAfter": "visible",
+        "computedDisplayAfter": "inline-flex",
+        "activeAfter": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "succeeded": true
+      }
+    ],
+    "focusEvents": [
+      {
+        "at": 2709.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2709.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "L'ORIGINE",
+          "id": "lorigine-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2711.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2713.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2743.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "TypeScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2743.3000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "TypeScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_6_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2776.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "TypeScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "4U Studio AcademyVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2776.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "4U Studio AcademyVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "TypeScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2779.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "4U Studio AcademyVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2782.2000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2842.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2842.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "4U Studio Academy",
+          "id": "academy-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2844.5,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2846.2000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2876,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "JavaScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2876.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "JavaScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_7_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2909.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "JavaScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "DrokexVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2909.7000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "DrokexVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "JavaScript",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2912.600000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "DrokexVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2915.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2976,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2976,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Drokex",
+          "id": "drokex-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 2978,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 2979.7000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3010.100000000093,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Next.js",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3010.2000000001863,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Next.js",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_8_",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3042.8000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Next.js",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3042.899999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Next.js",
+          "id": "",
+          "class": "technology-explorer_tile__xF3Vn"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3048.399999999907,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "related": {
+          "tag": "INPUT",
+          "text": "",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3048.600000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "INPUT",
+          "text": "",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Ver stack",
+          "id": "",
+          "class": "technology-explorer_stackLink__Rvqnk"
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3092.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "INPUT",
+          "text": "",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "KliniuVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3092.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "KliniuVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "INPUT",
+          "text": "",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3098.8000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "KliniuVer proyecto",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3100.5,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3125.8000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "related": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3125.8000000002794,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": {
+          "tag": "H1",
+          "text": "Kliniu",
+          "id": "kliniu-title",
+          "class": ""
+        },
+        "targetInert": false
+      },
+      {
+        "at": 3131.2000000001863,
+        "type": "focusout",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Volver a tecnologías",
+          "id": "",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3132.399999999907,
+        "type": "focusin",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3202.3000000002794,
+        "type": "focusout",
+        "target": {
+          "tag": "H1",
+          "text": "Tecnologías",
+          "id": "_r_9_",
+          "class": ""
+        },
+        "related": null,
+        "targetInert": false
+      },
+      {
+        "at": 3207.100000000093,
+        "type": "focusin",
+        "target": {
+          "tag": "BUTTON",
+          "text": "Entrar al taller",
+          "id": "",
+          "class": "workshop-game_primary__yiOX6"
+        },
+        "related": null,
+        "targetInert": false
+      }
+    ]
+  }
+}

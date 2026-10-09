@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "phase": "7.2",
+  "units": "metres",
+  "up": "Y",
+  "generator": "blender/generate_workshop_game.py",
+  "blender": "5.1.2",
+  "source": "blender/scenes/workshop-game-v1.blend",
+  "stats": {
+    "shell": {
+      "bytes": 4542140,
+      "triangles": 62633,
+      "meshes": 15,
+      "materials": 15,
+      "images": 5,
+      "primitives": 15,
+      "nodes": [
+        "shell__concrete",
+        "shell__soil",
+        "shell__plaster",
+        "shell__glass",
+        "shell__greensteel",
+        "shell__brass",
+        "shell__graphite",
+        "shell__oak",
+        "shell__paper",
+        "shell__ceramic",
+        "shell__leaf",
+        "shell__leaflight",
+        "shell__teal",
+        "shell__warm",
+        "shell__steel_light"
+      ]
+    },
+    "door": {
+      "bytes": 58072,
+      "triangles": 980,
+      "meshes": 3,
+      "materials": 3,
+      "images": 0,
+      "primitives": 3,
+      "nodes": [
+        "door__greensteel",
+        "door__brass",
+        "door__graphite"
+      ]
+    }
+  },
+  "totalEssentialBytes": 4600212,
+  "coordinateMap": "Blender (x,-Three.z,Three.y); glTF Y-up export",
+  "shell": {
+    "url": "/models/workshop-game/workshop-shell-v1.glb",
+    "position": [
+      0,
+      0,
+      0
+    ]
+  },
+  "door": {
+    "url": "/models/workshop-game/workshop-door-v1.glb",
+    "pivot": [
+      0,
+      0,
+      0
+    ],
+    "positionClosed": [
+      -1.8,
+      0,
+      8.05
+    ],
+    "positionOpen": [
+      -7.4,
+      0,
+      8.05
+    ],
+    "panelDimensions": [
+      3.6,
+      4.3,
+      0.16
+    ],
+    "fixedRightPanel": {
+      "position": [
+        1.8,
+        2.15,
+        8.08
+      ],
+      "dimensions": [
+        3.6,
+        4.3,
+        0.14
+      ]
+    },
+    "fixedLateralPanels": {
+      "centersX": [
+        -3.89,
+        3.89
+      ],
+      "dimensions": [
+        0.58,
+        4.3,
+        0.14
+      ]
+    }
+  },
+  "workbenchTopY": 1.0,
+  "cameras": {
+    "entrance": {
+      "position": [
+        -1.8,
+        1.65,
+        14
+      ],
+      "target": [
+        -0.5,
+        1.6,
+        -4
+      ]
+    },
+    "hub": {
+      "position": [
+        0,
+        1.65,
+        5.1
+      ],
+      "target": [
+        0,
+        1.6,
+        -0.8
+      ]
+    }
+  },
+  "entranceAdaptation": "Only entrance shifted left 1.8m to look through the open left door; all interior camera points remain unchanged.",
+  "previewLights": "Reference only; not exported. Web recreates illumination.",
+  "materials": [
+    "concrete",
+    "plaster",
+    "oak",
+    "greensteel",
+    "brass",
+    "graphite",
+    "steel_light",
+    "paper",
+    "teal",
+    "glass",
+    "leaf",
+    "leaflight",
+    "ceramic",
+    "soil",
+    "warm"
+  ],
+  "textures": [
+    "concrete-normal-own-256.png",
+    "concrete-own-512.png",
+    "oak-normal-own-256.png",
+    "oak-own-512.png",
+    "plaster-own-256.png"
+  ],
+  "licence": "First-party original geometry/textures created for Daniel's portfolio; no external assets. Existing first-party kliniu-interactive-v4.glb reused as tabletop LOD.",
+  "scope": "Access/nave/architectural mezzanine/workbench/existing Kliniu. No Phase 7.3 rooms or new interactions.",
+  "sha256": {
+    "generator": "c347dc9b0f1c816d68b9bc83e8b965676448b047465e5b1883350bc217ed1857",
+    "blend": "71214aacbfb3d88c7820a843ead73be1aa02b151b2bd8f45e7eae66962d5059b",
+    "shell": "46df54dc87667afc097d0b5dff3c10b373d854d009a1f590ea448018ee1c9a2f",
+    "door": "0154a0a8f4746ef6dbf8410728e67fa7eacaf49be67f6948a04a514fbd7cd8c7"
+  }
+}
