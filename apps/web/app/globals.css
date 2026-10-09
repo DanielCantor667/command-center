@@ -15,3 +15,59 @@
 [data-project='4ustudio-academy'] { --project-accent: #9b450c; --project-wash: #f0e4d6; }
 [data-project='lorigine'] { --project-accent: #764121; --project-wash: #e8dfd2; }
 [data-project='drokex'] { --project-accent: #416b13; --project-wash: #e4e9df; }
+
+::view-transition-group(kliniu-surface) {
+  animation-duration: 680ms;
+  animation-timing-function: cubic-bezier(.2, .7, .2, 1);
+}
+::view-transition-old(kliniu-surface),
+::view-transition-new(kliniu-surface) {
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  mix-blend-mode: normal;
+}
+
+html[data-portfolio-transition='return'] { --return-x: 12.5%; --return-y: 88%; }
+html[data-portfolio-transition='return'][data-portfolio-project='lorigine'] { --return-x: 37.5%; }
+html[data-portfolio-transition='return'][data-portfolio-project='4ustudio-academy'] { --return-x: 62.5%; }
+html[data-portfolio-transition='return'][data-portfolio-project='drokex'] { --return-x: 87.5%; }
+html[data-portfolio-transition] [data-project='kliniu'] img { view-transition-name: none !important; }
+
+html[data-portfolio-transition='return']::view-transition-old(root),
+html[data-portfolio-transition='next']::view-transition-old(root),
+html[data-portfolio-transition='previous']::view-transition-old(root) {
+  animation: none;
+}
+html[data-portfolio-transition='return']::view-transition-new(root) {
+  animation: portfolioReturn 560ms cubic-bezier(.4, 0, .2, 1) both;
+}
+html[data-portfolio-transition='next']::view-transition-new(root) {
+  animation: portfolioNext 440ms cubic-bezier(.3, .7, .18, 1) both;
+}
+html[data-portfolio-transition='previous']::view-transition-new(root) {
+  animation: portfolioPrevious 440ms cubic-bezier(.3, .7, .18, 1) both;
+}
+@keyframes portfolioReturn {
+  from { clip-path: circle(0 at var(--return-x) var(--return-y)); }
+  60% { clip-path: circle(50vmax at var(--return-x) var(--return-y)); }
+  to { clip-path: circle(150vmax at var(--return-x) var(--return-y)); }
+}
+@keyframes portfolioNext {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0); }
+}
+@keyframes portfolioPrevious {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+@media (max-width: 800px) {
+  html[data-portfolio-transition='return'] { --return-x: 25%; --return-y: 79%; }
+  html[data-portfolio-transition='return'][data-portfolio-project='lorigine'] { --return-x: 75%; }
+  html[data-portfolio-transition='return'][data-portfolio-project='4ustudio-academy'] { --return-x: 25%; --return-y: 90%; }
+  html[data-portfolio-transition='return'][data-portfolio-project='drokex'] { --return-x: 75%; --return-y: 90%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) { animation-duration: 0s; }
+  html[data-portfolio-transition]::view-transition-new(root) { animation: none; }
+}

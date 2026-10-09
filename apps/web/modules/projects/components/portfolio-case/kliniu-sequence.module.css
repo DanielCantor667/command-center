@@ -1,0 +1,29 @@
+.sequence { background:#e6e9e7; }
+.heading { display:flex; align-items:end; justify-content:space-between; gap:28px; padding:48px 4% 28px; }
+.heading p { font-size:12px; color:#52665b; margin-bottom:20px; }
+.heading>span { font-size:11px; color:#52665b; }
+.toolbar { margin:0 4%; display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid #bfcac3; border-bottom:1px solid #bfcac3; }
+.segments { display:flex; gap:24px; }
+.toolbar button { display:flex; align-items:center; justify-content:center; gap:10px; min-height:52px; background:none; border:0; font-size:13px; }
+.segments button { border-bottom:2px solid transparent; color:#55695e; }
+.segments button[aria-pressed=true] { border-bottom-color:#007c83; color:#164d4d; }
+.actions { display:flex; gap:4px; min-height:44px; }
+.actions button { min-width:44px; }
+.stage { position:relative; height:680px; max-height:85svh; min-height:430px; overflow:hidden; }
+.poster,.canvas { position:absolute; inset:0; width:100%; height:100%; }
+.poster { display:block; object-fit:contain; padding:20px 4% 110px; }
+.canvas { transition:opacity 300ms; touch-action:pan-y; }
+.caption { position:absolute; bottom:28px; left:4%; right:4%; pointer-events:none; border-top:1px solid #bdc8c0; padding-top:18px; }
+.caption span { font-size:11px; color:#506559; }
+.caption h3 { font-size:24px; font-weight:450; margin-top:8px; }
+.fallback { position:absolute; top:16px; left:4%; right:4%; font-size:12px; color:#445b4e; background:#e6e9e7; padding:10px 0; }
+.sequence[data-stage=product] { background:#edf0ef; }
+.sequence[data-stage=product] .poster { padding:28px 8% 116px; }
+@media(min-width:1800px) { .stage { height:780px; }.poster { padding-bottom:120px; } }
+@media(max-width:760px) {
+  .heading { padding-top:36px; flex-direction:column; align-items:start; gap:18px; }.heading>span { display:none; }.heading h2 { max-width:14ch; }
+  .toolbar { flex-wrap:wrap; gap:0; }.segments { justify-content:space-between; width:100%; gap:8px; }.segments button { gap:6px; font-size:12px; min-height:48px; }.actions { margin-left:auto; }.actions button { min-height:44px; font-size:12px; }
+  .stage { height:480px; min-height:400px; max-height:none; }.poster { padding:24px 2% 108px; }.caption { bottom:24px; }.caption h3 { font-size:20px; }.caption span { font-size:10px; }
+  .sequence[data-stage=product] .poster { padding:16px 3% 108px; }
+}
+@media(prefers-reduced-motion:reduce) { .canvas { transition:none; } }

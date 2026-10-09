@@ -8,8 +8,12 @@ import type { PortfolioSection } from '../../../experience/component';
 import { PUBLIC_PROFILE } from '../../../../data/public-profile';
 import { CityNavigatorLoader } from '../../../experience/components/city-navigator-loader';
 import styles from './portfolio-case.module.css';
+import { KliniuCase } from './kliniu-case';
+import { LorigineCase } from './lorigine-case';
+import { AcademyCase } from './academy-case';
+import { DrokexCase } from './drokex-case';
 
-interface PortfolioCaseProps {
+export interface PortfolioCaseProps {
   project: Project;
   onSelect: (id: string) => void;
   onReturn: () => void;
@@ -18,6 +22,14 @@ interface PortfolioCaseProps {
 }
 
 export function PortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
+  if (project.id === 'drokex') return <DrokexCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+  if (project.id === 'kliniu') return <KliniuCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+  if (project.id === 'lorigine') return <LorigineCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+  if (project.id === '4ustudio-academy') return <AcademyCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+  return <StandardPortfolioCase project={project} onSelect={onSelect} onReturn={onReturn} onNavigate={onNavigate} onTechnologySelect={onTechnologySelect} />;
+}
+
+function StandardPortfolioCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect }: PortfolioCaseProps) {
   const [districtId, setDistrictId] = useState<string | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter(item => item.public && item.links.live);
@@ -50,7 +62,7 @@ export function PortfolioCase({ project, onSelect, onReturn, onNavigate, onTechn
       {images.length > 0 ? <section className={styles.gallery} aria-label={'Capturas de ' + project.name}>
         {images.map(media => <figure key={media.url} className={media.featured ? styles.desktop : styles.mobile}>
           <a href={media.url} target="_blank" rel="noreferrer" aria-label={'Ampliar ' + media.alt}>
-            <Image src={media.url} alt={media.alt} width={media.featured ? 1440 : 390} height={media.featured ? 1000 : 844} sizes={media.featured ? '(max-width: 760px) 100vw, 70vw' : '(max-width: 760px) 65vw, 20vw'} priority={media.featured} />
+            <Image src={media.url} alt={media.alt} width={media.featured ? 1440 : 390} height={media.featured ? 1000 : 844} sizes={media.featured ? '(max-width: 760px) 100vw, 70vw' : '(max-width: 760px) 65vw, 20vw'} priority={media.featured} style={{ viewTransitionName: project.id === 'kliniu' && media.featured ? 'kliniu-surface' : undefined }} />
           </a>
           <figcaption>{media.caption}</figcaption>
         </figure>)}

@@ -199,10 +199,10 @@
 .cityStage {
   position: relative;
   width: 100%;
-  height: clamp(500px, 45vw, 690px);
+  height: clamp(560px, 48vw, 740px);
   overflow: hidden;
-  border-radius: 22px;
-  background: #e8ebe3;
+  border-radius: 0;
+  background: #e9ecee;
   touch-action: manipulation;
 }
 .cityToolbar {
@@ -255,6 +255,7 @@
   border-color: var(--portfolio-accent);
 }
 .contentSection {
+  width: calc(100% - 80px);
   max-width: var(--portfolio-width);
   margin: 56px auto 0;
   scroll-margin-top: 124px;
@@ -272,10 +273,10 @@
   margin-bottom: 10px;
 }
 .sectionHeading h2 {
-  font-size: clamp(27px, 3vw, 39px);
+  font-size: 39px;
   line-height: 1.2;
   font-weight: 450;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 .sectionHeading > p {
   max-width: 38ch;
@@ -286,8 +287,8 @@
 .preview {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
   overflow: hidden;
   background: #fafbf8;
 }
@@ -318,10 +319,10 @@
   margin-bottom: 12px;
 }
 .previewContent h3 {
-  font-size: clamp(28px, 3vw, 42px);
+  font-size: 42px;
   line-height: 1.15;
   font-weight: 500;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 .previewContent > p:not(.projectType) {
   font-size: 14px;
@@ -374,6 +375,7 @@
   text-underline-offset: 4px;
 }
 .journey {
+  width: calc(100% - 80px);
   display: grid;
   grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
   gap: clamp(40px, 9vw, 160px);
@@ -384,9 +386,9 @@
   scroll-margin-top: 124px;
 }
 .journeyIntro h2 {
-  font-size: clamp(38px, 4.4vw, 60px);
+  font-size: 60px;
   line-height: 1.06;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   font-weight: 450;
 }
 .journeyIntro > p:not(.eyebrow) {
@@ -436,7 +438,7 @@
 }
 .career h4 {
   font-size: 20px;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-weight: 500;
   margin: 8px 0;
 }
@@ -456,6 +458,7 @@
   font-size: 12px;
 }
 .contact {
+  width: calc(100% - 80px);
   max-width: var(--portfolio-width);
   margin: 0 auto 48px;
   display: flex;
@@ -464,13 +467,13 @@
   gap: 40px;
   padding: 40px;
   background: var(--stone);
-  border-radius: 16px;
+  border-radius: 0;
   scroll-margin-top: 124px;
 }
 .contact h2 {
-  font-size: clamp(30px, 3vw, 42px);
+  font-size: 42px;
   font-weight: 450;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 .contact .eyebrow {
   margin-bottom: 12px;
@@ -501,6 +504,7 @@
   font-size: 12px;
 }
 .footer {
+  width: calc(100% - 80px);
   max-width: var(--portfolio-width);
   margin: auto;
   display: flex;
@@ -768,8 +772,105 @@
   padding: 8px 12px;
   font-size: 10px !important;
 }
+.entranceScreen { width: 592px; padding: 8px; background: #142e31; border-radius: 8px; box-shadow: 0 0 0 2px #c6d8d8; }
+.entranceScreen img { display: block; width: 576px; height: 400px; object-fit: cover; }
+.immersiveLoader .sceneClose { right: 40px; bottom: 140px; border-radius: 4px; min-height: 44px; }
+.immersiveLoader .scenePoster { object-fit: contain; object-position: 80% 50%; padding: 150px 0 140px 28%; background: #eef0ef; }
+.immersiveLoader .scenePrompt > button { position: absolute; bottom: 150px; left: 40px; min-height: 44px; }
+.immersiveLoader .scenePrompt > p { position: absolute; left: 40px; bottom: 205px; max-width: 32ch; }
+@media (max-width: 800px) {
+  .contentSection, .journey, .contact, .footer { width: calc(100% - 44px); }
+  .immersiveLoader .scenePoster { padding: 240px 0 155px; object-position: center; }
+  .immersiveLoader .sceneClose { bottom: 154px; left: 22px; right: auto; }
+  .immersiveLoader .scenePrompt > button { left: 22px; bottom: 152px; padding: 10px; font-size: 11px; }
+  .immersiveLoader .scenePrompt > p { left: 22px; bottom: 205px; font-size: 11px; max-width: 27ch; }
+}
+@media (max-height: 720px) and (max-width: 800px) {
+  .immersiveLoader .scenePoster { padding-top: 195px; padding-bottom: 145px; }
+  .immersiveLoader .sceneClose { bottom: 142px; }
+}
+.kliniuTour { margin-top: 20px; border-top: 1px solid #cbd5d0; padding-top: 14px; }
+.tourStops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-bottom: 20px; }
+.tourStops button { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 4px; color: #485956; border-bottom: 2px solid transparent; font-size: 13px; }
+.tourStops button[aria-pressed='true'] { color: #006c73; border-color: #00838b; background: #e2eeeb; }
+.tourEvidence { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.tourFigure { min-width: 0; margin: 0; }
+.tourFigure > a { display: block; position: relative; background: white; aspect-ratio: 1440 / 1000; }
+.tourFigure img { width: 100%; height: 100%; object-fit: contain; }
+.tourEnlarge { position: absolute; bottom: 8px; right: 8px; color: #006c73; background: white; box-shadow: 0 0 0 6px white; }
+.tourFigure figcaption { color: #586862; font-size: 11px; margin-top: 10px; line-height: 1.5; }
+.tourCopy { min-width: 0; }
+.tourCopy h3 { font-size: 23px; line-height: 1.2; letter-spacing: 0; margin: 8px 0 12px; }
+.tourCopy > p:not(.projectType) { font-size: 13px; line-height: 1.7; color: #485956; }
+.tourActions { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; }
+.tourActions a, .tourActions button { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 12px; text-align: left; color: #006c73; }
+.tourActions svg, .tourStops svg { flex-shrink: 0; }
+.tourArchitecture { aspect-ratio: 1440 / 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; padding: 18px; background: #eef3f1; color: #00757a; }
+.tourArchitecture > div { display: flex; align-items: center; gap: 16px; width: 100%; max-width: 270px; border-bottom: 1px solid #cbd5d0; padding-bottom: 8px; }
+.tourArchitecture span { font-size: 11px; color: #485956; }
+.tourArchitecture strong { display: block; font-size: 14px; color: #1b3836; margin-top: 3px; }
+.tourArchitecture small { display: block; font-size: 11px; margin-top: 4px; }
+.tourHotspot { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid white; border-radius: 50%; color: #006c73; background: #f5ffff; box-shadow: 0 3px 12px #132d3240; cursor: pointer; }
+.tourHotspot[aria-pressed='true'] { background: #007c83; color: white; }
+.tourHotspot > span { display: none; position: absolute; top: 50px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; padding: 6px 9px; background: #123d3f; color: white; border-radius: 4px; pointer-events: none; }
+.tourHotspot:hover > span, .tourHotspot:focus-visible > span { display: block; }
+.tourHotspot:focus-visible, .kliniuTour button:focus-visible, .kliniuTour a:focus-visible { outline: 3px solid #bd6a24; outline-offset: 4px; }
+@media (max-width: 1000px) {
+  .tourEvidence { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+}
+@media (max-width: 480px) {
+  .tourStops button { flex-direction: column; gap: 5px; font-size: 11px; min-height: 58px; }
+  .tourCopy h3 { font-size: 22px; }
+  .tourArchitecture { aspect-ratio: auto; min-height: 260px; }
+}
 .workbench {
   scroll-margin-top: 124px;
+  grid-template-columns: 236px minmax(0, 1fr);
+  grid-template-areas: 'intro scene' 'selector scene';
+  grid-template-rows: auto 1fr;
+  gap: 0 26px;
+  align-items: start;
+}
+.index { grid-area: intro; padding: 16px 0; }
+.intro h1 { font-size: 32px; letter-spacing: 0; }
+.intro > p:last-child { margin-top: 16px; }
+.location { display: none; }
+.projectIndex { grid-area: selector; margin-top: 12px; }
+.sceneColumn { grid-area: scene; min-width: 0; }
+.cityStage { height: clamp(520px, calc(100svh - 310px), 760px); border-radius: 0; }
+.projectChoice { display: grid; grid-template-columns: 58px minmax(0, 1fr) 8px; min-height: 72px; gap: 10px; padding: 8px 4px; }
+.projectChoice img { width: 58px; height: 50px; object-fit: cover; border-radius: 4px; }
+.projectChoice span { overflow-wrap: anywhere; }
+.projectChoice:hover, .projectChoice[aria-pressed='true'], .projectChoice[data-related='true'] { padding-left: 4px; background: #e5eae5; }
+.sceneTools { display: flex; gap: 6px; flex-shrink: 0; }
+.cityToolbar > span { max-width: 45%; line-height: 1.4; }
+.sceneTools button { width: 40px; height: 40px; padding: 0; display: grid; place-items: center; border-radius: 6px; }
+.sceneTools button[aria-pressed='true'], .sceneTools button[aria-checked='true'] { background: #2a4e40; color: white; border-color: #2a4e40; }
+.sceneTools button:disabled { cursor: not-allowed; opacity: .4; }
+.cityStage[data-night='true'] { background: #151b22; }
+.cityStage[data-night='true'] .cityToolbar > span { color: #e0e6ee; }
+@media (max-width: 800px) {
+  .workbench { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'intro' 'scene' 'selector'; gap: 16px; margin-top: 16px; }
+  .index { padding: 0; }
+  .intro h1 { font-size: 28px; letter-spacing: 0; }
+  .intro .eyebrow { margin-bottom: 10px; }
+  .intro > p:last-child { margin-top: 10px; font-size: 13px; }
+  .sceneColumn { margin-top: 0; }
+  .cityStage { height: 380px; }
+  .projectIndex { margin-top: 0; }
+  .projectList { gap: 0 12px; }
+  .projectChoice { grid-template-columns: 46px minmax(0, 1fr); gap: 8px; font-size: 12px !important; }
+  .projectChoice img { width: 46px; height: 46px; }
+  .projectChoice .selectionMark { display: none; }
+  .projectChoice[aria-pressed='true'] { box-shadow: inset 0 -2px #2a4e40; }
+  .cityToolbar { inset: 12px 12px auto; }
+  .cityToolbar > span { font-size: 10px; max-width: calc(100% - 138px); }
+}
+@media (max-width: 480px) {
+  .mapLabel:not([aria-pressed='true']),
+  .libraryLabel {
+    display: none;
+  }
 }
 @media (max-width: 800px) {
   .header {

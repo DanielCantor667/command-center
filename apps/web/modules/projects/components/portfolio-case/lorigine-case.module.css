@@ -1,0 +1,480 @@
+.case {
+  --paper: #fafbfa;
+  --ink: #222b28;
+  --line: #c7d0c9;
+  --accent: #466355;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), sans-serif;
+  letter-spacing: 0;
+  color-scheme: light;
+}
+.case * {
+  box-sizing: border-box;
+}
+.case :is(h1, h2, h3, p, figure, dl, dd) {
+  margin: 0;
+  letter-spacing: 0;
+}
+.case :is(button, a) {
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+}
+.case button {
+  cursor: pointer;
+}
+.case a {
+  text-underline-offset: 5px;
+}
+.case :is(button, a):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 80px;
+  margin: 0 4%;
+}
+.header button {
+  background: none;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.header .identity {
+  font-size: 32px;
+  font-weight: 650;
+  margin-right: auto;
+}
+.hero {
+  position: relative;
+  height: calc(100svh - 132px);
+  min-height: 560px;
+  max-height: 1000px;
+  background: #d9dedb;
+  overflow: hidden;
+}
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+.heroTitle {
+  color: #101814;
+  position: absolute;
+  top: 36px;
+  left: 4%;
+  right: 4%;
+  text-align: center;
+}
+.heroTitle > p {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.heroTitle h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 108px;
+  font-weight: 400;
+  line-height: 1.08;
+  outline: none;
+}
+.heroFoot {
+  position: absolute;
+  bottom: 24px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.heroFoot p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.context { display: flex; flex-direction: column; gap: 3px; max-width: 32ch; }
+.context strong { font-size: 12px; font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) {
+  .heroTitle, .context { animation: lorigineIntro 380ms cubic-bezier(.2,.7,.2,1) both; }
+  .heroImage { animation: lorigineMedia 380ms ease-out both; }
+}
+@keyframes lorigineIntro {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes lorigineMedia {
+  from { opacity: .72; transform: scale(1.015); }
+  to { opacity: 1; transform: none; }
+}
+.heroFoot a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.kicker {
+  font-size: 12px;
+  color: #5c7165;
+}
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 80px;
+  padding: 24px 6% 72px;
+}
+.intro > .kicker {
+  grid-column: 1 / -1;
+}
+.case h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 48px;
+  line-height: 1.16;
+  font-weight: 400;
+}
+.intro > div > p,
+.evidenceTitle > p:not(.kicker),
+.observation p {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 54ch;
+  color: #526259;
+}
+.intro dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.intro dt {
+  font-size: 11px;
+  color: #65776c;
+  margin-bottom: 8px;
+}
+.intro dd {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.evidence {
+  padding: 88px 6%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(200px, 0.7fr);
+  gap: 44px;
+  align-items: start;
+}
+.evidenceTitle {
+  grid-column: 1;
+}
+.evidenceTitle h2 {
+  margin: 20px 0 24px;
+}
+.evidenceTitle a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.catalog {
+  grid-column: 2 / 4;
+}
+.catalog img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.evidence figcaption {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #65776c;
+}
+.mobile {
+  grid-column: 2;
+  grid-row: 2;
+  width: 280px;
+  max-width: 100%;
+  justify-self: center;
+}
+.mobile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.observation {
+  grid-column: 3;
+  grid-row: 2;
+  align-self: center;
+}
+.observation span {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+.craft {
+  background: #e7ede9;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 80px 6%;
+}
+.craft h2 {
+  margin-top: 22px;
+}
+.craftNote {
+  max-width: 38ch;
+  margin-top: 26px !important;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #607568;
+}
+.decisions section {
+  padding: 24px 0;
+  border-top: 1px solid #b7c7bb;
+}
+.decisions h3 {
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.decisions p {
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #506358;
+}
+.decisions span {
+  display: block;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #647e6f;
+}
+.stack {
+  padding: 36px 6%;
+  display: flex;
+  align-items: start;
+  gap: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.stack > .kicker {
+  padding-top: 14px;
+}
+.stack > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+.stack button,
+.stack > div > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  font-size: 14px;
+}
+.footer {
+  padding: 52px 6% 36px;
+}
+.footer > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 44px;
+  font-size: 24px;
+  text-decoration: none;
+}
+.footer nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 48px;
+}
+.footer nav button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  text-align: left;
+}
+.footer nav button:last-child {
+  justify-content: end;
+  text-align: right;
+}
+.footer nav span {
+  flex-basis: 100%;
+  color: #65776c;
+  font-size: 11px;
+}
+@media (min-width: 1800px) {
+  .intro,
+  .evidence,
+  .craft,
+  .stack,
+  .footer {
+    padding-left: max(6%, calc((100% - 1560px) / 2));
+    padding-right: max(6%, calc((100% - 1560px) / 2));
+  }
+}
+@media (max-width: 1000px) {
+  .intro,
+  .craft {
+    gap: 32px;
+  }
+  .case h2 {
+    font-size: 38px;
+  }
+  .evidence {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .evidenceTitle {
+    grid-column: 1 / -1;
+  }
+  .catalog {
+    grid-column: 1 / -1;
+  }
+  .mobile {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .observation {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+@media (max-width: 760px) {
+  .header {
+    height: 72px;
+    gap: 16px;
+  }
+  .header .techNav {
+    display: none;
+  }
+  .hero {
+    height: calc(100svh - 120px);
+    min-height: 440px;
+    max-height: 780px;
+  }
+  .heroTitle {
+    top: 32px;
+  }
+  .heroTitle h1 {
+    font-size: 56px;
+  }
+  .heroFoot {
+    bottom: 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .heroFoot p {
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .heroFoot a {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .heroTitle > p {
+    font-size: 11px;
+  }
+  .intro,
+  .craft {
+    grid-template-columns: 1fr;
+    padding: 48px 5%;
+    gap: 24px;
+  }
+  .case h2 {
+    font-size: 34px;
+  }
+  .intro dl {
+    gap: 16px;
+  }
+  .intro {
+    padding-top: 24px;
+  }
+  .evidence {
+    padding: 48px 5%;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .evidenceTitle,
+  .catalog,
+  .mobile,
+  .observation {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .mobile {
+    width: 250px;
+    max-width: 85%;
+  }
+  .observation {
+    max-width: 42ch;
+  }
+  .stack {
+    padding: 28px 5%;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stack > .kicker {
+    padding-top: 0;
+  }
+  .footer {
+    padding: 40px 5% 28px;
+  }
+  .footer > a {
+    font-size: 20px;
+    gap: 12px;
+  }
+  .footer nav {
+    gap: 20px;
+  }
+  .footer nav button {
+    font-size: 18px;
+    max-width: 50%;
+  }
+}
+@media (max-width: 360px) {
+  .heroTitle h1 {
+    font-size: 46px;
+  }
+  .case h2 {
+    font-size: 30px;
+  }
+  .header button {
+    font-size: 12px;
+  }
+  .heroFoot a {
+    font-size: 11px;
+  }
+  .footer > a {
+    font-size: 18px;
+  }
+}
+@media (max-height: 700px) and (min-width: 761px) {
+  .hero {
+    min-height: 440px;
+  }
+  .heroTitle h1 {
+    font-size: 80px;
+  }
+  .heroTitle {
+    top: 24px;
+  }
+}

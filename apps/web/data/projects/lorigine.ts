@@ -135,13 +135,13 @@ export const lorigine: Project = {
   ],
   engineeringDecisions: [
     {
-      title: 'Editorial-first over transactional e-commerce',
+      title: 'Catalog filters represented in the URL',
       context:
-        'The brand is a premium cosmetics company, but the site\'s primary goal is to inspire, educate, and demonstrate authority — not to maximize conversion. The Design Constitution explicitly states: "Nunca vender primero."',
+        'The public catalog combines brand presentation with category filters, sorting and product detail pages.',
       decision:
-        'Build as a brand platform, not an e-commerce storefront. No product grid marketplace, no cart, no checkout. Products presented through editorial storytelling, case studies, and science sections. Purchase happens offline through distributor network.',
+        'Read and validate categoria and orden from searchParams in the server-rendered catalog. Filter and sort published products using those parameters.',
       reasoning:
-        'The KPI map assigns each page a primary mission (Inspirar, Demostrar, Educar, Validar, Convertir, Formar, Escalar). Conversion is secondary. This reduces technical complexity (no payment, no auth, no inventory) and aligns with brand positioning.',
+        'A catalog selection remains addressable through a link and browser navigation. The current public site exposes a cart and product purchase controls; private checkout and payment flows were not exercised for this portfolio.',
       impact: DECISION_IMPACT.High,
     },
     {

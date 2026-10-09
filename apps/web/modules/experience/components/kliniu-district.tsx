@@ -41,6 +41,12 @@ export function KliniuDistrict({ active, reducedMotion }: { active: boolean; red
     </group>
     {[-.01, .9].map(x => <Block key={x} position={[x, .47, .59]} size={[.035, .75, .035]} color="#658d91" radius={.008} />)}
     <Block position={[.45, .45, -.38]} size={[.9, .7, .07]} color="#153f47" />
+    <mesh position={[.45, .47, .57]}>
+      <boxGeometry args={[.86, .69, .018]} />
+      <meshPhysicalMaterial color="#b5e2df" roughness={.12} metalness={0} transparent opacity={.24} depthWrite={false} clearcoat={1} />
+    </mesh>
+    {[.16, .45, .74].map(x => <Block key={`mullion-${x}`} position={[x, .47, .59]} size={[.018, .7, .025]} color="#617c83" radius={.004} />)}
+    {[.35, .67, 1.3, 1.58].map(y => <Block key={`floor-${y}`} position={[-.38, y, -.573]} size={[.73, .035, .025]} color="#81989e" radius={.006} />)}
     {[.2, .48, .75].map(x => <group key={x}>
       <Block position={[x, .33, .07]} size={[.19, .4, .22]} color="#f3f8f7" radius={.045} />
       <Block position={[x, .36, .189]} size={[.08, .16, .016]} color="#20a9b2" radius={.012} />

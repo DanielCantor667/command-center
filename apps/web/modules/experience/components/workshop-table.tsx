@@ -34,15 +34,15 @@ export function WorkshopTable() {
     <group>
       <mesh position={[0, -0.33, 0]} receiveShadow castShadow>
         <cylinderGeometry args={[4.4, 4.55, 0.55, 96]} />
-        <meshStandardMaterial color="#cbd0c3" roughness={0.9} />
+        <meshStandardMaterial color="#929da6" roughness={0.32} metalness={0.85} />
       </mesh>
       <mesh position={[0, -0.026, 0]} receiveShadow>
         <cylinderGeometry args={[4.36, 4.4, 0.08, 96]} />
-        <meshStandardMaterial color="#e3e6dc" roughness={0.75} />
+        <meshStandardMaterial color="#e1e5e7" roughness={0.65} />
       </mesh>
       <mesh position={[0, -0.61, 0]}>
         <cylinderGeometry args={[4.3, 4.3, 0.05, 96]} />
-        <meshStandardMaterial color="#879387" roughness={0.4} metalness={0.45} />
+        <meshStandardMaterial color="#30383d" roughness={0.3} metalness={0.8} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.018, 0]}>
         <ringGeometry args={[4.13, 4.15, 96]} />
@@ -50,7 +50,7 @@ export function WorkshopTable() {
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.65, 0]} receiveShadow>
         <planeGeometry args={[200, 200]} />
-        <meshStandardMaterial color="#e8ebe3" roughness={1} />
+        <meshStandardMaterial color="#e9ecee" roughness={0.95} />
       </mesh>
       {Object.values(WORKSHOP_POSITIONS).map(([x, , z], i) => (
         <group key={i}>
@@ -65,10 +65,19 @@ export function WorkshopTable() {
           />
           <mesh position={[x, 0, z]} receiveShadow>
             <cylinderGeometry args={[1.22, 1.28, 0.12, 48]} />
-            <meshStandardMaterial color="#c0cabe" roughness={0.7} />
+            <meshStandardMaterial color="#aebbc0" roughness={0.45} metalness={0.35} />
           </mesh>
         </group>
       ))}
+      {Array.from({ length: 24 }, (_, i) => {
+        const angle = (i / 24) * Math.PI * 2;
+        return (
+          <mesh key={`fastener-${i}`} position={[Math.cos(angle) * 4.24, 0.019, Math.sin(angle) * 4.24]} receiveShadow>
+            <cylinderGeometry args={[0.028, 0.028, 0.012, 12]} />
+            <meshStandardMaterial color="#65717a" roughness={0.25} metalness={0.9} />
+          </mesh>
+        );
+      })}
       {[
         [-3.25, 0, -0.55],
         [-3.1, 0, -2.2],
