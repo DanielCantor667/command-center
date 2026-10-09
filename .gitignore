@@ -43,3 +43,10 @@ coverage/
 # Worktrees
 .worktrees/
 .env*
+
+# Playwright MCP session logs
+.playwright-mcp/
+
+# Heavy verification captures, kept locally
+docs/product/portfolio-3d-evidence/**/*.png
+docs/product/workshop-game-evidence/**/*.png
