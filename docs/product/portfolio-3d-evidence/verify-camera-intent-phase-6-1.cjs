@@ -1,0 +1,68 @@
+const assert = require('node:assert/strict');
+const { chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright');
+const sharp = require(process.env.SHARP_PATH || 'sharp');
+async function difference(a, b) {
+  const left = await sharp(a).resize(240, 180).removeAlpha().raw().toBuffer();
+  const right = await sharp(b).resize(240, 180).removeAlpha().raw().toBuffer();
+  return left.reduce((sum, n, i) => sum + Math.abs(n - right[i]), 0) / left.length;
+}
+(async () => {
+  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    const errors = [];
+    page.on('pageerror', e => errors.push(e.message));
+    await page.goto(process.env.BASE_URL || 'http://localhost:3001');
+    const button = name => page.getByRole('button', { name, exact: true });
+    const ready = async () => { await page.waitForFunction(() => !document.querySelector('[aria-label="Iluminación nocturna"]')?.disabled); await page.waitForTimeout(1700); };
+    await ready();
+    await button('Seleccionar Drokex').click();
+    await page.waitForTimeout(1600);
+    await button('Cerrar vista 3D').click();
+    await button('Vista general').click();
+    await button('Explorar en 3D').click();
+    await ready();
+    await page.mouse.move(0, 0);
+    const restored = await page.locator('#inicio canvas').screenshot();
+    await button('Seleccionar Drokex').click();
+    await page.waitForTimeout(1600);
+    await button('Vista general').click();
+    await ready();
+    await page.mouse.move(0, 0);
+    const delta = await difference(restored, await page.locator('#inicio canvas').screenshot());
+    assert.ok(delta < 3, `Closed-canvas intent matches canonical overview: ${delta}`);
+    await button('Entrar a Drokex').click();
+    await page.getByRole('link', { name: 'Tecnologías', exact: true }).click();
+    await page.waitForTimeout(2800);
+    assert.equal(await button('Cancelar entrada').count(), 0);
+    assert.equal(await page.evaluate(() => location.hash), '#tecnologias');
+    await page.evaluate(() => scrollTo(0, 0));
+    await ready();
+    await page.mouse.move(0, 0);
+    const cancelled = await page.locator('#inicio canvas').screenshot();
+    await page.getByRole('link', { name: 'Proyectos', exact: true }).click();
+    await page.waitForTimeout(800);
+    await page.getByRole('link', { name: 'Tecnologías', exact: true }).click();
+    await page.waitForTimeout(800);
+    await page.evaluate(() => scrollTo(0, 0));
+    await ready();
+    await page.mouse.move(0, 0);
+    const technologyDelta = await difference(cancelled, await page.locator('#inicio canvas').screenshot());
+    assert.ok(technologyDelta < 3, `Cancelled entrance uses technology camera: ${technologyDelta}`);
+    assert.deepEqual(errors, []);
+    await page.getByRole('link', { name: 'Proyectos', exact: true }).click();
+    await page.waitForTimeout(1000);
+    const preview = button('Ver caso de Drokex');
+    await preview.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    const savedScroll = await page.evaluate(() => scrollY);
+    assert.ok(savedScroll > 500);
+    await preview.click();
+    await page.getByRole('heading', { name: 'Drokex', level: 1, exact: true }).waitFor();
+    await button('Volver a la ciudad').click();
+    await page.waitForTimeout(700);
+    assert.ok(Math.abs(await page.evaluate(() => scrollY) - savedScroll) < 2, 'Return from preview restores nonzero scroll');
+    assert.equal(await button('Entrar a Drokex').evaluate(e => e === document.activeElement), true);
+    console.log(JSON.stringify({ passed: true, overviewDifference: delta, technologyDifference: technologyDelta, restoredScroll: savedScroll }));
+  } finally { await browser.close(); }
+})().catch(error => { console.error(error); process.exitCode = 1; });
