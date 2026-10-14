@@ -1,4 +1,4 @@
-.game { position: relative; isolation: isolate; width: 100%; height: 100svh; min-height: 520px; overflow: hidden; background: #315749; color: #f7f5ed; font-family: var(--font-geist-sans), sans-serif; }
+.game { position: relative; isolation: isolate; width: 100%; height: 100svh; min-height: 520px; overflow: hidden; background: #2f5d4a; color: #f7f5ed; font-family: var(--font-geist-sans), sans-serif; }
 .poster, .world, .shade { position: absolute; inset: 0; }
 .poster { z-index: -3; background: #bbc1b5; }
 .poster img, .poster video { object-fit: cover; object-position: center; }
@@ -17,7 +17,7 @@
 .location { font-size: 12px; margin-bottom: 12px; color: #dde5d8; }
 .welcome h1 { font-size: clamp(42px, 5.7vw, 82px); line-height: .98; font-weight: 500; letter-spacing: -.055em; margin: 0 0 18px; }
 .welcome > p:not(.location) { font-size: clamp(18px, 2vw, 24px); line-height: 1.4; margin: 0 0 26px; }
-.primary { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; padding: 14px 21px; border: 1px solid #7b9580; border-radius: 5px; background: #315749; color: #fffdf5; font-weight: 500; font-size: 14px; cursor: pointer; }
+.primary { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; padding: 14px 21px; border: 1px solid #7b9580; border-radius: 5px; background: #2f5d4a; color: #fffdf5; font-weight: 500; font-size: 14px; cursor: pointer; }
 .primary:hover { background: #234b3d; }
 .hint { display: block; margin-top: 12px; font-size: 12px; color: #dae3d6; }
 .footer { position: absolute; z-index: 25; bottom: max(15px, env(safe-area-inset-bottom)); left: clamp(22px, 3.5vw, 48px); right: clamp(22px, 3.5vw, 48px); display: flex; justify-content: space-between; gap: 14px; font-size: 10px; color: #d7e0d3; pointer-events: none; }
@@ -33,7 +33,7 @@
 .blueprint span { border: 1px solid #819480; }
 .blueprint span:nth-child(4) { grid-column: 1 / -1; height: 22px; }
 .destination { position: absolute; top: 118px; left: clamp(22px, 3.5vw, 48px); padding: 8px 12px; background: rgb(32 52 43 / 84%); border: 1px solid #78917d; border-radius: 4px; font-size: 12px; }
-.stop { position: absolute; top: 118px; right: clamp(22px, 3.5vw, 48px); display: flex; align-items: center; gap: 10px; padding: 8px 12px; min-height: 36px; color: #f4f5ec; background: #315749; border: 1px solid #78917d; border-radius: 4px; cursor: pointer; font-size: 12px; }
+.stop { position: absolute; top: 118px; right: clamp(22px, 3.5vw, 48px); display: flex; align-items: center; gap: 10px; padding: 8px 12px; min-height: 36px; color: #f4f5ec; background: #2f5d4a; border: 1px solid #78917d; border-radius: 4px; cursor: pointer; font-size: 12px; }
 .inspection { position: absolute; z-index: 25; right: clamp(22px, 3.5vw, 48px); top: 50%; transform: translateY(-50%); width: 310px; padding: 28px; background: rgb(244 245 235 / 97%); color: #293c30; border: 1px solid #d1d8c6; box-shadow: 0 12px 40px rgb(19 32 23 / 12%); border-radius: 6px; }
 .roomLabel { font-size: 12px; color: #5b705b; }
 .inspection h1 { margin: 8px 0 15px; font-size: 44px; font-weight: 500; letter-spacing: -.05em; }
@@ -42,12 +42,12 @@
 .back { display: flex; align-items: center; gap: 9px; margin-top: 14px; padding: 9px 0; border: 0; background: none; color: #365747; font-size: 12px; cursor: pointer; }
 .navigation { position: absolute; z-index: 30; left: 50%; bottom: max(74px, calc(env(safe-area-inset-bottom) + 64px)); transform: translateX(-50%); display: flex; gap: 2px; padding: 5px; border: 1px solid #b6c3ae; border-radius: 6px; background: rgb(243 244 230 / 96%); box-shadow: 0 8px 30px rgb(18 40 25 / 16%); white-space: nowrap; }
 .navigation button { display: flex; align-items: center; justify-content: center; gap: 6px; color: #365443; background: transparent; border: 0; border-radius: 3px; padding: 12px 12px; min-height: 44px; font-size: 12px; cursor: pointer; }
-.navigation button:hover, .navigation button[aria-current] { background: #315749; color: #fffef7; }
+.navigation button:hover, .navigation button[aria-current] { background: #2f5d4a; color: #fffef7; }
 .lookHint { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; margin: 0; white-space: nowrap; font-size: 11px; color: #edf0e3; }
 .physicalSign { width: 150px; padding: 14px; background: #b3aa91; color: #273b30; border: 2px solid #746f5f; font-size: 16px; line-height: 1.2; text-align: center; }
 .roomSign { color: #fffced; font-size: 24px; font-weight: 500; text-align: left; width: 215px; }
 .roomSign span { display: block; font-size: 11px; margin-top: 5px; }
-.hotspot { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 10px 16px; color: #2e4937; background: #eef0df; border: 1px solid #829675; border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 12px rgb(28 51 36 / 15%); }
+.hotspot { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 10px 16px; color: #2b3f33; background: #f2ecdf; border: 1px solid #9fb09a; border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 12px rgb(28 51 36 / 15%); }
 .game button:focus-visible { outline: 3px solid #d9b56c; outline-offset: 4px; }
 @media (max-width: 700px) {
   .game { min-height: 500px; }
@@ -86,12 +86,12 @@
 .evidencePreview figcaption { font-size: 10px; margin-top: 5px; color: #647461; }
 .inspection h1 { font-size: 34px; }
 .inspection .attribution { font-size: 11px; line-height: 1.4; }
-.roomLoad { position: absolute; z-index: 25; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(370px, calc(100% - 44px)); padding: 25px; background: #f4f5eb; color: #293c30; border: 1px solid #cbd5c0; border-radius: 6px; box-shadow: 0 12px 40px #13201726; }
+.roomLoad { position: absolute; z-index: 25; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(370px, calc(100% - 44px)); padding: 25px; background: #f4efe3; color: #293c30; border: 1px solid #cbd5c0; border-radius: 6px; box-shadow: 0 12px 40px #13201726; }
 .roomLoad h1 { margin: 8px 0 12px; font-size: 25px; font-weight: 500; line-height: 1.15; letter-spacing: -.03em; }
 .roomLoad p { font-size: 13px; color: #52624f; }
 .roomLoad .loadTrack { background: #c3ceb5; }
-.roomLoad .loadTrack span { background: #315749; }
-.hotspot:hover { background: #e2e8ca; border-color: #bc9b63; }
+.roomLoad .loadTrack span { background: #2f5d4a; }
+.hotspot:hover { background: #e2e8ca; border-color: #b5502f; }
 @media (max-width: 700px) {
   /* Two rows: hub / workbench / map, then the four rooms. Stations stay on the map. */
   .navigation { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); white-space: normal; }
@@ -126,3 +126,6 @@
 
 /* Hotspots keep a constant on-screen size so distant doors stay readable and tappable. */
 @media (max-width: 700px) { .hotspot { min-height: 44px; font-size: 13px; padding: 10px 12px; } }
+
+/* Sprint 11.1 (paleta A, Taller verde): display face for the headings that carry the voice. */
+.identity span, .welcome h1, .loadPanel h1, .inspection h1, .roomSign, .roomLoad h1 { font-family: var(--font-display), var(--font-geist-sans), sans-serif; }

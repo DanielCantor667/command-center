@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Bricolage_Grotesque, Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider, ThemeScript } from '@command-center/ui';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -10,6 +10,12 @@ import './command-city.css';
 const geistSans = Geist({
   subsets: ['latin'],
   variable: '--font-geist-sans',
+});
+
+// Display face for the workshop headings (Sprint 11.1).
+const display = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-display',
 });
 
 const geistMono = Geist_Mono({
@@ -53,7 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background-primary text-text-primary antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${display.variable} min-h-screen bg-background-primary text-text-primary antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />

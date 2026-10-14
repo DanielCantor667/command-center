@@ -129,7 +129,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     </section>}
     {(state.status === 'loading' || state.status === 'error') && <section className={styles.loadPanel} aria-labelledby="world-loading-title">
       <div className={styles.blueprint} aria-hidden="true"><span /><span /><span /><span /></div>
-      <h1 id="world-loading-title">{state.status === 'error' ? 'El taller no está disponible' : 'Preparando el taller'}</h1>
+      <h1 id="world-loading-title">{state.status === 'error' ? 'El taller no está disponible' : 'Encendiendo la lámpara'}</h1>
       <p role="status" aria-live="polite">{state.status === 'error' ? 'Puedes reintentar o explorar los proyectos en el portafolio.' : preparing ? 'Preparando la escena' : 'Cargando el espacio del taller'}</p>
       {state.status === 'loading' ? <><div className={styles.loadTrack} role="progressbar" aria-label="Carga del taller" aria-valuetext={preparing ? 'Preparando la escena' : 'Cargando el espacio'}><span /></div><button type="button" className={styles.cancel} onClick={cancel}>Cancelar entrada<X size={16} aria-hidden="true" /></button></> : <button ref={retryButton} className={styles.primary} type="button" onClick={() => void start()}>Reintentar<RotateCcw size={17} aria-hidden="true" /></button>}
     </section>}

@@ -1,6 +1,6 @@
 # Sprint 11 — Escritorio protagonista y recorrido guiado
 
-Estado (2026-10-14): **propuesta, sin aprobar**. Ninguna fase arranca sin luz verde explícita.
+Estado (2026-10-14): **11.2 hecha (escritorio como primera parada); 11.1 en curso con la paleta A "Taller verde" y Bricolage Grotesque**. La paleta B "Noche de estudio" queda para un modo noche (11.7). Ninguna fase arranca sin luz verde explícita.
 Alcance: `workshop-game` y la portada del portafolio. Antecedentes: Sprint 9 (luz, props, sonido), Sprint 10 (composición, tecnologías, huellas personales).
 
 ## Por qué
@@ -35,6 +35,7 @@ El taller actual sigue como "modo explorar"; nada se elimina.
 | **11.3 Interacción** | Etiquetas flotantes de tamaño constante, hover con parallax, clic → cámara → contenido existente (explorador de proyectos/tecnologías) | 0 |
 | **11.4 Recorrido por scroll** | Paradas definidas sobre el taller actual; teclado (flechas), `prefers-reduced-motion` → saltos sin animación; el texto de cada parada también en el DOM | 0 |
 | **11.5 Móvil, accesibilidad, peso** | Verificar 1440, 1920, 390 y 320; fallback sin WebGL; medir peso y fps; salvaguarda de calidad existente | 0 |
+| **11.7 Modo noche** | Paleta B (tinta, nogal, crema, ámbar, vinilo): luces cálidas, panorama nocturno y conmutador día/noche | panorama por medir |
 | **11.6 Unificación de estilo (opcional)** | Solo si 11.1 lo pide: retexturizar o regenerar props que desentonen. Se mide con `simulate_cost` antes de gastar | por medir |
 
 ## No se hace
