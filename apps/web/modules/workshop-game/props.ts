@@ -3,7 +3,7 @@ import type { RoomId } from './rooms';
 export interface WorkshopProp { id: string; position: [number, number, number]; turn: number }
 export interface WorkshopArt { url: string; position: [number, number, number]; size: [number, number] }
 const prop = (id: string, position: [number, number, number], turn: number): WorkshopProp => ({ id, position, turn });
-export const propUrl = (id: string) => `/models/workshop-game/props/${id}-v1.glb`;
+export const propUrl = (id: string) => `/models/workshop-game/props/${id}-v2.glb`;
 const FRONT = -Math.PI / 2;
 export const HUB_PROPS: WorkshopProp[] = [
   prop('lamp', [-1.85, 1, -.3], FRONT + .7),

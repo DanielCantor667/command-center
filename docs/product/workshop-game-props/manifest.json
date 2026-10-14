@@ -28,7 +28,7 @@
   },
   "props": {
     "seal": {
-      "url": "/models/workshop-game/props/seal-v1.glb",
+      "url": "/models/workshop-game/props/seal-v2.glb",
       "room": "kliniu",
       "engine": "Magnific image-to-3D · tripo-p2 (P2-20260801), faceLimit 10000",
       "reference": "Mascota de Kliniu, arte propio de la marca (PSD 'Foca OK')",
@@ -37,12 +37,13 @@
       "note": "Se retiró en Blender la losa creada a partir de la sombra de la referencia.",
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 234744,
+      "bytes": 84204,
       "triangles": 8000,
-      "sha256": "becd8db0894d49301a1004938a007efc2293a6d75ad905d177e453d788c40631"
+      "sha256": "b7ec141fc7519d84168a76bc8a73f6c99610aa68e1325cb7f66d95d8032b941c",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "dispenser": {
-      "url": "/models/workshop-game/props/dispenser-v1.glb",
+      "url": "/models/workshop-game/props/dispenser-v2.glb",
       "room": "kliniu",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A single countertop liquid soap pump dispenser, matte white plastic body with a teal accent band and a chrome pump head, unbranded, no text, clean product design, standing upright, isolated object",
@@ -50,12 +51,13 @@
       "height": 0.26,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 189792,
+      "bytes": 79320,
       "triangles": 5758,
-      "sha256": "fb3d907c0badd4e3f2ecf9e0a6f6f69bbbf0a6c40d06299e557f2344cd5a48fd"
+      "sha256": "0113f619ae658b2c1702bd03e89d885a8a72f2a7e91d6fa49f18038a2a407565",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "bottle": {
-      "url": "/models/workshop-game/props/bottle-v1.glb",
+      "url": "/models/workshop-game/props/bottle-v2.glb",
       "room": "lorigine",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A single amber glass cosmetic pump bottle with a matte black pump cap, cylindrical, completely unlabeled, no text, no logo, premium hair care packaging, standing upright, isolated object",
@@ -63,12 +65,13 @@
       "height": 0.24,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 192544,
+      "bytes": 82176,
       "triangles": 5724,
-      "sha256": "6b6b217ba582c1034dd3f86684448d3bcce9ebe18709adb6b5f66c4b25d0d223"
+      "sha256": "c19ca8660d85d0cc7051e1b651d1c41979b355cfebb144846c9f3335625c303e",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "headphones": {
-      "url": "/models/workshop-game/props/headphones-v1.glb",
+      "url": "/models/workshop-game/props/headphones-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A pair of professional over-ear studio headphones, matte black with dark brown leather ear cushions and a padded headband, unbranded, no text, resting upright, isolated object",
@@ -76,12 +79,13 @@
       "height": 0.22,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 213532,
+      "bytes": 103848,
       "triangles": 5611,
-      "sha256": "aa1a8e5cdf24addd77d181fbeca15f12c0bb257333f1557c4ec55f55e5cd5b86"
+      "sha256": "f2def2bcbee79a3e04838c4a406711a8ffca0b79836e9f9175ec64296a8e0aff",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "microphone": {
-      "url": "/models/workshop-game/props/microphone-v1.glb",
+      "url": "/models/workshop-game/props/microphone-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A studio condenser microphone in a shock mount on a short heavy round desk stand, brushed steel and black, unbranded, no text, isolated object",
@@ -89,12 +93,13 @@
       "height": 0.36,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 268312,
+      "bytes": 148660,
       "triangles": 5184,
-      "sha256": "5577fd1794ab5d3c2514ea25b3f770ecb8fc705bebec51c966ddf172900738fa"
+      "sha256": "97cea7dd3722d79b5e57f2d2c71d115f18283707a09685b3f04c1b052b429a9c",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "globe": {
-      "url": "/models/workshop-game/props/globe-v1.glb",
+      "url": "/models/workshop-game/props/globe-v2.glb",
       "room": "drokex",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A classic desk world globe on a brass meridian arc and a dark wooden round base, muted teal oceans and beige continents, no text, no labels, isolated object",
@@ -102,12 +107,13 @@
       "height": 0.42,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 208072,
+      "bytes": 103368,
       "triangles": 5590,
-      "sha256": "c7488ceef3579676415c900e08bd79a0e082513dda963d7202bb5d1c6c0766c8"
+      "sha256": "830ab35ce19c51e65e4a972a5c5d079fb5b543c5a00c9a7b85e0d30b7145309e",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "lamp": {
-      "url": "/models/workshop-game/props/lamp-v1.glb",
+      "url": "/models/workshop-game/props/lamp-v2.glb",
       "room": "hub",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A vintage banker desk lamp with a dark green enamel shade, brass stem and heavy brass base, unbranded, no text, isolated object",
@@ -115,12 +121,13 @@
       "height": 0.42,
       "origin": "magnific",
       "generated": "2026-10-09",
-      "bytes": 213312,
+      "bytes": 100728,
       "triangles": 5838,
-      "sha256": "6496dd853a0bc349732cc6d15fc69dc3cd9c1a7ed271995c6b07c6d081df7970"
+      "sha256": "abcad5b2f429973601abd5f2795223b8c1bb6b840a6fdf8e452306edf43f1da2",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "guitar": {
-      "url": "/models/workshop-game/props/guitar-v1.glb",
+      "url": "/models/workshop-game/props/guitar-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A single acoustic guitar standing upright on a small metal stand, natural spruce top, warm wood body, dark fretboard, unbranded, no text, clean product model",
@@ -128,13 +135,14 @@
       "height": 1.05,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 283868,
+      "bytes": 153552,
       "triangles": 5718,
       "primitives": 1,
-      "sha256": "6e5c640434769ac7923794d36ffecfda35707d7e5d568d7fa30d1b3542f921c8"
+      "sha256": "018ebb55b5f789bbc0b73ce85f4cd5ddb2e3819f0585870c40d3f4dd80d3468a",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "drumkit": {
-      "url": "/models/workshop-game/props/drumkit-v1.glb",
+      "url": "/models/workshop-game/props/drumkit-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A compact acoustic drum kit: bass drum, snare, one tom, a hi-hat and one cymbal on metal stands, natural wood shells, unbranded, no text, clean product model",
@@ -142,14 +150,15 @@
       "height": 1.1,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 292728,
+      "bytes": 146808,
       "triangles": 5607,
       "primitives": 1,
-      "sha256": "38dec85f00b4a585662a1bd20677fc621a8d7bd9242c424e5f51332afd16cb25",
-      "note": "Textura a 448 px para entrar en el presupuesto de 300 KB."
+      "sha256": "8e9d289ae13944bd88e9f51b1134b9579cbbe5b9db463e69cd25a5d3936f4a39",
+      "note": "Textura a 448 px para entrar en el presupuesto de 300 KB.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "piano": {
-      "url": "/models/workshop-game/props/piano-v1.glb",
+      "url": "/models/workshop-game/props/piano-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "An upright piano with a closed lid, dark walnut cabinet, white and black keys visible, small music stand, unbranded, no text, clean product model",
@@ -157,13 +166,14 @@
       "height": 1.35,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 195844,
+      "bytes": 93836,
       "triangles": 4567,
       "primitives": 1,
-      "sha256": "41d820db752296e24604893469aa7a0a8158ecf5b20d153426663d4c50497699"
+      "sha256": "955be30c3fcf550f0b1a14d06622759e1b8bb137526060663930895e54737d8c",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "musicstand": {
-      "url": "/models/workshop-game/props/musicstand-v1.glb",
+      "url": "/models/workshop-game/props/musicstand-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A black metal sheet music stand, adjustable, empty with no sheet, unbranded, no text, clean product model",
@@ -171,13 +181,14 @@
       "height": 1.3,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 227492,
+      "bytes": 101148,
       "triangles": 5630,
       "primitives": 1,
-      "sha256": "e907486e4cfcae468901b67ba34a9252f9430859be31c6c3eb606f6615f3bcc0"
+      "sha256": "51da70f4101e337b0c43de96930f379c4ba64b2d873a1e486c19458eee507689",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "shelving": {
-      "url": "/models/workshop-game/props/shelving-v1.glb",
+      "url": "/models/workshop-game/props/shelving-v2.glb",
       "room": "kliniu",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A freestanding warehouse shelving unit with three shelves holding plain brown cardboard boxes, unbranded, no text, no labels, clean product model",
@@ -185,14 +196,15 @@
       "height": 2.0,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 296072,
+      "bytes": 155928,
       "triangles": 4814,
       "primitives": 1,
-      "sha256": "a9aeb8e053e325d0c2512b7b565e3a3e92f2669f56fa5ae91eb397df29b99eac",
-      "note": "Se instancia dos veces en la sala."
+      "sha256": "b72b8eae311fae14e869b0f2307e1b50af25553ea5c2bed170f20b8da7c02edd",
+      "note": "Se instancia dos veces en la sala.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "cart": {
-      "url": "/models/workshop-game/props/cart-v1.glb",
+      "url": "/models/workshop-game/props/cart-v2.glb",
       "room": "kliniu",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A janitorial cleaning cart with a yellow bucket, two trays holding plain white bottles and folded towels, unbranded, no text, clean product model",
@@ -200,13 +212,14 @@
       "height": 1.0,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 261032,
+      "bytes": 129408,
       "triangles": 5496,
       "primitives": 1,
-      "sha256": "b3ec39433335e1d515982ace253c0723a0a907b3f6fc35e8cc8092fe1bc78d0b"
+      "sha256": "97d0709965108e80af39769eecd7a24485c648867ada4950b21fee9724eb49b5",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "candle": {
-      "url": "/models/workshop-game/props/candle-v1.glb",
+      "url": "/models/workshop-game/props/candle-v2.glb",
       "room": "lorigine",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A single scented candle in a frosted amber glass jar with a plain lid, no label, no text, clean product model",
@@ -214,13 +227,14 @@
       "height": 0.11,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 183668,
+      "bytes": 75844,
       "triangles": 5666,
       "primitives": 1,
-      "sha256": "9534b8f0389181ce05a84fe5bc8a292ecc104b70a929104c240209d55f0c7a65"
+      "sha256": "14c5fcb55405e1e48011950eca488c47ae7306553a0a25d27f4fafd2d6896f32",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "samplerack": {
-      "url": "/models/workshop-game/props/samplerack-v1.glb",
+      "url": "/models/workshop-game/props/samplerack-v2.glb",
       "room": "drokex",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A small three-tier metal sample rack holding plain small cardboard product boxes, unbranded, no text, clean product model",
@@ -228,13 +242,14 @@
       "height": 1.15,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 299916,
+      "bytes": 170444,
       "triangles": 4603,
       "primitives": 1,
-      "sha256": "8d4d718697852ad563340be0e996c60419eb39acfc95260c67e1c7eabed94b3f"
+      "sha256": "0f2d657c7035292cdfb50104e49aebafaee4b55e9f157c3b607a4f7f1cb80e54",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "crate": {
-      "url": "/models/workshop-game/props/crate-v1.glb",
+      "url": "/models/workshop-game/props/crate-v2.glb",
       "room": "drokex",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A wooden shipping crate with metal corner brackets and a plain strapping band, no text, no stencil, clean product model",
@@ -242,14 +257,15 @@
       "height": 0.55,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 259000,
+      "bytes": 134256,
       "triangles": 4969,
       "primitives": 1,
-      "sha256": "521cfb3abb0e6172142b0c2b9365ff7b55e59f82a8d1d4f81d6330b5e968ecb0",
-      "note": "Se instancia dos veces en la sala."
+      "sha256": "3dabfbb2560f527afc6c48dfa047dd3f93610251f3e06153ca1024e90125ee91",
+      "note": "Se instancia dos veces en la sala.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "turntable": {
-      "url": "/models/workshop-game/props/turntable-v1.glb",
+      "url": "/models/workshop-game/props/turntable-v2.glb",
       "room": "hub",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A vintage-style turntable record player in a wooden case with a black vinyl record on the platter and a tonearm, unbranded, no text, clean product model",
@@ -257,14 +273,15 @@
       "height": 0.2,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 238844,
+      "bytes": 127552,
       "triangles": 5402,
       "primitives": 1,
-      "sha256": "33ba5e0e686362dd448747f6cfd6bbf18b56db34d7d97f7056aed230f3c30103",
-      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14."
+      "sha256": "b00ec2bdd33494c8843425f9409b47cd89732e12a82e578d927097319431e36d",
+      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "vinylcrate": {
-      "url": "/models/workshop-game/props/vinylcrate-v1.glb",
+      "url": "/models/workshop-game/props/vinylcrate-v2.glb",
       "room": "hub",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A wooden crate of vinyl records standing upright, plain abstract colorful sleeves, no text, no labels, unbranded, clean product model",
@@ -272,14 +289,15 @@
       "height": 0.36,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 240908,
+      "bytes": 131084,
       "triangles": 5036,
       "primitives": 1,
-      "sha256": "6577c9257b28c4310d097fb5232a3178835582524b34c7d6e36c8c68d573060b",
-      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14."
+      "sha256": "0fd8eb8f3e300b68d231ec9c705289dd9ef6b1b501147af8f6faba9c43526a8c",
+      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "electricguitar": {
-      "url": "/models/workshop-game/props/electricguitar-v1.glb",
+      "url": "/models/workshop-game/props/electricguitar-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "An electric guitar standing upright on a small metal stand, sunburst wooden body, black pickguard, unbranded, no text, clean product model",
@@ -287,14 +305,15 @@
       "height": 1.0,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 286048,
+      "bytes": 150716,
       "triangles": 5649,
       "primitives": 1,
-      "sha256": "ece71b9055bda17fd0c76c8596899c9d5b994b6683cdecd7c9ff91e9417b56dd",
-      "note": "Rock en español, gusto declarado por Daniel el 2026-10-14. Textura a 448 px para entrar en el presupuesto de 300 KB."
+      "sha256": "84f49af82d18dd6f5d160f3d22fceb2e057f18c4a98cb56b4dbde3825e31c1a1",
+      "note": "Rock en español, gusto declarado por Daniel el 2026-10-14. Textura a 448 px para entrar en el presupuesto de 300 KB.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     },
     "amp": {
-      "url": "/models/workshop-game/props/amp-v1.glb",
+      "url": "/models/workshop-game/props/amp-v2.glb",
       "room": "academy",
       "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
       "prompt": "A small combo guitar amplifier, black cloth grille, wooden cabinet, three plain knobs on top, unbranded, no text, clean product model",
@@ -302,11 +321,12 @@
       "height": 0.45,
       "origin": "magnific",
       "generated": "2026-10-14",
-      "bytes": 217856,
+      "bytes": 106684,
       "triangles": 5525,
       "primitives": 1,
-      "sha256": "5d58edb9232a4efdec53f88cebebc4cc3c30f384c00c14e5a0d97d9650c113e0",
-      "note": "Acompaña a la guitarra eléctrica."
+      "sha256": "77c9f9603242c4d288fb4ef08e02efd14851f7ed429315287b4166b5f098180c",
+      "note": "Acompaña a la guitarra eléctrica.",
+      "compression": "meshopt (gltf-transform 4.5.1, 2026-10-14); v1 sin comprimir en el historial de git"
     }
   },
   "art": {
@@ -482,5 +502,16 @@
       "credits": 0,
       "note": "Portátil genérico sin logo; pantalla con barras de color abstractas, sin texto legible."
     }
+  },
+  "meshopt": {
+    "tool": "@gltf-transform/cli 4.5.1 meshopt",
+    "date": "2026-10-14",
+    "shell": {
+      "url": "/models/workshop-game/workshop-shell-v3.glb",
+      "from": "workshop-shell-v2.glb",
+      "bytes": 1448328,
+      "sha256": "435ba185a9c663b8b7186e21bbe94f3b16dc0bcd84c0244513099cc5a345213b"
+    },
+    "skipped": "Salas (casi todo es textura, ganancia <10 %) y estaciones/academy-v2 (el codificador falla, probablemente por primitivas vacías del parche de regiones)."
   }
 }
