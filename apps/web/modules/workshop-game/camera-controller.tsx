@@ -2,16 +2,45 @@
 
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type MutableRefObject } from 'react';
-import { Vector3 } from 'three';
+import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
+import { roomForPoint, WORKSHOP_ROOMS } from './rooms';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 import { cameraPath } from './world-path';
 
+const BASE_FOV = 58;
+/** Desktop framing is tuned at this aspect; narrower screens widen the vertical FOV up to MAX_FOV. */
+const REFERENCE_ASPECT = 1.6;
+const MAX_FOV = 78;
+/** Portrait phones see ~40 degrees across, so room views step back to keep the screen in frame. */
+const PORTRAIT_PULL = 1.35;
+const PORTAL_MARGIN = .6;
+function fovFor(aspect: number) {
+  if (aspect >= REFERENCE_ASPECT) return BASE_FOV;
+  const widened = 2 * MathUtils.radToDeg(Math.atan(Math.tan(MathUtils.degToRad(BASE_FOV / 2)) * REFERENCE_ASPECT / aspect));
+  return Math.min(MAX_FOV, widened);
+}
+function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
+  const view = WORLD_VIEWS[point];
+  const room = roomForPoint(point);
+  if (!portrait || !room) return view;
+  const [px, py, pz] = view.position; const [tx, , tz] = view.target;
+  const [dx, dz] = [px - tx, pz - tz];
+  const distance = Math.hypot(dx, dz);
+  // Never step out through the doorway: the project screen is occluded from outside.
+  const portal = WORKSHOP_ROOMS[room].portal;
+  const inside = Math.hypot(portal[0] - tx, portal[2] - tz) - PORTAL_MARGIN;
+  const pulled = Math.max(distance, Math.min(distance * PORTRAIT_PULL, inside));
+  const k = distance ? pulled / distance : 1;
+  return { position: [tx + dx * k, py, tz + dz * k], target: view.target };
+}
 export interface WorldCameraHandle { capture(): WorldCameraSnapshot }
 export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended }: {
   point: WorldPoint; moving: boolean; token: number; initialCamera: WorldCameraSnapshot | null;
   reducedMotion: boolean; onArrived: (token: number) => void; cameraHandle: MutableRefObject<WorldCameraHandle | null>; suspended: boolean;
 }) {
-  const { camera, gl, invalidate } = useThree();
+  const { camera, gl, invalidate, size } = useThree();
+  const portrait = useRef(false); portrait.current = size.width < size.height;
+  const aspect = size.width / size.height;
   const paused = useRef(suspended); paused.current = suspended;
   const target = useRef(new Vector3(...(initialCamera ?? WORLD_VIEWS.entrance).target));
   const destination = useRef({ position: new Vector3(), target: new Vector3() });
@@ -25,14 +54,14 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
 
   useEffect(() => {
     if (!initialized.current) {
-      const view = savedInitial.current ?? (moving ? WORLD_VIEWS.entrance : WORLD_VIEWS[point]);
+      const view = savedInitial.current ?? (moving ? WORLD_VIEWS.entrance : framing(point, portrait.current));
       camera.position.set(...view.position);
       target.current.set(...view.target);
       camera.lookAt(target.current);
       initialized.current = true;
     }
     currentToken.current = token;
-    const view = WORLD_VIEWS[point];
+    const view = framing(point, portrait.current);
     destination.current.position.set(...view.position);
     destination.current.target.set(...view.target);
     travelling.current = moving;
@@ -49,6 +78,17 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     savedInitial.current = null;
     invalidate();
   }, [camera, invalidate, moving, point, token]);
+
+  // Rotating the device re-frames a stopped camera; a trip in progress finishes on its own.
+  useEffect(() => {
+    if (!initialized.current || travelling.current) return;
+    const view = framing(point, portrait.current);
+    camera.position.set(...view.position);
+    target.current.set(...view.target);
+    camera.lookAt(target.current);
+    invalidate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only a portrait flip should re-frame
+  }, [camera, invalidate, portrait.current]);
 
   useEffect(() => {
     const handle: WorldCameraHandle = { capture: () => ({ position: camera.position.toArray() as [number, number, number], target: target.current.toArray() as [number, number, number] }) };
@@ -87,6 +127,9 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
   }, [camera, gl, invalidate]);
 
   useFrame((_, delta) => {
+    const perspective = camera as PerspectiveCamera;
+    const fov = fovFor(aspect);
+    if (perspective.fov !== fov) { perspective.fov = fov; perspective.updateProjectionMatrix(); }
     if (paused.current || !travelling.current) return;
     const trip = journey.current;
     trip.progress = reducedMotion ? 1 : Math.min(1, trip.progress + Math.min(delta, .06) / 1.6);

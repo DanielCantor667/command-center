@@ -22,6 +22,7 @@ class WorldBoundary extends Component<{ children: ReactNode; onError: () => void
   componentDidCatch() { this.props.onError(); }
   render() { return this.state.failed ? null : this.props.children; }
 }
+const saveData = () => typeof navigator !== 'undefined' && !!(navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
 export interface WorkshopGameProps { initialSnapshot?: GameSnapshot; suspended?: boolean; onSave: (snapshot: GameSnapshot) => void; onOpenCase: (id: string) => void; onPortfolio: () => void; reading?: WorkshopReading | null; onRead?: (reading: WorkshopReading | null) => void; technologyFilters?: TechnologyFilters; onTechnologyFiltersChange?: (filters: TechnologyFilters) => void }
 const pointNames: Record<WorldPoint, string> = { entrance: 'Entrada', hub: 'El taller', workbench: 'Mesa de trabajo', kliniu: 'Kliniu', lorigine: "L'ORIGINE", academy: '4U Studio Academy', drokex: 'Drokex', technologies: STATIONS.technologies.name, trajectory: STATIONS.trajectory.name, contact: STATIONS.contact.name };
 const navigation: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'workbench', ...ROOM_IDS, 'technologies', 'trajectory', 'contact'];
@@ -103,7 +104,10 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   };
   const openStation = () => { if (station) setReading(station === 'technologies' ? { kind: station, technologyId: 'nextjs' } : { kind: station }); };
   return <><main className={styles.game} inert={!!reading} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination} data-room-active={state.activeRoom ?? ''} data-room-pending={state.pendingRoom ?? ''}>
-    <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-entrance-v3.webp" alt="" fill sizes="100vw" priority /></div>
+    <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-entrance-v3.webp" alt="" fill sizes="100vw" priority />
+      {/* Optional loop over the still poster: skipped for reduced motion and Data Saver, and once the world takes over. */}
+      {state.status === 'landing' && !reducedMotion && !saveData() && <video src="/experience/workshop-entrance-loop-v1.mp4" poster="/experience/workshop-entrance-v3.webp" autoPlay muted loop playsInline preload="auto" tabIndex={-1} />}
+    </div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
       <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
     </WorldBoundary></div>}
@@ -127,8 +131,8 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
         <p role="status">{state.status === 'room-error' ? 'El caso sigue disponible para leer.' : 'Preparando el espacio para entrar.'}</p>
         {state.status === 'room-loading' ? <><div className={styles.loadTrack} role="progressbar" aria-label={`Carga de ${pending.name}`} aria-valuetext="Cargando la sala"><span /></div><button className={styles.back} type="button" onClick={cancel}>Cancelar carga de sala<X size={16} aria-hidden="true" /></button></> : <><button ref={retryButton} className={styles.primary} type="button" onClick={() => void retryRoom()}>Reintentar sala<RotateCcw size={16} aria-hidden="true" /></button><button className={styles.back} type="button" onClick={() => openCase(pending.id)}>Abrir caso sin 3D<ArrowUpRight size={16} aria-hidden="true" /></button><button className={styles.back} type="button" onClick={cancel}>Volver al taller</button></>}
       </section>}
-      {inspecting && <RoomInspection room={inspecting} buttonRef={openButton} onOpen={() => openCase(inspecting)} onBack={() => go('hub')} />}
-      {station && <StationInspection station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
+      {inspecting && <RoomInspection key={inspecting} room={inspecting} buttonRef={openButton} onOpen={() => openCase(inspecting)} onBack={() => go('hub')} />}
+      {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
       <nav className={styles.navigation} aria-label="Recorrer el taller">{navigation.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={roomForPoint(point) || stationForPoint(point) ? `Ir a ${pointNames[point]}` : undefined} aria-current={state.point === point && state.status === 'exploring' ? 'location' : undefined}>{point === 'academy' ? 'Academy' : point === 'workbench' ? 'Mesa de trabajo' : pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. Elige un lugar para acercarte.</p>
     </>}

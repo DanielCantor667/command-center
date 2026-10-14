@@ -1,6 +1,7 @@
 'use client';
 
 import { Html, useGLTF } from '@react-three/drei';
+import { DoorOpen } from 'lucide-react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
 import { Group } from 'three';
@@ -55,11 +56,12 @@ export function BlenderWorkshop({ opened, point, reducedMotion, onGo, openRooms,
     </group>
     <group ref={slidingDoor} position={ENTRY_DOOR.position}><primitive object={door} dispose={null} /></group>
     <StationGeometry model={stations} point={point} onGo={onGo} />
-    {point !== 'workbench' && <Html position={[0, 1.25, .5]} occlude center distanceFactor={4}>
+    {/* Doors are only readable from the hub; elsewhere they would float over unrelated views. */}
+    {point === 'hub' && <Html position={[0, 1.25, .5]} occlude center>
       <button className={styles.hotspot} onClick={() => onGo('workbench')}>Mesa de trabajo</button>
     </Html>}
-    {ROOM_IDS.filter(id => id !== point).map(id => <Html key={id} position={WORKSHOP_ROOMS[id].portal} occlude center distanceFactor={4}>
-      <button className={styles.hotspot} onClick={() => onGo(id)}>Entrar a {WORKSHOP_ROOMS[id].name}</button>
+    {point === 'hub' && ROOM_IDS.map(id => <Html key={id} position={WORKSHOP_ROOMS[id].portal} occlude center>
+      <button className={styles.hotspot} onClick={() => onGo(id)}><DoorOpen size={16} aria-hidden="true" />Entrar a {WORKSHOP_ROOMS[id].name}</button>
     </Html>)}
   </group>;
 }
