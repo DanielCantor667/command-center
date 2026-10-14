@@ -10,6 +10,9 @@ import { WORKSHOP_RESOURCE_URLS } from './workshop-assets';
 import { RoomContent } from './room-content';
 import { WORKSHOP_ROOMS, type RoomId } from './rooms';
 import { WorkshopLighting } from './workshop-lighting';
+import { AmbientLife } from './workshop-life';
+import { WorkshopBackdrop } from './workshop-backdrop';
+import { WorkshopPostprocessing } from './workshop-postprocessing';
 import { HUB_ART, HUB_PROPS } from './props';
 import { WorkshopProps } from './workshop-props';
 
@@ -84,12 +87,15 @@ export function WorldScene(props: WorldSceneProps) {
   }, []);
   const start = props.initialCamera ?? WORLD_VIEWS[props.opened && !props.moving ? props.point : 'entrance'];
   // Canvas reapplies its props after resize; keep visibility in the declarative pause too.
-  return <Canvas shadows frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 58, near: .1, far: 80, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}>
+  return <Canvas shadows="percentage" frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 58, near: .1, far: 80, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}>
     <color attach="background" args={['#d8dfda']} />
     <fog attach="fog" args={['#d8dfda', 28, 60]} />
     <RendererLifecycle token={props.token} onError={props.onError} suspended={props.suspended} />
     <Suspense fallback={null}>
       <WorkshopLighting />
+      <WorkshopBackdrop />
+      <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
+      <WorkshopPostprocessing />
       <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
       <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
