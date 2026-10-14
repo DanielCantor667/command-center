@@ -10,8 +10,9 @@
     "propBytes": 300000,
     "propTriangles": 9000,
     "propPrimitives": 2,
-    "totalPropBytes": 1800000,
-    "artBytes": 150000
+    "totalPropBytes": 4200000,
+    "artBytes": 150000,
+    "roomPropBytes": 1600000
   },
   "license": {
     "summary": "Generado con la cuenta de pago Premium+ de Magnific. La documentación pública de Magnific indica licencia comercial para imágenes y vídeo generados en planes de pago, y que el usuario responde por no infringir derechos de terceros. No menciona explícitamente los modelos 3D: pendiente de confirmar antes de un uso comercial.",
@@ -110,6 +111,135 @@
       "bytes": 213312,
       "triangles": 5838,
       "sha256": "6496dd853a0bc349732cc6d15fc69dc3cd9c1a7ed271995c6b07c6d081df7970"
+    },
+    "guitar": {
+      "url": "/models/workshop-game/props/guitar-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A single acoustic guitar standing upright on a small metal stand, natural spruce top, warm wood body, dark fretboard, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.05,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 283868,
+      "triangles": 5718,
+      "primitives": 1,
+      "sha256": "6e5c640434769ac7923794d36ffecfda35707d7e5d568d7fa30d1b3542f921c8"
+    },
+    "drumkit": {
+      "url": "/models/workshop-game/props/drumkit-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A compact acoustic drum kit: bass drum, snare, one tom, a hi-hat and one cymbal on metal stands, natural wood shells, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.1,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 292728,
+      "triangles": 5607,
+      "primitives": 1,
+      "sha256": "38dec85f00b4a585662a1bd20677fc621a8d7bd9242c424e5f51332afd16cb25",
+      "note": "Textura a 448 px para entrar en el presupuesto de 300 KB."
+    },
+    "piano": {
+      "url": "/models/workshop-game/props/piano-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "An upright piano with a closed lid, dark walnut cabinet, white and black keys visible, small music stand, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.35,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 195844,
+      "triangles": 4567,
+      "primitives": 1,
+      "sha256": "41d820db752296e24604893469aa7a0a8158ecf5b20d153426663d4c50497699"
+    },
+    "musicstand": {
+      "url": "/models/workshop-game/props/musicstand-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A black metal sheet music stand, adjustable, empty with no sheet, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.3,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 227492,
+      "triangles": 5630,
+      "primitives": 1,
+      "sha256": "e907486e4cfcae468901b67ba34a9252f9430859be31c6c3eb606f6615f3bcc0"
+    },
+    "shelving": {
+      "url": "/models/workshop-game/props/shelving-v1.glb",
+      "room": "kliniu",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A freestanding warehouse shelving unit with three shelves holding plain brown cardboard boxes, unbranded, no text, no labels, clean product model",
+      "credits": 580,
+      "height": 2.0,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 296072,
+      "triangles": 4814,
+      "primitives": 1,
+      "sha256": "a9aeb8e053e325d0c2512b7b565e3a3e92f2669f56fa5ae91eb397df29b99eac",
+      "note": "Se instancia dos veces en la sala."
+    },
+    "cart": {
+      "url": "/models/workshop-game/props/cart-v1.glb",
+      "room": "kliniu",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A janitorial cleaning cart with a yellow bucket, two trays holding plain white bottles and folded towels, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.0,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 261032,
+      "triangles": 5496,
+      "primitives": 1,
+      "sha256": "b3ec39433335e1d515982ace253c0723a0a907b3f6fc35e8cc8092fe1bc78d0b"
+    },
+    "candle": {
+      "url": "/models/workshop-game/props/candle-v1.glb",
+      "room": "lorigine",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A single scented candle in a frosted amber glass jar with a plain lid, no label, no text, clean product model",
+      "credits": 580,
+      "height": 0.11,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 183668,
+      "triangles": 5666,
+      "primitives": 1,
+      "sha256": "9534b8f0389181ce05a84fe5bc8a292ecc104b70a929104c240209d55f0c7a65"
+    },
+    "samplerack": {
+      "url": "/models/workshop-game/props/samplerack-v1.glb",
+      "room": "drokex",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A small three-tier metal sample rack holding plain small cardboard product boxes, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.15,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 299916,
+      "triangles": 4603,
+      "primitives": 1,
+      "sha256": "8d4d718697852ad563340be0e996c60419eb39acfc95260c67e1c7eabed94b3f"
+    },
+    "crate": {
+      "url": "/models/workshop-game/props/crate-v1.glb",
+      "room": "drokex",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A wooden shipping crate with metal corner brackets and a plain strapping band, no text, no stencil, clean product model",
+      "credits": 580,
+      "height": 0.55,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 259000,
+      "triangles": 4969,
+      "primitives": 1,
+      "sha256": "521cfb3abb0e6172142b0c2b9365ff7b55e59f82a8d1d4f81d6330b5e968ecb0",
+      "note": "Se instancia dos veces en la sala."
     }
   },
   "art": {
@@ -141,6 +271,57 @@
       "what": "Textura PBR de concreto (text-to-image + Patina)",
       "credits": 155,
       "reason": "Casi plana y con normal sesgada; no mejoraba la textura propia del shell."
+    },
+    {
+      "credits": 580,
+      "reason": "Bandeja con tres frascos: las botellas salieron amontonadas y el conjunto es ilegible a escala de sala.",
+      "generated": "2026-10-14",
+      "what": "Prop de bandeja con tres frascos (text-to-3D)"
+    },
+    {
+      "credits": 580,
+      "reason": "Módulo de exhibición: losa blanca plana de 1,5 m sin detalle; no mejora los módulos existentes de Drokex.",
+      "generated": "2026-10-14",
+      "what": "Prop de módulo de exhibición (text-to-3D)"
+    },
+    {
+      "what": "Vídeo de portada con Magnific (Seedance 2.0 Fast, 720p, 5 s, fotograma inicial = final)",
+      "credits": 1175,
+      "reason": "Con inicio = fin el modelo devolvió prácticamente la imagen fija (cambio medio ~2/255). Sustituido por un zoom con ffmpeg.",
+      "generated": "2026-10-14"
     }
-  ]
+  ],
+  "environment": {
+    "bogota": {
+      "url": "/models/workshop-game/env/bogota-v1.webp",
+      "origin": "magnific",
+      "engine": "Magnific text-to-image · seedream-5-pro, 2048x1024",
+      "prompt": "Wide panoramic view of Bogota, Colombia seen from a high window at midday: dense city rooftops and mid-rise brick buildings in the foreground, a few modern towers, the green Andean eastern hills behind under soft overcast sky with gentle clouds. Calm, muted, natural colors. No text, no logos, no signs, no people.",
+      "credits": 75,
+      "generated": "2026-10-14",
+      "bytes": 432022,
+      "sha256": "52a17942c759c7bffe4804e9217205c8d5f2232523fd67d2923a3f81361669d7",
+      "note": "Fondo tras las ventanas: cilindro con tres repeticiones espejo (workshop-backdrop.tsx). Convertido a WebP q82 en local; proyecto tmp de Magnific borrado tras descargar."
+    },
+    "entranceLoop": {
+      "url": "/experience/workshop-entrance-loop-v1.mp4",
+      "origin": "local",
+      "engine": "ffmpeg zoompan sobre workshop-entrance-v3.webp (zoom 1→1,05 con ligero paneo, 8 s, 30 fps, 1280x720, sin audio)",
+      "credits": 0,
+      "generated": "2026-10-14",
+      "bytes": 304550,
+      "sha256": "4c62f33bd8475e10a084154e0c2befe505c1d27d3699d4a88325c7c8b0548813",
+      "note": "Bucle perfecto (cos). Se omite con prefers-reduced-motion y Data Saver; el póster WebP queda como respaldo."
+    }
+  },
+  "roomPatches": {
+    "academy": {
+      "source": "/models/workshop-game/room-academy-v1.glb",
+      "output": "/models/workshop-game/room-academy-v2.glb",
+      "tool": "blender/patch_room_glb.py",
+      "regions": "blender/room-patches/academy-v2.regions.json",
+      "removes": "Piano, batería, guitarra y atril de primitivas, sustituidos por los props generados. v1 intacto.",
+      "sha256": "d2443cb17df904003b0624b4e85def10b6b0fea765289eb1a1bbb51fb9adfe4f"
+    }
+  }
 }

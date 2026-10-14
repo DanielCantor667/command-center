@@ -30,6 +30,10 @@ for (const [id, definition] of Object.entries(manifest.props)) {
   summaries.push({ id, bytes: buffer.length, triangles, primitives });
 }
 assert.ok(total <= budgets.totalPropBytes, `Total prop budget: ${total} bytes`);
+// Each room only downloads its own props, so the per-room sum is what a visitor pays.
+const perRoom = {};
+for (const definition of Object.values(manifest.props)) if (definition.room) perRoom[definition.room] = (perRoom[definition.room] ?? 0) + definition.bytes;
+for (const [room, bytes] of Object.entries(perRoom)) assert.ok(bytes <= budgets.roomPropBytes, `${room}: room prop budget ${bytes} bytes`);
 for (const [id, definition] of Object.entries(manifest.art)) {
   const buffer = await readFile(path.join(app, 'public', definition.url));
   assert.equal(createHash('sha256').update(buffer).digest('hex'), definition.sha256, `${id}: art hash`);
