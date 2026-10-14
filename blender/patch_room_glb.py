@@ -7,6 +7,7 @@ byte-identical, and the v1 source file is never touched.
   python3 blender/patch_room_glb.py <in.glb> <out.glb> <regions.json>
 
 regions.json: {"name": [xmin, ymin, zmin, xmax, ymax, zmax], ...} in Three metres.
+A region may also be {"box": [...], "materials": ["WG_paper", ...]} to touch only those materials.
 A triangle is removed only when all three vertices are inside one box.
 """
 import json
@@ -43,17 +44,21 @@ def indices(doc, blob, index):
 
 def patch(src, dst, regions):
     doc, blob = read_glb(src)
-    boxes = list(regions.values())
+    boxes = {name: (r["box"] if isinstance(r, dict) else r) for name, r in regions.items()}
+    only = {name: set(r["materials"]) for name, r in regions.items() if isinstance(r, dict) and "materials" in r}
     removed = {name: 0 for name in regions}
     for mesh in doc["meshes"]:
         for prim in mesh["primitives"]:
+            material = doc["materials"][prim["material"]]["name"] if "material" in prim else None
             pts = positions(doc, blob, prim["attributes"]["POSITION"])
             idx = indices(doc, blob, prim["indices"])
             kept = []
             for t in range(0, len(idx), 3):
                 tri = idx[t:t + 3]
                 hit = None
-                for name, b in regions.items():
+                for name, b in boxes.items():
+                    if name in only and material not in only[name]:
+                        continue
                     if all(b[0] <= pts[i][0] <= b[3] and b[1] <= pts[i][1] <= b[4] and b[2] <= pts[i][2] <= b[5] for i in tri):
                         hit = name
                         break

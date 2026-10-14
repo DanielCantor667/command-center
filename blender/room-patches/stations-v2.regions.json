@@ -1,0 +1,18 @@
+{
+  "technologies_contents": {
+    "box": [
+      -9.08,
+      0.66,
+      0.5,
+      -8.78,
+      2.08,
+      2.5
+    ],
+    "materials": [
+      "WG_paper",
+      "WG_graphite",
+      "WG_brass",
+      "WG_steel_light"
+    ]
+  }
+}

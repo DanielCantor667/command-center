@@ -322,6 +322,22 @@
       "regions": "blender/room-patches/academy-v2.regions.json",
       "removes": "Piano, batería, guitarra y atril de primitivas, sustituidos por los props generados. v1 intacto.",
       "sha256": "d2443cb17df904003b0624b4e85def10b6b0fea765289eb1a1bbb51fb9adfe4f"
+    },
+    "lorigine": {
+      "source": "/models/workshop-game/room-lorigine-v1.glb",
+      "output": "/models/workshop-game/room-lorigine-v2.glb",
+      "tool": "blender/patch_room_glb.py",
+      "regions": "blender/room-patches/lorigine-v2.regions.json",
+      "removes": "Etiquetas sin texto de los frascos (se veían como cuadrados negros). v1 intacto.",
+      "sha256": "c094dfc28512202c7595c4497d19b78e7c499839890de404ac970886b7fa6d61"
+    },
+    "stations": {
+      "source": "/models/workshop-game/workshop-stations-v1.glb",
+      "output": "/models/workshop-game/workshop-stations-v2.glb",
+      "tool": "blender/patch_room_glb.py",
+      "regions": "blender/room-patches/stations-v2.regions.json",
+      "removes": "Marcos vacíos, varillas y pedestales de la estación de Tecnologías (solo materiales paper, graphite, brass y steel_light en la región). Las placas de tecnología se construyen en código (technology-shelf.tsx). v1 intacto.",
+      "sha256": "d8f8d3baccf29df6060bbf1726ab57541125522ec32822717f7e0fabe9b4a48b"
     }
   },
   "audio": {

@@ -4,6 +4,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type MutableRefObject } from 'react';
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import { roomForPoint, WORKSHOP_ROOMS } from './rooms';
+import { stationForPoint } from './stations';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 import { cameraPath } from './world-path';
 
@@ -14,6 +15,8 @@ const MAX_FOV = 78;
 /** Portrait phones see ~40 degrees across, so room views step back to keep the screen in frame. */
 const PORTRAIT_PULL = 1.35;
 const PORTAL_MARGIN = .6;
+/** The folded panel covers the lower third on phones; stations aim lower so the board sits above it. */
+const PORTRAIT_LIFT = .5;
 function fovFor(aspect: number) {
   if (aspect >= REFERENCE_ASPECT) return BASE_FOV;
   const widened = 2 * MathUtils.radToDeg(Math.atan(Math.tan(MathUtils.degToRad(BASE_FOV / 2)) * REFERENCE_ASPECT / aspect));
@@ -22,16 +25,16 @@ function fovFor(aspect: number) {
 function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const view = WORLD_VIEWS[point];
   const room = roomForPoint(point);
-  if (!portrait || !room) return view;
-  const [px, py, pz] = view.position; const [tx, , tz] = view.target;
+  if (!portrait || (!room && !stationForPoint(point))) return view;
+  const [px, py, pz] = view.position; const [tx, ty, tz] = view.target;
   const [dx, dz] = [px - tx, pz - tz];
   const distance = Math.hypot(dx, dz);
-  // Never step out through the doorway: the project screen is occluded from outside.
-  const portal = WORKSHOP_ROOMS[room].portal;
-  const inside = Math.hypot(portal[0] - tx, portal[2] - tz) - PORTAL_MARGIN;
+  // Rooms: never step out through the doorway (the project screen is occluded from outside).
+  // Stations stand in the open hub, so only the pull factor applies.
+  const inside = room ? Math.hypot(WORKSHOP_ROOMS[room].portal[0] - tx, WORKSHOP_ROOMS[room].portal[2] - tz) - PORTAL_MARGIN : Infinity;
   const pulled = Math.max(distance, Math.min(distance * PORTRAIT_PULL, inside));
   const k = distance ? pulled / distance : 1;
-  return { position: [tx + dx * k, py, tz + dz * k], target: view.target };
+  return { position: [tx + dx * k, py, tz + dz * k], target: room ? view.target : [tx, ty - PORTRAIT_LIFT, tz] };
 }
 export interface WorldCameraHandle { capture(): WorldCameraSnapshot }
 export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended }: {

@@ -22,8 +22,8 @@ function useWorkshopModels() {
   }, [resources]);
 }
 
-export function BlenderWorkshop({ opened, point, reducedMotion, onGo, openRooms, suspended }: {
-  opened: boolean; point: WorldPoint; reducedMotion: boolean; openRooms: RoomId[]; suspended: boolean; onGo: (point: WorldPoint) => void;
+export function BlenderWorkshop({ opened, point, reducedMotion, onGo, onTechnology, openRooms, suspended }: {
+  opened: boolean; point: WorldPoint; reducedMotion: boolean; openRooms: RoomId[]; suspended: boolean; onGo: (point: WorldPoint) => void; onTechnology?: (technologyId: string) => void;
 }) {
   const { shell, door, stations } = useWorkshopModels();
   const slidingDoor = useRef<Group>(null);
@@ -55,7 +55,7 @@ export function BlenderWorkshop({ opened, point, reducedMotion, onGo, openRooms,
       <primitive object={shell} dispose={null} />
     </group>
     <group ref={slidingDoor} position={ENTRY_DOOR.position}><primitive object={door} dispose={null} /></group>
-    <StationGeometry model={stations} point={point} onGo={onGo} />
+    <StationGeometry model={stations} point={point} onGo={onGo} onTechnology={onTechnology} />
     {/* Doors are only readable from the hub; elsewhere they would float over unrelated views. */}
     {point === 'hub' && <Html position={[0, 1.25, .5]} occlude center>
       <button className={styles.hotspot} onClick={() => onGo('workbench')}>Mesa de trabajo</button>

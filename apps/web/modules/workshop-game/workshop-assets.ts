@@ -2,7 +2,7 @@
 export const WORKSHOP_ASSETS = {
   shell: '/models/workshop-game/workshop-shell-v2.glb',
   door: '/models/workshop-game/workshop-door-v1.glb',
-  stations: '/models/workshop-game/workshop-stations-v1.glb',
+  stations: '/models/workshop-game/workshop-stations-v2.glb',
 } as const;
 export const WORKSHOP_RESOURCE_URLS = [WORKSHOP_ASSETS.shell, WORKSHOP_ASSETS.door, WORKSHOP_ASSETS.stations];
 export const ENTRY_DOOR = {

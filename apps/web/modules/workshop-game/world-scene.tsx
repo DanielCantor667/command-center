@@ -26,7 +26,7 @@ export interface WorldSceneProps {
   point: WorldPoint; moving: boolean; token: number; opened: boolean; reducedMotion: boolean;
   initialCamera: WorldCameraSnapshot | null; cameraHandle: MutableRefObject<WorldCameraHandle | null>;
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
-  onGo: (point: WorldPoint) => void; onPreparing: () => void;
+  onGo: (point: WorldPoint) => void; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -96,7 +96,7 @@ export function WorldScene(props: WorldSceneProps) {
       <WorkshopBackdrop />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
       <WorkshopPostprocessing />
-      <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
+      <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} onTechnology={props.onTechnology} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
       <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
       {[...new Set([props.activeRoom, props.pendingRoom].filter((id): id is RoomId => !!id))].map(room => <RoomContent key={room} room={room} token={props.token} onReady={props.onRoomReady} onError={props.onRoomError} />)}
