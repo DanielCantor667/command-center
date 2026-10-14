@@ -129,3 +129,4 @@
 
 /* Sprint 11.1 (paleta A, Taller verde): display face for the headings that carry the voice. */
 .identity span, .welcome h1, .loadPanel h1, .inspection h1, .roomSign, .roomLoad h1 { font-family: var(--font-display), var(--font-geist-sans), sans-serif; }
+.tourStep { margin-right: 8px; padding-right: 8px; border-right: 1px solid #78917d; font-variant-numeric: tabular-nums; color: #c9d6c5; }
