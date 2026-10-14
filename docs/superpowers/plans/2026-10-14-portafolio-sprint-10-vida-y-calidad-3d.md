@@ -74,6 +74,23 @@ Total estimado: **~4.500–6.500** sin el conjunto completo de personas, y **~8.
 - **Licencia 3D de Magnific** sin confirmar para uso comercial. Sigue siendo el bloqueante para publicar.
 - **Peso.** Más texturas y objetos suben la carga por sala; 10.3 usa 1k y 10.8 mide.
 
+## Huellas personales (datos aportados por Daniel, 2026-10-14)
+
+Material real para 10.4: gustos musicales (pop, rock y rock en español; Michael Jackson como referencia) y herramientas de trabajo (Claude, Codex, un PC o Mac normal, VS Code).
+
+Reglas: sin marcas ni nombres de terceros dentro de la escena y sin inventar nada; solo objetos genéricos que evocan lo que dijo.
+
+| Dato real | Objeto en la escena | Dónde |
+| --- | --- | --- |
+| Música pop / rock | Tocadiscos y caja de vinilos con carátulas abstractas | Hub o mesa de trabajo |
+| Rock (en español) | Guitarra eléctrica apoyada junto a un amplificador | Academy |
+| Pop | Detalle sutil de la época (un guante blanco sobre el piano), opcional y a validar contigo | Academy |
+| Mac / PC normal | Portátil genérico sin logo sobre la mesa de trabajo | Mesa de trabajo |
+| VS Code | Pantalla del portátil con líneas de código abstractas, sin texto real | Mesa de trabajo |
+| Claude, Codex, VS Code | Tres placas más en la fila Herramientas de la estación de Tecnologías (iniciales tipográficas, sin logos propios) | Tecnologías |
+
+Costo estimado: ~2.300–2.900 (4–5 props a 580), más 0 para las placas.
+
 ## Decisiones que necesito
 
 1. ¿"El estante" es el de la pared izquierda (Tecnologías / Trayectoria)? Asumo que sí.

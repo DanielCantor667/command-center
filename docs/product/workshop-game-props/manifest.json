@@ -15,9 +15,15 @@
     "roomPropBytes": 1600000
   },
   "license": {
-    "summary": "Generado con la cuenta de pago Premium+ de Magnific. La documentación pública de Magnific indica licencia comercial para imágenes y vídeo generados en planes de pago, y que el usuario responde por no infringir derechos de terceros. No menciona explícitamente los modelos 3D: pendiente de confirmar antes de un uso comercial.",
-    "source": "https://www.magnific.com/ai/docs/ai-content-and-copyright",
-    "checked": "2026-10-09"
+    "summary": "Generado con la cuenta de pago Premium+ de Magnific. La página del generador 3D de Magnific afirma que conservas los derechos de los modelos 3D que creas y que el uso comercial está incluido en los planes de pago; la página de copyright de IA indica licencia comercial en planes de pago, atribución solo en el plan gratuito, sin indemnización para contenido de IA, y que el usuario responde de no infringir derechos de terceros. La licencia depende de tener el plan de pago activo en el momento de generar (todos los assets se generaron con Premium+).",
+    "source": [
+      "https://www.magnific.com/ai/3d-model-generator",
+      "https://www.freepik.com/ai/docs/ai-content-and-copyright",
+      "https://www.freepik.com/ai/docs/plans-and-pricing"
+    ],
+    "checked": "2026-10-14",
+    "verification": "Texto leído a través de resultados de búsqueda; las páginas oficiales devuelven 403 a la lectura automática y no se pudo abrir el original literal. Resuelve la duda del 2026-10-09 (los modelos 3D sí están cubiertos). Pendiente solo, si se quiere certeza escrita, confirmar con soporte de Magnific.",
+    "risks": "Sin indemnización para contenido de IA; protección de copyright de la salida de IA incierta según jurisdicción; términos de los motores subyacentes (Tripo, Meshy) no verificados individualmente."
   },
   "props": {
     "seal": {
