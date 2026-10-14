@@ -22,7 +22,7 @@ describe('Workshop reader', () => {
     const open = vi.fn();
     render(<Reader reading={{ kind: 'technologies', technologyId: 'nextjs' }} onOpenCase={open} />);
     expect(screen.getByRole('dialog', { name: 'Tecnologías' })).toBeInTheDocument();
-    expect(screen.getByRole('status')).toHaveTextContent('34 tecnologías');
+    expect(screen.getByRole('status')).toHaveTextContent('37 tecnologías');
     expect(document.querySelector('canvas')).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Command Center Ver proyecto' }));
     expect(open).toHaveBeenCalledWith('command-center');
@@ -32,7 +32,7 @@ describe('Workshop reader', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Datos 5' }));
     expect(screen.getByRole('heading', { name: 'No hay coincidencias' })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Limpiar filtros' }));
-    expect(screen.getByRole('status')).toHaveTextContent('34 tecnologías');
+    expect(screen.getByRole('status')).toHaveTextContent('37 tecnologías');
   });
 
   it('retains a supplied project filter and exposes the real CV-only empty association', () => {

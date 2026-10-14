@@ -10,9 +10,10 @@
     "propBytes": 300000,
     "propTriangles": 9000,
     "propPrimitives": 2,
-    "totalPropBytes": 4200000,
+    "totalPropBytes": 5000000,
     "artBytes": 150000,
-    "roomPropBytes": 1600000
+    "roomPropBytes": 2000000,
+    "note": "2026-10-14: subidos de 4,2/1,6 MB a 5,0/2,0 MB por los objetos personales (Academy: 1,99 MB de props). Cada sala solo descarga los suyos. Si el peso por sala molesta en móvil, el siguiente paso es meshopt (9.8) antes de subir más el tope."
   },
   "license": {
     "summary": "Generado con la cuenta de pago Premium+ de Magnific. La página del generador 3D de Magnific afirma que conservas los derechos de los modelos 3D que creas y que el uso comercial está incluido en los planes de pago; la página de copyright de IA indica licencia comercial en planes de pago, atribución solo en el plan gratuito, sin indemnización para contenido de IA, y que el usuario responde de no infringir derechos de terceros. La licencia depende de tener el plan de pago activo en el momento de generar (todos los assets se generaron con Premium+).",
@@ -246,6 +247,66 @@
       "primitives": 1,
       "sha256": "521cfb3abb0e6172142b0c2b9365ff7b55e59f82a8d1d4f81d6330b5e968ecb0",
       "note": "Se instancia dos veces en la sala."
+    },
+    "turntable": {
+      "url": "/models/workshop-game/props/turntable-v1.glb",
+      "room": "hub",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A vintage-style turntable record player in a wooden case with a black vinyl record on the platter and a tonearm, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 0.2,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 238844,
+      "triangles": 5402,
+      "primitives": 1,
+      "sha256": "33ba5e0e686362dd448747f6cfd6bbf18b56db34d7d97f7056aed230f3c30103",
+      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14."
+    },
+    "vinylcrate": {
+      "url": "/models/workshop-game/props/vinylcrate-v1.glb",
+      "room": "hub",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A wooden crate of vinyl records standing upright, plain abstract colorful sleeves, no text, no labels, unbranded, clean product model",
+      "credits": 580,
+      "height": 0.36,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 240908,
+      "triangles": 5036,
+      "primitives": 1,
+      "sha256": "6577c9257b28c4310d097fb5232a3178835582524b34c7d6e36c8c68d573060b",
+      "note": "Gusto declarado por Daniel (música pop y rock) el 2026-10-14."
+    },
+    "electricguitar": {
+      "url": "/models/workshop-game/props/electricguitar-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "An electric guitar standing upright on a small metal stand, sunburst wooden body, black pickguard, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 1.0,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 286048,
+      "triangles": 5649,
+      "primitives": 1,
+      "sha256": "ece71b9055bda17fd0c76c8596899c9d5b994b6683cdecd7c9ff91e9417b56dd",
+      "note": "Rock en español, gusto declarado por Daniel el 2026-10-14. Textura a 448 px para entrar en el presupuesto de 300 KB."
+    },
+    "amp": {
+      "url": "/models/workshop-game/props/amp-v1.glb",
+      "room": "academy",
+      "engine": "Magnific text-to-3D · Tripo (versión por defecto), faceLimit 6000",
+      "prompt": "A small combo guitar amplifier, black cloth grille, wooden cabinet, three plain knobs on top, unbranded, no text, clean product model",
+      "credits": 580,
+      "height": 0.45,
+      "origin": "magnific",
+      "generated": "2026-10-14",
+      "bytes": 217856,
+      "triangles": 5525,
+      "primitives": 1,
+      "sha256": "5d58edb9232a4efdec53f88cebebc4cc3c30f384c00c14e5a0d97d9650c113e0",
+      "note": "Acompaña a la guitarra eléctrica."
     }
   },
   "art": {
@@ -401,6 +462,14 @@
       "bytes": 80501,
       "sha256": "f65ed7c61590f6c13226af55f95844b129bd5efd7109dd99e361171845b0c7ae",
       "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    }
+  },
+  "code_built": {
+    "deskLaptop": {
+      "file": "apps/web/modules/workshop-game/desk-laptop.tsx",
+      "origin": "local",
+      "credits": 0,
+      "note": "Portátil genérico sin logo; pantalla con barras de color abstractas, sin texto legible."
     }
   }
 }

@@ -1,6 +1,6 @@
 # Sprint 10 — Vida y calidad 3D del taller
 
-Estado (2026-10-14): **10.1 y 10.2 hechas y verificadas**; el resto sigue sin aprobar. Ninguna fase arranca sin luz verde explícita.
+Estado (2026-10-14): **10.1 y 10.2 hechas y verificadas; 10.4 en curso con los objetos personales (tocadiscos, vinilos, guitarra eléctrica, amplificador, portátil, placas Claude/Codex/VS Code); guante blanco omitido**. El resto sigue sin aprobar. Ninguna fase arranca sin luz verde explícita.
 Alcance: `workshop-game`. Antecedente: Sprint 9 (luz, props, vida ambiental, sonido, móvil).
 
 ## Diagnóstico (capturas del 2026-10-14)

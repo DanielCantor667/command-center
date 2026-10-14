@@ -11,7 +11,8 @@ export interface PortfolioTechnology {
   description: string;
   aliases: readonly string[];
   projectIds: readonly string[];
-  source: 'cv' | 'project' | 'cv-and-project';
+  /** 'declared': stated by Daniel (not in the CV nor tied to a project). */
+  source: 'cv' | 'project' | 'cv-and-project' | 'declared';
   icon: string;
 }
 export const TECHNOLOGY_CATEGORIES: readonly { id: TechnologyCategory; label: string }[] = [
@@ -409,7 +410,16 @@ const cvEntries = [
   },
 ] satisfies Omit<PortfolioTechnology, 'source'>[];
 
-export const PORTFOLIO_TECHNOLOGIES: PortfolioTechnology[] = cvEntries.map((entry) => {
+// Tools Daniel stated on 2026-10-14 that he works with daily. No level or project link is inferred.
+const declaredEntries = [
+  { id: 'claude', name: 'Claude', shortName: 'CL', category: 'tools', color: '#a85a3a', description: 'Asistente de IA con el que trabajo el código del día a día.', projectIds: [], aliases: ['claude code'], icon: 'claude' },
+  { id: 'codex', name: 'Codex', shortName: 'CX', category: 'tools', color: '#2f5d5a', description: 'Asistente de programación con IA que uso en mi flujo de trabajo.', projectIds: [], aliases: ['openai codex'], icon: 'codex' },
+  { id: 'vscode', name: 'VS Code', shortName: 'VS', category: 'tools', color: '#2a6db0', description: 'Editor de código de uso diario.', projectIds: [], aliases: ['visual studio code'], icon: 'vscode' },
+] satisfies Omit<PortfolioTechnology, 'source'>[];
+
+const declaredTechnologies: PortfolioTechnology[] = declaredEntries.map((entry) => ({ ...entry, source: 'declared' as const }));
+
+export const PORTFOLIO_TECHNOLOGIES: PortfolioTechnology[] = [...cvEntries.map((entry): PortfolioTechnology => {
   const names = [entry.name, entry.id, ...entry.aliases].map(normalizeTechnology);
   const recorded = PROJECTS.filter(
     (project) =>
@@ -418,7 +428,7 @@ export const PORTFOLIO_TECHNOLOGIES: PortfolioTechnology[] = cvEntries.map((entr
   ).map((project) => project.id);
   const projectIds = [...new Set([...entry.projectIds, ...recorded])];
   return { ...entry, projectIds, source: projectIds.length ? 'cv-and-project' : 'cv' };
-});
+}), ...declaredTechnologies];
 
 export function filterTechnologies(
   query: string,

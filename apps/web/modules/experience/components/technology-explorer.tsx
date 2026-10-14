@@ -215,13 +215,17 @@ export function TechnologyExplorer({
               </ul>
             ) : (
               <p className={styles.source}>
-                Incluida en mi CV. Aún sin un proyecto asociado en este portafolio.
+                {selected.source === 'declared'
+                  ? 'Herramienta de trabajo diaria; no está ligada a un proyecto concreto de este portafolio.'
+                  : 'Incluida en mi CV. Aún sin un proyecto asociado en este portafolio.'}
               </p>
             )}
             <p className={styles.source}>
-              {selected.source === 'cv'
-                ? 'Fuente: CV de Daniel.'
-                : 'Fuente: CV y documentación de proyectos.'}
+              {selected.source === 'declared'
+                ? 'Fuente: declarada por Daniel.'
+                : selected.source === 'cv'
+                  ? 'Fuente: CV de Daniel.'
+                  : 'Fuente: CV y documentación de proyectos.'}
             </p>
           </div>
         </aside>

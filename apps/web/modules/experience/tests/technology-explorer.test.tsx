@@ -49,7 +49,7 @@ describe('Technology explorer', () => {
     expect(screen.getByRole('heading', { name: 'No hay coincidencias' })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Limpiar filtros' }));
     expect(screen.getByRole('searchbox')).toHaveValue('');
-    expect(screen.getByRole('status')).toHaveTextContent('34 tecnologías');
+    expect(screen.getByRole('status')).toHaveTextContent('37 tecnologías');
   });
 
   it('filters the stack of a real project and opens that project', () => {
