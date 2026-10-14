@@ -33,7 +33,7 @@ function Monitor({ labelled, reducedMotion, onGo }: { labelled: boolean; reduced
     <mesh position={[0, .2, -.02]} castShadow><boxGeometry args={[.05, .4, .03]} /><meshStandardMaterial color="#2a302d" roughness={.5} metalness={.4} /></mesh>
     <mesh position={[0, .62, 0]} castShadow><boxGeometry args={[SCREEN[0] + .04, SCREEN[1] + .04, .03]} /><meshStandardMaterial color="#1c211f" roughness={.4} /></mesh>
     <mesh position={[0, .62, .016]}><planeGeometry args={SCREEN} /><meshBasicMaterial map={textures[index]} toneMapped={false} /></mesh>
-    {labelled && <Html position={[0, 1.15, 0]} center><button type="button" className={styles.hotspot} onClick={() => onGo(room)}>Proyecto: {WORKSHOP_ROOMS[room].name}</button></Html>}
+    {labelled && <Html position={[0, 1.15, 0]} center><button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} onClick={() => onGo(room)}>Proyecto: {WORKSHOP_ROOMS[room].name}</button></Html>}
   </group>;
 }
 
@@ -67,10 +67,10 @@ export function DeskHero({ point, reducedMotion, sound, onGo, onSound }: { point
     <Hit at={TURNTABLE} size={[.36, .2, .3]} onSelect={onSound} />
     {/* Labels only at the desk, like the door labels only in the hub. */}
     {point === 'workbench' && LABELS.map(label => <Html key={label.text} position={label.at} center>
-      <button type="button" className={styles.hotspot} onClick={() => onGo(label.point)}>{label.text}</button>
+      <button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} onClick={() => onGo(label.point)}>{label.text}</button>
     </Html>)}
     {point === 'workbench' && <Html position={[TURNTABLE[0], 1.3, TURNTABLE[2]]} center>
-      <button type="button" className={styles.hotspot} aria-pressed={sound} onClick={onSound}>{sound ? 'Pausar música' : 'Poner música'}</button>
+      <button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} aria-pressed={sound} onClick={onSound}>{sound ? 'Pausar música' : 'Poner música'}</button>
     </Html>}
   </OptionalBoundary>;
 }

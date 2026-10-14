@@ -28,7 +28,7 @@ export interface WorldSceneProps {
   point: WorldPoint; moving: boolean; token: number; opened: boolean; reducedMotion: boolean;
   initialCamera: WorldCameraSnapshot | null; cameraHandle: MutableRefObject<WorldCameraHandle | null>;
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
-  onGo: (point: WorldPoint) => void; sound: boolean; onSound: () => void; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
+  onGo: (point: WorldPoint) => void; sound: boolean; onSound: () => void; night: boolean; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -90,14 +90,14 @@ export function WorldScene(props: WorldSceneProps) {
   const start = props.initialCamera ?? WORLD_VIEWS[props.opened && !props.moving ? props.point : 'entrance'];
   // Canvas reapplies its props after resize; keep visibility in the declarative pause too.
   return <Canvas shadows="percentage" frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 58, near: .1, far: 80, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}>
-    <color attach="background" args={['#d8dfda']} />
-    <fog attach="fog" args={['#d8dfda', 28, 60]} />
+    <color attach="background" args={[props.night ? '#1b2335' : '#d8dfda']} />
+    <fog attach="fog" args={[props.night ? '#1b2335' : '#d8dfda', 28, 60]} />
     <RendererLifecycle token={props.token} onError={props.onError} suspended={props.suspended} />
     <Suspense fallback={null}>
-      <WorkshopLighting />
-      <WorkshopBackdrop />
+      <WorkshopLighting night={props.night} />
+      <WorkshopBackdrop night={props.night} />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
-      <WorkshopPostprocessing />
+      <WorkshopPostprocessing night={props.night} />
       <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} onTechnology={props.onTechnology} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
       <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
       <DeskLaptop position={[1.0, 1.0, .15]} turn={.28} />

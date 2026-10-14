@@ -370,6 +370,17 @@
       "sha256": "52a17942c759c7bffe4804e9217205c8d5f2232523fd67d2923a3f81361669d7",
       "note": "Fondo tras las ventanas: cilindro con tres repeticiones espejo (workshop-backdrop.tsx). Convertido a WebP q82 en local; proyecto tmp de Magnific borrado tras descargar."
     },
+    "bogotaNight": {
+      "url": "/models/workshop-game/env/bogota-night-v1.webp",
+      "origin": "magnific",
+      "engine": "Magnific ideogram-4-5 preciseEdit sobre bogota-v1, 2048x1024",
+      "prompt": "Same view of Bogotá at night: dark blue sky, warm city lights in windows, streetlights, mountains as dark silhouettes. Keep composition.",
+      "credits": 80,
+      "generated": "2026-10-14",
+      "bytes": 206168,
+      "sha256": "a6a56575537354613cad6368c17c9b0bb786ffdcc73478a145a5284747b0f5ff",
+      "note": "Panorama del modo noche (Sprint 11.7). WebP q82 con cwebp; proyecto tmp de Magnific borrado tras descargar."
+    },
     "entranceLoop": {
       "url": "/experience/workshop-entrance-loop-v1.mp4",
       "origin": "local",

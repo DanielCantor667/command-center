@@ -1,7 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ArrowUpRight, DoorOpen, Map, Move, RotateCcw, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowUpRight, DoorOpen, Map, Moon, Move, Sun, RotateCcw, Volume2, VolumeX, X } from 'lucide-react';
 import { Component, useCallback, useEffect, useReducer, useRef, useState, type ReactNode } from 'react';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { initialWorldState, worldReducer, type GameSnapshot, type WorldPoint } from './world-state';
@@ -55,6 +55,10 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   }, []);
   // Sound stays off until the visitor asks for it; the toggle click is the gesture that unlocks playback.
   const [sound, setSound] = useState(false);
+  // Per-visitor convenience: the chosen day/night look survives a reload when storage is available.
+  const [night, setNight] = useState(false);
+  useEffect(() => { try { setNight(localStorage.getItem('workshop-night') === '1'); } catch { /* storage blocked: stay in day */ } }, []);
+  const toggleNight = () => setNight(value => { try { localStorage.setItem('workshop-night', value ? '0' : '1'); } catch { /* storage blocked: not remembered */ } return !value; });
   const toggleSound = useCallback(() => setSound(value => !value), []);
   const [tabHidden, setTabHidden] = useState(false);
   useEffect(() => {
@@ -140,16 +144,16 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     onOpenCase(id);
   };
   const openStation = () => { if (station) setReading(station === 'technologies' ? { kind: station, technologyId: 'nextjs' } : { kind: station }); };
-  return <><main className={styles.game} inert={!!reading} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination} data-room-active={state.activeRoom ?? ''} data-room-pending={state.pendingRoom ?? ''}>
+  return <><main className={styles.game} inert={!!reading} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-night={night ? '' : undefined} data-world-point={state.point} data-world-destination={state.destination} data-room-active={state.activeRoom ?? ''} data-room-pending={state.pendingRoom ?? ''}>
     <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-entrance-v3.webp" alt="" fill sizes="100vw" priority />
       {/* Optional loop over the still poster: skipped for reduced motion and Data Saver, and once the world takes over. */}
       {state.status === 'landing' && !reducedMotion && !saveData() && <video src="/experience/workshop-entrance-loop-v1.mp4" poster="/experience/workshop-entrance-v3.webp" autoPlay muted loop playsInline preload="auto" tabIndex={-1} />}
     </div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
-      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} sound={sound} onSound={toggleSound} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
+      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} sound={sound} onSound={toggleSound} night={night} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
-    <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>{!inside && <button type="button" className={styles.portfolio} onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={17} aria-hidden="true" /></button>}{inside && <button type="button" className={styles.portfolio} aria-pressed={sound} onClick={() => setSound(value => !value)}>Sonido{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}<button type="button" className={styles.portfolio} onClick={portfolio}>Ver portafolio<ArrowUpRight size={17} aria-hidden="true" /></button></div></header>
+    <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>{!inside && <button type="button" className={styles.portfolio} onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={17} aria-hidden="true" /></button>}{inside && <button type="button" className={styles.portfolio} aria-pressed={night} onClick={toggleNight}>{night ? 'Día' : 'Noche'}{night ? <Sun size={17} aria-hidden="true" /> : <Moon size={17} aria-hidden="true" />}</button>}{inside && <button type="button" className={styles.portfolio} aria-pressed={sound} onClick={() => setSound(value => !value)}>Sonido{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}<button type="button" className={styles.portfolio} onClick={portfolio}>Ver portafolio<ArrowUpRight size={17} aria-hidden="true" /></button></div></header>
     {state.status === 'landing' && <section className={styles.welcome} aria-labelledby="workshop-title">
       <p className={styles.location}>{PUBLIC_PROFILE.location}</p><h1 id="workshop-title">El taller de Daniel</h1><p>Un lugar para explorar<br />lo que construyo.</p>
       <button ref={enterButton} className={styles.primary} type="button" onClick={() => void start()}>Entrar al taller<DoorOpen size={19} aria-hidden="true" /></button><span className={styles.hint}>Recorre el espacio con clic o toque.</span>
@@ -171,7 +175,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       {inspecting && <RoomInspection key={inspecting} room={inspecting} buttonRef={openButton} onOpen={() => openCase(inspecting)} onBack={() => go('hub')} />}
       {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
       <nav className={styles.navigation} aria-label="Recorrer el taller">{navigation.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={roomForPoint(point) || stationForPoint(point) ? `Ir a ${pointNames[point]}` : undefined} aria-current={state.point === point && state.status === 'exploring' ? 'location' : undefined}>{point === 'academy' ? 'Academy' : point === 'workbench' ? 'Mesa de trabajo' : pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
-      <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. Usa la rueda o las flechas para recorrer el taller.</p>
+      <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
     </>}
     <footer className={styles.footer}><span>El taller de Daniel</span>{!inside && <span>3D al entrar</span>}</footer>
   </main>{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;

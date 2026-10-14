@@ -1,15 +1,16 @@
 'use client';
 import { useTexture } from '@react-three/drei';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { BackSide, MirroredRepeatWrapping, SRGBColorSpace } from 'three';
 import { OptionalBoundary } from './workshop-props';
 
 export const WORKSHOP_BACKDROP_URL = '/models/workshop-game/env/bogota-v1.webp';
+export const WORKSHOP_NIGHT_BACKDROP_URL = '/models/workshop-game/env/bogota-night-v1.webp';
 const RADIUS = 36;
 const HEIGHT = 36;
 
-function Panorama() {
-  const texture = useTexture(WORKSHOP_BACKDROP_URL);
+function Panorama({ night }: { night: boolean }) {
+  const texture = useTexture(night ? WORKSHOP_NIGHT_BACKDROP_URL : WORKSHOP_BACKDROP_URL);
   useEffect(() => {
     texture.colorSpace = SRGBColorSpace;
     texture.wrapS = MirroredRepeatWrapping;
@@ -25,6 +26,6 @@ function Panorama() {
 }
 
 /** Optional: if the image fails, the windows keep the flat background colour. */
-export function WorkshopBackdrop() {
-  return <OptionalBoundary><Panorama /></OptionalBoundary>;
+export function WorkshopBackdrop({ night = false }: { night?: boolean }) {
+  return <OptionalBoundary><Suspense fallback={null}><Panorama night={night} /></Suspense></OptionalBoundary>;
 }

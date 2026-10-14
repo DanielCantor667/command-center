@@ -1,6 +1,6 @@
 # Sprint 11 — Escritorio protagonista y recorrido guiado
 
-Estado (2026-10-14): **11.2 hecha (escritorio como primera parada); 11.1 en curso con la paleta A "Taller verde" y Bricolage Grotesque**. La paleta B "Noche de estudio" queda para un modo noche (11.7). Ninguna fase arranca sin luz verde explícita.
+Estado (2026-10-14): **11.2 hecha (escritorio como primera parada); 11.1 en curso con la paleta A "Taller verde" y Bricolage Grotesque**. La paleta B "Noche de estudio" es el modo noche (11.7). 11.3–11.7 hechas en código (0 créditos): interacción, recorrido por rueda/flechas, ajustes móviles, gradación común (unifica props y salas, solo escritorio) y conmutador día/noche (panorama tintado, no foto nocturna). Ninguna fase arranca sin luz verde explícita.
 Alcance: `workshop-game` y la portada del portafolio. Antecedentes: Sprint 9 (luz, props, sonido), Sprint 10 (composición, tecnologías, huellas personales).
 
 ## Por qué

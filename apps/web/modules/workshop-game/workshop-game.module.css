@@ -130,3 +130,14 @@
 /* Sprint 11.1 (paleta A, Taller verde): display face for the headings that carry the voice. */
 .identity span, .welcome h1, .loadPanel h1, .inspection h1, .roomSign, .roomLoad h1 { font-family: var(--font-display), var(--font-geist-sans), sans-serif; }
 .tourStep { margin-right: 8px; padding-right: 8px; border-right: 1px solid #78917d; font-variant-numeric: tabular-nums; color: #c9d6c5; }
+.narrowOnly { display: none; }
+@media (max-width: 700px) { .wideOnly { display: none; } .narrowOnly { display: inline; } }
+/* Four desk labels share a 320px screen: compact, still a 36px target. */
+@media (max-width: 420px) { .deskLabel { min-height: 36px; padding: 7px 9px; font-size: 11px; } }
+/* 11.7 night mode (palette B: ink, walnut, cream, amber, vinyl). */
+.game[data-night] .hotspot { color: #1f2a3d; background: #efe6d2; border-color: #c9a160; }
+.game[data-night] .hotspot:hover { border-color: #b8473b; }
+.game[data-night] .destination { background: rgb(21 28 43 / 86%); border-color: #c9a160; }
+.game[data-night] .navigation { background: rgb(21 28 43 / 94%); border-color: #2c3750; }
+.game[data-night] .navigation button { color: #efe6d2; }
+.game[data-night] .navigation button:hover, .game[data-night] .navigation button[aria-current] { background: #e3a548; color: #1b2335; }
