@@ -29,6 +29,8 @@ function Dust({ count }: { count: number }) {
     const material = new PointsMaterial({ map: dustTexture(), size: .05, transparent: true, opacity: .32, depthWrite: false, blending: AdditiveBlending, fog: false });
     const points = new Points(geometry, material);
     points.frustumCulled = false;
+    // drei's Html occlusion raycasts the whole scene; Points have a 1 m hit threshold and would hide every screen.
+    points.raycast = () => {};
     return { points, seeds };
   }, [count]);
   useEffect(() => () => { points.geometry.dispose(); (points.material as PointsMaterial).map?.dispose(); (points.material as PointsMaterial).dispose(); }, [points]);

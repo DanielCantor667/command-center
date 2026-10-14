@@ -18,7 +18,7 @@ function Panorama() {
     texture.needsUpdate = true;
   }, [texture]);
   // Three mirrored repeats keep the 2048px image sharp (each covers 120 degrees) and hide the seams.
-  return <mesh position={[0, 8, 0]} renderOrder={-1}>
+  return <mesh position={[0, 8, 0]} renderOrder={-1} raycast={() => {}}>
     <cylinderGeometry args={[RADIUS, RADIUS, HEIGHT, 64, 1, true]} />
     <meshBasicMaterial map={texture} side={BackSide} fog={false} depthWrite={false} />
   </mesh>;
