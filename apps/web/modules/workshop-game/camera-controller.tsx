@@ -53,6 +53,8 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
   const currentToken = useRef(token);
   const initialized = useRef(false);
   const savedInitial = useRef(initialCamera);
+  // 11.3: a light parallax at the desk follows the pointer (off for reduced motion and while dragging).
+  const parallax = useRef({ x: 0, y: 0, dragging: false });
   const journey = useRef({ points: [] as Vector3[], length: 0, progress: 0, target: new Vector3() });
 
   useEffect(() => {
@@ -105,8 +107,10 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     const down = (event: PointerEvent) => {
       if (paused.current || travelling.current || event.button !== 0) return;
       drag = { x: event.clientX, y: event.clientY, base: target.current.clone().sub(camera.position) };
+      parallax.current.dragging = true;
     };
     const move = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse') { parallax.current.x = event.clientX / window.innerWidth * 2 - 1; parallax.current.y = event.clientY / window.innerHeight * 2 - 1; invalidate(); }
       if (paused.current || !drag || travelling.current) return;
       const yaw = Math.max(-1.05, Math.min(1.05, (event.clientX - drag.x) * -.003));
       const pitch = Math.max(-.42, Math.min(.42, (event.clientY - drag.y) * .002));
@@ -116,7 +120,7 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
       camera.lookAt(target.current);
       invalidate();
     };
-    const up = () => { drag = null; };
+    const up = () => { drag = null; parallax.current.dragging = false; };
     canvas.addEventListener('pointerdown', down);
     window.addEventListener('pointermove', move);
     window.addEventListener('pointerup', up);
@@ -133,7 +137,16 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     const perspective = camera as PerspectiveCamera;
     const fov = fovFor(aspect);
     if (perspective.fov !== fov) { perspective.fov = fov; perspective.updateProjectionMatrix(); }
-    if (paused.current || !travelling.current) return;
+    if (paused.current) return;
+    if (!travelling.current) {
+      if (point !== 'workbench' || reducedMotion || parallax.current.dragging) return;
+      const goal = destination.current.position.clone().add(new Vector3(parallax.current.x * .14, -parallax.current.y * .06, 0));
+      if (camera.position.distanceToSquared(goal) < 1e-7) return;
+      camera.position.lerp(goal, Math.min(1, delta * 4));
+      camera.lookAt(target.current);
+      invalidate();
+      return;
+    }
     const trip = journey.current;
     trip.progress = reducedMotion ? 1 : Math.min(1, trip.progress + Math.min(delta, .06) / 1.6);
     const step = trip.progress * trip.progress * (3 - 2 * trip.progress);

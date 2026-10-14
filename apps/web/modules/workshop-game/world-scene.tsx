@@ -28,7 +28,7 @@ export interface WorldSceneProps {
   point: WorldPoint; moving: boolean; token: number; opened: boolean; reducedMotion: boolean;
   initialCamera: WorldCameraSnapshot | null; cameraHandle: MutableRefObject<WorldCameraHandle | null>;
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
-  onGo: (point: WorldPoint) => void; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
+  onGo: (point: WorldPoint) => void; sound: boolean; onSound: () => void; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -101,7 +101,7 @@ export function WorldScene(props: WorldSceneProps) {
       <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} onTechnology={props.onTechnology} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
       <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
       <DeskLaptop position={[1.0, 1.0, .15]} turn={.28} />
-      <DeskHero point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} />
+      <DeskHero point={props.point} reducedMotion={props.reducedMotion} sound={props.sound} onGo={props.onGo} onSound={props.onSound} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
       {[...new Set([props.activeRoom, props.pendingRoom].filter((id): id is RoomId => !!id))].map(room => <RoomContent key={room} room={room} token={props.token} onReady={props.onRoomReady} onError={props.onRoomError} />)}
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />

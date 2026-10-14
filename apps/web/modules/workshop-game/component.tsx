@@ -53,6 +53,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   }, []);
   // Sound stays off until the visitor asks for it; the toggle click is the gesture that unlocks playback.
   const [sound, setSound] = useState(false);
+  const toggleSound = useCallback(() => setSound(value => !value), []);
   const [tabHidden, setTabHidden] = useState(false);
   useEffect(() => {
     const update = () => setTabHidden(document.hidden);
@@ -119,7 +120,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       {state.status === 'landing' && !reducedMotion && !saveData() && <video src="/experience/workshop-entrance-loop-v1.mp4" poster="/experience/workshop-entrance-v3.webp" autoPlay muted loop playsInline preload="auto" tabIndex={-1} />}
     </div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
-      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
+      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} sound={sound} onSound={toggleSound} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>{!inside && <button type="button" className={styles.portfolio} onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={17} aria-hidden="true" /></button>}{inside && <button type="button" className={styles.portfolio} aria-pressed={sound} onClick={() => setSound(value => !value)}>Sonido{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}<button type="button" className={styles.portfolio} onClick={portfolio}>Ver portafolio<ArrowUpRight size={17} aria-hidden="true" /></button></div></header>
