@@ -15,7 +15,7 @@ export type WorldEvent = { type: 'start' | 'cancel' | 'retry-room' }
 export const WORLD_VIEWS: Record<WorldPoint, WorldCameraSnapshot> = {
   entrance: { position: [-1.8, 1.65, 14], target: [-.5, 1.6, -4] },
   hub: { position: [0, 1.65, 5.1], target: [0, 1.5, -5.5] },
-  workbench: { position: [.8, 1.65, 2.3], target: [-.6, 1.15, -.9] },
+  workbench: { position: [0, 1.75, 2.7], target: [0, 1.2, -.9] },
   kliniu: WORKSHOP_ROOMS.kliniu.view, lorigine: WORKSHOP_ROOMS.lorigine.view,
   academy: WORKSHOP_ROOMS.academy.view, drokex: WORKSHOP_ROOMS.drokex.view,
   technologies: STATIONS.technologies.view, trajectory: STATIONS.trajectory.view, contact: STATIONS.contact.view,
@@ -27,7 +27,7 @@ export function initialWorldState(snapshot?: GameSnapshot): WorldState {
 export function worldReducer(state: WorldState, event: WorldEvent): WorldState {
   switch (event.type) {
     case 'start': return { ...initialWorldState(), status: 'loading', token: state.token + 1 };
-    case 'ready': return state.status === 'loading' && state.token === event.token ? { ...state, status: 'moving', destination: 'hub' } : state;
+    case 'ready': return state.status === 'loading' && state.token === event.token ? { ...state, status: 'moving', destination: 'workbench' } : state;
     case 'failed': return state.token === event.token && state.status !== 'landing' ? { ...state, status: 'error' } : state;
     case 'go': {
       if (!['exploring', 'moving', 'room-loading', 'room-error'].includes(state.status)) return state;

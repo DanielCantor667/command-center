@@ -8,7 +8,7 @@ describe('workshop navigation', () => {
     expect(cancelled.status).toBe('landing');
     const second = worldReducer(cancelled, { type: 'start' });
     expect(worldReducer(second, { type: 'ready', token: first.token }).status).toBe('loading');
-    expect(worldReducer(second, { type: 'ready', token: second.token })).toMatchObject({ status: 'moving', destination: 'hub' });
+    expect(worldReducer(second, { type: 'ready', token: second.token })).toMatchObject({ status: 'moving', destination: 'workbench' });
   });
   it('ignores an old arrival after the visitor chooses another destination', () => {
     const inside = initialWorldState({ point: 'hub', camera: null });

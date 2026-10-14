@@ -25,7 +25,7 @@ function fovFor(aspect: number) {
 function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const view = WORLD_VIEWS[point];
   const room = roomForPoint(point);
-  if (!portrait || (!room && !stationForPoint(point))) return view;
+  if (!portrait || (!room && !stationForPoint(point) && point !== 'workbench')) return view;
   const [px, py, pz] = view.position; const [tx, ty, tz] = view.target;
   const [dx, dz] = [px - tx, pz - tz];
   const distance = Math.hypot(dx, dz);
