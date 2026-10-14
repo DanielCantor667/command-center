@@ -323,5 +323,62 @@
       "removes": "Piano, batería, guitarra y atril de primitivas, sustituidos por los props generados. v1 intacto.",
       "sha256": "d2443cb17df904003b0624b4e85def10b6b0fea765289eb1a1bbb51fb9adfe4f"
     }
+  },
+  "audio": {
+    "hub": {
+      "url": "/audio/workshop/hub-v1.mp3",
+      "origin": "magnific",
+      "engine": "Magnific sound-effects (ElevenLabs), loop 15 s",
+      "prompt": "Quiet workshop interior ambience, soft room tone, faint distant city traffic through large windows, no voices, no music",
+      "credits": 75,
+      "generated": "2026-10-14",
+      "bytes": 120625,
+      "sha256": "d2afc862ba79c9a2069959953d43d15a78e19a6231baf4321ad7fc7959dd332e",
+      "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    },
+    "kliniu": {
+      "url": "/audio/workshop/kliniu-v1.mp3",
+      "origin": "magnific",
+      "engine": "Magnific sound-effects (ElevenLabs), loop 10 s",
+      "prompt": "Soft office ambience, faint distant keyboard typing and paper rustle, gentle room tone, no voices, no music",
+      "credits": 50,
+      "generated": "2026-10-14",
+      "bytes": 80501,
+      "sha256": "f5f88df450cb6b1f3e29b941a9f70a2c061601ff164ecb829fc3fd4fbf211b98",
+      "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    },
+    "lorigine": {
+      "url": "/audio/workshop/lorigine-v1.mp3",
+      "origin": "magnific",
+      "engine": "Magnific sound-effects (ElevenLabs), loop 10 s",
+      "prompt": "Calm boutique spa ambience, very soft water trickle, gentle airy room tone, no voices, no music",
+      "credits": 50,
+      "generated": "2026-10-14",
+      "bytes": 80501,
+      "sha256": "20b55d5349977a96189058f3ae10dab9cd846bcbaa8a709241f02e7e45494206",
+      "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    },
+    "academy": {
+      "url": "/audio/workshop/academy-v1.mp3",
+      "origin": "magnific",
+      "engine": "Magnific music (ElevenLabs music v2), 20 s, instrumental",
+      "prompt": "Solo soft upright piano, slow gentle warm melody, intimate room, instrumental, calm",
+      "credits": 400,
+      "generated": "2026-10-14",
+      "bytes": 241101,
+      "sha256": "e5dda5af06df42e72b7db4fd7dbfcb45af6bccf72e8b6f3f3e6319d67bd5a42e",
+      "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    },
+    "drokex": {
+      "url": "/audio/workshop/drokex-v1.mp3",
+      "origin": "magnific",
+      "engine": "Magnific sound-effects (ElevenLabs), loop 10 s",
+      "prompt": "Subtle electronic office hum, soft server room fan tone, faint digital clicks far away, no voices, no music",
+      "credits": 50,
+      "generated": "2026-10-14",
+      "bytes": 80501,
+      "sha256": "f65ed7c61590f6c13226af55f95844b129bd5efd7109dd99e361171845b0c7ae",
+      "note": "Recomprimido con ffmpeg (mono 64 kbps; piano estéreo 96 kbps) con fundidos cortos para el bucle."
+    }
   }
 }

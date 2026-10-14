@@ -1,12 +1,13 @@
 # Sprint 9 — De "taller correcto" a experiencia 3D cuidada
 
-Estado (2026-10-14): **aprobado**. Hechas 9.1, 9.2, 9.3, 9.4, 9.6, 9.7 y 9.8; **pendiente 9.5 Sonido**. Ninguna fase arranca sin luz verde explícita.
+Estado (2026-10-14): **aprobado**. Hechas **las ocho fases** (9.1–9.8). Ninguna fase arranca sin luz verde explícita.
 
 Desviaciones respecto a lo planeado:
 - **9.2:** el panorama no alimenta los reflejos del entorno (cambiaba demasiado la luz de 9.1).
 - **9.3:** se parcheó `room-academy-v1.glb` → `v2` con `blender/patch_room_glb.py` en vez de regenerar salas. Kliniu y Drokex conservan su arquitectura y reciben props añadidos. 2 props descartados (bandeja y módulo).
 - **9.4:** lámparas colgantes sin balanceo (fusionadas con el acero del shell). Foca animada por código, sin rig.
 - **9.6:** el bucle de portada es un zoom con ffmpeg; el vídeo de Magnific salió estático y se descartó (1.175 créditos).
+- **9.5:** apagado por defecto, botón "Sonido" en la cabecera (solo dentro del taller); ambiente de hub que baja dentro de las salas y una pista por sala. Sin persistencia entre visitas.
 - **9.7:** se añadió una fila de salas en la navegación móvil.
 Alcance: `workshop-game`. La mesa de `?view=portfolio` queda fuera (sprint aparte).
 Antecedente: Sprint 8 (capa de props generados, `decisions/ADR-006-generated-3d-assets.md`).

@@ -1,7 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ArrowUpRight, DoorOpen, Map, Move, RotateCcw, X } from 'lucide-react';
+import { ArrowUpRight, DoorOpen, Map, Move, RotateCcw, Volume2, VolumeX, X } from 'lucide-react';
 import { Component, useCallback, useEffect, useReducer, useRef, useState, type ReactNode } from 'react';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { initialWorldState, worldReducer, type GameSnapshot, type WorldPoint } from './world-state';
@@ -14,6 +14,7 @@ import type { WorkshopReading } from './reading';
 import type { TechnologyFilters } from '../experience/components/technology-explorer';
 import type { WorldCameraHandle } from './camera-controller';
 import { supportsWorldRenderer } from './renderer-support';
+import { useWorkshopAudio } from './workshop-audio';
 import styles from './workshop-game.module.css';
 const WorldScene = dynamic(() => import('./world-scene').then(module => module.WorldScene), { ssr: false, loading: () => null });
 class WorldBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -50,6 +51,15 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     const media = window.matchMedia('(prefers-reduced-motion: reduce)'); const update = () => setReducedMotion(media.matches);
     update(); media.addEventListener?.('change', update); return () => media.removeEventListener?.('change', update);
   }, []);
+  // Sound stays off until the visitor asks for it; the toggle click is the gesture that unlocks playback.
+  const [sound, setSound] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
+  useEffect(() => {
+    const update = () => setTabHidden(document.hidden);
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+  useWorkshopAudio({ enabled: sound && inside, point: state.status === 'moving' ? state.destination : state.point, paused: suspended || tabHidden });
   useEffect(() => {
     const wasReading = previousReading.current; previousReading.current = !!reading;
     if (suspended || reading) return;
@@ -112,7 +122,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} opened={inside} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onPreparing={materialsReady} suspended={suspended || !!reading} activeRoom={state.activeRoom} pendingRoom={state.pendingRoom} roomMoving={state.status === 'moving'} onRoomReady={roomReady} onRoomError={roomFailed} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
-    <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>{!inside && <button type="button" className={styles.portfolio} onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={17} aria-hidden="true" /></button>}<button type="button" className={styles.portfolio} onClick={portfolio}>Ver portafolio<ArrowUpRight size={17} aria-hidden="true" /></button></div></header>
+    <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>{!inside && <button type="button" className={styles.portfolio} onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={17} aria-hidden="true" /></button>}{inside && <button type="button" className={styles.portfolio} aria-pressed={sound} onClick={() => setSound(value => !value)}>Sonido{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}<button type="button" className={styles.portfolio} onClick={portfolio}>Ver portafolio<ArrowUpRight size={17} aria-hidden="true" /></button></div></header>
     {state.status === 'landing' && <section className={styles.welcome} aria-labelledby="workshop-title">
       <p className={styles.location}>{PUBLIC_PROFILE.location}</p><h1 id="workshop-title">El taller de Daniel</h1><p>Un lugar para explorar<br />lo que construyo.</p>
       <button ref={enterButton} className={styles.primary} type="button" onClick={() => void start()}>Entrar al taller<DoorOpen size={19} aria-hidden="true" /></button><span className={styles.hint}>Recorre el espacio con clic o toque.</span>
