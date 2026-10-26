@@ -508,6 +508,8 @@ sc.world.node_tree.links.new(vol.outputs["Volume"], sc.world.node_tree.nodes["Wo
 argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 if argv:
     sc.camera = cams[argv[1] if len(argv) > 1 else "main"]
+    if len(argv) > 2:  # optional width, 16:9 (poster renders)
+        sc.render.resolution_x, sc.render.resolution_y = int(argv[2]), int(argv[2]) * 9 // 16
     sc.render.filepath = argv[0]
     bpy.ops.render.render(write_still=True)
 OUT_BLEND.parent.mkdir(parents=True, exist_ok=True)

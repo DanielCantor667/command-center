@@ -43,7 +43,7 @@ describe('portfolio and game navigation', () => {
   });
 
   it('adds an entry so browser Back and Forward restore the game and portfolio', async () => {
-    exitSnapshot = { point: 'workbench', camera: { position: [0.2, 1.8, 2.5], target: [0, 1.2, -0.9] } };
+    exitSnapshot = { point: 'hub', camera: { position: [0.2, 1.8, 2.5], target: [0, 1.2, -0.9] } };
     render(<ExperienceGate />);
     const length = window.history.length;
     fireEvent.click(screen.getByRole('button', { name: 'Ver portafolio' }));
@@ -71,7 +71,7 @@ describe('portfolio and game navigation', () => {
   });
 
   it('restores the saved point and camera after returning from the portfolio', () => {
-    exitSnapshot = { point: 'academy', camera: { position: [-6.4, 1.65, 5.7], target: [-8, 1.6, 5.2] } };
+    exitSnapshot = { point: 'projects', camera: { position: [-6.4, 1.65, 5.7], target: [-8, 1.6, 5.2] } };
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Ver portafolio' }));
     fireEvent.click(screen.getByRole('button', { name: 'Volver al taller' }));

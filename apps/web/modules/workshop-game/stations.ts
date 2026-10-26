@@ -4,10 +4,11 @@ export interface WorkshopStation {
   id: StationId; name: string; label: string; description: string;
   hotspot: [number, number, number]; view: WorldCameraSnapshot;
 }
+/** Lab coordinates (specs/workshop-lab.md): pegboard on the left wall, whiteboard on the back wall, desk on the right. */
 export const STATIONS: Record<StationId, WorkshopStation> = {
-  technologies: { id: 'technologies', name: 'Tecnologías', label: 'Explorar tecnologías', description: 'Herramientas del taller y los proyectos en los que las utilizo.', hotspot: [-8.64, 1.65, 1.55], view: { position: [-6.8, 1.65, 1.55], target: [-9.14, 1.6, 1.55] } },
-  trajectory: { id: 'trajectory', name: 'Trayectoria', label: 'Ver trayectoria', description: 'Experiencia, formación e idiomas documentados en mi perfil.', hotspot: [-8.1, 1.65, -2.3], view: { position: [-7.7, 1.65, .8], target: [-8.1, 1.55, -2.65] } },
-  contact: { id: 'contact', name: 'Contacto', label: 'Ver contacto', description: 'Conversemos sobre tu próximo producto o proyecto.', hotspot: [6.7, 1.62, 1.9], view: { position: [6.7, 1.65, 2.7], target: [6.7, 1.3, 1.45] } },
+  technologies: { id: 'technologies', name: 'Tecnologías', label: 'Explorar tecnologías', description: 'Herramientas del taller y los proyectos en los que las utilizo.', hotspot: [-2.7, 2.7, -2.6], view: { position: [-.9, 1.9, -2.6], target: [-2.95, 1.95, -2.6] } },
+  trajectory: { id: 'trajectory', name: 'Trayectoria', label: 'Ver trayectoria', description: 'Experiencia, formación e idiomas documentados en mi perfil.', hotspot: [0, 2.0, -4.75], view: { position: [0, 1.6, -3.0], target: [0, 1.5, -4.9] } },
+  contact: { id: 'contact', name: 'Contacto', label: 'Ver contacto', description: 'Conversemos sobre tu próximo producto o proyecto.', hotspot: [2.55, 1.6, -3.0], view: { position: [1.3, 1.45, -2.4], target: [2.9, 1.05, -3.2] } },
 };
 export function stationForPoint(point: string): StationId | null {
   return Object.hasOwn(STATIONS, point) ? point as StationId : null;

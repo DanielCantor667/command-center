@@ -14,9 +14,9 @@ describe('restoring the workshop camera', () => {
   it.each([false, true])('keeps the saved position and viewing direction on return (strict mode: %s)', strict => {
     const camera = new PerspectiveCamera();
     renderer.current = { camera, gl: { domElement: document.createElement('canvas') }, invalidate: vi.fn(), size: { width: 1440, height: 900 } };
-    const saved = { position: [-5.1, 1.65, -1.9] as [number, number, number], target: [-4.2, 1.6, -6] as [number, number, number] };
+    const saved = { position: [.2, 1.65, -2.1] as [number, number, number], target: [2.9, 1.9, -3.2] as [number, number, number] };
     const cameraHandle = { current: null as WorldCameraHandle | null };
-    const controller = <CameraController point="kliniu" moving={false} token={0} initialCamera={saved} reducedMotion cameraHandle={cameraHandle} onArrived={vi.fn()} suspended={false} />;
+    const controller = <CameraController point="projects" moving={false} token={0} initialCamera={saved} reducedMotion cameraHandle={cameraHandle} onArrived={vi.fn()} suspended={false} />;
     render(strict ? <StrictMode>{controller}</StrictMode> : controller);
     expect(camera.position.toArray()).toEqual(saved.position);
     expect(camera.getWorldDirection(new Vector3()).distanceTo(new Vector3(...saved.target).sub(new Vector3(...saved.position)).normalize())).toBeLessThan(1e-10);

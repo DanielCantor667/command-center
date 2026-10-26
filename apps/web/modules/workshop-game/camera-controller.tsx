@@ -3,20 +3,19 @@
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type MutableRefObject } from 'react';
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
-import { roomForPoint, WORKSHOP_ROOMS } from './rooms';
-import { stationForPoint } from './stations';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
-import { cameraPath } from './world-path';
 
-const BASE_FOV = 58;
+/** Matches the Blender framing of the lab renders (20 mm lens at 16:9), so the open front stays out of view. */
+const BASE_FOV = 54;
 /** Desktop framing is tuned at this aspect; narrower screens widen the vertical FOV up to MAX_FOV. */
 const REFERENCE_ASPECT = 1.6;
 const MAX_FOV = 78;
-/** Portrait phones see ~40 degrees across, so room views step back to keep the screen in frame. */
+/** Portrait phones see ~40 degrees across, so close-ups step back to keep their wall in frame. */
 const PORTRAIT_PULL = 1.35;
-const PORTAL_MARGIN = .6;
-/** The folded panel covers the lower third on phones; stations aim lower so the board sits above it. */
+/** The folded panel covers the lower third on phones; close-ups aim lower so the wall sits above it. */
 const PORTRAIT_LIFT = .5;
+/** Stepping back never leaves the room (walls at x = ±3, back wall at z = -4.9, open front at z = 0.1). */
+const INSIDE = { x: 2.7, back: -4.5, front: 2.6 };
 function fovFor(aspect: number) {
   if (aspect >= REFERENCE_ASPECT) return BASE_FOV;
   const widened = 2 * MathUtils.radToDeg(Math.atan(Math.tan(MathUtils.degToRad(BASE_FOV / 2)) * REFERENCE_ASPECT / aspect));
@@ -24,20 +23,11 @@ function fovFor(aspect: number) {
 }
 function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const view = WORLD_VIEWS[point];
-  const room = roomForPoint(point);
-  if (!portrait || (!room && !stationForPoint(point) && point !== 'workbench')) return view;
-  // On phones the monitor is the focal point; pulling back and aiming down
-  // makes the desk tiny and fills the usable space with floor.
-  if (point === 'workbench') return { position: [.45, 1.75, 2.3], target: [.45, 1.35, -1.15] };
+  if (!portrait || point === 'hub' || point === 'entrance') return view;
   const [px, py, pz] = view.position; const [tx, ty, tz] = view.target;
-  const [dx, dz] = [px - tx, pz - tz];
-  const distance = Math.hypot(dx, dz);
-  // Rooms: never step out through the doorway (the project screen is occluded from outside).
-  // Stations stand in the open hub, so only the pull factor applies.
-  const inside = room ? Math.hypot(WORKSHOP_ROOMS[room].portal[0] - tx, WORKSHOP_ROOMS[room].portal[2] - tz) - PORTAL_MARGIN : Infinity;
-  const pulled = Math.max(distance, Math.min(distance * PORTRAIT_PULL, inside));
-  const k = distance ? pulled / distance : 1;
-  return { position: [tx + dx * k, py, tz + dz * k], target: room ? view.target : [tx, ty - PORTRAIT_LIFT, tz] };
+  const x = MathUtils.clamp(tx + (px - tx) * PORTRAIT_PULL, -INSIDE.x, INSIDE.x);
+  const z = MathUtils.clamp(tz + (pz - tz) * PORTRAIT_PULL, INSIDE.back, INSIDE.front);
+  return { position: [x, py, z], target: [tx, ty - PORTRAIT_LIFT, tz] };
 }
 export interface WorldCameraHandle { capture(): WorldCameraSnapshot }
 export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended }: {
@@ -58,7 +48,7 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
   const savedInitial = useRef(initialCamera);
   const restoreAt = useRef({ point, token });
   const previousPortrait = useRef(portrait.current);
-  // 11.3: a light parallax at the desk follows the pointer (off for reduced motion and while dragging).
+  // 11.3: a light parallax on the overview follows the pointer (off for reduced motion and while dragging).
   const parallax = useRef({ x: 0, y: 0, dragging: false });
   const journey = useRef({ points: [] as Vector3[], length: 0, progress: 0, target: new Vector3() });
 
@@ -77,7 +67,8 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     destination.current.target.set(...view.target);
     travelling.current = moving;
     if (moving) {
-      const points = [camera.position.clone(), ...cameraPath(camera.position.toArray() as [number, number, number], view.position).map(p => new Vector3(...p))];
+      // One room, no doorways: a straight dolly at head height clears the table, the drones and the lamps.
+      const points = [camera.position.clone(), new Vector3(...view.position)];
       journey.current = { points, length: points.slice(1).reduce((sum, p, i) => sum + p.distanceTo(points[i]!), 0), progress: 0, target: target.current.clone() };
     }
     // A cancelled trip snaps to its stable destination. Restored camera stays exact on mount.
@@ -149,7 +140,7 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     if (perspective.fov !== fov) { perspective.fov = fov; perspective.updateProjectionMatrix(); }
     if (paused.current) return;
     if (!travelling.current) {
-      if (point !== 'workbench' || reducedMotion || parallax.current.dragging) return;
+      if (point !== 'hub' || reducedMotion || parallax.current.dragging) return;
       const goal = destination.current.position.clone().add(new Vector3(parallax.current.x * .14, -parallax.current.y * .06, 0));
       if (camera.position.distanceToSquared(goal) < 1e-7) return;
       camera.position.lerp(goal, Math.min(1, delta * 4));

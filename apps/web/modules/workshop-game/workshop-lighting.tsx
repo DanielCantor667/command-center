@@ -2,56 +2,27 @@
 
 import { Environment, Lightformer } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-const ROOM_LIGHTS = [
-  { id: 'kliniu', position: [-5.1, 2.7, -7.3], color: '#cfe6ff', intensity: 6 },
-  { id: 'lorigine', position: [4.8, 2.7, -7], color: '#ffe0bd', intensity: 6 },
-  { id: 'academy', position: [-8.1, 2.7, 5.7], color: '#ffd0a0', intensity: 5 },
-  { id: 'drokex', position: [8.1, 2.7, 5.7], color: '#c4f0e6', intensity: 5 },
-] as const;
-
-/** 11.7: night mode (palette B). Only colours and intensities change, so the light count and shaders stay the same. */
-const DAY = { ambient: .3, sky: '#fff3df', ground: '#687967', hemi: .8, sun: '#fff0d5', sunI: 2.7, desk: '#ffd5a1', deskI: 12, rooms: 1, env: 1 };
-const NIGHT = { ambient: .1, sky: '#4a5f8f', ground: '#1b2335', hemi: .45, sun: '#9fb3d9', sunI: .5, desk: '#ffb15c', deskI: 16, rooms: 1.5, env: .3 };
-// Drei recaptures when children change identity, even with frames={1}.
+/**
+ * The room's light is baked into its lightmaps; these lights only shade what moves (robots,
+ * drones, cat) and the plants, matching the bake: warm hanging lamps, cyan cone over the table.
+ */
+const LAMPS: [number, number, number][] = [[-.4, 2.1, -1.4], [1.4, 2.1, -2.2], [.3, 2.1, -3.4]];
 const REFLECTION_PANELS = <>
-  <Lightformer position={[0, 9, -2]} rotation={[Math.PI / 2, 0, 0]} scale={[18, 14, 1]} intensity={1.4} color="#fff3df" />
-  <Lightformer position={[-12, 4, 1]} rotation={[0, Math.PI / 2, 0]} scale={[9, 6, 1]} intensity={1.1} color="#f2f7ed" />
-  <Lightformer position={[0, 3, 18]} rotation={[0, Math.PI, 0]} scale={[12, 7, 1]} intensity={.8} color="#e7eddd" />
+  <Lightformer position={[0, 3, -1]} rotation={[Math.PI / 2, 0, 0]} scale={[5, 4, 1]} intensity={.8} color="#ffd9b0" />
+  <Lightformer position={[0, 1.7, -5]} scale={[4, 2, 1]} intensity={.6} color="#2fb8d0" />
 </>;
 
-export function WorkshopLighting({ night = false }: { night?: boolean }) {
-  const look = night ? NIGHT : DAY;
-  const { gl, invalidate, scene, size } = useThree();
-  // Keep the capture target for this visit. Replacing it on resize retains a
-  // generated PMREM texture in Three 0.171; DPR and shadows still adapt below.
-  const [reflectionResolution] = useState(() => size.width <= 700 ? 64 : 128);
-  useEffect(() => {
-    // Change reflection strength without replacing or recapturing its cubemap.
-    scene.environmentIntensity = look.env;
-    const previous = gl.shadowMap.autoUpdate;
-    gl.shadowMap.autoUpdate = false;
-    gl.shadowMap.needsUpdate = true;
-    invalidate();
-    return () => { gl.shadowMap.autoUpdate = previous; };
-  }, [gl, invalidate, scene, size.width, look.env]);
+export function WorkshopLighting() {
+  const { size } = useThree();
+  // Captured once per visit; replacing the target on resize retains a PMREM texture in Three 0.171.
+  const [reflectionResolution] = useState(() => size.width <= 700 ? 32 : 64);
   return <>
-    <ambientLight intensity={look.ambient} />
-    <hemisphereLight args={[look.sky, look.ground, look.hemi]} />
-    {/* Three retains an allocated shadow target; a new profile needs a new light. */}
-    <directionalLight key={size.width <= 700 ? 'mobile' : 'desktop'} position={[-6, 11, 9]} color={look.sun} intensity={look.sunI} castShadow
-      shadow-mapSize={size.width <= 700 ? [1024, 1024] : [2048, 2048]}
-      shadow-camera-left={-16} shadow-camera-right={16} shadow-camera-top={16} shadow-camera-bottom={-16}
-      shadow-camera-near={.5} shadow-camera-far={45} shadow-normalBias={.02} shadow-bias={-.0001}
-      shadow-radius={4} shadow-blurSamples={12} />
-    <pointLight position={[0, 4, -.8]} color={look.desk} intensity={look.deskI} distance={13} decay={2} />
-    <pointLight position={[-5, 2.9, -6.5]} color="#ffe3b4" intensity={5} distance={8} decay={2} />
-    {/* One warm/cool accent per room, always mounted so the light count never changes (no shader recompiles). */}
-    {ROOM_LIGHTS.map(light => <pointLight key={light.id} position={light.position} color={light.color} intensity={light.intensity * look.rooms} distance={7} decay={2} />)}
-    {/* Local reflection panels, generated once. No remote HDRI or preset download. */}
-    <Environment resolution={reflectionResolution} frames={1}>
-      {REFLECTION_PANELS}
-    </Environment>
+    <hemisphereLight args={['#7fb8c8', '#2a1d14', .7]} />
+    {LAMPS.map(position => <pointLight key={position.join()} position={position} color="#ffb878" intensity={2.4} distance={4.5} decay={2} />)}
+    <pointLight position={[.35, 2.7, -1.6]} color="#5ad8ff" intensity={3} distance={3.5} decay={2} />
+    <pointLight position={[2.3, 1.2, -3.0]} color="#8a5cff" intensity={1.2} distance={2.5} decay={2} />
+    <Environment resolution={reflectionResolution} frames={1}>{REFLECTION_PANELS}</Environment>
   </>;
 }

@@ -2,33 +2,23 @@
 
 import { addAfterEffect, Canvas, useThree } from '@react-three/fiber';
 import { Suspense, useEffect, useRef, useState, type MutableRefObject } from 'react';
-import { CameraController, type WorldCameraHandle } from './camera-controller';
-import { WorkshopGeometry } from './workshop-geometry';
-import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
+import { NoToneMapping } from 'three';
 import { useGLTF } from '@react-three/drei';
-import { WORKSHOP_RESOURCE_URLS } from './workshop-assets';
-import { RoomContent } from './room-content';
-import { WORKSHOP_ROOMS, type RoomId } from './rooms';
+import { CameraController, type WorldCameraHandle } from './camera-controller';
+import { LAB_ESSENTIAL_URLS } from './lab';
+import { LabScene } from './lab-scene';
+import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 import { WorkshopLighting } from './workshop-lighting';
 import { AmbientLife } from './workshop-life';
-import { WorkshopBackdrop } from './workshop-backdrop';
 import { WorkshopPostprocessing } from './workshop-postprocessing';
-import { HUB_ART, HUB_PROPS } from './props';
-import { WorkshopProps } from './workshop-props';
-import { DeskLaptop } from './desk-laptop';
-import { DeskHero } from './desk-hero';
 
-export function resetWorkshopResource() { useGLTF.clear(WORKSHOP_RESOURCE_URLS); }
-
-export function resetRoomResource(room: RoomId) { useGLTF.clear(WORKSHOP_ROOMS[room].url); }
+export function resetWorkshopResource() { useGLTF.clear(LAB_ESSENTIAL_URLS); }
 
 export interface WorldSceneProps {
-  suspended: boolean; activeRoom: RoomId | null; pendingRoom: RoomId | null; roomMoving: boolean;
-  onRoomReady: (room: RoomId, token: number) => void; onRoomError: (room: RoomId, token: number) => void;
-  point: WorldPoint; moving: boolean; token: number; opened: boolean; reducedMotion: boolean;
+  suspended: boolean; point: WorldPoint; moving: boolean; token: number; reducedMotion: boolean;
   initialCamera: WorldCameraSnapshot | null; cameraHandle: MutableRefObject<WorldCameraHandle | null>;
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
-  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; sound: boolean; onSound: () => void; night: boolean; onTechnology?: (technologyId: string) => void; onPreparing: () => void;
+  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onPreparing: () => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -87,23 +77,18 @@ export function WorldScene(props: WorldSceneProps) {
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
   }, []);
-  const start = props.initialCamera ?? WORLD_VIEWS[props.opened && !props.moving ? props.point : 'entrance'];
+  const start = props.initialCamera ?? WORLD_VIEWS[props.moving ? 'entrance' : props.point];
   // Canvas reapplies its props after resize; keep visibility in the declarative pause too.
-  return <Canvas shadows="percentage" frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 58, near: .1, far: 80, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}>
-    <color attach="background" args={[props.night ? '#1b2335' : '#d8dfda']} />
-    <fog attach="fog" args={[props.night ? '#1b2335' : '#d8dfda', 28, 60]} />
+  // No tone mapping: the baked lightmaps already carry the Blender view transform.
+  return <Canvas frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 54, near: .05, far: 40, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance', toneMapping: NoToneMapping }}>
+    <color attach="background" args={['#05090b']} />
     <RendererLifecycle token={props.token} onError={props.onError} suspended={props.suspended} />
     <Suspense fallback={null}>
-      <WorkshopLighting night={props.night} />
-      <WorkshopBackdrop night={props.night} />
+      <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
-      <WorkshopPostprocessing night={props.night} />
-      <WorkshopGeometry opened={props.opened} point={props.point} reducedMotion={props.reducedMotion} onGo={props.onGo} onTechnology={props.onTechnology} suspended={props.suspended} openRooms={[...new Set([props.activeRoom, props.roomMoving ? props.pendingRoom : null].filter((id): id is RoomId => !!id))]} />
-      <WorkshopProps props={HUB_PROPS} art={HUB_ART} />
-      <DeskLaptop position={[1.0, 1.0, .15]} turn={.28} />
-      <DeskHero point={props.point} reducedMotion={props.reducedMotion} sound={props.sound} onGo={props.onGo} onOpenCase={props.onOpenCase} onSound={props.onSound} />
+      <WorkshopPostprocessing />
+      <LabScene point={props.point} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
-      {[...new Set([props.activeRoom, props.pendingRoom].filter((id): id is RoomId => !!id))].map(room => <RoomContent key={room} room={room} token={props.token} onReady={props.onRoomReady} onError={props.onRoomError} />)}
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />
     </Suspense>
   </Canvas>;

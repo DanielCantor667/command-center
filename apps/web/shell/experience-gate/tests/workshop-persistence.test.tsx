@@ -5,7 +5,7 @@ import { ExperienceGate } from '../component';
 import type { WorkshopGame } from '../../../modules/workshop-game/component';
 let mounts = 0;
 let props: ComponentProps<typeof WorkshopGame>;
-const snapshot = { point: 'academy' as const, camera: { position: [-6.4, 1.65, 5.7] as [number, number, number], target: [-8, 1.6, 5.2] as [number, number, number] } };
+const snapshot = { point: 'projects' as const, camera: { position: [-6.4, 1.65, 5.7] as [number, number, number], target: [-8, 1.6, 5.2] as [number, number, number] } };
 vi.mock('../../../modules/workshop-game/component', () => ({ WorkshopGame: (value: ComponentProps<typeof WorkshopGame>) => {
   props = value; const [instance] = useState(() => ++mounts);
   return <div data-testid="persistent-game" data-instance={instance}><button onClick={() => { value.onSave(snapshot); value.onOpenCase('4ustudio-academy'); }}>Abrir Academy</button></div>;

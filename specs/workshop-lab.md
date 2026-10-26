@@ -36,8 +36,8 @@ animados) y que todo el portafolio esté dentro de él de forma interactiva y co
 | Fase | Alcance | Estado |
 | --- | --- | --- |
 | A | Arte en Blender (`blender/prototype_workshop_room_v2.py`, texturas de datos con `blender/generate_lab_textures.py`): composición, pared de proyectos, muro de tecnologías, pizarra, texturas y sombras. | Hecha |
-| B | Optimización y export (`blender/bake_workshop_lab.py` + `blender/compress_workshop_lab.sh`): horneado Cycles 2 × 4k, reducción de polígonos, meshopt, WebP, `CREDITS.md`. Resultado: 6,6 MB, ~246k triángulos en `apps/web/public/models/workshop-lab/`. | Hecha, pendiente de visto bueno |
-| C | Integración web: cargar la sala en `workshop-game`, retirar salas/portales. | Pendiente |
+| B | Optimización y export (`blender/bake_workshop_lab.py` + `blender/compress_workshop_lab.sh`): horneado Cycles 2 × 4k, reducción de polígonos, meshopt, WebP, `CREDITS.md`. Resultado: 6,6 MB, ~246k triángulos en `apps/web/public/models/workshop-lab/`. | Hecha |
+| C | Integración web: cargar la sala en `workshop-game`, retirar salas/portales. Recorrido `entrance → hub → projects → technologies → trajectory → contact` (sin `workbench` ni salas). Clics básicos: pantalla → caso, placa → tecnología, pizarra → Trayectoria, escritorio → Contacto; panel accesible con la lista de proyectos. Sin modo día/noche (luz horneada de noche), portada nueva renderizada de la sala sin video en bucle, audio solo ambiente. Al final se borran los assets que solo usaba el taller viejo (public/ 58 → 39 MB). Drones desplazados en código (`LAB_ACTORS.offset`) para no tapar las vistas. | Hecha, pendiente de visto bueno |
 | D | Interacción: hover/clic, iluminación cruzada, reacciones, móvil. | Pendiente |
 | E | Verificación con Playwright sobre build de producción (fps, peso, móvil). | Pendiente |
 

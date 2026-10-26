@@ -4,7 +4,7 @@ import type { ComponentProps } from 'react';
 import { ExperienceGate } from '../component';
 import type { WorkshopGame } from '../../../modules/workshop-game/component';
 
-const snapshot = { point: 'kliniu' as const, camera: { position: [-5.1, 1.65, -1.9] as [number, number, number], target: [-4.4, 1.7, -6] as [number, number, number] } };
+const snapshot = { point: 'projects' as const, camera: { position: [-5.1, 1.65, -1.9] as [number, number, number], target: [-4.4, 1.7, -6] as [number, number, number] } };
 let props: ComponentProps<typeof WorkshopGame>;
 vi.mock('../../../modules/workshop-game/component', () => ({ WorkshopGame: (value: ComponentProps<typeof WorkshopGame>) => {
   props = value;

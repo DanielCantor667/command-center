@@ -1,35 +1,30 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { RoomInspection } from '../room-inspection';
+import { PROJECTS } from '../../../data/projects';
+import { ProjectsInspection } from '../projects-inspection';
 import { StationInspection } from '../station-inspection';
 
 describe('workshop inspection details', () => {
-  it('keeps the full Academy name accessible with a short case action and complete expandable details', () => {
+  it('lists every public project from the wall with a case action and a way back', () => {
     const open = vi.fn(), back = vi.fn();
     const buttonRef = { current: null };
-    render(<RoomInspection room="academy" buttonRef={buttonRef} onOpen={open} onBack={back} />);
+    render(<ProjectsInspection buttonRef={buttonRef} onOpen={open} onBack={back} />);
 
-    expect(screen.getByRole('heading', { name: '4U Studio Academy' })).toBeInTheDocument();
-    const action = screen.getByRole('button', { name: 'Abrir caso de 4U Studio Academy' });
-    expect(action).toHaveTextContent(/^Abrir caso$/);
-    expect(buttonRef.current).toBe(action);
-    const fold = screen.getByRole('button', { name: 'Ver detalles' });
+    expect(screen.getByRole('heading', { name: 'Proyectos' })).toBeInTheDocument();
+    const fold = screen.getByRole('button', { name: /Ver lista/ });
+    expect(buttonRef.current).toBe(fold);
     expect(fold).toHaveAttribute('aria-expanded', 'false');
     const details = document.getElementById(fold.getAttribute('aria-controls') ?? '');
     expect(details).not.toBeNull();
-    expect(details).not.toHaveAttribute('hidden');
-    expect(within(details!).getByText(/Plataforma de una academia de música en Bogotá/)).toBeInTheDocument();
-    expect(within(details!).getByRole('img', { name: 'Captura real del sitio de 4U Studio Academy' })).toBeInTheDocument();
-
+    for (const project of PROJECTS.filter(item => item.public)) {
+      expect(within(details!).getByRole('button', { name: `Abrir caso de ${project.name}` })).toBeInTheDocument();
+    }
     fireEvent.click(fold);
-    expect(screen.getByRole('button', { name: 'Ocultar detalles' })).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByRole('region', { name: '4U Studio Academy' })).toHaveAttribute('data-open', 'true');
-    fireEvent.click(action);
+    expect(fold).toHaveAttribute('aria-expanded', 'true');
+    fireEvent.click(within(details!).getByRole('button', { name: 'Abrir caso de 4U Studio Academy' }));
     fireEvent.click(within(details!).getByRole('button', { name: 'Volver al taller' }));
-    expect(open).toHaveBeenCalledOnce();
+    expect(open).toHaveBeenCalledWith('4ustudio-academy');
     expect(back).toHaveBeenCalledOnce();
-    fireEvent.click(fold);
-    expect(fold).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('connects station details to its toggle while preserving reading and return actions', () => {

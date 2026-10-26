@@ -4,6 +4,9 @@ import { BoxGeometry, BufferAttribute, BufferGeometry, CanvasTexture, SRGBColorS
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { PORTFOLIO_TECHNOLOGIES, TECHNOLOGY_CATEGORIES } from '../../data/portfolio-technologies';
 import { TECHNOLOGY_ICON_PATHS } from '../../data/technology-icons';
+import { LAB_ANCHORS } from './lab-anchors';
+import { labelTexture, pointer } from './lab-content';
+import type { WorldPoint } from './world-state';
 
 /**
  * The Tecnologías board: one plate per real technology, one row per category.
@@ -12,12 +15,13 @@ import { TECHNOLOGY_ICON_PATHS } from '../../data/technology-icons';
  */
 const COLS = 8;
 const ROWS = TECHNOLOGY_CATEGORIES.length;
-const PITCH = .205;
-const TILE = .18;
-const DEPTH = .04;
-const FRONT_X = -8.99;
-const TOP_Y = 1.93;
-const FIRST_Z = 2.27;
+/** Lab pegboard (left wall), matching the baked plate backs from blender/prototype_workshop_room_v2.py. */
+const PITCH = .19;
+const TILE = .165;
+const DEPTH = .02;
+const FRONT_X = -2.912;
+const TOP_Y = 2.45;
+const FIRST_Z = -1.95;
 const CELL = 128;
 
 export interface ShelfTile { id: string; col: number; row: number }
@@ -31,11 +35,12 @@ function drawAtlas(tiles: ShelfTile[]) {
   const canvas = document.createElement('canvas');
   canvas.width = COLS * CELL; canvas.height = ROWS * CELL;
   const g = canvas.getContext('2d')!;
-  g.fillStyle = '#f1eee3'; g.fillRect(0, 0, canvas.width, canvas.height);
+  g.fillStyle = '#11181b'; g.fillRect(0, 0, canvas.width, canvas.height);
   for (const tile of tiles) {
     const entry = PORTFOLIO_TECHNOLOGIES.find(item => item.id === tile.id)!;
     const x = tile.col * CELL; const y = tile.row * CELL;
-    g.fillStyle = '#f1eee3'; g.fillRect(x, y, CELL, CELL);
+    g.fillStyle = '#11181b'; g.fillRect(x, y, CELL, CELL);
+    g.strokeStyle = '#2b3a3f'; g.lineWidth = 3; g.strokeRect(x + 4, y + 4, CELL - 8, CELL - 16);
     g.fillStyle = entry.color; g.fillRect(x, y + CELL - 8, CELL, 8);
     const paths = TECHNOLOGY_ICON_PATHS[entry.icon];
     g.fillStyle = entry.color;
@@ -47,7 +52,7 @@ function drawAtlas(tiles: ShelfTile[]) {
       g.font = '700 40px system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
       g.fillText(entry.shortName, x + CELL / 2, y + 46);
     }
-    g.fillStyle = '#273b30'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.fillStyle = '#e6f2f4'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
     let size = 17; g.font = `600 ${size}px system-ui, sans-serif`;
     while (g.measureText(entry.name).width > CELL - 14 && size > 10) { size -= 1; g.font = `600 ${size}px system-ui, sans-serif`; }
     g.fillText(entry.name, x + CELL / 2, y + CELL - 20);
@@ -82,22 +87,25 @@ function buildGeometry(tiles: ShelfTile[]) {
   return { front, body };
 }
 
-export function TechnologyShelf({ onSelect }: { onSelect: (technologyId: string) => void }) {
-  const { tiles, texture, front, body } = useMemo(() => {
+/** Away from the board a click walks up to it; at the board it opens the technology. */
+export function TechnologyShelf({ point, onGo, onSelect }: { point: WorldPoint; onGo: (point: WorldPoint) => void; onSelect: (technologyId: string) => void }) {
+  const { tiles, texture, front, body, labels } = useMemo(() => {
     const tiles = shelfLayout();
-    return { tiles, texture: drawAtlas(tiles), ...buildGeometry(tiles) };
+    const labels = TECHNOLOGY_CATEGORIES.map(category => ({ id: category.id, anchor: LAB_ANCHORS[`cat_${category.id}`], map: labelTexture(category.label, '#7fd8e6') }));
+    return { tiles, texture: drawAtlas(tiles), labels, ...buildGeometry(tiles) };
   }, []);
   const choose = (faceIndex?: number | null) => {
+    if (point !== 'technologies') { onGo('technologies'); return; }
     const tile = tiles[Math.floor((faceIndex ?? 0) / 2)];
     if (tile) onSelect(tile.id);
   };
   return <group>
-    <mesh geometry={body} receiveShadow castShadow><meshStandardMaterial color="#e7e3d8" roughness={.85} /></mesh>
-    <mesh geometry={front}
-      onClick={event => { event.stopPropagation(); if (event.delta < 5) choose(event.faceIndex); }}
-      onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
-      onPointerOut={() => { document.body.style.cursor = ''; }}>
-      <meshStandardMaterial map={texture} roughness={.7} />
+    <mesh geometry={body}><meshBasicMaterial color="#0c0e10" /></mesh>
+    <mesh geometry={front} onClick={event => { event.stopPropagation(); if (event.delta < 5) choose(event.faceIndex); }} onPointerOver={pointer(true)} onPointerOut={pointer(false)}>
+      <meshBasicMaterial map={texture} toneMapped={false} />
     </mesh>
+    {labels.map(({ id, anchor, map }) => anchor && <mesh key={id} position={anchor.position} rotation={[0, anchor.rotationY, 0]}>
+      <planeGeometry args={anchor.size} /><meshBasicMaterial map={map} toneMapped={false} />
+    </mesh>)}
   </group>;
 }

@@ -1,53 +1,31 @@
 import { useEffect, useRef } from 'react';
-import { roomForPoint, ROOM_IDS } from './rooms';
-import type { WorldPoint } from './world-state';
 
-type TrackId = 'hub' | typeof ROOM_IDS[number];
-const TRACKS: TrackId[] = ['hub', ...ROOM_IDS];
-export const trackUrl = (id: TrackId) => `/audio/workshop/${id}-v1.mp3`;
+export const WORKSHOP_TRACK_URL = '/audio/workshop/hub-v1.mp3';
+const VOLUME = .45;
 const FADE_STEP = .04;
 
-/**
- * Off by default and only ever started from a user gesture (the toggle).
- * The hub bed plays throughout and ducks inside a room; each room adds its own track.
- */
-export function useWorkshopAudio({ enabled, point, paused }: { enabled: boolean; point: WorldPoint; paused: boolean }) {
-  const players = useRef<Partial<Record<TrackId, HTMLAudioElement>>>({});
-  const room = roomForPoint(point);
+/** Off by default and only ever started from a user gesture (the toggle). One ambient bed for the lab. */
+export function useWorkshopAudio({ enabled, paused }: { enabled: boolean; paused: boolean }) {
+  const player = useRef<HTMLAudioElement | null>(null);
   useEffect(() => {
-    const target = (id: TrackId) => !enabled || paused ? 0 : id === 'hub' ? (room ? .22 : .45) : id === room ? .7 : 0;
-    for (const id of TRACKS) {
-      // A hidden tab may throttle fades indefinitely. Stop inactive media now,
-      // before starting another room, instead of waiting for a timer to mute it.
-      if (target(id) === 0) {
-        const audio = players.current[id];
-        if (audio) { audio.volume = 0; audio.pause(); }
-        continue;
-      }
-      if (players.current[id]) continue;
-      const audio = new Audio(trackUrl(id));
+    const goal = !enabled || paused ? 0 : VOLUME;
+    // A hidden tab may throttle fades indefinitely: stop now instead of waiting for a timer to mute it.
+    if (goal === 0) {
+      if (player.current) { player.current.volume = 0; player.current.pause(); }
+      return;
+    }
+    if (!player.current) {
+      const audio = new Audio(WORKSHOP_TRACK_URL);
       audio.loop = true; audio.volume = 0; audio.preload = 'auto';
-      players.current[id] = audio;
+      player.current = audio;
     }
-    for (const id of TRACKS) {
-      const audio = players.current[id];
-      if (audio && target(id) > 0 && audio.paused) audio.play()?.catch(() => { /* blocked or unavailable: stay silent */ });
-    }
-    if (!enabled || paused) return;
+    const audio = player.current;
+    if (audio.paused) audio.play()?.catch(() => { /* blocked or unavailable: stay silent */ });
     const timer = window.setInterval(() => {
-      let settled = true;
-      for (const id of TRACKS) {
-        const audio = players.current[id];
-        if (!audio) continue;
-        const goal = target(id);
-        const next = Math.abs(goal - audio.volume) <= FADE_STEP ? goal : audio.volume + Math.sign(goal - audio.volume) * FADE_STEP;
-        audio.volume = Math.min(1, Math.max(0, next));
-        if (next === 0 && !audio.paused) audio.pause();
-        if (next !== goal) settled = false;
-      }
-      if (settled) window.clearInterval(timer);
+      audio.volume = Math.min(1, Math.abs(goal - audio.volume) <= FADE_STEP ? goal : audio.volume + FADE_STEP);
+      if (audio.volume === goal) window.clearInterval(timer);
     }, 60);
     return () => window.clearInterval(timer);
-  }, [enabled, paused, room]);
-  useEffect(() => () => { Object.values(players.current).forEach(audio => { if (audio) { audio.volume = 0; audio.pause(); } }); players.current = {}; }, []);
+  }, [enabled, paused]);
+  useEffect(() => () => { if (player.current) { player.current.volume = 0; player.current.pause(); } player.current = null; }, []);
 }
