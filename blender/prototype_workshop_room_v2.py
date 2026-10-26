@@ -227,8 +227,12 @@ def box(name, loc, dims, m, rot=0.0, bevel=0.0):
     return add_box(name, loc, dims, C, M[m], None, math.radians(rot), bevel)
 
 
-def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom"):
-    """Import a glTF, measure its evaluated bounds, then place centre-xy at loc.xy and bottom/top at loc.z."""
+def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom", role="static", skip_mats=(), tint=None):
+    """Import a glTF, measure its evaluated bounds, then place centre-xy at loc.xy and bottom/top at loc.z.
+
+    `role` (static | dynamic | plant) tells bake_workshop_lab.py what to bake vs export separately.
+    `skip_mats` leaves effect meshes (e.g. jet flames) out of the measurement; `tint` darkens base colours.
+    """
     before = set(bpy.data.objects)
     bpy.ops.import_scene.gltf(filepath=str(path))
     bpy.context.view_layer.update()
@@ -236,7 +240,7 @@ def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom"):
     dg = bpy.context.evaluated_depsgraph_get()
     pts = []
     for o in new:
-        if o.type == "MESH":
+        if o.type == "MESH" and not any(s.material and s.material.name.startswith(skip_mats) for s in o.material_slots):
             e = o.evaluated_get(dg)
             me = e.to_mesh()
             pts += [e.matrix_world @ v.co for v in me.vertices]
@@ -247,6 +251,26 @@ def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom"):
     c = (mn + mx) / 2
     root = bpy.data.objects.new(path.stem + "_root", None)
     bpy.context.scene.collection.objects.link(root)
+    root["role"] = role
+    if tint:
+        for o in new:
+            for slot in o.material_slots:
+                b = slot.material and slot.material.node_tree.nodes.get("Principled BSDF")
+                if not b or slot.material.get("tinted"):
+                    continue
+                slot.material["tinted"] = True
+                base = b.inputs["Base Color"]
+                if base.is_linked:
+                    nt = slot.material.node_tree
+                    mul = nt.nodes.new("ShaderNodeMix")
+                    mul.data_type, mul.blend_type = "RGBA", "MULTIPLY"
+                    mul.inputs["Factor"].default_value = 1.0
+                    mul.inputs["B"].default_value = (tint, tint, tint, 1)
+                    nt.links.new(base.links[0].from_socket, mul.inputs["A"])
+                    nt.links.new(mul.outputs["Result"], base)
+                else:
+                    c = base.default_value
+                    base.default_value = (c[0] * tint, c[1] * tint, c[2] * tint, 1)
     for o in new:
         if o.parent is None:
             o.parent = root
@@ -259,12 +283,18 @@ def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom"):
     return root
 
 
+PLANTS = ("potted_plant", "pachira", "anthurium", "calathea", "fern")
+
+
 def ph(name, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom"):
-    return put(PH / name / f"{name}.gltf", loc, rot, scale, max_dim, anchor)
+    role = "plant" if name.startswith(PLANTS) else "static"
+    return put(PH / name / f"{name}.gltf", loc, rot, scale, max_dim, anchor, role)
 
 
-def sk(name, loc, rot=0.0, max_dim=1.0, anchor="bottom"):
-    return put(SK / name / "model.glb", loc, rot, 1.0, max_dim, anchor)
+def sk(name, loc, rot=0.0, max_dim=1.0, anchor="bottom", skip_mats=(), role="dynamic"):
+    root = put(SK / name / "model.glb", loc, rot, 1.0, max_dim, anchor, role, skip_mats)
+    root["asset"] = name  # every Sketchfab file is model.glb; the bake names exports by folder
+    return root
 
 
 # --- architecture ------------------------------------------------------------------------------
@@ -325,7 +355,7 @@ for yy in (0.5, 3.3):
     for xx in (LX + 0.1, LX + 0.7):
         box("bench_leg", (xx, yy, 0.43), (0.06, 0.06, 0.86), "metal")
 box("bench_shelf", (LX + 0.4, 1.9, 0.3), (0.7, 2.9, 0.04), "metal")
-sk("black_honey_-_robotic_arm", (LX + 0.45, 1.5, 0.935), rot=0, max_dim=1.0)
+sk("black_honey_-_robotic_arm", (LX + 0.42, 1.15, 0.935), rot=35, max_dim=1.0)
 ph("bench_vice_01", (LX + 0.3, 0.45, 0.935), rot=90, max_dim=0.28)
 ph("retro_multimeter", (LX + 0.35, 2.6, 0.935), rot=70, max_dim=0.2)
 ph("industrial_microscope", (LX + 0.4, 3.0, 0.935), rot=120, max_dim=0.42)
@@ -335,7 +365,7 @@ ph("metal_toolbox", (LX + 0.45, 0.9, 0.31), rot=90, max_dim=0.4)
 ph("metal_tool_chest", (LX + 0.45, 2.1, 0.31), rot=90, max_dim=0.65)
 
 # --- back-left corner: big yellow industrial arm inside a taped safety zone --------------------
-sk("industrial_robot_arm", (-1.9, 3.95, 0), rot=-35, max_dim=2.2)
+sk("industrial_robot_arm", (-1.9, 3.95, 0), rot=-35, max_dim=2.2, role="static")  # baked: see bake_workshop_lab.py
 for k, (cx, cy, w, d) in enumerate(((-1.9, 3.0, 1.9, 0.08), (-1.9, 4.75, 1.9, 0.08), (-2.85, 3.875, 0.08, 1.83), (-0.95, 3.875, 0.08, 1.83))):
     box(f"tape_{k}", (cx, cy, 0.002), (w, d, 0.004), "hazard")
 
@@ -366,7 +396,7 @@ box("tower", (DX + 0.1, 4.0, 1.0), (0.24, 0.5, 0.52), "black", bevel=0.01)
 box("tower_glass", (DX - 0.03, 4.0, 1.0), (0.005, 0.46, 0.48), "cyan_glow")
 box("kbd", (DX - 0.05, 2.9, 0.78), (0.17, 0.46, 0.02), "black")
 box("kbd_glow", (DX - 0.05, 2.9, 0.795), (0.15, 0.4, 0.002), "pink_glow")
-put(QUAT / "Prop_Chair.gltf", (DX - 1.0, 3.0, 0), rot=-90, max_dim=1.1)
+put(QUAT / "Prop_Chair.gltf", (DX - 1.0, 3.0, 0), rot=-90, max_dim=1.1, tint=0.3)
 ph("potted_plant_02", (W / 2 - 0.5, 1.2, 0), max_dim=0.8)
 ph("metal_trash_can", (W / 2 - 0.45, 4.6, 0), max_dim=0.55)
 
@@ -394,7 +424,7 @@ ph("circuit_board", (0.85, 1.75, 0.82), rot=-20, max_dim=0.22)
 ph("vintage_spacecraft_instrument", (-0.25, 1.75, 0.82), rot=160, max_dim=0.35)
 sk("an_animated_cat", (0.85, 1.45, 0.82), rot=-160, max_dim=0.48)
 sk("k07_drone", (0.95, 2.55, 1.75), rot=-20, max_dim=0.65)
-sk("mech_drone", (1.75, 2.1, 1.35), rot=-90, max_dim=1.5)
+sk("mech_drone", (1.75, 2.1, 1.35), rot=-90, max_dim=0.75, skip_mats=("Fire",))
 ph("tool_cart", (-2.1, -1.1, 0), rot=60, max_dim=1.0)
 for k, pts in enumerate((
     [(DX + 0.1, 4.0, 0.75), (DX + 0.25, 4.1, 0.02), (1.8, 4.2, 0.01), (0.9, 3.0, 0.01), (0.6, 1.95, 0.01), (0.6, 1.8, 0.8)],

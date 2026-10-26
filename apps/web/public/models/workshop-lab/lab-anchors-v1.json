@@ -1,0 +1,662 @@
+{
+ "cat_backend": {
+  "centre": [
+   -2.93,
+   1.69,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "cat_data": {
+  "centre": [
+   -2.93,
+   1.69,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "cat_frontend": {
+  "centre": [
+   -2.93,
+   1.69,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "cat_integrations": {
+  "centre": [
+   -2.93,
+   1.69,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "cat_languages": {
+  "centre": [
+   -2.93,
+   1.69,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "cat_tools": {
+  "centre": [
+   -2.93,
+   1.69,
+   1.5
+  ],
+  "facing": 0.0,
+  "size": [
+   0.3,
+   0.056
+  ]
+ },
+ "label_4ustudio-academy": {
+  "centre": [
+   2.935,
+   1.35,
+   2.24
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_command-center": {
+  "centre": [
+   2.935,
+   2.05,
+   2.24
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_drokex": {
+  "centre": [
+   2.935,
+   2.75,
+   2.24
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_intranet-ess": {
+  "centre": [
+   2.935,
+   3.45,
+   2.24
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_kliniu": {
+  "centre": [
+   2.935,
+   1.7,
+   1.62
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_lorigine": {
+  "centre": [
+   2.935,
+   2.4,
+   1.62
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "label_vevi": {
+  "centre": [
+   2.935,
+   3.1,
+   1.62
+  ],
+  "facing": 180.0,
+  "size": [
+   0.42,
+   0.065
+  ]
+ },
+ "plate_backend_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_backend_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_backend_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_backend_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_backend_4.png": {
+  "centre": [
+   -2.917,
+   2.71,
+   2.07
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_data_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_data_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_data_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_data_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_data_4.png": {
+  "centre": [
+   -2.917,
+   2.71,
+   1.88
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_4.png": {
+  "centre": [
+   -2.917,
+   2.71,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_5.png": {
+  "centre": [
+   -2.917,
+   2.9,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_6.png": {
+  "centre": [
+   -2.917,
+   3.09,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_frontend_7.png": {
+  "centre": [
+   -2.917,
+   3.28,
+   2.26
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_4.png": {
+  "centre": [
+   -2.917,
+   2.71,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_5.png": {
+  "centre": [
+   -2.917,
+   2.9,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_integrations_6.png": {
+  "centre": [
+   -2.917,
+   3.09,
+   1.69
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_languages_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_languages_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_languages_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_languages_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_languages_4.png": {
+  "centre": [
+   -2.917,
+   2.71,
+   2.45
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_tools_0.png": {
+  "centre": [
+   -2.917,
+   1.95,
+   1.5
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_tools_1.png": {
+  "centre": [
+   -2.917,
+   2.14,
+   1.5
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_tools_2.png": {
+  "centre": [
+   -2.917,
+   2.33,
+   1.5
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "plate_tools_3.png": {
+  "centre": [
+   -2.917,
+   2.52,
+   1.5
+  ],
+  "facing": 0.0,
+  "size": [
+   0.165,
+   0.165
+  ]
+ },
+ "screen_4ustudio-academy": {
+  "centre": [
+   2.935,
+   1.35,
+   2.48
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_command-center": {
+  "centre": [
+   2.935,
+   2.05,
+   2.48
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_drokex": {
+  "centre": [
+   2.935,
+   2.75,
+   2.48
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_intranet-ess": {
+  "centre": [
+   2.935,
+   3.45,
+   2.48
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_kliniu": {
+  "centre": [
+   2.935,
+   1.7,
+   1.86
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_lorigine": {
+  "centre": [
+   2.935,
+   2.4,
+   1.86
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "screen_vevi": {
+  "centre": [
+   2.935,
+   3.1,
+   1.86
+  ],
+  "facing": 180.0,
+  "size": [
+   0.62,
+   0.39
+  ]
+ },
+ "whiteboard": {
+  "centre": [
+   0.0,
+   4.865,
+   1.55
+  ],
+  "facing": -90.0,
+  "size": [
+   0.92,
+   0.62
+  ]
+ }
+}
