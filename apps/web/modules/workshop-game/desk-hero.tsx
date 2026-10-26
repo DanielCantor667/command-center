@@ -17,7 +17,7 @@ const NOTEBOOK: [number, number, number] = [-1.15, 1, .05];
 const LAPTOP: [number, number, number] = [1.0, 1.32, .15];
 const SCREEN = [1.28, .8] as const;
 
-function Monitor({ labelled, reducedMotion, onGo }: { labelled: boolean; reducedMotion: boolean; onGo: (point: WorldPoint) => void }) {
+function Monitor({ labelled, reducedMotion, onOpenCase }: { labelled: boolean; reducedMotion: boolean; onOpenCase: (id: string) => void }) {
   const textures = useTexture(ROOM_IDS.map(id => WORKSHOP_ROOMS[id].evidence));
   const { invalidate } = useThree();
   const [index, setIndex] = useState(0);
@@ -28,12 +28,12 @@ function Monitor({ labelled, reducedMotion, onGo }: { labelled: boolean; reduced
     return () => clearInterval(timer);
   }, [reducedMotion, invalidate]);
   const room = ROOM_IDS[index]!;
-  return <group position={MONITOR} onPointerOver={pointer(true)} onPointerOut={pointer(false)} onClick={event => { event.stopPropagation(); if (event.delta < 5) onGo(room); }}>
+  return <group position={MONITOR} onPointerOver={pointer(true)} onPointerOut={pointer(false)} onClick={event => { event.stopPropagation(); if (event.delta < 5) onOpenCase(WORKSHOP_ROOMS[room].projectId); }}>
     <mesh position={[0, .01, 0]} castShadow receiveShadow><boxGeometry args={[.28, .02, .18]} /><meshStandardMaterial color="#2a302d" roughness={.5} metalness={.4} /></mesh>
     <mesh position={[0, .2, -.02]} castShadow><boxGeometry args={[.05, .4, .03]} /><meshStandardMaterial color="#2a302d" roughness={.5} metalness={.4} /></mesh>
     <mesh position={[0, .62, 0]} castShadow><boxGeometry args={[SCREEN[0] + .04, SCREEN[1] + .04, .03]} /><meshStandardMaterial color="#1c211f" roughness={.4} /></mesh>
     <mesh position={[0, .62, .016]}><planeGeometry args={SCREEN} /><meshBasicMaterial map={textures[index]} toneMapped={false} /></mesh>
-    {labelled && <Html position={[0, 1.15, 0]} center><button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} onClick={() => onGo(room)}>Proyecto: {WORKSHOP_ROOMS[room].name}</button></Html>}
+    {labelled && <Html position={[0, 1.15, 0]} center><button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} aria-label={`Abrir caso de ${WORKSHOP_ROOMS[room].name}`} onClick={() => onOpenCase(WORKSHOP_ROOMS[room].projectId)}>Ver {WORKSHOP_ROOMS[room].name}</button></Html>}
   </group>;
 }
 
@@ -58,18 +58,18 @@ function Hit({ at, size, onSelect }: { at: [number, number, number]; size: [numb
   </mesh>;
 }
 
-export function DeskHero({ point, reducedMotion, sound, onGo, onSound }: { point: WorldPoint; reducedMotion: boolean; sound: boolean; onGo: (point: WorldPoint) => void; onSound: () => void }) {
+export function DeskHero({ point, reducedMotion, sound, onGo, onOpenCase, onSound }: { point: WorldPoint; reducedMotion: boolean; sound: boolean; onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onSound: () => void }) {
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
   return <OptionalBoundary>
-    <Suspense fallback={null}><Monitor labelled={point === 'workbench'} reducedMotion={reducedMotion} onGo={onGo} /></Suspense>
+    <Suspense fallback={null}><Monitor labelled={point === 'workbench'} reducedMotion={reducedMotion} onOpenCase={onOpenCase} /></Suspense>
     <Notebook onGo={onGo} />
     <Hit at={[1.0, 1, .15]} size={[.4, .26, .3]} onSelect={() => onGo('trajectory')} />
     <Hit at={TURNTABLE} size={[.36, .2, .3]} onSelect={onSound} />
     {/* Labels only at the desk, like the door labels only in the hub. */}
-    {point === 'workbench' && LABELS.map(label => <Html key={label.text} position={label.at} center>
+    {point === 'workbench' && LABELS.map(label => <Html key={label.text} position={label.at} center className={styles.deskObjectLabel}>
       <button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} onClick={() => onGo(label.point)}>{label.text}</button>
     </Html>)}
-    {point === 'workbench' && <Html position={[TURNTABLE[0], 1.3, TURNTABLE[2]]} center>
+    {point === 'workbench' && <Html position={[TURNTABLE[0], 1.3, TURNTABLE[2]]} center className={styles.deskObjectLabel}>
       <button type="button" className={`${styles.hotspot} ${styles.deskLabel}`} aria-pressed={sound} onClick={onSound}>{sound ? 'Pausar música' : 'Poner música'}</button>
     </Html>}
   </OptionalBoundary>;

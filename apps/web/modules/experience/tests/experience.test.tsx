@@ -30,6 +30,31 @@ describe('City portfolio experience', () => {
     window.history.replaceState(null, '', '/');
     restoreCamera.mockClear();
   });
+  it('offers a visible return to the game and saves the portfolio before leaving', () => {
+    const onReturnToWorkshop = vi.fn();
+    const onWorkshopSave = vi.fn();
+    render(<ExperienceModule onEnter={vi.fn()} onReturnToWorkshop={onReturnToWorkshop} onWorkshopSave={onWorkshopSave} />);
+    const back = screen.getByRole('button', { name: 'Volver al taller' });
+    expect(back).toBeVisible();
+    fireEvent.click(back);
+    expect(onWorkshopSave).toHaveBeenCalledWith(expect.objectContaining({ projectId: 'kliniu', camera }));
+    expect(onReturnToWorkshop).toHaveBeenCalledOnce();
+    expect(onWorkshopSave.mock.invocationCallOrder[0]).toBeLessThan(onReturnToWorkshop.mock.invocationCallOrder[0]!);
+  });
+  it('cancels a pending project entrance when returning to the game', () => {
+    vi.useFakeTimers();
+    try {
+      const onEnter = vi.fn();
+      const onReturnToWorkshop = vi.fn();
+      render(<ExperienceModule onEnter={onEnter} onReturnToWorkshop={onReturnToWorkshop} />);
+      fireEvent.click(screen.getByRole('button', { name: 'Entrar a Kliniu' }));
+      const oldReady = sceneProps.onEntranceReady;
+      fireEvent.click(screen.getByRole('button', { name: 'Volver al taller' }));
+      act(() => { oldReady?.(); vi.runAllTimers(); });
+      expect(onEnter).not.toHaveBeenCalled();
+      expect(onReturnToWorkshop).toHaveBeenCalledOnce();
+    } finally { vi.useRealTimers(); }
+  });
   it('keeps reveal nonblocking, ends it after 450ms and cancels on interaction', () => {
     vi.useFakeTimers();
     try {

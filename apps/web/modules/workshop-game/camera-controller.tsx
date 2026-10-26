@@ -26,6 +26,9 @@ function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const view = WORLD_VIEWS[point];
   const room = roomForPoint(point);
   if (!portrait || (!room && !stationForPoint(point) && point !== 'workbench')) return view;
+  // On phones the monitor is the focal point; pulling back and aiming down
+  // makes the desk tiny and fills the usable space with floor.
+  if (point === 'workbench') return { position: [.45, 1.75, 2.3], target: [.45, 1.35, -1.15] };
   const [px, py, pz] = view.position; const [tx, ty, tz] = view.target;
   const [dx, dz] = [px - tx, pz - tz];
   const distance = Math.hypot(dx, dz);
@@ -53,11 +56,14 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
   const currentToken = useRef(token);
   const initialized = useRef(false);
   const savedInitial = useRef(initialCamera);
+  const restoreAt = useRef({ point, token });
+  const previousPortrait = useRef(portrait.current);
   // 11.3: a light parallax at the desk follows the pointer (off for reduced motion and while dragging).
   const parallax = useRef({ x: 0, y: 0, dragging: false });
   const journey = useRef({ points: [] as Vector3[], length: 0, progress: 0, target: new Vector3() });
 
   useEffect(() => {
+    if (moving || point !== restoreAt.current.point || token !== restoreAt.current.token) savedInitial.current = null;
     if (!initialized.current) {
       const view = savedInitial.current ?? (moving ? WORLD_VIEWS.entrance : framing(point, portrait.current));
       camera.position.set(...view.position);
@@ -66,7 +72,7 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
       initialized.current = true;
     }
     currentToken.current = token;
-    const view = framing(point, portrait.current);
+    const view = !moving && savedInitial.current ? savedInitial.current : framing(point, portrait.current);
     destination.current.position.set(...view.position);
     destination.current.target.set(...view.target);
     travelling.current = moving;
@@ -80,14 +86,18 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
       target.current.copy(destination.current.target);
       camera.lookAt(target.current);
     }
-    savedInitial.current = null;
     invalidate();
   }, [camera, invalidate, moving, point, token]);
 
   // Rotating the device re-frames a stopped camera; a trip in progress finishes on its own.
   useEffect(() => {
+    if (previousPortrait.current === portrait.current) return;
+    previousPortrait.current = portrait.current;
     if (!initialized.current || travelling.current) return;
+    savedInitial.current = null;
     const view = framing(point, portrait.current);
+    destination.current.position.set(...view.position);
+    destination.current.target.set(...view.target);
     camera.position.set(...view.position);
     target.current.set(...view.target);
     camera.lookAt(target.current);

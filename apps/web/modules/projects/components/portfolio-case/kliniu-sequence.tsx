@@ -2,7 +2,7 @@
 
 import { Box, DraftingCompass, Monitor, RotateCcw, X } from 'lucide-react';
 import Image from 'next/image';
-import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Component, lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './kliniu-sequence.module.css';
 
 export type KliniuStage = 'plan' | 'space' | 'product';
@@ -29,8 +29,16 @@ export function KliniuSequence() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [revision, setRevision] = useState(0);
   const root = useRef<HTMLElement>(null);
+  const activation = useRef<HTMLButtonElement>(null);
+  const closeControl = useRef<HTMLButtonElement>(null);
+  const fallback = useRef<HTMLParagraphElement>(null);
   const active = stages.find(item => item.id === stage)!;
   const live = enabled && visible && !failed && stage !== 'product';
+  const markReady = useCallback(() => setReady(true), []);
+  const markFailed = useCallback(() => {
+    setFailed(true);
+    requestAnimationFrame(() => fallback.current?.focus({ preventScroll: true }));
+  }, []);
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const updateMotion = () => setReducedMotion(motion.matches);
@@ -44,23 +52,28 @@ export function KliniuSequence() {
   function enableScene() {
     try {
       const gl = document.createElement('canvas').getContext('webgl2');
-      if (!gl) { setFailed(true); return; }
+      if (!gl) { markFailed(); return; }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       setEnabled(true);
-    } catch { setFailed(true); }
+      requestAnimationFrame(() => closeControl.current?.focus({ preventScroll: true }));
+    } catch { markFailed(); }
+  }
+  function close() {
+    setEnabled(false);
+    requestAnimationFrame(() => activation.current?.focus({ preventScroll: true }));
   }
 
   return <section ref={root} className={styles.sequence} aria-labelledby="kliniu-sequence-title" data-stage={stage}>
     <header className={styles.heading}><div><p>02 / El estudio</p><h2 id="kliniu-sequence-title">Del plano al producto.</h2></div><span>Kliniu / Estudio de identidad espacial</span></header>
     <div className={styles.toolbar}>
       <div className={styles.segments} role="group" aria-label="Etapas del proyecto">{stages.map((item, index) => <button key={item.id} type="button" aria-pressed={stage === item.id} aria-controls="kliniu-study" onClick={() => setStage(item.id)}><item.icon size={17} aria-hidden /><span>{String(index + 1).padStart(2, '0')} {item.label}</span></button>)}</div>
-      <div className={styles.actions} inert={stage === 'product'} style={{ visibility: stage === 'product' ? 'hidden' : undefined }}>{enabled && !failed ? <><button type="button" onClick={() => setRevision(value => value + 1)} aria-label="Restablecer vista de Kliniu" title="Restablecer vista"><RotateCcw size={18} aria-hidden /></button><button type="button" onClick={() => setEnabled(false)} aria-label="Cerrar estudio 3D" title="Cerrar estudio 3D"><X size={18} aria-hidden /></button></> : !failed && <button type="button" onClick={enableScene}><Box size={17} aria-hidden />Explorar en 3D</button>}</div>
+      <div className={styles.actions} inert={stage === 'product'} style={{ visibility: stage === 'product' ? 'hidden' : undefined }}>{enabled && !failed ? <><button type="button" onClick={() => setRevision(value => value + 1)} aria-label="Restablecer vista de Kliniu" title="Restablecer vista"><RotateCcw size={18} aria-hidden /></button><button ref={closeControl} type="button" onClick={close} aria-label="Cerrar estudio 3D" title="Cerrar estudio 3D"><X size={18} aria-hidden /></button></> : !failed && <button ref={activation} type="button" onClick={enableScene}><Box size={17} aria-hidden />Explorar en 3D</button>}</div>
     </div>
     <div className={styles.stage} id="kliniu-study" data-live={live && ready}>
       <Image className={styles.poster} src={active.image} alt={active.alt} width={1600} height={1100} sizes="100vw" />
-      {live && <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}><SceneBoundary onError={() => setFailed(true)}><Suspense fallback={null}><Scene stage={stage} revision={revision} reducedMotion={reducedMotion} onReady={() => setReady(true)} onError={() => setFailed(true)} /></Suspense></SceneBoundary></div>}
+      {live && <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}><SceneBoundary onError={markFailed}><Suspense fallback={null}><Scene stage={stage} revision={revision} reducedMotion={reducedMotion} onReady={markReady} onError={markFailed} /></Suspense></SceneBoundary></div>}
       <div className={styles.caption} aria-live="polite"><span>{active.note}</span><h3>{active.title}</h3></div>
-      {failed && <p className={styles.fallback} role="status">Vista estática. El 3D no está disponible en este dispositivo.</p>}
+      {failed && <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">Vista estática. El 3D no está disponible en este dispositivo.</p>}
     </div>
   </section>;
 }

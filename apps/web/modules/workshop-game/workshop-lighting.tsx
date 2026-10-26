@@ -14,20 +14,28 @@ const ROOM_LIGHTS = [
 /** 11.7: night mode (palette B). Only colours and intensities change, so the light count and shaders stay the same. */
 const DAY = { ambient: .3, sky: '#fff3df', ground: '#687967', hemi: .8, sun: '#fff0d5', sunI: 2.7, desk: '#ffd5a1', deskI: 12, rooms: 1, env: 1 };
 const NIGHT = { ambient: .1, sky: '#4a5f8f', ground: '#1b2335', hemi: .45, sun: '#9fb3d9', sunI: .5, desk: '#ffb15c', deskI: 16, rooms: 1.5, env: .3 };
+// Drei recaptures when children change identity, even with frames={1}.
+const REFLECTION_PANELS = <>
+  <Lightformer position={[0, 9, -2]} rotation={[Math.PI / 2, 0, 0]} scale={[18, 14, 1]} intensity={1.4} color="#fff3df" />
+  <Lightformer position={[-12, 4, 1]} rotation={[0, Math.PI / 2, 0]} scale={[9, 6, 1]} intensity={1.1} color="#f2f7ed" />
+  <Lightformer position={[0, 3, 18]} rotation={[0, Math.PI, 0]} scale={[12, 7, 1]} intensity={.8} color="#e7eddd" />
+</>;
 
 export function WorkshopLighting({ night = false }: { night?: boolean }) {
   const look = night ? NIGHT : DAY;
-  const { gl, invalidate, size } = useThree();
+  const { gl, invalidate, scene, size } = useThree();
   // Keep the capture target for this visit. Replacing it on resize retains a
   // generated PMREM texture in Three 0.171; DPR and shadows still adapt below.
   const [reflectionResolution] = useState(() => size.width <= 700 ? 64 : 128);
   useEffect(() => {
+    // Change reflection strength without replacing or recapturing its cubemap.
+    scene.environmentIntensity = look.env;
     const previous = gl.shadowMap.autoUpdate;
     gl.shadowMap.autoUpdate = false;
     gl.shadowMap.needsUpdate = true;
     invalidate();
     return () => { gl.shadowMap.autoUpdate = previous; };
-  }, [gl, invalidate, size.width, night]);
+  }, [gl, invalidate, scene, size.width, look.env]);
   return <>
     <ambientLight intensity={look.ambient} />
     <hemisphereLight args={[look.sky, look.ground, look.hemi]} />
@@ -42,10 +50,8 @@ export function WorkshopLighting({ night = false }: { night?: boolean }) {
     {/* One warm/cool accent per room, always mounted so the light count never changes (no shader recompiles). */}
     {ROOM_LIGHTS.map(light => <pointLight key={light.id} position={light.position} color={light.color} intensity={light.intensity * look.rooms} distance={7} decay={2} />)}
     {/* Local reflection panels, generated once. No remote HDRI or preset download. */}
-    <Environment key={night ? 'night' : 'day'} resolution={reflectionResolution} frames={1} environmentIntensity={look.env}>
-      <Lightformer position={[0, 9, -2]} rotation={[Math.PI / 2, 0, 0]} scale={[18, 14, 1]} intensity={1.4} color="#fff3df" />
-      <Lightformer position={[-12, 4, 1]} rotation={[0, Math.PI / 2, 0]} scale={[9, 6, 1]} intensity={1.1} color="#f2f7ed" />
-      <Lightformer position={[0, 3, 18]} rotation={[0, Math.PI, 0]} scale={[12, 7, 1]} intensity={.8} color="#e7eddd" />
+    <Environment resolution={reflectionResolution} frames={1}>
+      {REFLECTION_PANELS}
     </Environment>
   </>;
 }

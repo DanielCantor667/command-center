@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight, Layers3, Moon, RotateCcw, Sun, X } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowUpRight, Layers3, Moon, RotateCcw, Sun, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
@@ -17,6 +17,7 @@ import type { CityCameraHandle, WorkshopSnapshot } from './workshop-state';
 
 export type PortfolioSection = 'projects' | 'technologies' | 'trajectory' | 'contact';
 interface ExperienceModuleProps {
+  onReturnToWorkshop?: () => void;
   initialWorkshop?: WorkshopSnapshot;
   onWorkshopSave?: (value: WorkshopSnapshot) => void;
   restoring?: boolean;
@@ -45,6 +46,7 @@ const sectionFromHash = (hash: string): PortfolioSection | null => {
   return entry?.[0] ?? null;
 };
 export function ExperienceModule({
+  onReturnToWorkshop,
   onEnter,
   initialTechnologyFilters,
   onTechnologyFiltersChange,
@@ -225,6 +227,13 @@ export function ExperienceModule({
     onSelectionChange?.(id);
     onEnter('projects', id);
   };
+  const returnToWorkshop = () => {
+    if (entrancePending.current) {
+      onWorkshopSave?.(entrancePending.current.snapshot);
+      cancelEntrance(false);
+    } else saveWorkshop();
+    onReturnToWorkshop?.();
+  };
   const enterFeaturedProject = () => {
     if (entrancePending.current) return;
     const snapshot = saveWorkshop();
@@ -273,6 +282,9 @@ export function ExperienceModule({
           <span className={cinema.monogram} aria-hidden="true">dc.</span>
           <span>Daniel Cantor<br /><small>Desarrollo & diseño</small></span>
         </a>
+        {onReturnToWorkshop && <button className={cinema.returnWorkshop} type="button" onClick={returnToWorkshop}>
+          <ArrowLeft size={16} aria-hidden="true" />Volver al taller
+        </button>}
         <nav className={styles.navigation} aria-label="Navegación principal">
           {(
             [

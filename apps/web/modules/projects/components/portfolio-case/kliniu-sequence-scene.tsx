@@ -3,7 +3,7 @@
 import { Environment, Lightformer, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Component, Suspense, useEffect, useMemo, useRef, type ComponentRef, type ReactNode } from 'react';
-import { EdgesGeometry, LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, OrthographicCamera, Vector3 } from 'three';
+import { EdgesGeometry, LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, OrthographicCamera, Spherical, Vector3 } from 'three';
 import type { KliniuStage } from './kliniu-sequence';
 
 interface SceneProps { stage: KliniuStage; revision: number; reducedMotion: boolean; onReady: () => void; onError: () => void }
@@ -49,7 +49,28 @@ function Showroom({ plan }: { plan: boolean }) {
   return <primitive object={model.clone} dispose={null} />;
 }
 
-function SceneContent({ stage, revision, reducedMotion, onReady, onError }: SceneProps) {
+function ContextGuard({ onError }: { onError: () => void }) {
+  const { gl } = useThree();
+  useEffect(() => {
+    let active = true;
+    const fail = () => {
+      if (!active) return;
+      active = false;
+      onError();
+    };
+    const lost = (event: Event) => { event.preventDefault(); fail(); };
+    const canvas = gl.domElement;
+    canvas.addEventListener('webglcontextlost', lost);
+    if (gl.getContext().isContextLost()) fail();
+    return () => {
+      active = false;
+      canvas.removeEventListener('webglcontextlost', lost);
+    };
+  }, [gl, onError]);
+  return null;
+}
+
+function SceneContent({ stage, revision, reducedMotion, onReady }: SceneProps) {
   const { camera, size, invalidate, gl } = useThree();
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const moving = useRef(true);
@@ -58,11 +79,35 @@ function SceneContent({ stage, revision, reducedMotion, onReady, onError }: Scen
   const position = useMemo(() => new Vector3(...(stage === 'plan' ? [3, 3.6, 5] : [2.8, 2.1, 5]) as [number, number, number]), [stage]);
   useEffect(() => { moving.current = true; invalidate(); }, [stage, revision, size, invalidate]);
   useEffect(() => {
-    onReady();
-    const lost = (event: Event) => { event.preventDefault(); onError(); };
-    gl.domElement.addEventListener('webglcontextlost', lost);
-    return () => gl.domElement.removeEventListener('webglcontextlost', lost);
-  }, [gl, onReady, onError]);
+    const canvas = gl.domElement;
+    canvas.tabIndex = 0;
+    canvas.setAttribute('aria-label', 'Showroom 3D de Kliniu. Flechas para girar; Inicio para restablecer.');
+    canvas.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
+    const rotate = (event: KeyboardEvent) => {
+      const orbit = controls.current;
+      if (!orbit || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home'].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key === 'Home') {
+        moving.current = true;
+      } else {
+        moving.current = false;
+        const spherical = new Spherical().setFromVector3(camera.position.clone().sub(orbit.target));
+        if (event.key === 'ArrowLeft') spherical.theta -= 0.15;
+        if (event.key === 'ArrowRight') spherical.theta += 0.15;
+        if (event.key === 'ArrowUp') spherical.phi -= 0.12;
+        if (event.key === 'ArrowDown') spherical.phi += 0.12;
+        spherical.theta = Math.max(orbit.minAzimuthAngle, Math.min(orbit.maxAzimuthAngle, spherical.theta));
+        spherical.phi = Math.max(orbit.minPolarAngle, Math.min(orbit.maxPolarAngle, spherical.phi));
+        camera.position.copy(orbit.target).add(new Vector3().setFromSpherical(spherical));
+        orbit.update();
+      }
+      invalidate();
+    };
+    canvas.addEventListener('keydown', rotate);
+    return () => canvas.removeEventListener('keydown', rotate);
+  }, [camera, gl, invalidate]);
+  useEffect(() => { if (!gl.getContext().isContextLost()) onReady(); }, [gl, onReady]);
   useFrame((_, delta) => {
     if (!moving.current || !controls.current || !(camera instanceof OrthographicCamera)) return;
     const step = reducedMotion || initial.current ? 1 : 1 - Math.exp(-7 * Math.min(delta, .05));
@@ -89,10 +134,10 @@ function SceneContent({ stage, revision, reducedMotion, onReady, onError }: Scen
     </Environment>
     <Showroom plan={stage === 'plan'} />
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-.004,0]} receiveShadow><planeGeometry args={[200,200]} /><meshStandardMaterial color="#e6e9e7" roughness={.85} /></mesh>
-    <OrbitControls ref={controls} enablePan={false} enableZoom={false} enableDamping={!reducedMotion} minPolarAngle={.35} maxPolarAngle={1.42} minAzimuthAngle={-.8} maxAzimuthAngle={1.3} target={[0,.7,0]} />
+    <OrbitControls ref={controls} onStart={() => { moving.current = false; }} enablePan={false} enableZoom={false} enableDamping={!reducedMotion} minPolarAngle={.35} maxPolarAngle={1.42} minAzimuthAngle={-.8} maxAzimuthAngle={1.3} target={[0,.7,0]} />
   </>;
 }
 
 export function KliniuSequenceScene(props: SceneProps) {
-  return <Canvas orthographic shadows frameloop="demand" dpr={[1,1.5]} camera={{ position:[2.8,2.1,5], zoom:100, near:.01, far:250 }} gl={{ antialias:true, alpha:false }} aria-label="Showroom interactivo de Kliniu"><ModelBoundary onError={props.onError}><Suspense fallback={null}><SceneContent {...props} /></Suspense></ModelBoundary></Canvas>;
+  return <Canvas orthographic shadows frameloop="demand" dpr={[1,1.5]} camera={{ position:[2.8,2.1,5], zoom:100, near:.01, far:250 }} gl={{ antialias:true, alpha:false }} aria-label="Showroom interactivo de Kliniu"><ContextGuard onError={props.onError} /><ModelBoundary onError={props.onError}><Suspense fallback={null}><SceneContent {...props} /></Suspense></ModelBoundary></Canvas>;
 }

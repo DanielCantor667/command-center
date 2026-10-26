@@ -66,6 +66,11 @@
   background: #dfe3e3;
   overflow: hidden;
 }
+.hero > picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
 .heroImage {
   object-fit: cover;
   object-position: center;
@@ -415,7 +420,7 @@
     font-size: 13px;
   }
   .mobileStory {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 36px;
     margin-top: 48px;
   }

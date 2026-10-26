@@ -16,7 +16,11 @@
   justify-content: space-between;
   z-index: 35;
   border-bottom: 1px solid #273e3c24;
+  gap: 24px;
 }
+.header nav { margin-left: auto; }
+.returnWorkshop { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 0; font-size: 12px !important; white-space: nowrap; }
+.returnWorkshop:hover { text-decoration: underline; text-underline-offset: 5px; }
 .identity { display: flex; align-items: center; gap: 14px; text-decoration: none; font-size: 12px; line-height: 1.5; }
 .identity small { color: #536360; font-size: 11px; }
 .monogram { font-size: 35px; font-weight: 650; line-height: 1; }
@@ -75,6 +79,8 @@
   .projectIndex { inset-inline: 64px; }
 }
 @media (max-width: 1100px) {
+  .header { gap: 18px; }
+  .header nav { gap: 20px; font-size: 12px; }
   .intro { width: 300px; }
   .intro h1 { font-size: 88px; }
   .projectTitle { font-size: 48px; }
@@ -85,8 +91,9 @@
 @media (max-width: 800px) {
   .header { inset: 0 22px auto; height: 112px; flex-wrap: wrap; align-content: center; gap: 10px; }
   .identity { gap: 10px; }
+  .returnWorkshop { margin-left: auto; font-size: 11px !important; gap: 6px; }
   .monogram { font-size: 29px; }
-  .header nav { width: 100%; gap: 24px; font-size: 11px; }
+  .header nav { width: 100%; gap: 24px; font-size: 11px; margin-left: 0; }
   .header nav a { padding: 4px 0; }
   .hero { height: calc(100svh - 60px); min-height: 480px; max-height: 1000px; }
   .intro { inset: 138px 22px auto; width: auto; }
@@ -117,6 +124,7 @@
   .entranceActions > span { font-size: 10px; }
 }
 @media (max-width: 400px) {
+  .header:has(.returnWorkshop) .identity > span:last-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .intro h1 { font-size: 48px; }
   .intro { top: 132px; }
   .projectTitle { font-size: 36px; }

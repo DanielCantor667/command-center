@@ -15,6 +15,10 @@ import { AppShell } from '../app-shell';
 import { useWorkspaceStore } from '../workspace-store';
 import type { WorkspaceModule } from '../workspace-store';
 
+const portfolioSections: Record<string, PortfolioSection> = {
+  '#proyectos': 'projects', '#tecnologias': 'technologies', '#trayectoria': 'trajectory', '#contacto': 'contact',
+};
+
 export function ExperienceGate() {
   const [publicMode, setPublicMode] = useState<'game' | 'portfolio'>('game');
   const gameSnapshot = useRef<GameSnapshot | undefined>(undefined);
@@ -43,10 +47,13 @@ export function ExperienceGate() {
     const readLocation = () => {
       const url = new URL(window.location.href);
       const id = url.searchParams.get('project');
-      setPublicMode(url.searchParams.get('view') === 'portfolio' || ['#proyectos', '#tecnologias', '#trayectoria', '#contacto'].includes(url.hash) ? 'portfolio' : 'game');
+      const section = portfolioSections[url.hash];
+      setPublicMode(url.searchParams.get('view') === 'portfolio' || section ? 'portfolio' : 'game');
+      if (section) setPortfolioSection(section);
       setReading(readWorkshopReading(url));
       if (id && PROJECTS.some(project => project.public && project.id === id)) setCaseId(id);
       else setCaseId(null);
+      setEntered(false);
       opening.current = false;
       transitionToken.current += 1;
       visualTransition.current?.skipTransition();
@@ -67,8 +74,23 @@ export function ExperienceGate() {
     const url = writeWorkshopReading(new URL(window.location.href), null);
     url.searchParams.set('view', 'portfolio');
     url.searchParams.delete('project');
-    window.history.replaceState(null, '', url.toString());
+    url.hash = '';
+    window.history.pushState(null, '', url.toString());
     setPublicMode('portfolio');
+    setPortfolioSection('projects');
+    setRestoring(false);
+    setCaseId(null);
+    setReading(null);
+  };
+  const returnToGame = () => {
+    const url = writeWorkshopReading(new URL(window.location.href), null);
+    url.searchParams.delete('view');
+    url.searchParams.delete('project');
+    url.hash = '';
+    window.history.pushState(null, '', url.toString());
+    setPublicMode('game');
+    setEntered(false);
+    setCaseId(null);
     setReading(null);
   };
   const read = (next: WorkshopReading | null) => {
@@ -235,7 +257,7 @@ export function ExperienceGate() {
     <div data-workshop-keeper inert={!!activeCase} aria-hidden={activeCase ? true : undefined} style={activeCase ? { transitionProperty: 'none', position: 'fixed', inset: 0, visibility: 'hidden', pointerEvents: 'none' } : { transitionProperty: 'none' }}>
       <WorkshopGame initialSnapshot={gameSnapshot.current} suspended={!!activeCase}
         reading={reading} onRead={read} technologyFilters={technologyFilters} onTechnologyFiltersChange={setTechnologyFilters}
-        onSave={snapshot => { gameSnapshot.current = snapshot; }}
+        onSave={snapshot => { gameSnapshot.current = snapshot.point === 'entrance' ? undefined : snapshot; }}
         onOpenCase={id => enter('projects', id)} onPortfolio={openPortfolio} />
     </div>
     {caseView}
@@ -245,6 +267,7 @@ export function ExperienceGate() {
     <AppShell onReturnToCity={() => returnToWorkshop()} />
   ) : (
     <ExperienceModule
+      onReturnToWorkshop={returnToGame}
       initialWorkshop={workshop.current}
       onWorkshopSave={(value) => { workshop.current = value; }}
       restoring={restoring}

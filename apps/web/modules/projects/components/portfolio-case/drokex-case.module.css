@@ -12,7 +12,8 @@
 .header { min-height: 72px; padding: 12px 5%; display: flex; align-items: center; gap: 28px; background: #202423; color: #fafbf9; }
 .header button { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; }
 .header .identity { font-size: 26px; font-weight: 700; margin-right: auto; }
-.hero { position: relative; height: min(820px, calc(100svh - 112px)); min-height: 520px; background: #d9dcda; isolation: isolate; }
+.hero { position: relative; height: min(820px, calc(100svh - 112px)); min-height: 520px; background: #d9dcda; isolation: isolate; overflow: hidden; }
+.hero > picture { position: absolute; inset: 0; display: block; }
 .heroImage { object-fit: cover; z-index: -1; }
 .heroTitle { position: absolute; top: 6%; left: 5%; right: 5%; }
 .heroTitle p { font-size: 12px; line-height: 1.6; }

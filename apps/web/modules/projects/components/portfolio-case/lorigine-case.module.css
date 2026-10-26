@@ -60,6 +60,11 @@
   background: #d9dedb;
   overflow: hidden;
 }
+.hero > picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
 .heroImage {
   object-fit: cover;
   object-position: center;

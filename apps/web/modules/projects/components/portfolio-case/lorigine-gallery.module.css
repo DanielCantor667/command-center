@@ -176,6 +176,14 @@
   }
 }
 @media (max-width: 360px) {
+  .views {
+    gap: 2px;
+  }
+  .views button {
+    gap: 4px;
+    padding: 0 3px;
+    font-size: 11px;
+  }
   .stage {
     height: 330px;
   }

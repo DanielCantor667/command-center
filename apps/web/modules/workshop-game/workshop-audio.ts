@@ -17,7 +17,14 @@ export function useWorkshopAudio({ enabled, point, paused }: { enabled: boolean;
   useEffect(() => {
     const target = (id: TrackId) => !enabled || paused ? 0 : id === 'hub' ? (room ? .22 : .45) : id === room ? .7 : 0;
     for (const id of TRACKS) {
-      if (target(id) === 0 || players.current[id]) continue;
+      // A hidden tab may throttle fades indefinitely. Stop inactive media now,
+      // before starting another room, instead of waiting for a timer to mute it.
+      if (target(id) === 0) {
+        const audio = players.current[id];
+        if (audio) { audio.volume = 0; audio.pause(); }
+        continue;
+      }
+      if (players.current[id]) continue;
       const audio = new Audio(trackUrl(id));
       audio.loop = true; audio.volume = 0; audio.preload = 'auto';
       players.current[id] = audio;
@@ -26,6 +33,7 @@ export function useWorkshopAudio({ enabled, point, paused }: { enabled: boolean;
       const audio = players.current[id];
       if (audio && target(id) > 0 && audio.paused) audio.play()?.catch(() => { /* blocked or unavailable: stay silent */ });
     }
+    if (!enabled || paused) return;
     const timer = window.setInterval(() => {
       let settled = true;
       for (const id of TRACKS) {
@@ -41,5 +49,5 @@ export function useWorkshopAudio({ enabled, point, paused }: { enabled: boolean;
     }, 60);
     return () => window.clearInterval(timer);
   }, [enabled, paused, room]);
-  useEffect(() => () => { Object.values(players.current).forEach(audio => audio?.pause()); players.current = {}; }, []);
+  useEffect(() => () => { Object.values(players.current).forEach(audio => { if (audio) { audio.volume = 0; audio.pause(); } }); players.current = {}; }, []);
 }

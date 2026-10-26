@@ -74,10 +74,15 @@ export function LorigineGallery() {
   const [revision, setRevision] = useState(0);
   const root = useRef<HTMLElement>(null);
   const activation = useRef<HTMLButtonElement>(null);
+  const closeControl = useRef<HTMLButtonElement>(null);
+  const fallback = useRef<HTMLParagraphElement>(null);
   const active = views.find((item) => item.id === view)!;
   const live = enabled && visible && !failed && view !== 'site';
   const markReady = useCallback(() => setReady(true), []);
-  const markFailed = useCallback(() => setFailed(true), []);
+  const markFailed = useCallback(() => {
+    setFailed(true);
+    requestAnimationFrame(() => fallback.current?.focus({ preventScroll: true }));
+  }, []);
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const syncMotion = () => setReducedMotion(motion.matches);
@@ -100,13 +105,14 @@ export function LorigineGallery() {
     try {
       const gl = document.createElement('canvas').getContext('webgl2');
       if (!gl) {
-        setFailed(true);
+        markFailed();
         return;
       }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       setEnabled(true);
+      requestAnimationFrame(() => closeControl.current?.focus({ preventScroll: true }));
     } catch {
-      setFailed(true);
+      markFailed();
     }
   }
   function close() {
@@ -157,6 +163,7 @@ export function LorigineGallery() {
                 <RotateCcw size={18} aria-hidden />
               </button>
               <button
+                ref={closeControl}
                 type="button"
                 aria-label="Cerrar galería 3D"
                 title="Cerrar galería 3D"
@@ -199,7 +206,7 @@ export function LorigineGallery() {
           </a>
         )}
         {failed && (
-          <p className={styles.fallback} role="status">
+          <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">
             Vista estática. El 3D no está disponible en este dispositivo.
           </p>
         )}
