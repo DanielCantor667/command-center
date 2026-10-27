@@ -30,8 +30,10 @@ SK = ASSETS / "sketchfab"
 QUAT = ASSETS / "scifi-essentials/flat"
 OUT_BLEND = ROOT / "blender/scenes/workshop-room-proto-v2.blend"
 RNG = random.Random(7)
-W, D, H = 6.0, 5.0, 3.2
-BY = D - 0.1  # back wall plane
+W, D, H = 6.0, 9.0, 3.2
+BY = 4.9  # back wall plane
+FY = BY - D  # front wall plane: the front half holds one corner per project
+CY = (BY + FY) / 2
 
 clear_scene()
 C = ensure_collection("WorkshopLab")
@@ -212,6 +214,8 @@ mat("metal", "#5b656c", 0.35, 0.8)
 mat("black", "#0a0c0e", 0.4, 0.2)
 mat("cyan_glow", "#2fe6ff", 0.3, emit="#2fe6ff", strength=9)
 mat("pink_glow", "#ff4fa3", 0.3, emit="#ff4fa3", strength=7)
+mat("cyan_dim", "#2fe6ff", 0.3, emit="#2fe6ff", strength=0.8)  # PC tower window: a glow, not a white slab
+mat("pink_dim", "#ff4fa3", 0.3, emit="#ff4fa3", strength=2.5)
 mat("amber_glow", "#ffb347", 0.3, emit="#ffb347", strength=6)
 mat("green_glow", "#46ff7a", 0.3, emit="#46ff7a", strength=5)
 mat("white_glow", "#e8fbff", 0.3, emit="#e8fbff", strength=14)
@@ -298,11 +302,19 @@ def sk(name, loc, rot=0.0, max_dim=1.0, anchor="bottom", skip_mats=(), role="dyn
 
 
 # --- architecture ------------------------------------------------------------------------------
-box("floor", (0, D / 2 - 0.1, -0.05), (W, D, 0.1), "floor")
-box("ceiling", (0, D / 2 - 0.1, H + 0.05), (W, D, 0.1), "ceiling")
+box("floor", (0, CY, -0.05), (W, D, 0.1), "floor")
+box("ceiling", (0, CY, H + 0.05), (W, D, 0.1), "ceiling")
 for side, sx in (("L", -W / 2 - 0.05), ("R", W / 2 + 0.05)):
-    box(f"wall_{side}", (sx, D / 2 - 0.1, H / 2), (0.1, D, H), "wall")
-    box(f"wainscot_{side}", (sx - math.copysign(0.01, sx), D / 2 - 0.1, 0.55), (0.1, D, 1.1), "wall_low")
+    box(f"wall_{side}", (sx, CY, H / 2), (0.1, D, H), "wall")
+    box(f"wainscot_{side}", (sx - math.copysign(0.01, sx), CY, 0.55), (0.1, D, 1.1), "wall_low")
+# front wall: closes the room behind the camera, with the entry door
+box("wall_F", (0, FY - 0.05, H / 2), (W, 0.1, H), "wall")
+box("wainscot_F", (0, FY + 0.02, 0.5), (W, 0.04, 1.0), "wall_low")
+box("baseboard_F", (0, FY + 0.04, 0.07), (W, 0.03, 0.14), "trim")
+box("door_F", (-0.75, FY + 0.06, 1.05), (0.92, 0.05, 2.1), "desk", bevel=0.01)
+box("door_F_frame", (-0.75, FY + 0.045, 1.08), (1.04, 0.04, 2.18), "trim")
+box("door_F_handle", (-0.42, FY + 0.1, 1.0), (0.12, 0.03, 0.03), "metal")
+box("exit_sign", (-0.75, FY + 0.05, 2.35), (0.36, 0.04, 0.12), "green_glow")
 box("wall_B_left", (-2.25, BY + 0.05, H / 2), (1.5, 0.1, H), "wall")
 box("wall_B_mid", (0.0, BY + 0.05, H / 2), (1.0, 0.1, H), "wall")
 box("wall_B_right", (2.5, BY + 0.05, H / 2), (1.0, 0.1, H), "wall")
@@ -311,7 +323,7 @@ box("wall_B_win_top", (1.25, BY + 0.05, (2.4 + H) / 2), (1.5, 0.1, H - 2.4), "wa
 box("wall_B_win_bot", (1.25, BY + 0.05, 0.5), (1.5, 0.1, 1.0), "wall")
 box("wainscot_B", (0, BY - 0.02, 0.5), (W, 0.04, 1.0), "wall_low")
 box("baseboard_B", (0, BY - 0.04, 0.07), (W, 0.03, 0.14), "trim")
-for i in range(5):  # ceiling beams
+for i in range(-4, 5):  # ceiling beams
     box(f"beam_{i}", (0, 0.4 + i * 1.1, H - 0.1), (W, 0.18, 0.2), "trim")
 
 box("window_sky", (1.25, BY + 1.3, 1.7), (3.0, 0.02, 2.4), "sky")
@@ -355,7 +367,8 @@ for yy in (0.5, 3.3):
     for xx in (LX + 0.1, LX + 0.7):
         box("bench_leg", (xx, yy, 0.43), (0.06, 0.06, 0.86), "metal")
 box("bench_shelf", (LX + 0.4, 1.9, 0.3), (0.7, 2.9, 0.04), "metal")
-sk("black_honey_-_robotic_arm", (LX + 0.42, 1.15, 0.935), rot=35, max_dim=1.0)
+# base kept clear of the wall: the arm sweeps 0.3 m past its base (x) and 0.9 m towards the pegboard edge (y)
+sk("black_honey_-_robotic_arm", (LX + 0.82, 1.5, 0.935), rot=35, max_dim=1.0)
 ph("bench_vice_01", (LX + 0.3, 0.45, 0.935), rot=90, max_dim=0.28)
 ph("retro_multimeter", (LX + 0.35, 2.6, 0.935), rot=70, max_dim=0.2)
 ph("industrial_microscope", (LX + 0.4, 3.0, 0.935), rot=120, max_dim=0.42)
@@ -390,12 +403,12 @@ for yy in (1.9, 4.1):
         box("pc_leg", (xx, yy, 0.36), (0.05, 0.05, 0.72), "black")
 box("monitor_back", (DX + 0.3, 3.0, 1.18), (0.04, 1.15, 0.5), "black")
 box("monitor_screen", (DX + 0.275, 3.0, 1.18), (0.01, 1.1, 0.46), "screen")
-box("monitor_glowbar", (DX + 0.27, 3.0, 0.93), (0.005, 0.7, 0.012), "cyan_glow")
-box("monitor_stand", (DX + 0.3, 3.0, 0.88), (0.1, 0.06, 0.28), "metal")
+box("monitor_glowbar", (DX + 0.3, 3.0, 0.8), (0.005, 0.7, 0.012), "cyan_glow")  # below and behind the screen plane (web text sits at x 2.818)
+box("monitor_stand", (DX + 0.36, 3.0, 0.85), (0.1, 0.06, 0.2), "metal")  # behind the screen, ends at its lower edge
 box("tower", (DX + 0.1, 4.0, 1.0), (0.24, 0.5, 0.52), "black", bevel=0.01)
-box("tower_glass", (DX - 0.03, 4.0, 1.0), (0.005, 0.46, 0.48), "cyan_glow")
+box("tower_glass", (DX - 0.03, 4.0, 1.0), (0.005, 0.46, 0.48), "cyan_dim")
 box("kbd", (DX - 0.05, 2.9, 0.78), (0.17, 0.46, 0.02), "black")
-box("kbd_glow", (DX - 0.05, 2.9, 0.795), (0.15, 0.4, 0.002), "pink_glow")
+box("kbd_glow", (DX - 0.05, 2.9, 0.795), (0.15, 0.4, 0.002), "pink_dim")
 put(QUAT / "Prop_Chair.gltf", (DX - 1.0, 3.0, 0), rot=-90, max_dim=1.1, tint=0.3)
 ph("potted_plant_02", (W / 2 - 0.5, 1.2, 0), max_dim=0.8)
 ph("metal_trash_can", (W / 2 - 0.45, 4.6, 0), max_dim=0.55)
@@ -417,15 +430,15 @@ box("wb_frame", (0.0, BY - 0.02, 1.55), (0.96, 0.025, 0.66), "metal")
 box("wb_tray", (0.0, BY - 0.06, 1.21), (0.8, 0.07, 0.025), "metal")
 
 # --- centre: repair table with the cat, robots at work ---------------------------------------
+DESK_TOP = 0.67  # measured top of metal_office_desk at max_dim 1.7
 ph("metal_office_desk", (0.35, 1.55, 0), rot=0, max_dim=1.7)
-put(QUAT / "Enemy_EyeDrone.gltf", (0.15, 1.6, 0.82), rot=200, max_dim=0.42)
-ph("magnifying_glass_01", (0.6, 1.4, 0.82), rot=30, max_dim=0.25)
-ph("circuit_board", (0.85, 1.75, 0.82), rot=-20, max_dim=0.22)
-ph("vintage_spacecraft_instrument", (-0.25, 1.75, 0.82), rot=160, max_dim=0.35)
-sk("an_animated_cat", (0.85, 1.45, 0.82), rot=-160, max_dim=0.48)
+put(QUAT / "Enemy_EyeDrone.gltf", (0.15, 1.6, DESK_TOP), rot=200, max_dim=0.42)
+ph("magnifying_glass_01", (0.6, 1.4, DESK_TOP), rot=30, max_dim=0.25)
+ph("circuit_board", (0.85, 1.75, DESK_TOP), rot=-20, max_dim=0.22)
+ph("vintage_spacecraft_instrument", (-0.25, 1.75, DESK_TOP), rot=160, max_dim=0.35)
+sk("an_animated_cat", (0.85, 1.45, DESK_TOP), rot=-160, max_dim=0.48)
 sk("k07_drone", (0.95, 2.55, 1.75), rot=-20, max_dim=0.65)
 sk("mech_drone", (1.75, 2.1, 1.35), rot=-90, max_dim=0.75, skip_mats=("Fire",))
-ph("tool_cart", (-2.1, -1.1, 0), rot=60, max_dim=1.0)
 for k, pts in enumerate((
     [(DX + 0.1, 4.0, 0.75), (DX + 0.25, 4.1, 0.02), (1.8, 4.2, 0.01), (0.9, 3.0, 0.01), (0.6, 1.95, 0.01), (0.6, 1.8, 0.8)],
     [(LX + 0.45, 1.5, 0.93), (LX + 0.8, 1.6, 0.01), (-1.4, 2.2, 0.01), (-0.6, 1.9, 0.01), (0.0, 1.8, 0.8)],
@@ -439,6 +452,85 @@ for i, (hx, hy) in enumerate(((-0.4, 1.4), (1.4, 2.2), (0.3, 3.4))):
     ph("hanging_industrial_lamp", (hx, hy, H - 0.02), max_dim=1.0, anchor="top")
 ph("caged_hanging_light", (-1.6, 2.6, H - 0.02), max_dim=0.9, anchor="top")
 ph("modular_pipes", (-2.4, 4.7, H - 0.5), rot=90, max_dim=2.0)
+
+# --- front half: one corner per project (identity of the old project rooms) ------------------
+def drop_z(x, y, from_z):
+    """Height of the first surface below (x, y, from_z): props rest on shelves/tables, never float."""
+    bpy.context.view_layer.update()
+    hit, loc, *_ = bpy.context.scene.ray_cast(bpy.context.evaluated_depsgraph_get(), (x, y, from_z), (0, 0, -1))
+    return loc.z if hit else 0.0
+
+
+def on(name, x, y, from_z, rot=0.0, max_dim=None):
+    return ph(name, (x, y, drop_z(x, y, from_z)), rot, max_dim=max_dim)
+
+
+def zone(project, x0, y0, x1, y1):
+    """Floor footprint of a project corner: not baked; the web turns it into the hit area and focus glow."""
+    me = bpy.data.meshes.new(f"zone_{project}")
+    me.from_pydata([(x0, y0, 0.01), (x1, y0, 0.01), (x1, y1, 0.01), (x0, y1, 0.01)], [], [(0, 1, 2, 3)])
+    o = bpy.data.objects.new(f"zone_{project}", me)
+    o.hide_render = True
+    C.objects.link(o)
+
+
+def sign(project, centre, facing):
+    quad(f"sign_{project}", centre, facing, 0.84, 0.13, image_mat(f"m_sign_{project}", GEN / "projects" / f"{project}_label.png", 1.0))
+
+
+RW = W / 2
+# Kliniu (institutional hygiene): steel shelving with cleaning products, wet-floor sign
+ph("steel_frame_shelves_02", (RW - 0.3, -1.0, 0), rot=90, max_dim=1.8)
+for k, (name, yy, zz) in enumerate((("multi_cleaner_5_litre", -0.65, 1.7), ("bleach_bottle", -1.0, 1.7), ("all_purpose_cleaner", -1.3, 1.7),
+                                    ("multi_cleaner_bottle", -0.7, 1.15), ("multi_cleaner_5_litre", -1.15, 1.15), ("bleach_bottle", -0.9, 0.6),
+                                    ("all_purpose_cleaner", -1.25, 0.6))):
+    on(name, RW - 0.3, yy, zz, rot=90 + k * 13, max_dim=0.34 if "5_litre" in name else 0.26)
+ph("WetFloorSign_01", (1.95, -0.9, 0), rot=110, max_dim=0.62)
+ph("plastic_crate_01", (2.4, -1.75, 0), rot=95, max_dim=0.5)
+on("multi_cleaner_bottle", 2.4, -1.75, 1.0, rot=40, max_dim=0.26)
+ph("plastic_broom", (RW - 0.12, -1.85, 0), rot=90, max_dim=1.3)
+zone("kliniu", 1.6, -1.95, RW, -0.3)
+sign("kliniu", (RW - 0.03, -1.0, 2.55), 180)
+
+# L'Origine (professional hair care): barber chair, cabinet with bottles and a chemistry set
+ph("BarberShopChair_01", (2.15, -3.1, 0), rot=-90, max_dim=1.05)
+ph("vintage_cabinet_01", (RW - 0.25, -2.35, 0), rot=90, max_dim=1.0)
+on("chemistry_set", RW - 0.25, -2.25, 2.0, rot=80, max_dim=0.34)
+on("ceramic_vase_01", RW - 0.25, -2.6, 2.0, max_dim=0.22)
+on("brass_candleholders", RW - 0.3, -2.05, 2.0, rot=30, max_dim=0.22)
+ph("standing_picture_frame_01", (RW - 0.15, -3.7, drop_z(RW - 0.15, -3.7, 2.0)), rot=-110, max_dim=0.3)
+zone("lorigine", 1.5, -3.95, RW, -2.05)
+sign("lorigine", (RW - 0.03, -3.1, 2.35), 180)
+
+# Drokex (international catalogue): pallet of export boxes, crates, barrel, globe
+for k in range(5):
+    box(f"pallet_{k}", (0.6, -3.62 + (k - 2) * 0.22, 0.13), (1.0, 0.1, 0.025), "bench_top")
+for k in range(3):
+    box(f"pallet_block_{k}", (0.15 + k * 0.45, -3.62, 0.06), (0.1, 1.0, 0.12), "bench_top")
+for k, (xx, yy, rr) in enumerate(((0.35, -3.82, 5), (0.85, -3.8, -8), (0.6, -3.42, 12), (0.6, -3.8, 3))):
+    on("cardboard_box_01", xx, yy, 1.5, rot=rr, max_dim=0.45)
+ph("old_military_crate", (-0.05, -3.8, 0), rot=4, max_dim=0.85)
+ph("Barrel_01", (1.3, -3.8, 0), max_dim=0.85)
+zone("drokex", -0.25, FY, 1.5, -2.7)
+sign("drokex", (0.6, FY + 0.03, 2.3), 90)
+
+# 4ustudio Academy (music school): piano, drum kit, guitar, amp (Sketchfab CC BY, see CREDITS.md)
+def sk_static(name, loc, rot, max_dim):
+    if (SK / name / "model.glb").exists():  # downloaded by hand from Sketchfab (logged-in account)
+        sk(name, loc, rot=rot, max_dim=max_dim, role="static")
+
+
+sk_static("black_piano", (-RW + 0.4, -2.5, 0), 90, 1.5)
+sk_static("tama_drum_kit", (-1.95, -3.45, 0), 215, 1.3)
+sk_static("guitar_amplifier", (-1.9, -1.55, 0), 120, 0.5)
+sk_static("acoustic_guitar", (-1.45, -1.6, 0), 110, 0.95)
+on("Ukulele_01", -RW + 0.35, -2.2, 2.0, rot=15, max_dim=0.55)
+sk_static("floor_globe", (-0.05, -3.1, 0), 20, 0.9)  # Drokex
+zone("4ustudio-academy", -RW, -3.95, -1.15, -1.3)
+sign("4ustudio-academy", (-RW + 0.07, -2.45, 2.3), 0)
+
+for i, (hx, hy) in enumerate(((-1.9, -2.6), (2.0, -2.3), (0.4, -2.7))):
+    ph("hanging_industrial_lamp", (hx, hy, H - 0.02), max_dim=1.0, anchor="top")
 
 # --- wall decor / glow -----------------------------------------------------------------------
 box("neon_L", (LX + 0.05, 2.0, 2.65), (0.02, 3.0, 0.03), "pink_glow")
@@ -476,6 +568,9 @@ for i, (hx, hy) in enumerate(((-0.4, 1.4), (1.4, 2.2), (0.3, 3.4))):
 light("POINT", "bench_lamp", (LX + 0.4, 2.0, 1.45), None, (1.0, 0.75, 0.45), 110, radius=0.06)
 light("AREA", "pegboard_wash", (LX + 0.5, 2.0, 2.9), (LX, 2.0, 1.6), (1.0, 0.8, 0.6), 50, 1.0)
 light("AREA", "fill_warm", (0.3, -1.0, 2.9), (0.0, 2.0, 0.5), (1.0, 0.75, 0.5), 12, 2.5)
+for i, (hx, hy) in enumerate(((-1.9, -2.6), (2.0, -2.3), (0.4, -2.7))):
+    light("POINT", f"front_hang_{i}", (hx, hy, H - 1.0), None, (1.0, 0.72, 0.4), 90, radius=0.08)
+light("AREA", "front_fill", (0.0, -1.5, 2.9), (0.0, -3.5, 0.5), (1.0, 0.8, 0.6), 25, 2.5)
 
 # --- render ------------------------------------------------------------------------------------
 cams = {
@@ -483,6 +578,8 @@ cams = {
     "bench": add_camera("cam_bench", (1.4, 0.3, 1.7), (-2.8, 2.2, 1.5), 24, C),
     "desk": add_camera("cam_desk", (-1.0, 0.4, 1.6), (2.6, 2.6, 1.6), 22, C),
     "back": add_camera("cam_back", (0.5, 0.8, 1.7), (0.3, 4.6, 1.2), 24, C),
+    "front": add_camera("cam_front", (0.4, 0.6, 1.7), (0.3, -4.0, 0.9), 18, C),
+    "academy": add_camera("cam_academy", (0.9, -1.6, 1.6), (-3.0, -2.7, 0.8), 18, C),
 }
 sc.render.resolution_x, sc.render.resolution_y = 1600, 900
 sc.render.engine = "CYCLES"

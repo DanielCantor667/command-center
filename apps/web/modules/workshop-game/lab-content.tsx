@@ -1,11 +1,22 @@
 'use client';
 import { useTexture } from '@react-three/drei';
-import { useMemo } from 'react';
-import { CanvasTexture, SRGBColorSpace, type Texture } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { useMemo, useRef } from 'react';
+import { CanvasTexture, SRGBColorSpace, type MeshBasicMaterial, type Texture } from 'three';
+import { PORTFOLIO_CAREER } from '../../data/portfolio-career';
 import { PROJECTS } from '../../data/projects';
+import { PUBLIC_PROFILE } from '../../data/public-profile';
+import { ambient } from './ambient';
 import { LAB_ANCHORS, type LabAnchor } from './lab-anchors';
 import { PROJECT_CAPTURES } from './lab';
 import { STATIONS } from './stations';
+
+/** Focus states shared by screens and plates: lit (the focus or related), dimmed (unrelated), idle. */
+export type Highlight = 'lit' | 'dim' | 'idle';
+// Linear values: .15 reads as about 40 % on screen. Lit plates go above 1 to catch the bloom.
+export const HIGHLIGHT_LEVEL: Record<Highlight, number> = { lit: 1.15, dim: .15, idle: 1 };
+/** Eases towards a level; under reduced motion (no ambient clock) it jumps straight there. */
+export const ease = (from: number, to: number, delta: number) => ambient.enabled ? from + (to - from) * (1 - Math.exp(-8 * delta)) : to;
 
 export const pointer = (on: boolean) => () => { document.body.style.cursor = on ? 'pointer' : ''; };
 
@@ -63,8 +74,43 @@ function Plane({ anchor, map, onSelect }: { anchor: LabAnchor; map: Texture; onS
 
 const SCREEN_PROJECTS = PROJECTS.filter(project => project.public && LAB_ANCHORS[`screen_${project.id}`]);
 
+/** A project screen: eases between lit, dimmed and idle; a cyan frame (bloom) rings it when lit. */
+function Screen({ anchor, label, map, labelMap, highlight, onSelect, onHover }: {
+  anchor: LabAnchor; label?: LabAnchor; map: Texture; labelMap: Texture; highlight: Highlight; onSelect: () => void; onHover: (on: boolean) => void;
+}) {
+  const screen = useRef<MeshBasicMaterial>(null), caption = useRef<MeshBasicMaterial>(null), frame = useRef<MeshBasicMaterial>(null);
+  const level = useRef(1), glow = useRef(0);
+  useFrame((_, delta) => {
+    level.current = ease(level.current, HIGHLIGHT_LEVEL[highlight], delta);
+    glow.current = ease(glow.current, highlight === 'lit' ? 1 : 0, delta);
+    // Captures are mostly white: above 1 they would bloom out; the cyan frame marks the lit screen.
+    screen.current?.color.setScalar(Math.min(1, level.current));
+    caption.current?.color.setScalar(Math.min(1, level.current));
+    if (frame.current) { frame.current.opacity = glow.current; frame.current.visible = glow.current > .01; }
+  });
+  const events = {
+    onClick: (event: { stopPropagation: () => void; delta: number }) => { event.stopPropagation(); if (event.delta < 5) onSelect(); },
+    onPointerOver: () => { pointer(true)(); onHover(true); },
+    onPointerOut: () => { pointer(false)(); onHover(false); },
+  };
+  return <>
+    <group position={anchor.position} rotation={[0, anchor.rotationY, 0]}>
+      <mesh position={[0, 0, -.004]} raycast={() => {}}>
+        <planeGeometry args={[anchor.size[0] + .06, anchor.size[1] + .06]} />
+        <meshBasicMaterial ref={frame} color={[.6, 2.4, 3]} transparent opacity={0} depthWrite={false} toneMapped={false} />
+      </mesh>
+      <mesh {...events}><planeGeometry args={anchor.size} /><meshBasicMaterial ref={screen} map={map} toneMapped={false} /></mesh>
+    </group>
+    {label && <mesh position={label.position} rotation={[0, label.rotationY, 0]} {...events}>
+      <planeGeometry args={label.size} /><meshBasicMaterial ref={caption} map={labelMap} toneMapped={false} />
+    </mesh>}
+  </>;
+}
+
 /** One screen per public project, on the wall above the desk. */
-export function ProjectWall({ onSelect }: { onSelect: (projectId: string) => void }) {
+export function ProjectWall({ lit, focused, onSelect, onHover }: {
+  lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null) => void;
+}) {
   const captured = SCREEN_PROJECTS.filter(project => PROJECT_CAPTURES[project.id]);
   const captures = useTexture(captured.map(project => PROJECT_CAPTURES[project.id]!));
   const maps = useMemo(() => new Map(SCREEN_PROJECTS.map(project => {
@@ -78,24 +124,97 @@ export function ProjectWall({ onSelect }: { onSelect: (projectId: string) => voi
   })), [captures]);
   return <>{SCREEN_PROJECTS.map(project => {
     const textures = maps.get(project.id)!;
-    const label = LAB_ANCHORS[`label_${project.id}`];
-    return <group key={project.id}>
-      <Plane anchor={LAB_ANCHORS[`screen_${project.id}`]!} map={textures.screen} onSelect={() => onSelect(project.id)} />
-      {label && <Plane anchor={label} map={textures.label} onSelect={() => onSelect(project.id)} />}
-    </group>;
+    return <Screen key={project.id} anchor={LAB_ANCHORS[`screen_${project.id}`]!} label={LAB_ANCHORS[`label_${project.id}`]}
+      map={textures.screen} labelMap={textures.label} highlight={lit.has(project.id) ? 'lit' : focused ? 'dim' : 'idle'}
+      onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />;
   })}</>;
 }
 
-/** Trayectoria board: the station's own description; the timeline marks are decoration, not data. */
+const CORNER_PROJECTS = PROJECTS.filter(project => project.public && LAB_ANCHORS[`zone_${project.id}`]);
+
+/** A project corner (front half): its sign, a cyan floor glow when lit, and the whole footprint as the hit area. */
+function Corner({ zone, sign, name, highlight, onSelect, onHover }: {
+  zone: LabAnchor; sign?: LabAnchor; name: string; highlight: Highlight; onSelect: () => void; onHover: (on: boolean) => void;
+}) {
+  const caption = useRef<MeshBasicMaterial>(null), floor = useRef<MeshBasicMaterial>(null);
+  const level = useRef(1), glow = useRef(0);
+  const map = useMemo(() => labelTexture(name, '#e6f2f4'), [name]);
+  useFrame((_, delta) => {
+    level.current = ease(level.current, HIGHLIGHT_LEVEL[highlight], delta);
+    glow.current = ease(glow.current, highlight === 'lit' ? .35 : 0, delta);
+    caption.current?.color.setScalar(Math.min(1, level.current));
+    if (floor.current) { floor.current.opacity = glow.current; floor.current.visible = glow.current > .01; }
+  });
+  // Zones are floor quads: size is [x extent, z extent].
+  const [x, , z] = zone.position;
+  return <>
+    <mesh position={[x, .85, z]} onClick={event => { event.stopPropagation(); if (event.delta < 5) onSelect(); }}
+      onPointerOver={() => { pointer(true)(); onHover(true); }} onPointerOut={() => { pointer(false)(); onHover(false); }}>
+      <boxGeometry args={[zone.size[0], 1.7, zone.size[1]]} /><meshBasicMaterial visible={false} />
+    </mesh>
+    <mesh position={[x, .02, z]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => {}}>
+      <planeGeometry args={zone.size} />
+      <meshBasicMaterial ref={floor} color={[.3, 1.6, 2]} transparent opacity={0} depthWrite={false} toneMapped={false} />
+    </mesh>
+    {sign && <mesh position={sign.position} rotation={[0, sign.rotationY, 0]} raycast={() => {}}>
+      <planeGeometry args={sign.size} /><meshBasicMaterial ref={caption} map={map} toneMapped={false} />
+    </mesh>}
+  </>;
+}
+
+/** The project corners that keep each client's identity (piano, cleaning shelf, barber chair, export pallet). */
+export function ProjectCorners({ lit, focused, onSelect, onHover }: {
+  lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null) => void;
+}) {
+  return <>{CORNER_PROJECTS.map(project => <Corner key={project.id} zone={LAB_ANCHORS[`zone_${project.id}`]!} sign={LAB_ANCHORS[`sign_${project.id}`]}
+    name={project.name} highlight={lit.has(project.id) ? 'lit' : focused ? 'dim' : 'idle'}
+    onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />)}</>;
+}
+
+function wrap(g: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
+  let line = '';
+  for (const word of text.split(' ')) {
+    if (line && g.measureText(`${line} ${word}`).width > maxWidth) { g.fillText(line, x, y); y += lineHeight; line = word; }
+    else line = line ? `${line} ${word}` : word;
+  }
+  g.fillText(line, x, y);
+}
+
+/** The ultrawide on the desk: the real availability note and public profile links (no invented email). */
+const MONITOR = { position: [2.818, 1.18, -3.0] as [number, number, number], rotationY: -Math.PI / 2, size: [1.1, .46] as [number, number] };
+export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
+  const map = useMemo(() => canvasTexture(1100, 460, g => {
+    const sky = g.createLinearGradient(0, 0, 1100, 460);
+    sky.addColorStop(0, '#1c1240'); sky.addColorStop(1, '#3a1d6e');
+    g.fillStyle = sky; g.fillRect(0, 0, 1100, 460);
+    g.fillStyle = '#ffffff'; g.font = '600 76px system-ui, sans-serif'; g.fillText('Conversemos', 60, 120);
+    g.fillStyle = '#cdbff5'; g.font = '400 30px system-ui, sans-serif'; wrap(g, PUBLIC_PROFILE.availability, 62, 185, 960, 40);
+    g.fillStyle = '#2fe6ff'; g.font = '500 28px ui-monospace, Menlo, monospace';
+    g.fillText(PUBLIC_PROFILE.github.replace('https://', ''), 62, 360);
+    g.fillText(PUBLIC_PROFILE.linkedin.replace('https://www.', ''), 62, 405);
+  }), []);
+  return <Plane anchor={MONITOR} map={map} onSelect={onSelect} />;
+}
+
+/** Trayectoria board: the career entries from the profile data, so the board reads without opening the panel. */
 export function Whiteboard({ onSelect }: { onSelect: () => void }) {
   const anchor = LAB_ANCHORS.whiteboard;
   const map = useMemo(() => canvasTexture(1200, 800, g => {
     g.fillStyle = '#e9ece8'; g.fillRect(0, 0, 1200, 800);
-    g.fillStyle = '#1b2a30'; g.font = '600 96px system-ui, sans-serif'; g.fillText('Trayectoria', 60, 150);
-    g.fillStyle = '#36525a'; g.font = '500 40px system-ui, sans-serif'; g.fillText(STATIONS.trajectory.description, 64, 230);
-    g.fillStyle = '#1b2a30'; g.fillRect(80, 517, 1040, 6);
-    [140, 380, 620, 860, 1100].forEach((x, i) => { g.fillStyle = i % 2 ? '#e06a3a' : '#2fa8c0'; g.beginPath(); g.arc(x, 520, 18, 0, Math.PI * 2); g.fill(); });
-    [[150, 600, '#ffe27a'], [420, 360, '#9fe3ef'], [690, 600, '#ffc0a8'], [960, 360, '#c8f2a6']].forEach(([x, y, c]) => { g.fillStyle = c as string; g.fillRect(x as number, y as number, 170, 120); });
+    g.fillStyle = '#1b2a30'; g.font = '600 84px system-ui, sans-serif'; g.fillText('Trayectoria', 60, 120);
+    g.fillStyle = '#36525a'; g.font = '500 34px system-ui, sans-serif'; g.fillText(STATIONS.trajectory.description, 64, 180);
+    const column = (title: string, x: number, items: readonly { period: string; title: string; organization: string }[]) => {
+      g.fillStyle = '#e06a3a'; g.font = '700 32px system-ui, sans-serif'; g.fillText(title.toUpperCase(), x, 270);
+      g.fillStyle = '#2fa8c0'; g.fillRect(x, 288, 6, items.length * 190 - 30);
+      items.forEach((item, i) => {
+        const y = 330 + i * 190;
+        g.fillStyle = '#36525a'; g.font = '500 28px ui-monospace, Menlo, monospace'; g.fillText(item.period, x + 28, y);
+        g.fillStyle = '#1b2a30'; g.font = '600 38px system-ui, sans-serif'; wrap(g, item.title, x + 28, y + 46, 500, 42);
+        g.fillStyle = '#36525a'; g.font = '400 28px system-ui, sans-serif'; g.fillText(item.organization, x + 28, y + 140);
+      });
+    };
+    column('Experiencia', 60, PORTFOLIO_CAREER.experience);
+    column('Formación', 650, PORTFOLIO_CAREER.education);
   }), []);
   return anchor ? <Plane anchor={anchor} map={map} onSelect={onSelect} /> : null;
 }

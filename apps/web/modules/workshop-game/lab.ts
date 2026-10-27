@@ -6,12 +6,14 @@ export const LAB_PLANTS_URL = labUrl('lab-plants');
 /**
  * Placed in the GLB itself (world transform kept on export). Drones are not baked, so `offset` moves them
  * clear of the camera paths: the K07 above the repair table, the Mech Drone up by the back shelves.
+ * `follows`: flies in front of the focused screen or plate. `looks`: turns its head towards it.
  */
-export const LAB_ACTORS: { id: string; hover: boolean; offset: [number, number, number] }[] = [
-  { id: 'robot-cobot', hover: false, offset: [0, 0, 0] },
-  { id: 'drone-k07', hover: true, offset: [-1.15, .6, 1.55] },
-  { id: 'drone-mech', hover: true, offset: [.45, .85, -2.2] },
-  { id: 'cat', hover: false, offset: [0, 0, 0] },
+export interface LabActor { id: string; hover: boolean; follows: boolean; looks: boolean; offset: [number, number, number] }
+export const LAB_ACTORS: LabActor[] = [
+  { id: 'robot-cobot', hover: false, follows: false, looks: false, offset: [0, 0, 0] },
+  { id: 'drone-k07', hover: true, follows: true, looks: false, offset: [-1.15, .6, 1.55] },
+  { id: 'drone-mech', hover: true, follows: false, looks: false, offset: [.45, .85, -2.2] },
+  { id: 'cat', hover: false, follows: false, looks: true, offset: [0, 0, 0] },
 ];
 /** Real published captures; projects without one show their name only (never an invented capture). */
 export const PROJECT_CAPTURES: Record<string, string> = {

@@ -6,6 +6,7 @@ import { Component, useCallback, useEffect, useReducer, useRef, useState, type R
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { initialWorldState, worldReducer, type GameSnapshot, type WorldPoint } from './world-state';
+import type { LabFocus } from './lab-focus';
 import { ProjectsInspection } from './projects-inspection';
 import { StationInspection } from './station-inspection';
 import { STATIONS, stationForPoint } from './stations';
@@ -38,10 +39,12 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const [state, dispatch] = useReducer(worldReducer, initialSnapshot, initialWorldState);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [preparing, setPreparing] = useState(false);
+  // Shared by the 3D wall/board (hover) and the HTML project list (hover and keyboard focus).
+  const [focus, setFocus] = useState<LabFocus>(null);
   const [attempt, setAttempt] = useState(0);
   const cameraHandle = useRef<WorldCameraHandle | null>(null);
   const initialCamera = useRef(initialSnapshot?.camera ?? null);
-  const openButton = useRef<HTMLButtonElement>(null), enterButton = useRef<HTMLButtonElement>(null), retryButton = useRef<HTMLButtonElement>(null), mapButton = useRef<HTMLButtonElement>(null);
+  const openButton = useRef<HTMLButtonElement>(null), enterButton = useRef<HTMLButtonElement>(null), retryButton = useRef<HTMLButtonElement>(null);
   const navigationButtons = useRef<Partial<Record<WorldPoint, HTMLButtonElement | null>>>({});
   const stateRef = useRef(state); stateRef.current = state;
   const wheelGesture = useRef({ delta: 0, at: 0 });
@@ -67,8 +70,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   useEffect(() => {
     const wasReading = previousReading.current; previousReading.current = !!reading;
     if (suspended || reading) return;
-    const compact = window.matchMedia('(max-width: 700px), (max-height: 480px)').matches;
-    const navigationTarget = compact && state.point === 'hub' ? mapButton.current : navigationButtons.current[state.point];
+    const navigationTarget = navigationButtons.current[state.point];
     const button = state.status === 'error' ? retryButton.current : state.status === 'exploring' ? (inspecting || station ? openButton.current : navigationTarget) : state.status === 'landing' ? enterButton.current : null;
     if (!wasReading) { button?.focus({ preventScroll: true }); return; }
     // Let the portal restore a surviving opener before supplying the world fallback.
@@ -134,7 +136,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const arrived = useCallback((token: number) => dispatch({ type: 'arrived', token }), []);
   const failed = useCallback((token: number) => dispatch({ type: 'failed', token }), []);
   const materialsReady = useCallback(() => setPreparing(true), []);
-  const go = useCallback((point: WorldPoint) => dispatch({ type: 'go', point }), []);
+  const go = useCallback((point: WorldPoint) => { setFocus(null); dispatch({ type: 'go', point }); }, []);
   const start = async () => {
     initialCamera.current = null;
     if (!supportsWorldRenderer()) { dispatch({ type: 'start' }); dispatch({ type: 'failed', token: stateRef.current.token + 1 }); return; }
@@ -155,7 +157,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     {/* Cycles render of the lab from the overview camera (blender/prototype_workshop_room_v2.py). */}
     <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-lab-entrance-v1.webp" alt="" fill sizes="100vw" priority /></div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
-      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} />
+      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} focus={focus} onFocus={setFocus} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>
@@ -180,9 +182,9 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
         {state.status === 'moving' && <button className={styles.stop} type="button" aria-label="Cancelar recorrido" title="Cancelar recorrido" onClick={cancel}><span className={styles.stopText}>Cancelar recorrido</span><X size={16} aria-hidden="true" /></button>}
       </div>
       <div className={styles.bottomControls}>
-      {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} />}
+      {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
-      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={state.point === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button ref={mapButton} type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
+      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={state.point === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}

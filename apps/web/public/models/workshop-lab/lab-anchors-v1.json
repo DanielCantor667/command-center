@@ -647,6 +647,54 @@
    0.39
   ]
  },
+ "sign_4ustudio-academy": {
+  "centre": [
+   -2.93,
+   -2.45,
+   2.3
+  ],
+  "facing": 0.0,
+  "size": [
+   0.84,
+   0.13
+  ]
+ },
+ "sign_drokex": {
+  "centre": [
+   0.6,
+   -4.07,
+   2.3
+  ],
+  "facing": 90.0,
+  "size": [
+   0.84,
+   0.13
+  ]
+ },
+ "sign_kliniu": {
+  "centre": [
+   2.97,
+   -1.0,
+   2.55
+  ],
+  "facing": 180.0,
+  "size": [
+   0.84,
+   0.13
+  ]
+ },
+ "sign_lorigine": {
+  "centre": [
+   2.97,
+   -3.1,
+   2.35
+  ],
+  "facing": 180.0,
+  "size": [
+   0.84,
+   0.13
+  ]
+ },
  "whiteboard": {
   "centre": [
    0.0,
@@ -657,6 +705,54 @@
   "size": [
    0.92,
    0.62
+  ]
+ },
+ "zone_4ustudio-academy": {
+  "centre": [
+   -2.075,
+   -2.625,
+   0.01
+  ],
+  "facing": 0.0,
+  "size": [
+   1.85,
+   2.65
+  ]
+ },
+ "zone_drokex": {
+  "centre": [
+   0.625,
+   -3.4,
+   0.01
+  ],
+  "facing": 0.0,
+  "size": [
+   1.75,
+   1.4
+  ]
+ },
+ "zone_kliniu": {
+  "centre": [
+   2.3,
+   -1.125,
+   0.01
+  ],
+  "facing": 0.0,
+  "size": [
+   1.4,
+   1.65
+  ]
+ },
+ "zone_lorigine": {
+  "centre": [
+   2.25,
+   -3.0,
+   0.01
+  ],
+  "facing": 0.0,
+  "size": [
+   1.5,
+   1.9
   ]
  }
 }

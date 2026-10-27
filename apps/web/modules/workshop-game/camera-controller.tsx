@@ -14,8 +14,8 @@ const MAX_FOV = 78;
 const PORTRAIT_PULL = 1.35;
 /** The folded panel covers the lower third on phones; close-ups aim lower so the wall sits above it. */
 const PORTRAIT_LIFT = .5;
-/** Stepping back never leaves the room (walls at x = ±3, back wall at z = -4.9, open front at z = 0.1). */
-const INSIDE = { x: 2.7, back: -4.5, front: 2.6 };
+/** Stepping back never leaves the room (walls at x = ±3, back wall at z = -4.9, front wall at z = 4.1). */
+const INSIDE = { x: 2.7, back: -4.5, front: 3.7 };
 function fovFor(aspect: number) {
   if (aspect >= REFERENCE_ASPECT) return BASE_FOV;
   const widened = 2 * MathUtils.radToDeg(Math.atan(Math.tan(MathUtils.degToRad(BASE_FOV / 2)) * REFERENCE_ASPECT / aspect));

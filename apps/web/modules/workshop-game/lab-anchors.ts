@@ -21,5 +21,13 @@ export const LAB_ANCHORS: Record<string, LabAnchor> = {
   'screen_kliniu': { position: [2.935, 1.86, -1.7], rotationY: 4.7124, size: [0.62, 0.39] },
   'screen_lorigine': { position: [2.935, 1.86, -2.4], rotationY: 4.7124, size: [0.62, 0.39] },
   'screen_vevi': { position: [2.935, 1.86, -3.1], rotationY: 4.7124, size: [0.62, 0.39] },
+  'sign_4ustudio-academy': { position: [-2.93, 2.3, 2.45], rotationY: 1.5708, size: [0.84, 0.13] },
+  'sign_drokex': { position: [0.6, 2.3, 4.07], rotationY: 3.1416, size: [0.84, 0.13] },
+  'sign_kliniu': { position: [2.97, 2.55, 1.0], rotationY: 4.7124, size: [0.84, 0.13] },
+  'sign_lorigine': { position: [2.97, 2.35, 3.1], rotationY: 4.7124, size: [0.84, 0.13] },
   'whiteboard': { position: [0.0, 1.55, -4.865], rotationY: 0.0, size: [0.92, 0.62] },
+  'zone_4ustudio-academy': { position: [-2.075, 0.01, 2.625], rotationY: 1.5708, size: [1.85, 2.65] },
+  'zone_drokex': { position: [0.625, 0.01, 3.4], rotationY: 1.5708, size: [1.75, 1.4] },
+  'zone_kliniu': { position: [2.3, 0.01, 1.125], rotationY: 1.5708, size: [1.4, 1.65] },
+  'zone_lorigine': { position: [2.25, 0.01, 3.0], rotationY: 1.5708, size: [1.5, 1.9] },
 };

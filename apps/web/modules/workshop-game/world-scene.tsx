@@ -6,6 +6,7 @@ import { NoToneMapping } from 'three';
 import { useGLTF } from '@react-three/drei';
 import { CameraController, type WorldCameraHandle } from './camera-controller';
 import { LAB_ESSENTIAL_URLS } from './lab';
+import type { LabFocus } from './lab-focus';
 import { LabScene } from './lab-scene';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 import { WorkshopLighting } from './workshop-lighting';
@@ -19,6 +20,7 @@ export interface WorldSceneProps {
   initialCamera: WorldCameraSnapshot | null; cameraHandle: MutableRefObject<WorldCameraHandle | null>;
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
   onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onPreparing: () => void;
+  focus: LabFocus; onFocus: (focus: LabFocus) => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -72,7 +74,7 @@ export function WorldScene(props: WorldSceneProps) {
     return () => document.removeEventListener('visibilitychange', update);
   }, []);
   useEffect(() => {
-    const update = () => setDpr(window.innerWidth <= 700 ? 1 : Math.min(window.devicePixelRatio, 1.5));
+    const update = () => setDpr(window.innerWidth <= 700 ? 1 : Math.min(window.devicePixelRatio, 2));
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
@@ -87,7 +89,7 @@ export function WorldScene(props: WorldSceneProps) {
       <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
       <WorkshopPostprocessing />
-      <LabScene point={props.point} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} />
+      <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />
     </Suspense>

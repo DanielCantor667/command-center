@@ -10,10 +10,10 @@ vi.mock('next/dynamic', () => ({ default: () => (sceneProps: WorldSceneProps) =>
 describe('workshop game access', () => {
   beforeEach(() => { window.matchMedia = vi.fn().mockReturnValue({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }); window.scrollTo = vi.fn(); });
   afterEach(() => vi.restoreAllMocks());
-  it('keeps keyboard focus on the map when the mobile overview navigation control is hidden', () => {
+  it('focuses the current tour stop on phones too, where every stop stays in the bar', () => {
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({ matches: query.includes('max-width'), addEventListener: vi.fn(), removeEventListener: vi.fn() }));
     render(<WorkshopGame initialSnapshot={{ point: 'hub', camera: null }} onOpenCase={vi.fn()} onSave={vi.fn()} onPortfolio={vi.fn()} />);
-    expect(within(screen.getByRole('navigation', { name: 'Recorrer el taller' })).getByRole('button', { name: 'Mapa' })).toHaveFocus();
+    expect(within(screen.getByRole('navigation', { name: 'Recorrer el taller' })).getByRole('button', { name: 'El taller' })).toHaveFocus();
   });
   it('keeps the landing and portfolio available without mounting WebGL', () => {
     const portfolio = vi.fn(); const save = vi.fn();
@@ -117,6 +117,20 @@ describe('workshop game access', () => {
     expect(save).toHaveBeenCalledWith({ point: 'projects', camera });
     expect(save.mock.invocationCallOrder[0]).toBeLessThan(open.mock.invocationCallOrder[0]!);
     expect(open).toHaveBeenCalledWith('kliniu');
+  });
+  it('lights a project in 3D while its list entry has hover or keyboard focus, and clears it on travel', () => {
+    render(<WorkshopGame initialSnapshot={{ point: 'projects', camera: null }} onSave={vi.fn()} onOpenCase={vi.fn()} onPortfolio={vi.fn()} />);
+    const entry = screen.getByRole('button', { name: 'Abrir caso de Drokex' });
+    fireEvent.focus(entry);
+    expect(props.focus).toEqual({ kind: 'project', id: 'drokex' });
+    fireEvent.blur(entry);
+    expect(props.focus).toBeNull();
+    fireEvent.mouseEnter(entry);
+    expect(props.focus).toEqual({ kind: 'project', id: 'drokex' });
+    act(() => props.onFocus({ kind: 'technology', id: 'typescript' }));
+    expect(props.focus).toEqual({ kind: 'technology', id: 'typescript' });
+    fireEvent.click(screen.getByRole('button', { name: 'Ir a Contacto' }));
+    expect(props.focus).toBeNull();
   });
   it('opens a case straight from the 3D wall at the projects point and walks up to it elsewhere', () => {
     const open = vi.fn();

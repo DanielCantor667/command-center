@@ -29,8 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BUILD = Path("/Users/creativo/Documents/command-center-assets/build")
 ARGV = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 SAMPLES = int(ARGV[0]) if ARGV else 256
-BAKE_SIZE = 4096
-INTERACTIVE = ("screen_", "label_", "plate_", "cat_", "whiteboard")
+BAKE_SIZE = {"architecture": 8192, "props": 4096}  # room shell gets 8k: its big flat surfaces show lightmap texel size most
+INTERACTIVE = ("screen_", "label_", "plate_", "cat_", "whiteboard", "sign_", "zone_")
 NOT_INTERACTIVE = ("plate_back_", "plate_led_")
 STATIC_BUDGET = 5000  # triangles per imported static prop
 STATIC_HERO_BUDGET = {"industrial_robot_arm": 20000}  # baked as static: 57 textures would weigh ~34 MB
@@ -150,7 +150,7 @@ def bake_group(o, name):
     bpy.ops.uv.smart_project(angle_limit=math.radians(66), island_margin=0.0015)
     bpy.ops.uv.pack_islands(margin=0.0015, rotate=True, shape_method="AABB")
     bpy.ops.object.mode_set(mode="OBJECT")
-    img = bpy.data.images.new(f"bake_{name}", BAKE_SIZE, BAKE_SIZE, float_buffer=True)
+    img = bpy.data.images.new(f"bake_{name}", BAKE_SIZE[name], BAKE_SIZE[name], float_buffer=True)
     for slot in o.material_slots:
         nt = slot.material.node_tree
         node = nt.nodes.new("ShaderNodeTexImage")
@@ -184,8 +184,10 @@ def bake_group(o, name):
 
 def export(objs, path, animations=False):
     select(objs)
+    # ACTIVE_ACTIONS: only each object's own clip; the default exports every action in the file
     bpy.ops.export_scene.gltf(filepath=str(path), export_format="GLB", use_selection=True,
-                              export_animations=animations, export_apply=True, export_yup=True)
+                              export_animations=animations, export_animation_mode="ACTIVE_ACTIONS",
+                              export_apply=True, export_yup=True)
     print("EXPORTED", path.name, round(path.stat().st_size / 1e6, 2), "MB")
 
 
@@ -244,7 +246,7 @@ def main():
         props += objs
     arch = realise(arch)
     arch_obj = join(arch, "lab_architecture")
-    cull_outside(arch_obj, (-3.0, -3.0, 0.0), (3.0, 4.9, 3.2))  # room interior; front is open
+    cull_outside(arch_obj, (-3.0, -4.1, 0.0), (3.0, 4.9, 3.2))  # room interior
     props_obj = join(props, "lab_props")
     bake_group(arch_obj, "architecture")
     bake_group(props_obj, "props")

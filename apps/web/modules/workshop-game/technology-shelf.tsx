@@ -1,11 +1,12 @@
 'use client';
-import { useMemo } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useMemo, useRef } from 'react';
 import { BoxGeometry, BufferAttribute, BufferGeometry, CanvasTexture, SRGBColorSpace } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { PORTFOLIO_TECHNOLOGIES, TECHNOLOGY_CATEGORIES } from '../../data/portfolio-technologies';
 import { TECHNOLOGY_ICON_PATHS } from '../../data/technology-icons';
 import { LAB_ANCHORS } from './lab-anchors';
-import { labelTexture, pointer } from './lab-content';
+import { ease, HIGHLIGHT_LEVEL, labelTexture, pointer } from './lab-content';
 import type { WorldPoint } from './world-state';
 
 /**
@@ -30,6 +31,13 @@ export function shelfLayout(): ShelfTile[] {
     PORTFOLIO_TECHNOLOGIES.filter(entry => entry.category === category.id).slice(0, COLS).map((entry, col) => ({ id: entry.id, col, row })));
 }
 const centre = (tile: ShelfTile) => ({ y: TOP_Y - tile.row * PITCH, z: FIRST_Z - tile.col * PITCH });
+/** Face centre of a technology's plate (the board faces +X), or null when it is not on the board. */
+export function plateCentre(technologyId: string): [number, number, number] | null {
+  const tile = shelfLayout().find(item => item.id === technologyId);
+  if (!tile) return null;
+  const { y, z } = centre(tile);
+  return [FRONT_X, y, z];
+}
 
 function drawAtlas(tiles: ShelfTile[]) {
   const canvas = document.createElement('canvas');
@@ -81,28 +89,54 @@ function buildGeometry(tiles: ShelfTile[]) {
   front.setAttribute('position', new BufferAttribute(new Float32Array(position), 3));
   front.setAttribute('normal', new BufferAttribute(new Float32Array(normal), 3));
   front.setAttribute('uv', new BufferAttribute(new Float32Array(uv), 2));
+  // Per-plate brightness for the focus highlight (four vertices per plate).
+  front.setAttribute('color', new BufferAttribute(new Float32Array(tiles.length * 12).fill(1), 3));
   front.setIndex(index);
   const body = mergeGeometries(bodies, false)!;
   bodies.forEach(geometry => geometry.dispose());
   return { front, body };
 }
 
-/** Away from the board a click walks up to it; at the board it opens the technology. */
-export function TechnologyShelf({ point, onGo, onSelect }: { point: WorldPoint; onGo: (point: WorldPoint) => void; onSelect: (technologyId: string) => void }) {
+/**
+ * Away from the board a click walks up to it; at the board it opens the technology.
+ * Hovering a plate focuses it; a focus lights the related plates and dims the rest.
+ */
+export function TechnologyShelf({ point, lit, focused, onGo, onSelect, onHover }: {
+  point: WorldPoint; lit: Set<string>; focused: boolean; onGo: (point: WorldPoint) => void; onSelect: (technologyId: string) => void; onHover: (technologyId: string | null) => void;
+}) {
   const { tiles, texture, front, body, labels } = useMemo(() => {
     const tiles = shelfLayout();
     const labels = TECHNOLOGY_CATEGORIES.map(category => ({ id: category.id, anchor: LAB_ANCHORS[`cat_${category.id}`], map: labelTexture(category.label, '#7fd8e6') }));
     return { tiles, texture: drawAtlas(tiles), labels, ...buildGeometry(tiles) };
   }, []);
+  const tileAt = (faceIndex?: number | null) => tiles[Math.floor((faceIndex ?? 0) / 2)];
   const choose = (faceIndex?: number | null) => {
     if (point !== 'technologies') { onGo('technologies'); return; }
-    const tile = tiles[Math.floor((faceIndex ?? 0) / 2)];
+    const tile = tileAt(faceIndex);
     if (tile) onSelect(tile.id);
   };
+  const hovered = useRef<string | null>(null);
+  const levels = useRef(new Float32Array(tiles.length).fill(1));
+  useFrame((_, delta) => {
+    const colour = front.getAttribute('color') as BufferAttribute;
+    let changed = false;
+    tiles.forEach((tile, i) => {
+      const goal = HIGHLIGHT_LEVEL[lit.has(tile.id) ? 'lit' : focused ? 'dim' : 'idle'];
+      const next = ease(levels.current[i]!, goal, delta);
+      if (Math.abs(next - levels.current[i]!) < 1e-4) return;
+      levels.current[i] = next; changed = true;
+      for (let v = 0; v < 4; v++) colour.setXYZ(i * 4 + v, next, next, next);
+    });
+    if (changed) colour.needsUpdate = true;
+  });
   return <group>
     <mesh geometry={body}><meshBasicMaterial color="#0c0e10" /></mesh>
-    <mesh geometry={front} onClick={event => { event.stopPropagation(); if (event.delta < 5) choose(event.faceIndex); }} onPointerOver={pointer(true)} onPointerOut={pointer(false)}>
-      <meshBasicMaterial map={texture} toneMapped={false} />
+    <mesh geometry={front}
+      onClick={event => { event.stopPropagation(); if (event.delta < 5) choose(event.faceIndex); }}
+      onPointerOver={pointer(true)}
+      onPointerMove={event => { const id = tileAt(event.faceIndex)?.id ?? null; if (id !== hovered.current) { hovered.current = id; onHover(id); } }}
+      onPointerOut={() => { pointer(false)(); hovered.current = null; onHover(null); }}>
+      <meshBasicMaterial map={texture} vertexColors toneMapped={false} />
     </mesh>
     {labels.map(({ id, anchor, map }) => anchor && <mesh key={id} position={anchor.position} rotation={[0, anchor.rotationY, 0]}>
       <planeGeometry args={anchor.size} /><meshBasicMaterial map={map} toneMapped={false} />

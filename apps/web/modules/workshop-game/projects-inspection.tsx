@@ -6,7 +6,7 @@ import styles from './workshop-game.module.css';
 const PUBLIC_PROJECTS = PROJECTS.filter(project => project.public);
 
 /** Keyboard and screen-reader route to every screen on the project wall. */
-export function ProjectsInspection({ buttonRef, onOpen, onBack }: { buttonRef: RefObject<HTMLButtonElement | null>; onOpen: (projectId: string) => void; onBack: () => void }) {
+export function ProjectsInspection({ buttonRef, onOpen, onBack, onFocus }: { buttonRef: RefObject<HTMLButtonElement | null>; onOpen: (projectId: string) => void; onBack: () => void; onFocus?: (projectId: string | null) => void }) {
   const [open, setOpen] = useState(false);
   const detailsId = useId();
   return <section className={styles.inspection} aria-labelledby="projects-inspection-title" data-open={open}>
@@ -17,7 +17,8 @@ export function ProjectsInspection({ buttonRef, onOpen, onBack }: { buttonRef: R
     <div className={styles.inspectionDetails} id={detailsId}>
       <p>Elige una pantalla o un proyecto de la lista para leer su caso.</p>
       <ul className={styles.projectList}>
-        {PUBLIC_PROJECTS.map(project => <li key={project.id}><button type="button" className={styles.back} aria-label={`Abrir caso de ${project.name}`} onClick={() => onOpen(project.id)}>{project.name}<ArrowUpRight size={15} aria-hidden="true" /></button></li>)}
+        {PUBLIC_PROJECTS.map(project => <li key={project.id}><button type="button" className={styles.back} aria-label={`Abrir caso de ${project.name}`} onClick={() => onOpen(project.id)}
+          onMouseEnter={() => onFocus?.(project.id)} onMouseLeave={() => onFocus?.(null)} onFocus={() => onFocus?.(project.id)} onBlur={() => onFocus?.(null)}>{project.name}<ArrowUpRight size={15} aria-hidden="true" /></button></li>)}
       </ul>
       <button className={styles.back} type="button" onClick={onBack}><ArrowLeft size={16} aria-hidden="true" /> Volver al taller</button>
     </div>

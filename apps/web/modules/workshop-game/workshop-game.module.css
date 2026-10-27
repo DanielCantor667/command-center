@@ -86,9 +86,8 @@
   .inspection .primary { flex: 1; min-width: 0; width: auto; min-height: 44px; justify-content: center; padding: 10px 12px; font-size: 12px; }
   .inspectionDetails { overflow-y: auto; overscroll-behavior: contain; min-height: 0; margin-top: 0; }
   .back { margin-top: 8px; padding: 5px 0; }
-  .navigation { position: static; transform: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: 100%; white-space: normal; flex-shrink: 0; gap: 1px; padding: 4px; }
+  .navigation { position: static; transform: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; white-space: normal; flex-shrink: 0; gap: 1px; padding: 4px; }
   .navigation button { min-width: 0; padding: 8px 2px; font-size: 10px; }
-  .navigation button:is([data-world-nav='hub'], [data-world-nav='workbench'], [data-world-nav='technologies'], [data-world-nav='trajectory'], [data-world-nav='contact']) { display: none; }
   .lookHint { position: static; transform: none; flex-shrink: 0; width: 100%; white-space: normal; font-size: 10px; line-height: 1.3; gap: 6px; }
   .lookHint > svg { flex-shrink: 0; }
   .footer { font-size: 9px; }
@@ -115,7 +114,8 @@
 }
 
 /* Hotspots keep a constant on-screen size so distant doors stay readable and tappable. */
-@media (max-width: 700px) { .hotspot { min-height: 44px; font-size: 13px; padding: 10px 12px; } }
+/* Phones: the floating labels of the overview fall off the narrow frame; the tour bar lists every wall. */
+@media (max-width: 700px) { .hotspot { display: none; } }
 
 /* Sprint 11.1 (paleta A, Taller verde): display face for the headings that carry the voice. */
 .identity span, .welcome h1, .loadPanel h1, .inspection h1, .roomSign { font-family: var(--font-display), var(--font-geist-sans), sans-serif; }

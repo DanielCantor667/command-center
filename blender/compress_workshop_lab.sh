@@ -9,7 +9,7 @@ GT="npx -y @gltf-transform/cli@4.5.1"
 mkdir -p "$OUT"
 
 # baked room: keep the 4k lightmaps, it is the whole look of the room
-$GT optimize "$SRC/lab-baked.glb" "$OUT/lab-baked-v1.glb" --compress meshopt --texture-compress webp --texture-size 4096
+$GT optimize "$SRC/lab-baked.glb" "$OUT/lab-baked-v1.glb" --compress meshopt --texture-compress webp --texture-size 8192
 $GT optimize "$SRC/lab-emissive.glb" "$OUT/lab-emissive-v1.glb" --compress meshopt
 $GT optimize "$SRC/lab-plants.glb" "$OUT/lab-plants-v1.glb" --compress meshopt --texture-compress webp --texture-size 512
 for actor in robot-cobot drone-k07 drone-mech cat; do
