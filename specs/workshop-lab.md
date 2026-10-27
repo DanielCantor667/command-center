@@ -62,7 +62,12 @@ Decisiones (2026-10-27, visto bueno de Daniel):
 2. Intranet ESS, Command Center y Vevi van a una sala "Otros proyectos"; la pared de pantallas sale del escritorio de Contacto.
 3. Presupuesto: hoy 7,4 MB de 15 MB; la sala esencial debe quedar < 8 MB y cada sala de proyecto cargar bajo demanda.
 
-Pendiente de decidir: robots que se mueven (humanoide que patrulla, robot con ruedas), uno por tema de sala.
+Robots que se mueven (elegidos 2026-10-27, todos CC0, sin crédito obligatorio):
+- Enemy_QuadShell y Enemy_Trilobite (Sci-Fi Essentials Kit de Quaternius, ya en `command-center-assets/scifi-essentials`): caminantes con clip `Walk`/`Idle`; patrullan rutas fijas en el piso.
+- Animated Robot (Quaternius, itch.io): humanoide con `idle`, `run`, `wave`, `dance`, `thumbs up`; sin `walk` (se usa `run` lento). Descarga manual: la página es "paga lo que quieras" y no tiene enlace directo.
+- Fases: E.1 robots caminantes en el taller actual; E.2 zonas de proyecto; E.3 robot temático por zona.
+- E.2 (hecha 2026-10-27): las pantallas de Academy, Drokex, L'ORIGINE y Kliniu salen de la pared y van en su rincón, sobre el escenario (0,8 x 0,5 m, placa del nombre arriba). La pared queda con Intranet ESS, Command Center y Vevi. La estación Proyectos sigue siendo la pared; desde ahí rueda, flechas o Siguiente recorren los rincones (`corner-<id>` en `world-state.ts`): Academy, Drokex, L'ORIGINE, Kliniu. Clic en pantalla o rincón lleva a ese rincón; estando ahí abre el caso.
+- Presupuesto: cada actor ~0,3 a 0,7 MB; unos 7 MB libres bajo el tope de 15 MB.
 
 Alcance técnico estimado: nuevo `blender/prototype_workshop_rooms_v3.py`, `LAYOUT`/anclas por sala,
 nuevos puntos de recorrido (`WorldPoint`) por proyecto, actualización de `world-map.tsx`, límites de cámara y

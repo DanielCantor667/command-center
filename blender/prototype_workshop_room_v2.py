@@ -238,7 +238,7 @@ def put(path, loc, rot=0.0, scale=1.0, max_dim=None, anchor="bottom", role="stat
     `skip_mats` leaves effect meshes (e.g. jet flames) out of the measurement; `tint` darkens base colours.
     """
     before = set(bpy.data.objects)
-    bpy.ops.import_scene.gltf(filepath=str(path))
+    (bpy.ops.import_scene.fbx if Path(path).suffix.lower() == ".fbx" else bpy.ops.import_scene.gltf)(filepath=str(path))
     bpy.context.view_layer.update()
     new = [o for o in bpy.data.objects if o not in before]
     dg = bpy.context.evaluated_depsgraph_get()
@@ -413,11 +413,14 @@ put(QUAT / "Prop_Chair.gltf", (DX - 1.0, 3.0, 0), rot=-90, max_dim=1.1, tint=0.3
 ph("potted_plant_02", (W / 2 - 0.5, 1.2, 0), max_dim=0.8)
 ph("metal_trash_can", (W / 2 - 0.45, 4.6, 0), max_dim=0.55)
 
-# project wall: one screen per project above the desk, two rows (data: generate_lab_textures.py)
+# project wall: the projects without a corner (data: generate_lab_textures.py); the others have their screen in their corner
 RX = W / 2 - 0.02
 SW, SH = 0.62, 0.39
-slots = [(1.35, 2.48), (2.05, 2.48), (2.75, 2.48), (3.45, 2.48), (1.7, 1.86), (2.4, 1.86), (3.1, 1.86)]
-for (sy, sz), p in zip(slots, LAYOUT["projects"]):
+CORNER_PROJECTS = ("kliniu", "lorigine", "drokex", "4ustudio-academy")
+wall_projects = [p for p in LAYOUT["projects"] if p["id"] not in CORNER_PROJECTS]
+slots = [(1.7, 2.0), (2.4, 2.0), (3.1, 2.0)]
+assert len(wall_projects) <= len(slots)
+for (sy, sz), p in zip(slots, wall_projects):
     box(f"bezel_{p['id']}", (RX - 0.02, sy, sz), (0.04, SW + 0.05, SH + 0.05), "black", bevel=0.008)
     quad(f"screen_{p['id']}", (RX - 0.045, sy, sz), 180, SW, SH, image_mat(f"m_screen_{p['id']}", GEN / "projects" / f"{p['id']}.png", 1.8))
     quad(f"label_{p['id']}", (RX - 0.045, sy, sz - SH / 2 - 0.045), 180, 0.42, 0.065,
@@ -439,6 +442,31 @@ ph("vintage_spacecraft_instrument", (-0.25, 1.75, DESK_TOP), rot=160, max_dim=0.
 sk("an_animated_cat", (0.85, 1.45, DESK_TOP), rot=-160, max_dim=0.48)
 sk("k07_drone", (0.95, 2.55, 1.75), rot=-20, max_dim=0.65)
 sk("mech_drone", (1.75, 2.1, 1.35), rot=-90, max_dim=0.75, skip_mats=("Fire",))
+
+
+def walker(path, name, loc, max_dim, clip):
+    """A walking actor: its own clip is made the active action (imports activate the first one).
+    The web moves it along a patrol route (`LAB_ACTORS[].patrol`); `loc` is the route's first point."""
+    before = set(bpy.data.actions)
+    root = put(path, loc, 0, 1.0, max_dim, "bottom", "dynamic")
+    root["asset"] = name
+    walk = next(a for a in bpy.data.actions if a not in before and a.name.rsplit(".", 1)[0].endswith(clip))  # a second import of the same file names its clips "Walk.001"
+    for o in root.children_recursive:
+        if o.type == "ARMATURE":
+            o.animation_data.action = walk
+        elif o.type == "MESH":  # the FBX import leaves materials at alpha 0 (invisible once exported)
+            for slot in o.material_slots:
+                slot.material.blend_method = "OPAQUE"
+                node = slot.material.node_tree.nodes.get("Principled BSDF")
+                if node:
+                    node.inputs["Alpha"].default_value = 1.0
+    return root
+
+
+# Three CC0 walkers (Quaternius): routes live in lab.ts, first waypoint = Blender (x, -z of the three.js route)
+walker(ASSETS / "animated-robot/FBX/Robot.fbx", "robot-humanoid", (-1.4, 0.6, 0), 1.1, "Robot_Walking")
+walker(QUAT / "Enemy_QuadShell.gltf", "robot-quad", (-1.7, 0.6, 0), 0.75, "Walk")
+walker(QUAT / "Enemy_Trilobite.gltf", "robot-trilobite", (-1.2, -0.6, 0), 0.6, "Walk")
 for k, pts in enumerate((
     [(DX + 0.1, 4.0, 0.75), (DX + 0.25, 4.1, 0.02), (1.8, 4.2, 0.01), (0.9, 3.0, 0.01), (0.6, 1.95, 0.01), (0.6, 1.8, 0.8)],
     [(LX + 0.45, 1.5, 0.93), (LX + 0.8, 1.6, 0.01), (-1.4, 2.2, 0.01), (-0.6, 1.9, 0.01), (0.0, 1.8, 0.8)],
@@ -478,6 +506,20 @@ def sign(project, centre, facing):
     quad(f"sign_{project}", centre, facing, 0.84, 0.13, image_mat(f"m_sign_{project}", GEN / "projects" / f"{project}_label.png", 1.0))
 
 
+CORNER_SCREEN_Z, CORNER_SIGN_Z = 2.1, 2.65
+CW, CH = 0.8, 0.5
+
+
+def corner_screen(project, wall, facing):
+    """A project's screen on the wall of its corner, above the props (web anchor `screen_<id>`). `wall` is the wall face (x, y)."""
+    nx, ny = math.cos(math.radians(facing)), math.sin(math.radians(facing))
+    along_x = abs(nx) > 0.5  # the wall runs along y (side walls) or along x (front wall)
+    size = (0.04, CW + 0.05, CH + 0.05) if along_x else (CW + 0.05, 0.04, CH + 0.05)
+    box(f"bezel_{project}", (wall[0] + nx * 0.03, wall[1] + ny * 0.03, CORNER_SCREEN_Z), size, "black", bevel=0.008)
+    quad(f"screen_{project}", (wall[0] + nx * 0.055, wall[1] + ny * 0.055, CORNER_SCREEN_Z), facing, CW, CH,
+         image_mat(f"m_screen_{project}", GEN / "projects" / f"{project}.png", 1.8))
+
+
 RW = W / 2
 # Kliniu (institutional hygiene): steel shelving with cleaning products, wet-floor sign
 ph("steel_frame_shelves_02", (RW - 0.3, -1.0, 0), rot=90, max_dim=1.8)
@@ -490,7 +532,8 @@ ph("plastic_crate_01", (2.4, -1.75, 0), rot=95, max_dim=0.5)
 on("multi_cleaner_bottle", 2.4, -1.75, 1.0, rot=40, max_dim=0.26)
 ph("plastic_broom", (RW - 0.12, -1.85, 0), rot=90, max_dim=1.3)
 zone("kliniu", 1.6, -1.95, RW, -0.3)
-sign("kliniu", (RW - 0.03, -1.0, 2.55), 180)
+corner_screen("kliniu", (RW, -1.0), 180)
+sign("kliniu", (RW - 0.03, -1.0, CORNER_SIGN_Z), 180)
 
 # L'Origine (professional hair care): barber chair, cabinet with bottles and a chemistry set
 ph("BarberShopChair_01", (2.15, -3.1, 0), rot=-90, max_dim=1.05)
@@ -500,7 +543,8 @@ on("ceramic_vase_01", RW - 0.25, -2.6, 2.0, max_dim=0.22)
 on("brass_candleholders", RW - 0.3, -2.05, 2.0, rot=30, max_dim=0.22)
 ph("standing_picture_frame_01", (RW - 0.15, -3.7, drop_z(RW - 0.15, -3.7, 2.0)), rot=-110, max_dim=0.3)
 zone("lorigine", 1.5, -3.95, RW, -2.05)
-sign("lorigine", (RW - 0.03, -3.1, 2.35), 180)
+corner_screen("lorigine", (RW, -3.1), 180)
+sign("lorigine", (RW - 0.03, -3.1, CORNER_SIGN_Z), 180)
 
 # Drokex (international catalogue): pallet of export boxes, crates, barrel, globe
 for k in range(5):
@@ -512,7 +556,8 @@ for k, (xx, yy, rr) in enumerate(((0.35, -3.82, 5), (0.85, -3.8, -8), (0.6, -3.4
 ph("old_military_crate", (-0.05, -3.8, 0), rot=4, max_dim=0.85)
 ph("Barrel_01", (1.3, -3.8, 0), max_dim=0.85)
 zone("drokex", -0.25, FY, 1.5, -2.7)
-sign("drokex", (0.6, FY + 0.03, 2.3), 90)
+corner_screen("drokex", (0.6, FY), 90)
+sign("drokex", (0.6, FY + 0.03, CORNER_SIGN_Z), 90)
 
 # 4ustudio Academy (music school): piano, drum kit, guitar, amp (Sketchfab CC BY, see CREDITS.md)
 def sk_static(name, loc, rot, max_dim):
@@ -527,7 +572,8 @@ sk_static("acoustic_guitar", (-1.45, -1.6, 0), 110, 0.95)
 on("Ukulele_01", -RW + 0.35, -2.2, 2.0, rot=15, max_dim=0.55)
 sk_static("floor_globe", (-0.05, -3.1, 0), 20, 0.9)  # Drokex
 zone("4ustudio-academy", -RW, -3.95, -1.15, -1.3)
-sign("4ustudio-academy", (-RW + 0.07, -2.45, 2.3), 0)
+corner_screen("4ustudio-academy", (-RW, -2.45), 0)
+sign("4ustudio-academy", (-RW + 0.07, -2.45, CORNER_SIGN_Z), 0)
 
 for i, (hx, hy) in enumerate(((-1.9, -2.6), (2.0, -2.3), (0.4, -2.7))):
     ph("hanging_industrial_lamp", (hx, hy, H - 0.02), max_dim=1.0, anchor="top")

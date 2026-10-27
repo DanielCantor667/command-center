@@ -1,5 +1,10 @@
 import { STATIONS, type StationId } from './stations';
-export type WorldPoint = 'entrance' | 'hub' | 'projects' | StationId;
+/** Projects with their own corner and screen (specs/workshop-lab.md E.2), in the order the tour walks them. */
+export const CORNER_PROJECTS = ['4ustudio-academy', 'drokex', 'lorigine', 'kliniu'] as const;
+export type CornerPoint = `corner-${(typeof CORNER_PROJECTS)[number]}`;
+export type WorldPoint = 'entrance' | 'hub' | 'projects' | CornerPoint | StationId;
+export const cornerPoint = (projectId: string): CornerPoint | null => (CORNER_PROJECTS as readonly string[]).includes(projectId) ? `corner-${projectId}` as CornerPoint : null;
+export const cornerProject = (point: WorldPoint): string | null => point.startsWith('corner-') ? point.slice('corner-'.length) : null;
 export interface WorldCameraSnapshot { position: [number, number, number]; target: [number, number, number] }
 export interface GameSnapshot { point: WorldPoint; camera: WorldCameraSnapshot | null }
 export interface WorldState {
@@ -15,6 +20,11 @@ export const WORLD_VIEWS: Record<WorldPoint, WorldCameraSnapshot> = {
   hub: { position: [1.0, 1.55, 2.2], target: [-.2, 1.15, -2.6] },
   // Low enough that the hanging lamp stays above the line of sight to the top row of screens.
   projects: { position: [.4, 1.6, -2.45], target: [2.95, 2.15, -2.45] },
+  // Each corner is seen from mid-room, its screen and props together, off the line of the hanging lamps; lab coordinates are (x, up, -blender y).
+  'corner-4ustudio-academy': { position: [.8, 1.5, 1.3], target: [-3, 1.3, 2.45] },
+  'corner-drokex': { position: [1.6, 1.5, -.2], target: [.6, 1.3, 4.1] },
+  'corner-lorigine': { position: [-.8, 1.5, 3.0], target: [3, 1.3, 3.0] },
+  'corner-kliniu': { position: [-.8, 1.5, 1.1], target: [3, 1.3, 1.1] },
   technologies: STATIONS.technologies.view, trajectory: STATIONS.trajectory.view, contact: STATIONS.contact.view,
 };
 export function initialWorldState(snapshot?: GameSnapshot): WorldState {

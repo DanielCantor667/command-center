@@ -12,7 +12,7 @@ mkdir -p "$OUT"
 $GT optimize "$SRC/lab-baked.glb" "$OUT/lab-baked-v1.glb" --compress meshopt --texture-compress webp --texture-size 8192
 $GT optimize "$SRC/lab-emissive.glb" "$OUT/lab-emissive-v1.glb" --compress meshopt
 $GT optimize "$SRC/lab-plants.glb" "$OUT/lab-plants-v1.glb" --compress meshopt --texture-compress webp --texture-size 512
-for actor in robot-cobot drone-k07 drone-mech cat; do
+for actor in robot-cobot drone-k07 drone-mech cat robot-humanoid robot-quad robot-trilobite; do
   # actors keep their node hierarchy so animations stay addressable
   $GT optimize "$SRC/$actor.glb" "$OUT/$actor-v1.glb" --compress meshopt --texture-compress webp --texture-size 1024 \
     --join false --flatten false --instance false

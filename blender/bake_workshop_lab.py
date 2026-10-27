@@ -39,8 +39,10 @@ DYNAMIC_BUDGET = {"black_honey_-_robotic_arm": 22000}
 ACTOR_FILES = {
     "black_honey_-_robotic_arm": "robot-cobot",
     "k07_drone": "drone-k07", "mech_drone": "drone-mech", "an_animated_cat": "cat",
+    "robot-humanoid": "robot-humanoid", "robot-quad": "robot-quad", "robot-trilobite": "robot-trilobite",
 }
-DRONES = ("k07_drone", "mech_drone")
+# Movers are not baked into the light (their shadow would stay where they were placed)
+DRONES = ("k07_drone", "mech_drone", "robot-humanoid", "robot-quad", "robot-trilobite")
 
 sc = bpy.context.scene
 BUILD.mkdir(parents=True, exist_ok=True)

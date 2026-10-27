@@ -5,9 +5,9 @@ import { ArrowUpRight, DoorOpen, Map, Move, RotateCcw, Volume2, VolumeX, X } fro
 import { Component, useCallback, useEffect, useReducer, useRef, useState, type ReactNode } from 'react';
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
-import { initialWorldState, worldReducer, type GameSnapshot, type WorldPoint } from './world-state';
+import { CORNER_PROJECTS, cornerPoint, cornerProject, initialWorldState, worldReducer, type CornerPoint, type GameSnapshot, type WorldPoint } from './world-state';
 import type { LabFocus } from './lab-focus';
-import { ProjectsInspection } from './projects-inspection';
+import { CornerInspection, ProjectsInspection } from './projects-inspection';
 import { StationInspection } from './station-inspection';
 import { STATIONS, stationForPoint } from './stations';
 import { WorkshopReader } from './workshop-reader';
@@ -25,9 +25,13 @@ class WorldBoundary extends Component<{ children: ReactNode; onError: () => void
   render() { return this.state.failed ? null : this.props.children; }
 }
 export interface WorkshopGameProps { initialSnapshot?: GameSnapshot; suspended?: boolean; onSave: (snapshot: GameSnapshot) => void; onOpenCase: (id: string) => void; onPortfolio: () => void; reading?: WorkshopReading | null; onRead?: (reading: WorkshopReading | null) => void; technologyFilters?: TechnologyFilters; onTechnologyFiltersChange?: (filters: TechnologyFilters) => void }
-const pointNames: Record<WorldPoint, string> = { entrance: 'Entrada', hub: 'El taller', projects: 'Proyectos', technologies: STATIONS.technologies.name, trajectory: STATIONS.trajectory.name, contact: STATIONS.contact.name };
+const pointNames: Record<WorldPoint, string> = { ...Object.fromEntries(CORNER_PROJECTS.map(id => [`corner-${id}`, PROJECTS.find(project => project.id === id)!.name])) as Record<CornerPoint, string>, entrance: 'Entrada', hub: 'El taller', projects: 'Proyectos', technologies: STATIONS.technologies.name, trajectory: STATIONS.trajectory.name, contact: STATIONS.contact.name };
 /** 11.4: guided tour order (wheel or arrow keys), the same as the navigation: overview first, then each wall. */
 export const TOUR: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'projects', 'technologies', 'trajectory', 'contact'];
+/** Wheel and arrow keys: the navigation order, walking each project corner after the wall. */
+const WALK: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'projects', ...CORNER_PROJECTS.map(id => cornerPoint(id)!), 'technologies', 'trajectory', 'contact'];
+/** The navigation has one button per place; a corner counts as the projects place. */
+const navPoint = (point: WorldPoint): WorldPoint => cornerProject(point) ? 'projects' : point;
 /** Cover shortcuts: the cases with their own designed page. */
 const QUICK_PROJECTS = ['kliniu', 'lorigine', '4ustudio-academy', 'drokex'].map(id => PROJECTS.find(project => project.id === id)!);
 const defaultFilters: TechnologyFilters = { query: '', category: 'all', projectId: null };
@@ -51,6 +55,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const active = ['loading', 'moving', 'exploring'].includes(state.status);
   const inside = state.status === 'exploring' || (state.status === 'moving' && state.destination !== 'entrance');
   const inspecting = state.status === 'exploring' && state.point === 'projects';
+  const corner = state.status === 'exploring' ? cornerProject(state.point) : null;
   const station = state.status === 'exploring' ? stationForPoint(state.point) : null;
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)'); const update = () => setReducedMotion(media.matches);
@@ -71,7 +76,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     const wasReading = previousReading.current; previousReading.current = !!reading;
     if (suspended || reading) return;
     const navigationTarget = navigationButtons.current[state.point];
-    const button = state.status === 'error' ? retryButton.current : state.status === 'exploring' ? (inspecting || station ? openButton.current : navigationTarget) : state.status === 'landing' ? enterButton.current : null;
+    const button = state.status === 'error' ? retryButton.current : state.status === 'exploring' ? (inspecting || corner || station ? openButton.current : navigationTarget) : state.status === 'landing' ? enterButton.current : null;
     if (!wasReading) { button?.focus({ preventScroll: true }); return; }
     // Let the portal restore a surviving opener before supplying the world fallback.
     const frame = requestAnimationFrame(() => {
@@ -79,7 +84,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       if (!focused || focused === document.body || focused.closest('[inert],[aria-hidden="true"]')) (button ?? enterButton.current)?.focus({ preventScroll: true });
     });
     return () => cancelAnimationFrame(frame);
-  }, [suspended, reading, inspecting, station, state.status, state.point]);
+  }, [suspended, reading, inspecting, corner, station, state.status, state.point]);
   useEffect(() => {
     if (reading && ['loading', 'moving'].includes(stateRef.current.status)) dispatch({ type: 'cancel' });
   }, [reading]);
@@ -89,7 +94,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       if (event.key !== 'Escape' || suspended || reading) return;
       const current = stateRef.current;
       if (['loading', 'moving'].includes(current.status)) cancel();
-      else if (current.status === 'exploring' && (current.point === 'projects' || stationForPoint(current.point))) dispatch({ type: 'go', point: 'hub' });
+      else if (current.status === 'exploring' && (current.point === 'projects' || cornerProject(current.point) || stationForPoint(current.point))) dispatch({ type: 'go', point: 'hub' });
     };
     window.addEventListener('keydown', escape); return () => window.removeEventListener('keydown', escape);
   }, [cancel, suspended, reading]);
@@ -102,8 +107,8 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     const step = (direction: 1 | -1) => {
       const current = stateRef.current;
       if (current.status !== 'exploring' || Date.now() - last < 700) return;
-      const index = TOUR.indexOf(current.point as (typeof TOUR)[number]);
-      const next = TOUR[Math.min(TOUR.length - 1, Math.max(0, (index < 0 ? 0 : index) + direction))]!;
+      const index = WALK.indexOf(current.point as (typeof WALK)[number]);
+      const next = WALK[Math.min(WALK.length - 1, Math.max(0, (index < 0 ? 0 : index) + direction))]!;
       if (next === current.point) return;
       last = Date.now(); dispatch({ type: 'go', point: next });
     };
@@ -178,13 +183,14 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     </section>}
     {inside && <>
       <div className={styles.journey}>
-        <div className={styles.destination} role="status">{(() => { const shown = state.status === 'moving' ? state.destination : state.point; const index = TOUR.indexOf(shown as (typeof TOUR)[number]); return <>{index >= 0 && <span className={styles.tourStep}>{index + 1} / {TOUR.length}</span>}<span>{state.status === 'moving' && <span className={styles.movingPrefix}>Acercándote a </span>}{pointNames[shown]}</span></>; })()}</div>
+        <div className={styles.destination} role="status">{(() => { const shown = state.status === 'moving' ? state.destination : state.point; const index = TOUR.indexOf(navPoint(shown) as (typeof TOUR)[number]); return <>{index >= 0 && <span className={styles.tourStep}>{index + 1} / {TOUR.length}</span>}<span>{state.status === 'moving' && <span className={styles.movingPrefix}>Acercándote a </span>}{pointNames[shown]}</span></>; })()}</div>
         {state.status === 'moving' && <button className={styles.stop} type="button" aria-label="Cancelar recorrido" title="Cancelar recorrido" onClick={cancel}><span className={styles.stopText}>Cancelar recorrido</span><X size={16} aria-hidden="true" /></button>}
       </div>
       <div className={styles.bottomControls}>
       {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
+      {corner && <CornerInspection key={corner} projectId={corner} buttonRef={openButton} onOpen={openRelatedCase} onStep={step => go(WALK[WALK.indexOf(state.point as (typeof WALK)[number]) + step]!)} onAll={() => go('projects')} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
-      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={state.point === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
+      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}

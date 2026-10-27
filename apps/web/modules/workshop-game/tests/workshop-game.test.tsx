@@ -234,7 +234,23 @@ describe('workshop game access', () => {
     expect(screen.getByRole('main')).toHaveAttribute('data-workshop-state', 'exploring');
     now += 1;
     fireEvent.wheel(canvas, { deltaY: 50 });
-    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'technologies');
+    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'corner-4ustudio-academy');
     expect(screen.getByRole('main')).toHaveAttribute('data-workshop-state', 'moving');
+  });
+  it('walks the project corners after the wall and reads each case from its corner', () => {
+    const open = vi.fn();
+    render(<WorkshopGame initialSnapshot={{ point: 'projects', camera: null }} onSave={vi.fn()} onOpenCase={open} onPortfolio={vi.fn()} />);
+    fireEvent.keyDown(window, { key: 'ArrowRight' });
+    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'corner-4ustudio-academy');
+    act(() => props.onArrived(props.token));
+    expect(screen.getByRole('heading', { name: '4U Studio Academy' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Ir a Proyectos' })).toHaveAttribute('aria-current', 'location');
+    fireEvent.click(screen.getByRole('button', { name: 'Siguiente' }));
+    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'corner-drokex');
+    act(() => props.onArrived(props.token));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir caso de Drokex' }));
+    expect(open).toHaveBeenCalledWith('drokex');
+    fireEvent.click(screen.getByRole('button', { name: 'Ver todos los proyectos' }));
+    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'projects');
   });
 });

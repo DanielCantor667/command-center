@@ -3,7 +3,7 @@
 import { ArrowUpRight, MapPin } from 'lucide-react';
 import { PROJECTS } from '../../data/projects';
 import type { WorkshopReading } from './reading';
-import type { WorldPoint } from './world-state';
+import { cornerProject, type WorldPoint } from './world-state';
 import { STATIONS, stationForPoint } from './stations';
 import styles from './workshop-reader.module.css';
 export interface WorldMapProps {
@@ -13,7 +13,7 @@ export interface WorldMapProps {
   onGo: (point: Exclude<WorldPoint, 'entrance'>) => void;
   onOpenCase: (id: string) => void;
 }
-type Destination = Exclude<WorldPoint, 'entrance'>;
+type Destination = Exclude<WorldPoint, 'entrance' | `corner-${string}`>;
 const destinations: Destination[] = ['hub', 'projects', 'technologies', 'trajectory', 'contact'];
 const names: Record<Destination, string> = {
   hub: 'El taller', projects: 'Proyectos',
@@ -25,7 +25,9 @@ const markers: Record<Destination, [number, number]> = {
 };
 const PUBLIC_PROJECTS = PROJECTS.filter(project => project.public);
 
-export function WorldMap({ currentPoint, worldAvailable, onRead, onGo, onOpenCase }: WorldMapProps) {
+export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, onOpenCase }: WorldMapProps) {
+  // A project corner shows as the projects place on the plan.
+  const currentPoint: Exclude<WorldPoint, `corner-${string}`> = cornerProject(reached) ? 'projects' : reached as Exclude<WorldPoint, `corner-${string}`>;
   const read = (point: Destination) => {
     const station = stationForPoint(point);
     if (station === 'technologies') onRead({ kind: 'technologies', technologyId: 'nextjs' });

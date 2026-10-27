@@ -5,11 +5,12 @@ import { Component, Suspense, useEffect, useMemo, useRef, type ReactNode } from 
 import { Box3, Mesh, MeshBasicMaterial, Quaternion, Vector3, type Bone, type Group, type MeshStandardMaterial, type Object3D } from 'three';
 import { ambient } from './ambient';
 import { CONTACT_DESK, LAB_ACTORS, LAB_ESSENTIAL_URLS, LAB_PLANTS_URL, labUrl, type LabActor } from './lab';
+import { patrolAt } from './lab-patrol';
 import { focusRelations, focusViewpoint, type LabFocus } from './lab-focus';
 import { ContactMonitor, pointer, ProjectCorners, ProjectWall, Whiteboard } from './lab-content';
 import { STATIONS } from './stations';
 import { TechnologyShelf } from './technology-shelf';
-import type { WorldPoint } from './world-state';
+import { cornerPoint, type WorldPoint } from './world-state';
 import styles from './workshop-game.module.css';
 
 /** Decoration is optional: a failed plant or actor never fails the workshop. */
@@ -60,6 +61,7 @@ function Actor({ actor, phase, target }: { actor: LabActor; phase: number; targe
   const { actions } = useAnimations(clips, rig);
   const rest = useMemo(() => new Vector3(...actor.offset).add(centre), [actor.offset, centre]);
   const place = useRef(rest.clone()), turn = useRef(0);
+  const walked = useRef(0), facing = useRef(actor.patrol ? patrolAt(actor.patrol, 0).heading : 0);
   useEffect(() => { Object.values(actions).forEach(action => action?.play()); }, [actions]);
   useFrame((_, delta) => {
     Object.values(actions).forEach(action => { if (action) action.paused = !ambient.enabled; });
@@ -67,6 +69,16 @@ function Actor({ actor, phase, target }: { actor: LabActor; phase: number; targe
     const goal = actor.follows && target && ambient.enabled ? scratch.goal.set(...target) : rest;
     if (ambient.enabled) place.current.lerp(goal, 1 - Math.exp(-2.2 * Math.min(delta, .1))); else place.current.copy(rest);
     pivot.current.position.copy(place.current);
+    if (actor.patrol) {
+      // Walkers keep their height; under reduced motion they stand at the start of the route.
+      if (ambient.enabled) walked.current += actor.patrol.speed * Math.min(delta, .1);
+      const step = patrolAt(actor.patrol, walked.current);
+      pivot.current.position.set(step.x, rest.y, step.z);
+      // Ease the yaw the short way round so corners are turns, not snaps.
+      const diff = Math.atan2(Math.sin(step.heading - facing.current), Math.cos(step.heading - facing.current));
+      facing.current += diff * (1 - Math.exp(-6 * Math.min(delta, .1)));
+      pivot.current.rotation.y = facing.current;
+    }
     if (actor.hover && ambient.enabled) pivot.current.position.y += Math.sin(ambient.time.value * 1.3 + phase) * .04;
     if (head?.parent && headRest) {
       if (!headAnimated) head.quaternion.copy(headRest);
@@ -109,6 +121,11 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
   const viewpoint = useMemo(() => focusViewpoint(focus), [focus]);
   // The demand loop does not run under reduced motion: a focus change still has to draw once.
   useEffect(() => { invalidate(); }, [focus, invalidate]);
+  // Away from a project's place (its corner, or the wall for projects without one) the visitor walks up to it; there it opens the case.
+  const selectProject = (id: string) => {
+    const place = cornerPoint(id) ?? 'projects';
+    if (point === place) onOpenCase(id); else onGo(place);
+  };
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
   return <group>
     <Room />
@@ -117,11 +134,10 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
       <Actor actor={actor} phase={index * 1.7} target={viewpoint} />
     </Suspense></OptionalBoundary>)}
     <OptionalBoundary><Suspense fallback={null}>
-      {/* Away from the wall a screen walks up to it; at the wall it opens the case. */}
-      <ProjectWall lit={relations.projects} focused={!!focus} onSelect={id => (point === 'projects' ? onOpenCase(id) : onGo('projects'))}
+      <ProjectWall lit={relations.projects} focused={!!focus} onSelect={selectProject}
         onHover={id => onFocus(id ? { kind: 'project', id } : null)} />
     </Suspense></OptionalBoundary>
-    <ProjectCorners lit={relations.projects} focused={!!focus} onSelect={onOpenCase}
+    <ProjectCorners lit={relations.projects} focused={!!focus} onSelect={selectProject}
       onHover={id => onFocus(id ? { kind: 'project', id } : null)} />
     <TechnologyShelf point={point} lit={relations.technologies} focused={!!focus} onGo={onGo} onSelect={onTechnology}
       onHover={id => onFocus(id ? { kind: 'technology', id } : null)} />
