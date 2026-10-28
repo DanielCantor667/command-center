@@ -68,6 +68,17 @@ Robots que se mueven (elegidos 2026-10-27, todos CC0, sin crédito obligatorio):
 - Fases: E.1 robots caminantes en el taller actual; E.2 zonas de proyecto; E.3 robot temático por zona.
 - E.2 (hecha 2026-10-27): las pantallas de Academy, Drokex, L'ORIGINE y Kliniu salen de la pared y van en su rincón, sobre el escenario (0,8 x 0,5 m, placa del nombre arriba). La pared queda con Intranet ESS, Command Center y Vevi. La estación Proyectos sigue siendo la pared; desde ahí rueda, flechas o Siguiente recorren los rincones (`corner-<id>` en `world-state.ts`): Academy, Drokex, L'ORIGINE, Kliniu. Clic en pantalla o rincón lleva a ese rincón; estando ahí abre el caso.
 - Presupuesto: cada actor ~0,3 a 0,7 MB; unos 7 MB libres bajo el tope de 15 MB.
+- E.4 (2026-10-28, visto bueno de Daniel: "la sala se siente aplastada, sin organización"): sala de 6 × 9 m a 8 × 11 m
+  (paredes en x ±4, frontal en z 6,1; la pared del fondo no se mueve) ordenada en torno a un pasillo central de 2,8 m.
+  Fondo: Tecnologías y banco a la izquierda, mesa de reparación con el gato fuera del centro (junto al banco, lado largo
+  paralelo al pasillo), Trayectoria al fondo, pared de proyectos y Contacto a la derecha. Frente: un stand de 2,6 × 2,6 m
+  por proyecto a cada lado del pasillo (tarima, borde cian hacia el pasillo, lámpara propia, pantalla y letrero en la pared
+  lateral, mampara baja de 1,4 m junto a la pared entre los dos de cada lado). Orden del recorrido: pared de proyectos →
+  L'ORIGINE → Drokex → Kliniu → Academy (baja por la derecha y sube por la izquierda). Kliniu pasa de estante con
+  limpiadores a punto de despacho: dispensadores de pared (jabón, toallas, secador), estante con cajas e insumos,
+  mostrador de empaque con el portátil del ERP, carro y pedido apilado junto a la puerta. Puerta frontal centrada en el
+  pasillo. Robots: el humanoide da vueltas entre la mesa y la pared de proyectos, el QuadShell recorre el pasillo y el
+  Trilobite pasa detrás del stand de L'ORIGINE, fuera de su cámara.
 
 Alcance técnico estimado: nuevo `blender/prototype_workshop_rooms_v3.py`, `LAYOUT`/anclas por sala,
 nuevos puntos de recorrido (`WorldPoint`) por proyecto, actualización de `world-map.tsx`, límites de cámara y

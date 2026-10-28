@@ -108,7 +108,7 @@ function findHead(scene: Object3D): Object3D | null {
 }
 
 const HUB_LABELS: { point: WorldPoint; text: string; at: [number, number, number] }[] = [
-  { point: 'projects', text: 'Proyectos', at: [2.75, 2.95, -2.4] },
+  { point: 'projects', text: 'Proyectos', at: [3.75, 2.45, -2.4] },
   ...Object.values(STATIONS).map(station => ({ point: station.id, text: station.name, at: station.hotspot })),
 ];
 

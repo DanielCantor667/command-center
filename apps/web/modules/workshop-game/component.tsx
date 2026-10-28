@@ -160,7 +160,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const openStation = () => { if (station) setReading(station === 'technologies' ? { kind: station, technologyId: 'nextjs' } : { kind: station }); };
   return <><main className={styles.game} inert={!!reading} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination}>
     {/* Cycles render of the lab from the overview camera (blender/prototype_workshop_room_v2.py). */}
-    <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-lab-entrance-v1.webp" alt="" fill sizes="100vw" priority /></div>
+    <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-lab-entrance-v2.webp" alt="" fill sizes="100vw" priority /></div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
       <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} focus={focus} onFocus={setFocus} />
     </WorldBoundary></div>}

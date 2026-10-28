@@ -45,7 +45,7 @@ export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, 
           <rect x="476" y="110" width="18" height="150" fill="#9fc2cf" />
           <rect x="220" y="36" width="120" height="12" fill="#b8c6b0" />
           <rect x="400" y="215" width="70" height="95" rx="3" fill="#c5b495" stroke="#a49477" />
-          <rect x="235" y="150" width="90" height="55" rx="3" fill="#c5b495" stroke="#a49477" />
+          <rect x="128" y="140" width="45" height="80" rx="3" fill="#c5b495" stroke="#a49477" />
           <path d="M60 352H500" stroke="#315749" strokeWidth="2" strokeDasharray="6 6" />
           <text x="280" y="378" textAnchor="middle" fill="#52624f" fontSize="12">Entrada</text>
           {available.map(point => {

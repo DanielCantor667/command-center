@@ -1,6 +1,7 @@
 import { STATIONS, type StationId } from './stations';
-/** Projects with their own corner and screen (specs/workshop-lab.md E.2), in the order the tour walks them. */
-export const CORNER_PROJECTS = ['4ustudio-academy', 'drokex', 'lorigine', 'kliniu'] as const;
+/** Projects with their own booth and screen (specs/workshop-lab.md E.2, E.4), in the order the tour walks them:
+ * from the projects wall down the right side of the aisle and back up the left. */
+export const CORNER_PROJECTS = ['lorigine', 'drokex', 'kliniu', '4ustudio-academy'] as const;
 export type CornerPoint = `corner-${(typeof CORNER_PROJECTS)[number]}`;
 export type WorldPoint = 'entrance' | 'hub' | 'projects' | CornerPoint | StationId;
 export const cornerPoint = (projectId: string): CornerPoint | null => (CORNER_PROJECTS as readonly string[]).includes(projectId) ? `corner-${projectId}` as CornerPoint : null;
@@ -16,15 +17,15 @@ export type WorldEvent = { type: 'start' | 'cancel' }
   | { type: 'go'; point: WorldPoint };
 /** One closed lab (specs/workshop-lab.md); the front wall is open, the entrance is a short dolly in. */
 export const WORLD_VIEWS: Record<WorldPoint, WorldCameraSnapshot> = {
-  entrance: { position: [.95, 1.6, 2.9], target: [-.2, 1.15, -2.6] },
-  hub: { position: [1.0, 1.55, 2.2], target: [-.2, 1.15, -2.6] },
+  entrance: { position: [.3, 1.6, 5.6], target: [-.2, 1.15, -4.0] },
+  hub: { position: [.3, 1.6, 4.6], target: [-.2, 1.15, -4.0] },
   // Low enough that the hanging lamp stays above the line of sight to the top row of screens.
-  projects: { position: [.4, 1.6, -2.45], target: [2.95, 2.15, -2.45] },
-  // Each corner is seen from mid-room, its screen and props together, off the line of the hanging lamps; lab coordinates are (x, up, -blender y).
-  'corner-4ustudio-academy': { position: [.8, 1.5, 1.3], target: [-3, 1.3, 2.45] },
-  'corner-drokex': { position: [1.6, 1.5, -.2], target: [.6, 1.3, 4.1] },
-  'corner-lorigine': { position: [-.8, 1.5, 3.0], target: [3, 1.3, 3.0] },
-  'corner-kliniu': { position: [-.8, 1.5, 1.1], target: [3, 1.3, 1.1] },
+  projects: { position: [1.4, 1.6, -2.45], target: [3.95, 2.15, -2.45] },
+  // Each booth is seen from across the aisle, its screen and props together; lab coordinates are (x, up, -blender y).
+  'corner-4ustudio-academy': { position: [.5, 1.5, 1.0], target: [-4, 1.3, 2.0] },
+  'corner-drokex': { position: [-.5, 1.5, 3.7], target: [4, 1.2, 4.75] },
+  'corner-lorigine': { position: [-.5, 1.5, 1.0], target: [4, 1.3, 2.0] },
+  'corner-kliniu': { position: [.5, 1.5, 3.7], target: [-4, 1.2, 4.75] },
   technologies: STATIONS.technologies.view, trajectory: STATIONS.trajectory.view, contact: STATIONS.contact.view,
 };
 export function initialWorldState(snapshot?: GameSnapshot): WorldState {

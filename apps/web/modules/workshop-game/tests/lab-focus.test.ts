@@ -20,10 +20,11 @@ describe('lab focus', () => {
   it('places the drone off the focused wall and beside the item, not between it and the camera', () => {
     const anchor = LAB_ANCHORS['screen_kliniu']!;
     const screen = focusViewpoint({ kind: 'project', id: 'kliniu' })!;
-    expect(screen[0]).toBeGreaterThan(2.3); expect(screen[0]).toBeLessThan(2.6);
+    // Kliniu's screen hangs on the left wall: the drone stays 0.4-0.6 m into the room from it.
+    expect(screen[0] - anchor.position[0]).toBeGreaterThan(.4); expect(screen[0] - anchor.position[0]).toBeLessThan(.6);
     expect(Math.abs(screen[2] - anchor.position[2])).toBeGreaterThan(anchor.size[0] / 2);
     const plate = focusViewpoint({ kind: 'technology', id: 'typescript' })!;
-    expect(plate[0]).toBeGreaterThan(-2.5); expect(plate[0]).toBeLessThan(-2.3);
+    expect(plate[0]).toBeGreaterThan(-3.5); expect(plate[0]).toBeLessThan(-3.3);
     expect(focusViewpoint(null)).toBeNull();
   });
 });

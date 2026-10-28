@@ -6,7 +6,7 @@ import { AdditiveBlending, BufferAttribute, BufferGeometry, CanvasTexture, Point
 import { ambient } from './ambient';
 
 const FPS = 30;
-const SPREAD = { x: [-2.8, 2.8], y: [.25, 3.0], z: [-4.7, 3.9] } as const;
+const SPREAD = { x: [-3.8, 3.8], y: [.25, 3.0], z: [-4.7, 5.9] } as const;
 
 function dustTexture() {
   const canvas = document.createElement('canvas');

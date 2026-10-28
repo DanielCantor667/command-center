@@ -152,7 +152,7 @@ function Corner({ zone, sign, name, highlight, onSelect, onHover }: {
       onPointerOver={() => { pointer(true)(); onHover(true); }} onPointerOut={() => { pointer(false)(); onHover(false); }}>
       <boxGeometry args={[zone.size[0], 1.7, zone.size[1]]} /><meshBasicMaterial visible={false} />
     </mesh>
-    <mesh position={[x, .02, z]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => {}}>
+    <mesh position={[x, zone.position[1] + .01, z]} rotation={[-Math.PI / 2, 0, 0]} raycast={() => {}}>
       <planeGeometry args={zone.size} />
       <meshBasicMaterial ref={floor} color={[.3, 1.6, 2]} transparent opacity={0} depthWrite={false} toneMapped={false} />
     </mesh>
@@ -181,7 +181,7 @@ function wrap(g: CanvasRenderingContext2D, text: string, x: number, y: number, m
 }
 
 /** The ultrawide on the desk: the real availability note and public profile links (no invented email). */
-const MONITOR = { position: [2.818, 1.18, -3.0] as [number, number, number], rotationY: -Math.PI / 2, size: [1.1, .46] as [number, number] };
+const MONITOR = { position: [3.818, 1.18, -3.0] as [number, number, number], rotationY: -Math.PI / 2, size: [1.1, .46] as [number, number] };
 export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
   const map = useMemo(() => canvasTexture(1100, 460, g => {
     const sky = g.createLinearGradient(0, 0, 1100, 460);

@@ -248,7 +248,7 @@ def main():
         props += objs
     arch = realise(arch)
     arch_obj = join(arch, "lab_architecture")
-    cull_outside(arch_obj, (-3.0, -4.1, 0.0), (3.0, 4.9, 3.2))  # room interior
+    cull_outside(arch_obj, (-4.0, -6.1, 0.0), (4.0, 4.9, 3.2))  # room interior (prototype W, D, H)
     props_obj = join(props, "lab_props")
     bake_group(arch_obj, "architecture")
     bake_group(props_obj, "props")
