@@ -145,3 +145,21 @@
   .loadPanel { max-height: calc(100svh - 100px); overflow-y: auto; }
   .blueprint { height: 50px; }
 }
+/* DOM screens on the 3D anchors (dom-screens.tsx): sizes are in CSS px of the screen itself, not of the page. */
+.screenCapture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.screenName { display: grid; place-content: center; gap: 28px; height: 100%; padding: 40px; text-align: center; background: repeating-linear-gradient(#071317 0 5px, #0b1d22 5px 6px); color: #2fe6ff; font: 600 96px/1.05 ui-monospace, Menlo, monospace; overflow-wrap: anywhere; }
+.screenName small { color: #4f7f88; font-size: 34px; font-weight: 500; }
+.monitor { padding: 44px 60px; background: linear-gradient(115deg, #1c1240, #3a1d6e); color: #fff; font-family: system-ui, sans-serif; }
+.monitor h2 { margin: 0 0 22px; font-size: 76px; font-weight: 600; letter-spacing: -.02em; }
+.monitor p { max-width: 960px; margin: 0 0 34px; color: #cdbff5; font-size: 30px; line-height: 40px; }
+.monitor span { display: block; color: #2fe6ff; font: 500 28px/45px ui-monospace, Menlo, monospace; }
+.whiteboard { padding: 50px 60px; background: #e9ece8; color: #1b2a30; font-family: system-ui, sans-serif; }
+.whiteboard h2 { margin: 0; font-size: 84px; font-weight: 600; }
+.whiteboard > p { margin: 14px 0 50px; color: #36525a; font-size: 34px; font-weight: 500; }
+.whiteboard > div { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.whiteboard h3 { margin: 0 0 18px; color: #e06a3a; font-size: 32px; font-weight: 700; text-transform: uppercase; }
+.whiteboard ol { display: grid; gap: 40px; margin: 0; padding: 0 0 0 28px; list-style: none; border-left: 6px solid #2fa8c0; }
+.whiteboard li { display: grid; gap: 8px; }
+.whiteboard li span { color: #36525a; font-size: 28px; }
+.whiteboard li span:first-child { font-family: ui-monospace, Menlo, monospace; font-weight: 500; }
+.whiteboard li b { font-size: 38px; font-weight: 600; line-height: 1.1; }

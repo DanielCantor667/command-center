@@ -1,5 +1,4 @@
 'use client';
-import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import { CanvasTexture, SRGBColorSpace, type MeshBasicMaterial, type Texture } from 'three';
@@ -7,9 +6,11 @@ import { PORTFOLIO_CAREER } from '../../data/portfolio-career';
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { ambient } from './ambient';
+import { DomScreen } from './dom-screens';
 import { LAB_ANCHORS, type LabAnchor } from './lab-anchors';
 import { PROJECT_CAPTURES } from './lab';
 import { STATIONS } from './stations';
+import styles from './workshop-game.module.css';
 
 /** Focus states shared by screens and plates: lit (the focus or related), dimmed (unrelated), idle. */
 export type Highlight = 'lit' | 'dim' | 'idle';
@@ -43,48 +44,22 @@ export function labelTexture(text: string, colour: string) {
   });
 }
 
-function nameScreen(name: string) {
-  return canvasTexture(1024, 640, g => {
-    g.fillStyle = '#071317'; g.fillRect(0, 0, 1024, 640);
-    g.strokeStyle = '#0b1d22';
-    for (let y = 0; y < 640; y += 6) { g.beginPath(); g.moveTo(0, y); g.lineTo(1024, y); g.stroke(); }
-    g.textAlign = 'center'; g.textBaseline = 'middle';
-    g.fillStyle = '#2fe6ff'; fitFont(g, name, 900, 110, 'ui-monospace, Menlo, monospace'); g.fillText(name, 512, 300);
-    g.fillStyle = '#4f7f88'; g.font = '500 34px ui-monospace, Menlo, monospace'; g.fillText('sin captura publicada', 512, 410);
-  });
-}
-
-/** Crop a capture like CSS object-fit: cover, anchored to the top of the page. */
-function cover(texture: Texture, aspect: number) {
-  const image = texture.image as { width: number; height: number };
-  const ratio = image.width / image.height;
-  if (ratio < aspect) { texture.repeat.set(1, ratio / aspect); texture.offset.set(0, 1 - ratio / aspect); }
-  else { texture.repeat.set(aspect / ratio, 1); texture.offset.set((1 - aspect / ratio) / 2, 0); }
-  texture.colorSpace = SRGBColorSpace; texture.anisotropy = 8; texture.needsUpdate = true;
-  return texture;
-}
-
-function Plane({ anchor, map, onSelect }: { anchor: LabAnchor; map: Texture; onSelect?: () => void }) {
-  return <mesh position={anchor.position} rotation={[0, anchor.rotationY, 0]}
-    onClick={onSelect && (event => { event.stopPropagation(); if (event.delta < 5) onSelect(); })}
-    onPointerOver={onSelect && pointer(true)} onPointerOut={onSelect && pointer(false)}>
-    <planeGeometry args={anchor.size} /><meshBasicMaterial map={map} toneMapped={false} />
-  </mesh>;
-}
+const select = (onSelect: () => void) => ({
+  onClick: (event: { stopPropagation: () => void; delta: number }) => { event.stopPropagation(); if (event.delta < 5) onSelect(); },
+  onPointerOver: pointer(true), onPointerOut: pointer(false),
+});
 
 const SCREEN_PROJECTS = PROJECTS.filter(project => project.public && LAB_ANCHORS[`screen_${project.id}`]);
 
-/** A project screen: eases between lit, dimmed and idle; a cyan frame (bloom) rings it when lit. */
-function Screen({ anchor, label, map, labelMap, highlight, onSelect, onHover }: {
-  anchor: LabAnchor; label?: LabAnchor; map: Texture; labelMap: Texture; highlight: Highlight; onSelect: () => void; onHover: (on: boolean) => void;
+/** A project screen (HTML): eases between lit, dimmed and idle; a cyan frame (bloom) rings it when lit. */
+function Screen({ anchor, label, name, capture, labelMap, highlight, onSelect, onHover }: {
+  anchor: LabAnchor; label?: LabAnchor; name: string; capture?: string; labelMap: Texture; highlight: Highlight; onSelect: () => void; onHover: (on: boolean) => void;
 }) {
-  const screen = useRef<MeshBasicMaterial>(null), caption = useRef<MeshBasicMaterial>(null), frame = useRef<MeshBasicMaterial>(null);
+  const caption = useRef<MeshBasicMaterial>(null), frame = useRef<MeshBasicMaterial>(null);
   const level = useRef(1), glow = useRef(0);
   useFrame((_, delta) => {
     level.current = ease(level.current, HIGHLIGHT_LEVEL[highlight], delta);
     glow.current = ease(glow.current, highlight === 'lit' ? 1 : 0, delta);
-    // Captures are mostly white: above 1 they would bloom out; the cyan frame marks the lit screen.
-    screen.current?.color.setScalar(Math.min(1, level.current));
     caption.current?.color.setScalar(Math.min(1, level.current));
     if (frame.current) { frame.current.opacity = glow.current; frame.current.visible = glow.current > .01; }
   });
@@ -99,8 +74,12 @@ function Screen({ anchor, label, map, labelMap, highlight, onSelect, onHover }: 
         <planeGeometry args={[anchor.size[0] + .06, anchor.size[1] + .06]} />
         <meshBasicMaterial ref={frame} color={[.6, 2.4, 3]} transparent opacity={0} depthWrite={false} toneMapped={false} />
       </mesh>
-      <mesh {...events}><planeGeometry args={anchor.size} /><meshBasicMaterial ref={screen} map={map} toneMapped={false} /></mesh>
     </group>
+    {/* Captures are mostly white: they never go above 1 (no bloom); the cyan frame marks the lit screen. */}
+    <DomScreen anchor={anchor} width={1024} brightness={level} {...events}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- plain DOM inside the 3D layer, outside Next's image pipeline */}
+      {capture ? <img className={styles.screenCapture} src={capture} alt="" /> : <div className={styles.screenName}>{name}<small>sin captura publicada</small></div>}
+    </DomScreen>
     {label && <mesh position={label.position} rotation={[0, label.rotationY, 0]} {...events}>
       <planeGeometry args={label.size} /><meshBasicMaterial ref={caption} map={labelMap} toneMapped={false} />
     </mesh>}
@@ -111,21 +90,10 @@ function Screen({ anchor, label, map, labelMap, highlight, onSelect, onHover }: 
 export function ProjectWall({ lit, focused, onSelect, onHover }: {
   lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null) => void;
 }) {
-  const captured = SCREEN_PROJECTS.filter(project => PROJECT_CAPTURES[project.id]);
-  const captures = useTexture(captured.map(project => PROJECT_CAPTURES[project.id]!));
-  const maps = useMemo(() => new Map(SCREEN_PROJECTS.map(project => {
-    const anchor = LAB_ANCHORS[`screen_${project.id}`]!;
-    const index = captured.indexOf(project);
-    return [project.id, {
-      screen: index >= 0 ? cover(captures[index]!, anchor.size[0] / anchor.size[1]) : nameScreen(project.name),
-      label: labelTexture(project.name, '#e6f2f4'),
-    }];
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- projects are static data; captures settle once
-  })), [captures]);
+  const labels = useMemo(() => new Map(SCREEN_PROJECTS.map(project => [project.id, labelTexture(project.name, '#e6f2f4')])), []);
   return <>{SCREEN_PROJECTS.map(project => {
-    const textures = maps.get(project.id)!;
     return <Screen key={project.id} anchor={LAB_ANCHORS[`screen_${project.id}`]!} label={LAB_ANCHORS[`label_${project.id}`]}
-      map={textures.screen} labelMap={textures.label} highlight={lit.has(project.id) ? 'lit' : focused ? 'dim' : 'idle'}
+      name={project.name} capture={PROJECT_CAPTURES[project.id]} labelMap={labels.get(project.id)!} highlight={lit.has(project.id) ? 'lit' : focused ? 'dim' : 'idle'}
       onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />;
   })}</>;
 }
@@ -171,50 +139,27 @@ export function ProjectCorners({ lit, focused, onSelect, onHover }: {
     onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />)}</>;
 }
 
-function wrap(g: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
-  let line = '';
-  for (const word of text.split(' ')) {
-    if (line && g.measureText(`${line} ${word}`).width > maxWidth) { g.fillText(line, x, y); y += lineHeight; line = word; }
-    else line = line ? `${line} ${word}` : word;
-  }
-  g.fillText(line, x, y);
-}
-
 /** The ultrawide on the desk: the real availability note and public profile links (no invented email). */
-const MONITOR = { position: [3.818, 1.18, -3.0] as [number, number, number], rotationY: -Math.PI / 2, size: [1.1, .46] as [number, number] };
+const MONITOR: LabAnchor = { position: [3.818, 1.18, -3.0], rotationY: -Math.PI / 2, size: [1.1, .46] };
 export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
-  const map = useMemo(() => canvasTexture(1100, 460, g => {
-    const sky = g.createLinearGradient(0, 0, 1100, 460);
-    sky.addColorStop(0, '#1c1240'); sky.addColorStop(1, '#3a1d6e');
-    g.fillStyle = sky; g.fillRect(0, 0, 1100, 460);
-    g.fillStyle = '#ffffff'; g.font = '600 76px system-ui, sans-serif'; g.fillText('Conversemos', 60, 120);
-    g.fillStyle = '#cdbff5'; g.font = '400 30px system-ui, sans-serif'; wrap(g, PUBLIC_PROFILE.availability, 62, 185, 960, 40);
-    g.fillStyle = '#2fe6ff'; g.font = '500 28px ui-monospace, Menlo, monospace';
-    g.fillText(PUBLIC_PROFILE.github.replace('https://', ''), 62, 360);
-    g.fillText(PUBLIC_PROFILE.linkedin.replace('https://www.', ''), 62, 405);
-  }), []);
-  return <Plane anchor={MONITOR} map={map} onSelect={onSelect} />;
+  return <DomScreen anchor={MONITOR} width={1100} className={styles.monitor} {...select(onSelect)}>
+    <h2>Conversemos</h2>
+    <p>{PUBLIC_PROFILE.availability}</p>
+    <span>{PUBLIC_PROFILE.github.replace('https://', '')}</span>
+    <span>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span>
+  </DomScreen>;
 }
 
 /** Trayectoria board: the career entries from the profile data, so the board reads without opening the panel. */
 export function Whiteboard({ onSelect }: { onSelect: () => void }) {
   const anchor = LAB_ANCHORS.whiteboard;
-  const map = useMemo(() => canvasTexture(1200, 800, g => {
-    g.fillStyle = '#e9ece8'; g.fillRect(0, 0, 1200, 800);
-    g.fillStyle = '#1b2a30'; g.font = '600 84px system-ui, sans-serif'; g.fillText('Trayectoria', 60, 120);
-    g.fillStyle = '#36525a'; g.font = '500 34px system-ui, sans-serif'; g.fillText(STATIONS.trajectory.description, 64, 180);
-    const column = (title: string, x: number, items: readonly { period: string; title: string; organization: string }[]) => {
-      g.fillStyle = '#e06a3a'; g.font = '700 32px system-ui, sans-serif'; g.fillText(title.toUpperCase(), x, 270);
-      g.fillStyle = '#2fa8c0'; g.fillRect(x, 288, 6, items.length * 190 - 30);
-      items.forEach((item, i) => {
-        const y = 330 + i * 190;
-        g.fillStyle = '#36525a'; g.font = '500 28px ui-monospace, Menlo, monospace'; g.fillText(item.period, x + 28, y);
-        g.fillStyle = '#1b2a30'; g.font = '600 38px system-ui, sans-serif'; wrap(g, item.title, x + 28, y + 46, 500, 42);
-        g.fillStyle = '#36525a'; g.font = '400 28px system-ui, sans-serif'; g.fillText(item.organization, x + 28, y + 140);
-      });
-    };
-    column('Experiencia', 60, PORTFOLIO_CAREER.experience);
-    column('Formación', 650, PORTFOLIO_CAREER.education);
-  }), []);
-  return anchor ? <Plane anchor={anchor} map={map} onSelect={onSelect} /> : null;
+  const column = (title: string, items: readonly { period: string; title: string; organization: string }[]) => <section>
+    <h3>{title}</h3>
+    <ol>{items.map(item => <li key={`${item.period}${item.title}`}><span>{item.period}</span><b>{item.title}</b><span>{item.organization}</span></li>)}</ol>
+  </section>;
+  return anchor ? <DomScreen anchor={anchor} width={1200} className={styles.whiteboard} {...select(onSelect)}>
+    <h2>Trayectoria</h2>
+    <p>{STATIONS.trajectory.description}</p>
+    <div>{column('Experiencia', PORTFOLIO_CAREER.experience)}{column('Formación', PORTFOLIO_CAREER.education)}</div>
+  </DomScreen> : null;
 }

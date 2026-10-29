@@ -2,7 +2,7 @@
 
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { HalfFloatType, Vector2, WebGLRenderTarget } from 'three';
+import { CustomBlending, HalfFloatType, OneFactor, SrcAlphaFactor, Vector2, WebGLRenderTarget, ZeroFactor } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
@@ -20,7 +20,12 @@ function Composer({ onSlow, lite }: { onSlow: () => void; lite: boolean }) {
     const next = new EffectComposer(gl, target);
     next.addPass(new RenderPass(scene, camera));
     // High threshold: only the neon strips (emissive above 1) bloom, never the baked walls.
-    if (!lite) next.addPass(new UnrealBloomPass(new Vector2(size.width, size.height), .35, .4, .95));
+    if (!lite) {
+      const bloom = new UnrealBloomPass(new Vector2(size.width, size.height), .35, .4, .95);
+      // Additive on colour only (as AdditiveBlending), alpha untouched: the DOM screens' holes (alpha 0) must survive the bloom.
+      Object.assign(bloom.blendMaterial, { blending: CustomBlending, blendSrc: SrcAlphaFactor, blendDst: OneFactor, blendSrcAlpha: ZeroFactor, blendDstAlpha: OneFactor });
+      next.addPass(bloom);
+    }
     next.addPass(new OutputPass());
     return next;
     // eslint-disable-next-line react-hooks/exhaustive-deps -- size is applied in the effect below

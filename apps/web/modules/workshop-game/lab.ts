@@ -1,9 +1,28 @@
 import type { Patrol } from './lab-patrol';
 /** Robotics lab assets (specs/workshop-lab.md), exported by blender/bake_workshop_lab.py + compress_workshop_lab.sh. */
-export const labUrl = (name: string) => `/models/workshop-lab/${name}-v1.glb`;
+export type LabTier = 'high' | 'medium' | 'low';
+const TIERS: LabTier[] = ['high', 'medium', 'low'];
+let tier: LabTier | null = null;
+/**
+ * Asset tier, picked once per page: phones and small devices get the 2k lightmap, GPUs without 8k textures or
+ * mid-memory devices the 4k one, the rest the 8k one. `?quality=high|medium|low` forces it (testing).
+ */
+export function labTier(): LabTier {
+  if (tier) return tier;
+  const forced = new URLSearchParams(location.search).get('quality') as LabTier | null;
+  if (forced && TIERS.includes(forced)) return tier = forced;
+  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
+  let maxTexture = 4096;
+  try {
+    const context = document.createElement('canvas').getContext('webgl2');
+    maxTexture = context?.getParameter(context.MAX_TEXTURE_SIZE) ?? maxTexture;
+    context?.getExtension('WEBGL_lose_context')?.loseContext();
+  } catch { /* keep the safe default */ }
+  return tier = window.innerWidth <= 700 || memory <= 2 ? 'low' : maxTexture < 8192 || memory <= 4 ? 'medium' : 'high';
+}
+export const labUrl = (name: string) => `/models/workshop-lab/${labTier()}/${name}-v1.glb`;
 /** Baked room + neon/sky: the world fails without them. Plants and actors are optional decoration. */
-export const LAB_ESSENTIAL_URLS = [labUrl('lab-baked'), labUrl('lab-emissive')];
-export const LAB_PLANTS_URL = labUrl('lab-plants');
+export const labEssentialUrls = () => [labUrl('lab-baked'), labUrl('lab-emissive')];
 /**
  * Placed in the GLB itself (world transform kept on export). Drones are not baked, so `offset` moves them
  * clear of the camera paths: the K07 above the repair table, the Mech Drone up by the back shelves.

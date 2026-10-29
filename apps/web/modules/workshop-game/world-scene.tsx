@@ -5,7 +5,8 @@ import { Suspense, useEffect, useRef, useState, type MutableRefObject } from 're
 import { NoToneMapping } from 'three';
 import { useGLTF } from '@react-three/drei';
 import { CameraController, type WorldCameraHandle } from './camera-controller';
-import { LAB_ESSENTIAL_URLS } from './lab';
+import { DomScreenLayer } from './dom-screens';
+import { labEssentialUrls } from './lab';
 import type { LabFocus } from './lab-focus';
 import { LabScene } from './lab-scene';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
@@ -13,7 +14,7 @@ import { WorkshopLighting } from './workshop-lighting';
 import { AmbientLife } from './workshop-life';
 import { WorkshopPostprocessing } from './workshop-postprocessing';
 
-export function resetWorkshopResource() { useGLTF.clear(LAB_ESSENTIAL_URLS); }
+export function resetWorkshopResource() { useGLTF.clear(labEssentialUrls()); }
 
 export interface WorldSceneProps {
   suspended: boolean; point: WorldPoint; moving: boolean; token: number; reducedMotion: boolean;
@@ -82,9 +83,11 @@ export function WorldScene(props: WorldSceneProps) {
   const start = props.initialCamera ?? WORLD_VIEWS[props.moving ? 'entrance' : props.point];
   // Canvas reapplies its props after resize; keep visibility in the declarative pause too.
   // No tone mapping: the baked lightmaps already carry the Blender view transform.
-  return <Canvas frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 54, near: .05, far: 40, position: start.position }} gl={{ antialias: true, alpha: false, powerPreference: 'high-performance', toneMapping: NoToneMapping }}>
+  // Alpha: the DOM screens show through holes in the canvas (dom-screens.tsx); isolation keeps their layer inside the canvas box.
+  return <Canvas style={{ isolation: 'isolate' }} frameloop={props.suspended || hidden ? 'never' : 'demand'} dpr={dpr} camera={{ fov: 54, near: .05, far: 40, position: start.position }} gl={{ antialias: true, alpha: true, powerPreference: 'high-performance', toneMapping: NoToneMapping }}>
     <color attach="background" args={['#05090b']} />
     <RendererLifecycle token={props.token} onError={props.onError} suspended={props.suspended} />
+    <DomScreenLayer />
     <Suspense fallback={null}>
       <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />

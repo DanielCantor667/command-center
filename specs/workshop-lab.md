@@ -26,7 +26,7 @@ animados) y que todo el portafolio esté dentro de él de forma interactiva y co
 
 ## Requisitos no funcionales
 
-- Peso total de la sala en la web ≤ 15 MB (GLB + texturas), meshopt + WebP; la sala esencial (la que se ve al entrar) < 8 MB y las salas de proyecto cargan bajo demanda. (2026-10-27: subido de 10 MB; sujeto a medir el primer render en móvil en la Fase F.) (2026-10-26: WebP en vez de KTX2: no requiere `toktx` ni transcodificador en runtime.)
+- Peso total de la sala en la web ≤ 15 MB (GLB + texturas), meshopt + WebP; la sala esencial (la que se ve al entrar) < 8 MB y las salas de proyecto cargan bajo demanda. (2026-10-27: subido de 10 MB; sujeto a medir el primer render en móvil en la Fase F.) (2026-10-26: WebP en vez de KTX2: no requiere `toktx` ni transcodificador en runtime.) (2026-10-29: vuelve a KTX2 ETC1S en tres tiers `high`/`medium`/`low` (lightmap 8k/4k/2k, `labTier()` en `lab.ts`, `?quality=` lo fuerza): el lightmap 8k en WebP ocupaba 358 MB de VRAM, en ETC1S 45 MB. Pesos: high 14,2 MB (esencial 7,2), medium 9,3 (4,8), low 8,3 (3,8). `ktx` 4.4.2 extraído del pkg firmado de Khronos en `command-center-assets/tools/`; transcodificador en `public/basis/`. Pantallas de la pared, monitor y pizarra pasan a HTML real (`dom-screens.tsx`, CSS3D detrás del canvas con huecos alpha 0).)
 - Luz y AO horneados; pocas luces dinámicas. `frameloop` continuo solo mientras el taller es visible.
 - Móvil usable (DPR adaptativo, menos animaciones).
 - Accesible: cada pantalla/placa interactiva tiene alternativa navegable por teclado (explorador HTML actual).

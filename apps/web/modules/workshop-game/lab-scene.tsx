@@ -2,9 +2,10 @@
 import { Html, useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Component, Suspense, useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 import { Box3, Mesh, MeshBasicMaterial, Quaternion, Vector3, type Bone, type Group, type MeshStandardMaterial, type Object3D } from 'three';
 import { ambient } from './ambient';
-import { CONTACT_DESK, LAB_ACTORS, LAB_ESSENTIAL_URLS, LAB_PLANTS_URL, labUrl, type LabActor } from './lab';
+import { CONTACT_DESK, LAB_ACTORS, labEssentialUrls, labUrl, type LabActor } from './lab';
 import { patrolAt } from './lab-patrol';
 import { focusRelations, focusViewpoint, type LabFocus } from './lab-focus';
 import { ContactMonitor, pointer, ProjectCorners, ProjectWall, Whiteboard } from './lab-content';
@@ -20,9 +21,17 @@ export class OptionalBoundary extends Component<{ children: ReactNode }, { faile
   render() { return this.state.failed ? null : this.props.children; }
 }
 
+let ktx2: KTX2Loader | null = null;
+/** The lab GLBs carry KTX2 textures: one transcoder (public/basis, copied from three's examples) shared by every load. */
+function useLabGLTF<T extends string | string[]>(url: T) {
+  const gl = useThree(state => state.gl);
+  // drei's GLTFLoader is three-stdlib's: same loader contract, different typings. three's own KTX2Loader matches public/basis.
+  return useGLTF(url, true, true, loader => { loader.setKTX2Loader((ktx2 ??= new KTX2Loader().setTranscoderPath('/basis/').detectSupport(gl)) as never); });
+}
+
 /** The baked lightmaps already hold the final look (Blender view transform): shown unlit. */
 function Room() {
-  const [baked, emissive] = useGLTF(LAB_ESSENTIAL_URLS);
+  const [baked, emissive] = useLabGLTF(labEssentialUrls());
   useMemo(() => baked!.scene.traverse(object => {
     if (!(object instanceof Mesh) || object.userData.unlit) return;
     object.material = new MeshBasicMaterial({ map: (object.material as MeshStandardMaterial).map, toneMapped: false });
@@ -35,7 +44,7 @@ function Room() {
 }
 
 function Plants() {
-  const { scene } = useGLTF(LAB_PLANTS_URL);
+  const { scene } = useLabGLTF(labUrl('lab-plants'));
   return <primitive object={scene} dispose={null} />;
 }
 
@@ -48,7 +57,7 @@ const scratch = { goal: new Vector3(), forward: new Vector3(), toward: new Vecto
  * and the cat's head turn towards it. Clips loop while motion is allowed; drones also bob.
  */
 function Actor({ actor, phase, target }: { actor: LabActor; phase: number; target: [number, number, number] | null }) {
-  const { scene, animations } = useGLTF(labUrl(actor.id));
+  const { scene, animations } = useLabGLTF(labUrl(actor.id));
   // The cached scene is shifted by -centre below; measure without that shift so a remount gets the same pivot.
   const centre = useMemo(() => new Box3().setFromObject(scene).getCenter(new Vector3()).sub(scene.position), [scene]);
   const head = useMemo(() => (actor.looks ? findHead(scene) : null), [actor.looks, scene]);

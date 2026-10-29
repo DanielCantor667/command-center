@@ -1,21 +1,39 @@
 #!/usr/bin/env bash
 # Phase B: compress the raw workshop-lab GLBs (bake_workshop_lab.py output) into the web copies.
 # Same tool and version as the earlier workshop props: gltf-transform 4.5.1, meshopt geometry.
-# Textures go to WebP (no runtime transcoder needed, unlike KTX2).
+# Textures go to KTX2 (stay compressed on the GPU: the 8k lightmap is 45 MB of VRAM instead of 358 MB as WebP),
+# in three tiers picked by labTier() in lab.ts: high (8k lightmap), medium (4k), low (2k, phones).
+# ETC1S for every slot: UASTC normal maps tripled the download and the actors are too small on screen to show it.
+# Needs KTX-Software 4.3+ (`ktx` on PATH):
+# the official signed pkg extracted into the assets folder, no system install.
 set -euo pipefail
-SRC=/Users/creativo/Documents/command-center-assets/build
+ASSETS=/Users/creativo/Documents/command-center-assets
+SRC="$ASSETS/build"
 OUT="$(cd "$(dirname "$0")/.." && pwd)/apps/web/public/models/workshop-lab"
+export PATH="$ASSETS/tools/ktx-4.4.2/bin:$PATH"
 GT="npx -y @gltf-transform/cli@4.5.1"
-mkdir -p "$OUT"
+TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 
-# baked room: keep the 4k lightmaps, it is the whole look of the room
-$GT optimize "$SRC/lab-baked.glb" "$OUT/lab-baked-v1.glb" --compress meshopt --texture-compress webp --texture-size 8192
-$GT optimize "$SRC/lab-emissive.glb" "$OUT/lab-emissive-v1.glb" --compress meshopt
-$GT optimize "$SRC/lab-plants.glb" "$OUT/lab-plants-v1.glb" --compress meshopt --texture-compress webp --texture-size 512
-for actor in robot-cobot drone-k07 drone-mech cat robot-humanoid robot-quad robot-trilobite; do
-  # actors keep their node hierarchy so animations stay addressable
-  $GT optimize "$SRC/$actor.glb" "$OUT/$actor-v1.glb" --compress meshopt --texture-compress webp --texture-size 1024 \
-    --join false --flatten false --instance false
+# compress <name> <tier> <max texture px> [optimize flags...]
+compress() {
+  local name=$1 tier=$2 size=$3; shift 3
+  mkdir -p "$OUT/$tier"
+  # meshopt goes last: the texture commands rewrite the file without it
+  $GT optimize "$SRC/$name.glb" "$TMP/$name.glb" --compress false --texture-compress false "$@"
+  $GT etc1s "$TMP/$name.glb" "$TMP/$name.glb" --resize "$size" --quality 255
+  $GT meshopt "$TMP/$name.glb" "$OUT/$tier/$name-v1.glb"
+}
+
+for tier_size in high:8192:1024 medium:4096:512 low:2048:512; do
+  IFS=: read -r tier room props <<< "$tier_size"
+  # baked room: the lightmaps are the whole look of the room
+  compress lab-baked "$tier" "$room"
+  $GT optimize "$SRC/lab-emissive.glb" "$OUT/$tier/lab-emissive-v1.glb" --compress meshopt
+  compress lab-plants "$tier" 512
+  for actor in robot-cobot drone-k07 drone-mech cat robot-humanoid robot-quad robot-trilobite; do
+    # actors keep their node hierarchy so animations stay addressable
+    compress "$actor" "$tier" "$props" --join false --flatten false --instance false
+  done
 done
 cp "$SRC/lab-anchors.json" "$OUT/lab-anchors-v1.json"
 # Typed copy for the web module, already in three.js space: Blender (x, y, z-up) -> (x, z, -y),
@@ -36,4 +54,4 @@ open(dst, "w").write(
     "export const LAB_ANCHORS: Record<string, LabAnchor> = {\n" + "\n".join(rows) + "\n};\n")
 print("wrote", dst, len(rows), "anchors")
 PY
-du -ch "$OUT"/* | sort -h
+du -sh "$OUT"/*/
