@@ -64,4 +64,43 @@ Orden: R.0 → R.1 → R.2 (el bake depende de los assets) → R.3 → R.4 → R
 3. **Primera persona:** modo opcional "Explorar libre"; el recorrido guiado sigue siendo la vía principal.
 4. **Peso:** tier `high` hasta 25 MB (esencial ≤ 12 MB); `medium` y `low` ≤ 15 MB.
 
-Estado: plan escrito; **R.0 sin luz verde**.
+## R.0 (hecha 2026-10-29, espera el visto bueno de Daniel)
+
+- Tomas de referencia: 1 entrada (`cam_main` / vista `hub`), 2 escritorio y PC (`cam_desk` / `contact`), 3 pared de proyectos (`projects`), 4 un stand (`corner-lorigine`), 5 Tecnologías (`technologies`).
+- Capturas "antes" de la web en los 3 tiers: `command-center-assets/lookdev/before/` (15 PNG, 1600 × 900).
+- Look-dev de noche: `blender/lookdev_night.py` (no guarda la escena). Renders en `command-center-assets/lookdev/night-v1/` (`night-main`, `night-desk`, `night-back`), Cycles a 128 muestras, unos 3 min por toma.
+  - Fuera los rellenos y el lavado del techo; las lámparas colgantes quedan al 30 %; el monitor, el neón y la lámpara del banco siguen igual.
+  - Ventanal: HDRI `shanghai_bund` (Poly Haven, CC0) en lugar del skyline de cajas, inclinado 12° para que no aparezca la gente a nivel de calle; la niebla queda confinada al cuarto (la niebla del mundo tapaba la ciudad).
+  - Lo que se ve falso en el render es justo el alcance de R.1: PC de cajas, silla sci-fi, monitor sin brazo, escritorio vacío.
+
+
+## R.0 aprobada (Daniel, 2026-10-29): "me gusta lo que veo"; pide mejorar el monitor y el PC, y cambiar la silla.
+
+## R.1 (cerrada 2026-10-30)
+
+- Kit del escritorio: `blender/prepare_desk_kit.py` parte "Gaming Desktop PC" (Yolala3D) y "Ultrawide Monitor with Desk Mount" (samhatesham), ambos CC BY y en `CREDITS.md`, en `command-center-assets/kits/desk/{tower,keyboard,mouse,speaker,ultrawide}.glb`: escala en metros, el lado del usuario hacia −X y el origen en la base. Fuera el monitor plano del kit, su tablón, los cables y todos los logos: las mallas de logo se borran; en las texturas, los logos quedan en negro, los centros de los ventiladores se oscurecen y las etiquetas de GPU, fuente y placa se desenfocan; el mouse queda negro mate, sin el patrón de marca.
+- Prototipo: cubierta de roble (`oak_veneer_01`, Poly Haven), ultrawide con brazo de pinza, torre con vidrio hacia la sala, teclado mecánico, mouse con pad y dos parlantes. La pantalla muestra en el render el mismo HTML de Contacto (`generated/contact-monitor.png`, captura de Playwright); en la web la cubre la pantalla DOM.
+- Renders: `command-center-assets/lookdev/night-v2/` (`night-deskclose`, `night-desk`); `lookdev_night.py` agrega la cámara `deskclose`.
+- Silla: "Gaming chair" de Man1ac (CC BY, en `CREDITS.md`), `kits/desk/chair.glb`: pose del rig aplicada, 1,28 m, 54k triángulos, acentos rosados pasados a negro; sin logos en textura. Reemplaza a la "Office Chair" de j.a.m. Render: `command-center-assets/lookdev/night-v3/`.
+- Cerrada por Daniel el 2026-10-30 para el escritorio de Contacto. Queda sin hacer lo que R.1 dejaba para después: sillas y mesas del resto del taller al mismo nivel. La integración en la web (horneado, el anchor del monitor DOM cambia de 1,1 × 0,46 m a 0,75 × 0,32 m) pasa a R.2.
+
+## R.1b PC interactiva (propuesta 2026-10-30, Daniel pidió PC con GitHub y terminal)
+
+Referencia: halloween.dev. Probado en vivo hasta el escritorio (el juego apaga el pointer lock en navegadores automatizados, así que el SO no se pudo operar) y leído en sus bundles públicos. Se copia la técnica, no el código.
+
+- **Cómo lo hacen:** el SO es un árbol DOM de tamaño viewport. Mientras se juega va con `os-embedded`: `matrix3d` sobre la pantalla, `inert`, `aria-hidden` y `pointer-events: none`. Al sentarse pasa a `os-full`: el mismo árbol a pantalla completa, sin transformación. Nunca se interactúa con HTML en perspectiva. Las apps cargan bajo demanda (`Terminal`, `Finder`, `Mail`, `Notes`…).
+- **Su terminal:** sistema de archivos virtual en un `Map`, tabla `comando -> función`, parser con `|`, `&&` y `||`, historial con flechas y `zsh: command not found`.
+
+Alcance:
+
+1. **Entrada:** clic en el monitor de Contacto (o Enter desde la lista HTML) -> la cámara se acerca -> el SO pasa a pantalla completa (`os-full`). `Esc` o cerrar lo devuelve a la pantalla 3D. Dentro de la escena sigue el `DomScreen` de hoy como vista previa inerte.
+2. **SO:** barra superior, dock y ventanas (una a la vez en móvil), iconos `lucide-react`, carga diferida.
+3. **Terminal:** `help`, `whoami`, `ls`, `cd`, `cat`, `projects`, `open <proyecto>`, `git log`, `contact`, `clear`, historial con flechas y Tab para completar. Archivos virtuales generados desde `PUBLIC_PROFILE`, `PORTFOLIO_CAREER` y los proyectos: nada escrito a mano que pueda desincronizarse. Se usa como foco real un `<input>` visible, para móvil y lectores de pantalla.
+4. **GitHub:** repos públicos, lenguajes y última actividad reales, desde una foto generada en build (JSON). Si falta: "sin datos". Sin gráfica de contribuciones (exige token).
+5. **Proyectos y Contacto:** reutilizan los casos y datos existentes.
+6. **Accesibilidad:** `inert` y `aria-hidden` solo mientras está embebido; foco atrapado y devuelto al salir; el panel de Contacto sigue siendo la vía simple. `prefers-reduced-motion`: sin zoom de cámara.
+7. **Tests:** Vitest para el parser y los comandos de la terminal; Playwright para abrir, escribir y salir, en escritorio y móvil.
+
+Fuera de alcance: login o contraseña, modo Claude simulado, cámaras, correo, sistema de archivos editable, multiventana en móvil.
+
+Dependencia: el monitor de la web sigue siendo el de 1,1 × 0,46 m hasta rehornear con el kit nuevo, así que el anchor `MONITOR` se mueve en R.2, no en R.1b. El SO a pantalla completa no depende de ese anchor.

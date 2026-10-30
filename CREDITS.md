@@ -17,11 +17,14 @@ aquí solo entran los exports optimizados en `apps/web/public/models/workshop-la
 | Tama Drum Kit | robcantuart | [Sketchfab](https://sketchfab.com/3d-models/219c9a6e10f44283b044d46ad8420598) | Batería del rincón de 4U Studio Academy |
 | Guitar amplifier | victorhugohc | [Sketchfab](https://sketchfab.com/3d-models/986c95d1d84e44929f6cebfc170fe71b) | Amplificador del rincón de 4U Studio Academy |
 | Floor Globe | ctorre | [Sketchfab](https://sketchfab.com/3d-models/0318ad51a7294885b452ff4f408353ba) | Globo del rincón de Drokex |
+| Gaming Desktop PC | Yolala3d | [Sketchfab](https://sketchfab.com/3d-models/d1d8282c9916438091f11aeb28787b66) | Torre, teclado, mouse y parlantes del escritorio de Contacto (sin monitor ni logos) |
+| Gaming chair | Man1ac | [Sketchfab](https://sketchfab.com/3d-models/024da6d26b5b460790cacca36d86a3e2) | Silla del escritorio de Contacto |
+| Ultrawide Monitor with Desk Mount | samhatesham | [Sketchfab](https://sketchfab.com/3d-models/9829c68b241e4242a7ec178965d1ed26) | Monitor ultrawide del escritorio de Contacto |
 
 Licencia: [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
 Cambios: reescalados, reducidos de polígonos, texturas recomprimidas e iluminación horneada.
 
 ## CC0 (dominio público, crédito de cortesía)
 
-- [Poly Haven](https://polyhaven.com): props de taller, plantas, lámparas y texturas de concreto, yeso y metal.
-- [Quaternius](https://quaternius.com) — Sci-Fi Essentials Kit: silla, caja, taza y el robot de la mesa de reparación.
+- [Poly Haven](https://polyhaven.com): props de taller, plantas, lámparas, texturas de concreto, yeso, metal y roble, y el HDRI nocturno `shanghai_bund`.
+- [Quaternius](https://quaternius.com) — Sci-Fi Essentials Kit: caja, taza y el robot de la mesa de reparación.

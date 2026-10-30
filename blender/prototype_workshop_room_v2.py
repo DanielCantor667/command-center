@@ -28,6 +28,7 @@ ASSETS = Path("/Users/creativo/Documents/command-center-assets")
 PH = ASSETS / "polyhaven"
 SK = ASSETS / "sketchfab"
 QUAT = ASSETS / "scifi-essentials/flat"
+KIT = ASSETS / "kits/desk"  # blender/prepare_desk_kit.py: metres, user side towards -X, origin bottom centre
 OUT_BLEND = ROOT / "blender/scenes/workshop-room-proto-v2.blend"
 RNG = random.Random(7)
 W, D, H = 8.0, 11.0, 3.2
@@ -397,19 +398,25 @@ ph("pachira_aquatica_01", (0.75, BY - 0.45, 0), rot=30, max_dim=1.6)
 
 # --- right wall: PC desk ---------------------------------------------------------------------
 DX = W / 2 - 0.45
-box("pc_desk_top", (DX, 3.0, 0.74), (0.8, 2.4, 0.05), "desk", bevel=0.01)
+pbr("desk_oak", "oak_veneer_01", 1.2, tint=(0.8, 0.74, 0.68), rough_mul=0.85)
+box("pc_desk_top", (DX, 3.0, 0.74), (0.8, 2.4, 0.05), "desk_oak", bevel=0.01)
 for yy in (1.9, 4.1):
     for xx in (DX - 0.33, DX + 0.33):
         box("pc_leg", (xx, yy, 0.36), (0.05, 0.05, 0.72), "black")
-box("monitor_back", (DX + 0.3, 3.0, 1.18), (0.04, 1.15, 0.5), "black")
-box("monitor_screen", (DX + 0.275, 3.0, 1.18), (0.01, 1.1, 0.46), "screen")
-box("monitor_glowbar", (DX + 0.3, 3.0, 0.8), (0.005, 0.7, 0.012), "cyan_glow")  # below and behind the screen plane (web text sits at x 2.818)
-box("monitor_stand", (DX + 0.36, 3.0, 0.85), (0.1, 0.06, 0.2), "metal")  # behind the screen, ends at its lower edge
-box("tower", (DX + 0.1, 4.0, 1.0), (0.24, 0.5, 0.52), "black", bevel=0.01)
-box("tower_glass", (DX - 0.03, 4.0, 1.0), (0.005, 0.46, 0.48), "cyan_dim")
-box("kbd", (DX - 0.05, 2.9, 0.78), (0.17, 0.46, 0.02), "black")
-box("kbd_glow", (DX - 0.05, 2.9, 0.795), (0.15, 0.4, 0.002), "pink_dim")
-put(QUAT / "Prop_Chair.gltf", (DX - 1.0, 3.0, 0), rot=-90, max_dim=1.1, tint=0.3)
+# R.1 (specs/workshop-realism.md): real gaming setup from Sketchfab (CC BY, CREDITS.md), split by prepare_desk_kit.py
+DESK_TOP = 0.765
+contact_screen = image_mat("contact_screen", GEN / "contact-monitor-uv.png", 1.6)  # Playwright render of the web monitor HTML, flipped vertically for the kit UVs
+monitor = put(KIT / "ultrawide.glb", (DX + 0.31, 3.0, DESK_TOP - 0.06))  # the clamp grips the back edge of the top
+for o in monitor.children_recursive:
+    for slot in getattr(o, "material_slots", []):
+        if slot.material and slot.material.name.startswith("Monitor_Glow"):
+            slot.material = contact_screen  # same content as the web's HTML screen, which covers it there
+put(KIT / "keyboard.glb", (DX - 0.17, 3.0, DESK_TOP))
+put(KIT / "mouse.glb", (DX - 0.13, 2.45, DESK_TOP))
+for sy in (2.42, 3.58):
+    put(KIT / "speaker.glb", (DX + 0.2, sy, DESK_TOP))
+put(KIT / "tower.glb", (DX + 0.1, 3.97, DESK_TOP), rot=90)  # tempered-glass side towards the room
+put(KIT / "chair.glb", (DX - 1.0, 3.0, 0))
 ph("potted_plant_02", (W / 2 - 0.5, 1.2, 0), max_dim=0.8)
 ph("metal_trash_can", (W / 2 - 0.45, 4.6, 0), max_dim=0.55)
 
