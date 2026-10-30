@@ -26,7 +26,7 @@ CAMERAS = ARGV[3:] or ["main", "desk"]
 # Light multipliers by name prefix: practicals stay, fills go, overheads become small warm pools.
 LIGHTS = {
     "fill_warm": 0.0, "front_fill": 0.0, "ceiling_white": 0.0, "pegboard_wash": 0.15,
-    "hang_": 0.3, "booth_": 0.22, "cone_cyan": 0.5, "door_cyan": 0.0,
+    "hang_": 0.45, "booth_": 0.6, "cone_cyan": 0.5, "door_cyan": 0.0,
     "monitor_purple": 1.6, "bench_lamp": 1.0,
 }
 # Emissive strength multipliers by material name.
@@ -120,16 +120,21 @@ def camera(name):
     return cam
 
 
-def main():
+def night_look(scene):
+    """The approved mood, shared with the web bake (bake_workshop_lab.py)."""
     scale_lights()
     scale_emission()
     night_city()
-    scene = bpy.context.scene
-    scene.cycles.samples = SAMPLES
-    scene.render.resolution_x, scene.render.resolution_y = WIDTH, WIDTH * 9 // 16
     scene.view_settings.view_transform = "AgX"
     scene.view_settings.look = "AgX - Punchy"
-    scene.view_settings.exposure = 0.3
+    scene.view_settings.exposure = 0.5
+
+
+def main():
+    scene = bpy.context.scene
+    night_look(scene)
+    scene.cycles.samples = SAMPLES
+    scene.render.resolution_x, scene.render.resolution_y = WIDTH, WIDTH * 9 // 16
     OUT.mkdir(parents=True, exist_ok=True)
     for name in CAMERAS:
         scene.camera = camera(name)
@@ -138,4 +143,5 @@ def main():
         print("rendered", scene.render.filepath)
 
 
-main()
+if __name__ == "__main__":
+    main()

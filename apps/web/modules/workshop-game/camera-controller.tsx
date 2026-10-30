@@ -4,6 +4,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type MutableRefObject } from 'react';
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import { PC_CLOSE_UP } from './lab';
+import { soundscape } from './lab-soundscape';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 
 /** Matches the Blender framing of the lab renders (20 mm lens at 16:9), so the open front stays out of view. */
@@ -142,7 +143,12 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     };
   }, [camera, gl, invalidate]);
 
+  const ear = useRef({ forward: new Vector3(), up: new Vector3() });
   useFrame((_, delta) => {
+    const { forward, up } = ear.current;
+    camera.getWorldDirection(forward);
+    up.copy(camera.up).applyQuaternion(camera.quaternion);
+    soundscape.listen(camera.position.toArray(), forward.toArray(), up.toArray());
     const perspective = camera as PerspectiveCamera;
     const fov = fovFor(aspect);
     if (perspective.fov !== fov) { perspective.fov = fov; perspective.updateProjectionMatrix(); }

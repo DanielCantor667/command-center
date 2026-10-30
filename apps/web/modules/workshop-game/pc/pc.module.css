@@ -165,6 +165,14 @@
 .ghRepos p { margin-top: 6px; }
 .ghRepos small { display: flex; gap: 14px; margin-top: 8px; color: #8b949e; font-size: 12px; }
 
+.shortcutCv { bottom: 150px; }
+.preview { display: flex; flex-direction: column; height: 100%; }
+.preview iframe { flex: 1; width: 100%; min-height: 0; border: 0; background: #525252; }
+.previewBar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 12px; background: #24232b; font-size: 12px; }
+.previewBar div { display: flex; gap: 2px; padding: 2px; border-radius: 7px; background: rgb(255 255 255 / .08); }
+.previewBar button { padding: 3px 10px; border: 0; border-radius: 5px; background: none; color: inherit; font: inherit; cursor: pointer; }
+.previewBar button[aria-pressed="true"] { background: rgb(255 255 255 / .18); }
+.previewBar a { display: inline-flex; align-items: center; gap: 5px; color: #6fb6ff; }
 .empty { display: grid; place-items: center; height: 100%; margin: 0; color: #a9a6b6; }
 .account { display: flex; align-items: center; gap: 8px; margin: 0 2px 10px !important; }
 .account img { border-radius: 50%; }

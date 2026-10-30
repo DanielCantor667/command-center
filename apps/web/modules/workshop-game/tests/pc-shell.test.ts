@@ -60,4 +60,15 @@ describe('workshop PC shell', () => {
     expect(ask('¿eres una IA?').text[0]).toContain('no hay ninguna IA');
     expect(ask('qwerty').text[0]).toContain('sin IA');
   });
+
+  it('hides its easter eggs from help', () => {
+    expect(run('sudo rm -rf /', HOME).output[0]).toContain('sudoers');
+    expect(run('rm -rf /', HOME).error).toBeUndefined();
+    expect(run('git push --force', HOME).output[0]).toContain('viernes');
+    expect(run('neofetch', HOME).output.join()).toContain('Taller OS');
+    expect(isCommand('sudo make me a sandwich')).toBe(true);
+    expect(run('help', HOME).output.join()).not.toContain('sudo');
+    expect(complete('sud', HOME)).toBe('sud');
+    expect(run('cv', HOME).action).toEqual({ kind: 'app', app: 'cv' });
+  });
 });

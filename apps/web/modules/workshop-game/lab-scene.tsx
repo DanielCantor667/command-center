@@ -1,12 +1,13 @@
 'use client';
 import { Html, useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Component, Suspense, useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { Component, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
-import { Box3, Mesh, MeshBasicMaterial, Quaternion, Vector3, type Bone, type Group, type MeshStandardMaterial, type Object3D } from 'three';
+import { BackSide, Box3, Mesh, MeshBasicMaterial, MeshStandardMaterial, Quaternion, SRGBColorSpace, TextureLoader, Vector3, type Bone, type Group, type Object3D, type Texture } from 'three';
 import { ambient } from './ambient';
-import { CONTACT_DESK, LAB_ACTORS, labEssentialUrls, labUrl, type LabActor } from './lab';
+import { CONTACT_DESK, LAB_ACTORS, labEssentialUrls, labSkyUrl, labTier, labUrl, type LabActor } from './lab';
 import { patrolAt } from './lab-patrol';
+import { soundscape } from './lab-soundscape';
 import { focusRelations, focusViewpoint, type LabFocus } from './lab-focus';
 import { ContactMonitor, pointer, ProjectCorners, ProjectWall, Whiteboard } from './lab-content';
 import { STATIONS } from './stations';
@@ -29,18 +30,58 @@ function useLabGLTF<T extends string | string[]>(url: T) {
   return useGLTF(url, true, true, loader => { loader.setKTX2Loader((ktx2 ??= new KTX2Loader().setTranscoderPath('/basis/').detectSupport(gl)) as never); });
 }
 
-/** The baked lightmaps already hold the final look (Blender view transform): shown unlit. */
+/** The detail textures hold albedo over its mean, halved and sRGB-encoded: this undoes the halving after decoding (2 ^ 2.2). */
+const DETAIL_GAIN = '4.59';
+const ANISOTROPY = 8;
+/**
+ * R.2b (specs/workshop-realism.md): the lightmap holds the light, the materials' own textures the detail, multiplied in
+ * display space so the bake's Blender look stays intact. `chunk` is where the shader has the colour to modulate.
+ */
+function withDetail<T extends MeshBasicMaterial | MeshStandardMaterial>(material: T, detail: Texture, chunk: string, target: string) {
+  material.onBeforeCompile = shader => {
+    shader.uniforms.detailMap = { value: detail };
+    shader.vertexShader = `varying vec2 vDetailUv;\n${shader.vertexShader.replace('#include <uv_vertex>', '#include <uv_vertex>\nvDetailUv = uv;')}`;
+    shader.fragmentShader = `uniform sampler2D detailMap;\nvarying vec2 vDetailUv;\n${shader.fragmentShader.replace(chunk, `${chunk}\n${target} *= texture2D(detailMap, vDetailUv).rgb * ${DETAIL_GAIN};`)}`;
+  };
+  material.customProgramCacheKey = () => `detail-${chunk}`;
+  return material;
+}
+
+/**
+ * The bake goes in as emission, untouched. On a black base that leaves only the specular term of the environment on
+ * top: reflections that move with the camera, with the surface's own normals. The low tier stays unlit.
+ */
 function Room() {
   const [baked, emissive] = useLabGLTF(labEssentialUrls());
   useMemo(() => baked!.scene.traverse(object => {
     if (!(object instanceof Mesh) || object.userData.unlit) return;
-    object.material = new MeshBasicMaterial({ map: (object.material as MeshStandardMaterial).map, toneMapped: false });
+    const { map, emissiveMap: detail, normalMap, roughness } = object.material as MeshStandardMaterial;
+    [map, detail, normalMap].forEach(texture => { if (texture) texture.anisotropy = ANISOTROPY; });
+    const unlit = labTier() === 'low';
+    const material = unlit ? new MeshBasicMaterial({ map, toneMapped: false })
+      : new MeshStandardMaterial({ color: 'black', emissive: 'white', emissiveMap: map, normalMap, roughness, metalness: 0, envMapIntensity: .7, toneMapped: false });
+    object.material = !detail ? material : unlit ? withDetail(material, detail, '#include <map_fragment>', 'diffuseColor.rgb')
+      : withDetail(material, detail, '#include <emissivemap_fragment>', 'totalEmissiveRadiance');
     object.userData.unlit = true;
   }), [baked]);
   return <>
     <primitive object={baked!.scene} dispose={null} />
     <primitive object={emissive!.scene} dispose={null} />
   </>;
+}
+
+/** The city through the window: the panorama of bake_workshop_lab.py, with +Y of Blender (the window) at its centre. */
+function CitySky() {
+  const { invalidate } = useThree();
+  const [map, setMap] = useState<Texture | null>(null);
+  useEffect(() => {
+    const texture = new TextureLoader().load(labSkyUrl, loaded => { loaded.colorSpace = SRGBColorSpace; setMap(loaded); invalidate(); });
+    return () => texture.dispose();
+  }, [invalidate]);
+  return map && <mesh rotation={[0, -Math.PI / 2, 0]} scale={[-1, 1, 1]} renderOrder={-1}>
+    <sphereGeometry args={[30, 48, 24]} />
+    <meshBasicMaterial map={map} side={BackSide} toneMapped={false} depthWrite={false} />
+  </mesh>;
 }
 
 function Plants() {
@@ -87,6 +128,7 @@ function Actor({ actor, phase, target }: { actor: LabActor; phase: number; targe
       const diff = Math.atan2(Math.sin(step.heading - facing.current), Math.cos(step.heading - facing.current));
       facing.current += diff * (1 - Math.exp(-6 * Math.min(delta, .1)));
       pivot.current.rotation.y = facing.current;
+      soundscape.move(actor.id, step.x, rest.y, step.z);
     }
     if (actor.hover && ambient.enabled) pivot.current.position.y += Math.sin(ambient.time.value * 1.3 + phase) * .04;
     if (head?.parent && headRest) {
@@ -137,7 +179,7 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
   };
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
   return <group>
-    <Room />
+    <Room /><CitySky />
     <OptionalBoundary><Suspense fallback={null}><Plants /></Suspense></OptionalBoundary>
     {LAB_ACTORS.map((actor, index) => <OptionalBoundary key={actor.id}><Suspense fallback={null}>
       <Actor actor={actor} phase={index * 1.7} target={viewpoint} />

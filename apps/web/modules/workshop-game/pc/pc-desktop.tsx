@@ -3,7 +3,7 @@
 import { ArrowLeft, ArrowRight, BatteryFull, Cpu, Lock, PanelLeft, Plus, RotateCw, Search, Share, SlidersHorizontal, Undo2, Wifi } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import { PUBLIC_PROFILE } from '../../../data/public-profile';
-import { ContactApp, GithubApp, NotesApp, ProjectsApp, SettingsApp, TerminalApp, TrashApp, WALLPAPERS, type WallpaperId } from './pc-apps';
+import { ContactApp, CvApp, GithubApp, NotesApp, ProjectsApp, SettingsApp, TerminalApp, TrashApp, WALLPAPERS, type WallpaperId } from './pc-apps';
 import { GITHUB, type PcApp } from './shell';
 import styles from './pc.module.css';
 
@@ -14,6 +14,7 @@ const APPS: { id: PcApp; name: string; title: string; icon: string; rect: [numbe
   { id: 'notes', name: 'Notas', title: 'Notas', icon: 'notes', rect: [.1, .08, 620, 420] },
   { id: 'terminal', name: 'Terminal', title: 'daniel — claude — 120×32', icon: 'terminal', rect: [.03, .26, 860, 460] },
   { id: 'settings', name: 'Ajustes del Sistema', title: 'Ajustes', icon: 'settings', rect: [.28, .14, 700, 440] },
+  { id: 'cv', name: 'Vista Previa', title: 'CV_Daniel_Cantor.pdf', icon: 'preview', rect: [.3, .04, 680, 700] },
   { id: 'trash', name: 'Papelera', title: 'Papelera', icon: 'trash', rect: [.4, .25, 420, 260] },
 ];
 const MENU_HEIGHT = 28;
@@ -92,7 +93,7 @@ export function PcDesktop({ onClose, onCase, sound, onSound }: { onClose: () => 
   const active = windows.filter(win => !win.minimized).sort((a, b) => b.z - a.z)[0];
   const content: Record<PcApp, ReactNode> = {
     terminal: <TerminalApp onApp={open} onCase={onCase} onExit={onClose} />, github: <GithubApp />, projects: <ProjectsApp onCase={onCase} />, contact: <ContactApp />, notes: <NotesApp />,
-    settings: <SettingsApp wallpaper={wallpaper} onWallpaper={setWallpaper} sound={sound} onSound={onSound} />, trash: <TrashApp />,
+    settings: <SettingsApp wallpaper={wallpaper} onWallpaper={setWallpaper} sound={sound} onSound={onSound} />, trash: <TrashApp />, cv: <CvApp />,
   };
   return <dialog ref={dialog} className={`${styles.desktop} ${WALLPAPERS[wallpaper]}`} aria-label="PC del taller" onClose={onClose}>
     {!unlocked ? <LockScreen onUnlock={unlock} /> : <>
@@ -103,6 +104,7 @@ export function PcDesktop({ onClose, onCase, sound, onSound }: { onClose: () => 
         <span className={styles.status}><BatteryFull size={18} aria-hidden="true" /><Wifi size={15} aria-hidden="true" /><Search size={14} aria-hidden="true" /><SlidersHorizontal size={14} aria-hidden="true" /><time>{dateText(now, { weekday: 'short', day: 'numeric', month: 'short' })} {time(now)}</time></span>
       </header>
       <button type="button" className={styles.shortcut} onDoubleClick={() => open('projects')} onClick={event => { if (event.detail === 0 || innerWidth <= 700) open('projects'); }}><img src="/pc-icons/folder.webp" alt="" width={64} height={64} /><span>proyectos</span></button>
+      <button type="button" className={`${styles.shortcut} ${styles.shortcutCv}`} onDoubleClick={() => open('cv')} onClick={event => { if (event.detail === 0 || innerWidth <= 700) open('cv'); }}><img src="/pc-icons/document.webp" alt="" width={64} height={64} /><span>CV_Daniel_Cantor.pdf</span></button>
       {windows.map(win => <Window key={win.app} win={win} title={APPS.find(item => item.id === win.app)!.title} active={win === active} onFocus={() => { if (win !== active) open(win.app); }} onChange={change => patch(win.app, change)} onClose={() => setWindows(current => current.filter(item => item !== win))}>{content[win.app]}</Window>)}
       <nav className={styles.dock} aria-label="Aplicaciones">{APPS.map(({ id, name, icon }) => <button key={id} type="button" aria-label={name} data-name={name} data-trash={id === 'trash'} data-running={windows.some(win => win.app === id)} onClick={() => open(id)}><img src={`/pc-icons/${icon}.webp`} alt="" width={54} height={54} /></button>)}</nav>
     </>}

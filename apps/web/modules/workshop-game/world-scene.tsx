@@ -92,7 +92,7 @@ export function WorldScene(props: WorldSceneProps) {
     <Suspense fallback={null}>
       <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
-      <WorkshopPostprocessing />
+      <WorkshopPostprocessing point={props.point} moving={props.moving} reducedMotion={props.reducedMotion} />
       <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} onComputer={props.onComputer} />
       <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} closeUp={props.closeUp} onCloseUp={props.onCloseUp} />
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />

@@ -1,3 +1,4 @@
+import { LAB_ANCHORS } from './lab-anchors';
 import type { Patrol } from './lab-patrol';
 /** Robotics lab assets (specs/workshop-lab.md), exported by blender/bake_workshop_lab.py + compress_workshop_lab.sh. */
 export type LabTier = 'high' | 'medium' | 'low';
@@ -20,6 +21,7 @@ export function labTier(): LabTier {
   } catch { /* keep the safe default */ }
   return tier = window.innerWidth <= 700 || memory <= 2 ? 'low' : maxTexture < 8192 || memory <= 4 ? 'medium' : 'high';
 }
+export const labSkyUrl = '/models/workshop-lab/night-sky-v1.webp';
 export const labUrl = (name: string) => `/models/workshop-lab/${labTier()}/${name}-v1.glb`;
 /** Baked room + neon/sky: the world fails without them. Plants and actors are optional decoration. */
 export const labEssentialUrls = () => [labUrl('lab-baked'), labUrl('lab-emissive')];
@@ -51,5 +53,6 @@ export const PROJECT_CAPTURES: Record<string, string> = {
 };
 /** The desk is a GLB prop without names: an invisible box makes it a target. */
 /** Facing the desk monitor: the camera ends here before the PC takes the full screen. */
-export const PC_CLOSE_UP = { position: [3.1, 1.18, -3.0] as [number, number, number], target: [3.818, 1.18, -3.0] as [number, number, number] };
+const [monitorX, monitorY, monitorZ] = LAB_ANCHORS.screen_contact!.position;
+export const PC_CLOSE_UP = { position: [monitorX - .52, monitorY, monitorZ] as [number, number, number], target: [monitorX, monitorY, monitorZ] as [number, number, number] };
 export const CONTACT_DESK = { position: [3.55, .95, -3.0] as [number, number, number], size: [.85, .5, 2.4] as [number, number, number] };

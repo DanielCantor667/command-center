@@ -140,9 +140,8 @@ export function ProjectCorners({ lit, focused, onSelect, onHover }: {
 }
 
 /** The ultrawide on the desk: the real availability note and public profile links (no invented email). */
-const MONITOR: LabAnchor = { position: [3.818, 1.18, -3.0], rotationY: -Math.PI / 2, size: [1.1, .46] };
 export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
-  return <DomScreen anchor={MONITOR} width={1100} className={styles.monitor} {...select(onSelect)}>
+  return <DomScreen anchor={LAB_ANCHORS.screen_contact!} width={1100} className={styles.monitor} {...select(onSelect)}>
     <h2>Conversemos</h2>
     <p>{PUBLIC_PROFILE.availability}</p>
     <span>{PUBLIC_PROFILE.github.replace('https://', '')}</span>

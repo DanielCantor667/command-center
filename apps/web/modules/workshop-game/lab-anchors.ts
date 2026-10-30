@@ -12,6 +12,7 @@ export const LAB_ANCHORS: Record<string, LabAnchor> = {
   'label_vevi': { position: [3.935, 1.76, -3.1], rotationY: 4.7124, size: [0.42, 0.065] },
   'screen_4ustudio-academy': { position: [-3.945, 2.1, 2.0], rotationY: 1.5708, size: [0.8, 0.5] },
   'screen_command-center': { position: [3.935, 2.0, -1.7], rotationY: 4.7124, size: [0.62, 0.39] },
+  'screen_contact': { position: [3.7713, 1.0667, -3.0], rotationY: 4.7124, size: [0.7485, 0.3166] },
   'screen_drokex': { position: [3.945, 2.1, 4.7], rotationY: 4.7124, size: [0.8, 0.5] },
   'screen_intranet-ess': { position: [3.935, 2.0, -2.4], rotationY: 4.7124, size: [0.62, 0.39] },
   'screen_kliniu': { position: [-3.945, 2.1, 4.7], rotationY: 1.5708, size: [0.8, 0.5] },

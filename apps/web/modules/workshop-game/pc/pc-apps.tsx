@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element -- fixed desktop icons, outside Next's image pipeline */
-import { BookMarked, BookOpen, MapPin, Monitor, Search, Users, Volume2, VolumeX, Wallpaper } from 'lucide-react';
+import { BookMarked, BookOpen, Download, MapPin, Monitor, Search, Users, Volume2, VolumeX, Wallpaper } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { PROJECTS } from '../../../data/projects';
 import { PUBLIC_PROFILE } from '../../../data/public-profile';
@@ -161,6 +161,19 @@ export function ContactApp() {
 const NOTES = [{ file: 'README.md', title: 'Sobre mí' }, { file: 'trayectoria.txt', title: 'Trayectoria' }];
 export function TrashApp() {
   return <p className={styles.empty}>La papelera está vacía.</p>;
+}
+
+/** Preview: the browser's own PDF viewer in a frame; the download link covers phones that only show the first page. */
+export function CvApp() {
+  const [language, setLanguage] = useState<'ES' | 'EN'>('ES');
+  const file = `/cv/CV_Daniel_Cantor_${language}.pdf`;
+  return <div className={styles.preview}>
+    <div className={styles.previewBar}>
+      <div role="group" aria-label="Idioma del CV">{(['ES', 'EN'] as const).map(id => <button key={id} type="button" aria-pressed={id === language} onClick={() => setLanguage(id)}>{id === 'ES' ? 'Español' : 'English'}</button>)}</div>
+      <a href={file} download>Descargar<Download size={14} aria-hidden="true" /></a>
+    </div>
+    <iframe key={file} src={`${file}#toolbar=0&navpanes=0&view=FitH`} title={`CV de ${PUBLIC_PROFILE.name}`} />
+  </div>;
 }
 
 export function NotesApp() {

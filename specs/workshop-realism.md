@@ -110,3 +110,31 @@ Hecha 2026-10-30, sin commit, rehecha con aspecto de escritorio (bloqueo sin con
 Ajuste del 2026-10-30, a pedido de Daniel: terminal estilo Claude Code bajo el nombre propio "Taller Code" (robot pixelado propio, bloque `●`/`⎿`, `/comandos`), navegador con la página de perfil de GitHub con datos reales (perfil, repos y calendario de contribuciones del HTML público) e iconos dibujados aquí con aspecto de Mac. Excepción a la regla de marcas: dentro de la PC se permite la marca de GitHub, porque enlaza al perfil real. Los iconos no copian arte de Apple.
 
 Ajuste final del 2026-10-30, decisión de Daniel: dock con los iconos reales de macOS (exportados de su Mac a `public/pc-icons/`, riesgo de marca asumido por él; cambiarlos es reemplazar esos 8 archivos) y terminal con la identidad de Claude Code (nombre y mascota), sin el nombre "Taller Code". Es una demo sin IA y lo dice en la cabecera y en sus respuestas: `ask()` en `shell.ts` responde con reglas sobre los datos del portafolio. La contraseña de la pantalla de bloqueo es decorativa: cualquiera entra.
+
+## R.2 (2026-10-30, sin commit)
+
+- Rehorneado con la noche de `lookdev_night.py` (`night_look()`), el kit real del escritorio y un anchor `screen_contact` medido sobre el ultrawide. Stands y lámparas más altos que en R.0 (exposición 0,5): al 0,22 los stands no se leían.
+- La ciudad ya no es un skyline de cajas: `bake_workshop_lab.py` renderiza el panorama del HDRI (`night-sky-v1.webp`) y la web lo pone en una esfera. Bajo el horizonte funde a negro para quitar la calle y la gente.
+- **Cambio frente al plan:** no se separó el bake en irradiancia + PBR. Pedía albedo y ORM por objeto y rompía el presupuesto de peso. En su lugar el bake entra como emisión sobre base negra y el `MeshStandardMaterial` aporta solo el especular de un entorno con el monitor, la ventana y las lámparas: reflejos que cambian con la cámara, sin texturas nuevas. Tier `low`: sin reflejos. Sin AgX en three: ya viene en el bake.
+
+## R.3 (2026-10-30, sin commit)
+
+`workshop-postprocessing.tsx`: `postEffects(tier, lite)` decide bloom, DoF y grano. `high`: todo; `medium`: sin DoF; `low`: solo gradación y viñeta; canvas de móvil: sin bloom ni DoF. DoF con `BokehPass` parcheado para conservar el alpha de las pantallas DOM, enfocado a la distancia de cada vista y apagado en el hub, en los trayectos y con movimiento reducido. Gradación, viñeta y grano en un solo `ShaderPass` multiplicativo.
+
+Cambios frente al plan: sin `LUTPass` (exigiría un LUT aparte; el tinte frío/cálido va en el shader) y sin FXAA (ya hay MSAA 4x y el pase escribiría alpha sobre los huecos DOM).
+
+## R.2b Texturas (2026-10-30, sin commit)
+
+Causa: el atlas de objetos estaba fragmentado (el 96 % salía negro, 290 KB) y todo el color vivía en el bake. halloween.dev usa texturas PBR repetidas de ~1k sobre la luz horneada, con ~9 MB.
+
+- El bake se hace sobre albedo plano (la media de cada material) y solo guarda luz; márgenes de UV corregidos.
+- Cada material conserva su textura propia (`detail`): albedo dividida por su media, a 512 px en objetos y 1024 repetida en la arquitectura, que además lleva normal map. Materiales con la misma imagen se fusionan.
+- La web multiplica el bake por el detail en espacio de pantalla (`withDetail` en `lab-scene.tsx`). Así el look de Blender se conserva sin AgX en three. Es una aproximación, no iluminación física: los reflejos usan el normal map y el resto viene de la multiplicación.
+- Tiers: el detail baja a 256 en `medium` y 192 en `low`.
+- Costo: unos 200 materiales en el mesh de objetos, antes 1. Más draw calls; revisar fps.
+
+## R.4 (2026-10-30, sin commit)
+
+`lab-soundscape.ts`: ocho fuentes sintetizadas con `PannerNode` HRTF sobre la cama `hub-v1.mp3`, sin archivos nuevos: ventilador del PC, dos zumbidos de neón, ronroneo del gato, lluvia en la ventana y un servo por cada robot que camina. El oyente sigue a la cámara (`camera-controller.tsx`) y los servos a su ruta. El `AudioContext` se crea al activar el sonido, se suspende con el mundo y se cierra al apagarlo.
+
+Medido en Chromium con analizadores por canal: 0 contextos antes del gesto y RMS izquierda/derecha distinto por parada (Contacto 0,044/0,028; Trayectoria 0,029/0,078). Cumple el criterio técnico; falta el juicio de oído de Daniel para las mezclas.

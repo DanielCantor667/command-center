@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { soundscape } from './lab-soundscape';
 
 export const WORKSHOP_TRACK_URL = '/audio/workshop/hub-v1.mp3';
 const VOLUME = .45;
 const FADE_STEP = .04;
 
-/** Off by default and only ever started from a user gesture (the toggle). One ambient bed for the lab. */
+/** Off by default and only ever started from a user gesture (the toggle). One ambient bed plus the positional sounds. */
 export function useWorkshopAudio({ enabled, paused }: { enabled: boolean; paused: boolean }) {
   const player = useRef<HTMLAudioElement | null>(null);
   useEffect(() => {
@@ -27,5 +28,10 @@ export function useWorkshopAudio({ enabled, paused }: { enabled: boolean; paused
     }, 60);
     return () => window.clearInterval(timer);
   }, [enabled, paused]);
-  useEffect(() => () => { if (player.current) { player.current.volume = 0; player.current.pause(); } player.current = null; }, []);
+  useEffect(() => {
+    if (!enabled) { soundscape.stop(); return; }
+    soundscape.start();
+    soundscape.pause(paused);
+  }, [enabled, paused]);
+  useEffect(() => () => { if (player.current) { player.current.volume = 0; player.current.pause(); } player.current = null; soundscape.stop(); }, []);
 }

@@ -24,11 +24,14 @@ compress() {
   $GT meshopt "$TMP/$name.glb" "$OUT/$tier/$name-v1.glb"
 }
 
-for tier_size in high:8192:1024 medium:4096:512 low:2048:512; do
-  IFS=: read -r tier room props <<< "$tier_size"
-  # baked room: the lightmaps are the whole look of the room
-  compress lab-baked "$tier" "$room"
-  $GT optimize "$SRC/lab-emissive.glb" "$OUT/$tier/lab-emissive-v1.glb" --compress meshopt
+for tier_size in high:8192:1024:1024 medium:4096:512:256 low:2048:512:192; do
+  IFS=: read -r tier room props detail <<< "$tier_size"
+  # baked room: the lightmaps hold the light; the detail and normal textures (R.2b) are what the smaller tiers give up
+  $GT optimize "$SRC/lab-baked.glb" "$TMP/lab-baked.glb" --compress false --texture-compress false
+  $GT resize "$TMP/lab-baked.glb" "$TMP/lab-baked.glb" --width "$detail" --height "$detail" --pattern '!(lab-*)'
+  $GT etc1s "$TMP/lab-baked.glb" "$TMP/lab-baked.glb" --resize "$room" --quality 255
+  $GT meshopt "$TMP/lab-baked.glb" "$OUT/$tier/lab-baked-v1.glb"
+  compress lab-emissive "$tier" 512
   compress lab-plants "$tier" 512
   for actor in robot-cobot drone-k07 drone-mech cat robot-humanoid robot-quad robot-trilobite; do
     # actors keep their node hierarchy so animations stay addressable
@@ -36,6 +39,16 @@ for tier_size in high:8192:1024 medium:4096:512 low:2048:512; do
   done
 done
 cp "$SRC/lab-anchors.json" "$OUT/lab-anchors-v1.json"
+# The city behind the window (bake_workshop_lab.py). Below the skyline the HDRI is the street and its crowd:
+# it fades to black, as seen from a few floors up.
+python3 - "$SRC/night-sky.png" "$OUT/night-sky-v1.webp" <<'PY'
+import sys
+from PIL import Image
+sky = Image.open(sys.argv[1]).convert("RGB").resize((3072, 1536))
+fade = Image.new("L", (1, 1536))
+fade.putdata([round(255 * min(1, max(0, (0.585 - y / 1536) / 0.025))) for y in range(1536)])
+Image.composite(sky, Image.new("RGB", sky.size), fade.resize(sky.size)).save(sys.argv[2], quality=82, method=6)
+PY
 # Typed copy for the web module, already in three.js space: Blender (x, y, z-up) -> (x, z, -y),
 # facing yaw -> rotation.y = facing + 90 deg. Plates are laid out by technology-shelf.tsx itself.
 python3 - "$SRC/lab-anchors.json" "$OUT/../../../modules/workshop-game/lab-anchors.ts" <<'PY'
