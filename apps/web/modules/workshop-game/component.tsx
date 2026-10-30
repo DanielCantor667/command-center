@@ -17,6 +17,7 @@ import type { WorldCameraHandle } from './camera-controller';
 import { supportsWorldRenderer } from './renderer-support';
 import { useWorkshopAudio } from './workshop-audio';
 import styles from './workshop-game.module.css';
+const PcDesktop = dynamic(() => import('./pc/pc-desktop').then(module => module.PcDesktop), { ssr: false, loading: () => null });
 const WorldScene = dynamic(() => import('./world-scene').then(module => module.WorldScene), { ssr: false, loading: () => null });
 class WorldBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
   state = { failed: false };
@@ -46,6 +47,9 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   // Shared by the 3D wall/board (hover) and the HTML project list (hover and keyboard focus).
   const [focus, setFocus] = useState<LabFocus>(null);
   const [attempt, setAttempt] = useState(0);
+  // The PC: the camera closes in on the monitor ('zooming'), then the desktop takes the full screen ('open').
+  const [computer, setComputer] = useState<'off' | 'zooming' | 'open'>('off');
+  const computerOn = computer !== 'off';
   const cameraHandle = useRef<WorldCameraHandle | null>(null);
   const initialCamera = useRef(initialSnapshot?.camera ?? null);
   const openButton = useRef<HTMLButtonElement>(null), enterButton = useRef<HTMLButtonElement>(null), retryButton = useRef<HTMLButtonElement>(null);
@@ -91,13 +95,13 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const cancel = useCallback(() => { dispatch({ type: 'cancel' }); requestAnimationFrame(() => { if (stateRef.current.point === 'entrance') enterButton.current?.focus({ preventScroll: true }); }); }, []);
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || suspended || reading) return;
+      if (event.key !== 'Escape' || suspended || reading || computerOn) return;
       const current = stateRef.current;
       if (['loading', 'moving'].includes(current.status)) cancel();
       else if (current.status === 'exploring' && (current.point === 'projects' || cornerProject(current.point) || stationForPoint(current.point))) dispatch({ type: 'go', point: 'hub' });
     };
     window.addEventListener('keydown', escape); return () => window.removeEventListener('keydown', escape);
-  }, [cancel, suspended, reading]);
+  }, [cancel, suspended, reading, computerOn]);
   useEffect(() => {
     if (state.status !== 'exploring') wheelGesture.current = { delta: 0, at: 0 };
   }, [state.status]);
@@ -113,7 +117,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       last = Date.now(); dispatch({ type: 'go', point: next });
     };
     const wheel = (event: WheelEvent) => {
-      if (suspended || reading || event.ctrlKey || stateRef.current.status !== 'exploring' || !(event.target as Element | null)?.closest?.('[data-world-canvas]')) {
+      if (suspended || reading || computerOn || event.ctrlKey || stateRef.current.status !== 'exploring' || !(event.target as Element | null)?.closest?.('[data-world-canvas]')) {
         wheelGesture.current = { delta: 0, at: 0 }; return;
       }
       // Wheels can report lines/pages; trackpads usually send a burst of small pixel deltas.
@@ -128,7 +132,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       step(accumulated > 0 ? 1 : -1);
     };
     const key = (event: KeyboardEvent) => {
-      if (suspended || reading || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (suspended || reading || computerOn || event.altKey || event.ctrlKey || event.metaKey) return;
       const focus = document.activeElement;
       if (focus && focus.matches('input, textarea, [contenteditable="true"]')) return;
       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); step(1); }
@@ -136,7 +140,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     };
     window.addEventListener('wheel', wheel, { passive: true }); window.addEventListener('keydown', key);
     return () => { window.removeEventListener('wheel', wheel); window.removeEventListener('keydown', key); };
-  }, [suspended, reading]);
+  }, [suspended, reading, computerOn]);
   const ready = useCallback((token: number) => dispatch({ type: 'ready', token }), []);
   const arrived = useCallback((token: number) => dispatch({ type: 'arrived', token }), []);
   const failed = useCallback((token: number) => dispatch({ type: 'failed', token }), []);
@@ -150,19 +154,22 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   };
   const saveWorld = () => {
     if (['loading', 'moving'].includes(state.status)) dispatch({ type: 'cancel' });
-    if (active && state.point !== 'entrance') onSave({ point: state.point, camera: cameraHandle.current?.capture() ?? initialCamera.current });
+    if (active && state.point !== 'entrance') onSave({ point: state.point, camera: computerOn ? null : cameraHandle.current?.capture() ?? initialCamera.current });
   };
   const portfolio = () => { saveWorld(); onPortfolio(); };
   const openRelatedCase = (id: string) => {
     saveWorld();
     onOpenCase(id);
   };
+  const openComputer = useCallback(() => { if (stateRef.current.status === 'exploring') setComputer('zooming'); }, []);
+  const computerReady = useCallback(() => setComputer('open'), []);
+  const closeComputer = useCallback(() => { setComputer('off'); requestAnimationFrame(() => openButton.current?.focus({ preventScroll: true })); }, []);
   const openStation = () => { if (station) setReading(station === 'technologies' ? { kind: station, technologyId: 'nextjs' } : { kind: station }); };
-  return <><main className={styles.game} inert={!!reading} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination}>
+  return <><main className={styles.game} inert={!!reading || computerOn} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination}>
     {/* Cycles render of the lab from the overview camera (blender/prototype_workshop_room_v2.py). */}
     <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-lab-entrance-v2.webp" alt="" fill sizes="100vw" priority /></div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
-      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading} focus={focus} onFocus={setFocus} />
+      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading || computer === 'open'} focus={focus} onFocus={setFocus} closeUp={computerOn} onCloseUp={computerReady} onComputer={openComputer} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>
@@ -189,11 +196,11 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <div className={styles.bottomControls}>
       {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {corner && <CornerInspection key={corner} projectId={corner} buttonRef={openButton} onOpen={openRelatedCase} onStep={step => go(WALK[WALK.indexOf(state.point as (typeof WALK)[number]) + step]!)} onAll={() => go('projects')} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
-      {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} />}
+      {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} onComputer={station === 'contact' ? openComputer : undefined} />}
       <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}
     <footer className={styles.footer}><span>El taller de Daniel</span>{!inside && <span>3D al entrar</span>}</footer>
-  </main>{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;
+  </main>{computer === 'open' && !suspended && <PcDesktop onClose={closeComputer} onCase={openRelatedCase} sound={sound} onSound={toggleSound} />}{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;
 }

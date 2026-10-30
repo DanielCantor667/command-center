@@ -104,3 +104,9 @@ Alcance:
 Fuera de alcance: login o contraseña, modo Claude simulado, cámaras, correo, sistema de archivos editable, multiventana en móvil.
 
 Dependencia: el monitor de la web sigue siendo el de 1,1 × 0,46 m hasta rehornear con el kit nuevo, así que el anchor `MONITOR` se mueve en R.2, no en R.1b. El SO a pantalla completa no depende de ese anchor.
+
+Hecha 2026-10-30, sin commit, rehecha con aspecto de escritorio (bloqueo sin contraseña, barra superior, dock, ventanas que se arrastran, minimizan y maximizan, fondos, sonido real del taller; iconos propios, sin marcas de terceros): `modules/workshop-game/pc/` (`shell.ts`, `pc-apps.tsx`, `pc-desktop.tsx`), `scripts/snapshot-github.mjs` -> `data/github-snapshot.json`. El SO usa un `<dialog>` nativo. Ajustes frente al plan: `git log` lista los repos con cambios más recientes, no commits; el correo no se incluye porque no existe en `PUBLIC_PROFILE`.
+
+Ajuste del 2026-10-30, a pedido de Daniel: terminal estilo Claude Code bajo el nombre propio "Taller Code" (robot pixelado propio, bloque `●`/`⎿`, `/comandos`), navegador con la página de perfil de GitHub con datos reales (perfil, repos y calendario de contribuciones del HTML público) e iconos dibujados aquí con aspecto de Mac. Excepción a la regla de marcas: dentro de la PC se permite la marca de GitHub, porque enlaza al perfil real. Los iconos no copian arte de Apple.
+
+Ajuste final del 2026-10-30, decisión de Daniel: dock con los iconos reales de macOS (exportados de su Mac a `public/pc-icons/`, riesgo de marca asumido por él; cambiarlos es reemplazar esos 8 archivos) y terminal con la identidad de Claude Code (nombre y mascota), sin el nombre "Taller Code". Es una demo sin IA y lo dice en la cabecera y en sus respuestas: `ask()` en `shell.ts` responde con reglas sobre los datos del portafolio. La contraseña de la pantalla de bloqueo es decorativa: cualquiera entra.

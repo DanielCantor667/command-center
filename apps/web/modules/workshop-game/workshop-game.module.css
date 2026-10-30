@@ -107,6 +107,7 @@
 
 /* Phone panel folds so the room stays visible; desktop always shows everything. */
 .fold { display: none; }
+.computer { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 16px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; }
 @media (max-width: 700px), (max-height: 480px) {
   .fold { flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 5px; margin: 0; padding: 8px 0; min-height: 44px; border: 0; background: none; color: #365747; font-size: 11px; cursor: pointer; }
   .inspection .roomLabel { display: none; }

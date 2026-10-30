@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "node scripts/snapshot-github.mjs && prisma generate && next build",
     "start": "next start",
     "render:worker": "node --env-file=.env scripts/process-render-jobs.mjs",
     "city:assets:validate": "node scripts/validate-engineering-city-assets.mjs",

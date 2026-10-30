@@ -121,9 +121,9 @@ const HUB_LABELS: { point: WorldPoint; text: string; at: [number, number, number
   ...Object.values(STATIONS).map(station => ({ point: station.id, text: station.name, at: station.hotspot })),
 ];
 
-export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology }: {
+export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology, onComputer }: {
   point: WorldPoint; focus: LabFocus; onFocus: (focus: LabFocus) => void;
-  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void;
+  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onComputer: () => void;
 }) {
   const { invalidate } = useThree();
   const relations = useMemo(() => focusRelations(focus), [focus]);
@@ -151,7 +151,7 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
     <TechnologyShelf point={point} lit={relations.technologies} focused={!!focus} onGo={onGo} onSelect={onTechnology}
       onHover={id => onFocus(id ? { kind: 'technology', id } : null)} />
     <Whiteboard onSelect={() => onGo('trajectory')} />
-    <ContactMonitor onSelect={() => onGo('contact')} />
+    <ContactMonitor onSelect={() => { if (point === 'contact') onComputer(); else onGo('contact'); }} />
     <mesh position={CONTACT_DESK.position} onPointerOver={pointer(true)} onPointerOut={pointer(false)} onClick={event => { event.stopPropagation(); if (event.delta < 5) onGo('contact'); }}>
       <boxGeometry args={CONTACT_DESK.size} /><meshBasicMaterial visible={false} />
     </mesh>

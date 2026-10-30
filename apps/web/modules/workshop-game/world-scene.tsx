@@ -22,6 +22,7 @@ export interface WorldSceneProps {
   onReady: (token: number) => void; onArrived: (token: number) => void; onError: (token: number) => void;
   onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onPreparing: () => void;
   focus: LabFocus; onFocus: (focus: LabFocus) => void;
+  closeUp: boolean; onCloseUp: () => void; onComputer: () => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -92,8 +93,8 @@ export function WorldScene(props: WorldSceneProps) {
       <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
       <WorkshopPostprocessing />
-      <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} />
-      <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} />
+      <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} onComputer={props.onComputer} />
+      <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} closeUp={props.closeUp} onCloseUp={props.onCloseUp} />
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />
     </Suspense>
   </Canvas>;

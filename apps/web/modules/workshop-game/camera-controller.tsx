@@ -3,6 +3,7 @@
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type MutableRefObject } from 'react';
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
+import { PC_CLOSE_UP } from './lab';
 import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-state';
 
 /** Matches the Blender framing of the lab renders (20 mm lens at 16:9), so the open front stays out of view. */
@@ -29,10 +30,12 @@ function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const z = MathUtils.clamp(tz + (pz - tz) * PORTRAIT_PULL, INSIDE.back, INSIDE.front);
   return { position: [x, py, z], target: [tx, ty - PORTRAIT_LIFT, tz] };
 }
+const CLOSE_POSITION = new Vector3(...PC_CLOSE_UP.position), CLOSE_TARGET = new Vector3(...PC_CLOSE_UP.target);
 export interface WorldCameraHandle { capture(): WorldCameraSnapshot }
-export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended }: {
+export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended, closeUp = false, onCloseUp = () => {} }: {
   point: WorldPoint; moving: boolean; token: number; initialCamera: WorldCameraSnapshot | null;
   reducedMotion: boolean; onArrived: (token: number) => void; cameraHandle: MutableRefObject<WorldCameraHandle | null>; suspended: boolean;
+  closeUp?: boolean; onCloseUp?: () => void;
 }) {
   const { camera, gl, invalidate, size } = useThree();
   const portrait = useRef(false); portrait.current = size.width < size.height;
@@ -96,6 +99,11 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only a portrait flip should re-frame
   }, [camera, invalidate, portrait.current]);
 
+  const zoom = useRef({ progress: 0, from: new Vector3(), look: new Vector3(), arrived: onCloseUp });
+  zoom.current.arrived = onCloseUp;
+  // The way in starts from wherever the visitor looked; the way back returns there.
+  useEffect(() => { if (closeUp) { zoom.current.from.copy(camera.position); zoom.current.look.copy(target.current); } invalidate(); }, [camera, closeUp, invalidate]);
+
   useEffect(() => {
     const handle: WorldCameraHandle = { capture: () => ({ position: camera.position.toArray() as [number, number, number], target: target.current.toArray() as [number, number, number] }) };
     cameraHandle.current = handle;
@@ -138,6 +146,17 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     const perspective = camera as PerspectiveCamera;
     const fov = fovFor(aspect);
     if (perspective.fov !== fov) { perspective.fov = fov; perspective.updateProjectionMatrix(); }
+    const goal = closeUp ? 1 : 0, trip = zoom.current;
+    if (trip.progress !== goal) {
+      trip.progress = reducedMotion ? goal : MathUtils.clamp(trip.progress + Math.sign(goal - trip.progress) * Math.min(delta, .06) / .9, 0, 1);
+      const step = trip.progress * trip.progress * (3 - 2 * trip.progress);
+      camera.position.copy(trip.from).lerp(CLOSE_POSITION, step);
+      target.current.copy(trip.look).lerp(CLOSE_TARGET, step);
+      camera.lookAt(target.current);
+      invalidate();
+      if (trip.progress === 1) trip.arrived();
+      return;
+    }
     if (paused.current) return;
     if (!travelling.current) {
       if (point !== 'hub' || reducedMotion || parallax.current.dragging) return;
@@ -148,23 +167,23 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
       invalidate();
       return;
     }
-    const trip = journey.current;
-    trip.progress = reducedMotion ? 1 : Math.min(1, trip.progress + Math.min(delta, .06) / 1.6);
-    const step = trip.progress * trip.progress * (3 - 2 * trip.progress);
-    let remaining = step * trip.length;
-    for (let i = 1; i < trip.points.length; i++) {
-      const from = trip.points[i - 1]!;
-      const to = trip.points[i]!;
+    const journeyTrip = journey.current;
+    journeyTrip.progress = reducedMotion ? 1 : Math.min(1, journeyTrip.progress + Math.min(delta, .06) / 1.6);
+    const step = journeyTrip.progress * journeyTrip.progress * (3 - 2 * journeyTrip.progress);
+    let remaining = step * journeyTrip.length;
+    for (let i = 1; i < journeyTrip.points.length; i++) {
+      const from = journeyTrip.points[i - 1]!;
+      const to = journeyTrip.points[i]!;
       const length = to.distanceTo(from);
-      if (remaining <= length || i === trip.points.length - 1) {
+      if (remaining <= length || i === journeyTrip.points.length - 1) {
         camera.position.copy(from).lerp(to, length ? Math.min(1, remaining / length) : 1);
         break;
       }
       remaining -= length;
     }
-    target.current.copy(trip.target).lerp(destination.current.target, step);
+    target.current.copy(journeyTrip.target).lerp(destination.current.target, step);
     camera.lookAt(target.current);
-    if (trip.progress === 1) {
+    if (journeyTrip.progress === 1) {
       camera.position.copy(destination.current.position);
       target.current.copy(destination.current.target);
       camera.lookAt(target.current);

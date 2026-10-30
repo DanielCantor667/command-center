@@ -50,4 +50,6 @@ export const PROJECT_CAPTURES: Record<string, string> = {
   drokex: '/projects/drokex-products-v4.webp',
 };
 /** The desk is a GLB prop without names: an invisible box makes it a target. */
+/** Facing the desk monitor: the camera ends here before the PC takes the full screen. */
+export const PC_CLOSE_UP = { position: [3.1, 1.18, -3.0] as [number, number, number], target: [3.818, 1.18, -3.0] as [number, number, number] };
 export const CONTACT_DESK = { position: [3.55, .95, -3.0] as [number, number, number], size: [.85, .5, 2.4] as [number, number, number] };

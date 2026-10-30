@@ -147,6 +147,7 @@ export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
     <p>{PUBLIC_PROFILE.availability}</p>
     <span>{PUBLIC_PROFILE.github.replace('https://', '')}</span>
     <span>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span>
+    <span>$ clic para usar la PC_</span>
   </DomScreen>;
 }
 
