@@ -27,4 +27,16 @@ describe('lab focus', () => {
     expect(plate[0]).toBeGreaterThan(-3.5); expect(plate[0]).toBeLessThan(-3.3);
     expect(focusViewpoint(null)).toBeNull();
   });
+  it('uses the hovered gallery or relocated screen instead of the old project anchor', () => {
+    const gallery = { position: [3.88, 2.03, -3.78] as [number, number, number], rotationY: Math.PI * 1.5, size: [.7, .44] as [number, number] };
+    const moved = { position: [-.7, 2.7, 6.035] as [number, number, number], rotationY: Math.PI, size: [.62, .39] as [number, number] };
+    const galleryTarget = focusViewpoint({ kind: 'project', id: 'kliniu', anchor: gallery })!;
+    expect(galleryTarget[0]).toBeCloseTo(3.38);
+    expect(galleryTarget[1]).toBeCloseTo(2.03);
+    expect(galleryTarget[2]).toBeCloseTo(-4.53);
+    const movedTarget = focusViewpoint({ kind: 'project', id: 'command-center', anchor: moved })!;
+    expect(movedTarget[0]).toBeCloseTo(-1.45);
+    expect(movedTarget[1]).toBeCloseTo(2.7);
+    expect(movedTarget[2]).toBeCloseTo(5.535);
+  });
 });

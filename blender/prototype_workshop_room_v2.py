@@ -4,6 +4,9 @@ Run from any cwd:
   /Applications/Blender.app/Contents/MacOS/Blender --background --factory-startup \
     --python-exit-code 1 --python blender/prototype_workshop_room_v2.py -- out.png [main|bench|desk|back]
 
+The Visual 2 scene is saved to a separate copy under ASSETS/lookdev/visual-2-2026-10-30/.
+An existing output is never intentionally overwritten; move it aside before rerunning.
+
 Blender coordinates (x right, y away from the camera, z up), metres. Pieces live outside the repo in
 ASSETS: Poly Haven (CC0) and Sketchfab (CC BY, credit required -> CREDITS.md before shipping).
 Every imported piece is measured after import and placed by its bottom/top, so source origins and
@@ -29,7 +32,15 @@ PH = ASSETS / "polyhaven"
 SK = ASSETS / "sketchfab"
 QUAT = ASSETS / "scifi-essentials/flat"
 KIT = ASSETS / "kits/desk"  # blender/prepare_desk_kit.py: metres, user side towards -X, origin bottom centre
-OUT_BLEND = ROOT / "blender/scenes/workshop-room-proto-v2.blend"
+OUT_BLEND = ASSETS / "lookdev/visual-2-2026-10-30/workshop-room-visual2.blend"
+
+
+def assert_output_available():
+    if OUT_BLEND.exists():
+        raise FileExistsError(f"Refusing to overwrite existing scene: {OUT_BLEND}")
+
+
+assert_output_available()  # Check before modifying the open scene or rendering.
 RNG = random.Random(7)
 W, D, H = 8.0, 11.0, 3.2
 BY = 4.9  # back wall plane
@@ -434,6 +445,10 @@ for (sy, sz), p in zip(slots, wall_projects):
          image_mat(f"m_label_{p['id']}", GEN / "projects" / f"{p['id']}_label.png", 1.0))
     box(f"arm_{p['id']}", (RX - 0.01, sy, sz + SH / 2 + 0.05), (0.02, 0.03, 0.1), "metal")
 
+# Visual 2: a distinct gallery; corner screens keep their original names and placements.
+from visual2_gallery import apply as add_visual2_gallery  # noqa: E402
+add_visual2_gallery(C, ROOT)
+
 # Trayectoria: whiteboard mounted on the back wall between the door and the window
 quad("whiteboard", (0.0, BY - 0.035, 1.55), 270, 0.92, 0.62, image_mat("m_whiteboard", GEN / "trayectoria.png", 0.25))
 box("wb_frame", (0.0, BY - 0.02, 1.55), (0.96, 0.025, 0.66), "metal")
@@ -703,4 +718,5 @@ if argv:
     sc.render.filepath = argv[0]
     bpy.ops.render.render(write_still=True)
 OUT_BLEND.parent.mkdir(parents=True, exist_ok=True)
+assert_output_available()  # Check again before Blender writes the file.
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT_BLEND))

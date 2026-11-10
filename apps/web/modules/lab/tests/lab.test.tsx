@@ -8,6 +8,7 @@ describe('LabModule', () => {
 
     expect(screen.getByText('Laboratorio 3D')).toBeInTheDocument();
     expect(screen.getByLabelText('Personas')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Instrucción opcional para IA')).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Generar layout' })).toBeInTheDocument();
   });
 });

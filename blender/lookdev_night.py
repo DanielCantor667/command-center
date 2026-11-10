@@ -17,11 +17,6 @@ import bpy
 from mathutils import Vector
 
 HDRI = Path("/Users/creativo/Documents/command-center-assets/polyhaven-hdri/shanghai_bund_4k.hdr")
-ARGV = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
-OUT = Path(ARGV[0]) if ARGV else Path("/tmp/lookdev")
-SAMPLES = int(ARGV[1]) if len(ARGV) > 1 else 128
-WIDTH = int(ARGV[2]) if len(ARGV) > 2 else 1600
-CAMERAS = ARGV[3:] or ["main", "desk"]
 
 # Light multipliers by name prefix: practicals stay, fills go, overheads become small warm pools.
 LIGHTS = {
@@ -131,14 +126,19 @@ def night_look(scene):
 
 
 def main():
+    argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
+    out = Path(argv[0]) if argv else Path("/tmp/lookdev")
+    samples = int(argv[1]) if len(argv) > 1 else 128
+    width = int(argv[2]) if len(argv) > 2 else 1600
+    cameras = argv[3:] or ["main", "desk"]
     scene = bpy.context.scene
     night_look(scene)
-    scene.cycles.samples = SAMPLES
-    scene.render.resolution_x, scene.render.resolution_y = WIDTH, WIDTH * 9 // 16
-    OUT.mkdir(parents=True, exist_ok=True)
-    for name in CAMERAS:
+    scene.cycles.samples = samples
+    scene.render.resolution_x, scene.render.resolution_y = width, width * 9 // 16
+    out.mkdir(parents=True, exist_ok=True)
+    for name in cameras:
         scene.camera = camera(name)
-        scene.render.filepath = str(OUT / f"night-{name}.png")
+        scene.render.filepath = str(out / f"night-{name}.png")
         bpy.ops.render.render(write_still=True)
         print("rendered", scene.render.filepath)
 

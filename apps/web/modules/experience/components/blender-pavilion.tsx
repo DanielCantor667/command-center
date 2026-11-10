@@ -17,7 +17,7 @@ export function BlenderPavilion({ projectId, active = false, exploded = false, n
   projectId: string; active?: boolean; exploded?: boolean; night?: boolean; reducedMotion?: boolean;
 }) {
   const { invalidate } = useThree();
-  const version = projectId === 'stage' ? 'realistic-v1' : ['kliniu', 'lorigine', 'academy', 'drokex'].includes(projectId) ? 'interactive-v4' : 'interactive-v3';
+  const version = projectId === 'stage' ? 'realistic-v1' : ['kliniu', 'lorigine', '4ustudio-academy', 'drokex'].includes(projectId) ? 'interactive-v4' : 'interactive-v3';
   const { scene } = useGLTF(`/models/workshop/${models[projectId]}-${version}.glb`);
   const model = useMemo(() => {
     const clone = scene.clone(true);

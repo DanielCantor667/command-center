@@ -138,3 +138,9 @@ Causa: el atlas de objetos estaba fragmentado (el 96 % salía negro, 290 KB) y t
 `lab-soundscape.ts`: ocho fuentes sintetizadas con `PannerNode` HRTF sobre la cama `hub-v1.mp3`, sin archivos nuevos: ventilador del PC, dos zumbidos de neón, ronroneo del gato, lluvia en la ventana y un servo por cada robot que camina. El oyente sigue a la cámara (`camera-controller.tsx`) y los servos a su ruta. El `AudioContext` se crea al activar el sonido, se suspende con el mundo y se cierra al apagarlo.
 
 Medido en Chromium con analizadores por canal: 0 contextos antes del gesto y RMS izquierda/derecha distinto por parada (Contacto 0,044/0,028; Trayectoria 0,029/0,078). Cumple el criterio técnico; falta el juicio de oído de Daniel para las mezclas.
+
+## R.5 (2026-10-30, sin commit)
+
+Modo "Explorar libre" desde la navegación: `free-roam.tsx` (cámara, pointer lock, teclado) y `free-walk.ts` (reglas puras con Vitest). Grilla de 10 cm de `blender/export_collision.py`, cuerpo de 25 cm de radio con deslizamiento por eje. Sin pointer lock se mira arrastrando; en móvil, mitad izquierda camina y mitad derecha mira.
+
+Cambio frente al plan: en lugar de raycast contra la escena, un punto de interés por parada (estaciones, pared, stands) con alcance de 2,6 m. E, clic, Enter o el botón llevan a esa parada del recorrido, con sus mismos paneles.

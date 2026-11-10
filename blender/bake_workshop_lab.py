@@ -1,8 +1,12 @@
 """Phase B: bake and export the workshop-lab prototype for the web (specs/workshop-lab.md).
 
-Run after prototype_workshop_room_v2.py has saved the scene:
-  /Applications/Blender.app/Contents/MacOS/Blender --background blender/scenes/workshop-room-proto-v2.blend \
-    --python-exit-code 1 --python blender/bake_workshop_lab.py -- [samples]
+Run against a copy of the raw scene, with a new, explicit output directory:
+  /Applications/Blender.app/Contents/MacOS/Blender --background /path/to/raw-copy.blend \
+    --python-exit-code 1 --python blender/bake_workshop_lab.py -- 256 1 \
+    --output /path/to/new-build --image-base /path/to/original-scene-directory
+
+Use --preflight to validate and prepare the scene in memory without baking,
+creating the output directory, saving the .blend, or exporting anything.
 
 Each object gets a role (root["role"] from put(), otherwise by name/material):
   static      -> decimated, joined into two meshes (architecture / props), full Cycles lighting baked
@@ -12,11 +16,12 @@ Each object gets a role (root["role"] from put(), otherwise by name/material):
   emissive    -> neon/glow pieces, one GLB with emissive materials (bloom on the web).
   interactive -> screens, plates, labels, whiteboard: not exported, rebuilt from data on the web;
                  their placements go to lab-anchors.json.
-The night look of lookdev_night.py (R.2, specs/workshop-realism.md) is applied first; the city outside the window goes
-to a panorama for the web's sky sphere. Raw GLBs land in ASSETS/build; compress_workshop_lab.sh writes the web copies.
+The approved Visual 1 light and Visual 2 gallery are prepared before baking;
+the city outside the window goes to a panorama for the web's sky sphere.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import sys
@@ -28,11 +33,9 @@ import numpy as np
 from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD = Path("/Users/creativo/Documents/command-center-assets/build")
-ARGV = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
-SAMPLES = int(ARGV[0]) if ARGV else 256
-SIZE_SCALE = int(ARGV[1]) if len(ARGV) > 1 else 1  # 4 = a quick lighting preview
-BAKE_SIZE = {"architecture": 8192 // SIZE_SCALE, "props": 4096 // SIZE_SCALE}  # room shell gets 8k: its big flat surfaces show lightmap texel size most
+BUILD = None
+SAMPLES = 256
+BAKE_SIZE = {"architecture": 8192, "props": 4096}
 INTERACTIVE = ("screen_", "label_", "plate_", "cat_", "whiteboard", "sign_", "zone_")
 NOT_INTERACTIVE = ("plate_back_", "plate_led_")
 STATIC_BUDGET = 5000  # triangles per imported static prop
@@ -49,7 +52,8 @@ ACTOR_FILES = {
 DRONES = ("k07_drone", "mech_drone", "robot-humanoid", "robot-quad", "robot-trilobite")
 
 sys.path.insert(0, str(ROOT / "blender"))
-from lookdev_night import night_look  # noqa: E402
+from visual1_lighting import apply as apply_lighting  # noqa: E402
+from visual2_gallery import EXHIBITS, OLD_SLOTS, apply as apply_gallery  # noqa: E402
 
 # R.2b: the lightmap holds light only; the look up close comes from the materials' own textures at these sizes.
 DETAIL_TILED, DETAIL_PROP = 1024, 512
@@ -59,7 +63,6 @@ GLOW_KIT = ("tower_root", "keyboard_root", "mouse_root", "speaker_root")
 GLOW_MAX = 1.6  # the kit goes up to 10: on the web that would turn the keyboard into one bloom blob
 
 sc = bpy.context.scene
-BUILD.mkdir(parents=True, exist_ok=True)
 
 
 def root_of(o):
@@ -419,8 +422,109 @@ def night_sky():
     bpy.data.objects.remove(cam)
 
 
+def restore_image_paths(image_base):
+    """Resolve external images from their authored directory when a .blend has been copied."""
+    if not image_base.is_dir():
+        raise NotADirectoryError(f"Image base directory does not exist: {image_base}")
+    images = []
+    for image in bpy.data.images:
+        if image.source != "FILE" or image.packed_file or not image.filepath:
+            continue
+        value = image.filepath[2:] if image.filepath.startswith("//") else image.filepath
+        path = Path(value).expanduser()
+        if not path.is_absolute():
+            path = image_base / path
+        path = path.resolve()
+        if not path.is_file():
+            raise FileNotFoundError(f"Missing image {image.name}: {path}")
+        images.append((image, path))
+    for image, path in images:
+        image.filepath = str(path)
+        image.reload()
+    print(f"Preflight: {len(images)} external image paths resolved", flush=True)
+
+
+def ensure_gallery():
+    """Add the gallery only to a raw scene; reject partial or misplaced galleries."""
+    names = ["gallery_lamp_rail"]
+    for project, _, _ in EXHIBITS:
+        names.extend(f"{prefix}{project}" for prefix in (
+            "screen_gallery_", "label_gallery_", "gallery_frame_", "gallery_lamp_body_",
+            "gallery_lamp_face_", "gallery_light_",
+        ))
+    present = [name for name in names if bpy.data.objects.get(name)]
+    if present and len(present) != len(names):
+        missing = [name for name in names if not bpy.data.objects.get(name)]
+        raise RuntimeError(f"Gallery is incomplete; missing: {', '.join(missing)}")
+    if not present:
+        collection = bpy.data.collections.get("WorkshopLab")
+        if collection is None:
+            raise RuntimeError("Missing WorkshopLab collection")
+        apply_gallery(collection, ROOT)
+    bpy.context.view_layer.update()
+    for project, _, y in EXHIBITS:
+        if not bpy.data.objects.get(f"screen_{project}"):
+            raise RuntimeError(f"Missing original corner screen: {project}")
+        screen = bpy.data.objects[f"screen_gallery_{project}"]
+        if screen.type != "MESH" or len(screen.data.vertices) != 4 or not screen.data.polygons:
+            raise RuntimeError(f"Invalid gallery screen: {project}")
+        centre = sum((screen.matrix_world @ vertex.co for vertex in screen.data.vertices), Vector()) / 4
+        normal = (screen.matrix_world.to_3x3() @ screen.data.polygons[0].normal).normalized()
+        if (centre - Vector((3.922, y, 2.03))).length > .001 or (normal - Vector((-1, 0, 0))).length > .001:
+            raise RuntimeError(f"Gallery screen is misplaced: {project}")
+    for project, _, x in OLD_SLOTS:
+        for prefix in ("label_", "bezel_", "arm_"):
+            if not bpy.data.objects.get(prefix + project):
+                raise RuntimeError(f"Missing relocated object: {prefix + project}")
+        screen = bpy.data.objects.get(f"screen_{project}")
+        if not screen or screen.type != "MESH" or len(screen.data.vertices) != 4 or not screen.data.polygons:
+            raise RuntimeError(f"Missing relocated screen: {project}")
+        centre = sum((screen.matrix_world @ vertex.co for vertex in screen.data.vertices), Vector()) / 4
+        normal = (screen.matrix_world.to_3x3() @ screen.data.polygons[0].normal).normalized()
+        if (centre - Vector((x, -6.035, 2.70))).length > .001 or (normal - Vector((0, 1, 0))).length > .001:
+            raise RuntimeError(f"Relocated screen is misplaced: {project}")
+    print("Preflight: gallery complete and positioned", flush=True)
+
+
+def parse_options(argv):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("samples", nargs="?", type=int, default=256)
+    parser.add_argument("size_scale", nargs="?", type=int, default=1)
+    parser.add_argument("--output", type=Path, required=True, help="New isolated output directory")
+    parser.add_argument("--image-base", type=Path, default=ROOT / "blender/scenes", help="Authored base for relative image paths")
+    parser.add_argument("--preflight", action="store_true", help="Prepare in memory only; do not create output")
+    options = parser.parse_args(argv)
+    if options.samples < 1 or not 1 <= options.size_scale <= 4096:
+        parser.error("samples must be positive and size_scale must be between 1 and 4096")
+    if not options.output.is_absolute():
+        parser.error("--output must be an absolute path to a new directory")
+    if options.output.exists() or options.output.is_symlink():
+        raise FileExistsError(f"Refusing existing output: {options.output}")
+    options.output = options.output.resolve()
+    if options.output.is_relative_to(ROOT):
+        raise ValueError("Output must be outside the project repository")
+    options.image_base = options.image_base.expanduser().resolve()
+    return options
+
+
 def main():
-    night_look(sc)
+    global BUILD, SAMPLES, BAKE_SIZE
+    argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
+    options = parse_options(argv)
+    if not bpy.data.filepath:
+        raise RuntimeError("Open a copy of the raw .blend before running the bake")
+    if Path(bpy.data.filepath).resolve() == (ROOT / "blender/scenes/workshop-room-proto-v2.blend").resolve():
+        raise RuntimeError("Open a copy of the raw .blend, not the original scene")
+    restore_image_paths(options.image_base)
+    ensure_gallery()
+    apply_lighting(sc)
+    if options.preflight:
+        print("VISUAL3_BAKE_PREFLIGHT_OK (no bake, save or export)", flush=True)
+        return
+    BUILD = options.output
+    BUILD.mkdir(parents=True, exist_ok=False)
+    SAMPLES = options.samples
+    BAKE_SIZE = {"architecture": 8192 // options.size_scale, "props": 4096 // options.size_scale}
     bpy.data.objects.remove(bpy.data.objects["room_haze"])  # no volumes in the bake
     night_sky()
     for o in [o for o in bpy.data.objects if o.name.startswith(("bldg_", "bwin_", "window_sky", "door_sky"))]:
@@ -501,4 +605,5 @@ def main():
         export(members, BUILD / f"{ACTOR_FILES[key]}.glb", animations=True)
 
 
-main()
+if __name__ == "__main__":
+    main()

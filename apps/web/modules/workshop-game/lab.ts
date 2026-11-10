@@ -51,8 +51,8 @@ export const PROJECT_CAPTURES: Record<string, string> = {
   '4ustudio-academy': '/projects/academy-lessons-v4.webp',
   drokex: '/projects/drokex-products-v4.webp',
 };
-/** The desk is a GLB prop without names: an invisible box makes it a target. */
 /** Facing the desk monitor: the camera ends here before the PC takes the full screen. */
 const [monitorX, monitorY, monitorZ] = LAB_ANCHORS.screen_contact!.position;
 export const PC_CLOSE_UP = { position: [monitorX - .52, monitorY, monitorZ] as [number, number, number], target: [monitorX, monitorY, monitorZ] as [number, number, number] };
-export const CONTACT_DESK = { position: [3.55, .95, -3.0] as [number, number, number], size: [.85, .5, 2.4] as [number, number, number] };
+/** Invisible desk target ends at the tabletop, below the monitor, so both can be clicked. */
+export const CONTACT_DESK = { position: [3.55, .4, -3.0] as [number, number, number], size: [.85, .8, 2.4] as [number, number, number] };

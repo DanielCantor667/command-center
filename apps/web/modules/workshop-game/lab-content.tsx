@@ -9,6 +9,7 @@ import { ambient } from './ambient';
 import { DomScreen } from './dom-screens';
 import { LAB_ANCHORS, type LabAnchor } from './lab-anchors';
 import { PROJECT_CAPTURES } from './lab';
+import { GALLERY_LAYOUT, ProjectGallery } from './project-gallery';
 import { STATIONS } from './stations';
 import styles from './workshop-game.module.css';
 
@@ -86,16 +87,27 @@ function Screen({ anchor, label, name, capture, labelMap, highlight, onSelect, o
   </>;
 }
 
-/** One screen per public project, on the wall above the desk. */
+/** Corner screens stay in place; the older wall projects move above the entrance. */
 export function ProjectWall({ lit, focused, onSelect, onHover }: {
-  lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null) => void;
+  lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null, anchor?: LabAnchor) => void;
 }) {
   const labels = useMemo(() => new Map(SCREEN_PROJECTS.map(project => [project.id, labelTexture(project.name, '#e6f2f4')])), []);
-  return <>{SCREEN_PROJECTS.map(project => {
-    return <Screen key={project.id} anchor={LAB_ANCHORS[`screen_${project.id}`]!} label={LAB_ANCHORS[`label_${project.id}`]}
-      name={project.name} capture={PROJECT_CAPTURES[project.id]} labelMap={labels.get(project.id)!} highlight={lit.has(project.id) ? 'lit' : focused ? 'dim' : 'idle'}
-      onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />;
-  })}</>;
+  const highlight = (id: string): Highlight => lit.has(id) ? 'lit' : focused ? 'dim' : 'idle';
+  const renderScreen = (id: string, name: string, anchor: LabAnchor, label?: LabAnchor) => <Screen
+    anchor={anchor} label={label} name={name} capture={PROJECT_CAPTURES[id]} labelMap={labels.get(id)!}
+    highlight={highlight(id)} onSelect={() => onSelect(id)} onHover={on => onHover(on ? id : null, on ? anchor : undefined)} />;
+  return <>
+    <ProjectGallery renderScreen={renderScreen} />
+    {SCREEN_PROJECTS.map(project => {
+      const moved = GALLERY_LAYOUT.relocated[project.id];
+      const anchor = moved?.anchor ?? LAB_ANCHORS[`screen_${project.id}`]!;
+      const label = moved?.label ?? LAB_ANCHORS[`label_${project.id}`];
+      return <group key={project.id}>
+        {moved && !GALLERY_LAYOUT.baked && <mesh position={[anchor.position[0], 2.7, 6.055]} rotation={[0, Math.PI, 0]} raycast={() => {}}><planeGeometry args={[.67, .44]} /><meshBasicMaterial color="#101416" toneMapped={false} /></mesh>}
+        {renderScreen(project.id, project.name, anchor, label)}
+      </group>;
+    })}
+  </>;
 }
 
 const CORNER_PROJECTS = PROJECTS.filter(project => project.public && LAB_ANCHORS[`zone_${project.id}`]);
@@ -139,14 +151,23 @@ export function ProjectCorners({ lit, focused, onSelect, onHover }: {
     onSelect={() => onSelect(project.id)} onHover={on => onHover(on ? project.id : null)} />)}</>;
 }
 
-/** The ultrawide on the desk: the real availability note and public profile links (no invented email). */
+/** The monitor is one target; these previews describe the desktop without acting as separate controls. */
 export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
   return <DomScreen anchor={LAB_ANCHORS.screen_contact!} width={1100} className={styles.monitor} {...select(onSelect)}>
-    <h2>Conversemos</h2>
-    <p>{PUBLIC_PROFILE.availability}</p>
-    <span>{PUBLIC_PROFILE.github.replace('https://', '')}</span>
-    <span>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span>
-    <span>$ clic para usar la PC_</span>
+    <div className={styles.monitorFrame}>
+      <p className={styles.monitorKicker}>Taller / Escritorio</p>
+      <h2>Entrar al escritorio</h2>
+      <p className={styles.monitorIntro}>Explora proyectos, GitHub y la terminal</p>
+      <div className={styles.monitorPreviews}>
+        <div className={styles.monitorCard}><h3>Terminal</h3><p className={styles.monitorCode}>Demo sin IA</p><p>Explora el portafolio</p></div>
+        <div className={styles.monitorCard}><h3>GitHub</h3><p className={styles.monitorUsername}>{PUBLIC_PROFILE.github.split('/').pop()}</p><p className={styles.monitorLink}>{PUBLIC_PROFILE.github.replace('https://', '')}</p></div>
+        <div className={styles.monitorCard}><h3>Proyectos</h3>
+          {/* eslint-disable-next-line @next/next/no-img-element -- projected DOM screen, outside Next's image pipeline */}
+          <img src={PROJECT_CAPTURES.kliniu} alt="" />
+        </div>
+      </div>
+      <div className={styles.monitorFooter}><span>Conversemos en LinkedIn</span><span className={styles.monitorLink}>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span><span className={styles.monitorAction}>Entrar →</span></div>
+    </div>
   </DomScreen>;
 }
 

@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from '@testing-librar
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WorkshopGame } from '../component';
 import type { WorldSceneProps } from '../world-scene';
+import { spotInView } from '../free-walk';
 
 let props: WorldSceneProps;
 vi.mock('../renderer-support', () => ({ supportsWorldRenderer: () => true }));
@@ -10,6 +11,19 @@ vi.mock('next/dynamic', () => ({ default: () => (sceneProps: WorldSceneProps) =>
 describe('workshop game access', () => {
   beforeEach(() => { window.matchMedia = vi.fn().mockReturnValue({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }); window.scrollTo = vi.fn(); });
   afterEach(() => vi.restoreAllMocks());
+  it.each([
+    ['kliniu', 'Kliniu', -3.78], ['lorigine', "L'ORIGINE", -2.96],
+    ['4ustudio-academy', '4U Studio Academy', -2.14], ['drokex', 'Drokex', -1.32],
+  ])('routes the free-walk prompt for %s to its corner', (id, name, z) => {
+    render(<WorkshopGame initialSnapshot={{ point: 'hub', camera: null }} onOpenCase={vi.fn()} onSave={vi.fn()} onPortfolio={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Explorar libre' }));
+    const selected = spotInView(props.walkSpots, 2, z, 1, 0, .43 / 1.88);
+    expect(selected).toBe(`corner-${id}`);
+    act(() => props.onWalkSpot(selected));
+    fireEvent.click(screen.getByRole('button', { name: `E ${name}` }));
+    expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', `corner-${id}`);
+    expect(screen.queryByRole('region', { name: 'Explorar libre' })).not.toBeInTheDocument();
+  });
   it('focuses the current tour stop on phones too, where every stop stays in the bar', () => {
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({ matches: query.includes('max-width'), addEventListener: vi.fn(), removeEventListener: vi.fn() }));
     render(<WorkshopGame initialSnapshot={{ point: 'hub', camera: null }} onOpenCase={vi.fn()} onSave={vi.fn()} onPortfolio={vi.fn()} />);
@@ -70,7 +84,7 @@ describe('workshop game access', () => {
   it('offers every wall of the lab in tour order, without the removed project rooms', () => {
     render(<WorkshopGame initialSnapshot={{ point: 'hub', camera: null }} onOpenCase={vi.fn()} onSave={vi.fn()} onPortfolio={vi.fn()} />);
     const tour = within(screen.getByRole('navigation', { name: 'Recorrer el taller' }));
-    expect(tour.getAllByRole('button').map(button => button.textContent)).toEqual(['El taller', 'Proyectos', 'Tecnologías', 'Trayectoria', 'Contacto', 'Mapa']);
+    expect(tour.getAllByRole('button').map(button => button.textContent)).toEqual(['El taller', 'Proyectos', 'Tecnologías', 'Trayectoria', 'Contacto', 'Mapa', 'Explorar libre']);
     fireEvent.click(tour.getByRole('button', { name: 'Ir a Trayectoria' }));
     expect(screen.getByRole('main')).toHaveAttribute('data-world-destination', 'trajectory');
     expect(screen.queryByRole('button', { name: /Noche|Día/ })).not.toBeInTheDocument();

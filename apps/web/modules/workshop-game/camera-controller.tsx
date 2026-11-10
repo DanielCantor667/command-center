@@ -16,6 +16,10 @@ const MAX_FOV = 78;
 const PORTRAIT_PULL = 1.35;
 /** The folded panel covers the lower third on phones; close-ups aim lower so the wall sits above it. */
 const PORTRAIT_LIFT = .5;
+/** The gallery spans a wider section of wall than the other stops. */
+const GALLERY_PORTRAIT_PULL = 1.7;
+const GALLERY_PORTRAIT_LIFT = 1.2;
+const GALLERY_CENTER_Z = -2.55;
 /** Stepping back never leaves the room (walls at x = ±4, back wall at z = -4.9, front wall at z = 6.1). */
 const INSIDE = { x: 3.7, back: -4.5, front: 5.7 };
 function fovFor(aspect: number) {
@@ -27,21 +31,25 @@ function framing(point: WorldPoint, portrait: boolean): WorldCameraSnapshot {
   const view = WORLD_VIEWS[point];
   if (!portrait || point === 'hub' || point === 'entrance') return view;
   const [px, py, pz] = view.position; const [tx, ty, tz] = view.target;
+  if (point === 'projects') {
+    const x = MathUtils.clamp(tx + (px - tx) * GALLERY_PORTRAIT_PULL, -INSIDE.x, INSIDE.x);
+    return { position: [x, py, GALLERY_CENTER_Z], target: [tx, ty - GALLERY_PORTRAIT_LIFT, GALLERY_CENTER_Z] };
+  }
   const x = MathUtils.clamp(tx + (px - tx) * PORTRAIT_PULL, -INSIDE.x, INSIDE.x);
   const z = MathUtils.clamp(tz + (pz - tz) * PORTRAIT_PULL, INSIDE.back, INSIDE.front);
   return { position: [x, py, z], target: [tx, ty - PORTRAIT_LIFT, tz] };
 }
 const CLOSE_POSITION = new Vector3(...PC_CLOSE_UP.position), CLOSE_TARGET = new Vector3(...PC_CLOSE_UP.target);
 export interface WorldCameraHandle { capture(): WorldCameraSnapshot }
-export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended, closeUp = false, onCloseUp = () => {} }: {
+export function CameraController({ point, moving, token, initialCamera, reducedMotion, onArrived, cameraHandle, suspended, closeUp = false, onCloseUp = () => {}, freeWalk = false }: {
   point: WorldPoint; moving: boolean; token: number; initialCamera: WorldCameraSnapshot | null;
   reducedMotion: boolean; onArrived: (token: number) => void; cameraHandle: MutableRefObject<WorldCameraHandle | null>; suspended: boolean;
-  closeUp?: boolean; onCloseUp?: () => void;
+  closeUp?: boolean; onCloseUp?: () => void; freeWalk?: boolean;
 }) {
   const { camera, gl, invalidate, size } = useThree();
   const portrait = useRef(false); portrait.current = size.width < size.height;
   const aspect = size.width / size.height;
-  const paused = useRef(suspended); paused.current = suspended;
+  const paused = useRef(suspended || freeWalk); paused.current = suspended || freeWalk;
   const target = useRef(new Vector3(...(initialCamera ?? WORLD_VIEWS.entrance).target));
   const destination = useRef({ position: new Vector3(), target: new Vector3() });
   const travelling = useRef(false);
@@ -99,6 +107,15 @@ export function CameraController({ point, moving, token, initialCamera, reducedM
     invalidate();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only a portrait flip should re-frame
   }, [camera, invalidate, portrait.current]);
+
+  // Back from the free walk to the stop it left, unless a trip towards a new one has already started from there.
+  useEffect(() => {
+    if (freeWalk || !initialized.current || travelling.current) return;
+    camera.position.copy(destination.current.position);
+    target.current.copy(destination.current.target);
+    camera.lookAt(target.current);
+    invalidate();
+  }, [camera, freeWalk, invalidate]);
 
   const zoom = useRef({ progress: 0, from: new Vector3(), look: new Vector3(), arrived: onCloseUp });
   zoom.current.arrived = onCloseUp;

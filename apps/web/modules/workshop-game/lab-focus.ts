@@ -1,9 +1,9 @@
 import { PORTFOLIO_TECHNOLOGIES } from '../../data/portfolio-technologies';
-import { LAB_ANCHORS } from './lab-anchors';
+import { LAB_ANCHORS, type LabAnchor } from './lab-anchors';
 import { plateCentre } from './technology-shelf';
 
 /** What the visitor is pointing at: a screen on the project wall or a plate on the technology board. */
-export type LabFocus = { kind: 'project'; id: string } | { kind: 'technology'; id: string } | null;
+export type LabFocus = { kind: 'project'; id: string; anchor?: LabAnchor } | { kind: 'technology'; id: string } | null;
 
 /** Everything lit by a focus: the item itself plus its recorded relations (technology.projectIds). */
 export function focusRelations(focus: LabFocus): { projects: Set<string>; technologies: Set<string> } {
@@ -29,9 +29,13 @@ export function focusViewpoint(focus: LabFocus): [number, number, number] | null
     if (!plate) return null;
     return [plate[0] + STAND_OFF, plate[1], plate[2] + (plate[2] >= WALL_MIDDLE.technologies ? SIDE : -SIDE)];
   }
-  const screen = LAB_ANCHORS[`screen_${focus.id}`];
+  const screen = focus.anchor ?? LAB_ANCHORS[`screen_${focus.id}`];
   if (!screen) return null;
   const [x, y, z] = screen.position;
   // A plane's front faces (sin r, 0, cos r) for a rotation r around Y.
-  return [x + Math.sin(screen.rotationY) * STAND_OFF, y, z + Math.cos(screen.rotationY) * STAND_OFF + (z >= WALL_MIDDLE.projects ? SIDE : -SIDE)];
+  const normalX = Math.sin(screen.rotationY), normalZ = Math.cos(screen.rotationY);
+  if (focus.anchor && Math.abs(normalZ) > Math.abs(normalX)) {
+    return [x + normalX * STAND_OFF + (x >= 0 ? SIDE : -SIDE), y, z + normalZ * STAND_OFF];
+  }
+  return [x + normalX * STAND_OFF, y, z + normalZ * STAND_OFF + (z >= WALL_MIDDLE.projects ? SIDE : -SIDE)];
 }

@@ -43,4 +43,16 @@ describe('workshop inspection details', () => {
     expect(open).toHaveBeenCalledOnce();
     expect(back).toHaveBeenCalledOnce();
   });
+
+  it('keeps independent keyboard-accessible actions for contact and the desktop', () => {
+    const open = vi.fn(), computer = vi.fn();
+    render(<StationInspection station="contact" buttonRef={{ current: null }} onOpen={open} onBack={vi.fn()} onComputer={computer} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Entrar al escritorio' }));
+    expect(computer).toHaveBeenCalledOnce();
+    expect(open).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: 'Ver contacto' }));
+    expect(open).toHaveBeenCalledOnce();
+    expect(computer).toHaveBeenCalledOnce();
+  });
 });

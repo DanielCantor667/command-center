@@ -44,7 +44,7 @@
 .inspection h1 { margin: 8px 0 15px; font-size: 44px; font-weight: 500; letter-spacing: -.05em; }
 .inspection p { font-size: 14px; line-height: 1.6; color: #52624f; margin: 0 0 23px; }
 .inspection .primary { width: 100%; font-size: 13px; padding: 13px 15px; gap: 12px; }
-.inspectionActions { display: flex; align-items: center; gap: 10px; }
+.inspectionActions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .inspectionDetails { margin-top: 18px; }
 .projectList { display: grid; gap: 2px; margin: 10px 0 0; padding: 0; list-style: none; }
 .projectList .back { margin-top: 0; }
@@ -56,7 +56,8 @@
 .physicalSign { width: 150px; padding: 14px; background: #b3aa91; color: #273b30; border: 2px solid #746f5f; font-size: 16px; line-height: 1.2; text-align: center; }
 .roomSign { color: #fffced; font-size: 24px; font-weight: 500; text-align: left; width: 215px; }
 .roomSign span { display: block; font-size: 11px; margin-top: 5px; }
-.hotspot { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 10px 16px; color: #2b3f33; background: #f2ecdf; border: 1px solid #9fb09a; border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 12px rgb(28 51 36 / 15%); }
+.hotspot { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 10px 16px; color: #f1f8fa; background: rgb(9 20 28 / 94%); border: 1px solid #2ab7c7; border-radius: 6px; font-family: inherit; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 18px rgb(0 0 0 / 35%); }
+.hotspot::before { content: ''; width: 6px; height: 6px; flex: none; border-radius: 50%; background: #3ee0eb; }
 .game button:focus-visible { outline: 3px solid #d9b56c; outline-offset: 4px; }
 @media (max-width: 700px), (max-height: 480px) {
   .header { padding: max(12px, env(safe-area-inset-top)) 14px 10px; gap: 8px; align-items: center; }
@@ -83,7 +84,7 @@
   .inspection h1 { flex-shrink: 0; font-size: 20px; line-height: 1.2; margin: 0; }
   .inspection p { font-size: 12px; line-height: 1.4; margin-bottom: 13px; max-width: 32ch; }
   .inspectionActions { flex-shrink: 0; gap: 10px; }
-  .inspection .primary { flex: 1; min-width: 0; width: auto; min-height: 44px; justify-content: center; padding: 10px 12px; font-size: 12px; }
+  .inspection .primary { flex: 1 1 130px; min-width: 0; width: auto; min-height: 44px; justify-content: center; padding: 10px 12px; font-size: 12px; }
   .inspectionDetails { overflow-y: auto; overscroll-behavior: contain; min-height: 0; margin-top: 0; }
   .back { margin-top: 8px; padding: 5px 0; }
   .navigation { position: static; transform: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; white-space: normal; flex-shrink: 0; gap: 1px; padding: 4px; }
@@ -100,14 +101,14 @@
 }
 .inspection h1 { font-size: 34px; }
 .inspection .attribution { font-size: 11px; line-height: 1.4; }
-.hotspot:hover { background: #e2e8ca; border-color: #b5502f; }
+.hotspot:hover { background: #183642; border-color: #75eaf0; }
 @media (max-width: 700px), (max-height: 480px) {
   .inspection h1 { font-size: 20px; }
 }
 
 /* Phone panel folds so the room stays visible; desktop always shows everything. */
 .fold { display: none; }
-.computer { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 16px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; }
+.computer { display: inline-flex; flex: 1 1 180px; align-items: center; justify-content: center; gap: 6px; min-height: 44px; max-width: 100%; padding: 0 16px; border: 1px solid currentColor; border-radius: 8px; background: none; color: inherit; font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap; }
 @media (max-width: 700px), (max-height: 480px) {
   .fold { flex-shrink: 0; display: flex; align-items: center; justify-content: center; gap: 5px; margin: 0; padding: 8px 0; min-height: 44px; border: 0; background: none; color: #365747; font-size: 11px; cursor: pointer; }
   .inspection .roomLabel { display: none; }
@@ -150,10 +151,22 @@
 .screenCapture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .screenName { display: grid; place-content: center; gap: 28px; height: 100%; padding: 40px; text-align: center; background: repeating-linear-gradient(#071317 0 5px, #0b1d22 5px 6px); color: #2fe6ff; font: 600 96px/1.05 ui-monospace, Menlo, monospace; overflow-wrap: anywhere; }
 .screenName small { color: #4f7f88; font-size: 34px; font-weight: 500; }
-.monitor { padding: 44px 60px; background: linear-gradient(115deg, #1c1240, #3a1d6e); color: #fff; font-family: system-ui, sans-serif; }
-.monitor h2 { margin: 0 0 22px; font-size: 76px; font-weight: 600; letter-spacing: -.02em; }
-.monitor p { max-width: 960px; margin: 0 0 34px; color: #cdbff5; font-size: 30px; line-height: 40px; }
-.monitor span { display: block; color: #2fe6ff; font: 500 28px/45px ui-monospace, Menlo, monospace; }
+.monitor { padding: 14px 18px; background: linear-gradient(170deg, #090e24, #111540); color: #f1f5ff; font-family: system-ui, sans-serif; }
+.monitorFrame { display: flex; flex-direction: column; height: 100%; padding: 20px 34px; border: 2px solid #35385d; border-radius: 15px; }
+.monitorKicker { margin: 0 0 12px; color: #aebad8; font: 17px/1 ui-monospace, Menlo, monospace; text-transform: uppercase; }
+.monitor h2 { margin: 0 0 10px; font-size: 47px; font-weight: 500; line-height: 1; letter-spacing: -.025em; }
+.monitorIntro { margin: 0; color: #b4bed6; font-size: 20px; }
+.monitorPreviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; flex: 1; min-height: 0; margin: 25px 0 24px; }
+.monitorCard { min-width: 0; padding: 12px 16px; overflow: hidden; border: 1px solid #485272; border-radius: 11px; background: #131b30; }
+.monitorCard h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 24px; color: #e7efff; font-size: 19px; font-weight: 500; line-height: 1; }
+.monitorCard h3::before { width: 9px; height: 9px; border-radius: 50%; background: #7fd9f1; content: ''; }
+.monitorCard p { margin: 0 0 12px; color: #b4bed6; font-size: 14px; }
+.monitorCard .monitorCode { color: #78def4; font: 19px/1.2 ui-monospace, Menlo, monospace; }
+.monitorCard .monitorUsername { color: #e7efff; font-size: 21px; }
+.monitorCard .monitorLink, .monitorLink { color: #80d9fa; }
+.monitorCard img { display: block; width: 100%; height: 98px; object-fit: cover; object-position: top; }
+.monitorFooter { display: flex; align-items: center; gap: 48px; color: #b3c2e0; font-size: 17px; line-height: 1; white-space: nowrap; }
+.monitorAction { margin-left: auto; padding: 12px 24px; border-radius: 10px; background: #4856a5; color: #fff; }
 .whiteboard { padding: 50px 60px; background: #e9ece8; color: #1b2a30; font-family: system-ui, sans-serif; }
 .whiteboard h2 { margin: 0; font-size: 84px; font-weight: 600; }
 .whiteboard > p { margin: 14px 0 50px; color: #36525a; font-size: 34px; font-weight: 500; }
@@ -164,3 +177,12 @@
 .whiteboard li span { color: #36525a; font-size: 28px; }
 .whiteboard li span:first-child { font-family: ui-monospace, Menlo, monospace; font-weight: 500; }
 .whiteboard li b { font-size: 38px; font-weight: 600; line-height: 1.1; }
+.freeWalk { position: fixed; z-index: 20; inset: 0; pointer-events: none; color: #fff; }
+.freeWalk button { pointer-events: auto; }
+.touchPad { position: absolute; inset: 0; pointer-events: auto; touch-action: none; }
+.crosshair { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: rgb(255 255 255 / .75); box-shadow: 0 0 0 1px rgb(0 0 0 / .4); }
+.walkPrompt { position: absolute; top: calc(50% + 28px); left: 50%; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; transform: translateX(-50%); border: 0; border-radius: 8px; background: rgb(10 10 18 / .75); color: inherit; font-size: 14px; cursor: pointer; }
+.walkPrompt kbd { padding: 1px 7px; border: 1px solid rgb(255 255 255 / .5); border-radius: 4px; font: inherit; font-size: 12px; }
+.walkHint { position: absolute; bottom: 20px; left: 50%; margin: 0; transform: translateX(-50%); color: rgb(255 255 255 / .8); font-size: 13px; white-space: nowrap; text-shadow: 0 1px 3px #000; }
+.walkExit { position: absolute; top: 96px; right: 48px; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 8px; background: rgb(10 10 18 / .75); color: inherit; font-size: 13px; cursor: pointer; }
+@media (max-width: 700px) { .walkExit { top: 76px; right: 16px; } }

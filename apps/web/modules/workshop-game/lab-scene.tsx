@@ -6,6 +6,7 @@ import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 import { BackSide, Box3, Mesh, MeshBasicMaterial, MeshStandardMaterial, Quaternion, SRGBColorSpace, TextureLoader, Vector3, type Bone, type Group, type Object3D, type Texture } from 'three';
 import { ambient } from './ambient';
 import { CONTACT_DESK, LAB_ACTORS, labEssentialUrls, labSkyUrl, labTier, labUrl, type LabActor } from './lab';
+import { LabRain } from './lab-rain';
 import { patrolAt } from './lab-patrol';
 import { soundscape } from './lab-soundscape';
 import { focusRelations, focusViewpoint, type LabFocus } from './lab-focus';
@@ -163,9 +164,9 @@ const HUB_LABELS: { point: WorldPoint; text: string; at: [number, number, number
   ...Object.values(STATIONS).map(station => ({ point: station.id, text: station.name, at: station.hotspot })),
 ];
 
-export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology, onComputer }: {
+export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology, onComputer, freeWalk }: {
   point: WorldPoint; focus: LabFocus; onFocus: (focus: LabFocus) => void;
-  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onComputer: () => void;
+  onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onComputer: () => void; freeWalk: boolean;
 }) {
   const { invalidate } = useThree();
   const relations = useMemo(() => focusRelations(focus), [focus]);
@@ -180,13 +181,14 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
   return <group>
     <Room /><CitySky />
+    <OptionalBoundary><Suspense fallback={null}><LabRain /></Suspense></OptionalBoundary>
     <OptionalBoundary><Suspense fallback={null}><Plants /></Suspense></OptionalBoundary>
     {LAB_ACTORS.map((actor, index) => <OptionalBoundary key={actor.id}><Suspense fallback={null}>
       <Actor actor={actor} phase={index * 1.7} target={viewpoint} />
     </Suspense></OptionalBoundary>)}
     <OptionalBoundary><Suspense fallback={null}>
       <ProjectWall lit={relations.projects} focused={!!focus} onSelect={selectProject}
-        onHover={id => onFocus(id ? { kind: 'project', id } : null)} />
+        onHover={(id, anchor) => onFocus(id ? { kind: 'project', id, anchor } : null)} />
     </Suspense></OptionalBoundary>
     <ProjectCorners lit={relations.projects} focused={!!focus} onSelect={selectProject}
       onHover={id => onFocus(id ? { kind: 'project', id } : null)} />
@@ -198,7 +200,7 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
       <boxGeometry args={CONTACT_DESK.size} /><meshBasicMaterial visible={false} />
     </mesh>
     {/* Labels only from the overview, where every destination is in view. */}
-    {point === 'hub' && HUB_LABELS.map(label => <Html key={label.point} position={label.at} center>
+    {point === 'hub' && !freeWalk && HUB_LABELS.map(label => <Html key={label.point} position={label.at} center>
       <button type="button" className={styles.hotspot} onClick={() => onGo(label.point)}>{label.text}</button>
     </Html>)}
   </group>;

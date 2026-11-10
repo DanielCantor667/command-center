@@ -16,7 +16,6 @@
     "@command-center/ai-renderer": "workspace:*",
     "@command-center/config": "workspace:*",
     "@command-center/scene-builder": "workspace:*",
-    "@command-center/scene-generator": "workspace:*",
     "@command-center/scene-planner": "workspace:*",
     "@command-center/ui": "workspace:*",
     "@command-center/workplace-design-system": "workspace:*",

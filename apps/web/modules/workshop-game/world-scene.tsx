@@ -13,6 +13,8 @@ import { WORLD_VIEWS, type WorldCameraSnapshot, type WorldPoint } from './world-
 import { WorkshopLighting } from './workshop-lighting';
 import { AmbientLife } from './workshop-life';
 import { WorkshopPostprocessing } from './workshop-postprocessing';
+import { FreeRoam } from './free-roam';
+import type { WalkSpot } from './free-walk';
 
 export function resetWorkshopResource() { useGLTF.clear(labEssentialUrls()); }
 
@@ -23,6 +25,7 @@ export interface WorldSceneProps {
   onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onPreparing: () => void;
   focus: LabFocus; onFocus: (focus: LabFocus) => void;
   closeUp: boolean; onCloseUp: () => void; onComputer: () => void;
+  freeWalk: boolean; walkSpots: readonly WalkSpot<WorldPoint>[]; onWalkExit: () => void; onWalkSpot: (point: WorldPoint | null) => void; onWalkSelect: (point: WorldPoint) => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
   const { gl, invalidate } = useThree();
@@ -92,9 +95,10 @@ export function WorldScene(props: WorldSceneProps) {
     <Suspense fallback={null}>
       <WorkshopLighting />
       <AmbientLife reducedMotion={props.reducedMotion} suspended={props.suspended} />
-      <WorkshopPostprocessing point={props.point} moving={props.moving} reducedMotion={props.reducedMotion} />
-      <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} onComputer={props.onComputer} />
-      <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} closeUp={props.closeUp} onCloseUp={props.onCloseUp} />
+      <WorkshopPostprocessing point={props.point} moving={props.moving || props.freeWalk} reducedMotion={props.reducedMotion} />
+      <LabScene point={props.point} focus={props.focus} onFocus={props.onFocus} onGo={props.onGo} onOpenCase={props.onOpenCase} onTechnology={props.onTechnology} onComputer={props.onComputer} freeWalk={props.freeWalk} />
+      <CameraController point={props.point} moving={props.moving} token={props.token} initialCamera={props.initialCamera} reducedMotion={props.reducedMotion} onArrived={props.onArrived} cameraHandle={props.cameraHandle} suspended={props.suspended} closeUp={props.closeUp} onCloseUp={props.onCloseUp} freeWalk={props.freeWalk} />
+      {props.freeWalk && <FreeRoam spots={props.walkSpots} onExit={props.onWalkExit} onSpot={props.onWalkSpot} onSelect={props.onWalkSelect} />}
       <SceneLifecycle token={props.token} onReady={props.onReady} onError={props.onError} onPreparing={props.onPreparing} />
     </Suspense>
   </Canvas>;

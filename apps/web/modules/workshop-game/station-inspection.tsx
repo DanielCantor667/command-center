@@ -2,7 +2,7 @@ import { useId, useState, type RefObject } from 'react';
 import { ArrowUpRight, ArrowLeft, ChevronDown, ChevronUp, Terminal } from 'lucide-react';
 import { STATIONS, type StationId } from './stations';
 import styles from './workshop-game.module.css';
-export function StationInspection({ station, buttonRef, onOpen, onBack, onComputer }: { station: StationId; buttonRef: RefObject<HTMLButtonElement | null>; onOpen: () => void; onBack: () => void; onComputer?: () => void }) {
+export function StationInspection({ station, buttonRef, computerButtonRef, onOpen, onBack, onComputer }: { station: StationId; buttonRef: RefObject<HTMLButtonElement | null>; computerButtonRef?: RefObject<HTMLButtonElement | null>; onOpen: () => void; onBack: () => void; onComputer?: () => void }) {
   const [open, setOpen] = useState(false);
   const detailsId = useId();
   const entry = STATIONS[station];
@@ -10,7 +10,7 @@ export function StationInspection({ station, buttonRef, onOpen, onBack, onComput
     <span className={styles.roomLabel}>Dentro del taller</span><h1 id="station-title">{entry.name}</h1>
     <div className={styles.inspectionActions}>
       <button ref={buttonRef} type="button" className={styles.primary} onClick={onOpen}>{entry.label}<ArrowUpRight size={17} aria-hidden="true" /></button>
-      {onComputer && <button className={styles.computer} type="button" onClick={onComputer}>Usar la PC<Terminal size={15} aria-hidden="true" /></button>}
+      {onComputer && <button ref={computerButtonRef} className={styles.computer} type="button" onClick={onComputer}>Entrar al escritorio<Terminal size={15} aria-hidden="true" /></button>}
       <button className={styles.fold} type="button" aria-label={open ? 'Ocultar detalles' : 'Ver detalles'} aria-controls={detailsId} aria-expanded={open} onClick={() => setOpen(value => !value)}>{open ? 'Ocultar' : 'Detalles'}{open ? <ChevronDown size={15} aria-hidden="true" /> : <ChevronUp size={15} aria-hidden="true" />}</button>
     </div>
     <div className={styles.inspectionDetails} id={detailsId}>

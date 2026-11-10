@@ -73,23 +73,71 @@
  },
  "label_command-center": {
   "centre": [
-   3.935,
-   1.7,
-   1.76
+   -0.7,
+   -6.035,
+   2.46
   ],
-  "facing": 180.0,
+  "facing": 90.0,
   "size": [
    0.42,
    0.065
   ]
  },
- "label_intranet-ess": {
+ "label_gallery_4ustudio-academy": {
   "centre": [
-   3.935,
-   2.4,
-   1.76
+   3.921,
+   2.14,
+   1.737
   ],
   "facing": 180.0,
+  "size": [
+   0.7,
+   0.09
+  ]
+ },
+ "label_gallery_drokex": {
+  "centre": [
+   3.921,
+   1.32,
+   1.737
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.09
+  ]
+ },
+ "label_gallery_kliniu": {
+  "centre": [
+   3.921,
+   3.78,
+   1.737
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.09
+  ]
+ },
+ "label_gallery_lorigine": {
+  "centre": [
+   3.921,
+   2.96,
+   1.737
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.09
+  ]
+ },
+ "label_intranet-ess": {
+  "centre": [
+   0.0,
+   -6.035,
+   2.46
+  ],
+  "facing": 90.0,
   "size": [
    0.42,
    0.065
@@ -97,11 +145,11 @@
  },
  "label_vevi": {
   "centre": [
-   3.935,
-   3.1,
-   1.76
+   0.7,
+   -6.035,
+   2.46
   ],
-  "facing": 180.0,
+  "facing": 90.0,
   "size": [
    0.42,
    0.065
@@ -529,11 +577,11 @@
  },
  "screen_command-center": {
   "centre": [
-   3.935,
-   1.7,
-   2.0
+   -0.7,
+   -6.035,
+   2.7
   ],
-  "facing": 180.0,
+  "facing": 90.0,
   "size": [
    0.62,
    0.39
@@ -551,13 +599,61 @@
    0.5
   ]
  },
- "screen_intranet-ess": {
+ "screen_gallery_4ustudio-academy": {
   "centre": [
-   3.935,
-   2.4,
-   2.0
+   3.922,
+   2.14,
+   2.03
   ],
   "facing": 180.0,
+  "size": [
+   0.7,
+   0.44
+  ]
+ },
+ "screen_gallery_drokex": {
+  "centre": [
+   3.922,
+   1.32,
+   2.03
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.44
+  ]
+ },
+ "screen_gallery_kliniu": {
+  "centre": [
+   3.922,
+   3.78,
+   2.03
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.44
+  ]
+ },
+ "screen_gallery_lorigine": {
+  "centre": [
+   3.922,
+   2.96,
+   2.03
+  ],
+  "facing": 180.0,
+  "size": [
+   0.7,
+   0.44
+  ]
+ },
+ "screen_intranet-ess": {
+  "centre": [
+   0.0,
+   -6.035,
+   2.7
+  ],
+  "facing": 90.0,
   "size": [
    0.62,
    0.39
@@ -589,11 +685,11 @@
  },
  "screen_vevi": {
   "centre": [
-   3.935,
-   3.1,
-   2.0
+   0.7,
+   -6.035,
+   2.7
   ],
-  "facing": 180.0,
+  "facing": 90.0,
   "size": [
    0.62,
    0.39

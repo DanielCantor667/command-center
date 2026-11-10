@@ -58,7 +58,7 @@ describe('Drokex case', () => {
     expect(onReturn).toHaveBeenCalledOnce();
   });
   it('preserves opt-in across platform and visibility changes, resets and restores focus on close', async () => {
-    const context = vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({ getExtension: () => null } as unknown as WebGL2RenderingContext);
+    const context = vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({ getExtension: () => null } as never);
     render(<PortfolioCase project={project} onReturn={vi.fn()} onSelect={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: 'Explorar red en 3D' }));
     await screen.findByLabelText('Red de prueba');

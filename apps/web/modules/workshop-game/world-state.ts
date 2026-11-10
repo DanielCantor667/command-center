@@ -19,8 +19,8 @@ export type WorldEvent = { type: 'start' | 'cancel' }
 export const WORLD_VIEWS: Record<WorldPoint, WorldCameraSnapshot> = {
   entrance: { position: [.3, 1.6, 5.6], target: [-.2, 1.15, -4.0] },
   hub: { position: [.3, 1.6, 4.6], target: [-.2, 1.15, -4.0] },
-  // Low enough that the hanging lamp stays above the line of sight to the top row of screens.
-  projects: { position: [1.4, 1.6, -2.45], target: [3.95, 2.15, -2.45] },
+  // Leave space for the project list while keeping the four wall screens in view.
+  projects: { position: [.8, 1.6, -2.45], target: [3.95, 2.15, -1.95] },
   // Each booth is seen from across the aisle, its screen and props together; lab coordinates are (x, up, -blender y).
   'corner-4ustudio-academy': { position: [.5, 1.5, 1.0], target: [-4, 1.3, 2.0] },
   'corner-drokex': { position: [-.5, 1.5, 3.7], target: [4, 1.2, 4.75] },

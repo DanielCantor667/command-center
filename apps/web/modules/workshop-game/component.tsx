@@ -1,13 +1,16 @@
 'use client';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ArrowUpRight, DoorOpen, Map, Move, RotateCcw, Volume2, VolumeX, X } from 'lucide-react';
-import { Component, useCallback, useEffect, useReducer, useRef, useState, type ReactNode } from 'react';
+import { ArrowUpRight, DoorOpen, Footprints, Map, Move, RotateCcw, Volume2, VolumeX, X } from 'lucide-react';
+import { Component, useCallback, useEffect, useReducer, useRef, useState, type PointerEvent, type ReactNode } from 'react';
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { CORNER_PROJECTS, cornerPoint, cornerProject, initialWorldState, worldReducer, type CornerPoint, type GameSnapshot, type WorldPoint } from './world-state';
 import type { LabFocus } from './lab-focus';
 import { CornerInspection, ProjectsInspection } from './projects-inspection';
+import { walkInput, type WalkSpot } from './free-walk';
+import { LAB_ANCHORS } from './lab-anchors';
+import { GALLERY_SCREENS } from './project-gallery';
 import { StationInspection } from './station-inspection';
 import { STATIONS, stationForPoint } from './stations';
 import { WorkshopReader } from './workshop-reader';
@@ -35,6 +38,29 @@ const WALK: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'projects', ...CORNER_PR
 const navPoint = (point: WorldPoint): WorldPoint => cornerProject(point) ? 'projects' : point;
 /** Cover shortcuts: the cases with their own designed page. */
 const QUICK_PROJECTS = ['kliniu', 'lorigine', '4ustudio-academy', 'drokex'].map(id => PROJECTS.find(project => project.id === id)!);
+/** What the free walk can reach: the stops of the guided tour, so both ways of moving lead to the same panels. */
+const WALK_SPOTS: WalkSpot<WorldPoint>[] = [
+  ...Object.values(STATIONS).map(station => ({ at: station.hotspot, item: station.id as WorldPoint })),
+  { at: [3.75, 2.45, -2.4], item: 'projects' },
+  ...GALLERY_SCREENS.map(({ id, anchor }) => ({ at: anchor.position, item: cornerPoint(id)!, surface: { width: anchor.size[0], height: anchor.size[1], rotationY: anchor.rotationY } })),
+  ...CORNER_PROJECTS.flatMap(id => { const zone = LAB_ANCHORS[`zone_${id}`]; return zone ? [{ at: zone.position, item: cornerPoint(id)! }] : []; }),
+];
+/** Phones: the left half of the screen walks, the right half looks. */
+function TouchPad() {
+  const start = useRef<Record<number, { x: number; y: number; walk: boolean }>>({});
+  const move = (event: PointerEvent<HTMLDivElement>) => {
+    const touch = start.current[event.pointerId];
+    if (!touch) return;
+    if (touch.walk) { walkInput.forward = Math.max(-1, Math.min(1, (touch.y - event.clientY) / 50)); walkInput.strafe = Math.max(-1, Math.min(1, (event.clientX - touch.x) / 50)); return; }
+    walkInput.yaw += (event.clientX - touch.x) * 1.5; walkInput.pitch += (event.clientY - touch.y) * 1.5;
+    touch.x = event.clientX; touch.y = event.clientY;
+  };
+  const end = (event: PointerEvent<HTMLDivElement>) => {
+    if (start.current[event.pointerId]?.walk) walkInput.forward = walkInput.strafe = 0;
+    delete start.current[event.pointerId];
+  };
+  return <div className={styles.touchPad} aria-hidden="true" onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); start.current[event.pointerId] = { x: event.clientX, y: event.clientY, walk: event.clientX < innerWidth / 2 }; }} onPointerMove={move} onPointerUp={end} onPointerCancel={end} />;
+}
 const defaultFilters: TechnologyFilters = { query: '', category: 'all', projectId: null };
 export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpenCase, onPortfolio, reading: controlledReading, onRead, technologyFilters = defaultFilters, onTechnologyFiltersChange = () => {} }: WorkshopGameProps) {
   const [localReading, setLocalReading] = useState<WorkshopReading | null>(null);
@@ -50,9 +76,15 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   // The PC: the camera closes in on the monitor ('zooming'), then the desktop takes the full screen ('open').
   const [computer, setComputer] = useState<'off' | 'zooming' | 'open'>('off');
   const computerOn = computer !== 'off';
+  const [freeWalk, setFreeWalk] = useState(false);
+  const [walkSpot, setWalkSpot] = useState<WorldPoint | null>(null);
+  const [touch, setTouch] = useState(false);
+  useEffect(() => setTouch(matchMedia('(pointer: coarse)').matches), []);
+  const busy = computerOn || freeWalk;
   const cameraHandle = useRef<WorldCameraHandle | null>(null);
   const initialCamera = useRef(initialSnapshot?.camera ?? null);
   const openButton = useRef<HTMLButtonElement>(null), enterButton = useRef<HTMLButtonElement>(null), retryButton = useRef<HTMLButtonElement>(null);
+  const computerButton = useRef<HTMLButtonElement>(null), computerOpener = useRef<HTMLButtonElement | null>(null);
   const navigationButtons = useRef<Partial<Record<WorldPoint, HTMLButtonElement | null>>>({});
   const stateRef = useRef(state); stateRef.current = state;
   const wheelGesture = useRef({ delta: 0, at: 0 });
@@ -95,13 +127,13 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const cancel = useCallback(() => { dispatch({ type: 'cancel' }); requestAnimationFrame(() => { if (stateRef.current.point === 'entrance') enterButton.current?.focus({ preventScroll: true }); }); }, []);
   useEffect(() => {
     const escape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || suspended || reading || computerOn) return;
+      if (event.key !== 'Escape' || suspended || reading || busy) return;
       const current = stateRef.current;
       if (['loading', 'moving'].includes(current.status)) cancel();
       else if (current.status === 'exploring' && (current.point === 'projects' || cornerProject(current.point) || stationForPoint(current.point))) dispatch({ type: 'go', point: 'hub' });
     };
     window.addEventListener('keydown', escape); return () => window.removeEventListener('keydown', escape);
-  }, [cancel, suspended, reading, computerOn]);
+  }, [cancel, suspended, reading, busy]);
   useEffect(() => {
     if (state.status !== 'exploring') wheelGesture.current = { delta: 0, at: 0 };
   }, [state.status]);
@@ -117,7 +149,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       last = Date.now(); dispatch({ type: 'go', point: next });
     };
     const wheel = (event: WheelEvent) => {
-      if (suspended || reading || computerOn || event.ctrlKey || stateRef.current.status !== 'exploring' || !(event.target as Element | null)?.closest?.('[data-world-canvas]')) {
+      if (suspended || reading || busy || event.ctrlKey || stateRef.current.status !== 'exploring' || !(event.target as Element | null)?.closest?.('[data-world-canvas]')) {
         wheelGesture.current = { delta: 0, at: 0 }; return;
       }
       // Wheels can report lines/pages; trackpads usually send a burst of small pixel deltas.
@@ -132,7 +164,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       step(accumulated > 0 ? 1 : -1);
     };
     const key = (event: KeyboardEvent) => {
-      if (suspended || reading || computerOn || event.altKey || event.ctrlKey || event.metaKey) return;
+      if (suspended || reading || busy || event.altKey || event.ctrlKey || event.metaKey) return;
       const focus = document.activeElement;
       if (focus && focus.matches('input, textarea, [contenteditable="true"]')) return;
       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); step(1); }
@@ -140,7 +172,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     };
     window.addEventListener('wheel', wheel, { passive: true }); window.addEventListener('keydown', key);
     return () => { window.removeEventListener('wheel', wheel); window.removeEventListener('keydown', key); };
-  }, [suspended, reading, computerOn]);
+  }, [suspended, reading, busy]);
   const ready = useCallback((token: number) => dispatch({ type: 'ready', token }), []);
   const arrived = useCallback((token: number) => dispatch({ type: 'arrived', token }), []);
   const failed = useCallback((token: number) => dispatch({ type: 'failed', token }), []);
@@ -161,15 +193,17 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     saveWorld();
     onOpenCase(id);
   };
-  const openComputer = useCallback(() => { if (stateRef.current.status === 'exploring') setComputer('zooming'); }, []);
+  const openComputer = useCallback((opener: HTMLButtonElement | null = null) => { if (stateRef.current.status === 'exploring') { computerOpener.current = opener; setComputer('zooming'); } }, []);
   const computerReady = useCallback(() => setComputer('open'), []);
-  const closeComputer = useCallback(() => { setComputer('off'); requestAnimationFrame(() => openButton.current?.focus({ preventScroll: true })); }, []);
+  const closeComputer = useCallback(() => { setComputer('off'); requestAnimationFrame(() => { const opener = computerOpener.current; computerOpener.current = null; (opener?.isConnected && !opener.closest('[inert],[aria-hidden="true"]') ? opener : openButton.current)?.focus({ preventScroll: true }); }); }, []);
+  const exitWalk = useCallback(() => { setFreeWalk(false); requestAnimationFrame(() => navigationButtons.current[navPoint(stateRef.current.point)]?.focus({ preventScroll: true })); }, []);
+  const selectWalkSpot = useCallback((point: WorldPoint) => { setFreeWalk(false); go(point); }, [go]);
   const openStation = () => { if (station) setReading(station === 'technologies' ? { kind: station, technologyId: 'nextjs' } : { kind: station }); };
   return <><main className={styles.game} inert={!!reading || computerOn} aria-hidden={reading ? true : undefined} data-workshop-state={state.status} data-world-point={state.point} data-world-destination={state.destination}>
     {/* Cycles render of the lab from the overview camera (blender/prototype_workshop_room_v2.py). */}
     <div className={styles.poster} aria-hidden="true"><Image src="/experience/workshop-lab-entrance-v2.webp" alt="" fill sizes="100vw" priority /></div>
     {active && <div className={styles.world} data-world-canvas><WorldBoundary key={attempt} onError={() => failed(stateRef.current.token)}>
-      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading || computer === 'open'} focus={focus} onFocus={setFocus} closeUp={computerOn} onCloseUp={computerReady} onComputer={openComputer} />
+      <WorldScene point={state.status === 'moving' ? state.destination : state.point} moving={state.status === 'moving'} token={state.token} reducedMotion={reducedMotion} initialCamera={initialCamera.current} cameraHandle={cameraHandle} onReady={ready} onArrived={arrived} onError={failed} onGo={go} onOpenCase={openRelatedCase} onTechnology={technologyId => setReading({ kind: 'technologies', technologyId })} onPreparing={materialsReady} suspended={suspended || !!reading || computer === 'open'} focus={focus} onFocus={setFocus} closeUp={computerOn} onCloseUp={computerReady} onComputer={openComputer} freeWalk={freeWalk} walkSpots={WALK_SPOTS} onWalkExit={exitWalk} onWalkSpot={setWalkSpot} onWalkSelect={selectWalkSpot} />
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>
@@ -188,7 +222,14 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <p role="status" aria-live="polite">{state.status === 'error' ? 'Puedes reintentar o explorar los proyectos en el portafolio.' : preparing ? 'Preparando la escena' : 'Cargando el espacio del taller'}</p>
       {state.status === 'loading' ? <><div className={styles.loadTrack} role="progressbar" aria-label="Carga del taller" aria-valuetext={preparing ? 'Preparando la escena' : 'Cargando el espacio'}><span /></div><button type="button" className={styles.cancel} onClick={cancel}>Cancelar entrada<X size={16} aria-hidden="true" /></button></> : <button ref={retryButton} className={styles.primary} type="button" onClick={() => void start()}>Reintentar<RotateCcw size={17} aria-hidden="true" /></button>}
     </section>}
-    {inside && <>
+    {freeWalk && <section className={styles.freeWalk} aria-label="Explorar libre">
+      {touch && <TouchPad />}
+      <span className={styles.crosshair} aria-hidden="true" />
+      {walkSpot && <button type="button" className={styles.walkPrompt} onClick={() => selectWalkSpot(walkSpot)}><kbd>E</kbd>{pointNames[walkSpot]}</button>}
+      <p className={styles.walkHint}>{touch ? 'Izquierda: caminar. Derecha: mirar.' : 'WASD para caminar, el mouse para mirar. Esc para salir.'}</p>
+      <button type="button" className={styles.walkExit} onClick={exitWalk}>Salir<X size={15} aria-hidden="true" /></button>
+    </section>}
+    {inside && !freeWalk && <>
       <div className={styles.journey}>
         <div className={styles.destination} role="status">{(() => { const shown = state.status === 'moving' ? state.destination : state.point; const index = TOUR.indexOf(navPoint(shown) as (typeof TOUR)[number]); return <>{index >= 0 && <span className={styles.tourStep}>{index + 1} / {TOUR.length}</span>}<span>{state.status === 'moving' && <span className={styles.movingPrefix}>Acercándote a </span>}{pointNames[shown]}</span></>; })()}</div>
         {state.status === 'moving' && <button className={styles.stop} type="button" aria-label="Cancelar recorrido" title="Cancelar recorrido" onClick={cancel}><span className={styles.stopText}>Cancelar recorrido</span><X size={16} aria-hidden="true" /></button>}
@@ -196,8 +237,8 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <div className={styles.bottomControls}>
       {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {corner && <CornerInspection key={corner} projectId={corner} buttonRef={openButton} onOpen={openRelatedCase} onStep={step => go(WALK[WALK.indexOf(state.point as (typeof WALK)[number]) + step]!)} onAll={() => go('projects')} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
-      {station && <StationInspection key={station} station={station} buttonRef={openButton} onOpen={openStation} onBack={() => go('hub')} onComputer={station === 'contact' ? openComputer : undefined} />}
-      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button></nav>
+      {station && <StationInspection key={station} station={station} buttonRef={openButton} computerButtonRef={computerButton} onOpen={openStation} onBack={() => go('hub')} onComputer={station === 'contact' ? () => openComputer(computerButton.current) : undefined} />}
+      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button>{state.status === 'exploring' && <button type="button" onClick={() => setFreeWalk(true)}>Explorar libre<Footprints size={14} aria-hidden="true" /></button>}</nav>
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}
