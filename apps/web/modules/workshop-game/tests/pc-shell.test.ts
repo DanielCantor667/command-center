@@ -61,6 +61,25 @@ describe('workshop PC shell', () => {
     expect(ask('qwerty').text[0]).toContain('sin IA');
   });
 
+  it('answers questions about one project from its case data, without inventing what is missing', () => {
+    const academy = PROJECTS.find(project => project.id === '4ustudio-academy')!;
+    expect(ask('¿qué stack usaste en academy?').text[0]).toContain(academy.technologies[0]!.name);
+    const kliniu = PROJECTS.find(project => project.id === 'kliniu')!;
+    expect(ask('¿tienes el link de kliniu?').text[0]).toContain(kliniu.links.live!);
+    expect(ask('¿cuál fue tu rol en kliniu?').text[0]).toContain(kliniu.role.title);
+    expect(ask('¿cuándo empezó kliniu?').text[0]).toMatch(/sigue en curso|terminó/);
+    const drokex = PROJECTS.find(project => project.id === 'drokex')!;
+    if (!drokex.engineeringDecisions.length) expect(ask('¿por qué esa arquitectura en drokex?').text[0]).toContain('No hay decisiones documentadas');
+    expect(ask('háblame de drokex').text.at(-1)).toBe('Caso completo: `open drokex`');
+  });
+
+  it('finds which projects used a technology, and says so when none did', () => {
+    const prisma = PROJECTS.filter(project => project.technologies.some(technology => technology.name === 'Prisma'));
+    expect(ask('¿has usado Prisma?').text).toHaveLength(prisma.length + 1);
+    expect(ask('¿sabes nextjs?').text[0]).toContain('Next.js');
+    expect(ask('¿has usado Cobol?').text[0]).toContain('no aparece');
+  });
+
   it('hides its easter eggs from help', () => {
     expect(run('sudo rm -rf /', HOME).output[0]).toContain('sudoers');
     expect(run('rm -rf /', HOME).error).toBeUndefined();

@@ -104,3 +104,9 @@ espera el módulo del caso antes de la View Transition, para que nunca capture e
 - Verificado en Chrome: abrir un caso antes de la precarga, volver al taller, portafolio clásico, `?project=` y
   `#contacto` directos; sin errores ni 404.
 - Tests: 9 de `shell/experience-gate` esperan ahora con `findBy` la primera vista de cada módulo diferido.
+
+## Cierre (Daniel, 2026-11-11)
+
+Se deja así. Las metas de peso de `low` (esencial ≤ 5 MB, total ≤ 8 MB) quedan como referencia, no como requisito: la
+meta de tiempo de entrada se cumple y lo que sobra llega después de entrar. Se retoman solo si Speed Insights o datos
+reales de móvil muestran abandono durante la carga.

@@ -32,20 +32,20 @@ export const metadata: Metadata = {
     template: '%s · Command Center',
   },
   description:
-    'Portafolio de Daniel Cantor: cuatro sitios publicados, capturas reales y decisiones de ingeniería explorables desde una ciudad 3D.',
-  keywords: ['software engineering', 'knowledge graph', 'architecture', 'TypeScript', 'Next.js', 'portfolio'],
-  authors: [{ name: 'Daniel Cantor' }],
+    'Daniel Cantor, Full-Stack Developer en Bogotá. Recorre su taller 3D o lee directo los casos de Kliniu, L’ORIGINE, 4U Studio Academy y Drokex: decisiones, tecnologías y trayectoria.',
+  keywords: ['Daniel Cantor', 'Full-Stack Developer', 'portafolio', 'Bogotá', 'TypeScript', 'Next.js', 'React', 'Three.js'],
+  authors: [{ name: 'Daniel Cantor', url: 'https://github.com/DanielCantor667' }],
   alternates: { canonical: '/' },
   openGraph: {
-    type: 'website', locale: 'es_CO', url: '/', siteName: 'Command Center',
+    type: 'website', locale: 'es_CO', url: '/', siteName: 'El taller de Daniel',
     title: 'Daniel Cantor — Portafolio de ingeniería',
-    description: 'Proyectos, decisiones, tecnologías y evidencia conectados en una ciudad digital explorable.',
-    images: [{ url: '/experience/command-city-hero.png', width: 1536, height: 1024, alt: 'Command Center, ciudad de conocimiento de ingeniería' }],
+    description: 'Un taller 3D para recorrer cuatro sitios publicados, sus casos y las decisiones detrás de cada uno.',
+    images: [{ url: '/og/workshop-v1.jpg', width: 1200, height: 630, alt: 'El taller 3D de Daniel Cantor: brazos robóticos, escritorio y la pared con sus proyectos' }],
   },
   twitter: {
     card: 'summary_large_image', title: 'Daniel Cantor — Portafolio de ingeniería',
-    description: 'Una ciudad digital explorable para proyectos, decisiones y evidencia de ingeniería.',
-    images: ['/experience/command-city-hero.png'],
+    description: 'Un taller 3D para recorrer cuatro sitios publicados, sus casos y las decisiones detrás de cada uno.',
+    images: ['/og/workshop-v1.jpg'],
   },
   robots: { index: true, follow: true },
 };

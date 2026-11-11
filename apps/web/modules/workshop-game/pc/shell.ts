@@ -119,12 +119,58 @@ const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(
 /** A shell line, as opposed to a question: a known command, `/command` or `!command`. */
 export const isCommand = (input: string) => { const word = input.trim().split(/\s+/)[0]!; return /^[/!]/.test(word) || COMMANDS.includes(word) || word in EGGS; };
 
+type Project = (typeof PROJECTS)[number];
+const GENERIC = new Set(['studio', 'center', 'command']);
+/** Every way a visitor may name a project: its name, id, slug and their distinctive words ("academy", "intranet"). */
+const aliases = (project: Project) => [project.name, project.id, project.slug, ...project.id.split('-'), ...project.name.split(/\s+/)]
+  .map(alias => normalize(alias).replace(/[^a-z0-9]/g, '')).filter(alias => alias.length >= 4 && !GENERIC.has(alias));
+const compact = (text: string) => text.replace(/[^a-z0-9]/g, '');
+const findMentioned = (text: string) => PROJECTS.find(project => aliases(project).some(alias => compact(text).includes(alias)));
+/** Whole-word match, so "go" or "r" never hit inside other words. "Next.js" also matches "nextjs" and "next js". */
+const mentionsTechnology = (text: string, name: string) => {
+  const key = normalize(name).replace(/[^a-z0-9]+/g, ' ').trim();
+  return key.length > 1 && new RegExp(`(^|[^a-z0-9])(${key.replace(/ /g, '[^a-z0-9]?')})([^a-z0-9]|$)`).test(text.replace(/[^a-z0-9]+/g, ' '));
+};
+const TECHNOLOGIES = [...new Set(PROJECTS.flatMap(project => project.technologies.map(technology => technology.name)))];
+const date = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString('es-CO', { month: 'long', year: 'numeric' });
+
+/** Questions about one project, answered only from its case data; anything missing says so instead of guessing. */
+function aboutProject(project: Project, has: (...words: string[]) => boolean): Answer {
+  const tools = [read(`proyectos/${project.id}.txt`)];
+  const open = `Caso completo: \`open ${project.id}\``;
+  const answer = (...text: string[]) => ({ tools, text: [...text, open] });
+  if (has('stack', 'tecnolog', 'usaste', 'hecho con', 'lenguaje', 'framework', 'herramienta'))
+    return answer(`**${project.name}** usa: ${project.technologies.map(technology => technology.name).join(', ')}.`);
+  if (has('dificil', 'reto', 'desafio', 'problema', 'complicad'))
+    return answer(...(project.challenges.length ? project.challenges.map(item => `- **${item.title}**${item.resolution ? `: ${item.resolution}` : ''}`) : ['No hay retos documentados en este caso.']));
+  if (has('decision', 'por que', 'arquitectura', 'eligi'))
+    return answer(...(project.engineeringDecisions.length ? project.engineeringDecisions.map(item => `- **${item.title}**: ${item.decision}`) : ['No hay decisiones documentadas en este caso.']));
+  if (has('aprend', 'leccion'))
+    return answer(...(project.lessonsLearned.length ? project.lessonsLearned.map(item => `- **${item.title}**: ${item.description}`) : ['No hay lecciones documentadas en este caso.']));
+  if (has('rol', 'hiciste', 'responsab', 'tu parte', 'que hizo'))
+    return answer(`Rol: **${project.role.title}**`, ...project.role.responsibilities.map(item => `- ${item}`));
+  if (has('cuando', 'tiempo', 'duro', 'fecha', 'empez', 'termin'))
+    return answer(`Empezó en ${date(project.startedAt)}; ${project.completedAt ? `terminó en ${date(project.completedAt)}` : 'sigue en curso'}.`, ...(project.metrics.durationWeeks ? [`Duración: ${project.metrics.durationWeeks} semanas.`] : []));
+  if (has('link', 'enlace', 'url', 'sitio', 'web', 'verlo', 'demo'))
+    return answer(project.links.live ? `En producción: ${project.links.live}` : 'No tiene un sitio público enlazado.');
+  if (has('funcion', 'caracteristica', 'que hace', 'feature'))
+    return answer(...project.features.map(item => `- **${item.title}**: ${item.description}`));
+  return answer(`**${project.name}**: ${project.summary}`, 'Pregúntame por su stack, retos, decisiones, rol, fechas o enlace.');
+}
+
 /** The terminal's chat. It is scripted, there is no model behind it: every answer comes from the portfolio data. */
 export function ask(question: string): Answer {
   const text = normalize(question);
   const has = (...words: string[]) => words.some(word => text.includes(word));
-  const project = PROJECTS.find(item => text.includes(normalize(item.name)) || text.includes(item.id));
-  if (project) return { tools: [read(`proyectos/${project.id}.txt`)], text: [`**${project.name}**: ${project.summary}`, `Para abrir el caso completo: \`open ${project.id}\``] };
+  const project = findMentioned(text);
+  if (project) return aboutProject(project, has);
+  const technology = TECHNOLOGIES.find(name => mentionsTechnology(text, name));
+  if (technology) {
+    const used = PROJECTS.filter(item => item.technologies.some(entry => entry.name === technology));
+    return { tools: [{ name: 'Grep', target: `${technology} ~/proyectos`, summary: `${used.length} archivos` }], text: [`Daniel usó **${technology}** en:`, ...used.map(item => `- **${item.name}**: ${item.tagline}`)] };
+  }
+  if (has('has usado', 'usas ', 'sabes ', 'conoces ', 'manejas ')) return { tools: [{ name: 'Grep', target: '~/proyectos', summary: '0 coincidencias' }], text: ['Eso no aparece en ninguno de los proyectos del portafolio. Escribe `projects` para ver con qué ha trabajado Daniel.'] };
+  if (has('destacad', 'mejor proyecto', 'favorito', 'principal')) return { tools: [{ name: 'Bash', target: 'ls ~/proyectos', summary: `${PROJECTS.length} archivos` }], text: ['Los proyectos destacados:', ...PROJECTS.filter(item => item.featured).map(item => `- **${item.name}**: ${item.tagline}`)] };
   if (has('proyecto', 'portafolio', 'que has hecho', 'construi')) return { tools: [{ name: 'Bash', target: 'ls ~/proyectos', summary: `${PROJECTS.length} archivos` }], text: ['Estos son los proyectos de Daniel:', ...PROJECTS.map(item => `- **${item.name}**: ${item.tagline}`)] };
   if (has('contact', 'contrat', 'trabaj', 'escrib', 'freelance', 'dispon')) return { tools: [read('contacto.txt')], text: [PUBLIC_PROFILE.availability, `- GitHub: ${PUBLIC_PROFILE.github}`, `- LinkedIn: ${PUBLIC_PROFILE.linkedin}`] };
   if (has('experiencia', 'trayectoria', 'estudi', 'carrera', 'cv')) return { tools: [read('trayectoria.txt')], text: FILES[`${HOME}/trayectoria.txt`]!.split('\n').map(line => `- ${line}`) };
