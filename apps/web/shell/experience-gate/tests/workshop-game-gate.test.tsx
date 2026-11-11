@@ -15,23 +15,23 @@ vi.mock('../../../modules/projects/components/portfolio-case/component', () => (
 vi.mock('../../app-shell', () => ({ AppShell: () => null }));
 describe('game entry in the public portfolio', () => {
   beforeEach(() => { window.history.replaceState(null, '', '/'); window.matchMedia = vi.fn().mockReturnValue({ matches: true }); window.scrollTo = vi.fn(); });
-  it('starts in the game and restores its independent camera after the case', () => {
+  it('starts in the game and restores its independent camera after the case', async () => {
     render(<ExperienceGate />);
     expect(screen.getByRole('heading', { name: 'Taller jugable' })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Abrir caso desde taller' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Volver al taller' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Volver al taller' }));
     expect(props.initialSnapshot).toEqual(snapshot);
   });
-  it('opens the complete existing portfolio through the explicit alternative', () => {
+  it('opens the complete existing portfolio through the explicit alternative', async () => {
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Ver portafolio' }));
-    expect(screen.getByRole('heading', { name: 'Portafolio completo' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Portafolio completo' })).toBeInTheDocument();
   });
-  it('clears a direct case URL when returning to the classic portfolio', () => {
+  it('clears a direct case URL when returning to the classic portfolio', async () => {
     window.history.replaceState(null, '', '/?view=portfolio&project=kliniu');
     render(<ExperienceGate />);
-    fireEvent.click(screen.getByRole('button', { name: 'Volver al taller' }));
-    expect(screen.getByRole('heading', { name: 'Portafolio completo' })).toBeInTheDocument();
+    fireEvent.click(await screen.findByRole('button', { name: 'Volver al taller' }));
+    expect(await screen.findByRole('heading', { name: 'Portafolio completo' })).toBeInTheDocument();
     expect(new URL(window.location.href).searchParams.has('project')).toBe(false);
   });
 });

@@ -1,18 +1,27 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { PROJECTS } from '../../data/projects';
-import { PortfolioCase } from '../../modules/projects/components/portfolio-case/component';
-import { ExperienceModule } from '../../modules/experience';
 import { WorkshopGame } from '../../modules/workshop-game/component';
 import type { GameSnapshot } from '../../modules/workshop-game/world-state';
 import { readWorkshopReading, writeWorkshopReading, type WorkshopReading } from '../../modules/workshop-game/reading';
 import type { TechnologyFilters } from '../../modules/experience/components/technology-explorer';
 import type { PortfolioSection } from '../../modules/experience/component';
 import type { WorkshopSnapshot } from '../../modules/experience/workshop-state';
-import { AppShell } from '../app-shell';
 import { useWorkspaceStore } from '../workspace-store';
+
+// P.3 (specs/workshop-performance.md): the landing only needs the workshop. Cases, the classic portfolio and the
+// workspace load on idle (see `preload` below), so opening one is still instant.
+const loadCase = () => import('../../modules/projects/components/portfolio-case/component');
+const loadExperience = () => import('../../modules/experience');
+const loadShell = () => import('../app-shell');
+let caseLoaded = false;
+const preloadCase = () => loadCase().then(() => { caseLoaded = true; });
+const PortfolioCase = dynamic(() => loadCase().then(module => module.PortfolioCase), { loading: () => null });
+const ExperienceModule = dynamic(() => loadExperience().then(module => module.ExperienceModule), { loading: () => null });
+const AppShell = dynamic(() => loadShell().then(module => module.AppShell), { loading: () => null });
 import type { WorkspaceModule } from '../workspace-store';
 
 const portfolioSections: Record<string, PortfolioSection> = {
@@ -111,6 +120,13 @@ export function ExperienceGate() {
     return () => window.removeEventListener('keydown', skip);
   }, []);
 
+  useEffect(() => {
+    const preload = () => { void preloadCase(); void loadExperience(); void loadShell(); };
+    if (!('requestIdleCallback' in window)) { const id = setTimeout(preload, 2000); return () => clearTimeout(id); }
+    const id = window.requestIdleCallback(preload, { timeout: 4000 });
+    return () => window.cancelIdleCallback(id);
+  }, []);
+
   const changeCaseView = (kind: 'return' | 'next' | 'previous', projectId: string, update: () => void, afterCommit: () => void) => {
     const token = ++transitionToken.current;
     visualTransition.current?.skipTransition();
@@ -156,6 +172,8 @@ export function ExperienceGate() {
       PROJECTS.some((project) => project.id === projectId && project.public)
     ) {
       if (opening.current) return;
+      // The view transition must capture the case, not the empty dynamic placeholder.
+      if (!caseLoaded) { void preloadCase().then(() => enter(module, projectId)); return; }
       returnPosition.current = workshop.current?.scrollY ?? window.scrollY;
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const token = ++transitionToken.current;

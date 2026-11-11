@@ -14,9 +14,10 @@ vi.mock('../../../modules/projects/components/portfolio-case/component', () => (
 vi.mock('../../../modules/experience', () => ({ ExperienceModule: () => null }));
 vi.mock('../../app-shell', () => ({ AppShell: () => null }));
 beforeEach(() => { mounts = 0; window.history.replaceState(null, '', '/'); window.scrollTo = vi.fn(); window.matchMedia = vi.fn().mockReturnValue({ matches: true }); });
-it('keeps the same game instance paused and inert while reading and switching cases', () => {
+it('keeps the same game instance paused and inert while reading and switching cases', async () => {
   render(<ExperienceGate />); const node = screen.getByTestId('persistent-game');
   fireEvent.click(screen.getByRole('button', { name: 'Abrir Academy' }));
+  await screen.findByRole('button', { name: 'Cambiar caso' });
   expect(node).toBeInTheDocument(); expect(mounts).toBe(1); expect(props.suspended).toBe(true);
   expect(node.closest('[inert]')).not.toBeNull(); expect(node).not.toBeVisible();
   fireEvent.click(screen.getByRole('button', { name: 'Cambiar caso' }));

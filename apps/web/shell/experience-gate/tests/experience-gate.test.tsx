@@ -35,19 +35,20 @@ describe('Portfolio case transitions', () => {
       return { ready: Promise.reject(new DOMException('Viewport size changed', 'AbortError')), updateCallbackDone: Promise.resolve(), finished: Promise.resolve(), skipTransition: vi.fn() };
     } });
     render(<ExperienceGate />);
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' })); });
-    expect(screen.getByRole('heading', { name: 'Caso Kliniu' })).toBeInTheDocument();
+    const open = await screen.findByRole('button', { name: 'Abrir Kliniu' });
+    await act(async () => { fireEvent.click(open); });
+    expect(await screen.findByRole('heading', { name: 'Caso Kliniu' })).toBeInTheDocument();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Siguiente' })); });
     expect(screen.getByRole('heading', { name: 'Caso Drokex' })).toBeInTheDocument();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Volver' })); });
     expect(screen.getByRole('button', { name: 'Abrir Kliniu' })).toBeInTheDocument();
   });
-  it('opens directly when startViewTransition throws', () => {
+  it('opens directly when startViewTransition throws', async () => {
     window.matchMedia = vi.fn().mockReturnValue({ matches: false });
     Object.defineProperty(document, 'startViewTransition', { configurable: true, value: () => { throw new Error('unsupported transition'); } });
     render(<ExperienceGate />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir Kliniu' }));
-    expect(screen.getByRole('heading', { name: 'Caso Kliniu' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Caso Kliniu' })).toBeInTheDocument();
   });
   it('falls back on transition rejection and ignores a stale transition callback', async () => {
     window.matchMedia = vi.fn().mockReturnValue({ matches: false });

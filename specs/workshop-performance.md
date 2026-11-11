@@ -92,3 +92,15 @@ programas compilados antes de mostrar en vez de 46. Daniel lo probó en su iPhon
 Lo que falta para las metas de peso: `TEXCOORD_0` (UV del detalle) ocupa 1,85 MB en float32 porque está fuera de
 [0, 1] y no se puede cuantizar sin reescalarla y compensar en el shader (`withDetail`); quitar el detalle en low
 cambiaría el aspecto. Ambas quedan como decisión de Daniel.
+
+## P.3 (2026-11-11, sin commit)
+
+El chunk de `/` (410 kB) era todo código propio: casos (`modules/projects`, 72 kB), portafolio clásico
+(`modules/experience` + `scene-viewer`, ~62 kB) y el workspace (`AppShell`), que el landing no usa. `ExperienceGate`
+los carga con `next/dynamic` y los precarga con `requestIdleCallback` (fallback `setTimeout` en Safari). `enter()`
+espera el módulo del caso antes de la View Transition, para que nunca capture el hueco del placeholder.
+
+- First Load JS de `/`: **624 kB → 201 kB** (meta ≤ 350 kB ✓).
+- Verificado en Chrome: abrir un caso antes de la precarga, volver al taller, portafolio clásico, `?project=` y
+  `#contacto` directos; sin errores ni 404.
+- Tests: 9 de `shell/experience-gate` esperan ahora con `findBy` la primera vista de cada módulo diferido.
