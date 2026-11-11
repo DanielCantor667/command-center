@@ -45,185 +45,185 @@ export const lorigine: Project = {
   ],
   features: [
     {
-      title: 'Cinematic Hero',
+      title: 'Hero cinematográfico',
       description:
-        'Full-screen hero section with video background (poster image LCP, video progressive enhancement), parallax scroll effects (content scale 1→0.985, opacity 1→0.94, background translateY 0→60px), ambient glow layers (top-right, bottom-left), premium gradient overlay for legibility, and staggered cinematic entrance (image → overlay → eyebrow → title → line → text → CTA). Playback rate 0.85 for slower, more cinematographic motion.',
+        'Sección hero a pantalla completa con video de fondo (imagen póster como LCP, video como mejora progresiva), efectos de parallax al hacer scroll (escala del contenido 1→0.985, opacidad 1→0.94, translateY del fondo 0→60px), capas de brillo ambiental (arriba a la derecha y abajo a la izquierda), un degradado premium para la legibilidad y una entrada cinematográfica escalonada (imagen → capa → antetítulo → título → línea → texto → CTA). Velocidad de reproducción de 0.85 para un movimiento más lento y cinematográfico.',
     },
     {
-      title: 'Centralized Motion System',
+      title: 'Sistema de movimiento centralizado',
       description:
-        'Three-layer motion architecture: tokens (src/lib/motion.ts — 5 durations: fast 0.3s, base 0.65s, slow 0.85s, hero 1.1s, ambient 2.4s; 3 easing curves: luxury [0.22,1,0.36,1], soft [0.4,0,0.2,1], hero [0.16,1,0.3,1]; 3 distances; 4 stagger speeds; viewport margin -80px), variants (src/components/motion/variants.ts — 7 presets: fadeInUp, fadeInUpSm, fadeIn, scaleIn, lineReveal, heroReveal, heroFade; 5 container presets: staggerContainer, staggerContainerFast, staggerContainerSlow, heroContainer), and components (7 reusable components: Reveal, Stagger, StaggerItem, ImageReveal, PageTransition, ScrollProgress, AmbientGlow). Every animation consumes tokens — no hardcoded durations or easings.',
+        'Arquitectura de movimiento en tres capas: tokens (src/lib/motion.ts — 5 duraciones: fast 0.3s, base 0.65s, slow 0.85s, hero 1.1s, ambient 2.4s; 3 curvas de easing: luxury [0.22,1,0.36,1], soft [0.4,0,0.2,1], hero [0.16,1,0.3,1]; 3 distancias; 4 velocidades de stagger; margen de viewport de -80px), variantes (src/components/motion/variants.ts — 7 presets: fadeInUp, fadeInUpSm, fadeIn, scaleIn, lineReveal, heroReveal, heroFade; 5 presets de contenedor: staggerContainer, staggerContainerFast, staggerContainerSlow, heroContainer) y componentes (7 reutilizables: Reveal, Stagger, StaggerItem, ImageReveal, PageTransition, ScrollProgress, AmbientGlow). Toda animación consume tokens: no hay duraciones ni easings escritos a mano.',
     },
     {
-      title: 'Editorial Product Catalog',
+      title: 'Catálogo editorial de productos',
       description:
-        'Full product catalog with 4 categories (Tratamientos, Cuidado capilar, Styling, Todos), 4 products with gallery images, hover images, highlights, idealFor, results, badges, and details. Category filtering, 4 sort options (featured, name, price asc/desc). Server component page with search params. Product detail pages with dynamic routes (/productos/[slug]). Products organized in 4-step ritual system (Champú → Mascarilla → Alisado → Perfume Capilar).',
+        'Catálogo completo con 4 categorías (Tratamientos, Cuidado capilar, Styling, Todos), 4 productos con imágenes de galería, imágenes al pasar el cursor, destacados, idealFor, resultados, insignias y detalles. Filtrado por categoría y 4 opciones de orden (destacados, nombre, precio ascendente y descendente). Página como server component con search params. Páginas de detalle con rutas dinámicas (/productos/[slug]). Productos organizados en un ritual de 4 pasos (Champú → Mascarilla → Alisado → Perfume Capilar).',
     },
     {
-      title: 'Science Education Section',
+      title: 'Sección de educación científica',
       description:
-        'Dedicated science page (/ciencia) with 5 alternating editorial blocks documenting: the structural problem (hair fiber damage), proprietary active ingredient PGA (Ácido Poliglutámico), proprietary active ingredient MagNut Sense (exclusive to L\'ORIGINE), the 4-step protocol system, and product showcase. Science-specific color palette (Botanical Green, Forest, Sage, Gold científico). RitualSteps component, Before/After showcase, CTA section.',
+        'Página dedicada a la ciencia (/ciencia) con 5 bloques editoriales alternados que documentan: el problema estructural (daño de la fibra capilar), el activo propio PGA (Ácido Poliglutámico), el activo propio MagNut Sense (exclusivo de L\'ORIGINE), el sistema de protocolo de 4 pasos y una muestra de productos. Paleta de color propia de la sección (Botanical Green, Forest, Sage, Gold científico). Componente RitualSteps, comparación antes/después y sección de CTA.',
     },
     {
-      title: 'Brand Story (Nosotros)',
+      title: 'Historia de marca (Nosotros)',
       description:
-        'Editorial brand history page with featured story spread (62/38 image-text split), CSS columns masonry layout for 6 supporting stories (ciencia, magnunsense, fundadores, proposito, vision, brand-film with video), founder quote section, and editorial closing CTA. Stories span 2021-2025 timeline. Lenis smooth scroll integration.',
+        'Página editorial de la historia de la marca con una historia destacada a doble página (división 62/38 entre imagen y texto), un layout masonry con columnas CSS para 6 historias de apoyo (ciencia, magnunsense, fundadores, propósito, visión y un brand film con video), una sección con la cita de los fundadores y un CTA editorial de cierre. Las historias abarcan de 2021 a 2025. Integración con el scroll suave de Lenis.',
     },
     {
-      title: 'Academy Section',
+      title: 'Sección de academia',
       description:
-        'Dedicated academy page (/academia) with dark hero, 4 benefit pillars, 4 featured courses, 3-step methodology, instructor grid (4 experts), testimonial content (business results have not been independently verified), and closing CTA. Course data in src/data/courses.ts with 4 courses (levels: iniciación, intermedio, avanzado, experto; modes: presencial, online, hibrido).',
+        'Página dedicada a la academia (/academia) con hero oscuro, 4 pilares de beneficios, 4 cursos destacados, una metodología de 3 pasos, una cuadrícula de instructores (4 expertos), testimonios (los resultados de negocio no se han verificado de forma independiente) y un CTA de cierre. Los datos de los cursos están en src/data/courses.ts, con 4 cursos (niveles: iniciación, intermedio, avanzado, experto; modalidades: presencial, online, híbrido).',
     },
     {
-      title: 'Distributor Network',
+      title: 'Red de distribuidores',
       description:
-        'Dedicated distributor page (/distribuidores) with hero, partner showcase grid (12 distributors), and contact section with form (name, email, country/city, business type, message) and contact channels (email, WhatsApp, phone). Dark Espresso theme for distributor section.',
+        'Página dedicada a distribuidores (/distribuidores) con hero, una cuadrícula de aliados (12 distribuidores) y una sección de contacto con formulario (nombre, correo, país y ciudad, tipo de negocio, mensaje) y canales de contacto (correo, WhatsApp, teléfono). Tema oscuro Espresso para la sección de distribuidores.',
     },
     {
       title: 'Blog/Journal',
       description:
-        'Client-side blog (/blog) with CSS columns masonry layout (responsive: 1 col mobile, 2 cols tablet, 3 cols desktop), 7 category filters (Todo, Ciencia, Protocolos, Ingredientes, Productos, Academia, Tendencias), 9 articles with varied aspect ratios (4:3, 3:4, 16:9, square), and category-based filtering. Zero JavaScript masonry — pure CSS columns.',
+        'Blog en el cliente (/blog) con layout masonry de columnas CSS (responsive: 1 columna en móvil, 2 en tablet, 3 en escritorio), 7 filtros por categoría (Todo, Ciencia, Protocolos, Ingredientes, Productos, Academia, Tendencias), 9 artículos con proporciones variadas (4:3, 3:4, 16:9, cuadrada) y filtrado por categoría. Masonry sin JavaScript: solo columnas CSS.',
     },
     {
-      title: 'Case Studies (Evidencia Técnica)',
+      title: 'Casos de estudio (Evidencia Técnica)',
       description:
-        '3 documented case studies with protocol categories (Alisado profesional, Tratamiento en cabina, Mantenimiento profesional), times, technical objectives, observable results, and active ingredients tags. Featured case (alisado) in horizontal spread, secondary cases in vertical grid. Dark Espresso theme.',
+        '3 casos documentados con categorías de protocolo (Alisado profesional, Tratamiento en cabina, Mantenimiento profesional), tiempos, objetivos técnicos, resultados observables y etiquetas de activos. El caso destacado (alisado) va a doble página horizontal y los secundarios en una cuadrícula vertical. Tema oscuro Espresso.',
     },
     {
-      title: 'View Transitions API Progressive Enhancement',
+      title: 'View Transitions API como mejora progresiva',
       description:
-        'PageTransition component registers viewTransitionName = "root" on <html>. Native View Transitions API for cross-page animations in supported browsers (Chrome/Edge 111+, Safari 18.1+). CSS keyframe fallback (vt-fade-out, vt-fade-in). No-op when API unavailable. Respects prefers-reduced-motion.',
+        'El componente PageTransition registra viewTransitionName = "root" en <html>. View Transitions API nativa para animaciones entre páginas en los navegadores compatibles (Chrome/Edge 111+, Safari 18.1+). Respaldo con keyframes CSS (vt-fade-out, vt-fade-in). No hace nada si la API no está disponible. Respeta prefers-reduced-motion.',
     },
     {
-      title: 'Design System (Color, Typography, Spacing)',
+      title: 'Sistema de diseño (color, tipografía, espaciado)',
       description:
-        '28+ color tokens defined in Tailwind v4 @theme directive. Palette: Ivory Canvas (#F8F5EF) for backgrounds, Champagne (#B8945A) as brand accent, Carbon (#1B1815) for text, Espresso (#231B16) for dark sections, Botanical Green (#304338) for science. 3 font families: Playfair Display (logo), Red Hat Display (headings + body). Spacing scale: 8·16·24·32·48·64·96·128. Color distribution: 65% light backgrounds, 20% photography, 10% dark, 5% accent. Semantic color aliases for component compatibility.',
+        'Más de 28 tokens de color definidos con la directiva @theme de Tailwind v4. Paleta: Ivory Canvas (#F8F5EF) para fondos, Champagne (#B8945A) como acento de marca, Carbon (#1B1815) para texto, Espresso (#231B16) para secciones oscuras y Botanical Green (#304338) para ciencia. 3 familias tipográficas: Playfair Display (logo) y Red Hat Display (títulos y cuerpo). Escala de espaciado: 8·16·24·32·48·64·96·128. Distribución del color: 65 % fondos claros, 20 % fotografía, 10 % oscuro, 5 % acento. Alias semánticos de color para la compatibilidad de los componentes.',
     },
     {
-      title: 'Accessibility Infrastructure',
+      title: 'Infraestructura de accesibilidad',
       description:
-        'Skip-to-content link (sr-only focusable), prefers-reduced-motion detection in all motion components (Framer Motion useReducedMotion), global CSS reduced motion override (0.01ms durations), semantic landmarks (<main>, <nav>, <section> with aria-labels), focus-visible ring styles, alt text on all images, proper heading hierarchy.',
+        'Enlace para saltar al contenido (sr-only y enfocable), detección de prefers-reduced-motion en todos los componentes de movimiento (useReducedMotion de Framer Motion), anulación global de movimiento reducido en CSS (duraciones de 0.01ms), landmarks semánticos (<main>, <nav>, <section> con aria-labels), estilos de anillo focus-visible, texto alternativo en todas las imágenes y una jerarquía de títulos correcta.',
     },
     {
-      title: 'SEO & Metadata System',
+      title: 'Sistema de SEO y metadatos',
       description:
-        'SEO metadata builder (buildMetadata in lib/seo.ts) generating OpenGraph, Twitter cards, canonical URLs, and keywords per page. Spanish locale (es-CO). Sitemap generation (/sitemap.ts). meta robots index/follow. Metadata template pattern with site name suffix.',
+        'Generador de metadatos SEO (buildMetadata en lib/seo.ts) que crea OpenGraph, tarjetas de Twitter, URLs canónicas y palabras clave por página. Locale en español (es-CO). Generación del sitemap (/sitemap.ts). meta robots index/follow. Plantilla de metadatos con el nombre del sitio como sufijo.',
     },
   ],
   challenges: [
     {
-      title: 'Cinematic hero performance vs LCP',
+      title: 'Rendimiento del hero cinematográfico frente al LCP',
       description:
-        'The hero section needs video, parallax, ambient glows, and a premium feel while keeping Largest Contentful Paint under 2.5s. Video autoplay can block page load, and the poster image must be the real LCP element.',
+        'La sección hero necesita video, parallax, brillos ambientales y una sensación premium manteniendo el Largest Contentful Paint por debajo de 2.5 s. El autoplay del video puede bloquear la carga de la página, y la imagen póster debe ser el verdadero elemento LCP.',
       resolution:
-        'Poster image (hero.webp) as the real LCP element with priority loading. Video as progressive enhancement — loads only after poster renders and only if user has not set prefers-reduced-motion. Video playback rate set to 0.85 for slower feel. Parallax effects use useScroll + useTransform (passive, no RAF).',
+        'La imagen póster (hero.webp) es el verdadero elemento LCP, con carga prioritaria. El video es una mejora progresiva: se carga solo después de mostrar el póster y solo si el usuario no activó prefers-reduced-motion. La velocidad de reproducción es de 0.85 para una sensación más lenta. Los efectos de parallax usan useScroll + useTransform (pasivos, sin RAF).',
     },
     {
-      title: 'Migrating hardcoded transitions to motion tokens',
+      title: 'Migrar transiciones escritas a mano a tokens de movimiento',
       description:
-        'Early development had framer-motion transitions with hardcoded durations (0.5, 0.8) and inline easings. This created visual inconsistency across sections and made global timing changes impossible without touching every component.',
+        'Al principio del desarrollo había transiciones de framer-motion con duraciones escritas a mano (0.5, 0.8) y easings en línea. Eso generaba inconsistencia visual entre secciones e impedía cambiar los tiempos de forma global sin tocar cada componente.',
       resolution:
-        'All durations, easings, and distances centralized in src/lib/motion.ts. 7 motion components built on top. Git history shows dedicated migration tasks: "Task 5: Migrate hardcoded transitions to motion utilities" and "Motion Polish: RitualSteps — Token Transitions". No hardcoded transition values remain.',
+        'Todas las duraciones, easings y distancias se centralizaron en src/lib/motion.ts, con 7 componentes de movimiento construidos encima. El historial de Git muestra tareas de migración dedicadas: "Task 5: Migrate hardcoded transitions to motion utilities" y "Motion Polish: RitualSteps — Token Transitions". No quedan valores de transición escritos a mano.',
     },
     {
-      title: 'Masonry layout without JavaScript',
+      title: 'Layout masonry sin JavaScript',
       description:
-        'The blog and nosotros pages need masonry grid layouts. JS-based solutions (Masonry, react-masonry-css) add bundle weight, cause layout shifts, and complicate SSR.',
+        'Las páginas del blog y de nosotros necesitan cuadrículas masonry. Las soluciones con JavaScript (Masonry, react-masonry-css) suman peso al bundle, provocan saltos de layout y complican el SSR.',
       resolution:
-        'CSS columns with [column-count] responsive breakpoints (1→2→3) and [column-gap]. break-inside-avoid on children. This is zero-JS, reflow-friendly, and works with SSR. The trade-off is column-fill order (top-to-bottom per column, not left-to-right per row), which is acceptable for editorial content.',
+        'Columnas CSS con [column-count] por breakpoint (1→2→3) y [column-gap], y break-inside-avoid en los hijos. No usa JavaScript, se adapta bien al reflujo y funciona con SSR. La contrapartida es el orden de llenado (de arriba abajo por columna, no de izquierda a derecha por fila), aceptable para contenido editorial.',
     },
   ],
   engineeringDecisions: [
     {
-      title: 'Catalog filters represented in the URL',
+      title: 'Filtros del catálogo representados en la URL',
       context:
-        'The public catalog combines brand presentation with category filters, sorting and product detail pages.',
+        'El catálogo público combina la presentación de la marca con filtros por categoría, orden y páginas de detalle de producto.',
       decision:
-        'Read and validate categoria and orden from searchParams in the server-rendered catalog. Filter and sort published products using those parameters.',
+        'Leer y validar categoria y orden desde searchParams en el catálogo renderizado en el servidor. Filtrar y ordenar los productos publicados con esos parámetros.',
       reasoning:
-        'A catalog selection remains addressable through a link and browser navigation. The current public site exposes a cart and product purchase controls; private checkout and payment flows were not exercised for this portfolio.',
+        'Una selección del catálogo sigue siendo accesible mediante un enlace y la navegación del navegador. El sitio público actual muestra un carrito y controles de compra; los flujos privados de checkout y pago no se probaron para este portafolio.',
       impact: DECISION_IMPACT.High,
     },
     {
-      title: 'Centralized motion tokens over ad-hoc animations',
+      title: 'Tokens de movimiento centralizados en lugar de animaciones sueltas',
       context:
-        'Framer Motion allows inline duration/easing on every animation. Without centralization, animations drift visually, and global timing changes require editing every component.',
+        'Framer Motion permite definir duración y easing en línea en cada animación. Sin centralizarlos, las animaciones se desalinean visualmente y cualquier cambio global de tiempos obliga a editar cada componente.',
       decision:
-        'All motion values centralized in src/lib/motion.ts. 7 reusable components built on tokens. Variants in src/components/motion/variants.ts as presets. Components accept optional delay and variant props.',
+        'Todos los valores de movimiento se centralizan en src/lib/motion.ts, con 7 componentes reutilizables construidos sobre los tokens. Las variantes viven en src/components/motion/variants.ts como presets. Los componentes aceptan props opcionales de retraso y variante.',
       reasoning:
-        'Single source of truth for all motion values. Global timing changes require editing one file. New animations compose existing tokens without reinvention. Accessibility (reduced-motion) handled in every component by default.',
+        'Una única fuente de verdad para todos los valores de movimiento. Un cambio global de tiempos requiere editar un solo archivo. Las animaciones nuevas combinan tokens existentes sin reinventarlos. La accesibilidad (movimiento reducido) se maneja por defecto en cada componente.',
       impact: DECISION_IMPACT.High,
     },
     {
-      title: 'CSS Columns masonry over JavaScript grid',
+      title: 'Masonry con columnas CSS en lugar de una cuadrícula con JavaScript',
       context:
-        'Journal and brand story pages need heterogeneous aspect-ratio layouts. JavaScript masonry libraries add bundle weight, cause CLS, and add SSR complexity.',
+        'Las páginas del journal y de la historia de la marca necesitan layouts con proporciones variadas. Las librerías de masonry con JavaScript suman peso al bundle, provocan CLS y complican el SSR.',
       decision:
-        'Use CSS columns with [column-count] at breakpoints (1/2/3) and [column-gap]. Items use break-inside-avoid.',
+        'Usar columnas CSS con [column-count] por breakpoint (1/2/3) y [column-gap]. Los elementos usan break-inside-avoid.',
       reasoning:
-        'Zero JavaScript, zero bundle impact, no CLS, works with SSR. Column-fill order is an acceptable trade-off for editorial content. Responsive via single CSS property change.',
+        'Cero JavaScript, sin impacto en el bundle, sin CLS y compatible con SSR. El orden de llenado por columna es una contrapartida aceptable para contenido editorial. Es responsive cambiando una sola propiedad CSS.',
       impact: DECISION_IMPACT.Medium,
     },
     {
-      title: 'View Transitions API as progressive enhancement',
+      title: 'View Transitions API como mejora progresiva',
       context:
-        'Cross-page navigation animations improve perceived performance but browser support is not universal (Chrome 111+, Safari 18.1+). Blocking on API availability would leave some users without page transitions.',
+        'Las animaciones de navegación entre páginas mejoran el rendimiento percibido, pero el soporte de los navegadores no es universal (Chrome 111+, Safari 18.1+). Depender de la disponibilidad de la API dejaría a algunos usuarios sin transiciones.',
       decision:
-        'PageTransition component registers viewTransitionName on <html> and uses @keyframes fallback. API used when available, CSS fallback otherwise. Framer Motion not used for page transitions.',
+        'El componente PageTransition registra viewTransitionName en <html> y usa @keyframes como respaldo. Se usa la API cuando está disponible y, si no, el respaldo CSS. Framer Motion no se usa para las transiciones de página.',
       reasoning:
-        'Native transitions are smoother and zero-bundle. CSS fallback ensures universal coverage. No Framer Motion dependency for page-level animation. Reduced-motion respected at CSS level with @media query.',
+        'Las transiciones nativas son más fluidas y no suman al bundle. El respaldo CSS asegura cobertura universal. Sin dependencia de Framer Motion para la animación a nivel de página. El movimiento reducido se respeta en CSS con una media query.',
       impact: DECISION_IMPACT.Medium,
     },
     {
-      title: 'Standalone Next.js over monorepo',
+      title: 'Next.js independiente en lugar de monorepo',
       context:
-        'Other projects in the portfolio use Turborepo monorepos. L\'ORIGINE is a standalone brand and commerce application with no shared workspace packages.',
+        'Otros proyectos del portafolio usan monorepos con Turborepo. L\'ORIGINE es una aplicación independiente de marca y comercio, sin paquetes compartidos de workspace.',
       decision:
-        'Standalone Next.js 16 application. No Turborepo, no pnpm workspaces, no shared packages.',
+        'Aplicación independiente en Next.js 16. Sin Turborepo, sin workspaces de pnpm y sin paquetes compartidos.',
       reasoning:
-        'Monorepo overhead (task orchestration, workspace configuration, dependency hoisting) provides no benefit for a single-app project. npm is sufficient. Reduces CI complexity and developer cognitive load.',
+        'La sobrecarga de un monorepo (orquestación de tareas, configuración de workspaces, hoisting de dependencias) no aporta nada a un proyecto de una sola aplicación. npm es suficiente. Reduce la complejidad del CI y la carga cognitiva del desarrollo.',
       impact: DECISION_IMPACT.High,
     },
     {
-      title: 'Server components with isolated client islands',
+      title: 'Server components con islas de cliente aisladas',
       context:
-        'Next.js 16 App Router defaults to server components. Motion animations require client-side interactivity.',
+        'El App Router de Next.js 16 usa server components por defecto. Las animaciones de movimiento requieren interactividad en el cliente.',
       decision:
-        'Pages as server components by default. Client components isolated to motion wrappers (Reveal, Stagger) and interactive sections (blog filters). "use client" at the section level, not the page level.',
+        'Las páginas son server components por defecto. Los componentes de cliente se limitan a los envoltorios de movimiento (Reveal, Stagger) y a las secciones interactivas (filtros del blog). "use client" a nivel de sección, no de página.',
       reasoning:
-        'Maximum server rendering for content. Minimal client bundle — only animation and interaction code sent to browser. Each "use client" boundary is justified by actual interactivity need.',
+        'Máximo renderizado en el servidor para el contenido. Bundle de cliente mínimo: solo se envía al navegador el código de animación e interacción. Cada frontera "use client" se justifica por una necesidad real de interactividad.',
       impact: DECISION_IMPACT.Medium,
     },
   ],
   lessonsLearned: [
     {
-      title: 'Motion tokens eliminate animation drift',
+      title: 'Los tokens de movimiento eliminan el desalineamiento de las animaciones',
       description:
-        'Centralizing durations, easings, and distances in a single file (lib/motion.ts) eliminated the inconsistency of hardcoded transition values. A global timing change (e.g., slowing all reveals from 0.65s to 0.85s) became a one-line edit. The migration from hardcoded to token-based required dedicated tasks but prevented future drift.',
+        'Centralizar duraciones, easings y distancias en un solo archivo (lib/motion.ts) eliminó la inconsistencia de los valores de transición escritos a mano. Un cambio global de tiempos (por ejemplo, pasar todos los reveals de 0.65 s a 0.85 s) quedó en una edición de una línea. La migración a tokens requirió tareas dedicadas, pero evitó desalineamientos futuros.',
       category: LESSON_CATEGORY.Architecture,
     },
     {
-      title: 'CSS Columns masonry is simpler and more performant than JS alternatives',
+      title: 'El masonry con columnas CSS es más simple y rinde mejor que las alternativas con JavaScript',
       description:
-        'Building the blog and nosotros page masonry with CSS columns instead of a JS library resulted in zero JavaScript for layout, no CLS, and automatic responsiveness. The column-fill ordering (top-to-bottom) works naturally for editorial timelines and article grids.',
+        'Construir el masonry del blog y de nosotros con columnas CSS en lugar de una librería de JavaScript dejó el layout sin JavaScript, sin CLS y responsive de forma automática. El orden de llenado por columna (de arriba abajo) funciona de forma natural para líneas de tiempo editoriales y cuadrículas de artículos.',
       category: LESSON_CATEGORY.Architecture,
     },
     {
-      title: 'Editorial philosophy prevents feature creep',
+      title: 'La filosofía editorial evita el exceso de funcionalidades',
       description:
-        'The Design Constitution v1.0 (defining each page\'s mission, KPI, and visual personality) acted as a decision filter throughout development. Every proposed feature was evaluated against "does this inspire, educate, or build trust, or does it just sell?" — preventing unnecessary e-commerce features like popups, carousels, and discount banners.',
+        'La Design Constitution v1.0 (que define la misión, el KPI y la personalidad visual de cada página) funcionó como filtro de decisiones durante todo el desarrollo. Cada funcionalidad propuesta se evaluó con la pregunta "¿esto inspira, educa o genera confianza, o solo vende?", lo que evitó funcionalidades de e-commerce innecesarias como popups, carruseles y banners de descuento.',
       category: LESSON_CATEGORY.Process,
     },
     {
-      title: 'Animation system requires dedicated polish phase',
+      title: 'El sistema de animación requiere una fase de pulido dedicada',
       description:
-        'The motion system was built incrementally across features, but the final polish (dedicated FASE 12.5 in git history) was essential for visual coherence. Token transitions, ImageReveal adoption, scroll exit effects, and hardcoded transition elimination all happened in a dedicated motion polish phase, not during initial feature implementation.',
+        'El sistema de movimiento se construyó poco a poco junto con las funcionalidades, pero el pulido final (la FASE 12.5 dedicada en el historial de Git) fue esencial para la coherencia visual. Las transiciones con tokens, la adopción de ImageReveal, los efectos de salida al hacer scroll y la eliminación de transiciones escritas a mano ocurrieron en una fase dedicada al pulido del movimiento, no durante la implementación inicial.',
       category: LESSON_CATEGORY.Process,
     },
     {
-      title: 'View Transitions API works well as progressive enhancement',
+      title: 'La View Transitions API funciona bien como mejora progresiva',
       description:
-        'Adding native View Transitions API with CSS keyframe fallback provided smooth cross-page navigation at zero bundle cost. The @keyframes vt-fade-in/vt-fade-out pattern is simpler and more performant than Framer Motion AnimatePresence for page transitions. Not all browsers support it, but the fallback ensures universal coverage.',
+        'Agregar la View Transitions API nativa con respaldo de keyframes CSS dio una navegación fluida entre páginas sin costo de bundle. El patrón @keyframes vt-fade-in/vt-fade-out es más simple y rinde mejor que AnimatePresence de Framer Motion para las transiciones de página. No todos los navegadores la soportan, pero el respaldo asegura cobertura universal.',
       category: LESSON_CATEGORY.Architecture,
     },
   ],
@@ -238,16 +238,16 @@ export const lorigine: Project = {
   role: {
     title: 'Software Engineer & Product Owner',
     responsibilities: [
-      'Full-stack development: Next.js 16 App Router brand platform',
-      'Cinematic hero with parallax, video, and ambient effects',
-      'Centralized motion system design (tokens, variants, 7 components)',
-      'Product catalog with category/sort system and detail pages',
-      'Science education section with proprietary ingredient storytelling',
-      'Case studies, academy, and distributor network pages',
-      'CSS columns masonry layouts for journal and brand story',
-      'View Transitions API progressive enhancement',
-      'Design system implementation (28+ color tokens, 3 font families, spacing)',
-      'Accessibility infrastructure (skip-to-content, reduced-motion, landmarks)',
+      'Desarrollo full-stack: plataforma de marca con el App Router de Next.js 16',
+      'Hero cinematográfico con parallax, video y efectos ambientales',
+      'Diseño del sistema de movimiento centralizado (tokens, variantes, 7 componentes)',
+      'Catálogo de productos con sistema de categorías y orden, y páginas de detalle',
+      'Sección de educación científica con la narrativa de los activos propios',
+      'Páginas de casos, academia y red de distribuidores',
+      'Layouts masonry con columnas CSS para el journal y la historia de la marca',
+      'View Transitions API como mejora progresiva',
+      'Implementación del sistema de diseño (más de 28 tokens de color, 3 familias tipográficas, espaciado)',
+      'Infraestructura de accesibilidad (saltar al contenido, movimiento reducido, landmarks)',
     ],
   },
   tags: [

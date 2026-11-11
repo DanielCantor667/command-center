@@ -25,6 +25,7 @@ import { localePath } from '../../i18n/config';
 import { fill } from '../../i18n/format';
 import { useDictionary, useLocale } from '../../i18n/locale-provider';
 import { placeNames } from './place-names';
+import { useContent } from '../../data/content/content';
 const PcDesktop = dynamic(() => import('./pc/pc-desktop').then(module => module.PcDesktop), { ssr: false, loading: () => null });
 const WorldScene = dynamic(() => import('./world-scene').then(module => module.WorldScene), { ssr: false, loading: () => null });
 class WorldBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -42,7 +43,7 @@ const WALK: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'projects', ...CORNER_PR
 /** The navigation has one button per place; a corner counts as the projects place. */
 const navPoint = (point: WorldPoint): WorldPoint => cornerProject(point) ? 'projects' : point;
 /** Cover shortcuts: the cases with their own designed page. */
-const QUICK_PROJECTS = ['kliniu', 'lorigine', '4ustudio-academy', 'drokex'].map(id => PROJECTS.find(project => project.id === id)!);
+const QUICK_PROJECT_IDS = ['kliniu', 'lorigine', '4ustudio-academy', 'drokex'];
 /** What the free walk can reach: the stops of the guided tour, so both ways of moving lead to the same panels. */
 const WALK_SPOTS: WalkSpot<WorldPoint>[] = [
   ...Object.values(STATIONS).map(station => ({ at: station.hotspot, item: station.id as WorldPoint })),
@@ -71,6 +72,8 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
   const locale = useLocale();
   const { workshop: t } = useDictionary();
   const pointNames: Record<WorldPoint, string> = { ...cornerNames, ...placeNames(t) };
+  const { projects } = useContent();
+  const quickProjects = QUICK_PROJECT_IDS.flatMap(id => projects.filter(project => project.id === id));
   const [localReading, setLocalReading] = useState<WorkshopReading | null>(null);
   const reading = controlledReading === undefined ? localReading : controlledReading;
   const previousReading = useRef(!!reading);
@@ -223,7 +226,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     {state.status === 'landing' && <section className={styles.welcome} aria-labelledby="workshop-title">
       <p className={styles.location}>{PUBLIC_PROFILE.location}</p><h1 id="workshop-title">{t.name}</h1><p>{t.landing.taglineTop}<br />{t.landing.taglineBottom}</p>
       <button ref={enterButton} className={styles.primary} type="button" onClick={() => void start()}>{t.landing.enter}<DoorOpen size={19} aria-hidden="true" /></button><span className={styles.hint}>{t.landing.hint}</span>
-      <nav className={styles.quickProjects} aria-label={t.landing.quickProjects}>{QUICK_PROJECTS.map(project => <button key={project.id} className={styles.quickProject} type="button" aria-label={fill(t.landing.readCaseOf, { name: project.name })} onClick={() => openRelatedCase(project.id)}>{project.name}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</nav>
+      <nav className={styles.quickProjects} aria-label={t.landing.quickProjects}>{quickProjects.map(project => <button key={project.id} className={styles.quickProject} type="button" aria-label={fill(t.landing.readCaseOf, { name: project.name })} onClick={() => openRelatedCase(project.id)}>{project.name}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</nav>
     </section>}
     {(state.status === 'loading' || state.status === 'error') && <section className={styles.loadPanel} aria-labelledby="world-loading-title">
       <div className={styles.blueprint} aria-hidden="true"><span /><span /><span /><span /></div>

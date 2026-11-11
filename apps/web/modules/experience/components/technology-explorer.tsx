@@ -2,11 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import { useRef, useState, type CSSProperties } from 'react';
-import { PROJECTS } from '../../../data/projects';
 import {
   filterTechnologies,
-  PORTFOLIO_TECHNOLOGIES,
-  TECHNOLOGY_CATEGORIES,
   type PortfolioTechnology,
   type TechnologyCategory,
 } from '../../../data/portfolio-technologies';
@@ -14,6 +11,7 @@ import { TECHNOLOGY_ICON_PATHS } from '../../../data/technology-icons';
 import styles from './technology-explorer.module.css';
 import { fill } from '../../../i18n/format';
 import { useDictionary } from '../../../i18n/locale-provider';
+import { useContent } from '../../../data/content/content';
 
 const Icon3D = dynamic(
   () => import('./technology-icon-3d').then((module) => module.TechnologyIcon3D),
@@ -52,6 +50,7 @@ export function TechnologyExplorer({
   onFiltersChange,
   presentation = 'scene',
 }: TechnologyExplorerProps) {
+  const { technologies, categories, projects: allProjects } = useContent();
   const detailRef = useRef<HTMLElement>(null);
   const [filters, setFilters] = useState<TechnologyFilters>(
     initialFilters ?? { query: '', category: 'all', projectId: null },
@@ -63,11 +62,11 @@ export function TechnologyExplorer({
     onFiltersChange?.(next);
   };
   const selected =
-    PORTFOLIO_TECHNOLOGIES.find((item) => item.id === selectedId) ?? PORTFOLIO_TECHNOLOGIES[0]!;
-  const filtered = filterTechnologies(query, category).filter(
+    technologies.find((item) => item.id === selectedId) ?? technologies[0]!;
+  const filtered = filterTechnologies(query, category, technologies).filter(
     (item) => !projectFilter || item.projectIds.includes(projectFilter),
   );
-  const projects = PROJECTS.filter(
+  const projects = allProjects.filter(
     (project) => selected.projectIds.includes(project.id) && project.public,
   );
   const t = useDictionary().technologies;
@@ -97,9 +96,9 @@ export function TechnologyExplorer({
             aria-pressed={category === 'all'}
             onClick={() => selectCategory('all')}
           >
-            {t.all} <span>{PORTFOLIO_TECHNOLOGIES.length}</span>
+            {t.all} <span>{technologies.length}</span>
           </button>
-          {TECHNOLOGY_CATEGORIES.map((item) => (
+          {categories.map((item) => (
             <button
               type="button"
               key={item.id}
@@ -108,7 +107,7 @@ export function TechnologyExplorer({
             >
               {item.label}
               <span>
-                {PORTFOLIO_TECHNOLOGIES.filter((tech) => tech.category === item.id).length}
+                {technologies.filter((tech) => tech.category === item.id).length}
               </span>
             </button>
           ))}
@@ -117,7 +116,7 @@ export function TechnologyExplorer({
         <div className={styles.catalog}>
           {projectFilter && (
             <div className={styles.filterNotice}>
-              <span>{fill(t.stackOf, { name: PROJECTS.find((p) => p.id === projectFilter)?.name ?? '' })}</span>
+              <span>{fill(t.stackOf, { name: allProjects.find((p) => p.id === projectFilter)?.name ?? '' })}</span>
               <button type="button" onClick={() => updateFilters({ projectId: null })}>
                 {t.clearFilter}
               </button>
@@ -190,7 +189,7 @@ export function TechnologyExplorer({
           </div>
           <div className={styles.detailCopy}>
             <p className={styles.category}>
-              {TECHNOLOGY_CATEGORIES.find((item) => item.id === selected.category)?.label}
+              {categories.find((item) => item.id === selected.category)?.label}
             </p>
             <h3 aria-live="polite">{selected.name}</h3>
             <p>{selected.description}</p>

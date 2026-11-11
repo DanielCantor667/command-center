@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Component, Suspense, useEffect, useMemo, useRef, type ComponentRef, type ReactNode } from 'react';
 import { EdgesGeometry, LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, OrthographicCamera, Spherical, Vector3 } from 'three';
 import type { KliniuStage } from './kliniu-sequence';
+import { usePick } from './copy/use-case-copy';
 
 interface SceneProps { stage: KliniuStage; revision: number; reducedMotion: boolean; onReady: () => void; onError: () => void }
 
@@ -71,6 +72,8 @@ function ContextGuard({ onError }: { onError: () => void }) {
 }
 
 function SceneContent({ stage, revision, reducedMotion, onReady }: SceneProps) {
+  // Inside the Canvas: R3F bridges the locale context.
+  const keyboardLabel = usePick()(['Showroom 3D de Kliniu. Flechas para girar; Inicio para restablecer.', 'Kliniu 3D showroom. Arrow keys to rotate; Home to reset.']);
   const { camera, size, invalidate, gl } = useThree();
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const moving = useRef(true);
@@ -81,7 +84,7 @@ function SceneContent({ stage, revision, reducedMotion, onReady }: SceneProps) {
   useEffect(() => {
     const canvas = gl.domElement;
     canvas.tabIndex = 0;
-    canvas.setAttribute('aria-label', 'Showroom 3D de Kliniu. Flechas para girar; Inicio para restablecer.');
+    canvas.setAttribute('aria-label', keyboardLabel);
     canvas.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
     const rotate = (event: KeyboardEvent) => {
       const orbit = controls.current;
@@ -106,7 +109,7 @@ function SceneContent({ stage, revision, reducedMotion, onReady }: SceneProps) {
     };
     canvas.addEventListener('keydown', rotate);
     return () => canvas.removeEventListener('keydown', rotate);
-  }, [camera, gl, invalidate]);
+  }, [camera, gl, invalidate, keyboardLabel]);
   useEffect(() => { if (!gl.getContext().isContextLost()) onReady(); }, [gl, onReady]);
   useFrame((_, delta) => {
     if (!moving.current || !controls.current || !(camera instanceof OrthographicCamera)) return;
@@ -139,5 +142,6 @@ function SceneContent({ stage, revision, reducedMotion, onReady }: SceneProps) {
 }
 
 export function KliniuSequenceScene(props: SceneProps) {
-  return <Canvas orthographic shadows frameloop="demand" dpr={[1,1.5]} camera={{ position:[2.8,2.1,5], zoom:100, near:.01, far:250 }} gl={{ antialias:true, alpha:false }} aria-label="Showroom interactivo de Kliniu"><ContextGuard onError={props.onError} /><ModelBoundary onError={props.onError}><Suspense fallback={null}><SceneContent {...props} /></Suspense></ModelBoundary></Canvas>;
+  const pick = usePick();
+  return <Canvas orthographic shadows frameloop="demand" dpr={[1,1.5]} camera={{ position:[2.8,2.1,5], zoom:100, near:.01, far:250 }} gl={{ antialias:true, alpha:false }} aria-label={pick(['Showroom interactivo de Kliniu', 'Interactive Kliniu showroom'])}><ContextGuard onError={props.onError} /><ModelBoundary onError={props.onError}><Suspense fallback={null}><SceneContent {...props} /></Suspense></ModelBoundary></Canvas>;
 }

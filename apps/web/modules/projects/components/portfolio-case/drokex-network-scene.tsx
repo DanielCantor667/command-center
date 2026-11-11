@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { Mesh, OrthographicCamera, Spherical, Vector3 } from 'three';
 import type { DrokexView } from './drokex-network';
+import { usePick } from './copy/use-case-copy';
 
 interface NetworkProps {
   view: DrokexView;
@@ -78,6 +79,8 @@ function ContextGuard({ onError }: { onError: () => void }) {
 }
 
 function NetworkContent({ view, revision, reducedMotion, onReady }: NetworkProps) {
+  // Inside the Canvas: R3F bridges the locale context.
+  const keyboardLabel = usePick()(['Red 3D de Drokex. Flechas para girar; Inicio para restablecer.', 'Drokex 3D network. Arrow keys to rotate; Home to reset.']);
   const { camera, size, invalidate, gl } = useThree();
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const moving = useRef(true);
@@ -97,7 +100,7 @@ function NetworkContent({ view, revision, reducedMotion, onReady }: NetworkProps
     canvas.tabIndex = 0;
     canvas.setAttribute(
       'aria-label',
-      'Red 3D de Drokex. Flechas para girar; Inicio para restablecer.',
+      keyboardLabel,
     );
     canvas.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
     const rotate = (event: KeyboardEvent) => {
@@ -126,7 +129,7 @@ function NetworkContent({ view, revision, reducedMotion, onReady }: NetworkProps
     };
     canvas.addEventListener('keydown', rotate);
     return () => canvas.removeEventListener('keydown', rotate);
-  }, [camera, gl, invalidate]);
+  }, [camera, gl, invalidate, keyboardLabel]);
   useEffect(() => {
     onReady();
   }, [onReady]);
@@ -202,6 +205,7 @@ function NetworkContent({ view, revision, reducedMotion, onReady }: NetworkProps
 }
 
 export function DrokexNetworkScene(props: NetworkProps) {
+  const pick = usePick();
   return (
     <Canvas
       orthographic
@@ -210,7 +214,7 @@ export function DrokexNetworkScene(props: NetworkProps) {
       dpr={[1, 1.5]}
       camera={{ position: [-3, 2.5, 5], zoom: 100, near: 0.01, far: 250 }}
       gl={{ antialias: true, alpha: false }}
-      aria-label="Red interactiva de Drokex"
+      aria-label={pick(['Red interactiva de Drokex', 'Interactive Drokex network'])}
     >
       <ContextGuard onError={props.onError} />
       <ModelBoundary onError={props.onError}>

@@ -1,183 +1,196 @@
+import { useMemo } from 'react';
+import type { Content } from '../../../data/content/content';
+import { useContent } from '../../../data/content/content';
 import { PORTFOLIO_CAREER } from '../../../data/portfolio-career';
 import { PROJECTS } from '../../../data/projects';
 import { PUBLIC_PROFILE } from '../../../data/public-profile';
 import snapshot from '../../../data/github-snapshot.json';
+import { es, type Dictionary } from '../../../i18n/es';
+import { fill } from '../../../i18n/format';
+import { useDictionary } from '../../../i18n/locale-provider';
 
 /** The workshop PC terminal (specs/workshop-realism.md, R.1b): every file is generated from the portfolio data. */
 export type PcApp = 'terminal' | 'github' | 'projects' | 'contact' | 'notes' | 'settings' | 'trash' | 'cv';
 export type ShellAction = { kind: 'clear' } | { kind: 'exit' } | { kind: 'app'; app: PcApp } | { kind: 'case'; id: string };
 export interface ShellResult { output: string[]; cwd: string; error?: boolean; action?: ShellAction }
+export interface Answer { tools: { name: string; target: string; summary: string }[]; text: string[] }
 export const GITHUB = snapshot;
 export const HOME = '/home/daniel';
-
-const repoLine = (repo: (typeof snapshot.repos)[number]) => `${repo.pushedAt}  ${repo.name}${repo.language ? `  (${repo.language})` : ''}`;
-const lines = (...rows: string[]) => rows.join('\n');
-const FILES: Record<string, string> = {
-  [`${HOME}/README.md`]: lines(`${PUBLIC_PROFILE.name} · ${PUBLIC_PROFILE.role}`, PUBLIC_PROFILE.location, '', PUBLIC_PROFILE.availability),
-  [`${HOME}/trayectoria.txt`]: [...PORTFOLIO_CAREER.experience, ...PORTFOLIO_CAREER.education].map(item => `${item.period}  ${item.title} · ${item.organization}`).join('\n'),
-  [`${HOME}/contacto.txt`]: lines(`GitHub    ${PUBLIC_PROFILE.github}`, `LinkedIn  ${PUBLIC_PROFILE.linkedin}`),
-  [`${HOME}/github/repos.txt`]: snapshot.repos.length ? snapshot.repos.map(repoLine).join('\n') : 'sin datos',
-  ...Object.fromEntries(PROJECTS.map(project => [`${HOME}/proyectos/${project.id}.txt`, lines(project.name, project.tagline, '', project.summary, '', `Stack: ${project.technologies.map(technology => technology.name).join(', ')}`)])),
-};
 export const COMMANDS = ['help', 'whoami', 'pwd', 'ls', 'cd', 'cat', 'projects', 'open', 'github', 'cv', 'git', 'contact', 'clear', 'exit'];
-/** Easter eggs: left out of help and of the Tab list on purpose, finding them is the point. */
-const EGGS: Record<string, string[]> = {
-  sudo: ['daniel no está en el archivo sudoers. Este incidente será reportado.'],
-  rm: ['rm: no. Este taller costó demasiado horneado.'],
-  vim: ['Entraste a vim. Nadie ha vuelto para contarlo.', 'Pista: esto no es vim. Sigues a salvo.'],
-  nano: ['Bien elegido. Aquí nadie juzga, pero tampoco edita: el disco es de solo lectura.'],
-  emacs: ['Primero termina de instalarse. Vuelve en unos días.'],
-  ssh: ['ssh: conexión rechazada. El robot de la puerta no te conoce.'],
-  ping: ['64 bytes desde el gato: tiempo=9 vidas', '64 bytes desde el gato: tiempo=ignorado'],
-  coffee: ['Error 418: soy una tetera.'],
-  neofetch: [],
-};
 
-function resolve(cwd: string, path = '') {
-  const base = path.startsWith('/') ? [] : (path === '~' || path.startsWith('~/') ? HOME : cwd).split('/');
-  const parts = base.filter(Boolean);
-  for (const part of path.replace(/^~\/?/, '').split('/')) {
-    if (part === '..') parts.pop();
-    else if (part && part !== '.') parts.push(part);
-  }
-  return `/${parts.join('/')}`;
-}
-const isDirectory = (path: string) => path === '/' || Object.keys(FILES).some(file => file.startsWith(`${path}/`));
-function list(path: string) {
-  const prefix = path === '/' ? '/' : `${path}/`;
-  return [...new Set(Object.keys(FILES).filter(file => file.startsWith(prefix)).map(file => {
-    const [name, ...rest] = file.slice(prefix.length).split('/');
-    return rest.length ? `${name}/` : name!;
-  }))].sort();
-}
+type ShellText = Dictionary['pc']['shell'];
+type ShellData = Pick<Content, 'projects' | 'career' | 'availability'>;
+type Project = ShellData['projects'][number];
+
 export const display = (cwd: string) => cwd === HOME ? '~' : cwd.startsWith(`${HOME}/`) ? `~${cwd.slice(HOME.length)}` : cwd;
 export const prompt = (cwd: string) => `daniel@taller:${display(cwd)}$`;
 
-const findProject = (name = '') => PROJECTS.find(project => project.id === name.toLowerCase() || project.slug === name.toLowerCase());
-
-export function run(input: string, cwd: string): ShellResult {
-  const [command, ...args] = input.trim().replace(/^[/!]\s*/, '').split(/\s+/);
-  const fail = (message: string): ShellResult => ({ output: [message], cwd, error: true });
-  const print = (...output: string[]): ShellResult => ({ output, cwd });
-  switch (command) {
-    case undefined: case '': return print();
-    case 'help': return print('whoami           quién soy', 'ls, cd, cat, pwd  recorrer los archivos', 'projects         lista de proyectos', 'open <proyecto>  abrir un caso', 'github           mis repositorios', 'cv               abrir mi CV', 'git log          últimos repositorios con cambios', 'contact          cómo escribirme', 'clear            limpiar la pantalla', 'exit             volver al taller');
-    case 'whoami': return print(`${PUBLIC_PROFILE.name} · ${PUBLIC_PROFILE.role} · ${PUBLIC_PROFILE.location}`);
-    case 'pwd': return print(cwd);
-    case 'ls': {
-      const path = resolve(cwd, args[0]);
-      if (FILES[path] !== undefined) return print(args[0]!);
-      return isDirectory(path) ? print(list(path).join('  ')) : fail(`ls: ${args[0]}: no existe el archivo o directorio`);
-    }
-    case 'cd': {
-      const path = resolve(cwd, args[0] ?? '~');
-      return isDirectory(path) ? { output: [], cwd: path } : fail(`cd: ${args[0]}: no es un directorio`);
-    }
-    case 'cat': {
-      if (!args[0]) return fail('cat: falta el archivo');
-      const path = resolve(cwd, args[0]), content = FILES[path];
-      if (content !== undefined) return print(...content.split('\n'));
-      return fail(`cat: ${args[0]}: ${isDirectory(path) ? 'es un directorio' : 'no existe el archivo o directorio'}`);
-    }
-    case 'projects': return print(...PROJECTS.map(project => `${project.id.padEnd(18)} ${project.tagline}`));
-    case 'open': {
-      const project = findProject(args[0]);
-      return project ? { output: [`Abriendo ${project.name}…`], cwd, action: { kind: 'case', id: project.id } } : fail(`open: ${args[0] ?? '(vacío)'}: proyecto no encontrado. Usa projects.`);
-    }
-    case 'github': return { output: [], cwd, action: { kind: 'app', app: 'github' } };
-    case 'cv': return { output: ['Abriendo el CV…'], cwd, action: { kind: 'app', app: 'cv' } };
-    case 'neofetch': return print(`daniel@taller`, '-------------', 'OS: Taller OS', `Host: ${PUBLIC_PROFILE.location}`, `Shell: ${PUBLIC_PROFILE.role}`, `Stack: ${[...new Set(PROJECTS.flatMap(project => project.technologies.map(technology => technology.name)))].slice(0, 6).join(', ')}`, `Proyectos: ${PROJECTS.length}`, `Repos: ${snapshot.repos.length}`);
-    case 'contact': return print(...FILES[`${HOME}/contacto.txt`]!.split('\n'));
-    case 'git':
-      if (args[0] === 'push') return fail(args.includes('--force') ? 'git: un viernes, en serio? No.' : 'git: nada que subir. El taller ya está desplegado.');
-      if (args[0] !== 'log') return fail(`git: solo está disponible git log`);
-      return print(...(snapshot.repos.length ? snapshot.repos.slice(0, 10).map(repoLine) : ['sin datos']));
-    case 'clear': return { output: [], cwd, action: { kind: 'clear' } };
-    case 'exit': return { output: [], cwd, action: { kind: 'exit' } };
-    default: return EGGS[command!]?.length ? print(...EGGS[command!]!) : fail(`zsh: command not found: ${command}`);
-  }
-}
-
-/** Tab: the first word completes commands; the rest paths (projects for `open`). Returns the line unchanged without a single match. */
-export function complete(input: string, cwd: string) {
-  const words = input.split(' ');
-  const last = words[words.length - 1]!;
-  let matches: string[];
-  if (words.length === 1) matches = COMMANDS.map(name => (last.startsWith('/') ? `/${name}` : name)).filter(name => name.startsWith(last));
-  else if (words[0] === 'open') matches = PROJECTS.map(project => project.id).filter(id => id.startsWith(last));
-  else {
-    const slash = last.lastIndexOf('/') + 1, folder = last.slice(0, slash), start = last.slice(slash);
-    matches = list(resolve(cwd, folder)).filter(name => name.startsWith(start)).map(name => folder + name);
-  }
-  if (matches.length !== 1) return input;
-  return [...words.slice(0, -1), matches[0]].join(' ') + (matches[0]!.endsWith('/') ? '' : ' ');
-}
-
-export interface Answer { tools: { name: string; target: string; summary: string }[]; text: string[] }
-const read = (file: string) => ({ name: 'Read', target: file, summary: `Read ${FILES[`${HOME}/${file}`]!.split('\n').length} lines` });
-const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-/** A shell line, as opposed to a question: a known command, `/command` or `!command`. */
-export const isCommand = (input: string) => { const word = input.trim().split(/\s+/)[0]!; return /^[/!]/.test(word) || COMMANDS.includes(word) || word in EGGS; };
-
-type Project = (typeof PROJECTS)[number];
+const repoLine = (repo: (typeof snapshot.repos)[number]) => `${repo.pushedAt}  ${repo.name}${repo.language ? `  (${repo.language})` : ''}`;
+const lines = (...rows: string[]) => rows.join('\n');
+const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const compact = (text: string) => text.replace(/[^a-z0-9]/g, '');
 const GENERIC = new Set(['studio', 'center', 'command']);
 /** Every way a visitor may name a project: its name, id, slug and their distinctive words ("academy", "intranet"). */
 const aliases = (project: Project) => [project.name, project.id, project.slug, ...project.id.split('-'), ...project.name.split(/\s+/)]
   .map(alias => normalize(alias).replace(/[^a-z0-9]/g, '')).filter(alias => alias.length >= 4 && !GENERIC.has(alias));
-const compact = (text: string) => text.replace(/[^a-z0-9]/g, '');
-const findMentioned = (text: string) => PROJECTS.find(project => aliases(project).some(alias => compact(text).includes(alias)));
 /** Whole-word match, so "go" or "r" never hit inside other words. "Next.js" also matches "nextjs" and "next js". */
 const mentionsTechnology = (text: string, name: string) => {
   const key = normalize(name).replace(/[^a-z0-9]+/g, ' ').trim();
   return key.length > 1 && new RegExp(`(^|[^a-z0-9])(${key.replace(/ /g, '[^a-z0-9]?')})([^a-z0-9]|$)`).test(text.replace(/[^a-z0-9]+/g, ' '));
 };
-const TECHNOLOGIES = [...new Set(PROJECTS.flatMap(project => project.technologies.map(technology => technology.name)))];
-const date = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString('es-CO', { month: 'long', year: 'numeric' });
 
-/** Questions about one project, answered only from its case data; anything missing says so instead of guessing. */
-function aboutProject(project: Project, has: (...words: string[]) => boolean): Answer {
-  const tools = [read(`proyectos/${project.id}.txt`)];
-  const open = `Caso completo: \`open ${project.id}\``;
-  const answer = (...text: string[]) => ({ tools, text: [...text, open] });
-  if (has('stack', 'tecnolog', 'usaste', 'hecho con', 'lenguaje', 'framework', 'herramienta'))
-    return answer(`**${project.name}** usa: ${project.technologies.map(technology => technology.name).join(', ')}.`);
-  if (has('dificil', 'reto', 'desafio', 'problema', 'complicad'))
-    return answer(...(project.challenges.length ? project.challenges.map(item => `- **${item.title}**${item.resolution ? `: ${item.resolution}` : ''}`) : ['No hay retos documentados en este caso.']));
-  if (has('decision', 'por que', 'arquitectura', 'eligi'))
-    return answer(...(project.engineeringDecisions.length ? project.engineeringDecisions.map(item => `- **${item.title}**: ${item.decision}`) : ['No hay decisiones documentadas en este caso.']));
-  if (has('aprend', 'leccion'))
-    return answer(...(project.lessonsLearned.length ? project.lessonsLearned.map(item => `- **${item.title}**: ${item.description}`) : ['No hay lecciones documentadas en este caso.']));
-  if (has('rol', 'hiciste', 'responsab', 'tu parte', 'que hizo'))
-    return answer(`Rol: **${project.role.title}**`, ...project.role.responsibilities.map(item => `- ${item}`));
-  if (has('cuando', 'tiempo', 'duro', 'fecha', 'empez', 'termin'))
-    return answer(`Empezó en ${date(project.startedAt)}; ${project.completedAt ? `terminó en ${date(project.completedAt)}` : 'sigue en curso'}.`, ...(project.metrics.durationWeeks ? [`Duración: ${project.metrics.durationWeeks} semanas.`] : []));
-  if (has('link', 'enlace', 'url', 'sitio', 'web', 'verlo', 'demo'))
-    return answer(project.links.live ? `En producción: ${project.links.live}` : 'No tiene un sitio público enlazado.');
-  if (has('funcion', 'caracteristica', 'que hace', 'feature'))
-    return answer(...project.features.map(item => `- **${item.title}**: ${item.description}`));
-  return answer(`**${project.name}**: ${project.summary}`, 'Pregúntame por su stack, retos, decisiones, rol, fechas o enlace.');
-}
+/**
+ * The terminal in one language (specs/i18n-english.md, I.4): its files, commands and scripted answers are built from
+ * that language's content and texts. There is no model behind it: every answer comes from the portfolio data.
+ */
+export function createShell(data: ShellData, t: ShellText) {
+  const { projects, career, availability } = data;
+  const dir = `${HOME}/${t.files.projects}`;
+  const FILES: Record<string, string> = {
+    [`${HOME}/README.md`]: lines(`${PUBLIC_PROFILE.name} · ${PUBLIC_PROFILE.role}`, PUBLIC_PROFILE.location, '', availability),
+    [`${HOME}/${t.files.career}`]: [...career.experience, ...career.education].map(item => `${item.period}  ${item.title} · ${item.organization}`).join('\n'),
+    [`${HOME}/${t.files.contact}`]: lines(`GitHub    ${PUBLIC_PROFILE.github}`, `LinkedIn  ${PUBLIC_PROFILE.linkedin}`),
+    [`${HOME}/github/repos.txt`]: snapshot.repos.length ? snapshot.repos.map(repoLine).join('\n') : t.noData,
+    ...Object.fromEntries(projects.map(project => [`${dir}/${project.id}.txt`, lines(project.name, project.tagline, '', project.summary, '', `Stack: ${project.technologies.map(technology => technology.name).join(', ')}`)])),
+  };
+  /** Easter eggs: left out of help and of the Tab list on purpose, finding them is the point. */
+  const EGGS: Record<string, readonly string[]> = { ...t.eggs, neofetch: [] };
+  const technologies = [...new Set(projects.flatMap(project => project.technologies.map(technology => technology.name)))];
+  const date = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString(t.dateLocale, { month: 'long', year: 'numeric' });
+  const a = t.answers, k = t.keywords;
 
-/** The terminal's chat. It is scripted, there is no model behind it: every answer comes from the portfolio data. */
-export function ask(question: string): Answer {
-  const text = normalize(question);
-  const has = (...words: string[]) => words.some(word => text.includes(word));
-  const project = findMentioned(text);
-  if (project) return aboutProject(project, has);
-  const technology = TECHNOLOGIES.find(name => mentionsTechnology(text, name));
-  if (technology) {
-    const used = PROJECTS.filter(item => item.technologies.some(entry => entry.name === technology));
-    return { tools: [{ name: 'Grep', target: `${technology} ~/proyectos`, summary: `${used.length} archivos` }], text: [`Daniel usó **${technology}** en:`, ...used.map(item => `- **${item.name}**: ${item.tagline}`)] };
+  function resolve(cwd: string, path = '') {
+    const base = path.startsWith('/') ? [] : (path === '~' || path.startsWith('~/') ? HOME : cwd).split('/');
+    const parts = base.filter(Boolean);
+    for (const part of path.replace(/^~\/?/, '').split('/')) {
+      if (part === '..') parts.pop();
+      else if (part && part !== '.') parts.push(part);
+    }
+    return `/${parts.join('/')}`;
   }
-  if (has('has usado', 'usas ', 'sabes ', 'conoces ', 'manejas ')) return { tools: [{ name: 'Grep', target: '~/proyectos', summary: '0 coincidencias' }], text: ['Eso no aparece en ninguno de los proyectos del portafolio. Escribe `projects` para ver con qué ha trabajado Daniel.'] };
-  if (has('destacad', 'mejor proyecto', 'favorito', 'principal')) return { tools: [{ name: 'Bash', target: 'ls ~/proyectos', summary: `${PROJECTS.length} archivos` }], text: ['Los proyectos destacados:', ...PROJECTS.filter(item => item.featured).map(item => `- **${item.name}**: ${item.tagline}`)] };
-  if (has('proyecto', 'portafolio', 'que has hecho', 'construi')) return { tools: [{ name: 'Bash', target: 'ls ~/proyectos', summary: `${PROJECTS.length} archivos` }], text: ['Estos son los proyectos de Daniel:', ...PROJECTS.map(item => `- **${item.name}**: ${item.tagline}`)] };
-  if (has('contact', 'contrat', 'trabaj', 'escrib', 'freelance', 'dispon')) return { tools: [read('contacto.txt')], text: [PUBLIC_PROFILE.availability, `- GitHub: ${PUBLIC_PROFILE.github}`, `- LinkedIn: ${PUBLIC_PROFILE.linkedin}`] };
-  if (has('experiencia', 'trayectoria', 'estudi', 'carrera', 'cv')) return { tools: [read('trayectoria.txt')], text: FILES[`${HOME}/trayectoria.txt`]!.split('\n').map(line => `- ${line}`) };
-  if (has('stack', 'tecnolog', 'lenguaje', 'framework')) return { tools: [{ name: 'Grep', target: 'Stack: ~/proyectos', summary: `${PROJECTS.length} archivos` }], text: [`Lo que más usa Daniel: ${[...new Set(PROJECTS.flatMap(item => item.technologies.map(technology => technology.name)))].slice(0, 12).join(', ')}.`] };
-  if (has('github', 'repo', 'codigo')) return { tools: [read('github/repos.txt')], text: [`Tiene ${snapshot.repos.length} repositorios públicos. Abre Safari en el Dock para ver su perfil, o escribe \`github\`.`] };
-  if (has('quien eres', 'eres claude', 'eres una ia', 'eres ia', 'modelo')) return { tools: [], text: ['Soy una demo: esta terminal imita Claude Code, pero no hay ninguna IA detrás. Las respuestas están programadas con los datos reales del portafolio.'] };
-  if (has('daniel', 'quien', 'sobre ti')) return { tools: [read('README.md')], text: [`**${PUBLIC_PROFILE.name}**, ${PUBLIC_PROFILE.role} en ${PUBLIC_PROFILE.location}.`, PUBLIC_PROFILE.availability] };
-  if (has('hola', 'buenas', 'hey')) return { tools: [], text: ['Hola. Pregúntame por los proyectos de Daniel, su experiencia, su stack o cómo contactarlo.'] };
-  return { tools: [], text: ['No tengo respuesta para eso: soy una demo programada, sin IA detrás. Pregúntame por los proyectos, la experiencia, el stack o el contacto de Daniel, o escribe `/help`.'] };
+  const isDirectory = (path: string) => path === '/' || Object.keys(FILES).some(file => file.startsWith(`${path}/`));
+  function list(path: string) {
+    const prefix = path === '/' ? '/' : `${path}/`;
+    return [...new Set(Object.keys(FILES).filter(file => file.startsWith(prefix)).map(file => {
+      const [name, ...rest] = file.slice(prefix.length).split('/');
+      return rest.length ? `${name}/` : name!;
+    }))].sort();
+  }
+  const findProject = (name = '') => projects.find(project => project.id === name.toLowerCase() || project.slug === name.toLowerCase());
+
+  function run(input: string, cwd: string): ShellResult {
+    const [command, ...args] = input.trim().replace(/^[/!]\s*/, '').split(/\s+/);
+    const fail = (message: string): ShellResult => ({ output: [message], cwd, error: true });
+    const print = (...output: string[]): ShellResult => ({ output, cwd });
+    switch (command) {
+      case undefined: case '': return print();
+      case 'help': return print(...t.help);
+      case 'whoami': return print(`${PUBLIC_PROFILE.name} · ${PUBLIC_PROFILE.role} · ${PUBLIC_PROFILE.location}`);
+      case 'pwd': return print(cwd);
+      case 'ls': {
+        const path = resolve(cwd, args[0]);
+        if (FILES[path] !== undefined) return print(args[0]!);
+        return isDirectory(path) ? print(list(path).join('  ')) : fail(fill(t.errors.lsMissing, { path: args[0] ?? '' }));
+      }
+      case 'cd': {
+        const path = resolve(cwd, args[0] ?? '~');
+        return isDirectory(path) ? { output: [], cwd: path } : fail(fill(t.errors.cdNotDirectory, { path: args[0] ?? '' }));
+      }
+      case 'cat': {
+        if (!args[0]) return fail(t.errors.catNoFile);
+        const path = resolve(cwd, args[0]), content = FILES[path];
+        if (content !== undefined) return print(...content.split('\n'));
+        return fail(fill(isDirectory(path) ? t.errors.catIsDirectory : t.errors.catMissing, { path: args[0] }));
+      }
+      case 'projects': return print(...projects.map(project => `${project.id.padEnd(18)} ${project.tagline}`));
+      case 'open': {
+        const project = findProject(args[0]);
+        return project ? { output: [fill(t.opening, { name: project.name })], cwd, action: { kind: 'case', id: project.id } } : fail(fill(t.errors.openMissing, { name: args[0] ?? t.errors.empty }));
+      }
+      case 'github': return { output: [], cwd, action: { kind: 'app', app: 'github' } };
+      case 'cv': return { output: [t.openingCv], cwd, action: { kind: 'app', app: 'cv' } };
+      case 'neofetch': return print(`daniel@taller`, '-------------', 'OS: Taller OS', `Host: ${PUBLIC_PROFILE.location}`, `Shell: ${PUBLIC_PROFILE.role}`, `Stack: ${technologies.slice(0, 6).join(', ')}`, `${t.neofetchProjects}: ${projects.length}`, `Repos: ${snapshot.repos.length}`);
+      case 'contact': return print(...FILES[`${HOME}/${t.files.contact}`]!.split('\n'));
+      case 'git':
+        if (args[0] === 'push') return fail(args.includes('--force') ? t.errors.gitForce : t.errors.gitPush);
+        if (args[0] !== 'log') return fail(t.errors.gitOnlyLog);
+        return print(...(snapshot.repos.length ? snapshot.repos.slice(0, 10).map(repoLine) : [t.noData]));
+      case 'clear': return { output: [], cwd, action: { kind: 'clear' } };
+      case 'exit': return { output: [], cwd, action: { kind: 'exit' } };
+      default: return EGGS[command!]?.length ? print(...EGGS[command!]!) : fail(fill(t.errors.notFound, { command: command! }));
+    }
+  }
+
+  /** Tab: the first word completes commands; the rest paths (projects for `open`). Returns the line unchanged without a single match. */
+  function complete(input: string, cwd: string) {
+    const words = input.split(' ');
+    const last = words[words.length - 1]!;
+    let matches: string[];
+    if (words.length === 1) matches = COMMANDS.map(name => (last.startsWith('/') ? `/${name}` : name)).filter(name => name.startsWith(last));
+    else if (words[0] === 'open') matches = projects.map(project => project.id).filter(id => id.startsWith(last));
+    else {
+      const slash = last.lastIndexOf('/') + 1, folder = last.slice(0, slash), start = last.slice(slash);
+      matches = list(resolve(cwd, folder)).filter(name => name.startsWith(start)).map(name => folder + name);
+    }
+    if (matches.length !== 1) return input;
+    return [...words.slice(0, -1), matches[0]].join(' ') + (matches[0]!.endsWith('/') ? '' : ' ');
+  }
+
+  /** A shell line, as opposed to a question: a known command, `/command` or `!command`. */
+  const isCommand = (input: string) => { const word = input.trim().split(/\s+/)[0]!; return /^[/!]/.test(word) || COMMANDS.includes(word) || word in EGGS; };
+  const read = (file: string) => ({ name: 'Read', target: file, summary: `Read ${FILES[`${HOME}/${file}`]!.split('\n').length} lines` });
+  const filesSummary = (count: number) => fill(a.files, { count });
+
+  /** Questions about one project, answered only from its case data; anything missing says so instead of guessing. */
+  function aboutProject(project: Project, has: (words: readonly string[]) => boolean): Answer {
+    const tools = [read(`${t.files.projects}/${project.id}.txt`)];
+    const answer = (...text: string[]) => ({ tools, text: [...text, fill(a.fullCase, { id: project.id })] });
+    if (has(k.stack)) return answer(fill(a.uses, { name: project.name, list: project.technologies.map(technology => technology.name).join(', ') }));
+    if (has(k.challenges)) return answer(...(project.challenges.length ? project.challenges.map(item => `- **${item.title}**${item.resolution ? `: ${item.resolution}` : ''}`) : [a.noChallenges]));
+    if (has(k.decisions)) return answer(...(project.engineeringDecisions.length ? project.engineeringDecisions.map(item => `- **${item.title}**: ${item.decision}`) : [a.noDecisions]));
+    if (has(k.lessons)) return answer(...(project.lessonsLearned.length ? project.lessonsLearned.map(item => `- **${item.title}**: ${item.description}`) : [a.noLessons]));
+    if (has(k.role)) return answer(fill(a.role, { title: project.role.title }), ...project.role.responsibilities.map(item => `- ${item}`));
+    if (has(k.dates)) return answer(fill(a.started, { date: date(project.startedAt), end: project.completedAt ? fill(a.ended, { date: date(project.completedAt) }) : a.ongoing }), ...(project.metrics.durationWeeks ? [fill(a.duration, { weeks: project.metrics.durationWeeks })] : []));
+    if (has(k.link)) return answer(project.links.live ? fill(a.live, { url: project.links.live }) : a.noLive);
+    if (has(k.features)) return answer(...project.features.map(item => `- **${item.title}**: ${item.description}`));
+    return answer(`**${project.name}**: ${project.summary}`, a.askMore);
+  }
+
+  /** The terminal's chat: scripted, every answer comes from the portfolio data. */
+  function ask(question: string): Answer {
+    const text = normalize(question);
+    // Padded so keywords with spaces (" hi ", "usas ") also match at either end of the question.
+    const has = (words: readonly string[]) => words.some(word => ` ${text} `.includes(word));
+    const project = projects.find(item => aliases(item).some(alias => compact(text).includes(alias)));
+    if (project) return aboutProject(project, has);
+    const technology = technologies.find(name => mentionsTechnology(text, name));
+    if (technology) {
+      const used = projects.filter(item => item.technologies.some(entry => entry.name === technology));
+      return { tools: [{ name: 'Grep', target: `${technology} ~/${t.files.projects}`, summary: filesSummary(used.length) }], text: [fill(a.usedIn, { name: technology }), ...used.map(item => `- **${item.name}**: ${item.tagline}`)] };
+    }
+    const ls = { name: 'Bash', target: `ls ~/${t.files.projects}`, summary: filesSummary(projects.length) };
+    if (has(k.usedTech)) return { tools: [{ name: 'Grep', target: `~/${t.files.projects}`, summary: a.noMatches }], text: [a.notInPortfolio] };
+    if (has(k.featured)) return { tools: [ls], text: [a.featured, ...projects.filter(item => item.featured).map(item => `- **${item.name}**: ${item.tagline}`)] };
+    if (has(k.projects)) return { tools: [ls], text: [a.projects, ...projects.map(item => `- **${item.name}**: ${item.tagline}`)] };
+    if (has(k.contact)) return { tools: [read(t.files.contact)], text: [availability, `- GitHub: ${PUBLIC_PROFILE.github}`, `- LinkedIn: ${PUBLIC_PROFILE.linkedin}`] };
+    if (has(k.career)) return { tools: [read(t.files.career)], text: FILES[`${HOME}/${t.files.career}`]!.split('\n').map(line => `- ${line}`) };
+    if (has(k.stackGeneral)) return { tools: [{ name: 'Grep', target: `Stack: ~/${t.files.projects}`, summary: filesSummary(projects.length) }], text: [fill(a.mostUsed, { list: technologies.slice(0, 12).join(', ') })] };
+    if (has(k.github)) return { tools: [read('github/repos.txt')], text: [fill(a.repos, { count: snapshot.repos.length })] };
+    if (has(k.ai)) return { tools: [], text: [a.demo] };
+    if (has(k.who)) return { tools: [read('README.md')], text: [fill(a.who, { name: PUBLIC_PROFILE.name, role: PUBLIC_PROFILE.role, location: PUBLIC_PROFILE.location }), availability] };
+    if (has(k.hello)) return { tools: [], text: [a.hello] };
+    return { tools: [], text: [a.fallback] };
+  }
+
+  return { run, complete, ask, isCommand, files: t.files };
 }
+
+/** The terminal in the page's language. */
+export function useShell() {
+  const { projects, career, availability } = useContent();
+  const t = useDictionary().pc.shell;
+  return useMemo(() => createShell({ projects, career, availability }, t), [projects, career, availability, t]);
+}
+
+/** Spanish, the default locale: what tests and non-React callers use. */
+export const { run, complete, ask, isCommand } = createShell({ projects: PROJECTS, career: PORTFOLIO_CAREER, availability: PUBLIC_PROFILE.availability }, es.pc.shell);

@@ -2,7 +2,6 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import { CanvasTexture, SRGBColorSpace, type MeshBasicMaterial, type Texture } from 'three';
-import { PORTFOLIO_CAREER } from '../../data/portfolio-career';
 import { PROJECTS } from '../../data/projects';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { ambient } from './ambient';
@@ -12,6 +11,7 @@ import { PROJECT_CAPTURES } from './lab';
 import { GALLERY_LAYOUT, ProjectGallery } from './project-gallery';
 import { useDictionary } from '../../i18n/locale-provider';
 import styles from './workshop-game.module.css';
+import { useContent } from '../../data/content/content';
 
 /** Focus states shared by screens and plates: lit (the focus or related), dimmed (unrelated), idle. */
 export type Highlight = 'lit' | 'dim' | 'idle';
@@ -93,6 +93,9 @@ function Screen({ anchor, label, name, capture, labelMap, highlight, onSelect, o
 export function ProjectWall({ lit, focused, onSelect, onHover }: {
   lit: Set<string>; focused: boolean; onSelect: (projectId: string) => void; onHover: (projectId: string | null, anchor?: LabAnchor) => void;
 }) {
+  // A page only shows the cases that exist in its language: in English the other screens stay switched off.
+  const { projects } = useContent();
+  const shown = SCREEN_PROJECTS.filter(project => projects.some(item => item.id === project.id));
   const labels = useMemo(() => new Map(SCREEN_PROJECTS.map(project => [project.id, labelTexture(project.name, '#e6f2f4')])), []);
   const highlight = (id: string): Highlight => lit.has(id) ? 'lit' : focused ? 'dim' : 'idle';
   const renderScreen = (id: string, name: string, anchor: LabAnchor, label?: LabAnchor) => <Screen
@@ -100,7 +103,7 @@ export function ProjectWall({ lit, focused, onSelect, onHover }: {
     highlight={highlight(id)} onSelect={() => onSelect(id)} onHover={on => onHover(on ? id : null, on ? anchor : undefined)} />;
   return <>
     <ProjectGallery renderScreen={renderScreen} />
-    {SCREEN_PROJECTS.map(project => {
+    {shown.map(project => {
       const moved = GALLERY_LAYOUT.relocated[project.id];
       const anchor = moved?.anchor ?? LAB_ANCHORS[`screen_${project.id}`]!;
       const label = moved?.label ?? LAB_ANCHORS[`label_${project.id}`];
@@ -177,6 +180,7 @@ export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
 /** Trayectoria board: the career entries from the profile data, so the board reads without opening the panel. */
 export function Whiteboard({ onSelect }: { onSelect: () => void }) {
   const { workshop } = useDictionary();
+  const { career } = useContent();
   const anchor = LAB_ANCHORS.whiteboard;
   const column = (title: string, items: readonly { period: string; title: string; organization: string }[]) => <section>
     <h3>{title}</h3>
@@ -185,6 +189,6 @@ export function Whiteboard({ onSelect }: { onSelect: () => void }) {
   return anchor ? <DomScreen anchor={anchor} width={1200} className={styles.whiteboard} {...select(onSelect)}>
     <h2>{workshop.stations.trajectory.name}</h2>
     <p>{workshop.stations.trajectory.description}</p>
-    <div>{column(workshop.reader.experience, PORTFOLIO_CAREER.experience)}{column(workshop.reader.education, PORTFOLIO_CAREER.education)}</div>
+    <div>{column(workshop.reader.experience, career.experience)}{column(workshop.reader.education, career.education)}</div>
   </DomScreen> : null;
 }

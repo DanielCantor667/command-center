@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowUpRight, MapPin } from 'lucide-react';
-import { PROJECTS } from '../../data/projects';
 import type { WorkshopReading } from './reading';
 import { cornerProject, type WorldPoint } from './world-state';
 import { stationForPoint } from './stations';
@@ -10,6 +9,7 @@ import { fill } from '../../i18n/format';
 import { useDictionary, useLocale } from '../../i18n/locale-provider';
 import { placeNames } from './place-names';
 import styles from './workshop-reader.module.css';
+import { useContent } from '../../data/content/content';
 export interface WorldMapProps {
   currentPoint: WorldPoint;
   worldAvailable: boolean;
@@ -23,13 +23,13 @@ const destinations: Destination[] = ['hub', 'projects', 'technologies', 'traject
 const markers: Record<Destination, [number, number]> = {
   hub: [280, 300], projects: [470, 185], technologies: [90, 185], trajectory: [280, 62], contact: [455, 260],
 };
-const PUBLIC_PROJECTS = PROJECTS.filter(project => project.public);
 
 export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, onOpenCase }: WorldMapProps) {
   const locale = useLocale();
   const { workshop } = useDictionary();
   const t = workshop.map;
   const names = placeNames(workshop);
+  const publicProjects = useContent().projects.filter(project => project.public);
   // A project corner shows as the projects place on the plan.
   const currentPoint: Exclude<WorldPoint, `corner-${string}`> = cornerProject(reached) ? 'projects' : reached as Exclude<WorldPoint, `corner-${string}`>;
   const read = (point: Destination) => {
@@ -68,7 +68,7 @@ export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, 
           <span><strong>{names[point]}</strong><small>{worldAvailable ? t.go : t.read}</small></span>
           {worldAvailable ? <MapPin size={16} aria-hidden="true" /> : <ArrowUpRight size={16} aria-hidden="true" />}
         </button>)}
-        {!worldAvailable && PUBLIC_PROJECTS.map(project => <button key={project.id} type="button" onClick={() => onOpenCase(project.id)}>
+        {!worldAvailable && publicProjects.map(project => <button key={project.id} type="button" onClick={() => onOpenCase(project.id)}>
           <span><strong>{project.name}</strong><small>{t.readCase}</small></span><ArrowUpRight size={16} aria-hidden="true" />
         </button>)}
       </nav>

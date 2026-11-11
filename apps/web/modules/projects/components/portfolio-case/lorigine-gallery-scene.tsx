@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { Mesh, OrthographicCamera, Spherical, Vector3 } from 'three';
 import type { LorigineView } from './lorigine-gallery';
+import { usePick } from './copy/use-case-copy';
 
 interface GalleryProps {
   view: LorigineView;
@@ -62,6 +63,8 @@ function GalleryModel({ detail }: { detail: boolean }) {
 }
 
 function GalleryContent({ view, revision, reducedMotion, onReady, onError }: GalleryProps) {
+  // Inside the Canvas: R3F bridges the locale context.
+  const keyboardLabel = usePick()(['Galería 3D de L’ORIGINE. Flechas para girar; Inicio para restablecer.', 'L’ORIGINE 3D gallery. Arrow keys to rotate; Home to reset.']);
   const { camera, size, invalidate, gl } = useThree();
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const moving = useRef(true);
@@ -81,7 +84,7 @@ function GalleryContent({ view, revision, reducedMotion, onReady, onError }: Gal
     canvas.tabIndex = 0;
     canvas.setAttribute(
       'aria-label',
-      'Galería 3D de L’ORIGINE. Flechas para girar; Inicio para restablecer.',
+      keyboardLabel,
     );
     canvas.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
     const rotate = (event: KeyboardEvent) => {
@@ -110,7 +113,7 @@ function GalleryContent({ view, revision, reducedMotion, onReady, onError }: Gal
     };
     canvas.addEventListener('keydown', rotate);
     return () => canvas.removeEventListener('keydown', rotate);
-  }, [camera, gl, invalidate]);
+  }, [camera, gl, invalidate, keyboardLabel]);
   useEffect(() => {
     onReady();
     const lost = (event: Event) => {
@@ -191,6 +194,7 @@ function GalleryContent({ view, revision, reducedMotion, onReady, onError }: Gal
 }
 
 export function LorigineGalleryScene(props: GalleryProps) {
+  const pick = usePick();
   return (
     <Canvas
       orthographic
@@ -199,7 +203,7 @@ export function LorigineGalleryScene(props: GalleryProps) {
       dpr={[1, 1.5]}
       camera={{ position: [3, 2.5, 5], zoom: 100, near: 0.01, far: 250 }}
       gl={{ antialias: true, alpha: false }}
-      aria-label="Galería interactiva de L’ORIGINE"
+      aria-label={pick(['Galería interactiva de L’ORIGINE', 'Interactive L’ORIGINE gallery'])}
     >
       <ModelBoundary onError={props.onError}>
         <Suspense fallback={null}>

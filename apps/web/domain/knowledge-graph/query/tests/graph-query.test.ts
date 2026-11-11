@@ -334,7 +334,7 @@ describe('findProjectsSharingDecision', () => {
   it('finds projects with same decision title across projects', () => {
     const projects = findProjectsSharingDecision(
       KNOWLEDGE_GRAPH,
-      'Supabase as sole backend over custom API',
+      'Supabase como único backend en lugar de una API propia',
     );
     expect(projects.length).toBeGreaterThanOrEqual(1);
   });

@@ -16,7 +16,7 @@ export const kliniu: Project = {
   tagline: 'Comercio electrónico e higiene institucional',
   summary: 'Comercio electrónico de dispensadores e insumos de higiene para empresas, con catálogo, cotizaciones y herramientas de administración.',
   description:
-    'Kliniu is a production-grade e-commerce platform built with Next.js 16, React 19, Prisma + PostgreSQL (Supabase), and Tailwind CSS v4. It serves as a B2B storefront for institutional hygiene products — liquid dispensers, paper dispensers, soap dispensers, and related accessories. The platform includes a full product catalog with rich categories (custom banners, buying guides, color variants, gallery, video), shopping cart, checkout, order management with Odoo ERP sync, a 15-module admin panel, AI chatbot (OpenAI) for product discovery, image search, volume pricing tiers, commercial quotations with tax configuration, production management (machines, runs, quality tracking), production order planning, marketing campaign tracking, seller cost configuration, customer loyalty points, granular user permissions, Kommo CRM integration, WhatsApp sharing, and responsive mobile-first design.',
+    'Kliniu es una plataforma de comercio electrónico en producción construida con Next.js 16, React 19, Prisma + PostgreSQL (Supabase) y Tailwind CSS v4. Es una tienda B2B de productos de higiene institucional: dispensadores de líquidos, de papel, de jabón y accesorios relacionados. La plataforma incluye un catálogo completo con categorías enriquecidas (banners propios, guías de compra, variantes de color, galería, video), carrito, checkout, gestión de pedidos sincronizada con Odoo ERP, un panel de administración de 15 módulos, un chatbot de IA (OpenAI) para descubrir productos, búsqueda por imagen, precios por volumen, cotizaciones comerciales con configuración de impuestos, gestión de producción (máquinas, corridas, seguimiento de calidad), planeación de órdenes de producción, seguimiento de campañas de marketing, configuración de costos por vendedor, puntos de fidelización, permisos de usuario granulares, integración con Kommo CRM, compartir por WhatsApp y diseño responsive pensado primero para móvil.',
   status: PROJECT_STATUS.Production,
   featured: true,
   public: true,
@@ -46,286 +46,286 @@ export const kliniu: Project = {
   ],
   features: [
     {
-      title: 'Product Catalog',
+      title: 'Catálogo de productos',
       description:
-        'Full product catalog with categories, brands, SKU, OEM references, alternative references, gallery images, color variants, video, technical specs, and rich category metadata (custom banners, hero images, buying guides).',
+        'Catálogo completo con categorías, marcas, SKU, referencias OEM, referencias alternativas, imágenes de galería, variantes de color, video, especificaciones técnicas y metadatos de categoría enriquecidos (banners propios, imágenes principales, guías de compra).',
     },
     {
-      title: 'Shopping Cart',
+      title: 'Carrito de compras',
       description:
-        'Client-side cart supporting individual products and combos, quantity management, persistent storage.',
+        'Carrito en el cliente para productos individuales y combos, con manejo de cantidades y almacenamiento persistente.',
     },
     {
       title: 'Checkout',
       description:
-        'Complete checkout flow with shipping address, department/city selection, order summary, Odoo sync.',
+        'Flujo de pago completo con dirección de envío, selección de departamento y ciudad, resumen del pedido y sincronización con Odoo.',
     },
     {
-      title: 'Order Management',
+      title: 'Gestión de pedidos',
       description:
-        'Full order lifecycle with status tracking (PENDING, PAID, CANCELLED), shipping status (PENDING, PREPARING, SHIPPED, DELIVERED, CANCELLED), admin notes, carrier/tracking, Odoo synchronization.',
+        'Ciclo de vida completo del pedido con seguimiento de estado (PENDING, PAID, CANCELLED), estado de envío (PENDING, PREPARING, SHIPPED, DELIVERED, CANCELLED), notas de administración, transportadora y guía, y sincronización con Odoo.',
     },
     {
-      title: 'Admin Panel',
+      title: 'Panel de administración',
       description:
-        'Single-page admin application (/admin) with product CRUD, order management, inventory adjustments, image upload with auto-compression to WebP, color variants editor, technical specs editor.',
+        'Aplicación de administración de una sola página (/admin) con CRUD de productos, gestión de pedidos, ajustes de inventario, carga de imágenes con compresión automática a WebP, editor de variantes de color y editor de especificaciones técnicas.',
     },
     {
-      title: 'Panel (Seller Dashboard)',
+      title: 'Panel (dashboard del vendedor)',
       description:
-        '15-module commercial panel: dashboard, orders, products, metrics, campaigns, costs, price calculator, quotations, production, Odoo, users, banners, combos, outlet. Granular per-module permissions.',
+        'Panel comercial de 15 módulos: dashboard, pedidos, productos, métricas, campañas, costos, calculadora de precios, cotizaciones, producción, Odoo, usuarios, banners, combos y outlet. Permisos granulares por módulo.',
     },
     {
-      title: 'Product Management',
+      title: 'Gestión de productos',
       description:
-        'Full CRUD for products with image upload, auto-compression to WebP, gallery management, color variants (up to 4 images per variant), technical specifications, YouTube video integration.',
+        'CRUD completo de productos con carga de imágenes, compresión automática a WebP, gestión de galería, variantes de color (hasta 4 imágenes por variante), especificaciones técnicas e integración de video de YouTube.',
     },
     {
-      title: 'Category Management',
+      title: 'Gestión de categorías',
       description:
-        'Rich category system with metadata: color theme, icon, banner images (desktop/mobile), hero banners, buying guides, benefits, copy text. Categories: dispensers for liquids, paper/towel/napkin, soap, accessories, and more.',
+        'Sistema de categorías con metadatos: tema de color, icono, banners (escritorio y móvil), banners principales, guías de compra, beneficios y textos. Categorías: dispensadores de líquidos, de papel, toallas y servilletas, de jabón, accesorios y más.',
     },
     {
-      title: 'Banner System',
+      title: 'Sistema de banners',
       description:
-        'Editable banner system with unique keys covering home hero (3 slides), features strip, advisory CTA, insumos CTA, and category-specific banners. Responsive variants (desktop/mobile). Live preview in panel.',
+        'Banners editables con claves únicas para el hero de inicio (3 diapositivas), la franja de características, el CTA de asesoría, el CTA de insumos y banners por categoría. Variantes responsive (escritorio y móvil). Vista previa en vivo en el panel.',
     },
     {
-      title: 'Price Calculator',
+      title: 'Calculadora de precios',
       description:
-        'Sale calculator for sellers: product cost + shipping + picking + commission + margin + campaign cost. Calculates final sale price with detailed breakdown.',
+        'Calculadora de venta para vendedores: costo del producto + envío + alistamiento + comisión + margen + costo de campaña. Calcula el precio final de venta con el desglose detallado.',
     },
     {
-      title: 'Commercial Quotations',
+      title: 'Cotizaciones comerciales',
       description:
-        'Full quotation system (cotizaciones) with auto-numbering (COT-AAAA-NNNNNN), status workflow (DRAFT -> SENT -> APPROVED/REJECTED/EXPIRED), tax configuration (reteICA, reteFuente, IVA), product snapshots, conversion to orders. PDF generation (Playwright, reserved).',
+        'Sistema completo de cotizaciones con numeración automática (COT-AAAA-NNNNNN), flujo de estados (DRAFT -> SENT -> APPROVED/REJECTED/EXPIRED), configuración de impuestos (reteICA, reteFuente, IVA), copias del producto al momento de cotizar y conversión a pedidos. Generación de PDF (Playwright, reservada).',
     },
     {
-      title: 'AI Chatbot',
+      title: 'Chatbot de IA',
       description:
-        'OpenAI-powered product finder with catalog snapshot, Levenshtein distance for typo-tolerant matching, category-aware suggestions, product cards with prices and links.',
+        'Buscador de productos con OpenAI sobre una copia del catálogo, distancia de Levenshtein para tolerar errores de escritura, sugerencias según la categoría y tarjetas de producto con precios y enlaces.',
     },
     {
-      title: 'Image Search',
+      title: 'Búsqueda por imagen',
       description:
-        'Search products by uploading an image. Uses AI/vision for product matching.',
+        'Búsqueda de productos subiendo una imagen. Usa IA y visión para encontrar productos coincidentes.',
     },
     {
-      title: 'Volume Pricing',
+      title: 'Precios por volumen',
       description:
-        'Per-product tiered volume discounts at 12, 48, and 100+ units with configurable unit prices per tier.',
+        'Descuentos escalonados por producto a partir de 12, 48 y más de 100 unidades, con precio unitario configurable por tramo.',
     },
     {
       title: 'Combos',
       description:
-        'Product bundles with dedicated SKU, pricing, images, and cart support. Featured on home page with carousel.',
+        'Paquetes de productos con SKU, precio, imágenes y soporte de carrito propios. Destacados en la página de inicio con un carrusel.',
     },
     {
-      title: 'Campaign Management',
+      title: 'Gestión de campañas',
       description:
-        'Marketing campaign tracking with daily entries (messages, transactions, ad spend, daily sales). Platform support for Meta Ads. Lead tracking, ROI calculation.',
+        'Seguimiento de campañas de marketing con registros diarios (mensajes, transacciones, inversión publicitaria, ventas del día). Soporte para Meta Ads. Seguimiento de leads y cálculo de ROI.',
     },
     {
-      title: 'Seller Cost Config',
+      title: 'Configuración de costos por vendedor',
       description:
-        'Per-seller cost configuration including production cost, advertising, shipping, packing, collection, contingencies, fixed costs, and return percentage.',
+        'Configuración de costos por vendedor: costo de producción, publicidad, envío, empaque, recaudo, imprevistos, costos fijos y porcentaje de devoluciones.',
     },
     {
-      title: 'Production Management',
+      title: 'Gestión de producción',
       description:
-        'Machine catalog (6 injection molding machines), production run registration with operator assignment, material tracking, injection parameters (weight, cycle, temperature), quality control with live summary (good pieces, quality percentage). Pure calculator pattern — derived fields never persisted.',
+        'Catálogo de máquinas (6 inyectoras), registro de corridas de producción con operario asignado, seguimiento de material, parámetros de inyección (peso, ciclo, temperatura) y control de calidad con resumen en vivo (piezas buenas, porcentaje de calidad). Patrón de calculadora pura: los campos derivados nunca se guardan.',
     },
     {
-      title: 'Production Orders',
+      title: 'Órdenes de producción',
       description:
-        'Production planning with order lifecycle (DRAFT -> APPROVED -> IN_PRODUCTION -> COMPLETED -> CANCELLED). Product catalog items with quantities, destination tracking, plant instructions. Integration with production runs.',
+        'Planeación de producción con ciclo de vida de la orden (DRAFT -> APPROVED -> IN_PRODUCTION -> COMPLETED -> CANCELLED). Productos del catálogo con cantidades, destino e instrucciones para la planta. Integración con las corridas de producción.',
     },
     {
-      title: 'Outlet Management',
+      title: 'Gestión de outlet',
       description:
-        'Discounted/outlet product management within the commercial panel.',
+        'Gestión de productos con descuento (outlet) dentro del panel comercial.',
     },
     {
-      title: 'Odoo ERP Integration',
+      title: 'Integración con Odoo ERP',
       description:
-        'Bidirectional order sync with Odoo ERP. Product catalog sync, order creation, sync status tracking (NOT_SYNCED, SYNCED, FAILED), error logging and retries.',
+        'Sincronización de pedidos en ambos sentidos con Odoo ERP. Sincronización del catálogo, creación de pedidos, seguimiento del estado de sincronización (NOT_SYNCED, SYNCED, FAILED), registro de errores y reintentos.',
     },
     {
-      title: 'Kommo CRM Integration',
+      title: 'Integración con Kommo CRM',
       description:
-        'CRM integration for lead and contact management. OAuth2 authentication, custom field mapping (phone, WhatsApp, company, city, customer level, order details), webhook support.',
+        'Integración con el CRM para gestionar leads y contactos. Autenticación OAuth2, mapeo de campos personalizados (teléfono, WhatsApp, empresa, ciudad, nivel del cliente, detalles del pedido) y soporte de webhooks.',
     },
     {
-      title: 'WhatsApp Integration',
+      title: 'Integración con WhatsApp',
       description:
-        'Product sharing via WhatsApp with auto-generated messages including product name, SKU, OEM reference, price, and URL. Advisor CTA throughout the site.',
+        'Compartir productos por WhatsApp con mensajes generados automáticamente que incluyen nombre, SKU, referencia OEM, precio y URL. CTA de asesor en todo el sitio.',
     },
     {
-      title: 'Loyalty Points & Rewards',
+      title: 'Puntos de fidelización y recompensas',
       description:
-        'Customer loyalty program with points earning and redemption. Customer levels (AQUA, CORAL, OCEAN, DIAMOND_SEAL), bonus balance, point transactions, reward catalog with stock management.',
+        'Programa de fidelización con acumulación y canje de puntos. Niveles de cliente (AQUA, CORAL, OCEAN, DIAMOND_SEAL), saldo de bonificación, movimientos de puntos y catálogo de recompensas con manejo de inventario.',
     },
     {
-      title: 'User Management & Permissions',
+      title: 'Gestión de usuarios y permisos',
       description:
-        'Role-based access control (CUSTOMER, SELLER, ADMIN, PACKING, SUPERADMIN). Granular per-module permissions (view, create, edit, delete) for all 15 panel modules. Default permission matrix per role.',
+        'Control de acceso por roles (CUSTOMER, SELLER, ADMIN, PACKING, SUPERADMIN). Permisos granulares por módulo (ver, crear, editar, eliminar) para los 15 módulos del panel. Matriz de permisos por defecto para cada rol.',
     },
     {
-      title: 'Inventory Management',
+      title: 'Gestión de inventario',
       description:
-        'Stock tracking with minimum stock alerts, inventory movements history (created, adjustment, order deduction), quick adjustments from admin panel, out-of-stock and low-stock indicators.',
+        'Seguimiento de stock con alertas de mínimo, historial de movimientos (creación, ajuste, descuento por pedido), ajustes rápidos desde el panel de administración e indicadores de agotado y bajo stock.',
     },
     {
-      title: 'Metrics Dashboard',
+      title: 'Dashboard de métricas',
       description:
-        'Business metrics and KPIs within the commercial panel.',
+        'Métricas e indicadores del negocio dentro del panel comercial.',
     },
     {
-      title: 'User Accounts',
+      title: 'Cuentas de usuario',
       description:
-        'Customer registration, login (email/password, JWT sessions), profile management, order history, loyalty points dashboard.',
+        'Registro de clientes, inicio de sesión (correo y contraseña, sesiones JWT), gestión del perfil, historial de pedidos y panel de puntos de fidelización.',
     },
     {
-      title: 'Image Upload & Processing',
+      title: 'Carga y procesamiento de imágenes',
       description:
-        'Client-side image compression to WebP (1200px max, 82% quality) before Supabase Storage upload. Multi-image gallery, color variant images, automatic format conversion.',
+        'Compresión de imágenes a WebP en el cliente (máximo 1200 px, calidad del 82 %) antes de subirlas a Supabase Storage. Galería de varias imágenes, imágenes por variante de color y conversión automática de formato.',
     },
   ],
   challenges: [
     {
-      title: 'Volume pricing model',
+      title: 'Modelo de precios por volumen',
       description:
-        'Implementing per-product tiered pricing (12, 48, 100+ units) with different unit prices for each tier across 30+ products. Prices come from external supplier Excel.',
+        'Implementar precios escalonados por producto (12, 48 y más de 100 unidades) con un precio unitario distinto por tramo para más de 30 productos. Los precios vienen del Excel de un proveedor externo.',
       resolution:
-        'Centralized PRODUCT_VOLUME_PRICES lookup table in lib/volume-discounts.ts with tier structure per product slug. Frontend calculates discounted price reactively based on cart quantity.',
+        'Tabla de consulta centralizada PRODUCT_VOLUME_PRICES en lib/volume-discounts.ts con la estructura de tramos por slug de producto. El frontend recalcula el precio con descuento según la cantidad en el carrito.',
     },
     {
-      title: 'Odoo ERP bidirectional sync',
+      title: 'Sincronización con Odoo ERP en ambos sentidos',
       description:
-        'Keeping orders and products in sync between Kliniu and an external Odoo ERP instance. Sync failures, retries, race conditions, and error recovery needed robust handling.',
+        'Mantener pedidos y productos sincronizados entre Kliniu y una instancia externa de Odoo ERP. Los fallos de sincronización, los reintentos, las condiciones de carrera y la recuperación de errores necesitaban un manejo robusto.',
       resolution:
-        'Sync status enum (NOT_SYNCED, SYNCED, FAILED) on each order. Odoo service in lib/odoo.ts with retry logic, error logging, and manual re-sync from panel. Product sync via XML-RPC (jsonrpc).',
+        'Enum de estado de sincronización (NOT_SYNCED, SYNCED, FAILED) en cada pedido. Servicio de Odoo en lib/odoo.ts con lógica de reintentos, registro de errores y resincronización manual desde el panel. Sincronización de productos por XML-RPC (jsonrpc).',
     },
     {
-      title: 'Production quality calculation matching Excel',
+      title: 'Cálculo de calidad de producción igual al Excel',
       description:
-        'Replacing a manual Excel-based production tracking system (PLANILLA DIRIA) with 230+ rows of historical data. Formulas needed exact reproduction, and one row had a manual error that diverged from the formula.',
+        'Reemplazar un sistema manual de seguimiento de producción en Excel (PLANILLA DIRIA) con más de 230 filas de datos históricos. Las fórmulas debían reproducirse con exactitud, y una fila tenía un error manual que no coincidía con la fórmula.',
       resolution:
-        'Pure calculator (lib/production-calculator.ts) with exact formula reproduction (goodPieces = produced - damaged, qualityPercentage = ((goodPieces - nonConforming) / produced) * 100). QA verified 5 real Excel rows matched. The one erroneous row documented but not reproduced.',
+        'Calculadora pura (lib/production-calculator.ts) que reproduce las fórmulas exactas (goodPieces = produced - damaged, qualityPercentage = ((goodPieces - nonConforming) / produced) * 100). QA verificó que 5 filas reales del Excel coincidían. La fila errónea se documentó, pero no se reprodujo.',
     },
     {
-      title: 'Granular permission system',
+      title: 'Sistema de permisos granular',
       description:
-        '15 panel modules each needing view/create/edit/delete permissions, enforced at both frontend (sidebar filtering, button visibility) and backend (API guards). Different default matrices per role.',
+        '15 módulos del panel, cada uno con permisos de ver, crear, editar y eliminar, aplicados tanto en el frontend (filtrado del menú lateral, visibilidad de botones) como en el backend (guardas de la API). Matrices por defecto distintas para cada rol.',
       resolution:
-        'Permission matrix (lib/permission-defaults.ts) per role with PanelModule enum. requirePermission/requireAdmin/requireSuperAdmin helpers in lib/permissions.ts. UI filters sidebar and actions based on effective permissions.',
+        'Matriz de permisos (lib/permission-defaults.ts) por rol con el enum PanelModule. Helpers requirePermission, requireAdmin y requireSuperAdmin en lib/permissions.ts. La interfaz filtra el menú y las acciones según los permisos efectivos.',
     },
     {
-      title: 'Image management at scale',
+      title: 'Gestión de imágenes a escala',
       description:
-        'Product images from mobile uploads can exceed 15MB. Gallery images, color variant images, and banner images across multiple breakpoints (desktop/mobile) needed optimization.',
+        'Las imágenes de producto subidas desde el celular pueden superar los 15 MB. Las imágenes de galería, de variantes de color y de banners en varios tamaños (escritorio y móvil) necesitaban optimización.',
       resolution:
-        'Client-side WebP compression before upload (compressImage in admin/page.tsx: max 1200px, 82% quality). Multiple image slots (main + 3 extra) plus color variant images (up to 4 per variant). Banner system with separate desktop/mobile fields.',
+        'Compresión a WebP en el cliente antes de subir (compressImage en admin/page.tsx: máximo 1200 px, calidad del 82 %). Varios espacios de imagen (principal + 3 adicionales) más imágenes por variante de color (hasta 4 por variante). Sistema de banners con campos separados para escritorio y móvil.',
     },
     {
-      title: 'AI chatbot product matching',
+      title: 'Búsqueda de productos del chatbot de IA',
       description:
-        'Building a context-aware product finder that handles typos, understands category context, and returns relevant results from a catalog of 100+ products.',
+        'Construir un buscador de productos que entienda el contexto, tolere errores de escritura, reconozca la categoría y devuelva resultados relevantes de un catálogo de más de 100 productos.',
       resolution:
-        'Levenshtein distance algorithm for typo-tolerant matching. Catalog snapshot pre-computed with all products and categories. Context-aware suggestions based on matched vs non-matched terms. OpenAI integration for natural language understanding.',
+        'Algoritmo de distancia de Levenshtein para tolerar errores de escritura. Copia del catálogo precalculada con todos los productos y categorías. Sugerencias según los términos que coinciden y los que no. Integración con OpenAI para entender el lenguaje natural.',
     },
   ],
   engineeringDecisions: [
     {
-      title: 'Derived fields never persisted',
+      title: 'Los campos derivados nunca se guardan',
       context:
-        'Production runs and quotations require calculated fields (goodPieces, qualityPercentage, lineTotal, subtotal, taxes, totals). Storing derived values creates consistency risks when source data changes.',
+        'Las corridas de producción y las cotizaciones requieren campos calculados (goodPieces, qualityPercentage, lineTotal, subtotal, impuestos, totales). Guardar valores derivados crea riesgos de inconsistencia cuando cambian los datos de origen.',
       decision:
-        'All derived fields computed by pure functions in dedicated calculator files (quotation-calculator.ts, production-calculator.ts). Never stored in database columns. Recalculated on every read.',
+        'Todos los campos derivados se calculan con funciones puras en archivos dedicados (quotation-calculator.ts, production-calculator.ts). Nunca se guardan en columnas de la base de datos; se recalculan en cada lectura.',
       reasoning:
-        'Pure functions guarantee deterministic output for same inputs. Eliminates sync issues between raw data and calculated values. Specs explicitly check no derived columns in schema.',
+        'Las funciones puras garantizan el mismo resultado para las mismas entradas. Eliminan los problemas de sincronización entre los datos crudos y los valores calculados. Las specs verifican explícitamente que el esquema no tenga columnas derivadas.',
       impact: DECISION_IMPACT.High,
     },
     {
-      title: 'Product snapshots in quotations',
+      title: 'Copias del producto en las cotizaciones',
       context:
-        'Quotations must preserve product price and name at the time of quotation, even if the product catalog changes later. But images should stay current.',
+        'Las cotizaciones deben conservar el precio y el nombre del producto del momento en que se cotizó, aunque el catálogo cambie después. Pero las imágenes deben mantenerse actualizadas.',
       decision:
-        'Snapshot unitPrice and name in QuotationItem at creation time. Image resolved from Product.image at read time (or manualImageUrl for free-text items).',
+        'Copiar unitPrice y name en QuotationItem al crearlo. La imagen se resuelve desde Product.image al leer (o manualImageUrl para ítems de texto libre).',
       reasoning:
-        'Price and name are contractual (quotation represents a commercial offer at a point in time). Image is illustrative and benefits from staying current.',
+        'El precio y el nombre son contractuales (la cotización es una oferta comercial en un momento dado). La imagen es ilustrativa y conviene que esté al día.',
       impact: DECISION_IMPACT.Medium,
     },
     {
-      title: 'ProductionOrder requires catalog products',
+      title: 'ProductionOrder requiere productos del catálogo',
       context:
-        'ProductionOrder plans what to manufacture. Unlike quotations (which allow free-text items), manufacturing requires a known product with existing specs and BOM data.',
+        'ProductionOrder planea qué se va a fabricar. A diferencia de las cotizaciones (que admiten ítems de texto libre), fabricar requiere un producto conocido con especificaciones y datos de BOM existentes.',
       decision:
-        'ProductionOrderItem.productId is required (non-nullable). Product name, reference, and image are read by join to Product at read time — never snapshotted.',
+        'ProductionOrderItem.productId es obligatorio (no admite nulos). El nombre, la referencia y la imagen del producto se leen con un join a Product al momento de la lectura; nunca se copian.',
       reasoning:
-        'A production order represents an executable manufacturing plan. Every item must be a known product. Historical accuracy is less important than having current product data for production.',
+        'Una orden de producción representa un plan de fabricación ejecutable. Cada ítem debe ser un producto conocido. La exactitud histórica importa menos que tener los datos actuales del producto para producir.',
       impact: DECISION_IMPACT.Medium,
     },
     {
-      title: 'State machine for document workflows',
+      title: 'Máquina de estados para los flujos de documentos',
       context:
-        'Quotations and ProductionOrders have defined lifecycles with allowed transitions. Free-form state manipulation leads to inconsistent documents.',
+        'Las cotizaciones y las ProductionOrders tienen ciclos de vida definidos con transiciones permitidas. Manipular el estado libremente produce documentos inconsistentes.',
       decision:
-        'Explicit enum statuses with backend transition guards (assertDraft, assertSent, etc.). Only allowed transitions accepted, with descriptive error codes.',
+        'Estados explícitos con enum y guardas de transición en el backend (assertDraft, assertSent, etc.). Solo se aceptan las transiciones permitidas, con códigos de error descriptivos.',
       reasoning:
-        'State machines enforce document integrity at the API level, not just UI. The pattern is reusable across Quotation and ProductionOrder with the same guard architecture.',
+        'Las máquinas de estado aseguran la integridad de los documentos a nivel de API, no solo en la interfaz. El patrón se reutiliza en Quotation y ProductionOrder con la misma arquitectura de guardas.',
       impact: DECISION_IMPACT.Medium,
     },
     {
-      title: 'Supabase for auth and storage',
+      title: 'Supabase para autenticación y almacenamiento',
       context:
-        'E-commerce platform needs authentication (email/password, JWT sessions) and image storage. Building custom solutions would add maintenance burden.',
+        'La plataforma de comercio electrónico necesita autenticación (correo y contraseña, sesiones JWT) y almacenamiento de imágenes. Construir soluciones propias aumentaría el mantenimiento.',
       decision:
-        'Use Supabase Auth for session management and Supabase Storage for product/banner images. PostgreSQL via Supabase pooler for database.',
+        'Usar Supabase Auth para las sesiones y Supabase Storage para las imágenes de productos y banners. PostgreSQL a través del pooler de Supabase como base de datos.',
       reasoning:
-        'Supabase provides auth, storage, and PostgreSQL in one platform. JWT sessions with cookies for admin panel. Storage bucket product-images with public URLs.',
+        'Supabase reúne autenticación, almacenamiento y PostgreSQL en una sola plataforma. Sesiones JWT con cookies para el panel de administración. Bucket product-images con URLs públicas.',
       impact: DECISION_IMPACT.High,
     },
     {
-      title: 'Odoo integration as async service',
+      title: 'Integración con Odoo como servicio asíncrono',
       context:
-        'Orders created in Kliniu must sync to Odoo ERP. Direct synchronous calls would block the checkout flow and make the platform dependent on Odoo availability.',
+        'Los pedidos creados en Kliniu deben sincronizarse con Odoo ERP. Las llamadas síncronas directas bloquearían el checkout y harían que la plataforma dependiera de la disponibilidad de Odoo.',
       decision:
-        'Order created first in Kliniu DB, then async Odoo sync with status tracking (NOT_SYNCED, SYNCED, FAILED). Manual re-sync available from panel.',
+        'El pedido se crea primero en la base de datos de Kliniu y luego se sincroniza con Odoo de forma asíncrona, con seguimiento de estado (NOT_SYNCED, SYNCED, FAILED). Se puede resincronizar a mano desde el panel.',
       reasoning:
-        'Decouples platform availability from ERP availability. Sync failures are recoverable without data loss. Error logging enables monitoring.',
+        'Separa la disponibilidad de la plataforma de la del ERP. Los fallos de sincronización se recuperan sin pérdida de datos. El registro de errores permite el monitoreo.',
       impact: DECISION_IMPACT.High,
     },
   ],
   lessonsLearned: [
     {
-      title: 'Pure calculator pattern prevents data inconsistency',
+      title: 'El patrón de calculadora pura evita inconsistencias de datos',
       description:
-        'Building quotation-calculator.ts and production-calculator.ts as pure functions (no DB access, deterministic) eliminated all sync bugs between raw data and calculated fields. Same inputs always produce same outputs regardless of when/where calculation runs.',
+        'Construir quotation-calculator.ts y production-calculator.ts como funciones puras (sin acceso a la base de datos, deterministas) eliminó todos los errores de sincronización entre los datos crudos y los campos calculados. Las mismas entradas siempre producen el mismo resultado, sin importar cuándo ni dónde se calcule.',
       category: LESSON_CATEGORY.Architecture,
     },
     {
-      title: 'State machines make document workflows predictable',
+      title: 'Las máquinas de estado hacen predecibles los flujos de documentos',
       description:
-        'Explicit status enums with backend transition guards (assertDraft, INVALID_TRANSITION) prevented invalid state changes at the API level. The same guard pattern was reused across Quotations and ProductionOrders without modification.',
+        'Los enums de estado explícitos con guardas de transición en el backend (assertDraft, INVALID_TRANSITION) evitaron cambios de estado inválidos a nivel de API. El mismo patrón de guardas se reutilizó en cotizaciones y órdenes de producción sin modificarlo.',
       category: LESSON_CATEGORY.Architecture,
     },
     {
-      title: 'Supabase storage requires client-side optimization',
+      title: 'Supabase Storage requiere optimizar en el cliente',
       description:
         'La compresión a WebP antes de subir imágenes reduce el tamaño de los archivos. No hay una medición fechada de ahorro de almacenamiento o tiempos de carga en esta revisión.',
       category: LESSON_CATEGORY.Tooling,
     },
     {
-      title: 'Excel-to-system migration requires per-row QA',
+      title: 'La migración de Excel a un sistema requiere QA fila por fila',
       description:
-        'During production tracking migration, 1 of 230 Excel rows had a manually entered value that diverged from the formula. Automated migration without per-row QA would have reproduced the error silently.',
+        'Durante la migración del seguimiento de producción, 1 de 230 filas del Excel tenía un valor ingresado a mano que no coincidía con la fórmula. Una migración automática sin QA por fila habría reproducido el error sin que nadie lo notara.',
       category: LESSON_CATEGORY.Process,
     },
     {
-      title: 'Granular permissions need both frontend and backend enforcement',
+      title: 'Los permisos granulares deben aplicarse en el frontend y en el backend',
       description:
-        'UI-only permission hiding is trivially bypassed. Backend-only enforcement confuses users (buttons appear but API calls fail). Enforcing at both layers with shared permission logic provides security and good UX.',
+        'Ocultar permisos solo en la interfaz se evita con facilidad. Aplicarlos solo en el backend confunde a los usuarios (los botones aparecen pero las llamadas a la API fallan). Aplicarlos en ambas capas con la misma lógica de permisos da seguridad y una buena experiencia.',
       category: LESSON_CATEGORY.Architecture,
     },
   ],
@@ -338,16 +338,16 @@ export const kliniu: Project = {
   role: {
     title: 'Software Engineer & Full-Stack Developer',
     responsibilities: [
-      'Full-stack development: Next.js e-commerce platform from scratch',
-      'Database schema design (Prisma + PostgreSQL, 20+ models)',
-      'Admin panel and commercial panel (15 modules with permissions)',
-      'Odoo ERP integration and Kommo CRM integration',
-      'AI chatbot implementation (OpenAI + Levenshtein matching)',
-      'Production management system with pure calculator architecture',
-      'Quotation system with state machine lifecycle',
-      'Image upload pipeline with auto-compression to WebP',
-      'Volume pricing model implementation',
-      'User management and granular permission system',
+      'Desarrollo full-stack: plataforma de comercio electrónico en Next.js desde cero',
+      'Diseño del esquema de base de datos (Prisma + PostgreSQL, más de 20 modelos)',
+      'Panel de administración y panel comercial (15 módulos con permisos)',
+      'Integración con Odoo ERP y con Kommo CRM',
+      'Implementación del chatbot de IA (OpenAI + coincidencia por Levenshtein)',
+      'Sistema de gestión de producción con arquitectura de calculadora pura',
+      'Sistema de cotizaciones con ciclo de vida de máquina de estados',
+      'Flujo de carga de imágenes con compresión automática a WebP',
+      'Implementación del modelo de precios por volumen',
+      'Gestión de usuarios y sistema de permisos granular',
     ],
   },
   tags: [

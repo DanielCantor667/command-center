@@ -13,6 +13,8 @@ import {
   type ReactNode,
 } from 'react';
 import styles from './lorigine-gallery.module.css';
+import { lorigineCopy } from './copy/lorigine';
+import { useCaseCopy, usePick } from './copy/use-case-copy';
 
 export type LorigineView = 'gallery' | 'detail' | 'site';
 const Scene = lazy(() =>
@@ -21,30 +23,30 @@ const Scene = lazy(() =>
 const views = [
   {
     id: 'gallery',
-    label: 'Galería',
+    label: ['Galería', 'Gallery'],
     icon: Columns3,
     image: '/experience/lorigine-gallery-v4.webp',
-    alt: 'Galería conceptual de L’ORIGINE, render de Blender',
-    title: 'La identidad, en el espacio.',
-    note: 'Estudio conceptual de marca. No representa una tienda física.',
+    alt: ['Galería conceptual de L’ORIGINE, render de Blender', 'L’ORIGINE concept gallery, Blender render'],
+    title: ['La identidad, en el espacio.', 'The identity, in space.'],
+    note: ['Estudio conceptual de marca. No representa una tienda física.', 'Concept brand study. It does not represent a physical store.'],
   },
   {
     id: 'detail',
-    label: 'Detalle',
+    label: ['Detalle', 'Detail'],
     icon: Focus,
     image: '/experience/lorigine-detail-v4.webp',
-    alt: 'Detalle conceptual de los envases L’ORIGINE, render de Blender',
-    title: 'El carácter está en los detalles.',
-    note: 'Piedra, ámbar y metal. Interpretación del catálogo de la marca.',
+    alt: ['Detalle conceptual de los envases L’ORIGINE, render de Blender', 'Concept detail of the L’ORIGINE bottles, Blender render'],
+    title: ['El carácter está en los detalles.', 'Character is in the details.'],
+    note: ['Piedra, ámbar y metal. Interpretación del catálogo de la marca.', 'Stone, amber and metal. An interpretation of the brand catalog.'],
   },
   {
     id: 'site',
-    label: 'Sitio',
+    label: ['Sitio', 'Site'],
     icon: Monitor,
     image: '/projects/lorigine-product-v4.webp',
-    alt: 'Ficha pública de L’ORIGINE',
-    title: 'El producto, en su contexto real.',
-    note: 'Captura pública del 18 de septiembre de 2026.',
+    alt: ['Ficha pública de L’ORIGINE', 'L’ORIGINE public product page'],
+    title: ['El producto, en su contexto real.', 'The product, in its real context.'],
+    note: ['Captura pública del 18 de septiembre de 2026.', 'Public screenshot from September 18, 2026.'],
   },
 ] as const;
 
@@ -65,6 +67,8 @@ class SceneBoundary extends Component<
 }
 
 export function LorigineGallery() {
+  const c = useCaseCopy(lorigineCopy);
+  const pick = usePick();
   const [view, setView] = useState<LorigineView>('gallery');
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -129,11 +133,11 @@ export function LorigineGallery() {
       data-view={view}
     >
       <header className={styles.heading}>
-        <h2 id="lorigine-gallery-title">Una marca, tres perspectivas.</h2>
-        <span>L’ORIGINE / Estudio de marca</span>
+        <h2 id="lorigine-gallery-title">{c.uiUnaMarcaTresPerspectivas}</h2>
+        <span>{c.uiLorigineEstudioDeMarca}</span>
       </header>
       <div className={styles.toolbar}>
-        <div role="group" aria-label="Perspectivas de L’ORIGINE" className={styles.views}>
+        <div role="group" aria-label={c.uiPerspectivasDeLorigine} className={styles.views}>
           {views.map((item) => (
             <button
               type="button"
@@ -143,7 +147,7 @@ export function LorigineGallery() {
               onClick={() => setView(item.id)}
             >
               <item.icon size={17} aria-hidden />
-              {item.label}
+              {pick(item.label)}
             </button>
           ))}
         </div>
@@ -156,8 +160,8 @@ export function LorigineGallery() {
             <>
               <button
                 type="button"
-                aria-label="Restablecer galería"
-                title="Restablecer vista"
+                aria-label={c.uiRestablecerGaleria}
+                title={c.uiRestablecerVista}
                 onClick={() => setRevision((value) => value + 1)}
               >
                 <RotateCcw size={18} aria-hidden />
@@ -165,8 +169,8 @@ export function LorigineGallery() {
               <button
                 ref={closeControl}
                 type="button"
-                aria-label="Cerrar galería 3D"
-                title="Cerrar galería 3D"
+                aria-label={c.uiCerrarGaleria3d}
+                title={c.uiCerrarGaleria3d}
                 onClick={close}
               >
                 <X size={18} aria-hidden />
@@ -176,14 +180,14 @@ export function LorigineGallery() {
             !failed && (
               <button ref={activation} type="button" onClick={enable}>
                 <Box size={17} aria-hidden />
-                Explorar galería en 3D
+                {c.uiExplorarGaleriaEn3d}
               </button>
             )
           )}
         </div>
       </div>
       <div id="lorigine-study" className={styles.stage} data-live={live && ready}>
-        <Image className={styles.poster} src={active.image} alt={active.alt} fill sizes="100vw" />
+        <Image className={styles.poster} src={active.image} alt={pick(active.alt)} fill sizes="100vw" />
         {live && (
           <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}>
             <SceneBoundary onError={markFailed}>
@@ -201,19 +205,19 @@ export function LorigineGallery() {
         )}
         {view === 'site' && (
           <a className={styles.enlarge} href={active.image} target="_blank" rel="noreferrer">
-            Ampliar ficha pública
+            {c.uiAmpliarFichaPublica}
             <Focus size={16} aria-hidden />
           </a>
         )}
         {failed && (
           <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">
-            Vista estática. El 3D no está disponible en este dispositivo.
+            {c.uiVistaEstaticaEl3d}
           </p>
         )}
       </div>
       <div className={styles.caption} aria-live="polite">
-        <h3>{active.title}</h3>
-        <p>{active.note}</p>
+        <h3>{pick(active.title)}</h3>
+        <p>{pick(active.note)}</p>
       </div>
     </section>
   );

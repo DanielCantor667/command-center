@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { PROJECTS } from '../../data/projects';
 import { WorkshopGame } from '../../modules/workshop-game/component';
 import type { GameSnapshot } from '../../modules/workshop-game/world-state';
 import { readWorkshopReading, writeWorkshopReading, type WorkshopReading } from '../../modules/workshop-game/reading';
@@ -24,6 +23,7 @@ const PortfolioCase = dynamic(() => loadCase().then(module => module.PortfolioCa
 const ExperienceModule = dynamic(() => loadExperience().then(module => module.ExperienceModule), { loading: () => null });
 const AppShell = dynamic(() => loadShell().then(module => module.AppShell), { loading: () => null });
 import type { WorkspaceModule } from '../workspace-store';
+import { useContent } from '../../data/content/content';
 
 const portfolioSections: Record<string, PortfolioSection> = {
   '#proyectos': 'projects', '#tecnologias': 'technologies', '#trayectoria': 'trajectory', '#contacto': 'contact',
@@ -51,6 +51,8 @@ export function ExperienceGate() {
   const visualTransition = useRef<ViewTransition | null>(null);
   const [entered, setEntered] = useState(false);
   const { caseReturn } = useDictionary().workshop;
+  // In English only the translated cases exist; any other id falls back to the workshop.
+  const { projects } = useContent();
   const setCurrentModule = useWorkspaceStore((state) => state.setCurrentModule);
   const setSelectedProjectId = useWorkspaceStore((state) => state.setSelectedProjectId);
 
@@ -62,7 +64,7 @@ export function ExperienceGate() {
       setPublicMode(url.searchParams.get('view') === 'portfolio' || section ? 'portfolio' : 'game');
       if (section) setPortfolioSection(section);
       setReading(readWorkshopReading(url));
-      if (id && PROJECTS.some(project => project.public && project.id === id)) setCaseId(id);
+      if (id && projects.some(project => project.public && project.id === id)) setCaseId(id);
       else setCaseId(null);
       setEntered(false);
       opening.current = false;
@@ -73,7 +75,8 @@ export function ExperienceGate() {
     readLocation();
     window.addEventListener('popstate', readLocation);
     return () => window.removeEventListener('popstate', readLocation);
-  }, []);
+    // `projects` is fixed for the page's language.
+  }, [projects]);
 
   const caseLocation = (id: string | null, replace = false) => {
     if (id && publicMode !== 'game') return;
@@ -171,7 +174,7 @@ export function ExperienceGate() {
     if (
       module === 'projects' &&
       projectId &&
-      PROJECTS.some((project) => project.id === projectId && project.public)
+      projects.some((project) => project.id === projectId && project.public)
     ) {
       if (opening.current) return;
       // The view transition must capture the case, not the empty dynamic placeholder.
@@ -247,15 +250,15 @@ export function ExperienceGate() {
     }
   };
 
-  const activeCase = PROJECTS.find((project) => project.id === caseId);
+  const activeCase = projects.find((project) => project.id === caseId);
   const caseView = activeCase ? (
       <PortfolioCase
         key={activeCase.id}
         project={activeCase}
         returnLabel={publicMode === 'game' ? reading ? caseReturn[reading.kind] : caseReturn.workshop : undefined}
         onSelect={(id) => {
-          if (id === caseId || !PROJECTS.some((project) => project.id === id && project.public)) return;
-          const visible = PROJECTS.filter((project) => project.public && project.links.live);
+          if (id === caseId || !projects.some((project) => project.id === id && project.public)) return;
+          const visible = projects.filter((project) => project.public && project.links.live);
           const kind = visible.findIndex((project) => project.id === id) > visible.findIndex((project) => project.id === caseId) ? 'next' : 'previous';
           changeCaseView(kind, id, () => {
             caseLocation(id);

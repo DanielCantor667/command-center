@@ -433,9 +433,11 @@ export const PORTFOLIO_TECHNOLOGIES: PortfolioTechnology[] = [...cvEntries.map((
 export function filterTechnologies(
   query: string,
   category: TechnologyCategory | 'all' = 'all',
+  /** The list in the page's language (`useContent().technologies`); the Spanish source by default. */
+  source: readonly PortfolioTechnology[] = PORTFOLIO_TECHNOLOGIES,
 ): PortfolioTechnology[] {
   const normalized = normalizeTechnology(query);
-  return PORTFOLIO_TECHNOLOGIES.filter(
+  return source.filter(
     (entry) =>
       (category === 'all' || entry.category === category) &&
       [entry.name, entry.id, ...entry.aliases].some((value) =>

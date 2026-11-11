@@ -172,3 +172,63 @@ Datos de los 4 casos públicos (`data/projects/*.ts`):
 - Verificado (build de producción, Chrome): `/` idéntico a I.1 (0,00–0,01 %); en `/en` solo queda en español el
   contenido de I.3 (resúmenes de proyectos, trayectoria, categorías y descripciones de tecnologías) y la bio real de
   GitHub, que es dato público de Daniel. "Leer en español" es la etiqueta del selector, en español a propósito.
+
+## I.3a (2026-11-11, sin commit)
+
+**División de I.3:** en las superficies públicas, los campos técnicos en inglés de Kliniu, L'ORIGINE y Academy
+(funcionalidades, retos, decisiones, lecciones; ~4.900 palabras) solo se ven en la terminal del PC. Su traducción al
+español pasa a **I.3b, junto con I.4** (la terminal). I.3a cubre todo lo demás.
+
+- **Contenido por idioma:** `data/content/content.tsx` (`useContent()`, `ContentProvider`, `localizeContent`). El
+  español se lee de las fuentes de siempre; el inglés (`data/content/en/`) lo inyecta solo el layout `(en)`, así no
+  viaja en los bundles de `/` (JS inicial sigue en 202 kB). En `/en` solo existen los 4 casos publicados; las
+  tecnologías apuntan solo a ellos.
+- **`ProjectCopy` / `localizeProject`:** todos los campos de texto de cada caso en inglés, en el mismo orden que la
+  fuente; si cambia la cantidad de entradas, lanza error. El inglés que ya existía se copió por script desde los datos
+  (no a mano); se tradujo lo que estaba en español (tagline, summary, textos de imágenes, descripción de L'ORIGINE,
+  una lección de Kliniu y Drokex completo). Más trayectoria, disponibilidad, 37 descripciones de tecnologías, sus
+  categorías y dos nombres ("MVC with PHP", "REST APIs").
+- **Migrados a `useContent()`:** `experience-gate`, taller (landing, inspecciones, mapa, lector, pizarra, tablero de
+  tecnologías), apps del PC, portafolio clásico, explorador de tecnologías y listas de tecnologías de los casos.
+  `filterTechnologies` acepta la lista localizada como tercer parámetro opcional.
+- **Casos:** cada caso tiene `portfolio-case/copy/<caso>.ts` con pares `[español, inglés]` (más `copy/common.ts` para
+  los textos compartidos); `useCaseCopy()` elige el idioma. Generado por script a partir del JSX (157 textos únicos) y
+  traducido a mano. Los arrays de vistas/etapas usan tuplas en su lugar con `usePick()` (`i18n/use-pick.ts`); también
+  las etiquetas de teclado de las escenas 3D y el recorrido de Kliniu del portafolio clásico.
+- **Pronombres:** ningún texto en inglés asume pronombres para Daniel (reescrito: "Daniel’s CV describes…").
+- **Tests nuevos:** contenido en inglés (solo los 4 casos, en paso con la fuente, sin palabras frecuentes del
+  español, cobertura de tecnologías/categorías/trayectoria).
+- **Verificado (build de producción, Chrome):** `/` idéntico a I.2 (0,00 % en las 6 vistas); en `/en`, recorrido
+  completo + los 4 casos sin texto en español salvo la bio real de GitHub; casos revisados a ojo en escritorio y móvil.
+- **Conocido:** en `/en` la galería 3D sigue mostrando las pantallas de Vevi, Intranet ESS y Command Center (solo
+  nombres propios); hacer clic en ellas no abre nada, porque esos casos no existen en inglés.
+
+## Bug de las pantallas 3D (2026-11-11, sin commit)
+
+`ProjectWall` solo dibuja las pantallas de los casos que existen en el idioma de la página: en `/en` las de Vevi,
+Intranet ESS y Command Center ya no se dibujan ni son clicables (11 pantallas DOM en `/`, 8 en `/en`).
+
+## I.3b (2026-11-11, sin commit)
+
+Los campos técnicos que estaban en inglés en la fuente (`data/projects/{kliniu,lorigine,academy}.ts`: descripción de
+Kliniu y Academy, funcionalidades, retos, decisiones, lecciones y responsabilidades; 286 textos, ~5.100 palabras) se
+tradujeron al español en la misma fuente, reemplazando cada literal en orden con un script que falla si no lo
+encuentra. El inglés original ya vivía en `data/content/en/`. Nombres propios, rutas de código y enums quedan igual.
+Test nuevo: la fuente en español de los casos publicados no contiene frases en inglés. Se actualizó el título que
+busca `graph-query.test.ts` (decisión de Academy, ahora en español).
+
+## I.4 (2026-11-11, sin commit)
+
+- `createShell(datos, textos)` en `pc/shell.ts` arma `run`, `complete`, `ask` e `isCommand` para un idioma;
+  `useShell()` los da en el idioma de la página. Las exportaciones en español se mantienen (tests y callers sin React).
+- Textos de la terminal en `pc.shell` de cada diccionario: ayuda, errores, easter eggs, respuestas y las palabras
+  clave que reconoce cada idioma (estas listas quedan fuera de la paridad de largos del test).
+- En inglés los archivos virtuales son `projects/`, `career.txt` y `contact.txt`; las notas del PC leen el archivo de
+  trayectoria del idioma; las fechas usan `en-US`; solo existen los 4 casos publicados.
+- Tests nuevos: terminal en inglés (archivos, casos, preguntas por proyecto, tecnologías, saludo y respaldo).
+- Verificado en Chrome: la terminal responde en inglés en `/en` y en español en `/`, con retos traducidos en cada uno.
+  `/` sigue idéntico (0,00 % en las 6 vistas); en `/en` solo queda en español la bio real de GitHub. JS inicial de
+  `/`: 204 kB (+3 kB frente a los 201 kB previos a i18n; límite: +5 kB).
+
+Siguiente: **I.5**, revisión completa de Daniel (copias de casos en `portfolio-case/copy/`, `data/content/en/`,
+diccionarios `i18n/en.ts` y las traducciones al español de `data/projects/`).

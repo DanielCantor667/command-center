@@ -3,10 +3,8 @@
 import Image from 'next/image';
 import { ArrowDown, ArrowLeft, ArrowUpRight, Layers3, Moon, RotateCcw, Sun, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { PROJECTS } from '../../data/projects';
+import { useContent } from '../../data/content/content';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
-import { PORTFOLIO_CAREER } from '../../data/portfolio-career';
-import { PORTFOLIO_TECHNOLOGIES } from '../../data/portfolio-technologies';
 import type { WorkspaceModule } from '../../shell/workspace-store';
 import { CityNavigatorLoader } from './components/city-navigator-loader';
 import { KliniuTour, type KliniuTourStop } from './components/kliniu-tour';
@@ -35,7 +33,6 @@ interface ExperienceModuleProps {
   initialTechnologyId?: string;
   onTechnologyChange?: (id: string) => void;
 }
-const publishedProjects = PROJECTS.filter((project) => project.public && project.links.live);
 const anchors: Record<PortfolioSection, string> = {
   projects: 'proyectos',
   technologies: 'tecnologias',
@@ -66,6 +63,10 @@ export function ExperienceModule({
 }: ExperienceModuleProps) {
   const initialReturn = useRef({ restoring, snapshot: initialWorkshop });
   const locale = useLocale();
+  const content = useContent();
+  const publishedProjects = content.projects.filter((project) => project.public && project.links.live);
+  const technologies = content.technologies;
+  const career = content.career;
   const { portfolio: t } = useDictionary();
   const [selectedId, setSelectedId] = useState(initialWorkshop?.projectId ?? initialProjectId);
   const [section, setSection] = useState<PortfolioSection>(initialSection);
@@ -88,7 +89,7 @@ export function ExperienceModule({
   const selected =
     publishedProjects.find((project) => project.id === selectedId) ?? publishedProjects[0]!;
   const technology =
-    PORTFOLIO_TECHNOLOGIES.find((item) => item.id === technologyId) ?? PORTFOLIO_TECHNOLOGIES[0]!;
+    technologies.find((item) => item.id === technologyId) ?? technologies[0]!;
   const capture = selected.media.find((media) => media.featured && media.type === 'image');
   const techMode = section === 'technologies';
   const tourVisible = detail && selected.id === 'kliniu' && !techMode;
@@ -483,7 +484,7 @@ export function ExperienceModule({
               <h3>{selected.name}</h3>
               <p>{selected.summary}</p>
               <div className={styles.previewStack}>
-                {PORTFOLIO_TECHNOLOGIES.filter((item) => item.projectIds.includes(selected.id))
+                {technologies.filter((item) => item.projectIds.includes(selected.id))
                   .slice(0, 5)
                   .map((item) => (
                     <button
@@ -539,7 +540,7 @@ export function ExperienceModule({
           </h2>
           <p>{t.journey.intro}</p>
           <div className={styles.languages}>
-            {PORTFOLIO_CAREER.languages.map((item) => (
+            {career.languages.map((item) => (
               <p key={item.name}>
                 <strong>{item.name}</strong>
                 <span>{item.level}</span>
@@ -549,7 +550,7 @@ export function ExperienceModule({
         </div>
         <div className={styles.career}>
           <h3>{t.journey.experience}</h3>
-          {PORTFOLIO_CAREER.experience.map((item) => (
+          {career.experience.map((item) => (
             <article key={item.id}>
               <p className={styles.period}>{item.period}</p>
               <h4>{item.title}</h4>
@@ -558,7 +559,7 @@ export function ExperienceModule({
             </article>
           ))}
           <h3>{t.journey.education}</h3>
-          {PORTFOLIO_CAREER.education.map((item) => (
+          {career.education.map((item) => (
             <article key={item.id}>
               <p className={styles.period}>{item.period}</p>
               <h4>{item.title}</h4>

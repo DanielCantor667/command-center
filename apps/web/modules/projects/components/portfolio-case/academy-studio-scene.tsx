@@ -13,6 +13,7 @@ import {
 } from 'react';
 import { Mesh, OrthographicCamera, Spherical, Vector3 } from 'three';
 import type { AcademyView } from './academy-studio';
+import { usePick } from './copy/use-case-copy';
 
 interface StudioProps {
   view: AcademyView;
@@ -63,6 +64,8 @@ function StudioModel({ detail }: { detail: boolean }) {
 }
 
 function StudioContent({ view, revision, reducedMotion, onReady, onError }: StudioProps) {
+  // Inside the Canvas: R3F bridges the locale context.
+  const keyboardLabel = usePick()(['Estudio 3D de 4U. Flechas para girar; Inicio para restablecer.', '4U 3D studio. Arrow keys to rotate; Home to reset.']);
   const { camera, size, invalidate, gl } = useThree();
   const controls = useRef<ComponentRef<typeof OrbitControls>>(null);
   const moving = useRef(true);
@@ -82,7 +85,7 @@ function StudioContent({ view, revision, reducedMotion, onReady, onError }: Stud
     canvas.tabIndex = 0;
     canvas.setAttribute(
       'aria-label',
-      'Estudio 3D de 4U. Flechas para girar; Inicio para restablecer.',
+      keyboardLabel,
     );
     canvas.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight ArrowUp ArrowDown Home');
     const rotate = (event: KeyboardEvent) => {
@@ -111,7 +114,7 @@ function StudioContent({ view, revision, reducedMotion, onReady, onError }: Stud
     };
     canvas.addEventListener('keydown', rotate);
     return () => canvas.removeEventListener('keydown', rotate);
-  }, [camera, gl, invalidate]);
+  }, [camera, gl, invalidate, keyboardLabel]);
   useEffect(() => {
     onReady();
     const lost = (event: Event) => {
@@ -192,6 +195,7 @@ function StudioContent({ view, revision, reducedMotion, onReady, onError }: Stud
 }
 
 export function AcademyStudioScene(props: StudioProps) {
+  const pick = usePick();
   return (
     <Canvas
       orthographic
@@ -200,7 +204,7 @@ export function AcademyStudioScene(props: StudioProps) {
       dpr={[1, 1.5]}
       camera={{ position: [-3, 2.5, 5], zoom: 100, near: 0.01, far: 250 }}
       gl={{ antialias: true, alpha: false }}
-      aria-label="Estudio interactivo de 4U"
+      aria-label={pick(['Estudio interactivo de 4U', 'Interactive 4U studio'])}
     >
       <ModelBoundary onError={props.onError}>
         <Suspense fallback={null}>

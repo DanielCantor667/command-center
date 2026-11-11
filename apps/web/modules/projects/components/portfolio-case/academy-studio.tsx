@@ -13,6 +13,8 @@ import {
   type ReactNode,
 } from 'react';
 import styles from './academy-studio.module.css';
+import { academyCopy } from './copy/academy';
+import { useCaseCopy, usePick } from './copy/use-case-copy';
 
 export type AcademyView = 'studio' | 'instruments' | 'academy';
 const Scene = lazy(() =>
@@ -21,30 +23,30 @@ const Scene = lazy(() =>
 const views = [
   {
     id: 'studio',
-    label: 'Estudio',
+    label: ['Estudio', 'Studio'],
     icon: Piano,
     image: '/experience/academy-studio-v4.webp',
-    alt: 'Estudio conceptual 4U creado en Blender',
-    title: 'Un espacio para hacer música.',
-    note: 'Estudio conceptual. No representa la sede física de la academia.',
+    alt: ['Estudio conceptual 4U creado en Blender', '4U concept studio made in Blender'],
+    title: ['Un espacio para hacer música.', 'A space to make music.'],
+    note: ['Estudio conceptual. No representa la sede física de la academia.', 'Concept studio. It does not represent the academy’s physical premises.'],
   },
   {
     id: 'instruments',
-    label: 'Instrumentos',
+    label: ['Instrumentos', 'Instruments'],
     icon: Focus,
     image: '/experience/academy-instruments-v4.webp',
-    alt: 'Instrumentos del estudio conceptual 4U',
-    title: 'La forma de cada sonido.',
-    note: 'Piano, guitarra, voz y percusión. Madera, metal y tela acústica.',
+    alt: ['Instrumentos del estudio conceptual 4U', 'Instruments of the 4U concept studio'],
+    title: ['La forma de cada sonido.', 'The shape of each sound.'],
+    note: ['Piano, guitarra, voz y percusión. Madera, metal y tela acústica.', 'Piano, guitar, voice and percussion. Wood, metal and acoustic fabric.'],
   },
   {
     id: 'academy',
-    label: 'Academia',
+    label: ['Academia', 'Academy'],
     icon: Monitor,
     image: '/projects/academy-home-v4.webp',
-    alt: 'Inicio de 4U Studio Academy',
-    title: 'La academia, en la web.',
-    note: 'Captura pública del 21 de septiembre de 2026.',
+    alt: ['Inicio de 4U Studio Academy', '4U Studio Academy home page'],
+    title: ['La academia, en la web.', 'The academy, on the web.'],
+    note: ['Captura pública del 21 de septiembre de 2026.', 'Public screenshot from September 21, 2026.'],
   },
 ] as const;
 
@@ -65,6 +67,8 @@ class SceneBoundary extends Component<
 }
 
 export function AcademyStudio() {
+  const c = useCaseCopy(academyCopy);
+  const pick = usePick();
   const [view, setView] = useState<AcademyView>('studio');
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -129,11 +133,11 @@ export function AcademyStudio() {
       data-view={view}
     >
       <header className={styles.heading}>
-        <h2 id="academy-studio-title">Dentro del estudio.</h2>
-        <span>4U / Música y aprendizaje</span>
+        <h2 id="academy-studio-title">{c.uiDentroDelEstudio}</h2>
+        <span>{c.ui4uMusicaYAprendizaje}</span>
       </header>
       <div className={styles.toolbar}>
-        <div role="group" aria-label="Perspectivas de 4U Studio Academy" className={styles.views}>
+        <div role="group" aria-label={c.uiPerspectivasDe4uStudio} className={styles.views}>
           {views.map((item) => (
             <button
               type="button"
@@ -143,7 +147,7 @@ export function AcademyStudio() {
               onClick={() => setView(item.id)}
             >
               <item.icon size={17} aria-hidden />
-              {item.label}
+              {pick(item.label)}
             </button>
           ))}
         </div>
@@ -156,17 +160,17 @@ export function AcademyStudio() {
             <>
               <button
                 type="button"
-                aria-label="Restablecer estudio"
-                title="Restablecer vista"
+                aria-label={c.uiRestablecerEstudio}
+                title={c.uiRestablecerVista}
                 onClick={() => setRevision((value) => value + 1)}
               >
                 <RotateCcw size={18} aria-hidden />
               </button>
               <button
                 type="button"
-                aria-label="Cerrar estudio 3D"
+                aria-label={c.uiCerrarEstudio3d}
                 ref={closeControl}
-                title="Cerrar estudio 3D"
+                title={c.uiCerrarEstudio3d}
                 onClick={close}
               >
                 <X size={18} aria-hidden />
@@ -176,14 +180,14 @@ export function AcademyStudio() {
             !failed && (
               <button ref={activation} type="button" onClick={enable}>
                 <Box size={17} aria-hidden />
-                Explorar estudio en 3D
+                {c.uiExplorarEstudioEn3d}
               </button>
             )
           )}
         </div>
       </div>
       <div id="academy-study" className={styles.stage} data-live={live && ready}>
-        <Image className={styles.poster} src={active.image} alt={active.alt} fill sizes="100vw" />
+        <Image className={styles.poster} src={active.image} alt={pick(active.alt)} fill sizes="100vw" />
         {live && (
           <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}>
             <SceneBoundary onError={markFailed}>
@@ -201,19 +205,19 @@ export function AcademyStudio() {
         )}
         {view === 'academy' && (
           <a className={styles.enlarge} href={active.image} target="_blank" rel="noreferrer">
-            Ampliar academia
+            {c.uiAmpliarAcademia}
             <Focus size={16} aria-hidden />
           </a>
         )}
         {failed && (
           <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">
-            Vista estática. El 3D no está disponible en este dispositivo.
+            {c.uiVistaEstaticaEl3d}
           </p>
         )}
       </div>
       <div className={styles.caption} aria-live="polite">
-        <h3>{active.title}</h3>
-        <p>{active.note}</p>
+        <h3>{pick(active.title)}</h3>
+        <p>{pick(active.note)}</p>
       </div>
     </section>
   );

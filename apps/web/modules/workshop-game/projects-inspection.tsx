@@ -5,13 +5,14 @@ import { CORNER_PROJECTS } from './world-state';
 import { fill } from '../../i18n/format';
 import { useDictionary } from '../../i18n/locale-provider';
 import styles from './workshop-game.module.css';
+import { useContent } from '../../data/content/content';
 
-const PUBLIC_PROJECTS = PROJECTS.filter(project => project.public);
 const FIRST_CORNER = CORNER_PROJECTS[0], LAST_CORNER = CORNER_PROJECTS[CORNER_PROJECTS.length - 1];
 
 /** Keyboard and screen-reader route to every screen on the project wall. */
 export function ProjectsInspection({ buttonRef, onOpen, onBack, onFocus }: { buttonRef: RefObject<HTMLButtonElement | null>; onOpen: (projectId: string) => void; onBack: () => void; onFocus?: (projectId: string | null) => void }) {
   const { workshop: { inspection: t } } = useDictionary();
+  const publicProjects = useContent().projects.filter(project => project.public);
   const [open, setOpen] = useState(false);
   const detailsId = useId();
   return <section className={styles.inspection} aria-labelledby="projects-inspection-title" data-open={open}>
@@ -22,7 +23,7 @@ export function ProjectsInspection({ buttonRef, onOpen, onBack, onFocus }: { but
     <div className={styles.inspectionDetails} id={detailsId}>
       <p>{t.wallHint}</p>
       <ul className={styles.projectList}>
-        {PUBLIC_PROJECTS.map(project => <li key={project.id}><button type="button" className={styles.back} aria-label={fill(t.openCaseOf, { name: project.name })} onClick={() => onOpen(project.id)}
+        {publicProjects.map(project => <li key={project.id}><button type="button" className={styles.back} aria-label={fill(t.openCaseOf, { name: project.name })} onClick={() => onOpen(project.id)}
           onMouseEnter={() => onFocus?.(project.id)} onMouseLeave={() => onFocus?.(null)} onFocus={() => onFocus?.(project.id)} onBlur={() => onFocus?.(null)}>{project.name}<ArrowUpRight size={15} aria-hidden="true" /></button></li>)}
       </ul>
       <button className={styles.back} type="button" onClick={onBack}><ArrowLeft size={16} aria-hidden="true" /> {t.back}</button>
@@ -38,7 +39,7 @@ export function CornerInspection({ projectId, buttonRef, onOpen, onStep, onAll, 
   const { workshop: { inspection: t } } = useDictionary();
   const [open, setOpen] = useState(false);
   const detailsId = useId();
-  const project = PROJECTS.find(entry => entry.id === projectId)!;
+  const project = useContent().projects.find(entry => entry.id === projectId) ?? PROJECTS.find(entry => entry.id === projectId)!;
   return <section className={styles.inspection} aria-labelledby="corner-title" data-open={open}>
     <span className={styles.roomLabel}>{t.corner}</span><h1 id="corner-title">{project.name}</h1>
     <div className={styles.inspectionActions}>

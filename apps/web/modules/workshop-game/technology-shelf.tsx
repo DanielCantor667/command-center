@@ -8,6 +8,8 @@ import { TECHNOLOGY_ICON_PATHS } from '../../data/technology-icons';
 import { LAB_ANCHORS } from './lab-anchors';
 import { ease, HIGHLIGHT_LEVEL, labelTexture, pointer } from './lab-content';
 import type { WorldPoint } from './world-state';
+import { useContent } from '../../data/content/content';
+import type { PortfolioTechnology } from '../../data/portfolio-technologies';
 
 /**
  * The Tecnologías board: one plate per real technology, one row per category.
@@ -39,13 +41,13 @@ export function plateCentre(technologyId: string): [number, number, number] | nu
   return [FRONT_X, y, z];
 }
 
-function drawAtlas(tiles: ShelfTile[]) {
+function drawAtlas(tiles: ShelfTile[], technologies: readonly PortfolioTechnology[]) {
   const canvas = document.createElement('canvas');
   canvas.width = COLS * CELL; canvas.height = ROWS * CELL;
   const g = canvas.getContext('2d')!;
   g.fillStyle = '#11181b'; g.fillRect(0, 0, canvas.width, canvas.height);
   for (const tile of tiles) {
-    const entry = PORTFOLIO_TECHNOLOGIES.find(item => item.id === tile.id)!;
+    const entry = technologies.find(item => item.id === tile.id)!;
     const x = tile.col * CELL; const y = tile.row * CELL;
     g.fillStyle = '#11181b'; g.fillRect(x, y, CELL, CELL);
     g.strokeStyle = '#2b3a3f'; g.lineWidth = 3; g.strokeRect(x + 4, y + 4, CELL - 8, CELL - 16);
@@ -104,11 +106,13 @@ function buildGeometry(tiles: ShelfTile[]) {
 export function TechnologyShelf({ point, lit, focused, onGo, onSelect, onHover }: {
   point: WorldPoint; lit: Set<string>; focused: boolean; onGo: (point: WorldPoint) => void; onSelect: (technologyId: string) => void; onHover: (technologyId: string | null) => void;
 }) {
+  // Names and category labels are drawn into textures, so they come from the page's language (R3F bridges context).
+  const { technologies, categories } = useContent();
   const { tiles, texture, front, body, labels } = useMemo(() => {
     const tiles = shelfLayout();
-    const labels = TECHNOLOGY_CATEGORIES.map(category => ({ id: category.id, anchor: LAB_ANCHORS[`cat_${category.id}`], map: labelTexture(category.label, '#7fd8e6') }));
-    return { tiles, texture: drawAtlas(tiles), labels, ...buildGeometry(tiles) };
-  }, []);
+    const labels = categories.map(category => ({ id: category.id, anchor: LAB_ANCHORS[`cat_${category.id}`], map: labelTexture(category.label, '#7fd8e6') }));
+    return { tiles, texture: drawAtlas(tiles, technologies), labels, ...buildGeometry(tiles) };
+  }, [technologies, categories]);
   const tileAt = (faceIndex?: number | null) => tiles[Math.floor((faceIndex ?? 0) / 2)];
   const choose = (faceIndex?: number | null) => {
     if (point !== 'technologies') { onGo('technologies'); return; }

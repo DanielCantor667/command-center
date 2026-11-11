@@ -2,12 +2,12 @@
 /* eslint-disable @next/next/no-img-element -- fixed desktop icons, outside Next's image pipeline */
 import { BookMarked, BookOpen, Download, MapPin, Monitor, Search, Users, Volume2, VolumeX, Wallpaper } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
-import { PROJECTS } from '../../../data/projects';
 import { PUBLIC_PROFILE } from '../../../data/public-profile';
-import { ask, COMMANDS, complete, display, GITHUB, HOME, isCommand, run, type PcApp } from './shell';
+import { COMMANDS, display, GITHUB, HOME, useShell, type PcApp } from './shell';
 import { fill } from '../../../i18n/format';
 import { useDictionary, useLocale } from '../../../i18n/locale-provider';
 import styles from './pc.module.css';
+import { useContent } from '../../../data/content/content';
 
 export const WALLPAPERS = { noche: styles.wallNight, neon: styles.wallNeon, taller: styles.wallWorkshop } as const;
 export type WallpaperId = keyof typeof WALLPAPERS;
@@ -27,6 +27,7 @@ function Markdown({ text }: { text: string }) {
 
 export function TerminalApp({ onApp, onCase, onExit }: { onApp: (app: PcApp) => void; onCase: (id: string) => void; onExit: () => void }) {
   const t = useDictionary().pc.terminal;
+  const { run, ask, complete, isCommand } = useShell();
   const [cwd, setCwd] = useState(HOME);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [line, setLine] = useState('');
@@ -148,13 +149,13 @@ export function GithubApp() {
 }
 
 export function ProjectsApp({ onCase }: { onCase: (id: string) => void }) {
-  return <div className={styles.files}>{PROJECTS.map(project => <button key={project.id} type="button" title={project.tagline} onClick={() => onCase(project.id)}><img src="/pc-icons/folder.webp" alt="" width={64} height={64} /><span>{project.name}</span></button>)}</div>;
+  return <div className={styles.files}>{useContent().projects.map(project => <button key={project.id} type="button" title={project.tagline} onClick={() => onCase(project.id)}><img src="/pc-icons/folder.webp" alt="" width={64} height={64} /><span>{project.name}</span></button>)}</div>;
 }
 
 export function ContactApp() {
   return <div className={styles.list}>
     <header><h3>{PUBLIC_PROFILE.name}</h3></header>
-    <p className={styles.note}>{PUBLIC_PROFILE.availability}</p>
+    <p className={styles.note}>{useContent().availability}</p>
     <ul>
       <li><a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer"><strong>LinkedIn</strong><span>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span></a></li>
       <li><a href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer"><strong>GitHub</strong><span>{PUBLIC_PROFILE.github.replace('https://', '')}</span></a></li>
@@ -162,7 +163,7 @@ export function ContactApp() {
   </div>;
 }
 
-const NOTES = [{ file: 'README.md', title: 'about' }, { file: 'trayectoria.txt', title: 'career' }] as const;
+const NOTES = ['about', 'career'] as const;
 export function TrashApp() {
   return <p className={styles.empty}>{useDictionary().pc.trash}</p>;
 }
@@ -184,10 +185,12 @@ export function CvApp() {
 
 export function NotesApp() {
   const t = useDictionary().pc.notes;
+  const { run, files } = useShell();
+  const file = { about: 'README.md', career: files.career };
   const [open, setOpen] = useState<(typeof NOTES)[number]>(NOTES[0]);
   return <div className={styles.split}>
-    <nav aria-label={t.label}>{NOTES.map(note => <button key={note.file} type="button" aria-current={note === open ? 'true' : undefined} onClick={() => setOpen(note)}>{t[note.title]}</button>)}</nav>
-    <article><h3>{t[open.title]}</h3>{run(`cat ${open.file}`, HOME).output.map((text, index) => <p key={index}>{text}</p>)}</article>
+    <nav aria-label={t.label}>{NOTES.map(note => <button key={note} type="button" aria-current={note === open ? 'true' : undefined} onClick={() => setOpen(note)}>{t[note]}</button>)}</nav>
+    <article><h3>{t[open]}</h3>{run(`cat ${file[open]}`, HOME).output.map((text, index) => <p key={index}>{text}</p>)}</article>
   </div>;
 }
 

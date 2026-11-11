@@ -3,7 +3,6 @@
 import { ArrowUpRight, Code, MessageSquare, X } from 'lucide-react';
 import { useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { PORTFOLIO_CAREER } from '../../data/portfolio-career';
 import { PUBLIC_PROFILE } from '../../data/public-profile';
 import { TechnologyExplorer, type TechnologyFilters } from '../experience/components/technology-explorer';
 import type { WorkshopReading } from './reading';
@@ -11,6 +10,7 @@ import type { WorldPoint } from './world-state';
 import { WorldMap } from './world-map';
 import { useDictionary } from '../../i18n/locale-provider';
 import styles from './workshop-reader.module.css';
+import { useContent } from '../../data/content/content';
 export interface WorkshopReaderProps {
   reading: WorkshopReading;
   currentPoint: WorldPoint;
@@ -25,6 +25,7 @@ export interface WorkshopReaderProps {
 
 export function WorkshopReader({ reading, currentPoint, worldAvailable, technologyFilters, onTechnologyFiltersChange, onRead, onGo, onOpenCase, onClose }: WorkshopReaderProps) {
   const { workshop } = useDictionary();
+  const { career, availability } = useContent();
   const t = workshop.reader;
   const titleId = useId();
   const panel = useRef<HTMLElement>(null);
@@ -74,13 +75,13 @@ export function WorkshopReader({ reading, currentPoint, worldAvailable, technolo
       <div className={styles.content}>
         {reading.kind === 'technologies' && <TechnologyExplorer presentation="html" selectedId={reading.technologyId} onSelect={technologyId => onRead({ kind: 'technologies', technologyId })} initialFilters={technologyFilters} onFiltersChange={onTechnologyFiltersChange} onProjectSelect={onOpenCase} />}
         {reading.kind === 'trajectory' && <div className={styles.career}>
-          <section aria-labelledby={`${titleId}-experience`}><h2 id={`${titleId}-experience`}>{t.experience}</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.experience.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p><p>{item.description}</p></article>)}</div></section>
-          <section aria-labelledby={`${titleId}-education`}><h2 id={`${titleId}-education`}>{t.education}</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.education.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p></article>)}</div></section>
-          <section className={styles.languages} aria-labelledby={`${titleId}-languages`}><h2 id={`${titleId}-languages`}>{t.languages}</h2>{PORTFOLIO_CAREER.languages.map(item => <p key={item.name}><strong>{item.name}</strong><span>{item.level}</span></p>)}</section>
+          <section aria-labelledby={`${titleId}-experience`}><h2 id={`${titleId}-experience`}>{t.experience}</h2><div className={styles.timeline}>{career.experience.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p><p>{item.description}</p></article>)}</div></section>
+          <section aria-labelledby={`${titleId}-education`}><h2 id={`${titleId}-education`}>{t.education}</h2><div className={styles.timeline}>{career.education.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p></article>)}</div></section>
+          <section className={styles.languages} aria-labelledby={`${titleId}-languages`}><h2 id={`${titleId}-languages`}>{t.languages}</h2>{career.languages.map(item => <p key={item.name}><strong>{item.name}</strong><span>{item.level}</span></p>)}</section>
         </div>}
         {reading.kind === 'contact' && <div className={styles.contact}>
           <div className={styles.profile}><h2>{PUBLIC_PROFILE.name}</h2><p className={styles.role}>{PUBLIC_PROFILE.role}</p><p className={styles.location}>{PUBLIC_PROFILE.location}</p></div>
-          <p className={styles.availability}>{PUBLIC_PROFILE.availability}</p>
+          <p className={styles.availability}>{availability}</p>
           <nav className={styles.contactLinks} aria-label={t.channels}>
             <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer"><MessageSquare size={22} aria-hidden="true" /><span>{t.linkedin}</span><ArrowUpRight size={20} aria-hidden="true" /></a>
             <a href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer"><Code size={22} aria-hidden="true" /><span>{t.github}</span><ArrowUpRight size={20} aria-hidden="true" /></a>

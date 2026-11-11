@@ -13,6 +13,8 @@ import {
   type ReactNode,
 } from 'react';
 import styles from './drokex-network.module.css';
+import { drokexCopy } from './copy/drokex';
+import { useCaseCopy, usePick } from './copy/use-case-copy';
 
 export type DrokexView = 'network' | 'detail' | 'platform';
 const Scene = lazy(() =>
@@ -21,30 +23,30 @@ const Scene = lazy(() =>
 const views = [
   {
     id: 'network',
-    label: 'Red',
+    label: ['Red', 'Network'],
     icon: Globe,
     image: '/experience/drokex-network-v4.webp',
-    alt: 'Red conceptual Drokex creada en Blender',
-    title: 'Una red de posibilidades.',
-    note: 'Escena conceptual. Las conexiones no representan actividad comercial real.',
+    alt: ['Red conceptual Drokex creada en Blender', 'Drokex concept network made in Blender'],
+    title: ['Una red de posibilidades.', 'A network of possibilities.'],
+    note: ['Escena conceptual. Las conexiones no representan actividad comercial real.', 'Concept scene. The connections do not represent real commercial activity.'],
   },
   {
     id: 'detail',
-    label: 'Detalle',
+    label: ['Detalle', 'Detail'],
     icon: Focus,
     image: '/experience/drokex-detail-v4.webp',
-    alt: 'Detalle del pabellón conceptual Drokex',
-    title: 'La conexión, de cerca.',
-    note: 'Globo, kioscos y muestras. Aluminio, juntas y superficies de catálogo.',
+    alt: ['Detalle del pabellón conceptual Drokex', 'Detail of the Drokex concept pavilion'],
+    title: ['La conexión, de cerca.', 'The connection, up close.'],
+    note: ['Globo, kioscos y muestras. Aluminio, juntas y superficies de catálogo.', 'Globe, kiosks and samples. Aluminum, joints and catalog surfaces.'],
   },
   {
     id: 'platform',
-    label: 'Plataforma',
+    label: ['Plataforma', 'Platform'],
     icon: Monitor,
     image: '/projects/drokex-products-v4.webp',
-    alt: 'Catálogo de productos de Drokex',
-    title: 'El catálogo público.',
-    note: 'Captura pública del 22 de septiembre de 2026.',
+    alt: ['Catálogo de productos de Drokex', 'Drokex product catalog'],
+    title: ['El catálogo público.', 'The public catalog.'],
+    note: ['Captura pública del 22 de septiembre de 2026.', 'Public screenshot from September 22, 2026.'],
   },
 ] as const;
 
@@ -65,6 +67,8 @@ class SceneBoundary extends Component<
 }
 
 export function DrokexNetwork() {
+  const c = useCaseCopy(drokexCopy);
+  const pick = usePick();
   const [view, setView] = useState<DrokexView>('network');
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -129,11 +133,11 @@ export function DrokexNetwork() {
       data-view={view}
     >
       <header className={styles.heading}>
-        <h2 id="drokex-network-title">Comercio conectado.</h2>
-        <span>Drokex / Catálogo y directorio</span>
+        <h2 id="drokex-network-title">{c.uiComercioConectado}</h2>
+        <span>{c.uiDrokexCatalogoYDirectorio}</span>
       </header>
       <div className={styles.toolbar}>
-        <div role="group" aria-label="Perspectivas de Drokex" className={styles.views}>
+        <div role="group" aria-label={c.uiPerspectivasDeDrokex} className={styles.views}>
           {views.map((item) => (
             <button
               type="button"
@@ -143,7 +147,7 @@ export function DrokexNetwork() {
               onClick={() => setView(item.id)}
             >
               <item.icon size={17} aria-hidden />
-              {item.label}
+              {pick(item.label)}
             </button>
           ))}
         </div>
@@ -156,17 +160,17 @@ export function DrokexNetwork() {
             <>
               <button
                 type="button"
-                aria-label="Restablecer red"
-                title="Restablecer vista"
+                aria-label={c.uiRestablecerRed}
+                title={c.uiRestablecerVista}
                 onClick={() => setRevision((value) => value + 1)}
               >
                 <RotateCcw size={18} aria-hidden />
               </button>
               <button
                 type="button"
-                aria-label="Cerrar red 3D"
+                aria-label={c.uiCerrarRed3d}
                 ref={closeControl}
-                title="Cerrar red 3D"
+                title={c.uiCerrarRed3d}
                 onClick={close}
               >
                 <X size={18} aria-hidden />
@@ -176,14 +180,14 @@ export function DrokexNetwork() {
             !failed && (
               <button ref={activation} type="button" onClick={enable}>
                 <Box size={17} aria-hidden />
-                Explorar red en 3D
+                {c.uiExplorarRedEn3d}
               </button>
             )
           )}
         </div>
       </div>
       <div id="drokex-study" className={styles.stage} data-live={live && ready}>
-        <Image className={styles.poster} src={active.image} alt={active.alt} fill sizes="100vw" />
+        <Image className={styles.poster} src={active.image} alt={pick(active.alt)} fill sizes="100vw" />
         {live && (
           <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}>
             <SceneBoundary onError={markFailed}>
@@ -201,19 +205,19 @@ export function DrokexNetwork() {
         )}
         {view === 'platform' && (
           <a className={styles.enlarge} href={active.image} target="_blank" rel="noreferrer">
-            Ampliar plataforma
+            {c.uiAmpliarPlataforma}
             <Focus size={16} aria-hidden />
           </a>
         )}
         {failed && (
           <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">
-            Vista estática. No se pudo abrir la red 3D.
+            {c.uiVistaEstaticaNoSe}
           </p>
         )}
       </div>
       <div className={styles.caption} aria-live="polite">
-        <h3>{active.title}</h3>
-        <p>{active.note}</p>
+        <h3>{pick(active.title)}</h3>
+        <p>{pick(active.note)}</p>
       </div>
     </section>
   );

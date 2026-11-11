@@ -4,13 +4,15 @@ import { Box, DraftingCompass, Monitor, RotateCcw, X } from 'lucide-react';
 import Image from 'next/image';
 import { Component, lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './kliniu-sequence.module.css';
+import { kliniuCopy } from './copy/kliniu';
+import { useCaseCopy, usePick } from './copy/use-case-copy';
 
 export type KliniuStage = 'plan' | 'space' | 'product';
 const Scene = lazy(() => import('./kliniu-sequence-scene').then(module => ({ default: module.KliniuSequenceScene })));
 const stages = [
-  { id: 'plan', label: 'Plano', icon: DraftingCompass, title: 'La estructura de una idea.', note: 'Estudio conceptual / geometría y proporción', image: '/experience/kliniu-plan-v4.webp', alt: 'Estudio de líneas del showroom de Kliniu' },
-  { id: 'space', label: 'Espacio', icon: Box, title: 'La identidad toma forma.', note: 'Showroom conceptual / modelado en Blender', image: '/experience/kliniu-space-v4.webp', alt: 'Showroom conceptual de Kliniu, render de Blender' },
-  { id: 'product', label: 'Producto', icon: Monitor, title: 'Una idea que se puede usar.', note: 'Ficha pública / producto digital en producción', image: '/projects/kliniu-tour-purchase.jpg', alt: 'Ficha real de producto de Kliniu' },
+  { id: 'plan', label: ['Plano', 'Plan'], icon: DraftingCompass, title: ['La estructura de una idea.', 'The structure of an idea.'], note: ['Estudio conceptual / geometría y proporción', 'Concept study / geometry and proportion'], image: '/experience/kliniu-plan-v4.webp', alt: ['Estudio de líneas del showroom de Kliniu', 'Line study of the Kliniu showroom'] },
+  { id: 'space', label: ['Espacio', 'Space'], icon: Box, title: ['La identidad toma forma.', 'The identity takes shape.'], note: ['Showroom conceptual / modelado en Blender', 'Concept showroom / modeled in Blender'], image: '/experience/kliniu-space-v4.webp', alt: ['Showroom conceptual de Kliniu, render de Blender', 'Kliniu concept showroom, Blender render'] },
+  { id: 'product', label: ['Producto', 'Product'], icon: Monitor, title: ['Una idea que se puede usar.', 'An idea people can use.'], note: ['Ficha pública / producto digital en producción', 'Public product page / digital product in production'], image: '/projects/kliniu-tour-purchase.jpg', alt: ['Ficha real de producto de Kliniu', 'Real Kliniu product page'] },
 ] as const;
 
 class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -21,6 +23,8 @@ class SceneBoundary extends Component<{ children: ReactNode; onError: () => void
 }
 
 export function KliniuSequence() {
+  const c = useCaseCopy(kliniuCopy);
+  const pick = usePick();
   const [stage, setStage] = useState<KliniuStage>('plan');
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -64,16 +68,16 @@ export function KliniuSequence() {
   }
 
   return <section ref={root} className={styles.sequence} aria-labelledby="kliniu-sequence-title" data-stage={stage}>
-    <header className={styles.heading}><div><p>02 / El estudio</p><h2 id="kliniu-sequence-title">Del plano al producto.</h2></div><span>Kliniu / Estudio de identidad espacial</span></header>
+    <header className={styles.heading}><div><p>{c.ui02ElEstudio}</p><h2 id="kliniu-sequence-title">{c.uiDelPlanoAlProducto}</h2></div><span>{c.uiKliniuEstudioDeIdentidad}</span></header>
     <div className={styles.toolbar}>
-      <div className={styles.segments} role="group" aria-label="Etapas del proyecto">{stages.map((item, index) => <button key={item.id} type="button" aria-pressed={stage === item.id} aria-controls="kliniu-study" onClick={() => setStage(item.id)}><item.icon size={17} aria-hidden /><span>{String(index + 1).padStart(2, '0')} {item.label}</span></button>)}</div>
-      <div className={styles.actions} inert={stage === 'product'} style={{ visibility: stage === 'product' ? 'hidden' : undefined }}>{enabled && !failed ? <><button type="button" onClick={() => setRevision(value => value + 1)} aria-label="Restablecer vista de Kliniu" title="Restablecer vista"><RotateCcw size={18} aria-hidden /></button><button ref={closeControl} type="button" onClick={close} aria-label="Cerrar estudio 3D" title="Cerrar estudio 3D"><X size={18} aria-hidden /></button></> : !failed && <button ref={activation} type="button" onClick={enableScene}><Box size={17} aria-hidden />Explorar en 3D</button>}</div>
+      <div className={styles.segments} role="group" aria-label={c.uiEtapasDelProyecto}>{stages.map((item, index) => <button key={item.id} type="button" aria-pressed={stage === item.id} aria-controls="kliniu-study" onClick={() => setStage(item.id)}><item.icon size={17} aria-hidden /><span>{String(index + 1).padStart(2, '0')} {pick(item.label)}</span></button>)}</div>
+      <div className={styles.actions} inert={stage === 'product'} style={{ visibility: stage === 'product' ? 'hidden' : undefined }}>{enabled && !failed ? <><button type="button" onClick={() => setRevision(value => value + 1)} aria-label={c.uiRestablecerVistaDeKliniu} title={c.uiRestablecerVista}><RotateCcw size={18} aria-hidden /></button><button ref={closeControl} type="button" onClick={close} aria-label={c.uiCerrarEstudio3d} title={c.uiCerrarEstudio3d}><X size={18} aria-hidden /></button></> : !failed && <button ref={activation} type="button" onClick={enableScene}><Box size={17} aria-hidden />{c.uiExplorarEn3d}</button>}</div>
     </div>
     <div className={styles.stage} id="kliniu-study" data-live={live && ready}>
-      <Image className={styles.poster} src={active.image} alt={active.alt} width={1600} height={1100} sizes="100vw" />
+      <Image className={styles.poster} src={active.image} alt={pick(active.alt)} width={1600} height={1100} sizes="100vw" />
       {live && <div className={styles.canvas} style={{ opacity: ready ? 1 : 0 }}><SceneBoundary onError={markFailed}><Suspense fallback={null}><Scene stage={stage} revision={revision} reducedMotion={reducedMotion} onReady={markReady} onError={markFailed} /></Suspense></SceneBoundary></div>}
-      <div className={styles.caption} aria-live="polite"><span>{active.note}</span><h3>{active.title}</h3></div>
-      {failed && <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">Vista estática. El 3D no está disponible en este dispositivo.</p>}
+      <div className={styles.caption} aria-live="polite"><span>{pick(active.note)}</span><h3>{pick(active.title)}</h3></div>
+      {failed && <p ref={fallback} tabIndex={-1} className={styles.fallback} role="status">{c.uiVistaEstaticaEl3d}</p>}
     </div>
   </section>;
 }

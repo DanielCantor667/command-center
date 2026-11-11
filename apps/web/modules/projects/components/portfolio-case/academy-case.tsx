@@ -5,11 +5,13 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { PROJECTS } from '../../../../data/projects';
 import { PUBLIC_PROFILE } from '../../../../data/public-profile';
-import { PORTFOLIO_TECHNOLOGIES } from '../../../../data/portfolio-technologies';
+import { useContent } from '../../../../data/content/content';
 import type { PortfolioCaseProps } from './component';
 import { AcademyStudio } from './academy-studio';
 import styles from './academy-case.module.css';
 import { LanguageSwitch } from '../../../../i18n/language-switch';
+import { academyCopy } from './copy/academy';
+import { useCaseCopy } from './copy/use-case-copy';
 
 export function AcademyCase({
   project,
@@ -17,8 +19,11 @@ export function AcademyCase({
   onReturn,
   onNavigate,
   onTechnologySelect,
-  returnLabel = 'Volver a la ciudad',
+  returnLabel: returnLabelProp,
 }: PortfolioCaseProps) {
+  const c = useCaseCopy(academyCopy);
+  const { technologies } = useContent();
+  const returnLabel = returnLabelProp ?? c.backToCity;
   const heading = useRef<HTMLHeadingElement>(null);
   const cases = PROJECTS.filter((item) => item.public && item.links.live);
   const index = cases.findIndex((item) => item.id === project.id);
@@ -35,7 +40,7 @@ export function AcademyCase({
         <button
           type="button"
           className={styles.identity}
-          aria-label="Daniel Cantor, inicio"
+          aria-label={c.danielCantorInicio}
           onClick={onReturn}
         >
           dc.
@@ -49,9 +54,7 @@ export function AcademyCase({
             className={styles.techNav}
             type="button"
             onClick={() => onNavigate('technologies')}
-          >
-            Tecnologías
-            <ArrowUpRight size={16} aria-hidden />
+          >{c.tecnologias}<ArrowUpRight size={16} aria-hidden />
           </button>
         )}
         <LanguageSwitch />
@@ -62,7 +65,7 @@ export function AcademyCase({
             <source media="(max-width:760px)" srcSet="/experience/academy-hero-mobile-v4.webp" />
             <Image
               src="/experience/academy-hero-wide-v4.webp"
-              alt="Estudio musical conceptual de 4U, render de Blender"
+              alt={c.estudioMusicalConceptualDe}
               fill
               loading="eager"
               fetchPriority="high"
@@ -71,47 +74,36 @@ export function AcademyCase({
             />
           </picture>
           <div className={styles.heroTitle}>
-            <p>Música y aprendizaje / Bogotá</p>
+            <p>{c.musicaYAprendizajeBogota}</p>
             <h1 id="academy-title" ref={heading} tabIndex={-1}>
               4U Studio <span>Academy</span>
             </h1>
           </div>
           <div className={styles.heroFoot}>
             <p data-case-context="4ustudio-academy" className={styles.context}>
-              <span>Academia de música y lecciones presenciales.</span>
+              <span>{c.academiaDeMusicaY}</span>
               <strong>{project.role.title}</strong>
             </p>
-            <a href="#academy-studio">
-              Entrar al estudio
-              <ArrowDown size={20} aria-hidden />
+            <a href="#academy-studio">{c.entrarAlEstudio}<ArrowDown size={20} aria-hidden />
             </a>
-            <a href={project.links.live} target="_blank" rel="noreferrer">
-              Visitar academia
-              <ArrowUpRight size={20} aria-hidden />
+            <a href={project.links.live} target="_blank" rel="noreferrer">{c.visitarAcademia}<ArrowUpRight size={20} aria-hidden />
             </a>
           </div>
         </section>
 
         <section className={styles.intro} aria-labelledby="academy-intro">
-          <p className={styles.kicker}>El proyecto</p>
-          <h2 id="academy-intro">
-            Cada comienzo
-            <br />
-            tiene su sonido.
-          </h2>
+          <p className={styles.kicker}>{c.elProyecto}</p>
+          <h2 id="academy-intro">{c.cadaComienzo}<br />{c.tieneSuSonido}</h2>
           <div className={styles.introCopy}>
-            <p>
-              Una plataforma para una academia de música presencial. La experiencia conecta la
-              exploración de lecciones con el primer paso hacia una clase.
-            </p>
+            <p>{c.unaPlataformaParaUna}</p>
             <dl>
               <div>
-                <dt>Participación</dt>
-                <dd>Desarrollo full-stack y producto</dd>
+                <dt>{c.participacion}</dt>
+                <dd>{c.desarrolloFullStackY}</dd>
               </div>
               <div>
-                <dt>Experiencia</dt>
-                <dd>Oferta musical y agenda pública</dd>
+                <dt>{c.experiencia}</dt>
+                <dd>{c.ofertaMusicalYAgenda}</dd>
               </div>
             </dl>
           </div>
@@ -122,60 +114,43 @@ export function AcademyCase({
         <section className={styles.lessons} aria-labelledby="academy-lessons-title">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.kicker}>La academia publicada</p>
-              <h2 id="academy-lessons-title">
-                Encontrar tu instrumento.
-                <br />
-                Dar el primer paso.
-              </h2>
+              <p className={styles.kicker}>{c.laAcademiaPublicada}</p>
+              <h2 id="academy-lessons-title">{c.encontrarTuInstrumento}<br />{c.darElPrimerPaso}</h2>
             </div>
-            <a href="https://4ustudioacademy.com/lecciones" target="_blank" rel="noreferrer">
-              Ver lecciones
-              <ArrowUpRight size={18} aria-hidden />
+            <a href="https://4ustudioacademy.com/lecciones" target="_blank" rel="noreferrer">{c.verLecciones}<ArrowUpRight size={18} aria-hidden />
             </a>
           </div>
-          <div className={styles.disciplines} aria-label="Oferta pública de lecciones">
-            <span>Guitarra</span>
-            <span>Piano</span>
-            <span>Canto</span>
-            <span>Batería</span>
-            <span>Bajo</span>
-            <span>Producción musical</span>
+          <div className={styles.disciplines} aria-label={c.ofertaPublicaDeLecciones}>
+            <span>{c.guitarra}</span>
+            <span>{c.piano}</span>
+            <span>{c.canto}</span>
+            <span>{c.bateria}</span>
+            <span>{c.bajo}</span>
+            <span>{c.produccionMusical}</span>
           </div>
           <figure className={styles.desktop}>
             <a
               href="/projects/academy-lessons-v4.webp"
               target="_blank"
               rel="noreferrer"
-              aria-label="Ampliar lecciones de 4U"
+              aria-label={c.ampliarLeccionesDe4u}
             >
               <Image
                 src="/projects/academy-lessons-v4.webp"
                 width={1440}
                 height={1000}
-                alt="Lecciones en la web pública de 4U Studio Academy"
+                alt={c.leccionesEnLaWeb}
                 sizes="92vw"
               />
             </a>
-            <figcaption>Web pública / Lecciones / 21 de septiembre de 2026</figcaption>
+            <figcaption>{c.webPublicaLecciones21}</figcaption>
           </figure>
           <div className={styles.mobileStory}>
             <div>
-              <p className={styles.kicker}>De la intención a la clase</p>
-              <h3>
-                Elegir.
-                <br />
-                Conocer.
-                <br />
-                Agendar.
-              </h3>
-              <p>
-                La oferta reúne instrumentos y disciplinas. Cada lección presenta su enfoque y
-                conduce a la agenda, manteniendo la identidad de la academia también en móvil.
-              </p>
-              <a href="https://4ustudioacademy.com/agendar" target="_blank" rel="noreferrer">
-                Conocer la agenda
-                <ArrowUpRight size={18} aria-hidden />
+              <p className={styles.kicker}>{c.deLaIntencionA}</p>
+              <h3>{c.elegir}<br />{c.conocer}<br />{c.agendar}</h3>
+              <p>{c.laOfertaReuneInstrumentos}</p>
+              <a href="https://4ustudioacademy.com/agendar" target="_blank" rel="noreferrer">{c.conocerLaAgenda}<ArrowUpRight size={18} aria-hidden />
               </a>
             </div>
             <figure>
@@ -183,42 +158,32 @@ export function AcademyCase({
                 href="/projects/academy-lessons-mobile-v4.webp"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Ampliar lecciones en móvil"
+                aria-label={c.ampliarLeccionesEnMovil}
               >
                 <Image
                   src="/projects/academy-lessons-mobile-v4.webp"
                   width={390}
                   height={844}
-                  alt="Lecciones de 4U Studio Academy en móvil"
+                  alt={c.leccionesDe4uStudio}
                   sizes="(max-width:760px) 75vw, 320px"
                 />
               </a>
-              <figcaption>La misma oferta, en móvil.</figcaption>
+              <figcaption>{c.laMismaOfertaEn}</figcaption>
             </figure>
           </div>
         </section>
 
         <section className={styles.direction} aria-labelledby="academy-direction-title">
-          <h2 id="academy-direction-title">
-            Del sonido
-            <br />
-            al espacio.
-          </h2>
+          <h2 id="academy-direction-title">{c.delSonido}<br />{c.alEspacio}</h2>
           <div>
-            <p>
-              El estudio conceptual lleva el universo musical de 4U a tres dimensiones. El piano
-              organiza la escena; guitarra, micrófono y percusión completan el conjunto.
-            </p>
-            <p>
-              Los acabados distinguen cada objeto: teclas satinadas, madera de instrumento, metal y
-              superficies acústicas. Una interpretación de marca, no una reproducción de la sede.
-            </p>
+            <p>{c.elEstudioConceptualLleva}</p>
+            <p>{c.losAcabadosDistinguenCada}</p>
           </div>
         </section>
-        <section className={styles.stack} aria-label="Tecnologías de 4U Studio Academy">
-          <p className={styles.kicker}>Tecnologías</p>
+        <section className={styles.stack} aria-label={c.tecnologiasDe4uStudio}>
+          <p className={styles.kicker}>{c.tecnologias}</p>
           <div>
-            {PORTFOLIO_TECHNOLOGIES.filter((item) => item.projectIds.includes(project.id)).map(
+            {technologies.filter((item) => item.projectIds.includes(project.id)).map(
               (item) =>
                 onTechnologySelect ? (
                   <button key={item.id} type="button" onClick={() => onTechnologySelect(item.id)}>
@@ -233,21 +198,19 @@ export function AcademyCase({
         </section>
       </article>
       <footer className={styles.footer}>
-        <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">
-          Hablemos de tu proyecto
-          <ArrowUpRight size={24} aria-hidden />
+        <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">{c.hablemosDeTuProyecto}<ArrowUpRight size={24} aria-hidden />
         </a>
-        <nav aria-label="Recorrido de proyectos">
+        <nav aria-label={c.recorridoDeProyectos}>
           {previous && (
             <button type="button" onClick={() => onSelect(previous.id)}>
-              <span>Proyecto anterior</span>
+              <span>{c.proyectoAnterior}</span>
               <ArrowLeft size={22} aria-hidden />
               {previous.name}
             </button>
           )}
           {next && (
             <button type="button" onClick={() => onSelect(next.id)}>
-              <span>Siguiente proyecto</span>
+              <span>{c.siguienteProyecto}</span>
               {next.name}
               <ArrowRight size={22} aria-hidden />
             </button>

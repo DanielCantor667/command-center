@@ -9,6 +9,7 @@ import { BlenderPavilion } from './blender-pavilion';
 import { KLINIU_TOUR_STOPS, type KliniuTourStop } from './kliniu-tour';
 import { TechnologyLibrary, WORKSHOP_POSITIONS } from './workshop-table';
 import { useDictionary } from '../../../i18n/locale-provider';
+import { usePick } from '../../../i18n/use-pick';
 import styles from '../experience.module.css';
 import { cameraBaseZoom, entranceProfile, restoreCameraFrame, type CameraSnapshot, type CityCameraHandle } from '../workshop-state';
 
@@ -67,6 +68,8 @@ function District({
   entering?: boolean;
   onScreenReady?: () => void;
 }) {
+  // Computed here (inside the Canvas, with context): drei's Html renders in a separate root.
+  const pick = usePick();
   const [hovered, setHovered] = useState(false);
   const name = PROJECTS.find((project) => project.id === id)!.name;
   const position = WORKSHOP_POSITIONS[id]!;
@@ -111,11 +114,11 @@ function District({
       </Html>}
       {id === 'kliniu' && tourStop && KLINIU_TOUR_STOPS.map(({ id: stopId, label, position: point, icon: Icon }) => (
         <Html key={stopId} position={[point[0], point[1] + (exploded && stopId === 'architecture' ? 0.7 : 0), point[2]]} center zIndexRange={[20, 16]}>
-          <button type="button" className={styles.tourHotspot} aria-label={`Kliniu: ${label}`}
-            title={label} aria-pressed={tourStop === stopId} aria-controls="kliniu-tour-evidence"
+          <button type="button" className={styles.tourHotspot} aria-label={`Kliniu: ${pick(label)}`}
+            title={pick(label)} aria-pressed={tourStop === stopId} aria-controls="kliniu-tour-evidence"
             onPointerDown={event => event.stopPropagation()}
             onClick={event => { event.stopPropagation(); onTourSelect?.(stopId); }}>
-            <Icon size={19} aria-hidden="true" /><span>{label}</span>
+            <Icon size={19} aria-hidden="true" /><span>{pick(label)}</span>
           </button>
         </Html>
       ))}
