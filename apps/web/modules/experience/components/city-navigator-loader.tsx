@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { Component, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { CityNavigatorProps } from './city-navigator';
 import type { CameraSnapshot, CityCameraHandle } from '../workshop-state';
+import { useDictionary } from '../../../i18n/locale-provider';
 import styles from '../experience.module.css';
 
 const CityNavigator = dynamic(
@@ -14,7 +15,7 @@ const CityNavigator = dynamic(
     loading: () => null,
   },
 );
-class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
+class SceneBoundary extends Component<{ children: ReactNode; message: string; onError: () => void }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
@@ -23,10 +24,7 @@ class SceneBoundary extends Component<{ children: ReactNode; onError: () => void
   render() {
     return this.state.failed ? (
       <div className={styles.scenePrompt} role="status">
-        <p>
-          La maqueta no está disponible. Puedes recorrer todos los proyectos y tecnologías desde sus
-          listas.
-        </p>
+        <p>{this.props.message}</p>
       </div>
     ) : (
       this.props.children
@@ -44,6 +42,7 @@ function supportsWebGL() {
   }
 }
 export function CityNavigatorLoader(props: CityNavigatorProps) {
+  const t = useDictionary().portfolio.city;
   const [unavailable, setUnavailable] = useState(false);
   const [enabled, setEnabled] = useState(false);
   const [ready, setReady] = useState(false);
@@ -152,21 +151,20 @@ export function CityNavigatorLoader(props: CityNavigatorProps) {
         <div className={styles.scenePrompt} role="status">
           <Image
             src="/experience/workshop-brands-v3.jpg"
-            alt="Maqueta del taller de Daniel"
+            alt={t.label}
             priority
             fill
             sizes="(max-width:800px) 100vw, 75vw"
             className={styles.scenePoster}
           />
           <p className={styles.sceneActivation}>
-            Tu navegador no dispone de esta vista 3D. Los proyectos y las tecnologías siguen
-            disponibles en las listas.
+            {t.unsupported}
           </p>
         </div>
       ) : (
         <>
         {live && <div style={{ position: 'absolute', inset: 0, opacity: sceneReady ? 1 : 0 }} inert={!sceneReady}>
-          <SceneBoundary onError={sceneFailed}>
+          <SceneBoundary message={t.failed} onError={sceneFailed}>
             <CityNavigator {...props} cameraHandle={sceneHandle} initialCamera={lastCamera.current.snapshot}
               onCameraSnapshot={rememberCamera} onSceneReady={sceneLoaded} onSceneError={sceneFailed}
               reducedMotion={reducedMotion} />
@@ -176,14 +174,14 @@ export function CityNavigatorLoader(props: CityNavigatorProps) {
         <div className={styles.scenePrompt} aria-busy={!ready}>
           <Image
             src="/experience/workshop-brands-v3.jpg"
-            alt="Maqueta del taller de Daniel con sus cuatro proyectos"
+            alt={t.poster}
             priority
             fill
             sizes="(max-width:800px) 100vw, 75vw"
             className={styles.scenePoster}
           />
           {!props.immersive && <p className={styles.sceneActivation}>
-            {ready ? 'Los proyectos tienen un lugar en este taller.' : 'Preparando el taller…'}
+            {ready ? t.placeholder : t.preparing}
           </p>}
           {ready && !enabled && (
             <button
@@ -197,7 +195,7 @@ export function CityNavigatorLoader(props: CityNavigatorProps) {
                 enabledCallback.current?.(supported);
               }}
             >
-              Explorar en 3D
+              {t.explore3d}
             </button>
           )}
         </div>
@@ -211,7 +209,7 @@ export function CityNavigatorLoader(props: CityNavigatorProps) {
           enabledCallback.current?.(false);
           requestAnimationFrame(() => activation.current?.focus({ preventScroll: true }));
         }}>
-          Cerrar vista 3D
+          {t.close3d}
         </button>
       )}
     </div>

@@ -12,7 +12,6 @@ import { KliniuCase } from './kliniu-case';
 import { LorigineCase } from './lorigine-case';
 import { AcademyCase } from './academy-case';
 import { DrokexCase } from './drokex-case';
-import { LanguageSwitch } from '../../../../i18n/language-switch';
 
 export interface PortfolioCaseProps {
   project: Project;
@@ -49,7 +48,6 @@ function StandardPortfolioCase({ project, onSelect, onReturn, onNavigate, onTech
         <button type="button" onClick={onReturn}>{returnLabel}</button>
         {onNavigate && <button type="button" onClick={() => onNavigate('technologies')}>Tecnologías</button>}
         <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">Hablemos</a>
-        <LanguageSwitch />
       </div>
     </header>
     <nav className={styles.projectTabs} aria-label="Proyectos publicados">

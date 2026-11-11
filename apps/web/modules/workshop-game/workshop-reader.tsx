@@ -9,6 +9,7 @@ import { TechnologyExplorer, type TechnologyFilters } from '../experience/compon
 import type { WorkshopReading } from './reading';
 import type { WorldPoint } from './world-state';
 import { WorldMap } from './world-map';
+import { useDictionary } from '../../i18n/locale-provider';
 import styles from './workshop-reader.module.css';
 export interface WorkshopReaderProps {
   reading: WorkshopReading;
@@ -21,9 +22,10 @@ export interface WorkshopReaderProps {
   onOpenCase: (id: string) => void;
   onClose: () => void;
 }
-const titles = { technologies: 'Tecnologías', trajectory: 'Trayectoria', contact: 'Contacto', map: 'Mapa del taller' } as const;
 
 export function WorkshopReader({ reading, currentPoint, worldAvailable, technologyFilters, onTechnologyFiltersChange, onRead, onGo, onOpenCase, onClose }: WorkshopReaderProps) {
+  const { workshop } = useDictionary();
+  const t = workshop.reader;
   const titleId = useId();
   const panel = useRef<HTMLElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -66,22 +68,22 @@ export function WorkshopReader({ reading, currentPoint, worldAvailable, technolo
   return createPortal(<div className={styles.backdrop} onPointerDown={event => { if (event.target === event.currentTarget) onClose(); }}>
     <section ref={panel} className={styles.panel} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} data-workshop-reading={reading.kind}>
       <header className={styles.header}>
-        <div><span className={styles.workshop}>El taller de Daniel</span><h1 ref={heading} id={titleId} tabIndex={-1}>{titles[reading.kind]}</h1></div>
-        <button type="button" className={styles.close} aria-label="Cerrar lectura" onClick={onClose}><X size={22} aria-hidden="true" /></button>
+        <div><span className={styles.workshop}>{workshop.name}</span><h1 ref={heading} id={titleId} tabIndex={-1}>{t.titles[reading.kind]}</h1></div>
+        <button type="button" className={styles.close} aria-label={t.close} onClick={onClose}><X size={22} aria-hidden="true" /></button>
       </header>
       <div className={styles.content}>
         {reading.kind === 'technologies' && <TechnologyExplorer presentation="html" selectedId={reading.technologyId} onSelect={technologyId => onRead({ kind: 'technologies', technologyId })} initialFilters={technologyFilters} onFiltersChange={onTechnologyFiltersChange} onProjectSelect={onOpenCase} />}
         {reading.kind === 'trajectory' && <div className={styles.career}>
-          <section aria-labelledby={`${titleId}-experience`}><h2 id={`${titleId}-experience`}>Experiencia</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.experience.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p><p>{item.description}</p></article>)}</div></section>
-          <section aria-labelledby={`${titleId}-education`}><h2 id={`${titleId}-education`}>Formación</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.education.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p></article>)}</div></section>
-          <section className={styles.languages} aria-labelledby={`${titleId}-languages`}><h2 id={`${titleId}-languages`}>Idiomas</h2>{PORTFOLIO_CAREER.languages.map(item => <p key={item.name}><strong>{item.name}</strong><span>{item.level}</span></p>)}</section>
+          <section aria-labelledby={`${titleId}-experience`}><h2 id={`${titleId}-experience`}>{t.experience}</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.experience.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p><p>{item.description}</p></article>)}</div></section>
+          <section aria-labelledby={`${titleId}-education`}><h2 id={`${titleId}-education`}>{t.education}</h2><div className={styles.timeline}>{PORTFOLIO_CAREER.education.map(item => <article key={item.id}><p className={styles.period}>{item.period}</p><h3>{item.title}</h3><p className={styles.organization}>{item.organization}</p></article>)}</div></section>
+          <section className={styles.languages} aria-labelledby={`${titleId}-languages`}><h2 id={`${titleId}-languages`}>{t.languages}</h2>{PORTFOLIO_CAREER.languages.map(item => <p key={item.name}><strong>{item.name}</strong><span>{item.level}</span></p>)}</section>
         </div>}
         {reading.kind === 'contact' && <div className={styles.contact}>
           <div className={styles.profile}><h2>{PUBLIC_PROFILE.name}</h2><p className={styles.role}>{PUBLIC_PROFILE.role}</p><p className={styles.location}>{PUBLIC_PROFILE.location}</p></div>
           <p className={styles.availability}>{PUBLIC_PROFILE.availability}</p>
-          <nav className={styles.contactLinks} aria-label="Canales públicos de Daniel">
-            <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer"><MessageSquare size={22} aria-hidden="true" /><span>Hablemos en LinkedIn</span><ArrowUpRight size={20} aria-hidden="true" /></a>
-            <a href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer"><Code size={22} aria-hidden="true" /><span>Explorar mi GitHub</span><ArrowUpRight size={20} aria-hidden="true" /></a>
+          <nav className={styles.contactLinks} aria-label={t.channels}>
+            <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer"><MessageSquare size={22} aria-hidden="true" /><span>{t.linkedin}</span><ArrowUpRight size={20} aria-hidden="true" /></a>
+            <a href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer"><Code size={22} aria-hidden="true" /><span>{t.github}</span><ArrowUpRight size={20} aria-hidden="true" /></a>
           </nav>
         </div>}
         {reading.kind === 'map' && <WorldMap currentPoint={currentPoint} worldAvailable={worldAvailable} onRead={onRead} onGo={onGo} onOpenCase={onOpenCase} />}

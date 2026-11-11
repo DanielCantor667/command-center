@@ -12,7 +12,8 @@ import { CityNavigatorLoader } from './components/city-navigator-loader';
 import { KliniuTour, type KliniuTourStop } from './components/kliniu-tour';
 import { TechnologyExplorer, type TechnologyFilters } from './components/technology-explorer';
 import { LanguageSwitch } from '../../i18n/language-switch';
-import { useLocale } from '../../i18n/locale-provider';
+import { fill } from '../../i18n/format';
+import { useDictionary, useLocale } from '../../i18n/locale-provider';
 import styles from './experience.module.css';
 import cinema from './cinematic.module.css';
 import type { CityCameraHandle, WorkshopSnapshot } from './workshop-state';
@@ -65,6 +66,7 @@ export function ExperienceModule({
 }: ExperienceModuleProps) {
   const initialReturn = useRef({ restoring, snapshot: initialWorkshop });
   const locale = useLocale();
+  const { portfolio: t } = useDictionary();
   const [selectedId, setSelectedId] = useState(initialWorkshop?.projectId ?? initialProjectId);
   const [section, setSection] = useState<PortfolioSection>(initialSection);
   const [technologyId, setTechnologyId] = useState(initialTechnologyId);
@@ -263,7 +265,7 @@ export function ExperienceModule({
     <main className={`${styles.experience} ${cinema.experience}`} data-project={selected.id} data-night={night}
       data-reveal={revealing} onPointerDownCapture={() => setRevealing(false)} onKeyDownCapture={() => setRevealing(false)} onWheelCapture={() => setRevealing(false)}>
       <a className={styles.skipLink} href="#proyectos">
-        Ir a los proyectos
+        {t.skipToProjects}
       </a>
       <header className={cinema.header}>
         <a
@@ -283,20 +285,15 @@ export function ExperienceModule({
           }}
         >
           <span className={cinema.monogram} aria-hidden="true">dc.</span>
-          <span>Daniel Cantor<br /><small>Desarrollo & diseño</small></span>
+          <span>Daniel Cantor<br /><small>{t.subtitle}</small></span>
         </a>
         {onReturnToWorkshop && <button className={cinema.returnWorkshop} type="button" onClick={returnToWorkshop}>
-          <ArrowLeft size={16} aria-hidden="true" />Volver al taller
+          <ArrowLeft size={16} aria-hidden="true" />{t.back}
         </button>}
-        <nav className={styles.navigation} aria-label="Navegación principal">
+        <nav className={styles.navigation} aria-label={t.navigation}>
           {(
-            [
-              ['projects', 'Proyectos'],
-              ['technologies', 'Tecnologías'],
-              ['trajectory', 'Trayectoria'],
-              ['contact', 'Contacto'],
-            ] as const
-          ).map(([id, label]) => (
+            ['projects', 'technologies', 'trajectory', 'contact'] as const
+          ).map(id => [id, t.sections[id]] as const).map(([id, label]) => (
             <a
               key={id}
               href={`#${anchors[id]}`}
@@ -312,7 +309,7 @@ export function ExperienceModule({
           <LanguageSwitch />
         </nav>
       </header>
-      <section id="inicio" className={cinema.hero} aria-label="Portafolio de proyectos" data-detail={detail} data-entering={entering}>
+      <section id="inicio" className={cinema.hero} aria-label={t.hero.label} data-detail={detail} data-entering={entering}>
           <div ref={cityRef} className={`${styles.cityStage} ${cinema.stage}`} data-detail={detail} data-night={night}>
             <CityNavigatorLoader
               immersive
@@ -341,30 +338,30 @@ export function ExperienceModule({
             />
           </div>
           <div className={cinema.intro}>
-            <p className={cinema.kicker}>Portafolio independiente <span> / Bogotá, CO</span></p>
+            <p className={cinema.kicker}>{t.hero.kicker} <span> / Bogotá, CO</span></p>
             <h1 className={detail || techMode ? cinema.srOnly : undefined}>Daniel <span>Cantor</span></h1>
-            {(detail || techMode) && <h2 className={cinema.projectTitle}>{techMode ? 'Detrás de cada idea.' : selected.name}</h2>}
-            <p className={cinema.manifesto}>{detail && !techMode ? selected.tagline : 'Código con intención.\nProductos con carácter.'}</p>
+            {(detail || techMode) && <h2 className={cinema.projectTitle}>{techMode ? t.hero.techTitle : selected.name}</h2>}
+            <p className={cinema.manifesto}>{detail && !techMode ? selected.tagline : t.hero.manifesto}</p>
             <button ref={enterButton} className={cinema.enter} type="button" onClick={enterFeaturedProject} disabled={entering}>
-              <span>Entrar a {selected.name}</span><ArrowUpRight size={22} aria-hidden="true" />
+              <span>{fill(t.hero.enter, { name: selected.name })}</span><ArrowUpRight size={22} aria-hidden="true" />
             </button>
             <a className={cinema.directLink} href="#proyectos" onClick={event => { event.preventDefault(); navigate('projects'); }}>
-              Ver proyectos <ArrowDown size={14} aria-hidden="true" />
+              {t.hero.viewProjects} <ArrowDown size={14} aria-hidden="true" />
             </a>
           </div>
           <div className={cinema.sceneControls} inert={entering}>
-              <span className={cinema.sceneCaption}>{techMode ? 'Biblioteca de tecnologías' : detail ? selected.name + ' / Distrito de producto' : 'El taller de Daniel'}</span>
+              <span className={cinema.sceneCaption}>{techMode ? t.scene.techLibrary : detail ? fill(t.scene.district, { name: selected.name }) : t.scene.workshop}</span>
               <div className={`${styles.sceneTools} ${cinema.tools}`}>
-              <button type="button" aria-label="Iluminación nocturna" role="switch" aria-checked={night} disabled={!sceneActive} title={sceneActive ? 'Iluminación nocturna' : 'Activa la vista 3D'} onClick={() => setNight(value => !value)}>
+              <button type="button" aria-label={t.scene.night} role="switch" aria-checked={night} disabled={!sceneActive} title={sceneActive ? t.scene.night : t.scene.activate} onClick={() => setNight(value => !value)}>
                 {night ? <Moon size={18} /> : <Sun size={18} />}
               </button>
-              <button type="button" aria-label="Separar capas" aria-pressed={exploded && detail} disabled={techMode || !sceneActive} title={sceneActive ? 'Separar capas' : 'Activa la vista 3D'} onClick={() => { setExploded(value => !value); setDetail(true); }}>
+              <button type="button" aria-label={t.scene.explode} aria-pressed={exploded && detail} disabled={techMode || !sceneActive} title={sceneActive ? t.scene.explode : t.scene.activate} onClick={() => { setExploded(value => !value); setDetail(true); }}>
                 <Layers3 size={18} />
               </button>
               <button
                 type="button"
-                aria-label="Vista general"
-                title="Vista general"
+                aria-label={t.scene.overview}
+                title={t.scene.overview}
                 onClick={() => {
                   setDetail(false);
                   setExploded(false);
@@ -379,12 +376,12 @@ export function ExperienceModule({
               </div>
           </div>
           <div className={cinema.projectIndex} inert={entering}>
-            <div className={cinema.indexHeading}><span>Proyectos seleccionados</span><span>{publishedProjects.length.toString().padStart(2, '0')} / En producción</span></div>
-            <div className={cinema.projectList} role="group" aria-label="Seleccionar proyecto">
+            <div className={cinema.indexHeading}><span>{t.index.selected}</span><span>{publishedProjects.length.toString().padStart(2, '0')} / {t.index.live}</span></div>
+            <div className={cinema.projectList} role="group" aria-label={t.index.select}>
               {publishedProjects.map((project, index) => (
                 <button key={project.id} type="button" className={cinema.projectChoice}
                   data-related={techMode ? technology.projectIds.includes(project.id) : undefined}
-                  aria-label={`Seleccionar ${project.name}`} aria-pressed={!techMode && selected.id === project.id}
+                  aria-label={fill(t.index.selectOf, { name: project.name })} aria-pressed={!techMode && selected.id === project.id}
                   onClick={() => selectProject(project.id)}>
                   <span className={cinema.projectNumber}>{(index + 1).toString().padStart(2, '0')}</span>
                   <Image src={`/experience/${project.id === 'kliniu' ? 'kliniu-showroom' : project.id === '4ustudio-academy' ? 'academy-brand' : `${project.id}-brand`}-thumb.jpg`} alt="" width={64} height={54} />
@@ -394,14 +391,14 @@ export function ExperienceModule({
             </div>
           </div>
           {entering && <div className={cinema.entranceActions}>
-            <span role="status">{selected.name} / Entrando al proyecto</span>
-            <button type="button" onClick={() => completeEntrance()}>Omitir entrada <ArrowUpRight size={16} /></button>
-            <button type="button" onClick={() => cancelEntrance()} aria-label="Cancelar entrada" title="Cancelar entrada"><X size={20} /></button>
+            <span role="status">{fill(t.entering.status, { name: selected.name })}</span>
+            <button type="button" onClick={() => completeEntrance()}>{t.entering.skip} <ArrowUpRight size={16} /></button>
+            <button type="button" onClick={() => cancelEntrance()} aria-label={t.entering.cancel} title={t.entering.cancel}><X size={20} /></button>
           </div>}
       </section>
       <div className={cinema.interlude} inert={entering}>
-          <p><span className={cinema.liveDot} />Ideas que llegan a producción.</p>
-          <div className={`${styles.sceneTabs} ${cinema.viewTabs}`} aria-label="Vistas del taller">
+          <p><span className={cinema.liveDot} />{t.interlude.live}</p>
+          <div className={`${styles.sceneTabs} ${cinema.viewTabs}`} aria-label={t.interlude.views}>
             <button
               type="button"
               aria-pressed={!detail && !techMode}
@@ -414,7 +411,7 @@ export function ExperienceModule({
                 setViewRevision((value) => value + 1);
               }}
             >
-              El taller
+              {t.interlude.workshop}
             </button>
             <button
               type="button"
@@ -425,10 +422,10 @@ export function ExperienceModule({
                 onSectionChange?.('projects');
               }}
             >
-              El proyecto
+              {t.interlude.project}
             </button>
             <button type="button" aria-pressed={techMode} onClick={() => navigate('technologies')}>
-              Las tecnologías
+              {t.interlude.technologies}
             </button>
           </div>
       </div>
@@ -443,17 +440,15 @@ export function ExperienceModule({
         id={techMode ? 'tecnologias' : 'proyectos'}
         className={styles.contentSection}
         inert={entering}
-        aria-label={techMode ? 'Tecnologías y proyectos' : 'Proyecto seleccionado'}
+        aria-label={techMode ? t.content.techLabel : t.content.projectLabel}
       >
         <div className={styles.sectionHeading}>
           <div>
-            <p>{techMode ? 'Mi caja de herramientas' : 'Una mirada al producto'}</p>
-            <h2>{techMode ? 'Tecnologías con trabajo detrás.' : 'Del taller a la web.'}</h2>
+            <p>{techMode ? t.content.techEyebrow : t.content.projectEyebrow}</p>
+            <h2>{techMode ? t.content.techTitle : t.content.projectTitle}</h2>
           </div>
           <p>
-            {techMode
-              ? 'Selecciona una pieza. Descubre cómo la uso y en qué proyectos puedes verla.'
-              : 'Cuatro sitios publicados. Capturas reales y decisiones detrás de cada proyecto.'}
+            {techMode ? t.content.techIntro : t.content.projectIntro}
           </p>
         </div>
         {techMode ? (
@@ -468,14 +463,14 @@ export function ExperienceModule({
           <article
             id="project-preview"
             className={styles.preview}
-            aria-label={`Vista previa de ${selected.name}`}
+            aria-label={fill(t.content.preview, { name: selected.name })}
           >
             <div className={styles.previewImage}>
               {capture && (
                 <Image
                   key={capture.url}
                   src={capture.url}
-                  alt={`Vista real de ${selected.name}`}
+                  alt={fill(t.content.realView, { name: selected.name })}
                   width={1440}
                   height={1000}
                   sizes="(max-width:800px) 100vw, 55vw"
@@ -507,12 +502,12 @@ export function ExperienceModule({
                 <button
                   type="button"
                   onClick={() => openTechnologyProject(selected.id)}
-                  aria-label={`Ver caso de ${selected.name}`}
+                  aria-label={fill(t.content.viewCaseOf, { name: selected.name })}
                 >
-                  Ver el proyecto
+                  {t.content.viewProject}
                 </button>
                 <a href={selected.links.live} target="_blank" rel="noreferrer">
-                  Visitar sitio
+                  {t.content.visitSite}
                 </a>
               </div>
               <button
@@ -530,7 +525,7 @@ export function ExperienceModule({
                   });
                 }}
               >
-                {detail ? 'Alejar distrito' : 'Acercar distrito ' + selected.name}
+                {detail ? t.content.zoomOut : fill(t.content.zoomIn, { name: selected.name })}
               </button>
             </div>
           </article>
@@ -538,16 +533,11 @@ export function ExperienceModule({
       </section>
       <section id="trayectoria" className={styles.journey} inert={entering}>
         <div className={styles.journeyIntro}>
-          <p className={styles.eyebrow}>Detrás de los proyectos</p>
+          <p className={styles.eyebrow}>{t.journey.eyebrow}</p>
           <h2>
-            Aprender.
-            <br /> Construir.
-            <br /> Volver a intentar.
+            {t.journey.title.map((line, index) => <span key={line}>{index > 0 && <br />}{index > 0 && ' '}{line}</span>)}
           </h2>
-          <p>
-            Soy Daniel, desarrollador Full-Stack en Bogotá. Trabajo desde el modelado de datos hasta
-            la interfaz que usa cada persona.
-          </p>
+          <p>{t.journey.intro}</p>
           <div className={styles.languages}>
             {PORTFOLIO_CAREER.languages.map((item) => (
               <p key={item.name}>
@@ -558,7 +548,7 @@ export function ExperienceModule({
           </div>
         </div>
         <div className={styles.career}>
-          <h3>Experiencia</h3>
+          <h3>{t.journey.experience}</h3>
           {PORTFOLIO_CAREER.experience.map((item) => (
             <article key={item.id}>
               <p className={styles.period}>{item.period}</p>
@@ -567,7 +557,7 @@ export function ExperienceModule({
               <p>{item.description}</p>
             </article>
           ))}
-          <h3>Formación</h3>
+          <h3>{t.journey.education}</h3>
           {PORTFOLIO_CAREER.education.map((item) => (
             <article key={item.id}>
               <p className={styles.period}>{item.period}</p>
@@ -579,21 +569,21 @@ export function ExperienceModule({
       </section>
       <section id="contacto" className={styles.contact} inert={entering}>
         <div>
-          <p className={styles.eyebrow}>Sigamos construyendo</p>
-          <h2>¿Qué tienes en mente?</h2>
-          <p>Disponible para colaborar en productos web, e-commerce e integraciones.</p>
+          <p className={styles.eyebrow}>{t.contact.eyebrow}</p>
+          <h2>{t.contact.title}</h2>
+          <p>{t.contact.intro}</p>
         </div>
         <div className={styles.contactLinks}>
           <a href={PUBLIC_PROFILE.linkedin} target="_blank" rel="noreferrer">
-            Hablemos en LinkedIn
+            {t.contact.linkedin}
           </a>
           <a href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer">
-            Explorar mi GitHub
+            {t.contact.github}
           </a>
         </div>
       </section>
       <footer className={styles.footer} inert={entering}>
-        <span>Daniel Cantor · Taller digital</span>
+        <span>{t.footer}</span>
         {/* The internal workspace stays Spanish-only: hidden in English (specs/i18n-english.md, question 3). */}
         {locale === 'es' ? <div>
           <button type="button" onClick={() => onEnter('projects')}>
@@ -603,7 +593,7 @@ export function ExperienceModule({
             Laboratorio 3D
           </button>
         </div> : <div />}
-        <span>Bogotá, Colombia</span>
+        <span>{PUBLIC_PROFILE.location}</span>
       </footer>
     </main>
   );

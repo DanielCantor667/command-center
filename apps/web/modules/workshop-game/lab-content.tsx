@@ -10,7 +10,7 @@ import { DomScreen } from './dom-screens';
 import { LAB_ANCHORS, type LabAnchor } from './lab-anchors';
 import { PROJECT_CAPTURES } from './lab';
 import { GALLERY_LAYOUT, ProjectGallery } from './project-gallery';
-import { STATIONS } from './stations';
+import { useDictionary } from '../../i18n/locale-provider';
 import styles from './workshop-game.module.css';
 
 /** Focus states shared by screens and plates: lit (the focus or related), dimmed (unrelated), idle. */
@@ -56,6 +56,8 @@ const SCREEN_PROJECTS = PROJECTS.filter(project => project.public && LAB_ANCHORS
 function Screen({ anchor, label, name, capture, labelMap, highlight, onSelect, onHover }: {
   anchor: LabAnchor; label?: LabAnchor; name: string; capture?: string; labelMap: Texture; highlight: Highlight; onSelect: () => void; onHover: (on: boolean) => void;
 }) {
+  // Resolved here: DomScreen renders its children in a separate React root, without the locale context.
+  const noCapture = useDictionary().workshop.scene.noCapture;
   const caption = useRef<MeshBasicMaterial>(null), frame = useRef<MeshBasicMaterial>(null);
   const level = useRef(1), glow = useRef(0);
   useFrame((_, delta) => {
@@ -79,7 +81,7 @@ function Screen({ anchor, label, name, capture, labelMap, highlight, onSelect, o
     {/* Captures are mostly white: they never go above 1 (no bloom); the cyan frame marks the lit screen. */}
     <DomScreen anchor={anchor} width={1024} brightness={level} {...events}>
       {/* eslint-disable-next-line @next/next/no-img-element -- plain DOM inside the 3D layer, outside Next's image pipeline */}
-      {capture ? <img className={styles.screenCapture} src={capture} alt="" /> : <div className={styles.screenName}>{name}<small>sin captura publicada</small></div>}
+      {capture ? <img className={styles.screenCapture} src={capture} alt="" /> : <div className={styles.screenName}>{name}<small>{noCapture}</small></div>}
     </DomScreen>
     {label && <mesh position={label.position} rotation={[0, label.rotationY, 0]} {...events}>
       <planeGeometry args={label.size} /><meshBasicMaterial ref={caption} map={labelMap} toneMapped={false} />
@@ -153,34 +155,36 @@ export function ProjectCorners({ lit, focused, onSelect, onHover }: {
 
 /** The monitor is one target; these previews describe the desktop without acting as separate controls. */
 export function ContactMonitor({ onSelect }: { onSelect: () => void }) {
+  const t = useDictionary().workshop.scene.monitor;
   return <DomScreen anchor={LAB_ANCHORS.screen_contact!} width={1100} className={styles.monitor} {...select(onSelect)}>
     <div className={styles.monitorFrame}>
-      <p className={styles.monitorKicker}>Taller / Escritorio</p>
-      <h2>Entrar al escritorio</h2>
-      <p className={styles.monitorIntro}>Explora proyectos, GitHub y la terminal</p>
+      <p className={styles.monitorKicker}>{t.kicker}</p>
+      <h2>{t.title}</h2>
+      <p className={styles.monitorIntro}>{t.intro}</p>
       <div className={styles.monitorPreviews}>
-        <div className={styles.monitorCard}><h3>Terminal</h3><p className={styles.monitorCode}>Demo sin IA</p><p>Explora el portafolio</p></div>
+        <div className={styles.monitorCard}><h3>{t.terminal}</h3><p className={styles.monitorCode}>{t.demo}</p><p>{t.explore}</p></div>
         <div className={styles.monitorCard}><h3>GitHub</h3><p className={styles.monitorUsername}>{PUBLIC_PROFILE.github.split('/').pop()}</p><p className={styles.monitorLink}>{PUBLIC_PROFILE.github.replace('https://', '')}</p></div>
-        <div className={styles.monitorCard}><h3>Proyectos</h3>
+        <div className={styles.monitorCard}><h3>{t.projects}</h3>
           {/* eslint-disable-next-line @next/next/no-img-element -- projected DOM screen, outside Next's image pipeline */}
           <img src={PROJECT_CAPTURES.kliniu} alt="" />
         </div>
       </div>
-      <div className={styles.monitorFooter}><span>Conversemos en LinkedIn</span><span className={styles.monitorLink}>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span><span className={styles.monitorAction}>Entrar →</span></div>
+      <div className={styles.monitorFooter}><span>{t.linkedin}</span><span className={styles.monitorLink}>{PUBLIC_PROFILE.linkedin.replace('https://www.', '')}</span><span className={styles.monitorAction}>{t.enter}</span></div>
     </div>
   </DomScreen>;
 }
 
 /** Trayectoria board: the career entries from the profile data, so the board reads without opening the panel. */
 export function Whiteboard({ onSelect }: { onSelect: () => void }) {
+  const { workshop } = useDictionary();
   const anchor = LAB_ANCHORS.whiteboard;
   const column = (title: string, items: readonly { period: string; title: string; organization: string }[]) => <section>
     <h3>{title}</h3>
     <ol>{items.map(item => <li key={`${item.period}${item.title}`}><span>{item.period}</span><b>{item.title}</b><span>{item.organization}</span></li>)}</ol>
   </section>;
   return anchor ? <DomScreen anchor={anchor} width={1200} className={styles.whiteboard} {...select(onSelect)}>
-    <h2>Trayectoria</h2>
-    <p>{STATIONS.trajectory.description}</p>
-    <div>{column('Experiencia', PORTFOLIO_CAREER.experience)}{column('Formación', PORTFOLIO_CAREER.education)}</div>
+    <h2>{workshop.stations.trajectory.name}</h2>
+    <p>{workshop.stations.trajectory.description}</p>
+    <div>{column(workshop.reader.experience, PORTFOLIO_CAREER.experience)}{column(workshop.reader.education, PORTFOLIO_CAREER.education)}</div>
   </DomScreen> : null;
 }

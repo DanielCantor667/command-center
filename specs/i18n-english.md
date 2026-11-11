@@ -150,3 +150,25 @@ Datos de los 4 casos públicos (`data/projects/*.ts`):
   cabecera) en landing, caso, portafolio y créditos, escritorio y móvil; `/en` con `lang="en"`, `og:locale` `en_US`,
   `hreflang` es / en / x-default, canonical propio; el selector lleva `/?project=kliniu#top` a
   `/en?project=kliniu#top`; sitemap con 4 URLs; 404 correcto. JS inicial de `/`: 201 → 202 kB.
+
+## I.2 (2026-11-11, sin commit)
+
+- Diccionarios `es` / `en` con secciones `workshop`, `pc`, `portfolio`, `technologies` y `credits`; `fill()` para
+  variables (`{name}`): los diccionarios cruzan de servidor a cliente y no pueden llevar funciones.
+- Localizados: landing, carga, recorrido, modo libre, inspecciones, lector, mapa, monitor y pizarra del taller;
+  escritorio del PC (menús, apps, bloqueo, ajustes, CV que abre en el idioma de la página, fecha con `en-US`);
+  portafolio clásico y su maqueta 3D; explorador de tecnologías; créditos.
+- `STATIONS` ya no guarda textos (pasaron a `workshop.stations`); `placeNames()` reúne los nombres de lugares.
+- `DomScreen` y el `Html` de drei montan en un root de React aparte, sin contexto: el texto se resuelve en el
+  componente padre (dentro del `Canvas`, que sí recibe el contexto).
+- `LocaleProvider` ya no empaqueta un diccionario por defecto: cada página trae solo el suyo (JS inicial de `/` sigue
+  en 202 kB). Los tests usan español mediante `setLocaleFallback` en `vitest.setup.ts`.
+- **Ajustes de alcance:** el caso estándar (`StandardPortfolioCase`) solo lo usan Vevi, Intranet ESS y Command
+  Center, ocultos en `/en`: queda en español y sin selector. Las descripciones accesibles de las escenas 3D de cada
+  caso y `kliniu-tour` (contenido de Kliniu) pasan a I.3 con el resto de cada caso. `scene-viewer` solo se usa desde
+  el workspace interno (oculto en `/en`): no se traduce.
+- Tests nuevos: paridad de diccionarios (mismas claves y largos, sin vacíos, mismas variables) y landing + mapa en
+  inglés sin palabras frecuentes del español.
+- Verificado (build de producción, Chrome): `/` idéntico a I.1 (0,00–0,01 %); en `/en` solo queda en español el
+  contenido de I.3 (resúmenes de proyectos, trayectoria, categorías y descripciones de tecnologías) y la bio real de
+  GitHub, que es dato público de Daniel. "Leer en español" es la etiqueta del selector, en español a propósito.

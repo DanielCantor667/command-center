@@ -5,6 +5,8 @@ import { OrbitControls } from '@react-three/drei';
 import { Component, Suspense, useEffect, useRef, useState, type ReactNode } from 'react';
 import type { Group } from 'three';
 import { TechnologyEmblem } from './technology-emblem';
+import { fill } from '../../../i18n/format';
+import { useDictionary } from '../../../i18n/locale-provider';
 
 class IconBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -74,12 +76,13 @@ export function TechnologyIcon3D({
       motion.removeEventListener('change', update);
     };
   }, []);
+  const label = fill(useDictionary().technologies.piece3d, { name });
   return (
     <div
       ref={root}
       style={{ width: '100%', height: '100%' }}
       role="img"
-      aria-label={`Pieza 3D de ${name}`}
+      aria-label={label}
     >
       {supported && visible ? (
         <IconBoundary fallback={fallback}>

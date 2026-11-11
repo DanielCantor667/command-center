@@ -10,6 +10,7 @@ import { readWorkshopReading, writeWorkshopReading, type WorkshopReading } from 
 import type { TechnologyFilters } from '../../modules/experience/components/technology-explorer';
 import type { PortfolioSection } from '../../modules/experience/component';
 import type { WorkshopSnapshot } from '../../modules/experience/workshop-state';
+import { useDictionary } from '../../i18n/locale-provider';
 import { useWorkspaceStore } from '../workspace-store';
 
 // P.3 (specs/workshop-performance.md): the landing only needs the workshop. Cases, the classic portfolio and the
@@ -49,6 +50,7 @@ export function ExperienceGate() {
   const transitionToken = useRef(0);
   const visualTransition = useRef<ViewTransition | null>(null);
   const [entered, setEntered] = useState(false);
+  const { caseReturn } = useDictionary().workshop;
   const setCurrentModule = useWorkspaceStore((state) => state.setCurrentModule);
   const setSelectedProjectId = useWorkspaceStore((state) => state.setSelectedProjectId);
 
@@ -250,7 +252,7 @@ export function ExperienceGate() {
       <PortfolioCase
         key={activeCase.id}
         project={activeCase}
-        returnLabel={publicMode === 'game' ? reading ? ({ technologies: 'Volver a tecnologías', trajectory: 'Volver a trayectoria', contact: 'Volver a contacto', map: 'Volver al mapa' })[reading.kind] : 'Volver al taller' : undefined}
+        returnLabel={publicMode === 'game' ? reading ? caseReturn[reading.kind] : caseReturn.workshop : undefined}
         onSelect={(id) => {
           if (id === caseId || !PROJECTS.some((project) => project.id === id && project.public)) return;
           const visible = PROJECTS.filter((project) => project.public && project.links.live);

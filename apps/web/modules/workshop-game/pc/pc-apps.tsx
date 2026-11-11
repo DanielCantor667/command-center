@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 
 import { PROJECTS } from '../../../data/projects';
 import { PUBLIC_PROFILE } from '../../../data/public-profile';
 import { ask, COMMANDS, complete, display, GITHUB, HOME, isCommand, run, type PcApp } from './shell';
+import { fill } from '../../../i18n/format';
+import { useDictionary, useLocale } from '../../../i18n/locale-provider';
 import styles from './pc.module.css';
 
 export const WALLPAPERS = { noche: styles.wallNight, neon: styles.wallNeon, taller: styles.wallWorkshop } as const;
@@ -24,6 +26,7 @@ function Markdown({ text }: { text: string }) {
 }
 
 export function TerminalApp({ onApp, onCase, onExit }: { onApp: (app: PcApp) => void; onCase: (id: string) => void; onExit: () => void }) {
+  const t = useDictionary().pc.terminal;
   const [cwd, setCwd] = useState(HOME);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [line, setLine] = useState('');
@@ -75,9 +78,9 @@ export function TerminalApp({ onApp, onCase, onExit }: { onApp: (app: PcApp) => 
   return <div className={styles.terminal} onClick={() => { if (!getSelection()?.toString()) input.current?.focus(); }}>
     <header className={styles.ccHeader}>
       <svg viewBox="0 0 18 6" preserveAspectRatio="none" aria-hidden="true">{CLAWD.flatMap((row, y) => [...row].map((pixel, x) => pixel === 'X' ? <rect key={`${x}-${y}`} x={x} y={y} width="1.02" height="1.02" /> : null))}</svg>
-      <div><p><strong>Claude Code</strong> <span>v2.1.314</span></p><p><span>Opus 5.5 · Demo sin IA</span></p><p><span>{display(cwd)}</span></p></div>
+      <div><p><strong>Claude Code</strong> <span>v2.1.314</span></p><p><span>{t.model}</span></p><p><span>{display(cwd)}</span></p></div>
     </header>
-    <div role="log" aria-live="polite" aria-label="Conversación de la terminal">{turns.map(turn => <div key={turn.id}>
+    <div role="log" aria-live="polite" aria-label={t.log}>{turns.map(turn => <div key={turn.id}>
       <p className={styles.ccUser}><span>{turn.bash ? '!' : '❯'}</span> {turn.bash ? turn.text.slice(1) : turn.text}</p>
       {turn.tools.map(tool => <div key={tool.target} className={styles.ccBlock}>
         <p className={styles.ccMessage}><span className={tool.error ? styles.ccDotError : styles.ccDotOk}>●</span><span><strong>{tool.name}</strong>({tool.target})</span></p>
@@ -87,13 +90,13 @@ export function TerminalApp({ onApp, onCase, onExit }: { onApp: (app: PcApp) => 
     </div>)}</div>
     {busy && <>
       <p className={styles.ccUser}><span>{busy.text.startsWith('!') ? '!' : '❯'}</span> {busy.text.replace(/^!/, '')}</p>
-      <p className={styles.ccSpinner} role="status"><span aria-hidden="true">{SPINNER[busy.frame % SPINNER.length]}</span> {busy.verb}… <small>(esc para salir)</small></p>
+      <p className={styles.ccSpinner} role="status"><span aria-hidden="true">{SPINNER[busy.frame % SPINNER.length]}</span> {busy.verb}… <small>{t.escape}</small></p>
     </>}
     <form onSubmit={submit} className={styles.ccInput} data-bash={bashMode}>
       <span aria-hidden="true">{bashMode ? '!' : '❯'}</span>
-      <input id="pc-terminal-input" ref={input} autoFocus aria-label={`Mensaje o comando en ${display(cwd)}`} placeholder={turns.length ? '' : 'Pregunta por mis proyectos, o escribe /help'} value={bashMode ? line.slice(1) : line} onChange={event => setLine((bashMode ? '!' : '') + event.target.value)} onKeyDown={key} autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="send" />
+      <input id="pc-terminal-input" ref={input} autoFocus aria-label={fill(t.input, { cwd: display(cwd) })} placeholder={turns.length ? '' : t.placeholder} value={bashMode ? line.slice(1) : line} onChange={event => setLine((bashMode ? '!' : '') + event.target.value)} onKeyDown={key} autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="send" />
     </form>
-    {suggestions.length > 0 ? <ul className={styles.ccOptions}>{suggestions.map(name => <li key={name}>/{name}</li>)}</ul> : <p className={styles.ccHint}><span>{bashMode ? 'modo bash' : '! para bash · / para comandos'}</span></p>}
+    {suggestions.length > 0 ? <ul className={styles.ccOptions}>{suggestions.map(name => <li key={name}>/{name}</li>)}</ul> : <p className={styles.ccHint}><span>{bashMode ? t.bashMode : t.hint}</span></p>}
     <div ref={end} />
   </div>;
 }
@@ -107,6 +110,7 @@ function Language({ name }: { name: string | null }) {
 
 /** The GitHub profile page, drawn from the real public snapshot. */
 export function GithubApp() {
+  const t = useDictionary().pc.github;
   const [tab, setTab] = useState<'overview' | 'repositories'>('overview');
   const { profile, contributions, repos, login } = GITHUB;
   // The calendar starts on a Sunday, so the days fill columns of seven like on the real profile.
@@ -116,13 +120,13 @@ export function GithubApp() {
       <strong>{login}</strong>
       <span className={styles.ghSearch}><Search size={13} aria-hidden="true" />Type / to search</span>
     </header>
-    <nav className={styles.ghTabs} aria-label="Perfil de GitHub">
+    <nav className={styles.ghTabs} aria-label={t.tabs}>
       <button type="button" aria-current={tab === 'overview' ? 'page' : undefined} onClick={() => setTab('overview')}><BookOpen size={15} aria-hidden="true" />Overview</button>
       <button type="button" aria-current={tab === 'repositories' ? 'page' : undefined} onClick={() => setTab('repositories')}><BookMarked size={15} aria-hidden="true" />Repositories<span>{repos.length}</span></button>
     </nav>
     <div className={styles.ghLayout}>
       <aside>
-        <img src={profile.avatarUrl} alt={`Foto de perfil de ${profile.name}`} width={230} height={230} loading="lazy" referrerPolicy="no-referrer" />
+        <img src={profile.avatarUrl} alt={fill(t.avatar, { name: profile.name })} width={230} height={230} loading="lazy" referrerPolicy="no-referrer" />
         <h3>{profile.name}</h3>
         <p className={styles.ghLogin}>{login}</p>
         <a className={styles.ghFollow} href={PUBLIC_PROFILE.github} target="_blank" rel="noreferrer">Follow</a>
@@ -135,9 +139,9 @@ export function GithubApp() {
           <h4>Popular repositories</h4>
           <ul className={styles.ghPinned}>{repos.slice(0, 6).map(repo => <li key={repo.name}><div><a href={repo.url} target="_blank" rel="noreferrer">{repo.name}</a><span>Public</span></div><p>{repo.description}</p><Language name={repo.language} /></li>)}</ul>
           <h4>{contributions.total} contributions in the last year</h4>
-          <div className={styles.ghCalendar} role="img" aria-label={`${contributions.total} contribuciones en el último año`}>{contributions.levels.map((level, index) => <i key={index} data-level={level} />)}</div>
+          <div className={styles.ghCalendar} role="img" aria-label={fill(t.contributions, { total: contributions.total })}>{contributions.levels.map((level, index) => <i key={index} data-level={level} />)}</div>
         </> : <ul className={styles.ghRepos}>{repos.map(repo => <li key={repo.name}><div><a href={repo.url} target="_blank" rel="noreferrer">{repo.name}</a><span>Public</span></div>{repo.description && <p>{repo.description}</p>}<small><Language name={repo.language} />Updated {repo.pushedAt}</small></li>)}</ul>}
-        <p className={styles.ghMuted}>Datos públicos al {GITHUB.generatedAt}. Los proyectos de clientes son privados.</p>
+        <p className={styles.ghMuted}>{fill(t.snapshot, { date: GITHUB.generatedAt })}</p>
       </main>
     </div>
   </div>;
@@ -158,47 +162,51 @@ export function ContactApp() {
   </div>;
 }
 
-const NOTES = [{ file: 'README.md', title: 'Sobre mí' }, { file: 'trayectoria.txt', title: 'Trayectoria' }];
+const NOTES = [{ file: 'README.md', title: 'about' }, { file: 'trayectoria.txt', title: 'career' }] as const;
 export function TrashApp() {
-  return <p className={styles.empty}>La papelera está vacía.</p>;
+  return <p className={styles.empty}>{useDictionary().pc.trash}</p>;
 }
 
 /** Preview: the browser's own PDF viewer in a frame; the download link covers phones that only show the first page. */
 export function CvApp() {
-  const [language, setLanguage] = useState<'ES' | 'EN'>('ES');
+  const t = useDictionary().pc.cv;
+  // The CV opens in the page's language; both stay one click away.
+  const [language, setLanguage] = useState<'ES' | 'EN'>(useLocale() === 'en' ? 'EN' : 'ES');
   const file = `/cv/CV_Daniel_Cantor_${language}.pdf`;
   return <div className={styles.preview}>
     <div className={styles.previewBar}>
-      <div role="group" aria-label="Idioma del CV">{(['ES', 'EN'] as const).map(id => <button key={id} type="button" aria-pressed={id === language} onClick={() => setLanguage(id)}>{id === 'ES' ? 'Español' : 'English'}</button>)}</div>
-      <a href={file} download>Descargar<Download size={14} aria-hidden="true" /></a>
+      <div role="group" aria-label={t.language}>{(['ES', 'EN'] as const).map(id => <button key={id} type="button" lang={id.toLowerCase()} aria-pressed={id === language} onClick={() => setLanguage(id)}>{id === 'ES' ? t.spanish : t.english}</button>)}</div>
+      <a href={file} download>{t.download}<Download size={14} aria-hidden="true" /></a>
     </div>
-    <iframe key={file} src={`${file}#toolbar=0&navpanes=0&view=FitH`} title={`CV de ${PUBLIC_PROFILE.name}`} />
+    <iframe key={file} src={`${file}#toolbar=0&navpanes=0&view=FitH`} title={fill(t.title, { name: PUBLIC_PROFILE.name })} />
   </div>;
 }
 
 export function NotesApp() {
-  const [open, setOpen] = useState(NOTES[0]!);
+  const t = useDictionary().pc.notes;
+  const [open, setOpen] = useState<(typeof NOTES)[number]>(NOTES[0]);
   return <div className={styles.split}>
-    <nav aria-label="Notas">{NOTES.map(note => <button key={note.file} type="button" aria-current={note === open ? 'true' : undefined} onClick={() => setOpen(note)}>{note.title}</button>)}</nav>
-    <article><h3>{open.title}</h3>{run(`cat ${open.file}`, HOME).output.map((text, index) => <p key={index}>{text}</p>)}</article>
+    <nav aria-label={t.label}>{NOTES.map(note => <button key={note.file} type="button" aria-current={note === open ? 'true' : undefined} onClick={() => setOpen(note)}>{t[note.title]}</button>)}</nav>
+    <article><h3>{t[open.title]}</h3>{run(`cat ${open.file}`, HOME).output.map((text, index) => <p key={index}>{text}</p>)}</article>
   </div>;
 }
 
-const SETTINGS = [{ id: 'wallpaper', name: 'Fondo de pantalla', icon: Wallpaper }, { id: 'sound', name: 'Sonido', icon: Volume2 }, { id: 'about', name: 'Acerca de', icon: Monitor }] as const;
+const SETTINGS = [{ id: 'wallpaper', icon: Wallpaper }, { id: 'sound', icon: Volume2 }, { id: 'about', icon: Monitor }] as const;
 export function SettingsApp({ wallpaper, onWallpaper, sound, onSound }: { wallpaper: WallpaperId; onWallpaper: (id: WallpaperId) => void; sound: boolean; onSound: () => void }) {
+  const t = useDictionary().pc.settings;
   const [page, setPage] = useState<(typeof SETTINGS)[number]['id']>('wallpaper');
   return <div className={styles.split}>
-    <nav aria-label="Ajustes">
+    <nav aria-label={t.label}>
       <p className={styles.account}>
         <img src={GITHUB.profile.avatarUrl} alt="" width={36} height={36} referrerPolicy="no-referrer" /><span>{PUBLIC_PROFILE.name}<small>Taller OS</small></span>
       </p>
-      {SETTINGS.map(({ id, name, icon: Icon }) => <button key={id} type="button" aria-current={id === page ? 'true' : undefined} onClick={() => setPage(id)}><Icon size={15} aria-hidden="true" />{name}</button>)}
+      {SETTINGS.map(({ id, icon: Icon }) => <button key={id} type="button" aria-current={id === page ? 'true' : undefined} onClick={() => setPage(id)}><Icon size={15} aria-hidden="true" />{t[id]}</button>)}
     </nav>
     <article>
-      <h3>{SETTINGS.find(item => item.id === page)!.name}</h3>
-      {page === 'wallpaper' && <div className={styles.swatches}>{(Object.keys(WALLPAPERS) as WallpaperId[]).map(id => <button key={id} type="button" className={WALLPAPERS[id]} aria-label={`Fondo ${id}`} aria-pressed={id === wallpaper} onClick={() => onWallpaper(id)} />)}</div>}
-      {page === 'sound' && <div className={styles.setting}><span>Sonido del taller</span><button type="button" role="switch" aria-checked={sound} aria-label="Sonido del taller" onClick={onSound}>{sound ? <Volume2 size={15} aria-hidden="true" /> : <VolumeX size={15} aria-hidden="true" />}{sound ? 'Activado' : 'Apagado'}</button></div>}
-      {page === 'about' && <><p>Taller OS, la PC de {PUBLIC_PROFILE.name}.</p><p>Hecho con Next.js, React y Three.js. El código está en GitHub.</p></>}
+      <h3>{t[page]}</h3>
+      {page === 'wallpaper' && <div className={styles.swatches}>{(Object.keys(WALLPAPERS) as WallpaperId[]).map(id => <button key={id} type="button" className={WALLPAPERS[id]} aria-label={fill(t.wallpaperOf, { name: t.wallpapers[id] })} aria-pressed={id === wallpaper} onClick={() => onWallpaper(id)} />)}</div>}
+      {page === 'sound' && <div className={styles.setting}><span>{t.workshopSound}</span><button type="button" role="switch" aria-checked={sound} aria-label={t.workshopSound} onClick={onSound}>{sound ? <Volume2 size={15} aria-hidden="true" /> : <VolumeX size={15} aria-hidden="true" />}{sound ? t.on : t.off}</button></div>}
+      {page === 'about' && <><p>{fill(t.aboutText, { name: PUBLIC_PROFILE.name })}</p><p>{t.builtWith}</p></>}
     </article>
   </div>;
 }

@@ -8,6 +8,7 @@ import { PROJECTS } from '../../../data/projects';
 import { BlenderPavilion } from './blender-pavilion';
 import { KLINIU_TOUR_STOPS, type KliniuTourStop } from './kliniu-tour';
 import { TechnologyLibrary, WORKSHOP_POSITIONS } from './workshop-table';
+import { useDictionary } from '../../../i18n/locale-provider';
 import styles from '../experience.module.css';
 import { cameraBaseZoom, entranceProfile, restoreCameraFrame, type CameraSnapshot, type CityCameraHandle } from '../workshop-state';
 
@@ -337,10 +338,12 @@ export function CityNavigator(props: CityNavigatorProps) {
     exploded,
     reducedMotion,
   } = props;
+  const { portfolio } = useDictionary();
+  const label = portfolio.city.canvas;
   return (
     <div
       role="group"
-      aria-label="Maqueta 3D interactiva de proyectos"
+      aria-label={label}
       style={{ height: '100%', width: '100%', cursor: 'grab', pointerEvents: props.entering ? 'none' : 'auto' }}
     >
       <Canvas
@@ -413,7 +416,7 @@ export function CityNavigator(props: CityNavigatorProps) {
         {onTechnologiesOpen && !props.entering && (
           <Html center position={[0, 0.35, 1]} zIndexRange={[15, 0]}>
             <button className={styles.libraryLabel} type="button" onClick={onTechnologiesOpen}>
-              Tecnologías
+              {portfolio.sections.technologies}
             </button>
           </Html>
         )}

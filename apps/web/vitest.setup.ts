@@ -17,3 +17,8 @@ Object.defineProperty(window, 'matchMedia', {
 afterEach(() => {
   cleanup();
 });
+
+// Components are tested outside the root layouts: Spanish, the default locale, stands in for LocaleProvider.
+import { es } from './i18n/es';
+import { setLocaleFallback } from './i18n/locale-provider';
+setLocaleFallback({ locale: 'es', dictionary: es });

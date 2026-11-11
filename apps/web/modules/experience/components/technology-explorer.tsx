@@ -12,6 +12,8 @@ import {
 } from '../../../data/portfolio-technologies';
 import { TECHNOLOGY_ICON_PATHS } from '../../../data/technology-icons';
 import styles from './technology-explorer.module.css';
+import { fill } from '../../../i18n/format';
+import { useDictionary } from '../../../i18n/locale-provider';
 
 const Icon3D = dynamic(
   () => import('./technology-icon-3d').then((module) => module.TechnologyIcon3D),
@@ -68,6 +70,7 @@ export function TechnologyExplorer({
   const projects = PROJECTS.filter(
     (project) => selected.projectIds.includes(project.id) && project.public,
   );
+  const t = useDictionary().technologies;
   const selectCategory = (id: TechnologyCategory | 'all') => {
     updateFilters({ category: id, projectId: null });
   };
@@ -75,26 +78,26 @@ export function TechnologyExplorer({
     <div className={`${styles.explorer} ${presentation === 'html' ? styles.html : ''}`} data-technology-presentation={presentation}>
       <div className={styles.tools}>
         <label className={styles.search}>
-          <span>Buscar tecnología</span>
+          <span>{t.search}</span>
           <input
             type="search"
-            placeholder="Nombre, herramienta o concepto…"
+            placeholder={t.placeholder}
             value={query}
             onChange={(event) => updateFilters({ query: event.target.value })}
           />
         </label>
         <span className={styles.count} role="status">
-          {filtered.length} {filtered.length === 1 ? 'tecnología' : 'tecnologías'}
+          {filtered.length} {filtered.length === 1 ? t.one : t.many}
         </span>
       </div>
       <div className={styles.body}>
-        <nav className={styles.categories} aria-label="Categorías de tecnologías">
+        <nav className={styles.categories} aria-label={t.categories}>
           <button
             type="button"
             aria-pressed={category === 'all'}
             onClick={() => selectCategory('all')}
           >
-            Todas <span>{PORTFOLIO_TECHNOLOGIES.length}</span>
+            {t.all} <span>{PORTFOLIO_TECHNOLOGIES.length}</span>
           </button>
           {TECHNOLOGY_CATEGORIES.map((item) => (
             <button
@@ -109,18 +112,18 @@ export function TechnologyExplorer({
               </span>
             </button>
           ))}
-          <p>Herramientas con las que construyo.</p>
+          <p>{t.tagline}</p>
         </nav>
         <div className={styles.catalog}>
           {projectFilter && (
             <div className={styles.filterNotice}>
-              <span>Stack de {PROJECTS.find((p) => p.id === projectFilter)?.name}</span>
+              <span>{fill(t.stackOf, { name: PROJECTS.find((p) => p.id === projectFilter)?.name ?? '' })}</span>
               <button type="button" onClick={() => updateFilters({ projectId: null })}>
-                Quitar filtro
+                {t.clearFilter}
               </button>
             </div>
           )}
-          <div className={styles.grid} role="group" aria-label="Catálogo de tecnologías">
+          <div className={styles.grid} role="group" aria-label={t.catalog}>
             {filtered.map((technology) => (
               <button
                 type="button"
@@ -128,7 +131,7 @@ export function TechnologyExplorer({
                 key={technology.id}
                 style={{ '--tech-color': technology.color } as CSSProperties}
                 aria-pressed={technology.id === selected.id}
-                aria-label={`Explorar ${technology.name}`}
+                aria-label={fill(t.explore, { name: technology.name })}
                 onClick={() => {
                   onSelect(technology.id);
                   if (window.matchMedia('(max-width:800px)').matches)
@@ -151,15 +154,15 @@ export function TechnologyExplorer({
           </div>
           {!filtered.length && (
             <div className={styles.empty}>
-              <h3>No hay coincidencias</h3>
-              <p>Prueba otro nombre o explora todas las tecnologías.</p>
+              <h3>{t.empty}</h3>
+              <p>{t.emptyHint}</p>
               <button
                 type="button"
                 onClick={() => {
                   updateFilters({ query: '', category: 'all', projectId: null });
                 }}
               >
-                Limpiar filtros
+                {t.clear}
               </button>
             </div>
           )}
@@ -167,11 +170,11 @@ export function TechnologyExplorer({
         <aside
           ref={detailRef}
           className={styles.detail}
-          aria-label="Detalle de tecnología"
+          aria-label={t.detail}
           style={{ '--tech-color': selected.color } as CSSProperties}
         >
           <div className={styles.inspector}>
-            {presentation === 'html' ? <div className={styles.htmlMark} role="img" aria-label={`Marca de ${selected.name}`}><Mark technology={selected} /></div> : <Icon3D
+            {presentation === 'html' ? <div className={styles.htmlMark} role="img" aria-label={fill(t.mark, { name: selected.name })}><Mark technology={selected} /></div> : <Icon3D
               id={selected.id}
               name={selected.name}
               fallback={
@@ -191,41 +194,35 @@ export function TechnologyExplorer({
             </p>
             <h3 aria-live="polite">{selected.name}</h3>
             <p>{selected.description}</p>
-            <h4>En mis proyectos</h4>
+            <h4>{t.inProjects}</h4>
             {projects.length ? (
               <ul className={styles.projectLinks}>
                 {projects.map((project) => (
                   <li key={project.id}>
                     <button type="button" onClick={() => onProjectSelect(project.id)}>
                       {project.name}
-                      <span>Ver proyecto</span>
+                      <span>{t.viewProject}</span>
                     </button>
                     <button
                       className={styles.stackLink}
                       type="button"
-                      aria-label={`Ver tecnologías de ${project.name}`}
+                      aria-label={fill(t.stackLabel, { name: project.name })}
                       onClick={() => {
                         updateFilters({ projectId: project.id, category: 'all', query: '' });
                       }}
                     >
-                      Ver stack
+                      {t.viewStack}
                     </button>
                   </li>
                 ))}
               </ul>
             ) : (
               <p className={styles.source}>
-                {selected.source === 'declared'
-                  ? 'Herramienta de trabajo diaria; no está ligada a un proyecto concreto de este portafolio.'
-                  : 'Incluida en mi CV. Aún sin un proyecto asociado en este portafolio.'}
+                {selected.source === 'declared' ? t.noProjectDeclared : t.noProjectCv}
               </p>
             )}
             <p className={styles.source}>
-              {selected.source === 'declared'
-                ? 'Fuente: declarada por Daniel.'
-                : selected.source === 'cv'
-                  ? 'Fuente: CV de Daniel.'
-                  : 'Fuente: CV y documentación de proyectos.'}
+              {selected.source === 'declared' ? t.sourceDeclared : selected.source === 'cv' ? t.sourceCv : t.sourceBoth}
             </p>
           </div>
         </aside>

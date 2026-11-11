@@ -22,7 +22,9 @@ import { useWorkshopAudio } from './workshop-audio';
 import styles from './workshop-game.module.css';
 import { LanguageSwitch } from '../../i18n/language-switch';
 import { localePath } from '../../i18n/config';
-import { useLocale } from '../../i18n/locale-provider';
+import { fill } from '../../i18n/format';
+import { useDictionary, useLocale } from '../../i18n/locale-provider';
+import { placeNames } from './place-names';
 const PcDesktop = dynamic(() => import('./pc/pc-desktop').then(module => module.PcDesktop), { ssr: false, loading: () => null });
 const WorldScene = dynamic(() => import('./world-scene').then(module => module.WorldScene), { ssr: false, loading: () => null });
 class WorldBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -32,7 +34,7 @@ class WorldBoundary extends Component<{ children: ReactNode; onError: () => void
   render() { return this.state.failed ? null : this.props.children; }
 }
 export interface WorkshopGameProps { initialSnapshot?: GameSnapshot; suspended?: boolean; onSave: (snapshot: GameSnapshot) => void; onOpenCase: (id: string) => void; onPortfolio: () => void; reading?: WorkshopReading | null; onRead?: (reading: WorkshopReading | null) => void; technologyFilters?: TechnologyFilters; onTechnologyFiltersChange?: (filters: TechnologyFilters) => void }
-const pointNames: Record<WorldPoint, string> = { ...Object.fromEntries(CORNER_PROJECTS.map(id => [`corner-${id}`, PROJECTS.find(project => project.id === id)!.name])) as Record<CornerPoint, string>, entrance: 'Entrada', hub: 'El taller', projects: 'Proyectos', technologies: STATIONS.technologies.name, trajectory: STATIONS.trajectory.name, contact: STATIONS.contact.name };
+const cornerNames = Object.fromEntries(CORNER_PROJECTS.map(id => [`corner-${id}`, PROJECTS.find(project => project.id === id)!.name])) as Record<CornerPoint, string>;
 /** 11.4: guided tour order (wheel or arrow keys), the same as the navigation: overview first, then each wall. */
 export const TOUR: Exclude<WorldPoint, 'entrance'>[] = ['hub', 'projects', 'technologies', 'trajectory', 'contact'];
 /** Wheel and arrow keys: the navigation order, walking each project corner after the wall. */
@@ -67,6 +69,8 @@ function TouchPad() {
 const defaultFilters: TechnologyFilters = { query: '', category: 'all', projectId: null };
 export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpenCase, onPortfolio, reading: controlledReading, onRead, technologyFilters = defaultFilters, onTechnologyFiltersChange = () => {} }: WorkshopGameProps) {
   const locale = useLocale();
+  const { workshop: t } = useDictionary();
+  const pointNames: Record<WorldPoint, string> = { ...cornerNames, ...placeNames(t) };
   const [localReading, setLocalReading] = useState<WorkshopReading | null>(null);
   const reading = controlledReading === undefined ? localReading : controlledReading;
   const previousReading = useRef(!!reading);
@@ -211,42 +215,42 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     </WorldBoundary></div>}
     <div className={styles.shade} aria-hidden="true" />
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>
-      {!inside && <button type="button" className={styles.portfolio} aria-label="Mapa" title="Mapa" onClick={() => setReading({ kind: 'map' })}><span className={styles.actionText}>Mapa</span><Map size={17} aria-hidden="true" /></button>}
-      {inside && <button type="button" className={styles.portfolio} aria-label="Sonido" title={sound ? 'Apagar sonido' : 'Activar sonido'} aria-pressed={sound} onClick={toggleSound}><span className={styles.actionText}>Sonido</span>{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}
+      {!inside && <button type="button" className={styles.portfolio} aria-label={t.header.map} title={t.header.map} onClick={() => setReading({ kind: 'map' })}><span className={styles.actionText}>{t.header.map}</span><Map size={17} aria-hidden="true" /></button>}
+      {inside && <button type="button" className={styles.portfolio} aria-label={t.header.sound} title={sound ? t.header.soundOff : t.header.soundOn} aria-pressed={sound} onClick={toggleSound}><span className={styles.actionText}>{t.header.sound}</span>{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}
       <LanguageSwitch className={styles.portfolio} />
-      <button type="button" className={styles.portfolio} aria-label="Ver portafolio" title="Ver portafolio" onClick={portfolio}><span className={styles.actionText}>Ver portafolio</span><ArrowUpRight size={17} aria-hidden="true" /></button>
+      <button type="button" className={styles.portfolio} aria-label={t.header.portfolio} title={t.header.portfolio} onClick={portfolio}><span className={styles.actionText}>{t.header.portfolio}</span><ArrowUpRight size={17} aria-hidden="true" /></button>
     </div></header>
     {state.status === 'landing' && <section className={styles.welcome} aria-labelledby="workshop-title">
-      <p className={styles.location}>{PUBLIC_PROFILE.location}</p><h1 id="workshop-title">El taller de Daniel</h1><p>Un lugar para explorar<br />lo que construyo.</p>
-      <button ref={enterButton} className={styles.primary} type="button" onClick={() => void start()}>Entrar al taller<DoorOpen size={19} aria-hidden="true" /></button><span className={styles.hint}>Recorre el espacio con clic o toque.</span>
-      <nav className={styles.quickProjects} aria-label="Proyectos publicados">{QUICK_PROJECTS.map(project => <button key={project.id} className={styles.quickProject} type="button" aria-label={`Leer caso de ${project.name}`} onClick={() => openRelatedCase(project.id)}>{project.name}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</nav>
+      <p className={styles.location}>{PUBLIC_PROFILE.location}</p><h1 id="workshop-title">{t.name}</h1><p>{t.landing.taglineTop}<br />{t.landing.taglineBottom}</p>
+      <button ref={enterButton} className={styles.primary} type="button" onClick={() => void start()}>{t.landing.enter}<DoorOpen size={19} aria-hidden="true" /></button><span className={styles.hint}>{t.landing.hint}</span>
+      <nav className={styles.quickProjects} aria-label={t.landing.quickProjects}>{QUICK_PROJECTS.map(project => <button key={project.id} className={styles.quickProject} type="button" aria-label={fill(t.landing.readCaseOf, { name: project.name })} onClick={() => openRelatedCase(project.id)}>{project.name}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</nav>
     </section>}
     {(state.status === 'loading' || state.status === 'error') && <section className={styles.loadPanel} aria-labelledby="world-loading-title">
       <div className={styles.blueprint} aria-hidden="true"><span /><span /><span /><span /></div>
-      <h1 id="world-loading-title">{state.status === 'error' ? 'El taller no está disponible' : 'Encendiendo la lámpara'}</h1>
-      <p role="status" aria-live="polite">{state.status === 'error' ? 'Puedes reintentar o explorar los proyectos en el portafolio.' : preparing ? 'Preparando la escena' : 'Cargando el espacio del taller'}</p>
-      {state.status === 'loading' ? <><div className={styles.loadTrack} role="progressbar" aria-label="Carga del taller" aria-valuetext={preparing ? 'Preparando la escena' : 'Cargando el espacio'}><span /></div><button type="button" className={styles.cancel} onClick={cancel}>Cancelar entrada<X size={16} aria-hidden="true" /></button></> : <button ref={retryButton} className={styles.primary} type="button" onClick={() => void start()}>Reintentar<RotateCcw size={17} aria-hidden="true" /></button>}
+      <h1 id="world-loading-title">{state.status === 'error' ? t.loading.errorTitle : t.loading.title}</h1>
+      <p role="status" aria-live="polite">{state.status === 'error' ? t.loading.errorText : preparing ? t.loading.preparing : t.loading.loadingSpace}</p>
+      {state.status === 'loading' ? <><div className={styles.loadTrack} role="progressbar" aria-label={t.loading.progress} aria-valuetext={preparing ? t.loading.preparing : t.loading.progressLoading}><span /></div><button type="button" className={styles.cancel} onClick={cancel}>{t.loading.cancel}<X size={16} aria-hidden="true" /></button></> : <button ref={retryButton} className={styles.primary} type="button" onClick={() => void start()}>{t.loading.retry}<RotateCcw size={17} aria-hidden="true" /></button>}
     </section>}
-    {freeWalk && <section className={styles.freeWalk} aria-label="Explorar libre">
+    {freeWalk && <section className={styles.freeWalk} aria-label={t.walk.label}>
       {touch && <TouchPad />}
       <span className={styles.crosshair} aria-hidden="true" />
       {walkSpot && <button type="button" className={styles.walkPrompt} onClick={() => selectWalkSpot(walkSpot)}><kbd>E</kbd>{pointNames[walkSpot]}</button>}
-      <p className={styles.walkHint}>{touch ? 'Izquierda: caminar. Derecha: mirar.' : 'WASD para caminar, el mouse para mirar. Esc para salir.'}</p>
-      <button type="button" className={styles.walkExit} onClick={exitWalk}>Salir<X size={15} aria-hidden="true" /></button>
+      <p className={styles.walkHint}>{touch ? t.walk.touchHint : t.walk.keyboardHint}</p>
+      <button type="button" className={styles.walkExit} onClick={exitWalk}>{t.walk.exit}<X size={15} aria-hidden="true" /></button>
     </section>}
     {inside && !freeWalk && <>
       <div className={styles.journey}>
-        <div className={styles.destination} role="status">{(() => { const shown = state.status === 'moving' ? state.destination : state.point; const index = TOUR.indexOf(navPoint(shown) as (typeof TOUR)[number]); return <>{index >= 0 && <span className={styles.tourStep}>{index + 1} / {TOUR.length}</span>}<span>{state.status === 'moving' && <span className={styles.movingPrefix}>Acercándote a </span>}{pointNames[shown]}</span></>; })()}</div>
-        {state.status === 'moving' && <button className={styles.stop} type="button" aria-label="Cancelar recorrido" title="Cancelar recorrido" onClick={cancel}><span className={styles.stopText}>Cancelar recorrido</span><X size={16} aria-hidden="true" /></button>}
+        <div className={styles.destination} role="status">{(() => { const shown = state.status === 'moving' ? state.destination : state.point; const index = TOUR.indexOf(navPoint(shown) as (typeof TOUR)[number]); return <>{index >= 0 && <span className={styles.tourStep}>{index + 1} / {TOUR.length}</span>}<span>{state.status === 'moving' && <span className={styles.movingPrefix}>{t.tour.approaching}</span>}{pointNames[shown]}</span></>; })()}</div>
+        {state.status === 'moving' && <button className={styles.stop} type="button" aria-label={t.tour.cancel} title={t.tour.cancel} onClick={cancel}><span className={styles.stopText}>{t.tour.cancel}</span><X size={16} aria-hidden="true" /></button>}
       </div>
       <div className={styles.bottomControls}>
       {inspecting && <ProjectsInspection buttonRef={openButton} onOpen={openRelatedCase} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {corner && <CornerInspection key={corner} projectId={corner} buttonRef={openButton} onOpen={openRelatedCase} onStep={step => go(WALK[WALK.indexOf(state.point as (typeof WALK)[number]) + step]!)} onAll={() => go('projects')} onBack={() => go('hub')} onFocus={id => setFocus(id ? { kind: 'project', id } : null)} />}
       {station && <StationInspection key={station} station={station} buttonRef={openButton} computerButtonRef={computerButton} onOpen={openStation} onBack={() => go('hub')} onComputer={station === 'contact' ? () => openComputer(computerButton.current) : undefined} />}
-      <nav className={styles.navigation} aria-label="Recorrer el taller">{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : `Ir a ${pointNames[point]}`} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>Mapa<Map size={14} aria-hidden="true" /></button>{state.status === 'exploring' && <button type="button" onClick={() => setFreeWalk(true)}>Explorar libre<Footprints size={14} aria-hidden="true" /></button>}</nav>
-      <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
+      <nav className={styles.navigation} aria-label={t.tour.navigation}>{TOUR.map(point => <button key={point} data-world-nav={point} ref={node => { navigationButtons.current[point] = node; }} type="button" onClick={() => go(point)} aria-label={point === 'hub' ? undefined : fill(t.tour.goTo, { name: pointNames[point] })} aria-current={navPoint(state.point) === point && state.status === 'exploring' ? 'location' : undefined}>{pointNames[point]}</button>)}<button type="button" onClick={() => setReading({ kind: 'map' })}>{t.header.map}<Map size={14} aria-hidden="true" /></button>{state.status === 'exploring' && <button type="button" onClick={() => setFreeWalk(true)}>{t.walk.label}<Footprints size={14} aria-hidden="true" /></button>}</nav>
+      <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> {t.tour.drag} <span className={styles.wideOnly}>{t.tour.wheel}</span><span className={styles.narrowOnly}>{t.tour.choose}</span></p>
       </div>
     </>}
-    <footer className={styles.footer}><span>El taller de Daniel</span>{state.status === 'landing' && <a className={styles.creditsLink} href={localePath(locale, '/creditos')}>Créditos de modelos</a>}</footer>
+    <footer className={styles.footer}><span>{t.name}</span>{state.status === 'landing' && <a className={styles.creditsLink} href={localePath(locale, '/creditos')}>{t.credits}</a>}</footer>
   </main>{computer === 'open' && !suspended && <PcDesktop onClose={closeComputer} onCase={openRelatedCase} sound={sound} onSound={toggleSound} />}{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;
 }

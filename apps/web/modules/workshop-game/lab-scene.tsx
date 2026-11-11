@@ -11,7 +11,9 @@ import { patrolAt } from './lab-patrol';
 import { soundscape } from './lab-soundscape';
 import { focusRelations, focusViewpoint, type LabFocus } from './lab-focus';
 import { ContactMonitor, pointer, ProjectCorners, ProjectWall, Whiteboard } from './lab-content';
-import { STATIONS } from './stations';
+import { useDictionary } from '../../i18n/locale-provider';
+import { placeNames } from './place-names';
+import { STATIONS, type StationId } from './stations';
 import { TechnologyShelf } from './technology-shelf';
 import { cornerPoint, type WorldPoint } from './world-state';
 import styles from './workshop-game.module.css';
@@ -159,9 +161,9 @@ function findHead(scene: Object3D): Object3D | null {
   return heads[0] ?? null;
 }
 
-const HUB_LABELS: { point: WorldPoint; text: string; at: [number, number, number] }[] = [
-  { point: 'projects', text: 'Proyectos', at: [3.75, 2.45, -2.4] },
-  ...Object.values(STATIONS).map(station => ({ point: station.id, text: station.name, at: station.hotspot })),
+const HUB_LABELS: { point: 'projects' | StationId; at: [number, number, number] }[] = [
+  { point: 'projects', at: [3.75, 2.45, -2.4] },
+  ...Object.values(STATIONS).map(station => ({ point: station.id, at: station.hotspot })),
 ];
 
 export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology, onComputer, freeWalk }: {
@@ -169,6 +171,8 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
   onGo: (point: WorldPoint) => void; onOpenCase: (id: string) => void; onTechnology: (technologyId: string) => void; onComputer: () => void; freeWalk: boolean;
 }) {
   const { invalidate } = useThree();
+  // Read here, inside the Canvas (R3F bridges context): drei's Html renders its button in a separate root.
+  const names = placeNames(useDictionary().workshop);
   const relations = useMemo(() => focusRelations(focus), [focus]);
   const viewpoint = useMemo(() => focusViewpoint(focus), [focus]);
   // The demand loop does not run under reduced motion: a focus change still has to draw once.
@@ -207,7 +211,7 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
     </mesh>
     {/* Labels only from the overview, where every destination is in view. */}
     {point === 'hub' && !freeWalk && HUB_LABELS.map(label => <Html key={label.point} position={label.at} center>
-      <button type="button" className={styles.hotspot} onClick={() => onGo(label.point)}>{label.text}</button>
+      <button type="button" className={styles.hotspot} onClick={() => onGo(label.point)}>{names[label.point]}</button>
     </Html>)}
   </group>;
 }
