@@ -72,6 +72,9 @@ function Composer({ onSlow, lite, point, moving, reducedMotion }: { onSlow: () =
     return next;
     // eslint-disable-next-line react-hooks/exhaustive-deps -- size is applied in the effect below
   }, [gl, scene, camera, lite]);
+  // P.1 (specs/workshop-performance.md): one render with every pass still enabled compiles the depth of field behind
+  // the loading panel; otherwise it compiles on the first stop and that frame stalls. Must run before the effect below.
+  useEffect(() => { composer.render(); }, [composer]);
   // Focus on what the stop looks at. Off on the overview, on the way and for reduced motion.
   useEffect(() => {
     const pass = composer.passes.find(item => item instanceof BokehPass) as BokehPass | undefined;

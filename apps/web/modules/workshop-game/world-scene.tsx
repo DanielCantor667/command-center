@@ -14,6 +14,7 @@ import { WorkshopLighting } from './workshop-lighting';
 import { AmbientLife } from './workshop-life';
 import { WorkshopPostprocessing } from './workshop-postprocessing';
 import { FreeRoam } from './free-roam';
+import { warmUpScene } from './scene-warmup';
 import type { WalkSpot } from './free-walk';
 
 export function resetWorkshopResource() { useGLTF.clear(labEssentialUrls()); }
@@ -28,25 +29,31 @@ export interface WorldSceneProps {
   freeWalk: boolean; walkSpots: readonly WalkSpot<WorldPoint>[]; onWalkExit: () => void; onWalkSpot: (point: WorldPoint | null) => void; onWalkSelect: (point: WorldPoint) => void;
 }
 function SceneLifecycle({ token, onReady, onError, onPreparing }: Pick<WorldSceneProps, 'token' | 'onReady' | 'onError' | 'onPreparing'>) {
-  const { gl, invalidate } = useThree();
+  const { gl, invalidate, scene, camera } = useThree();
   const loadToken = useRef(token);
   const callbacks = useRef({ onReady, onError, onPreparing, token });
   callbacks.current = { onReady, onError, onPreparing, token };
   useEffect(() => {
     callbacks.current.onPreparing();
-    const before = gl.info.render.frame;
-    let delivered = false;
-    const removeAfterEffect = addAfterEffect(() => {
-      if (!delivered && !gl.getContext().isContextLost() && gl.info.render.frame > before) {
-        delivered = true;
-        callbacks.current.onReady(loadToken.current);
-      }
+    let cancelled = false;
+    let removeAfterEffect = () => {};
+    void warmUpScene(gl, scene, camera).then(() => {
+      if (cancelled) return;
+      const before = gl.info.render.frame;
+      let delivered = false;
+      removeAfterEffect = addAfterEffect(() => {
+        if (!delivered && !gl.getContext().isContextLost() && gl.info.render.frame > before) {
+          delivered = true;
+          callbacks.current.onReady(loadToken.current);
+        }
+      });
+      invalidate();
     });
-    invalidate();
     return () => {
+      cancelled = true;
       removeAfterEffect();
     };
-  }, [gl, invalidate]);
+  }, [gl, invalidate, scene, camera]);
   return null;
 }
 
