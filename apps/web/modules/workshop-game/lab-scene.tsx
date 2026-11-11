@@ -179,13 +179,19 @@ export function LabScene({ point, focus, onFocus, onGo, onOpenCase, onTechnology
     if (point === place) onOpenCase(id); else onGo(place);
   };
   useEffect(() => () => { document.body.style.cursor = ''; }, []);
+  // P.2 (specs/workshop-performance.md): this effect runs once the room has loaded, so rain, plants and actors only
+  // start downloading then and never share the bandwidth with the essential room.
+  const [decorate, setDecorate] = useState(false);
+  useEffect(() => { setDecorate(true); }, []);
   return <group>
     <Room /><CitySky />
-    <OptionalBoundary><Suspense fallback={null}><LabRain /></Suspense></OptionalBoundary>
-    <OptionalBoundary><Suspense fallback={null}><Plants /></Suspense></OptionalBoundary>
-    {LAB_ACTORS.map((actor, index) => <OptionalBoundary key={actor.id}><Suspense fallback={null}>
-      <Actor actor={actor} phase={index * 1.7} target={viewpoint} />
-    </Suspense></OptionalBoundary>)}
+    {decorate && <>
+      <OptionalBoundary><Suspense fallback={null}><LabRain /></Suspense></OptionalBoundary>
+      <OptionalBoundary><Suspense fallback={null}><Plants /></Suspense></OptionalBoundary>
+      {LAB_ACTORS.map((actor, index) => <OptionalBoundary key={actor.id}><Suspense fallback={null}>
+        <Actor actor={actor} phase={index * 1.7} target={viewpoint} />
+      </Suspense></OptionalBoundary>)}
+    </>}
     <OptionalBoundary><Suspense fallback={null}>
       <ProjectWall lit={relations.projects} focused={!!focus} onSelect={selectProject}
         onHover={(id, anchor) => onFocus(id ? { kind: 'project', id, anchor } : null)} />

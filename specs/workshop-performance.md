@@ -68,3 +68,27 @@ Medición por trabajo GPU tras mostrar el taller (Chrome con perfil limpio y sin
 discrimina): escritorio 0 compilaciones y 0 subidas tardías antes y después; móvil simulado, subidas tardías 43 → 18,
 compilaciones tardías 4 → 4 (3 de `lab-emissive` cerca de los 15 s, causa sin aislar; no es visibilidad). Costo: 75
 programas compilados antes de mostrar en vez de 46. Daniel lo probó en su iPhone 17: funciona.
+
+## P.2 (2026-11-11, sin commit)
+
+- **Decoración diferida:** `LabScene` monta lluvia, plantas y actores en un efecto, es decir cuando la sala esencial ya
+  cargó; antes los 11 GLB se pedían a la vez y se repartían el ancho de banda.
+- **`lab-baked` low:** simplificación (error 0,001) y sin normales (`drop_workshop_normals.cjs`; low es
+  `MeshBasicMaterial`) aplicadas **sobre el archivo instalado**: 8,66 → 6,71 MB, 393k → ~269k triángulos.
+- **`lab-plants` low:** texturas a 256 px: 2,03 → 1,03 MB (se reproduce byte a byte desde el bake vigente).
+- `compress_workshop_lab.sh` incorpora los dos pasos para low. Ojo: el bake vigente es
+  `command-center-assets/lookdev/visual3-20261103-x_9gdnnz/build-2`, no `command-center-assets/build` (30 oct, más
+  oscuro), y el `lab-baked` de cada tier instalado es una variante de calidad elegida con `install_verified.py`;
+  correr el script no reproduce exactamente lo instalado.
+
+| Medida (Chrome limpio, CPU ×4, 4G 9 Mbps, 390 px, `low`) | Antes | Después | Meta |
+| --- | --- | --- | --- |
+| Tiempo hasta entrar al taller | 11,1 s | **6,2 s** | ≤ 7 s ✓ |
+| GLB pedidos antes de entrar | 11 | 2 | — |
+| Esencial (`lab-baked` + `lab-emissive`) | 9,2 MB | 7,3 MB | ≤ 5 MB ✗ |
+| Total del tier | 14,0 MB | 11,1 MB | ≤ 8 MB ✗ |
+| Capturas en las 5 tomas a 390 px | — | ≤ 0,3 % de píxeles distintos, mismo brillo | sin diferencias ✓ |
+
+Lo que falta para las metas de peso: `TEXCOORD_0` (UV del detalle) ocupa 1,85 MB en float32 porque está fuera de
+[0, 1] y no se puede cuantizar sin reescalarla y compensar en el shader (`withDetail`); quitar el detalle en low
+cambiaría el aspecto. Ambas quedan como decisión de Daniel.

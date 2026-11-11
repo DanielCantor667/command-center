@@ -37,11 +37,17 @@ compress() {
   $GT meshopt "$TMP/$name.glb" "$OUT/$tier/$name-v1.glb"
 }
 
-for tier_size in high:8192:1024:384 medium:4096:512:256 low:2048:512:192; do
-  IFS=: read -r tier room props detail <<< "$tier_size"
+# tier:lightmap:props:detail:plants:simplify error (P.2, specs/workshop-performance.md: phones get coarser geometry)
+for tier_size in high:8192:1024:384:512:0.0001 medium:4096:512:256:512:0.0001 low:2048:512:192:256:0.001; do
+  IFS=: read -r tier room props detail plants error <<< "$tier_size"
   mkdir "$OUT/$tier"
   # baked room: the lightmaps hold the light; the detail and normal textures (R.2b) are what the smaller tiers give up
-  $GT optimize "$SRC/lab-baked.glb" "$TMP/lab-baked-optimized.glb" --compress false --texture-compress false
+  $GT optimize "$SRC/lab-baked.glb" "$TMP/lab-baked-optimized.glb" --compress false --texture-compress false --simplify-error "$error"
+  # The low tier draws the room unlit: its normals are dead weight.
+  if [[ "$tier" == low ]]; then
+    npx -y --package=@gltf-transform/cli@4.5.1 -- node "$SCRIPT_DIR/drop_workshop_normals.cjs" "$TMP/lab-baked-optimized.glb" "$TMP/lab-baked-unlit.glb"
+    mv "$TMP/lab-baked-unlit.glb" "$TMP/lab-baked-optimized.glb"
+  fi
   # The CLI's glob tests names AND URIs: embedded images have empty URIs, so a negated
   # glob can accidentally resize lightmaps too. Select textures directly instead.
   npx -y --package=@gltf-transform/cli@4.5.1 -- node "$SCRIPT_DIR/resize_workshop_textures.cjs" "$TMP/lab-baked-optimized.glb" "$TMP/lab-baked.glb" "$detail"
@@ -57,7 +63,7 @@ for tier_size in high:8192:1024:384 medium:4096:512:256 low:2048:512:192; do
   fi
   $GT meshopt "$TMP/lab-baked-ktx.glb" "$OUT/$tier/lab-baked-v1.glb"
   compress lab-emissive "$tier" 512
-  compress lab-plants "$tier" 512
+  compress lab-plants "$tier" "$plants"
   for actor in robot-cobot drone-k07 drone-mech cat robot-humanoid robot-quad robot-trilobite; do
     # actors keep their node hierarchy so animations stay addressable
     compress "$actor" "$tier" "$props" --join false --flatten false --instance false
