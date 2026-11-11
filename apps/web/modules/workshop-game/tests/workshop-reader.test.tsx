@@ -18,6 +18,10 @@ function Reader({ reading, ...props }: Partial<WorkshopReaderProps> & { reading:
 }
 
 describe('Workshop reader', () => {
+  it.each([true, false])('offers model credits from the map with worldAvailable=%s', worldAvailable => {
+    render(<Reader reading={{ kind: 'map' }} worldAvailable={worldAvailable} />);
+    expect(within(screen.getByRole('dialog', { name: 'Mapa del taller' })).getByRole('link', { name: 'Créditos de modelos' })).toHaveAttribute('href', '/creditos');
+  });
   it('reads and filters the complete technology catalogue in HTML, including projects without a physical room', () => {
     const open = vi.fn();
     render(<Reader reading={{ kind: 'technologies', technologyId: 'nextjs' }} onOpenCase={open} />);

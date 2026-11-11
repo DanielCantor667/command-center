@@ -242,6 +242,6 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}
-    <footer className={styles.footer}><span>El taller de Daniel</span>{!inside && <span>3D al entrar</span>}</footer>
+    <footer className={styles.footer}><span>El taller de Daniel</span>{state.status === 'landing' && <a className={styles.creditsLink} href="/creditos">Créditos de modelos</a>}</footer>
   </main>{computer === 'open' && !suspended && <PcDesktop onClose={closeComputer} onCase={openRelatedCase} sound={sound} onSound={toggleSound} />}{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;
 }

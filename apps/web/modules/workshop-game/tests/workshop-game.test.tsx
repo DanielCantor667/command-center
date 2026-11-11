@@ -37,6 +37,11 @@ describe('workshop game access', () => {
     expect(portfolio).toHaveBeenCalledOnce();
     expect(save).not.toHaveBeenCalled();
   });
+  it('offers model credits from the landing without starting the 3D world', () => {
+    render(<WorkshopGame onOpenCase={vi.fn()} onSave={vi.fn()} onPortfolio={vi.fn()} />);
+    expect(screen.getByRole('link', { name: 'Créditos de modelos' })).toHaveAttribute('href', '/creditos');
+    expect(document.querySelector('[data-world-canvas]')).not.toBeInTheDocument();
+  });
   it.each([
     ['Kliniu', 'kliniu'], ["L'ORIGINE", 'lorigine'], ['4U Studio Academy', '4ustudio-academy'], ['Drokex', 'drokex'],
   ])('opens the published %s case directly from the landing without starting or saving 3D', (name, id) => {

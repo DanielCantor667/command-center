@@ -69,3 +69,5 @@
 @media (prefers-reduced-motion: reduce) {
   .backdrop, .panel, .panel * { transition-property: none; }
 }
+.creditsLink { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; color: #315749; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.creditsLink:focus-visible { outline: 3px solid #856221; outline-offset: 3px; }

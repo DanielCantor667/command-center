@@ -69,5 +69,6 @@ export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, 
         </button>)}
       </nav>
     </div>
+    <a className={styles.creditsLink} href="/creditos">Créditos de modelos</a>
   </div>;
 }

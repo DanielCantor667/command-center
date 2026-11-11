@@ -27,4 +27,5 @@ Cambios: reescalados, reducidos de polígonos, texturas recomprimidas e iluminac
 ## CC0 (dominio público, crédito de cortesía)
 
 - [Poly Haven](https://polyhaven.com): props de taller, plantas, lámparas, texturas de concreto, yeso, metal y roble, y el HDRI nocturno `shanghai_bund`.
-- [Quaternius](https://quaternius.com) — Sci-Fi Essentials Kit: caja, taza y el robot de la mesa de reparación.
+- [Quaternius — Sci-Fi Essentials Kit](https://quaternius.itch.io/sci-fi-essentials-kit): caja, taza y robots del taller.
+- [Quaternius — LowPoly Robot](https://quaternius.itch.io/lowpoly-robot): robot humanoide animado.
