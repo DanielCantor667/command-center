@@ -9,6 +9,7 @@ import { PORTFOLIO_TECHNOLOGIES } from '../../../../data/portfolio-technologies'
 import type { PortfolioCaseProps } from './component';
 import { LorigineGallery } from './lorigine-gallery';
 import styles from './lorigine-case.module.css';
+import { LanguageSwitch } from '../../../../i18n/language-switch';
 
 export function LorigineCase({
   project,
@@ -53,6 +54,7 @@ export function LorigineCase({
             <ArrowUpRight size={16} aria-hidden />
           </button>
         )}
+        <LanguageSwitch />
       </header>
       <article>
         <section className={styles.hero} aria-labelledby="lorigine-title">

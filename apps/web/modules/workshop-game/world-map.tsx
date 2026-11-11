@@ -5,6 +5,8 @@ import { PROJECTS } from '../../data/projects';
 import type { WorkshopReading } from './reading';
 import { cornerProject, type WorldPoint } from './world-state';
 import { STATIONS, stationForPoint } from './stations';
+import { localePath } from '../../i18n/config';
+import { useLocale } from '../../i18n/locale-provider';
 import styles from './workshop-reader.module.css';
 export interface WorldMapProps {
   currentPoint: WorldPoint;
@@ -26,6 +28,7 @@ const markers: Record<Destination, [number, number]> = {
 const PUBLIC_PROJECTS = PROJECTS.filter(project => project.public);
 
 export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, onOpenCase }: WorldMapProps) {
+  const locale = useLocale();
   // A project corner shows as the projects place on the plan.
   const currentPoint: Exclude<WorldPoint, `corner-${string}`> = cornerProject(reached) ? 'projects' : reached as Exclude<WorldPoint, `corner-${string}`>;
   const read = (point: Destination) => {
@@ -69,6 +72,6 @@ export function WorldMap({ currentPoint: reached, worldAvailable, onRead, onGo, 
         </button>)}
       </nav>
     </div>
-    <a className={styles.creditsLink} href="/creditos">Créditos de modelos</a>
+    <a className={styles.creditsLink} href={localePath(locale, '/creditos')}>Créditos de modelos</a>
   </div>;
 }

@@ -20,6 +20,9 @@ import type { WorldCameraHandle } from './camera-controller';
 import { supportsWorldRenderer } from './renderer-support';
 import { useWorkshopAudio } from './workshop-audio';
 import styles from './workshop-game.module.css';
+import { LanguageSwitch } from '../../i18n/language-switch';
+import { localePath } from '../../i18n/config';
+import { useLocale } from '../../i18n/locale-provider';
 const PcDesktop = dynamic(() => import('./pc/pc-desktop').then(module => module.PcDesktop), { ssr: false, loading: () => null });
 const WorldScene = dynamic(() => import('./world-scene').then(module => module.WorldScene), { ssr: false, loading: () => null });
 class WorldBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
@@ -63,6 +66,7 @@ function TouchPad() {
 }
 const defaultFilters: TechnologyFilters = { query: '', category: 'all', projectId: null };
 export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpenCase, onPortfolio, reading: controlledReading, onRead, technologyFilters = defaultFilters, onTechnologyFiltersChange = () => {} }: WorkshopGameProps) {
+  const locale = useLocale();
   const [localReading, setLocalReading] = useState<WorkshopReading | null>(null);
   const reading = controlledReading === undefined ? localReading : controlledReading;
   const previousReading = useRef(!!reading);
@@ -209,6 +213,7 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
     <header className={styles.header}><div className={styles.identity}><span>{PUBLIC_PROFILE.name}</span><small>{PUBLIC_PROFILE.role}</small></div><div className={styles.headerActions}>
       {!inside && <button type="button" className={styles.portfolio} aria-label="Mapa" title="Mapa" onClick={() => setReading({ kind: 'map' })}><span className={styles.actionText}>Mapa</span><Map size={17} aria-hidden="true" /></button>}
       {inside && <button type="button" className={styles.portfolio} aria-label="Sonido" title={sound ? 'Apagar sonido' : 'Activar sonido'} aria-pressed={sound} onClick={toggleSound}><span className={styles.actionText}>Sonido</span>{sound ? <Volume2 size={17} aria-hidden="true" /> : <VolumeX size={17} aria-hidden="true" />}</button>}
+      <LanguageSwitch className={styles.portfolio} />
       <button type="button" className={styles.portfolio} aria-label="Ver portafolio" title="Ver portafolio" onClick={portfolio}><span className={styles.actionText}>Ver portafolio</span><ArrowUpRight size={17} aria-hidden="true" /></button>
     </div></header>
     {state.status === 'landing' && <section className={styles.welcome} aria-labelledby="workshop-title">
@@ -242,6 +247,6 @@ export function WorkshopGame({ initialSnapshot, suspended = false, onSave, onOpe
       <p className={styles.lookHint}><Move size={14} aria-hidden="true" /> Arrastra para mirar. <span className={styles.wideOnly}>Usa la rueda o las flechas para recorrer el taller.</span><span className={styles.narrowOnly}>Elige un lugar para acercarte.</span></p>
       </div>
     </>}
-    <footer className={styles.footer}><span>El taller de Daniel</span>{state.status === 'landing' && <a className={styles.creditsLink} href="/creditos">Créditos de modelos</a>}</footer>
+    <footer className={styles.footer}><span>El taller de Daniel</span>{state.status === 'landing' && <a className={styles.creditsLink} href={localePath(locale, '/creditos')}>Créditos de modelos</a>}</footer>
   </main>{computer === 'open' && !suspended && <PcDesktop onClose={closeComputer} onCase={openRelatedCase} sound={sound} onSound={toggleSound} />}{reading && !suspended && <WorkshopReader reading={reading} currentPoint={state.point} worldAvailable={active && state.point !== 'entrance'} technologyFilters={technologyFilters} onTechnologyFiltersChange={onTechnologyFiltersChange} onRead={setReading} onOpenCase={openRelatedCase} onClose={() => setReading(null)} onGo={point => { setReading(null); go(point); }} />}</>;
 }

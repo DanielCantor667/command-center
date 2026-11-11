@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { StrictMode, useEffect } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ExperienceModule } from '../component';
+import { en } from '../../../i18n/en';
+import { LocaleProvider } from '../../../i18n/locale-provider';
 import type { CityNavigatorProps } from '../components/city-navigator';
 import type { CameraSnapshot } from '../workshop-state';
 
@@ -29,6 +31,16 @@ describe('City portfolio experience', () => {
     window.scrollTo = vi.fn();
     window.history.replaceState(null, '', '/');
     restoreCamera.mockClear();
+  });
+  it('keeps the internal workspace entries in Spanish and hides them in English', () => {
+    const { unmount } = render(<ExperienceModule onEnter={vi.fn()} />);
+    expect(screen.getByRole('button', { name: 'Ver todos los proyectos' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Laboratorio 3D' })).toBeInTheDocument();
+    unmount();
+    render(<LocaleProvider locale="en" dictionary={en}><ExperienceModule onEnter={vi.fn()} /></LocaleProvider>);
+    expect(screen.queryByRole('button', { name: 'Ver todos los proyectos' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Laboratorio 3D' })).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: en.locale.switchLabel })).toHaveAttribute('href', '/');
   });
   it('offers a visible return to the game and saves the portfolio before leaving', () => {
     const onReturnToWorkshop = vi.fn();

@@ -9,6 +9,7 @@ import { PORTFOLIO_TECHNOLOGIES } from '../../../../data/portfolio-technologies'
 import type { PortfolioCaseProps } from './component';
 import { DrokexNetwork } from './drokex-network';
 import styles from './drokex-case.module.css';
+import { LanguageSwitch } from '../../../../i18n/language-switch';
 
 export function DrokexCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect, returnLabel = 'Volver a la ciudad' }: PortfolioCaseProps) {
   const heading = useRef<HTMLHeadingElement>(null);
@@ -25,6 +26,7 @@ export function DrokexCase({ project, onSelect, onReturn, onNavigate, onTechnolo
         <button type="button" className={styles.identity} aria-label="Daniel Cantor, inicio" onClick={onReturn}>dc.</button>
         <button type="button" onClick={onReturn}><ArrowLeft size={16} aria-hidden />{returnLabel}</button>
         {onNavigate && <button type="button" className={styles.techNav} onClick={() => onNavigate('technologies')}>Tecnologías<ArrowUpRight size={16} aria-hidden /></button>}
+        <LanguageSwitch />
       </header>
       <article>
         <section className={styles.hero} aria-labelledby="drokex-title">

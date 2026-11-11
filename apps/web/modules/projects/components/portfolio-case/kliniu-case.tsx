@@ -9,6 +9,7 @@ import { PUBLIC_PROFILE } from '../../../../data/public-profile';
 import type { PortfolioCaseProps } from './component';
 import { KliniuSequence } from './kliniu-sequence';
 import styles from './kliniu-case.module.css';
+import { LanguageSwitch } from '../../../../i18n/language-switch';
 
 export function KliniuCase({ project, onSelect, onReturn, onNavigate, onTechnologySelect, returnLabel = 'Volver a la ciudad' }: PortfolioCaseProps) {
   const heading = useRef<HTMLHeadingElement>(null);
@@ -23,6 +24,7 @@ export function KliniuCase({ project, onSelect, onReturn, onNavigate, onTechnolo
       <button className={styles.identity} onClick={onReturn} aria-label="Daniel Cantor, inicio">dc.</button>
       <button onClick={onReturn}><ArrowLeft size={16} aria-hidden />{returnLabel}</button>
       {onNavigate && <button className={styles.technologiesNav} onClick={() => onNavigate('technologies')}>Tecnologías<ArrowUpRight size={16} aria-hidden /></button>}
+      <LanguageSwitch />
     </header>
     <article>
       <section className={styles.opening} aria-labelledby="kliniu-title">

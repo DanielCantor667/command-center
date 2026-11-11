@@ -11,6 +11,8 @@ import type { WorkspaceModule } from '../../shell/workspace-store';
 import { CityNavigatorLoader } from './components/city-navigator-loader';
 import { KliniuTour, type KliniuTourStop } from './components/kliniu-tour';
 import { TechnologyExplorer, type TechnologyFilters } from './components/technology-explorer';
+import { LanguageSwitch } from '../../i18n/language-switch';
+import { useLocale } from '../../i18n/locale-provider';
 import styles from './experience.module.css';
 import cinema from './cinematic.module.css';
 import type { CityCameraHandle, WorkshopSnapshot } from './workshop-state';
@@ -62,6 +64,7 @@ export function ExperienceModule({
   reveal = true,
 }: ExperienceModuleProps) {
   const initialReturn = useRef({ restoring, snapshot: initialWorkshop });
+  const locale = useLocale();
   const [selectedId, setSelectedId] = useState(initialWorkshop?.projectId ?? initialProjectId);
   const [section, setSection] = useState<PortfolioSection>(initialSection);
   const [technologyId, setTechnologyId] = useState(initialTechnologyId);
@@ -306,6 +309,7 @@ export function ExperienceModule({
               {label}
             </a>
           ))}
+          <LanguageSwitch />
         </nav>
       </header>
       <section id="inicio" className={cinema.hero} aria-label="Portafolio de proyectos" data-detail={detail} data-entering={entering}>
@@ -590,14 +594,15 @@ export function ExperienceModule({
       </section>
       <footer className={styles.footer} inert={entering}>
         <span>Daniel Cantor · Taller digital</span>
-        <div>
+        {/* The internal workspace stays Spanish-only: hidden in English (specs/i18n-english.md, question 3). */}
+        {locale === 'es' ? <div>
           <button type="button" onClick={() => onEnter('projects')}>
             Ver todos los proyectos
           </button>
           <button type="button" onClick={() => onEnter('lab')}>
             Laboratorio 3D
           </button>
-        </div>
+        </div> : <div />}
         <span>Bogotá, Colombia</span>
       </footer>
     </main>

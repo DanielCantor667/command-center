@@ -9,6 +9,7 @@ import { PORTFOLIO_TECHNOLOGIES } from '../../../../data/portfolio-technologies'
 import type { PortfolioCaseProps } from './component';
 import { AcademyStudio } from './academy-studio';
 import styles from './academy-case.module.css';
+import { LanguageSwitch } from '../../../../i18n/language-switch';
 
 export function AcademyCase({
   project,
@@ -53,6 +54,7 @@ export function AcademyCase({
             <ArrowUpRight size={16} aria-hidden />
           </button>
         )}
+        <LanguageSwitch />
       </header>
       <article>
         <section className={styles.hero} aria-labelledby="academy-title">

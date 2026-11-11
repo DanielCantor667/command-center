@@ -1,8 +1,8 @@
 import { ExperienceGate } from '@/shell/experience-gate';
 import { WorkspaceProvider } from '@/shell/workspace-provider';
 import { PUBLIC_PROFILE } from '@/data/public-profile';
+import { SITE_URL as siteUrl } from '../../i18n/config';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://command-center-web-woad.vercel.app';
 const [locality, country] = PUBLIC_PROFILE.location.split(', ');
 /** Structured data for search engines: who the site is about, from the same profile the page shows. */
 const person = {

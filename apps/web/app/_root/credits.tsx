@@ -1,13 +1,8 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import styles from './page.module.css';
-
-export const metadata: Metadata = {
-  title: 'Créditos de modelos',
-  description: 'Autores y licencias de los modelos utilizados en el taller de Daniel Cantor.',
-  alternates: { canonical: '/creditos' },
-};
+import { localePath, type Locale } from '../../i18n/config';
+import { LanguageSwitch } from '../../i18n/language-switch';
+import styles from './credits.module.css';
 
 // Keep this list in sync with the attribution inventory in CREDITS.md.
 const models = [
@@ -26,13 +21,15 @@ const models = [
   { name: 'Ultrawide Monitor with Desk Mount', author: 'samhatesham', url: 'https://sketchfab.com/3d-models/9829c68b241e4242a7ec178965d1ed26', use: 'Monitor del escritorio' },
 ] as const;
 
-export default function CreditsPage() {
+/** Shared by `/creditos` and `/en/creditos`; links stay in the page's language. */
+export function Credits({ locale }: { locale: Locale }) {
+  const home = localePath(locale);
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
         <header className={styles.header}>
-          <Link className={styles.back} href="/"><ArrowLeft size={16} aria-hidden="true" /> Volver al taller</Link>
-          <span>Daniel Cantor</span>
+          <Link className={styles.back} href={home}><ArrowLeft size={16} aria-hidden="true" /> Volver al taller</Link>
+          <span>Daniel Cantor <LanguageSwitch path="/creditos" /></span>
         </header>
 
         <section className={styles.intro} aria-labelledby="credits-title">
@@ -72,7 +69,7 @@ export default function CreditsPage() {
             <div><h3><a href="https://quaternius.com" target="_blank" rel="noopener noreferrer">Quaternius <ArrowUpRight size={15} aria-hidden="true" /></a></h3><p>Sci-Fi Essentials Kit y <a href="https://quaternius.itch.io/lowpoly-robot" target="_blank" rel="noopener noreferrer">Animated Robot</a>.</p></div>
           </div>
         </section>
-        <footer className={styles.footer}><span>El taller de Daniel</span><Link href="/">Volver al taller <ArrowUpRight size={14} aria-hidden="true" /></Link></footer>
+        <footer className={styles.footer}><span>El taller de Daniel</span><Link href={home}>Volver al taller <ArrowUpRight size={14} aria-hidden="true" /></Link></footer>
       </div>
     </main>
   );

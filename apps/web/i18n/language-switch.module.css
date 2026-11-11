@@ -1,0 +1,4 @@
+/* Inherits colour and type from whichever header it sits in; 44 px tall for touch. */
+.switch { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; color: inherit; font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-decoration: none; }
+.switch:hover { text-decoration: underline; text-underline-offset: 4px; }
+.switch:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
