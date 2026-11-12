@@ -30,7 +30,7 @@ export const en: Dictionary = {
     inspection: {
       inside: 'Inside the workshop', enterDesk: 'Use the computer', showDetails: 'Show details', hideDetails: 'Hide details', details: 'Details', hide: 'Hide', back: 'Back to the workshop',
       wall: 'Project wall', projects: 'Projects', showList: 'Show list', hideList: 'Hide list', wallHint: 'Pick a screen or a project from the list to read its case study.', openCaseOf: 'Open the {name} case study',
-      corner: 'Project corner', readCase: 'Read case study', previous: 'Previous', next: 'Next', allProjects: 'View all projects',
+      corner: 'Project corner', readCase: 'Read case study', previous: 'Previous', next: 'Next', allProjects: 'View all projects', visitSite: 'Visit site', visitSiteOf: 'Visit the {name} site (opens in a new tab)',
     },
     reader: {
       titles: { technologies: 'Technologies', trajectory: 'Career', contact: 'Contact', map: 'Workshop map' },

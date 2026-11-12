@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ExternalLink, ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
 import { useId, useState, type RefObject } from 'react';
 import { PROJECTS } from '../../data/projects';
 import { CORNER_PROJECTS } from './world-state';
@@ -45,6 +45,7 @@ export function CornerInspection({ projectId, buttonRef, onOpen, onStep, onAll, 
     <div className={styles.inspectionActions}>
       <button ref={buttonRef} type="button" className={styles.primary} aria-label={fill(t.openCaseOf, { name: project.name })} onClick={() => onOpen(project.id)}
         onMouseEnter={() => onFocus?.(project.id)} onMouseLeave={() => onFocus?.(null)}>{t.readCase}<ArrowUpRight size={17} aria-hidden="true" /></button>
+      {project.links.live && <a className={`${styles.primary} ${styles.visit}`} href={project.links.live} target="_blank" rel="noreferrer" aria-label={fill(t.visitSiteOf, { name: project.name })}>{t.visitSite}<ExternalLink size={16} aria-hidden="true" /></a>}
       <button className={styles.fold} type="button" aria-label={open ? t.hideDetails : t.showDetails} aria-controls={detailsId} aria-expanded={open} onClick={() => setOpen(value => !value)}>{open ? t.hide : t.details}{open ? <ChevronDown size={15} aria-hidden="true" /> : <ChevronUp size={15} aria-hidden="true" />}</button>
     </div>
     <div className={styles.inspectionDetails} id={detailsId}>

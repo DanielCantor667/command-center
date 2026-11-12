@@ -28,7 +28,7 @@ export const es = {
     inspection: {
       inside: 'Dentro del taller', enterDesk: 'Entrar al escritorio', showDetails: 'Ver detalles', hideDetails: 'Ocultar detalles', details: 'Detalles', hide: 'Ocultar', back: 'Volver al taller',
       wall: 'Pared de proyectos', projects: 'Proyectos', showList: 'Ver lista', hideList: 'Ocultar lista', wallHint: 'Elige una pantalla o un proyecto de la lista para leer su caso.', openCaseOf: 'Abrir caso de {name}',
-      corner: 'Rincón de proyecto', readCase: 'Leer caso', previous: 'Anterior', next: 'Siguiente', allProjects: 'Ver todos los proyectos',
+      corner: 'Rincón de proyecto', readCase: 'Leer caso', previous: 'Anterior', next: 'Siguiente', allProjects: 'Ver todos los proyectos', visitSite: 'Visitar sitio', visitSiteOf: 'Visitar el sitio de {name} (abre en otra pestaña)',
     },
     reader: {
       titles: { technologies: 'Tecnologías', trajectory: 'Trayectoria', contact: 'Contacto', map: 'Mapa del taller' },
